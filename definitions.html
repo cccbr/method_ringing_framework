@@ -763,95 +763,45 @@
                                 either n or n+1 times, for a given value of n greater than or equal to zero.
                                 <div class="collapse detailI">
                                     <hr />
-                                    <p class="text-info">
+									<p class="text-primary">
+                                        <b>Further explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
+                                        is excluded when determining whether the Block is True.
+                                    </p>
+                                    <p class="text-primary">
+                                    	In a non-Round Block, both the initial Row and the final Row are included when determining
+                                    	whether the Block is True.
+                                    </p>
+                                    <p class="text-primary">
                                         When the number of Rows in a Block is less than or equal to the number of Rows in
                                         the Extent of the Block's Effective Stage, the definition of True simplifies to 'a Block
-                                        that has no repeated Rows'. However, the definition of True becomes more
-                                        involved when a Block has more Rows than the number of Rows in the Extent of the
-                                        Block's Effective Stage. Following are examples of three different scenarios:
+                                        that has no repeated Rows'.  In this case, all possible Rows appear either 0 times or 1 time,
+                                        so n in the definition has a value of 0.
                                     </p>
-                                    <figure class="figure">
-                                        <img src="images\trueexample1a.svg" alt="Example 1a" align="left" width=114 height=132>
-                                        <figcaption class="figcaption text-center">Example 1</figcaption>
-                                    </figure>
-                                    <p class="text-info">
-                                        In the Block in Example 1, a Minor Method is being rung on the front 6 with a Cover
-                                        Bell in 7th's Place. The bell in 7th's Place (the 7th) is never affected by a Call. 7th's
-                                        place is therefore a Fixed Cover Place and is excluded when determining truth:
+                                    <hr />
+                                    <p class="text-danger">
+                                        <b>Examples:</b>
+                                        <br />
+                                    	<img src="images\trueexample1.png" alt="Example 1" align="left" width=80 height=200>
+                                        This example shows a Round Block at the Singles Stage.  Since there are no Fixed Cover Bells,
+                                        the Effective Stage of the Block is also Singles.<br />
+                                        <br />
+                                        There are 6 possible Rows at the Singles Stage.  4 of the possible Rows appear once in the Block,
+                                        and 2 of the possible Rows appear twice in the Block.<br />
+                                        <br />
+                                        Therefore all possible Rows appear either 1 time or 2 times,
+                                        so the Block is True, and n in the definition has a value of 1.
                                     </p>
-                                    <figure class="figure">
-                                        <img src="images\trueexample1b.svg" alt="Example 1b" align="left" width=100 height=132>
-                                    </figure>
-                                    <p class="text-info">
-                                        There are 6 remaining Places, so the Effective Stage of the Block is 6 (i.e. Minor).
-                                    </p>
-                                    <p class="text-info">
-                                        The Extent of a Block with an Effective Stage of 6 has 6! Rows = 720 Rows.
-                                    </p>
-                                    <p class="text-info">
-                                        6 of the Rows in the Extent of the Block's Effective Stage appear in the above Block
-                                        once. 714 of the Rows in the Extent of the Block's Effective Stage appear in the
-                                        above Block zero times.
-                                    </p>
-                                    <p class="text-info">
-                                        Since Rows in the Extent of the Block's Effective Stage appear in the Block either
-                                        once or zero times, the requirement that each of the possible Rows for the Block's
-                                        Effective Stage occurs either n or n+1 times, for a given value of n greater than or
-                                        equal to zero, is met, and so the Block is True.
-                                    </p>
-                                    <figure class="figure">
-                                        <img src="images\trueexample2a.svg" alt="Example 2a" align="left" width=128 height=160>
-                                        <figcaption class="figcaption text-center">Example 2</figcaption>
-                                    </figure>
-                                    <p class="text-info">
-                                        In the Block in Example 2, 1st's, 2nd's, 6th's, 7th's and 8th's Places are Fixed Cover
-                                        Places, so these are excluded when determining truth:
-                                    </p>
-                                    <figure class="figure">
-                                        <img src="images\trueexample2b.svg" alt="Example 2b" align="left" width=128 height=160>
-                                    </figure>
-                                    <p class="text-info">
-                                        There are 3 remaining Places, so the Effective Stage of the Block is 3.
-                                    </p>
-                                    <p class="text-info">
-                                        The Extent of a Block with an Effective Stage of 3 has 3! Rows = 6 Rows.
-                                    </p>
-                                    <p class="text-info">
-                                        2 of the Rows in the Effective Extent appear twice each in the Block (534 and 354).
-                                        The other 4 Rows in the Effective Extent appear once each.
-                                    </p>
-                                    <p class="text-info">
-                                        Since all Rows of the Effective Extent appear either once or twice, the 'either n or
-                                        n+1 times' requirement is met and the Block is True.
-                                    </p>
-                                    <figure class="figure">
-                                        <img src="images\trueexample3.svg" alt="Example 3" align="left" width=72 height=244>
-                                        <figcaption class="figcaption text-center">Example 3</figcaption>
-                                    </figure>
-                                    <p class="text-info">
-                                        In the Block in Example 3, a Singles Method is rung on the front 3 for the first 6
-                                        Changes, together with a Cover Bell in 4th's Place. Then there is a switch to a
-                                        Minimus Method for the remaining 8 Changes of the Block.
-                                    </p>
-                                    <p class="text-info">
-                                        There are no Fixed Cover Places in this Block. 4th's Place is a Variable Cover Place
-                                        because Methods at both Stages 3 and 4 are used. So there are no Places to
-                                        exclude when determining truth.
-                                    </p>
-                                    <p class="text-info">
-                                        The Effective Stage of the Block is therefore 4.
-                                    </p>
-                                    <p class="text-info">
-                                        The Extent of a Block with an Effective Stage of 4 has 4! Rows = 24 Rows.
-                                    </p>
-                                    <p class="text-info">
-                                        2 of these 24 Rows appear twice, 10 of these 24 Rows appear once, and 12 of these
-                                        24 Rows appear zero times.
-                                    </p>
-                                    <p class="text-info">
-                                        Since all Rows of the Effective Extent appear zero times, once or twice in the Block,
-                                        the 'either n or n+1 times' requirement is not met (since some rows appear n+2
-                                        times) and the Block is False.
+                                    <p class="text-danger">
+                                        <img src="images\trueexample2.png" alt="Example 2" align="left" width=100 height=220>
+                                        This example shows a non-Round Block at the Minimus Stage.  Since there is a Fixed Cover Bell in 4th's Place,
+                                        the Effective Stage of the Block is Singles.<br />
+                                        <br />
+                                        There are 6 possible Rows at the Singles Stage.  3 of the possible Rows appear once in the Block,
+                                        2 of the possible Rows appear twice in the Block, and 1 of the possible Rows appears three times in the Block.
+                                        (Both the initial and final Rows are considered because this is a non-Round Block.)<br />
+                                        <br />
+                                        Since some possible Rows appear n times, others appear n+1 times, and others appear n+2 times, where n=1,
+                                        the 'either n or n+1 times' requirement is not met (since there is also n+2) and so the Block is False.
                                     </p>
                                 </div>
                             </td>
@@ -875,13 +825,12 @@
                                 of ringing, and errors in ringing or calling are corrected quickly.
                                 <div class="collapse detailJ">
                                     <hr />
-                                    <p class="text-info">Performances of 1250 Changes or greater are often published to the Ringing Community.</p>
-                                    <p class="text-info">
-                                        More fully, this term would be 'Method Ringing Performance'. Performances are
-                                        often distinguished from practice ringing by the intent for the ringing to be heard by
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> More fully, this term would be 'Method Ringing Performance'. Performances are
+                                        often distinguished by the intent for the ringing to be heard by
                                         members of the public, and/or for the ringing to be reported to the ringing
-                                        community if the ringing was of Quarter Peal Length of greater. 'Method Ringing
-                                        Practice', by contrast, is often for the purpose of teaching and developing ringers.
+                                        community when 1250 Changes or greater in Length. 'Method Ringing
+                                        Practice', by contrast, is usually for the purpose of teaching and developing ringers and bands.
                                     </p>
                                 </div>
                             </td>
@@ -891,10 +840,6 @@
                             <td><a name="touch" />Touch</td>
                             <td>
                                 A Performance of any Length.
-                                <div class="collapse detailJ">
-                                    <hr />
-                                    <p class="text-info">Performances of 1250 Changes or greater are often published to the Ringing Community.</p>
-                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -932,7 +877,9 @@
                                 A Performance whose Length is 10000 or more Changes.
                                 <div class="collapse detailJ">
                                     <hr />
-                                    <p class="text-info">Long Lengths are also Peals - they are a subset thereof.</p>
+                                    <p class="text-primary">
+                                    	<b>Further explanation:</b> Long Lengths are also Peals - they are a subset thereof.
+                                    </p>
                                 </div>
                             </td>
                         </tr>
@@ -943,8 +890,8 @@
                                 A Performance whose Length corresponds to the year being commemorated.
                                 <div class="collapse detailJ">
                                     <hr />
-                                    <p class="text-info">
-                                        The year being commemorated in a Date Touch is often the year in which it is rung.
+                                    <p class="text-primary">
+                                    	<b>Further explanation:</b> The year being commemorated in a Date Touch is often the year in which it is rung.
                                         A Date Touch commemorating the year 2018 would have 2018 Changes and would
                                         also be a Quarter Peal.
                                     </p>
@@ -959,7 +906,8 @@
                                 of Methods, and that is also rung as described in Section M.
                                 <div class="collapse detailJ">
                                     <hr />
-                                    <p class="text-info">Record Lengths are also Peals - they are a subset thereof.</p>
+                                    <p class="text-primary">
+                                    	<b>Further explanation:</b> Record Lengths are also Peals - they are a subset thereof.</p>
                                 </div>
                             </td>
                         </tr>
@@ -984,8 +932,8 @@
                             <th scope="row">K.1</th>
                             <td><a name="parentmethod" />Parent Method</td>
                             <td>
-                                An existing Method at a given Stage for which related Methods at other Stages exist
-                                or are being sought.
+                                A Method at a given Stage from which related Methods at higher or lower Stages
+                                may be derived using extension or contraction techniques.
                             </td>
                         </tr>
                         <tr>
