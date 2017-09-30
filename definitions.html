@@ -49,10 +49,10 @@
             </div>
             <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5" role="main">
                 <h2><a name="definitions" />3. Definitions</h2>
+<!-- Rows -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Rows -->
                             <th style="width: 8%">A</th>
                             <th style="width: 16%"><a name="rows" />Rows</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailA">Show/hide detail &amp; examples...</a></th>
@@ -87,7 +87,7 @@
                                     <p class="text-primary">
                                         Rows are normally shown in columns so that the path of individual bells can be visualised by looking down the columns.
                                         In order to keep the columns aligned, a fixed font can be used with single characters representing each bell.
-                                        Conventionally '0' (zero) is used to represent 10 and upper case letters (excluding 'I', 'O' and 'X') are
+                                        Conventionally '0' (zero) is used to represent the 10th, and upper case letters (excluding 'I', 'O' and 'X') are
                                         used for bells 11 to 33 as follows:
                                     </p>
                                     <p class="text-primary">
@@ -95,7 +95,13 @@
                                         'H' (Nineteen); 'J' (Twenty); 'K' (Twenty-one); 'L' (Twenty-two); 'M' (Twenty-three); 'N' (Twenty-four); 'P' (Twenty-five);
                                         'Q' (Twenty-six); 'R' (Twenty-seven); 'S' (Twenty-eight); 'U' (Twenty-nine); 'V' (Thirty); 'W' (Thirty-one);
                                         'Y' (Thirty-two); 'Z' (Thirty-three)
-<p>
+									<p>
+									<hr />
+                                    <p class="text-muted">
+                                        <b>Technical comments:</b> This definition of Row precludes cylindrical ringing, wherein a bell can ring twice in some
+                                        rows and not at all in other rows.  Cylindrical ringing is considered beyond the scope of this framework -- it would
+                                        likely require its own framework, with modified definitions in areas such as truth.
+                                    </p>
                                 </div>
                             </td>
                         </tr>
@@ -129,8 +135,13 @@
                                         rings second in a Row is in Place 2.
                                     </p>
                                     <p class="text-primary">
+                                        Each bell in a Row rings in a different Place to all other bells in that Row,
+                                        and therefore there are the same number of Places in a Row as there
+                                        are bells in that Row.
+                                    </p>
+                                    <p class="text-primary">
                                         Places are usually referred to using ordinal numbers in the possessive form,
-                                        so Place 2 is usually '2nd's Place'. 2nd's Place here is a reference to the Place the
+                                        so Place 2 is usually '2nd's Place'. 2nd's Place is a reference to the Place the
                                         2nd bell occupies when ringing Rounds.
                                     </p>
                                     <p class="text-primary">
@@ -143,11 +154,6 @@
                                         may be modified to exclude the Cover Bell(s). E.g. when ringing Triples (see Section H) with a Cover
                                         Bell in 8th's Place, the bell in 7th's place may be said to be Lying.
                                     </p>
-                                    <p class="text-primary">
-                                        Each bell in a Row rings in a different Place to all other bells in that Row,
-                                        and therefore there are the same number of Places in a Row as there
-                                        are bells in that Row.
-                                    </p>
                                     <hr />
                                     <p class="text-muted">
                                         <b>Technical comments:</b> More formally, a Place is a position where an individual bell can ring within a Row,
@@ -159,10 +165,10 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Changes -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Changes -->
                             <th style="width: 8%">B</th>
                             <th style="width: 16%"><a name="changes" />Changes</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailB">Show/hide detail &amp; examples...</a></th>
@@ -173,7 +179,7 @@
                             <th scope="row">B.1</th>
                             <td><a name="change" />Change</td>
                             <td>
-                                A transposition of bells from a first Row to a second Row, where both Rows are made up of the same set of bells.
+                                A transposition of bells from one Row to the next Row, where both Rows are made up of the same set of bells.
                                 <div class="collapse detailB">
                                     <hr />
                                     <p class="text-danger">
@@ -181,8 +187,8 @@
                                     </p>
                                     <hr />
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> A Change does not transpose two or more bells from a first Row 
-                                        into the same Place in a second Row.
+                                        <b>Further explanation:</b> A Change transposes a bell to a unique Place in the next Row -- i.e. a Change does not transpose
+                                        two or more bells from one Row into the same Place in the next Row.
                                     </p>
                                     <p class="text-primary">
                                         Changes are often represented using Place Notation. This notation is formed by writing the Places of bells that remain
@@ -196,7 +202,7 @@
                                     </p>
                                     <p class="text-primary">
                                         In Place Notation, single character representations of bells are used for Places above 9th's Place (e.g. "9T").
-                                        The symbols 'x', 'X' or '-' are all used to denote a Change on an even number of bells where
+                                        The symbols 'x' or '-' are used to denote a Change on an even number of bells where
                                         no bell stays in the same Place, so all pairs of bells swap.
                                     </p>
                                     <p class="text-primary">
@@ -206,7 +212,7 @@
                                     </p>
                                     <hr />
                                     <p class="text-muted">
-                                        <b>Technical comments:</b> Changes can be subdivided into types as follows:
+                                        <b>Technical comments:</b> Changes can be subdivided into three types as follows:
                                     </p>
                                 </div>
                             </td>
@@ -216,7 +222,7 @@
                             <td><a name="identitychange" />Identity Change</td>
                             <td>
                                 A Change that transposes each bell to the same Place in a
-                                second Row as it occupied in a first Row.
+                                Row as it occupied in the previous Row.
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example: </b>The Change that transposes the bells from Row 54321 to Row 54321 is an Identity Change.
@@ -228,8 +234,8 @@
                             <td><a name="adjacentchange" />Adjacent Change</td>
                             <td>
                                 A Change that transposes each bell either to the same Place in
-                                a second Row as it occupied in a first Row, or to a Place in a second Row that
-                                is immediately adjacent to the Place it occupied in a first Row, but which is not an
+                                a Row as it occupied in the previous Row, or to a Place in a Row that
+                                is immediately adjacent to the Place it occupied in the previous Row, but which is not an
                                 Identity Change.
                                 <hr />
                                 <p class="text-danger">
@@ -245,7 +251,7 @@
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> The Change that transposes the bells from Row 12345678 to Row 23415678 is a
-                                    Jump Change because the Treble moves from 1st's Place to 4th's Place, which is not an adjacent Place.
+                                    Jump Change because the Treble moves from 1st's Place to 4th's Place, which are not adjacent Places.
                                 </p>
                                 <hr />
                                 <p class="text-primary">
@@ -257,24 +263,25 @@
                                     Also note that Place Notation can only be used to describe an Adjacent Change
                                     or an Identity Change, or a sequence of such Changes.  Place Notation does not support Jump Changes.
                                 </p>
-                            </tr>
+                            </td>
                         <tr class="collapse detailB">
                             <th scope="row">B.2</th>
                             <td><a name="changeringing" />Change Ringing</td>
                             <td>
-                                The practice of ringing Rows where the progression between Rows is defined by
-                                Changes.
-                                <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> Call Changes (or 'Called Changes') is a form of Change Ringing, but not a form of Method Ringing.
-                                </p>
+                             	The practice of ringing Rows where the progression between Rows is defined by
+                             	Changes.
+                            	<hr />
+                            	<p class="text-primary">
+                                	<b>Further explanation:</b> Call Changes (or Called Changes) is a form of Change Ringing, but not a form of Method Ringing.
+                            	</p>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
+<!-- Methods -->                
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Methods -->
                             <th style="width: 8%">C</th>
                             <th style="width: 16%"><a name="methods" />Methods</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailC">Show/hide detail &amp; examples...</a></th>
@@ -296,7 +303,7 @@
                                     <p class="text-primary">
                                         <b>Further explanation:</b> Note that if the last Change of Little Bob Minor (the '12') is removed,
                                         the remaining sequence of Changes (i.e. x16x14x16x) is palindromic, meaning it is the same if read
-                                        forward or backward. Where a Method has palindromic symmetry, it may be recorded in shorthand in a
+                                        forwards or backwards. Where a Method has palindromic symmetry, it may be recorded in shorthand in a
                                         Method Library in a form such as &x16x14+12. In this example, the '&' indicates that the portion
                                         before the '+' must also be reversed (except for the last change) to produce the palindromic section,
                                         before then adding the portion after the '+'.
@@ -339,7 +346,7 @@
                                 <p class="text-primary">
                                     In this Method, the sequence of Changes varies depending on the Rows generated, so using a
                                     different starting Row could generate a different sequence of Changes.  This Method's
-                                    sequence of Changes is therefore not static, and so Dixon's Bob Minor is an example of
+                                    sequence of Changes is therefore not fixed, and so Dixon's Bob Minor is an example of
                                     a Dynamic Method.
                                 </p>
                             </td>
@@ -372,9 +379,9 @@
                         </tr>
                         <tr>
                             <th scope="row">C.4</th>
-                            <td><a name="methodlibrary" />CRO Method Library</td>
+                            <td><a name="methodlibrary" />CCCBR Method Library</td>
                             <td>
-                                A central collection, maintained by the CRO, of all named Methods recognized by the CRO
+                                A central collection, maintained by the CCCBR, of all named Methods recognized by the CCCBR.
                             </td>
                         </tr>
                         <tr class="collapse detailC">
@@ -402,10 +409,11 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Cover Bells -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Cover Bells -->
+
                             <th style="width: 8%">D</th>
                             <th style="width: 16%"><a name="coverbells" />Cover Bells</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailD">Show/hide detail &amp; examples...</a></th>
@@ -437,10 +445,10 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Calls -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Calls -->
                             <th style="width: 8%">E</th>
                             <th style="width: 16%"><a name="calls" />Calls</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailE">Show/hide detail &amp; examples...</a></th>
@@ -451,8 +459,7 @@
                             <th scope="row">E.1</th>
                             <td><a name="call" />Call</td>
                             <td>
-                                An instruction to replace consecutive Change(s) from a Method with different
-                                consecutive Change(s).
+                                An instruction to replace Change(s) from a Method with different Change(s).
                                 <div class="collapse detailE">
                                     <hr />
                                     <p class="text-danger">
@@ -469,8 +476,8 @@
                                     </p>
                                     <hr />
                                     <p class="text-muted">
-                                        <b>Technical comments:</b> More formally, a Call is an instruction to replace a sequence of zero
-                                        or more consecutive Changes from a Method with a different sequence of zero or more consecutive Changes.
+                                        <b>Technical comments:</b> More formally, a Call is an instruction to replace zero
+                                        or more Changes from one or more Methods with a different set of zero or more Changes.
                                         Calls may also operate on Cover Bell(s) to produce variable cover ringing.
                                     </p>   
                                     <p class="text-muted">
@@ -483,10 +490,10 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Compositions -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Compositions -->
                             <th style="width: 8%">F</th>
                             <th style="width: 16%"><a name="compositions" />Compositions</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailF">Show/hide detail &amp; examples...</a></th>
@@ -524,10 +531,10 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Blocks -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Blocks -->
                             <th style="width: 8%">G</th>
                             <th style="width: 16%"><a name="blocks" />Blocks</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailG">Show/hide detail &amp; examples...</a></th>
@@ -620,6 +627,11 @@
                                 A Place in a Block in which the same Cover Bell rings in all Rows of that Block.
                                 <div class="collapse detailG">
                                     <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Because a Block comprises Rows that are all composed of the same set of bells,
+                                        a Place in a Block refers to that same Place in all of the Block's underlying Rows.
+                                    </p>
+                                    <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> Assume Plain Bob Doubles is being rung on the front 5 of a ring of 8, and
                                         Cover Bells are ringing in 6th's, 7th's and 8th's Places. Calls are used in the Composition such that
@@ -630,6 +642,14 @@
                                         In this Block, the bell ringing in 8th's Place is always the same bell because it is not
                                         ringing a Method and it is never affected by a Call.
                                         8th's Place is therefore a Fixed Cover Place.
+                                    </p>
+                                    <hr />
+                                    <p class="text-muted">
+                                        <b>Technical comments:</b> While a Fixed Cover Place is defined above in terms of the same Cover Bell ringing
+                                        in all Rows of a Block, the same effect can be achieved in different ways.  For example, a Method may keep a bell
+                                        in the same Place in every Row; or a Method may keep a bell in the same Place in most Rows, but Calls
+                                        are used that keep that bell in the same Place in every Row.  Regardless of how the Rows are generated,
+                                        if the same bell rings in the same Place in every Row of a Block, that Place is a Fixed Cover Place.
                                     </p>
                                 </div>
                             </td>
@@ -646,7 +666,7 @@
                                         <b>Example:</b> In the example for G.6 above, 6th's and 7th's Places are Variable Cover Places
                                         because they contain Cover Bells for at least one of the Rows (and in fact for this
                                         example, for all of the Rows), but they are not Fixed Cover Places because the same
-                                        Cover Bell is not ringing in either 6th's or 7th's Place all the time.
+                                        Cover Bell does not ring in either 6th's Place or 7th's Place all of the time.
                                     </p>
                                     <p class="text-danger">
                                         Places 1 - 5 in the example for G.6 above never contain a Cover Bell, so they are
@@ -675,10 +695,11 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Stages -->
                 <table class="table">
                     <thead>
                         <tr>
-<!-- Stages -->
+
                             <th style="width: 8%">H</th>
                             <th style="width: 16%"><a name="stages" />Stages</th>
                             <th class="text-right"><a data-toggle="collapse" href=".detailH">Show/hide detail &amp; examples...</a></th>
@@ -746,6 +767,7 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Truth -->
                 <table class="table">
                     <thead>
                         <tr>
@@ -808,6 +830,7 @@
                         </tr>
                     </tbody>
                 </table>
+<!-- Performances -->
                 <table class="table">
                     <thead>
                         <tr>
@@ -829,8 +852,13 @@
                                         <b>Further explanation:</b> More fully, this term would be 'Method Ringing Performance'. Performances are
                                         often distinguished by the intent for the ringing to be heard by
                                         members of the public, and/or for the ringing to be reported to the ringing
-                                        community when 1250 Changes or greater in Length. 'Method Ringing
-                                        Practice', by contrast, is usually for the purpose of teaching and developing ringers and bands.
+                                        community when it is 1250 Changes or greater in Length.
+                                    </p>
+                                    <p class="text-primary">
+                                        'Method Ringing Practice' (or practice ringing), by contrast, is usually for the purpose of teaching and developing ringers and bands.
+                                    </p>
+                                    <p class="text-primary">
+                                        While Performances may be of any Length, practice ringing is usually less than 1250 Changes in Length.
                                     </p>
                                 </div>
                             </td>
@@ -839,14 +867,14 @@
                             <th scope="row">J.2</th>
                             <td><a name="touch" />Touch</td>
                             <td>
-                                A Performance of any Length.
+                                A Performance or Practice of any Length.
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">J.3</th>
                             <td><a name="shorttouch" />Short Touch</td>
                             <td>
-                                A Performance whose Length is 1 to 1249 Changes.
+                                A Performance or Practice whose Length is 1 to 1249 Changes.
                             </td>
                         </tr>
                         <tr>
@@ -878,7 +906,7 @@
                                 <div class="collapse detailJ">
                                     <hr />
                                     <p class="text-primary">
-                                    	<b>Further explanation:</b> Long Lengths are also Peals - they are a subset thereof.
+                                    	<b>Further explanation:</b> Long Lengths are also Peals -- they are a subset thereof.
                                     </p>
                                 </div>
                             </td>
@@ -907,7 +935,7 @@
                                 <div class="collapse detailJ">
                                     <hr />
                                     <p class="text-primary">
-                                    	<b>Further explanation:</b> Record Lengths are also Peals - they are a subset thereof.</p>
+                                    	<b>Further explanation:</b> Record Lengths are also Peals -- they are a subset thereof.</p>
                                 </div>
                             </td>
                         </tr>
@@ -932,8 +960,8 @@
                             <th scope="row">K.1</th>
                             <td><a name="parentmethod" />Parent Method</td>
                             <td>
-                                A Method at a given Stage from which related Methods at higher or lower Stages
-                                may be derived using extension or contraction techniques.
+                                A Method at a given Stage from which it may be possible to derive related Methods at higher
+                                or lower Stages using extension or contraction techniques.
                             </td>
                         </tr>
                         <tr>
