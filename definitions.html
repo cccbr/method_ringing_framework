@@ -34,7 +34,7 @@
 
     <div class="container-fluid collapse-group">
         <div class="row">
-            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">1. Introduction</a>
@@ -93,12 +93,13 @@
                     </li>
                 </ul>
                 <div class="btn-navbar">
-                    <button class="btn btn-success open-button" type="button">Show all notes</button>
-                    <button class="btn btn-success close-button" type="button">Hide all notes</button>
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block  btn-success close-button" type="button">Hide all notes</button>
                 </div>
             </nav>
 
-            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
                 <div class="container-fluid">
                     <div class="row" id="rows">
                         <div class="col-sm-12">
@@ -114,13 +115,13 @@
                     </div>
                     <div class="row" id="row">
                         <div class="col-sm-1">A.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Row
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailA1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailA1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>A sequence of bells in which each bell rings once and only once.</p>
                             <div class="collapse" id="detailA1">
                                 <hr />
@@ -165,13 +166,13 @@
                     </div>
                     <div class="row" id="rounds">
                         <div class="col-sm-1">A.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Rounds
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailA2"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailA2"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>A Row in which the bells ring in the order from highest pitch to lowest pitch.</p>
                             <div class="collapse" id="detailA2">
                                 <hr />
@@ -183,13 +184,13 @@
                     </div>
                     <div class="row" id="place">
                         <div class="col-sm-1">A.3</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Place
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailA3"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailA3"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>The position of a bell within a Row.</p>
                             <div class="collapse" id="detailA3">
                                 <hr />
@@ -238,13 +239,13 @@
                     </div>
                     <div class="row" id="change">
                         <div class="col-sm-1">B.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Change
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailB1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailB1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>A transposition of bells from one Row to the next Row, where both Rows are made up of the same set of bells.</p>
                             <div class="collapse" id="detailB1">
                                 <hr />
@@ -281,13 +282,13 @@
                     </div>
                     <div class="row" id="identitychange">
                         <div class="col-sm-1">B.1.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Identity Change
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailB11"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailB11"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Change that transposes each bell to the same Place in a
                                 Row as it occupied in the previous Row.
@@ -302,13 +303,13 @@
                     </div>
                     <div class="row" id="adjacentchange">
                         <div class="col-sm-1">B.1.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Adjacent Change
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailB12"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailB12"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Change that transposes each bell either to the same Place in
                                 a Row as it occupied in the previous Row, or to a Place in a Row that
@@ -325,13 +326,13 @@
                     </div>
                     <div class="row" id="jumpchange">
                         <div class="col-sm-1">B.1.3</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Jump Change
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailB13"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailB13"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Change that is neither an Identity Change nor an Adjacent Change.
                             </p>
@@ -356,13 +357,13 @@
                     </div>
                     <div class="row" id="changeringing">
                         <div class="col-sm-1">B.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Change Ringing
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailB2"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailB2"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 The practice of ringing Rows where the progression between Rows is defined by
                                 Changes.
@@ -382,13 +383,13 @@
                     </div>
                     <div class="row" id="method">
                         <div class="col-sm-1">C.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Method
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailC1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailC1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A sequence of Changes, all operating on the same set of bells, that is used to produce
                                 a sequence of resulting Rows from an initial Row.
@@ -412,13 +413,13 @@
                     </div>
                     <div class="row" id="staticmethod">
                         <div class="col-sm-1">C.1.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Static Method
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailC11"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailC11"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Method whose sequence of Changes is fixed and finite.
                             </p>
@@ -433,13 +434,13 @@
                     </div>
                     <div class="row" id="dynamicmethod">
                         <div class="col-sm-1">C.1.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Dynamic Method
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailC12"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailC12"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Method that is not a Static Method.
                             </p>
@@ -466,13 +467,13 @@
                     </div>
                     <div class="row" id="methodname">
                         <div class="col-sm-1">C.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Method Name
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailC2"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailC2"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A name given to a Method that is unique for its <a href="#class">Class</a> and <a href="#stage">Stage</a>.
                             </p>
@@ -490,13 +491,13 @@
                     </div>
                     <div class="row" id="methodtitle">
                         <div class="col-sm-1">C.3</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Method Title
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailC3"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailC3"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 The full description of a Method formed by concatenating its Method Name,
                                 <a href="#classname">Class Name</a> and <a href="#stagename">Stage Name</a>.
@@ -511,10 +512,10 @@
                     </div>
                     <div class="row" id="methodlibrary">
                         <div class="col-sm-1">C.4</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             CCCBR Method Library
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A central collection, maintained by the CCCBR, of all named Methods recognized by the CCCBR.
                             </p>
@@ -522,13 +523,13 @@
                     </div>
                     <div class="row" id="rotation">
                         <div class="col-sm-1">C.5</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Rotation
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailC5"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailC5"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Rotation is a Method whose Changes are the same as another Method, except
                                 that the Changes, when considered as a cycle, have been rotated to start at a
@@ -545,10 +546,10 @@
                     </div>
                     <div class="row" id="methodringing">
                         <div class="col-sm-1">C.6</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Method Ringing
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 The practice of ringing Rows where the progression between Rows is defined
                                 primarily by Methods, secondarily by Calls, and with Rows optionally also
@@ -563,13 +564,13 @@
                     </div>
                     <div class="row" id="coverbell">
                         <div class="col-sm-1">D.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Cover Bell
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailD1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailD1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A bell that occupies a Place in a Row that is not one of the Places operated on by
                                 the Changes of the Method being rung.
@@ -598,13 +599,13 @@
                     </div>
                     <div class="row" id="call">
                         <div class="col-sm-1">E.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Call
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailE1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailE1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 An instruction to replace Change(s) from a Method with different Change(s).
                             </p>
@@ -643,13 +644,13 @@
                     </div>
                     <div class="row" id="composition">
                         <div class="col-sm-1">F.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Composition
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailF1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailF1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 An arrangement of Method(s) and Call(s), all operating on the same set of bells,
                                 that is used to produce a sequence of resulting Rows from an initial Row.
@@ -684,10 +685,10 @@
                     </div>
                     <div class="row" id="block">
                         <div class="col-sm-1">G.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Block
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A sequence of Rows, all composed of the same set of bells, that is produced from an
                                 initial Row using a Method or a Composition.
@@ -696,13 +697,13 @@
                     </div>
                     <div class="row" id="roundblock">
                         <div class="col-sm-1">G.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Round Block
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG2"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG2"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block whose final Row is the same as its initial Row.
                             </p>
@@ -717,13 +718,13 @@
                     </div>
                     <div class="row" id="plainlead">
                         <div class="col-sm-1">G.3</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Plain Lead
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG3"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG3"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block produced, starting from an initial Row, by applying a Method's sequence of
                                 Changes once, without using any Calls.
@@ -739,13 +740,13 @@
                     </div>
                     <div class="row" id="plaincourse">
                         <div class="col-sm-1">G.4</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Plain Course
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG4"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG4"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block produced, starting from an initial Row, by applying a Method's sequence of
                                 Changes repeatedly, without using any Calls, until a Round Block is obtained.
@@ -769,13 +770,13 @@
                     </div>
                     <div class="row" id="length">
                         <div class="col-sm-1">G.5</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Length
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG5"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG5"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 The Length of a Block is the number of Changes that were used to produce the
                                 Block.
@@ -801,13 +802,13 @@
                     </div>
                     <div class="row" id="fixedcoverplace">
                         <div class="col-sm-1">G.6</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Fixed Cover Place
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG6"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG6"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Place in a Block in which the same Cover Bell rings in all Rows of that Block.
                             </p>
@@ -842,13 +843,13 @@
                     </div>
                     <div class="row" id="variablecoverplace">
                         <div class="col-sm-1">G.7</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Variable Cover Place
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG7"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG7"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Place in a Block in which a Cover Bell rings for at least one Row of that Block, but
                                 which is not a Fixed Cover Place.
@@ -870,13 +871,13 @@
                     </div>
                     <div class="row" id="extent">
                         <div class="col-sm-1">G.8</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Extent
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailG8"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG8"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 The complete set of distinct Rows possible for a given set of bells.
                             </p>
@@ -900,13 +901,13 @@
                     </div>
                     <div class="row" id="stage">
                         <div class="col-sm-1">H.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Stage
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailH1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>The number of bells.</p>
                             <div class="collapse" id="detailH1">
                                 <hr />
@@ -936,10 +937,10 @@
                     </div>
                     <div class="row" id="stagename">
                         <div class="col-sm-1">H.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Stage Name
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>Names that are given to Stages:</p>
                             <p>1 = One; 3 = Singles; 5 = Doubles; 7 = Triples; 9 = Caters; 11 = Cinques; 13 = Sextuples; 15 = Septuples; etc.</p>
                             <p>2 = Two; 4 = Minimus; 6 = Minor; 8 = Major; 10 = Royal; 12 = Maximus; 14 = Fourteen; 16 = Sixteen; etc.</p>
@@ -947,13 +948,13 @@
                     </div>
                     <div class="row" id="effectivestage">
                         <div class="col-sm-1">H.3</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Effective Stage
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailH3"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH3"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>The number of Places remaining in a Block after any Fixed Cover Places have been excluded.</p>
                             <div class="collapse" id="detailH3">
                                 <hr />
@@ -976,13 +977,13 @@
                     </div>
                     <div class="row" id="true">
                         <div class="col-sm-1">I.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             True
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailI1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailI1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block is True if each of the possible Rows for the Block's Effective Stage occurs
                                 either n or n+1 times, for a given value of n greater than or equal to zero.
@@ -1006,10 +1007,10 @@
                                 <hr />
                                 <p class="text-danger"><b>Examples:</b></p>
                                 <div class="row">
-                                    <div class="col-sm-1">
+                                    <div class="col-xl-1 col-sm-3">
                                         <img src="images\trueexample1.png" alt="Example 1" align="left" width=80 height=200>
                                     </div>
-                                    <div class="col-sm-11 text-danger">
+                                    <div class="col-xl-11 col-sm-9 text-danger">
                                         <p>
                                             The first example shows a Round Block at the Singles Stage.  Since there are no Fixed Cover Bells,
                                             the Effective Stage of the Block is also Singles.
@@ -1025,10 +1026,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-1">
+                                    <div class="col-xl-1 col-sm-3">
                                         <img src="images\trueexample2.png" alt="Example 2" align="left" width=100 height=220>
                                     </div>
-                                    <div class="col-sm-11 text-danger">
+                                    <div class="col-xl-11 col-sm-9 text-danger">
                                         <p>
                                             The second example shows a non-Round Block at the Minimus Stage.  Since there is a Fixed Cover Bell in 4th's Place,
                                             the Effective Stage of the Block is Singles.
@@ -1054,13 +1055,13 @@
                     </div>
                     <div class="row" id="performance">
                         <div class="col-sm-1">J.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Performance
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailJ1"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ1"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 The successful ringing of a Block where the band strives to maintain a high standard
                                 of ringing, and errors in ringing or calling are corrected quickly.
@@ -1084,10 +1085,10 @@
                     </div>
                     <div class="row" id="touch">
                         <div class="col-sm-1">J.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Touch
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance or Practice of any Length.
                             </p>
@@ -1095,10 +1096,10 @@
                     </div>
                     <div class="row" id="shorttouch">
                         <div class="col-sm-1">J.3</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Short Touch
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance or Practice whose Length is 1 to 1249 Changes.
                             </p>
@@ -1106,10 +1107,10 @@
                     </div>
                     <div class="row" id="quarterpeal">
                         <div class="col-sm-1">J.4</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Quarter Peal
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length is 1250 to 2499 Changes.
                             </p>
@@ -1117,10 +1118,10 @@
                     </div>
                     <div class="row" id="halfpeal">
                         <div class="col-sm-1">J.5</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Half Peal
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length is 2500 to 4999 Changes.
                             </p>
@@ -1128,10 +1129,10 @@
                     </div>
                     <div class="row" id="peal">
                         <div class="col-sm-1">J.6</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Peal
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length is 5000 or more Changes.
                             </p>
@@ -1139,13 +1140,13 @@
                     </div>
                     <div class="row" id="longlength">
                         <div class="col-sm-1">J.7</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Long Length
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailJ7"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ7"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length is 10000 or more Changes.
                             </p>
@@ -1159,13 +1160,13 @@
                     </div>
                     <div class="row" id="datetouch">
                         <div class="col-sm-1">J.8</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Date Touch
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailJ8"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ8"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length corresponds to the year being commemorated.
                             </p>
@@ -1181,13 +1182,13 @@
                     </div>
                     <div class="row" id="recordlength">
                         <div class="col-sm-1">J.9</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Record Length
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <button type="button" class="btn btn-outline-success btn-sq-xs rounded-circle more collapsed" data-toggle="collapse" data-target="#detailJ9"></button>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ9"></a>
                             </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Long Length that is the longest Length yet rung in a single Method or the same set
                                 of Methods, and that is also rung as described in Section M.
@@ -1202,10 +1203,10 @@
                     </div>
                     <div class="row" id="performancereport">
                         <div class="col-sm-1">J.10</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Performance Report
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A report of a Performance that includes the contents specified in Section P.
                             </p>
@@ -1218,10 +1219,10 @@
                     </div>
                     <div class="row" id="parent method">
                         <div class="col-sm-1">K.1</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Parent Method
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Method at a given Stage from which it may be possible to derive related Methods at higher
                                 or lower Stages using extension or contraction techniques.
@@ -1230,10 +1231,10 @@
                     </div>
                     <div class="row" id="extension">
                         <div class="col-sm-1">K.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Extension
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Method at a higher Stage than a Parent Method that is related to the Parent
                                 Method by an extension technique.
@@ -1242,10 +1243,10 @@
                     </div>
                     <div class="row" id="contraction">
                         <div class="col-sm-1">K.2</div>
-                        <div class="col-sm-2">
+                        <div class="col-xl-2 col-sm-3">
                             Contraction
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Method at a lower Stage than a Parent Method that is related to the Parent
                                 Method by a contraction technique.

@@ -8,114 +8,121 @@ body {
     padding-top: 4.5rem;
 }
 
-/*
+ /*
  * Typography
  */
 
-h1 {
-    margin-bottom: 20px;
-    padding-bottom: 9px;
-    border-bottom: 1px solid #eee;
-}
+    h1 {
+        margin-bottom: 20px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid #eee;
+    }
 
-h2 {
-    margin-bottom: 9px;
-    padding-bottom: 9px;
-    border-bottom: 1px solid silver;
-}
+    h2 {
+        margin-bottom: 9px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid silver;
+    }
 
-h5 {
-    margin-bottom: 15px;
-    padding-bottom: 9px;
-    font-weight : bold;
-}
+    h5 {
+        margin-bottom: 15px;
+        padding-bottom: 9px;
+        font-weight: bold;
+    }
 
-.border-bottom {
-    border-bottom: 1px solid silver;
-}
+    .border-bottom {
+        border-bottom: 1px solid silver;
+    }
 
-/*
+    /*
  * Navbar
 */
 
-.bg-cccbr {
-    background-color:#132243;
-}
+    .bg-cccbr {
+        background-color: #132243;
+    }
 
-.navbar-brand {
-    padding-top: 0;
-    padding-bottom: 0;
-    line-height: 3.5rem;
-}
+    .navbar-brand {
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 3.5rem;
+    }
 
-/*
+    /*
  * Sidebar
  */
 
-.sidebar {
-    position: fixed;
-    top: 55px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    border-right: 1px solid #eee;
-}
-
-/* Sidebar navigation */
-.sidebar {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-    .sidebar .nav {
-        margin-bottom: 20px;
+    .sidebar {
+        position: fixed;
+        top: 55px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        border-right: 1px solid #eee;
     }
 
-    .sidebar .nav-item {
-        width: 100%;
+    /* Sidebar navigation */
+    .sidebar {
+        padding-left: 0;
+        padding-right: 0;
     }
 
-        .sidebar .nav-item + .nav-item {
-            margin-left: 0;
+        .sidebar .nav {
+            margin-bottom: 20px;
         }
 
-    .sidebar .nav-link {
-        border-radius: 0;
+        .sidebar .nav-item {
+            width: 100%;
+        }
+
+            .sidebar .nav-item + .nav-item {
+                margin-left: 0;
+            }
+
+        .sidebar .nav-link {
+            border-radius: 0;
+        }
+
+    .btn-navbar {
+        float: none;
+        text-align: center;
     }
 
-.btn-navbar {
-    float: none;
-    text-align: center;
-}
+    .nav-subsection {
+        font-size: smaller;
+        margin-left: 10px;
+    }
 
-.nav-subsection {
-    font-size: smaller;
-    margin-left: 10px;
-}
-
-/* Content */
+    /* Content */
 .more:after {
     font-family: "Consolas";
+    font-weight: bold;
+    font-size: x-large;
+    line-height: 0.8;
     content: "-";
 }
+
 .more.collapsed:after {
     font-family: "Consolas";
+    font-weight: bold;
+    font-size: x-large;
+    line-height: 0.8;
     content: "+";
 }
 
-.btn-sq-xs {
-    width: 25px !important;
-    height: 25px !important;
-    padding: 2px;
-}
+    .btn-sq-xs {
+        width: 25px !important;
+        height: 25px !important;
+        padding: 2px;
+    }
 
-.fullwidth {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: initial;
-}
+    .fullwidth {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: initial;
+    }
 
