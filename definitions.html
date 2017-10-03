@@ -223,12 +223,6 @@
                                     may be modified to exclude the Cover Bell(s). E.g. when ringing Triples (see Section H) with a Cover
                                     Bell in 8th's Place, the bell in 7th's place may be said to be Lying.
                                 </p>
-                                <hr />
-                                <p class="text-muted">
-                                    <b>Technical comments:</b> More formally, a Place is a position where an individual bell can ring within a Row,
-                                    referenced in the order of the first bell to ring to the last bell to ring, with one Place
-                                    in a Row for every bell in that Row.
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -334,7 +328,8 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Change that is neither an Identity Change nor an Adjacent Change.
+                                A Change that transposes at least one bell to a Place in a Row that is not the same as, nor adjacent to, the Place
+                                that bell occupied in the previous Row.
                             </p>
                             <div class="collapse" id="detailB13">
                                 <hr />
@@ -348,6 +343,11 @@
                                     For 2-bell Rows, Identity and Adjacent Changes are possible.
                                     For Rows with 3 or more bells, all three types of Changes are possible.
                                 </p>
+								<p class="text-primary">
+                                    Because of the physical difficulty of reducing the time betweeen strikes of tower bells, 
+                                    Jump Changes normally involve jumps from an earlier place to a later place, rather than vice versa.
+                                    But note that this difficulty does not apply to handbells.
+                                </p>                                
                                 <p class="text-primary">
                                     Also note that Place Notation can only be used to describe an Adjacent Change
                                     or an Identity Change, or a sequence of such Changes.  Place Notation does not support Jump Changes.
@@ -442,7 +442,7 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Method that is not a Static Method.
+                                A Method whose sequence of Changes is not fixed or is not finite.
                             </p>
                             <div class="collapse" id="detailC12">
                                 <hr />
@@ -532,7 +532,7 @@
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Rotation is a Method whose Changes are the same as another Method, except
-                                that the Changes, when considered as a cycle, have been rotated to start at a
+                                that the Changes, when considered as a cycle, start at a
                                 different point in the cycle.
                             </p>
                             <div class="collapse" id="detailC5">
@@ -540,6 +540,11 @@
                                 <p class="text-danger">
                                     <b>Example:</b> The Method Plain Bob Minimus has the Changes -14-14-14-12. The Method
                                     with the Changes -14-12-14-14 is a Rotation of Plain Bob Minimus.
+                                </p>
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> More fully, this term would be 'Method Rotation' to distinguish
+                                    it from other uses of rotation in Method Ringing, such as a rotated Composition.
                                 </p>
                             </div>
                         </div>
@@ -652,18 +657,13 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                An arrangement of Method(s) and Call(s), all operating on the same set of bells,
+                                An arrangement of Method(s), Call(s) and/or Cover Bell(s), all operating on the same set of bells,
                                 that is used to produce a sequence of resulting Rows from an initial Row.
                             </p>
                             <div class="collapse" id="detailF1">
                                 <hr />
                                 <p class="text-muted">
-                                    <b>Technical comments:</b> More formally, a Composition is an arrangement of Method(s),
-                                    Call(s) and/or Cover Bell(s), all operating on the same set of bells, that is used to
-                                    produce a sequence of resulting Rows from an initial Row.
-                                </p>
-                                <p class="text-muted">
-                                    It is possible to use more than one Method to produce a single Row.
+                                    <b>Technical comments:</b> It is possible to use more than one Method to produce a single Row.
                                     E.g. a Composition could produce 12-bell Rows by having a Cover Bell in Place 1,
                                     applying a Doubles Method to Places 2 to 6, and applying a Minor Method to Places 7 to 12.
                                     Later Rows in the same Composition could be produced by applying a Minimus Method to Places 1 to 4,
@@ -672,8 +672,7 @@
                                     the Composition to generate Rows.
                                 </p>
                                 <p class="text-muted">
-                                    There is no requirement to use whole multiples of a Method's
-                                    Changes in a Composition. Any portion of a Method's Changes can be used as part of a Composition.
+                                    Note that subsets of a Method's sequence of Changes may be used in a Composition.
                                 </p>
                             </div>
                         </div>
@@ -735,6 +734,11 @@
                                     <b>Further explanation:</b> The sequence of Changes for the Method 'Little Bob Minor' is x16x14x16x12.
                                     When these Changes are applied once to an initial Row, the resulting Block is one Plain Lead of that Method.
                                 </p>
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> This term applies to all Static Methods, but does not necessarily apply to
+                                    Dynamic Methods.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -764,6 +768,11 @@
                                     shown in the diagram.
                                     If these Changes are applied twice more, Rounds is produced.
                                     Bastow Little Bob Minimus therefore has 3 Plain Leads in its Plain Course.
+                                </p>
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> This term applies to all Static Methods, but does not necessarily apply to
+                                    Dynamic Methods.
                                 </p>
                             </div>
                         </div>
@@ -1001,7 +1010,7 @@
                                 <p class="text-primary">
                                     When the number of Rows in a Block is less than or equal to the number of Rows in
                                     the Extent of the Block's Effective Stage, the definition of True simplifies to 'a Block
-                                    that has no repeated Rows'.  In this case, all possible Rows appear either 0 times or 1 time,
+                                    in which all Rows are unique'.  In this case, all possible Rows appear either 0 times or 1 time,
                                     so n in the definition has a value of 0.
                                 </p>
                                 <hr />
@@ -1074,17 +1083,34 @@
                                     members of the public, and/or for the ringing to be reported to the ringing
                                     community when it is 1250 Changes or greater in Length.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row" id="practice">
+                        <div class="col-sm-1">J.2</div>
+                        <div class="col-xl-2 col-sm-3">
+                            Practice
+                            <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                In contrast to Performance ringing, Practice ringing is usually for the purpose of
+                                teaching and developing ringers and bands.
+                            </p>
+                            <div class="collapse" id="detailJ2">
+                                <hr />
                                 <p class="text-primary">
-                                    'Method Ringing Practice' (or practice ringing), by contrast, is usually for the purpose of teaching and developing ringers and bands.
-                                </p>
-                                <p class="text-primary">
-                                    While Performances may be of any Length, practice ringing is usually less than 1250 Changes in Length.
+                                    <b>Further explanation:</b> More fully, this term would be 'Method Ringing Practice'.
+                                    While Performance ringing may be of any Length, Practice ringing is usually less than
+                                    1250 Changes in Length.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="row" id="touch">
-                        <div class="col-sm-1">J.2</div>
+                        <div class="col-sm-1">J.3</div>
                         <div class="col-xl-2 col-sm-3">
                             Touch
                         </div>
@@ -1095,7 +1121,7 @@
                         </div>
                     </div>
                     <div class="row" id="shorttouch">
-                        <div class="col-sm-1">J.3</div>
+                        <div class="col-sm-1">J.4</div>
                         <div class="col-xl-2 col-sm-3">
                             Short Touch
                         </div>
@@ -1106,7 +1132,7 @@
                         </div>
                     </div>
                     <div class="row" id="quarterpeal">
-                        <div class="col-sm-1">J.4</div>
+                        <div class="col-sm-1">J.5</div>
                         <div class="col-xl-2 col-sm-3">
                             Quarter Peal
                         </div>
@@ -1117,7 +1143,7 @@
                         </div>
                     </div>
                     <div class="row" id="halfpeal">
-                        <div class="col-sm-1">J.5</div>
+                        <div class="col-sm-1">J.6</div>
                         <div class="col-xl-2 col-sm-3">
                             Half Peal
                         </div>
@@ -1128,7 +1154,7 @@
                         </div>
                     </div>
                     <div class="row" id="peal">
-                        <div class="col-sm-1">J.6</div>
+                        <div class="col-sm-1">J.7</div>
                         <div class="col-xl-2 col-sm-3">
                             Peal
                         </div>
@@ -1139,18 +1165,18 @@
                         </div>
                     </div>
                     <div class="row" id="longlength">
-                        <div class="col-sm-1">J.7</div>
+                        <div class="col-sm-1">J.8</div>
                         <div class="col-xl-2 col-sm-3">
                             Long Length
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ7"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ8"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length is 10000 or more Changes.
                             </p>
-                            <div class="collapse" id="detailJ7">
+                            <div class="collapse" id="detailJ8">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Long Lengths are also Peals -- they are a subset thereof.
@@ -1159,18 +1185,18 @@
                         </div>
                     </div>
                     <div class="row" id="datetouch">
-                        <div class="col-sm-1">J.8</div>
+                        <div class="col-sm-1">J.9</div>
                         <div class="col-xl-2 col-sm-3">
                             Date Touch
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ8"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ9"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance whose Length corresponds to the year being commemorated.
                             </p>
-                            <div class="collapse" id="detailJ8">
+                            <div class="collapse" id="detailJ9">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> The year being commemorated in a Date Touch is often the year in which it is rung.
@@ -1181,11 +1207,11 @@
                         </div>
                     </div>
                     <div class="row" id="recordlength">
-                        <div class="col-sm-1">J.9</div>
+                        <div class="col-sm-1">J.10</div>
                         <div class="col-xl-2 col-sm-3">
                             Record Length
                             <span class="float-right" data-toggle="tooltip" title="Click to show more or less detail">
-                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ9"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ10"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -1193,7 +1219,7 @@
                                 A Long Length that is the longest Length yet rung in a single Method or the same set
                                 of Methods, and that is also rung as described in Section M.
                             </p>
-                            <div class="collapse" id="detailJ9">
+                            <div class="collapse" id="detailJ10">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Record Lengths are also Peals -- they are a subset thereof.
@@ -1202,7 +1228,7 @@
                         </div>
                     </div>
                     <div class="row" id="performancereport">
-                        <div class="col-sm-1">J.10</div>
+                        <div class="col-sm-1">J.11</div>
                         <div class="col-xl-2 col-sm-3">
                             Performance Report
                         </div>
