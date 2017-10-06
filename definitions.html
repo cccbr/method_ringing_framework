@@ -713,12 +713,28 @@
                             <div class="col-sm-1">G.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Block
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG1"></a>
+                                </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A sequence of Rows, all composed of the same set of bells, that is produced from an
                                     initial Row using a Method or a Composition.
                                 </p>
+                                <div class="collapse" id="detailG1">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Blocks can be concatenated to make a longer Block, where the final Row of one Block
+                                        is also the initial Row of the next Block.  Similarly, any given Block can be divided into a set of
+                                        shorter Blocks.
+                                    </p>
+                                    <p class="text-primary">
+                                        In this document, references to Block are to the full sequence of Rows to be rung, and not to any shorter Blocks that may have
+                                        been concatenated to produce a longer Block.
+                                    </p>
+                                    <hr />
+                                </div>
                             </div>
                         </div>
                         <div class="row" id="roundblock">
@@ -743,12 +759,92 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="plainlead">
+                        <div class="row" id="length">
                             <div class="col-sm-1">G.3</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Length
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG3"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    The Length of a Block is the number of Changes that were used to produce the
+                                    Block.
+                                </p>
+                                <div class="collapse" id="detailG3">
+                                    <hr />
+                                    <img src="images\plainhunt.svg" alt="Plain Hunt" align="left" width=132 height=167>
+                                    <br />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> In many Blocks, both the initial Row and the final Row are Rounds.
+                                        Length is measured in number of Changes instead of number of Rows
+                                        to avoid the question of whether the initial Row or the final Row, or
+                                        neither or both, are included when determining the Length of a Block.
+                                    </p>
+                                    <p class="text-primary">
+                                        In this Block, it can be seen there are a total of 9 Rows,
+                                        including both the initial Rounds and the final Rounds. However, 8
+                                        Changes (as represented by place notations on the left) are used to
+                                        produce it. This Block therefore has a Length of 8 Changes.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="fixedplace">
+                            <div class="col-sm-1">G.4</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Fixed Place
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG4"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Place in a Block in which the same bell rings in all Rows of that Block.
+                                </p>
+                                <div class="collapse" id="detailG4">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Because a Block comprises Rows that are all composed of the same set of bells,
+                                        a Place in a Block refers to that same Place in all of the Block's underlying Rows.
+                                    </p>
+                                    <hr />
+                                    <p class="text-danger">
+                                        <b>Example:</b> Assume Plain Bob Doubles is being rung on the front 5 of a ring of 8, and
+                                        Cover Bells are ringing in 6th's, 7th's and 8th's Places. Calls are used in the Composition such that
+                                        (a) occasionally the bells in 5th's and 6th's Places are called to swap, and
+                                        (b) occasionally, at other times to (a), the bells in 6th's and 7th's Places are called to swap.
+                                    </p>
+                                    <p class="text-danger">
+                                        In this Block, the bell ringing in 8th's Place is always the same bell because it is not
+                                        ringing a Method and it is never affected by a Call.
+                                        8th's Place is therefore a Fixed Place.
+                                    </p>
+                                    <hr />
+                                    <p class="text-muted">
+                                        <b>Technical comments:</b> While a Fixed Place normally results from the same Cover Bell ringing
+                                        in all Rows of a Block, the same effect can be achieved in different ways.  For example, a Method may keep a bell
+                                        in the same Place in every Row; or a Method may keep a bell in the same Place in most Rows, but Calls
+                                        are used that keep that bell in the same Place in every Row.  Regardless of how the Rows are generated,
+                                        if the same bell rings in the same Place in every Row of a Block, that Place is a Fixed Place.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+						<!-- Named Blocks -->
+                        <div class="row" id="namedblocks">
+                            <div class="col-sm-1"><h5>H</h5></div>
+                            <div class="col-sm-11"><h5 class="border-bottom">Named Blocks</h5></div>
+                        </div>
+                        <div class="row" id="plainlead">
+                            <div class="col-sm-1">H.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Plain Lead
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG3"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -756,7 +852,7 @@
                                     A Block produced, starting from an initial Row, by applying a Method's sequence of
                                     Changes once, without using any Calls.
                                 </p>
-                                <div class="collapse" id="detailG3">
+                                <div class="collapse" id="detailH1">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> The sequence of Changes for the Method 'Little Bob Minor' is x16x14x16x12.
@@ -772,11 +868,11 @@
                             </div>
                         </div>
                         <div class="row" id="plaincourse">
-                            <div class="col-sm-1">G.4</div>
+                            <div class="col-sm-1">H.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Plain Course
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG4"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH2"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -784,7 +880,7 @@
                                     A Block produced, starting from an initial Row, by applying a Method's sequence of
                                     Changes repeatedly, without using any Calls, until a Round Block is obtained.
                                 </p>
-                                <div class="collapse" id="detailG4">
+                                <div class="collapse" id="detailH2">
                                     <hr />
                                     <img src="images\bastowlittlebobminimus.svg" alt="Bastow Little Bob Minimus" align="left" width=72 height=216>
                                     <br />
@@ -815,131 +911,193 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="length">
-                            <div class="col-sm-1">G.5</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Length
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG5"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    The Length of a Block is the number of Changes that were used to produce the
-                                    Block.
-                                </p>
-                                <div class="collapse" id="detailG5">
-                                    <hr />
-                                    <img src="images\plainhunt.svg" alt="Plain Hunt" align="left" width=132 height=167>
-                                    <br />
-                                    <p class="text-primary">
-                                        <b>Further explanation:</b> In many Blocks, both the initial Row and the final Row are Rounds.
-                                        Length is measured in number of Changes instead of number of Rows
-                                        to avoid the question of whether the initial Row or the final Row, or
-                                        neither or both, are included when determining the Length of a Block.
-                                    </p>
-                                    <p class="text-primary">
-                                        In this Block, it can be seen there are a total of 9 Rows,
-                                        including both the initial Rounds and the final Rounds. However, 8
-                                        Changes (as represented by place notations on the left) are used to
-                                        produce it. This Block therefore has a Length of 8 Changes.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="fixedcoverplace">
-                            <div class="col-sm-1">G.6</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Fixed Cover Place
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG6"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Place in a Block in which the same Cover Bell rings in all Rows of that Block.
-                                </p>
-                                <div class="collapse" id="detailG6">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Further explanation:</b> Because a Block comprises Rows that are all composed of the same set of bells,
-                                        a Place in a Block refers to that same Place in all of the Block's underlying Rows.
-                                    </p>
-                                    <hr />
-                                    <p class="text-danger">
-                                        <b>Example:</b> Assume Plain Bob Doubles is being rung on the front 5 of a ring of 8, and
-                                        Cover Bells are ringing in 6th's, 7th's and 8th's Places. Calls are used in the Composition such that
-                                        (a) occasionally the bells in 5th's and 6th's Places are called to swap, and
-                                        (b) occasionally, at other times to (a), the bells in 6th's and 7th's Places are called to swap.
-                                    </p>
-                                    <p class="text-danger">
-                                        In this Block, the bell ringing in 8th's Place is always the same bell because it is not
-                                        ringing a Method and it is never affected by a Call.
-                                        8th's Place is therefore a Fixed Cover Place.
-                                    </p>
-                                    <hr />
-                                    <p class="text-muted">
-                                        <b>Technical comments:</b> While a Fixed Cover Place is defined above in terms of the same Cover Bell ringing
-                                        in all Rows of a Block, the same effect can be achieved in different ways.  For example, a Method may keep a bell
-                                        in the same Place in every Row; or a Method may keep a bell in the same Place in most Rows, but Calls
-                                        are used that keep that bell in the same Place in every Row.  Regardless of how the Rows are generated,
-                                        if the same bell rings in the same Place in every Row of a Block, that Place is a Fixed Cover Place.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="variablecoverplace">
-                            <div class="col-sm-1">G.7</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Variable Cover Place
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG7"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Place in a Block in which a Cover Bell rings for at least one Row of that Block, but
-                                    which is not a Fixed Cover Place.
-                                </p>
-                                <div class="collapse" id="detailG7">
-                                    <hr />
-                                    <p class="text-danger">
-                                        <b>Example:</b> In the example for G.6 above, 6th's and 7th's Places are Variable Cover Places
-                                        because they contain Cover Bells for at least one of the Rows (and in fact for this
-                                        example, for all of the Rows), but they are not Fixed Cover Places because the same
-                                        Cover Bell does not ring in either 6th's Place or 7th's Place all of the time.
-                                    </p>
-                                    <p class="text-danger">
-                                        Places 1 - 5 in the example for G.6 above never contain a Cover Bell, so they are
-                                        neither Fixed Cover Places nor Variable Cover Places.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
                         <div class="row" id="extent">
-                            <div class="col-sm-1">G.8</div>
+                            <div class="col-sm-1">H.3</div>
                             <div class="col-xl-2 col-sm-3">
                                 Extent
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG8"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH3"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
-                                    The complete set of distinct Rows possible for a given set of bells.
+                                    A Block that contains the complete set of distinct Rows possible for a given set of bells.
                                 </p>
-                                <div class="collapse" id="detailG8">
+                                <div class="collapse" id="detailH3">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Futher explanation:</b> The number of Rows in an Extent for a given set of bells is the factorial of the
                                         number of bells in the set. E.g. for 4 bells, the Extent has 4! Rows = 1 * 2 * 3 * 4 = 24 Rows.
                                     </p>
                                     <p class="text-primary">
-                                        Note that while a Block may contain one or more Extents, this definition of Extent neither implies that the Rows
-                                        are in any particular order, nor that the Rows making up an Extent are necessarily contiguous within a Block.
+                                        In a Round Block, either the initial Row or the final Row (but not both)
+                                        is excluded when determining whether the Block is an Extent.
+                                        If an Extent is also a Round Block, it may be referred to as a 'round extent'.
+                                    </p>
+									<p class="text-primary">
+                                        In a non-Round Block, both the initial Row and the final Row are included when determining
+                                        whether the Block is an Extent.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="multiextentblock">
+                            <div class="col-sm-1">H.4</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Multi-Extent Block
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH4"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block containing two or more complete Extents.
+                                </p>
+                                <div class="collapse" id="detailH4">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Futher explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
+                                        is excluded when determining whether the Block is a Multi-Extent Block.
+                                        If a Multi-Extent Block is also a Round Block, it may be referred to as a 'multi-extent round block'.
+                                    </p>
+                                    <p class="text-primary">
+                                        In a non-Round Block, both the initial Row and the final Row are included when determining
+                                        whether the Block is a Multi-Extent Block.
+                                    </p>
+                                    <p class="text-primary">
+                                        Note that this definition does not imply that the Rows making up each Extent are necessarily contiguous within a Multi-Extent Block.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="touch">
+                            <div class="col-sm-1">H.5</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Touch
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH5"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block of any Length.
+                                </p>
+                        		<div class="collapse" id="detailH5">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Futher explanation:</b> A Touch is synonymous with a Block.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="shorttouch">
+                            <div class="col-sm-1">H.6</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Short Touch
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block whose Length is 1 to 1249 Changes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row" id="quarterpeal">
+                            <div class="col-sm-1">H.7</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Quarter Peal
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block whose Length is 1250 to 2499 Changes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row" id="halfpeal">
+                            <div class="col-sm-1">H.8</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Half Peal
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block whose Length is 2500 to 4999 Changes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row" id="peal">
+                            <div class="col-sm-1">H.9</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Peal
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block whose Length is 5000 or more Changes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row" id="longlength">
+                            <div class="col-sm-1">H.10</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Long Length
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH10"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block whose Length is 10000 or more Changes.
+                                </p>
+                                <div class="collapse" id="detailH10">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Long Lengths are also Peals -- they are a subset thereof.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="datetouch">
+                            <div class="col-sm-1">H.11</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Date Touch
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH11"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block whose Length corresponds to a year being commemorated.
+                                </p>
+                                <div class="collapse" id="detailH11">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> The year being commemorated in a Date Touch is often the year in which it is rung.
+                                        A Date Touch commemorating the year 2018 would have 2018 Changes and would
+                                        also be a Quarter Peal.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="recordlength">
+                            <div class="col-sm-1">H.12</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Record Length
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH12"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block that, when rung, is the longest Length yet rung in a single Method or the same set
+                                    of Methods.  Record Lengths are rung as described in Section M.
+                                </p>
+                                <div class="collapse" id="detailJ10">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Record Lengths are also Peals and Long Lengths -- they are a subset of both.
                                     </p>
                                     <hr />
                                 </div>
@@ -947,20 +1105,20 @@
                         </div>
                         <!-- Stages -->
                         <div class="row" id="stages">
-                            <div class="col-sm-1"><h5>H</h5></div>
+                            <div class="col-sm-1"><h5>I</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Stages</h5></div>
                         </div>
                         <div class="row" id="stage">
-                            <div class="col-sm-1">H.1</div>
+                            <div class="col-sm-1">I.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Stage
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH1"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailI1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>The number of bells.</p>
-                                <div class="collapse" id="detailH1">
+                                <div class="collapse" id="detailI1">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> A term that applies to Rows, Changes, Methods, Compositions and Blocks:
@@ -988,7 +1146,7 @@
                             </div>
                         </div>
                         <div class="row" id="stagename">
-                            <div class="col-sm-1">H.2</div>
+                            <div class="col-sm-1">I.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Stage Name
                             </div>
@@ -999,20 +1157,20 @@
                             </div>
                         </div>
                         <div class="row" id="effectivestage">
-                            <div class="col-sm-1">H.3</div>
+                            <div class="col-sm-1">I.3</div>
                             <div class="col-xl-2 col-sm-3">
                                 Effective Stage
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH3"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailI3"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
-                                <p>The number of Places remaining in a Block after any Fixed Cover Places have been excluded.</p>
-                                <div class="collapse" id="detailH3">
+                                <p>The number of Places remaining in a Block after any Fixed Places have been excluded.</p>
+                                <div class="collapse" id="detailI3">
                                     <hr />
                                     <p class="text-danger">
-                                        <b>Example:</b> In the example for G.6 above, the Effective Stage would be 7 because only 8th's
-                                        Place is a Fixed Cover Place.
+                                        <b>Example:</b> In the example for G.6 above, the Effective Stage would be 7 because 8th's
+                                        Place is a Fixed Place.
                                     </p>
                                     <hr />
                                     <p class="text-primary">
@@ -1025,15 +1183,15 @@
                         </div>
                         <!-- Truth -->
                         <div class="row" id="truth">
-                            <div class="col-sm-1"><h5>I</h5></div>
+                            <div class="col-sm-1"><h5>J</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Truth</h5></div>
                         </div>
                         <div class="row" id="true">
-                            <div class="col-sm-1">I.1</div>
+                            <div class="col-sm-1">J.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 True
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailI1"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -1041,7 +1199,7 @@
                                     A Block is True if each of the possible Rows for the Block's Effective Stage occurs
                                     either n or n+1 times, for a given value of n greater than or equal to zero.
                                 </p>
-                                <div class="collapse" id="detailI1">
+                                <div class="collapse" id="detailJ1">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
@@ -1065,7 +1223,7 @@
                                         </div>
                                         <div class="col-xl-11 col-sm-9 text-danger">
                                             <p>
-                                                The first example shows a Round Block at the Singles Stage.  Since there are no Fixed Cover Bells,
+                                                The first example shows a Round Block at the Singles Stage.  Since there are no Fixed Places,
                                                 the Effective Stage of the Block is also Singles.
                                             </p>
                                             <p>
@@ -1084,7 +1242,7 @@
                                         </div>
                                         <div class="col-xl-11 col-sm-9 text-danger">
                                             <p>
-                                                The second example shows a non-Round Block at the Minimus Stage.  Since there is a Fixed Cover Bell in 4th's Place,
+                                                The second example shows a non-Round Block at the Minimus Stage.  Since 4th's Place is a Fixed Place,
                                                 the Effective Stage of the Block is Singles.
                                             </p>
                                             <p>
@@ -1104,15 +1262,15 @@
                         </div>
                         <!-- Performances -->
                         <div class="row" id="performances">
-                            <div class="col-sm-1"><h5>J</h5></div>
+                            <div class="col-sm-1"><h5>K</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Performances</h5></div>
                         </div>
                         <div class="row" id="performance">
-                            <div class="col-sm-1">J.1</div>
+                            <div class="col-sm-1">K.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Performance
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ1"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailK1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -1120,7 +1278,7 @@
                                     The successful ringing of a Block where the band strives to maintain a high standard
                                     of ringing, and errors in ringing or calling are corrected quickly.
                                 </p>
-                                <div class="collapse" id="detailJ1">
+                                <div class="collapse" id="detailK1">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> More fully, this term would be 'Method Ringing Performance'. Performances are
@@ -1133,18 +1291,18 @@
                             </div>
                         </div>
                         <div class="row" id="practice">
-                            <div class="col-sm-1">J.2</div>
+                            <div class="col-sm-1">K.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Practice
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ2"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailK2"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     Practice ringing is usually distinguished by a primary purpose of teaching and developing ringers and bands.
                                 </p>
-                                <div class="collapse" id="detailJ2">
+                                <div class="collapse" id="detailK2">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> More fully, this term would be 'Method Ringing Practice'.
@@ -1155,129 +1313,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="touch">
-                            <div class="col-sm-1">J.3</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Touch
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance or Practice of any Length.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row" id="shorttouch">
-                            <div class="col-sm-1">J.4</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Short Touch
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance or Practice whose Length is 1 to 1249 Changes.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row" id="quarterpeal">
-                            <div class="col-sm-1">J.5</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Quarter Peal
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance whose Length is 1250 to 2499 Changes.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row" id="halfpeal">
-                            <div class="col-sm-1">J.6</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Half Peal
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance whose Length is 2500 to 4999 Changes.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row" id="peal">
-                            <div class="col-sm-1">J.7</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Peal
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance whose Length is 5000 or more Changes.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row" id="longlength">
-                            <div class="col-sm-1">J.8</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Long Length
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ8"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance whose Length is 10000 or more Changes.
-                                </p>
-                                <div class="collapse" id="detailJ8">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Further explanation:</b> Long Lengths are also Peals -- they are a subset thereof.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="datetouch">
-                            <div class="col-sm-1">J.9</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Date Touch
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ9"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Performance whose Length corresponds to the year being commemorated.
-                                </p>
-                                <div class="collapse" id="detailJ9">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Further explanation:</b> The year being commemorated in a Date Touch is often the year in which it is rung.
-                                        A Date Touch commemorating the year 2018 would have 2018 Changes and would
-                                        also be a Quarter Peal.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="recordlength">
-                            <div class="col-sm-1">J.10</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Record Length
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ10"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Long Length that is the longest Length yet rung in a single Method or the same set
-                                    of Methods, and that is also rung as described in Section M.
-                                </p>
-                                <div class="collapse" id="detailJ10">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Further explanation:</b> Record Lengths are also Peals -- they are a subset thereof.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
                         <div class="row" id="performancereport">
-                            <div class="col-sm-1">J.11</div>
+                            <div class="col-sm-1">K.3</div>
                             <div class="col-xl-2 col-sm-3">
                                 Performance Report
                             </div>
@@ -1289,11 +1326,11 @@
                         </div>
                         <!-- Method Extension -->
                         <div class="row" id="methodextension">
-                            <div class="col-sm-1"><h5>K</h5></div>
+                            <div class="col-sm-1"><h5>L</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Method Extension</h5></div>
                         </div>
                         <div class="row" id="parent method">
-                            <div class="col-sm-1">K.1</div>
+                            <div class="col-sm-1">L.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Parent Method
                             </div>
@@ -1305,7 +1342,7 @@
                             </div>
                         </div>
                         <div class="row" id="extension">
-                            <div class="col-sm-1">K.2</div>
+                            <div class="col-sm-1">L.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Extension
                             </div>
@@ -1317,7 +1354,7 @@
                             </div>
                         </div>
                         <div class="row" id="contraction">
-                            <div class="col-sm-1">K.2</div>
+                            <div class="col-sm-1">L.3</div>
                             <div class="col-xl-2 col-sm-3">
                                 Contraction
                             </div>
