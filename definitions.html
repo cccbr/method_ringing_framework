@@ -892,10 +892,15 @@
                                         <b>Example:</b> This is a Plain Course of Bastow Little Bob Minimus.
                                     </p>
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> The sequence of Changes for Bastow Little Bob Minimus is x12x14.
+                                        <b>Further explanation:</b> Plain Courses are normally started using an initial Row
+                                        of Rounds, but they may be started from any Row.
+                                    </p>
+                                    <p class="text-primary">
+                                        The sequence of Changes for Bastow Little Bob Minimus is x12x14.
                                         These Changes produce one Plain Lead, bringing up the row 1423 when starting from Rounds, as
                                         shown in the diagram.
-                                        If these Changes are applied twice more, Rounds is produced.
+                                        If these Changes are applied twice more (each time using the final Row from the previous application
+                                        as the initial Row for the next application), Rounds is produced.
                                         Bastow Little Bob Minimus therefore has 3 Plain Leads in its Plain Course.
                                     </p>
                                     <br />
@@ -910,67 +915,6 @@
                                         E.g. while it is possible to name a Method that has the sequence of Changes x12x14x12x14, this would
                                         normally not be done because the same Changes can be produced by ringing two Plain Leads of the Method
                                         with the sequence of Changes x12x14.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="extent">
-                            <div class="col-sm-1">H.3</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Extent
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH3"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Block that contains the complete set of distinct Rows possible for a given set of bells.
-                                </p>
-                                <div class="collapse" id="detailH3">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Futher explanation:</b> The number of Rows in an Extent for a given set of bells is the factorial of the
-                                        number of bells in the set. E.g. for 4 bells, the Extent has 4! Rows = 1 * 2 * 3 * 4 = 24 Rows.
-                                    </p>
-                                    <p class="text-primary">
-                                        In a Round Block, either the initial Row or the final Row (but not both)
-                                        is excluded when determining whether the Block is an Extent.
-                                        If an Extent is also a Round Block, it may be referred to as a 'round extent'.
-                                    </p>
-									<p class="text-primary">
-                                        In a non-Round Block, both the initial Row and the final Row are included when determining
-                                        whether the Block is an Extent.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="multiextentblock">
-                            <div class="col-sm-1">H.4</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Multi-Extent Block
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH4"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Block containing two or more complete Extents.
-                                </p>
-                                <div class="collapse" id="detailH4">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Futher explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
-                                        is excluded when determining whether the Block is a Multi-Extent Block.
-                                        If a Multi-Extent Block is also a Round Block, it may be referred to as a 'multi-extent round block'.
-                                    </p>
-                                    <p class="text-primary">
-                                        In a non-Round Block, both the initial Row and the final Row are included when determining
-                                        whether the Block is a Multi-Extent Block.
-                                    </p>
-                                    <p class="text-primary">
-                                        Note that this definition does not imply that the Rows making up each Extent are necessarily contiguous within a Multi-Extent Block.
                                     </p>
                                     <hr />
                                 </div>
@@ -1260,6 +1204,60 @@
                                             </p>
                                         </div>
                                     </div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="extent">
+                            <div class="col-sm-1">J.2</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Extent
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ2"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block is an Extent if each of the possible Rows for the Block's Effective Stage occurs
+                                    once and only once.
+                                </p>
+                                <div class="collapse" id="detailJ2">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Futher explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
+                                        is excluded when determining whether the Block is an Extent.
+                                    </p>
+									<p class="text-primary">
+                                        In a non-Round Block, both the initial Row and the final Row are included when determining
+                                        whether the Block is an Extent.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="multiextentblock">
+                            <div class="col-sm-1">J.3</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Multi-Extent Block
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ3"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Block is a Multi-Extent Block if each of the possible Rows for the Block's Effective Stage occurs
+                                    n times, for a given value of n greater than or equal to two.
+                                </p>
+                                <div class="collapse" id="detailJ3">
+                                    <hr />
+                                    <p class="text-primary">
+                                        <b>Futher explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
+                                        is excluded when determining whether the Block is a Multi-Extent Block.
+                                    </p>
+                                    <p class="text-primary">
+                                        In a non-Round Block, both the initial Row and the final Row are included when determining
+                                        whether the Block is a Multi-Extent Block.
+                                    </p>
                                     <hr />
                                 </div>
                             </div>
