@@ -225,9 +225,35 @@
                                     the 2nd is leading and the 5th is lying.
                                 </p>
                                 <p class="text-primary">
-                                    Note that in a Row containing one or more Cover Bells (see Section D), the numbering of the Places
-                                    may be modified to exclude the Cover Bell(s). E.g. when ringing Triples (see Section I) with a Cover
+                                    Note that in a Row containing one or more Cover Bells, the numbering of the Places
+                                    may be modified to exclude the Cover Bell(s). E.g. when ringing Triples with a Cover
                                     Bell in 8th's Place, the bell in 7th's Place may be said to be lying.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="extent">
+                        <div class="col-sm-1">A.4</div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extent
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailA4"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The complete set of distinct Rows possible for a given set of bells.
+                            </p>
+                            <div class="collapse" id="detailA4">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Futher explanation:</b> The number of Rows in an Extent for a given set of bells is the factorial of the
+                                    number of bells in the set. E.g. for 4 bells, the Extent has 4! Rows = 1 * 2 * 3 * 4 = 24 Rows.
+                                </p>
+                                <p class="text-primary">
+                                    Note that while a Block may contain one or more Extents, this definition of Extent neither implies that the Rows
+                                    are in any particular order, nor that the Rows making up an Extent are necessarily contiguous within a Block.
                                 </p>
                                 <hr />
                             </div>
@@ -254,10 +280,6 @@
                                     <b>Example:</b> A Change might transpose the bells from the Row 214365 to the Row 241356.
                                 </p>
                                 <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> A Change transposes a bell to a unique Place in the next Row -- i.e. a
-                                    Change does not transpose two or more bells from one Row into the same Place in the next Row.
-                                </p>
                                 <p class="text-primary">
                                     Changes are often represented using place notation. This notation is formed by writing the Places of bells
                                     that remain in the same Place from one Row to the next Row, working from beginning to end in the Row.
@@ -415,12 +437,8 @@
                                 </p>
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> Since the final Row that is produced by applying a Method's
-                                    sequence of Changes is often different from the initial Row used, it is common to 
-                                    apply a Method's sequence of Changes more than once (with the final Row becoming the
-                                    initial Row for the next application) in order to create a longer sequence of
-                                    resulting Rows.
-                                </p>
+                                    <b>Further explanation:</b> A Method's Changes are typically the <i>shortest</i>
+                                sequence that can be repeated to generate its Plain Course.</p>
                                 <hr />
                             </div>
                         </div>
@@ -493,7 +511,7 @@
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
-                                    A name given to a Method that is unique for its <a href="#class">Class</a> and <a href="#stage">Stage</a>.
+                                    A name given to a Method that is unique for its <a href="methodclassification.html#class">Class</a> and <a href="#stages">Stage</a>.
                                 </p>
                                 <div class="collapse" id="detailC2">
                                     <hr />
@@ -502,7 +520,8 @@
                                     </p>
                                     <hr />
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> A Method can be named when the requirements of Section N have been met.
+                                        <b>Further explanation:</b> A Method can be named when the requirements of Section
+                                        5 have been met.
                                     </p>
                                     <hr />
                                 </div>
@@ -519,7 +538,7 @@
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     The full description of a Method formed by concatenating its Method Name,
-                                    <a href="#classname">Class Name</a> and <a href="#stagename">Stage Name</a>.
+                                    <a href="methodclassification.html#classname">Class Name</a> and <a href="#stages">Stage Name</a>.
                                 </p>
                                 <div class="collapse" id="detailC3">
                                     <hr />
@@ -551,7 +570,7 @@
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
-                                    A Rotation is a Method whose Changes are the same as another Method, except
+                                    A Method whose Changes are the same as another Method, except
                                     that the Changes, when considered as a cycle, start at a
                                     different point in the cycle.
                                 </p>
@@ -585,8 +604,8 @@
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     The practice of ringing Rows where the progression between Rows is defined
-                                    primarily by Methods, secondarily by Calls, and with Rows optionally also
-                                    including one or more Cover Bells.
+                                    primarily by Methods, secondarily by <a href="#calls">Calls</a>, and with Rows optionally also
+                                    including one or more <a href="#coverbells">Cover Bells</a>.
                                 </p>
                             </div>
                         </div>
@@ -619,7 +638,7 @@
                                         <b>Technical comments:</b> More formally, a Cover Bell: <br />
                                         1. Occupies a Place in a Row that is not one of the Places operated on by the
                                         Changes of the Method(s) being rung; and <br />
-                                        2. Remains in the same Place from one Row to the next unless affected by a Call (see Section E),
+                                        2. Remains in the same Place from one Row to the next unless affected by a Call,
                                         or affected by a change to a Method whose Changes operate on the Cover Bell’s Place.
                                     </p>
                                     <hr />
@@ -650,7 +669,7 @@
                                         the Change '14' when a 'bob' is called.  A 'bob' is a commonly-used Call in Method Ringing.
                                     </p>
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> Most commonly a call replaces a single Change with another, but a call may also
+                                        <b>Further explanation:</b> Most commonly a call replaces an individual Change with another, but a call may also
                                         add Changes, remove Changes, or replace a number of Changes with a different number of Changes.
                                     </p>
                                     <p class="text-primary">
@@ -692,6 +711,10 @@
                                 </p>
                                 <div class="collapse" id="detailF1">
                                     <hr />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Any subset of a Method's sequence of Changes may be used in a Composition.
+                                    </p>
+                                    <hr />
                                     <p class="text-muted">
                                         <b>Technical comments:</b> It is possible to use more than one Method to produce a single Row.
                                         E.g. a Composition could produce 12-bell Rows by having a Cover Bell in Place 1,
@@ -700,9 +723,6 @@
                                         having a Cover Bell in 5th's Place, and applying a Triples Method to Places 6 to 12.
                                         A Composition specifies how the various Methods, Calls and Cover Bells it uses are applied throughout
                                         the Composition to generate Rows.
-                                    </p>
-                                    <p class="text-muted">
-                                        Note that any subset of a Method's sequence of Changes may be used in a Composition.
                                     </p>
                                     <hr />
                                 </div>
@@ -734,8 +754,8 @@
                                         shorter Blocks.
                                     </p>
                                     <p class="text-primary">
-                                        In this document, references to Block are to the full sequence of Rows to be rung, and not to any shorter Blocks that may have
-                                        been concatenated to produce a longer Block.
+                                        Unless otherwise specified, references to a Block in this document refer to the Block that encompasses all
+                                        Changes rung.
                                     </p>
                                     <hr />
                                 </div>
@@ -745,59 +765,99 @@
                             <div class="col-sm-1">G.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Round Block
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG2"></a>
+                                </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A Block whose final Row is the same as its initial Row.
                                 </p>
-                            </div>
-                        </div>
-                        <div class="row" id="length">
-                            <div class="col-sm-1">G.3</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Length
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG3"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    The Length of a Block is the number of Changes that were used to produce the
-                                    Block.
-                                </p>
-                                <div class="collapse" id="detailG3">
+                                <div class="collapse" id="detailG2">
                                     <hr />
-                                    <img src="images\plainhunt.svg" alt="Plain Hunt" align="left" width=132 height=167>
-                                    <br />
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> In many Blocks, both the initial Row and the final Row are Rounds.
-                                        Length is measured in number of Changes instead of number of Rows
-                                        to avoid the question of whether the initial Row or the final Row, or
-                                        neither or both, are included when determining the Length of a Block.
-                                    </p>
-                                    <p class="text-primary">
-                                        In this Block, it can be seen there are a total of 9 Rows,
-                                        including both the initial Rounds and the final Rounds. However, 8
-                                        Changes (as represented by place notations on the left) are used to
-                                        produce it. This Block therefore has a Length of 8 Changes.
+                                        <b>Further explanation:</b> A Round Block is considered as a cycle of Rows
+                                        generated by Changes from a starting Row (usually Rounds) and finishing
+                                        by returning to the same Row. As it starts and finishes with the same Row, either
+                                        the initial Row or the final Row (but not both) is counted as a Row of the Round Block.
+                                        This is important when counting how many Rows or Extents have been rung and
+                                        when assessing whether a Block is True. 
                                     </p>
                                     <hr />
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="fixedplace">
+                    <div class="row" id="multiextentblock">
+                        <div class="col-sm-1">G.3</div>
+                        <div class="col-xl-2 col-sm-3">
+                            Multi-Extent Block
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Block comprising an exact number of Extents greater than one.
+                            </p>
+                            <div class="collapse" id="detailG3">
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> An Extent of Minor rung in whole pulls would qualify as
+                                    a Multi-Extent Block where alternate Changes are Identity Changes. It would also
+                                    be a True Quarter Peal containing 1440 Changes in a Block of 1440 Rows.
+                                </p>
+                                <hr />
+                            </div>
+
+                        </div>
+                    </div>
+                        <div class="row" id="length">
                             <div class="col-sm-1">G.4</div>
                             <div class="col-xl-2 col-sm-3">
-                                Fixed Place
+                                Length
                                 <span class="float-right">
                                     <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG4"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
-                                    A Place in a Block in which the same bell rings in all Rows of that Block.
+                                    The number of Changes used to generate a Block.
                                 </p>
                                 <div class="collapse" id="detailG4">
+                                    <hr />
+                                    <img src="images\plainhunt.svg" alt="Plain Hunt" align="left" width=132 height=167>
+                                    <br />
+                                    <p class="text-primary">
+                                        <b>Further explanation:</b> Length is measured in number of Changes instead of number of Rows
+                                        to avoid counting the usual repetition of Rounds (or an alternative Row) at the beginning
+                                        and/or end of a Block.
+                                    </p>
+                                    <p class="text-primary">
+                                        In this example, it can be seen that a total of 9 Rows were rung,
+                                        including both the initial Rounds and the final Rounds. However, 8
+                                        Changes (as represented by place notations on the left) are used to
+                                        produce it. As it is a Round Block, either the starting Rounds
+                                        or the finishing Rounds (but not both) are considered to be part of the Block
+                                        and therefore it contains 8 Rows, all distinct.
+                                    </p>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="fixedplace">
+                            <div class="col-sm-1">G.5</div>
+                            <div class="col-xl-2 col-sm-3">
+                                Fixed Place
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailG5"></a>
+                                </span>
+                            </div>
+                            <div class="col-xl-9 col-sm-8">
+                                <p>
+                                    A Place in a Block which is neither included within a Method's Changes nor affected 
+                                    by a Call, such that the same bell rings in all Rows of that Block.
+                                </p>
+                                <div class="collapse" id="detailG5">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> Because a Block comprises Rows that are all composed of the same set of bells,
@@ -812,16 +872,14 @@
                                     </p>
                                     <p class="text-danger">
                                         In this Block, the bell ringing in 8th's Place is always the same bell because it is not
-                                        ringing a Method and it is never affected by a Call.
-                                        8th's Place is therefore a Fixed Place.
+                                        ringing a Method and it is never affected by a Call. 8th's Place is therefore a Fixed Place.
                                     </p>
                                     <hr />
                                     <p class="text-muted">
-                                        <b>Technical comments:</b> While a Fixed Place normally results from the same Cover Bell ringing
-                                        in all Rows of a Block, the same effect can be achieved in different ways.  For example, a Method may keep a bell
-                                        in the same Place in every Row; or a Method may keep a bell in the same Place in most Rows, but Calls
-                                        are used that keep that bell in the same Place in every Row.  Regardless of how the Rows are generated,
-                                        if the same bell rings in the same Place in every Row of a Block, that Place is a Fixed Place.
+                                        <b>Technical comments:</b> If a bell is maintained in the same Place throughout a Block 
+                                        merely as a result of Changes generated by Methods and associated Calls modifying the
+                                        Changes of those Methods, it is not considered a Fixed Place. Fixed Places are those
+                                        Places outside the scope of both Methods and Calls.
                                     </p>
                                     <hr />
                                 </div>
@@ -832,10 +890,10 @@
                             <div class="col-sm-1"><h5>H</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Named Blocks</h5></div>
                         </div>
-                        <div class="row" id="plainlead">
+                        <div class="row" id="lead">
                             <div class="col-sm-1">H.1</div>
                             <div class="col-xl-2 col-sm-3">
-                                Plain Lead
+                                Lead
                                 <span class="float-right">
                                     <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailH1"></a>
                                 </span>
@@ -843,13 +901,13 @@
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A Block produced, starting from an initial Row, by applying a Method's sequence of
-                                    Changes once, without using any Calls.
+                                    Changes once.
                                 </p>
                                 <div class="collapse" id="detailH1">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> The sequence of Changes for the Method 'Little Bob Minor' is x16x14x16x12.
-                                        When these Changes are applied once to an initial Row, the resulting Block is one Plain Lead of that Method.
+                                        When these Changes are applied once to an initial Row, the resulting Block is one Lead of that Method.
                                     </p>
                                     <hr />
                                     <p class="text-muted">
@@ -870,8 +928,8 @@
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
-                                    A Block produced, starting from an initial Row, by applying a Method's sequence of
-                                    Changes repeatedly, without using any Calls, until a Round Block is obtained.
+                                    A Block produced, starting from Rounds, by applying a Method's sequence of
+                                    Changes repeatedly until a Round Block is obtained.
                                 </p>
                                 <div class="collapse" id="detailH2">
                                     <hr />
@@ -881,29 +939,16 @@
                                         <b>Example:</b> This is a Plain Course of Bastow Little Bob Minimus.
                                     </p>
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> Plain Courses are normally started using an initial Row
-                                        of Rounds, but they may be started from any Row.
-                                    </p>
-                                    <p class="text-primary">
                                         The sequence of Changes for Bastow Little Bob Minimus is x12x14.
-                                        These Changes produce one Plain Lead, bringing up the row 1423 when starting from Rounds, as
-                                        shown in the diagram.
-                                        If these Changes are applied twice more (each time using the final Row from the previous application
-                                        as the initial Row for the next application), Rounds is produced.
-                                        Bastow Little Bob Minimus therefore has 3 Plain Leads in its Plain Course.
+                                        These Changes produce one Lead, bringing up the row 1423 when starting from Rounds, as
+                                        shown in the diagram. If these Changes are applied twice more, Rounds is produced.
+                                        Bastow Little Bob Minimus therefore has three Leads in its Plain Course.
                                     </p>
                                     <br />
                                     <hr />
                                     <p class="text-muted">
                                         <b>Technical comments:</b> This term applies to all Static Methods, but does not necessarily apply to
                                         Dynamic Methods.
-                                    </p>
-                                    <p class="text-muted">
-                                        Because Method Ringing often involves applying a Method's sequence of Changes multiple times,
-                                        as in the example above, a Method's sequence of Changes is normally not divisible.
-                                        E.g. while it is possible to name a Method that has the sequence of Changes x12x14x12x14, this would
-                                        normally not be done because the same Changes can be produced by ringing two Plain Leads of the Method
-                                        with the sequence of Changes x12x14.
                                     </p>
                                     <hr />
                                 </div>
@@ -1029,12 +1074,15 @@
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A Block that, when rung, is the longest Length yet rung in a single Method or the same set
-                                    of Methods.  Record Lengths are rung as described in Section M.
+                                    of Methods.  
                                 </p>
                                 <div class="collapse" id="detailH10">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> Record Lengths are also Peals and Long Lengths -- they are a subset of both.
+                                    </p>
+                                    <p class="text-primary">
+                                        Requirements for CCCBR recognition of Record Lengths are described in Section 5.
                                     </p>
                                     <hr />
                                 </div>
@@ -1139,17 +1187,9 @@
                                 <div class="collapse" id="detailJ1">
                                     <hr />
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
-                                        is excluded when determining whether the Block is True.
-                                    </p>
-                                    <p class="text-primary">
-                                        In a non-Round Block, both the initial Row and the final Row are included when determining
-                                        whether the Block is True.
-                                    </p>
-                                    <p class="text-primary">
                                         When the number of Rows in a Block is less than or equal to the number of possible Rows
                                         for the Block's Effective Stage, the definition of True simplifies to 'a Block
-                                        in which all Rows are unique'.  In this case, all possible Rows appear either 0 times or 1 time,
+                                        in which all Rows are distinct'.  In this case, all possible Rows appear either 0 times or 1 time,
                                         so n in the definition has a value of 0.
                                     </p>
                                     <hr />
@@ -1185,7 +1225,6 @@
                                             <p>
                                                 There are 6 possible Rows at the Singles Stage.  3 of the possible Rows appear once in the Block,
                                                 2 of the possible Rows appear twice in the Block, and 1 of the possible Rows appears three times in the Block.
-                                                (Both the initial and final Rows are considered because this is a non-Round Block.)
                                             </p>
                                             <p>
                                                 Since some possible Rows appear n times, others appear n+1 times, and others appear n+2 times, where n=1,
@@ -1193,60 +1232,6 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="extent">
-                            <div class="col-sm-1">J.2</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Extent
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ2"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Block is an Extent if each of the possible Rows for the Block's Effective Stage occurs
-                                    once and only once.
-                                </p>
-                                <div class="collapse" id="detailJ2">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Futher explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
-                                        is excluded when determining whether the Block is an Extent.
-                                    </p>
-									<p class="text-primary">
-                                        In a non-Round Block, both the initial Row and the final Row are included when determining
-                                        whether the Block is an Extent.
-                                    </p>
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="multiextentblock">
-                            <div class="col-sm-1">J.3</div>
-                            <div class="col-xl-2 col-sm-3">
-                                Multi-Extent Block
-                                <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" data-target="#detailJ3"></a>
-                                </span>
-                            </div>
-                            <div class="col-xl-9 col-sm-8">
-                                <p>
-                                    A Block is a Multi-Extent Block if each of the possible Rows for the Block's Effective Stage occurs
-                                    n times, for a given value of n greater than or equal to two.
-                                </p>
-                                <div class="collapse" id="detailJ3">
-                                    <hr />
-                                    <p class="text-primary">
-                                        <b>Futher explanation:</b> In a Round Block, either the initial Row or the final Row (but not both)
-                                        is excluded when determining whether the Block is a Multi-Extent Block.
-                                    </p>
-                                    <p class="text-primary">
-                                        In a non-Round Block, both the initial Row and the final Row are included when determining
-                                        whether the Block is a Multi-Extent Block.
-                                    </p>
                                     <hr />
                                 </div>
                             </div>
@@ -1272,7 +1257,8 @@
                                 <div class="collapse" id="detailK1">
                                     <hr />
                                     <p class="text-primary">
-                                        <b>Further explanation:</b> More fully, this term would be 'Method Ringing Performance'. Performances are
+                                        <b>Further explanation:</b> More fully, this term would be 'Method Ringing Performance'. 
+                                        Performances are
                                         often distinguished by the intent for the ringing to be heard by
                                         members of the public, and/or for the ringing to be reported to the ringing
                                         community when it is 1250 Changes or greater in Length.
@@ -1311,7 +1297,7 @@
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
-                                    A report of a Performance that includes the contents specified in Section P.
+                                    A report of a Performance that includes the contents specified in Section 6.
                                 </p>
                             </div>
                         </div>
