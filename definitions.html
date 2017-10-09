@@ -797,9 +797,14 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Block comprising an exact number of Extents greater than one.
+                                A Block containing one or more Rows that are not distinct.
                             </p>
                             <div class="collapse" id="detailG3">
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> A Multi-Extent Block is a Block that draws its Rows from
+                                    more than one Extent. It would also need to contain a least one Extent
+                                    and meet the n+1 criterion at its Effective Stage for it to be True.
+                                </p>
                                 <hr />
                                 <p class="text-muted">
                                     <b>Technical comments:</b> An Extent of Minor rung in whole pulls would qualify as
