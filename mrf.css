@@ -34,6 +34,14 @@ body {
         border-bottom: 1px solid silver;
     }
 
+
+a {
+    text-decoration: none;
+}
+    a:hover {
+        text-decoration: none;
+    }
+
     /*
  * Navbar
 */
@@ -125,4 +133,3 @@ body {
         margin-right: auto;
         max-width: initial;
     }
-
