@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 72 190" xmlns="http://www.w3.org/2000/svg">
+  <title>Non Round Block</title>
+  <defs>
+    <style type="text/css"><![CDATA[text { font-family: Courier New; font-size: 9pt; fill: black; text-anchor: middle; }polyline { fill: none; }.left-text { text-anchor: start; }.place-bell { fill: none; stroke: black; stroke-width: 1pt; }]]></style>
+  </defs>
+  <text x="15" y="33" dy="2pt">1</text>
+  <text x="29" y="33" dy="2pt">2</text>
+  <text x="43" y="33" dy="2pt">3</text>
+  <text x="15" y="47" dy="2pt">2</text>
+  <text x="29" y="47" dy="2pt">1</text>
+  <text x="43" y="47" dy="2pt">3</text>
+  <text x="15" y="61" dy="2pt">2</text>
+  <text x="29" y="61" dy="2pt">3</text>
+  <text x="43" y="61" dy="2pt">1</text>
+  <text x="15" y="75" dy="2pt">3</text>
+  <text x="29" y="75" dy="2pt">2</text>
+  <text x="43" y="75" dy="2pt">1</text>
+  <text x="15" y="89" dy="2pt">3</text>
+  <text x="29" y="89" dy="2pt">1</text>
+  <text x="43" y="89" dy="2pt">2</text>
+  <text x="15" y="103" dy="2pt">1</text>
+  <text x="29" y="103" dy="2pt">3</text>
+  <text x="43" y="103" dy="2pt">2</text>
+  <text x="15" y="117" dy="2pt">1</text>
+  <text x="29" y="117" dy="2pt">2</text>
+  <text x="43" y="117" dy="2pt">3</text>
+  <text x="15" y="131" dy="2pt">2</text>
+  <text x="29" y="131" dy="2pt">1</text>
+  <text x="43" y="131" dy="2pt">3</text>
+  <text x="15" y="145" dy="2pt">1</text>
+  <text x="29" y="145" dy="2pt">2</text>
+  <text x="43" y="145" dy="2pt">3</text>
+  <polyline stroke="Black" stroke-width="1" points="8,25 50,25" />
+  <polyline stroke="Black" stroke-width="1" points="8,137 50,137" />
+</svg>

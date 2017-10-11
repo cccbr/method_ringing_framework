@@ -53,25 +53,25 @@
                                 <a class="nav-link" href="#rows">B. Changes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#changes">C. Methods</a>
+                                <a class="nav-link" href="#changes">C. Blocks</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#methods">D. Cover Bells</a>
+                                <a class="nav-link" href="#blocks">D. Named Blocks</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#coverbells">E. Calls</a>
+                                <a class="nav-link" href="#namedblocks">E. Methods</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#calls">F. Compositions</a>
+                                <a class="nav-link" href="#methods">F. Cover Bells</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#compositions">G. Blocks</a>
+                                <a class="nav-link" href="#coverbells">G. Calls</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#blocks">H. Named Blocks</a>
+                                <a class="nav-link" href="#calls">H. Compositions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#namedblocks">I. Stages</a>
+                                <a class="nav-link" href="#compositions">I. Stages</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#stages">J. Truth</a>
@@ -414,15 +414,15 @@
                     </div>
                     <!-- Blocks -->
                     <div class="row" id="blocks">
-                        <div class="col-sm-1"><h5>G</h5></div>
+                        <div class="col-sm-1"><h5>C</h5></div>
                         <div class="col-sm-11"><h5 class="border-bottom">Blocks</h5></div>
                     </div>
                     <div class="row" id="block">
-                        <div class="col-sm-1">G.1</div>
+                        <div class="col-sm-1">C.1</div>
                         <div class="col-xl-2 col-sm-3">
                             Block
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailG1"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC1"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -430,7 +430,7 @@
                                 A sequence of Rows, all composed of the same set of bells, that is produced from an
                                 initial Row using a sequence of Changes.
                             </p>
-                            <div class="collapse" id="detailG1">
+                            <div class="collapse" id="detailC1">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Blocks can be concatenated to make a longer Block, where the final Row of one Block
@@ -446,18 +446,18 @@
                         </div>
                     </div>
                     <div class="row" id="roundblock">
-                        <div class="col-sm-1">G.2</div>
+                        <div class="col-sm-1">C.2</div>
                         <div class="col-xl-2 col-sm-3">
                             Round Block
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailG2"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC2"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block whose final Row is the same as its initial Row.
                             </p>
-                            <div class="collapse" id="detailG2">
+                            <div class="collapse" id="detailC2">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> A Round Block is considered as a cycle of Rows
@@ -472,56 +472,65 @@
                         </div>
                     </div>
                     <div class="row" id="length">
-                        <div class="col-sm-1">G.4</div>
+                        <div class="col-sm-1">C.3</div>
                         <div class="col-xl-2 col-sm-3">
                             Length
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailG4"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC3"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 The number of Changes used to generate a Block.
                             </p>
-                            <div class="collapse" id="detailG4">
+                            <div class="collapse" id="detailC3">
                                 <hr />
-                                <img src="images\plainhunt.svg" alt="Plain Hunt" align="left" width=132 height=167>
-                                <br />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> Length is measured in number of Changes instead of number of Rows
-                                    to avoid counting the usual repetition of Rounds (or an alternative Row) at the beginning
-                                    and/or end of a Block.
-                                </p>
-                                <p class="text-primary">
-                                    In this example, it can be seen that a total of 9 Rows were rung,
-                                    including both the initial Rounds and the final Rounds. However, 8
-                                    Changes (as represented by place notations on the left) are used to
-                                    produce it. As it is a Round Block, either the starting Rounds
-                                    or the finishing Rounds (but not both) are considered to be part of the Block
-                                    and therefore it contains 8 Rows, all distinct.
-                                </p>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <img src="images\plainhunt.svg" alt="Plain Hunt" width=132 height=237>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <br />
+                                        <p class="text-danger">
+                                            <b>Example:</b> A Round Block of Length 8
+                                        </p>
+                                        <p class="text-primary">
+                                            <b>Further explanation:</b> Length is measured in number of Changes instead of number of Rows
+                                            to avoid counting the usual repetition of Rounds (or an alternative Row) at the beginning
+                                            and/or end of a Block.
+                                        </p>
+                                        <p class="text-primary">
+                                            In this example, it can be seen that a total of 14 Rows were rung,
+                                            including both the initial Rounds and the final Rounds. However, 8
+                                            Changes (as represented by place notations on the left) are used to
+                                            produce the Block. As it is a Round Block, either the starting Rounds
+                                            or the finishing Rounds (but not both) are considered to be part of the Block
+                                            and therefore the Block contains 8 Rows, all distinct.
+                                        </p>
+                                    </div>
+                                </div>
                                 <hr />
                             </div>
                         </div>
                     </div>
                     <!-- Named Blocks -->
                     <div class="row" id="namedblocks">
-                        <div class="col-sm-1"><h5>H</h5></div>
+                        <div class="col-sm-1"><h5>D</h5></div>
                         <div class="col-sm-11"><h5 class="border-bottom">Named Blocks</h5></div>
                     </div>
                     <div class="row" id="touch">
-                        <div class="col-sm-1">H.3</div>
+                        <div class="col-sm-1">D.1</div>
                         <div class="col-xl-2 col-sm-3">
                             Touch
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH5"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailD1"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block of any Length.
                             </p>
-                            <div class="collapse" id="detailH5">
+                            <div class="collapse" id="detailD1">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Futher explanation:</b> A Touch is synonymous with a Block.
@@ -531,7 +540,7 @@
                         </div>
                     </div>
                     <div class="row" id="shorttouch">
-                        <div class="col-sm-1">H.4</div>
+                        <div class="col-sm-1">D.2</div>
                         <div class="col-xl-2 col-sm-3">
                             Short Touch
                         </div>
@@ -542,7 +551,7 @@
                         </div>
                     </div>
                     <div class="row" id="quarterpeal">
-                        <div class="col-sm-1">H.5</div>
+                        <div class="col-sm-1">D.3</div>
                         <div class="col-xl-2 col-sm-3">
                             Quarter Peal
                         </div>
@@ -553,7 +562,7 @@
                         </div>
                     </div>
                     <div class="row" id="halfpeal">
-                        <div class="col-sm-1">H.6</div>
+                        <div class="col-sm-1">D.4</div>
                         <div class="col-xl-2 col-sm-3">
                             Half Peal
                         </div>
@@ -564,7 +573,7 @@
                         </div>
                     </div>
                     <div class="row" id="peal">
-                        <div class="col-sm-1">H.7</div>
+                        <div class="col-sm-1">D.5</div>
                         <div class="col-xl-2 col-sm-3">
                             Peal
                         </div>
@@ -575,18 +584,18 @@
                         </div>
                     </div>
                     <div class="row" id="longlength">
-                        <div class="col-sm-1">H.8</div>
+                        <div class="col-sm-1">D.6</div>
                         <div class="col-xl-2 col-sm-3">
                             Long Length
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH8"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailD6"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block whose Length is 10000 or more Changes.
                             </p>
-                            <div class="collapse" id="detailH8">
+                            <div class="collapse" id="detailD6">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Long Lengths are also Peals -- they are a subset thereof.
@@ -596,18 +605,18 @@
                         </div>
                     </div>
                     <div class="row" id="datetouch">
-                        <div class="col-sm-1">H.9</div>
+                        <div class="col-sm-1">D.7</div>
                         <div class="col-xl-2 col-sm-3">
                             Date Touch
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH9"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailD7"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Block whose Length corresponds to a year being commemorated.
                             </p>
-                            <div class="collapse" id="detailH9">
+                            <div class="collapse" id="detailD7">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> The year being commemorated in a Date Touch is often the year in which it is rung.
@@ -620,15 +629,15 @@
                     </div>
                     <!-- Methods -->
                     <div class="row" id="methods">
-                        <div class="col-sm-1"><h5>C</h5></div>
+                        <div class="col-sm-1"><h5>E</h5></div>
                         <div class="col-sm-11"><h5 class="border-bottom">Methods</h5></div>
                     </div>
                     <div class="row" id="method">
-                        <div class="col-sm-1">C.1</div>
+                        <div class="col-sm-1">E.1</div>
                         <div class="col-xl-2 col-sm-3">
                             Method
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href=".detailC"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href=".detailE"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -636,28 +645,28 @@
                                 A defined sequence of Changes, all operating on the same set of bells,
                                 that can be used to generate a Block from an initial Row.
                             </p>
-                            <div class="collapse detailC" id="detailC1">
+                            <div class="collapse detailE" id="detailE1">
                                 <hr />
                                 <p class="text-danger">
-                                    <b>Example:</b> x16x14x16x12
+                                    <b>Example:</b> x16x14x16x12 (Little Bob Minor)
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="collapse detailC text-primary">
+                    <div class="collapse detailE text-primary">
                         <div class="row" id="staticmethod">
-                            <div class="col-sm-1">C.1.1</div>
+                            <div class="col-sm-1">E.1.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Static Method
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailC11"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailE11"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A Method whose sequence of Changes is fixed and finite.
                                 </p>
-                                <div class="collapse" id="detailC11">
+                                <div class="collapse" id="detailE11">
                                     <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> x16x14x16x12 is an example of a Static Method on 6 bells.
@@ -668,18 +677,18 @@
                             </div>
                         </div>
                         <div class="row" id="dynamicmethod">
-                            <div class="col-sm-1">C.1.2</div>
+                            <div class="col-sm-1">E.1.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Dynamic Method
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailC12"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailE12"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A Method whose sequence of Changes is not fixed or is not finite.
                                 </p>
-                                <div class="collapse" id="detailC12">
+                                <div class="collapse" id="detailE12">
                                     <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> Dixon's Bob Minor.
@@ -703,18 +712,18 @@
                         </div>
                         </div>
                         <div class="row" id="methodname">
-                            <div class="col-sm-1">C.2</div>
+                            <div class="col-sm-1">E.2</div>
                             <div class="col-xl-2 col-sm-3">
                                 Method Name
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailC2"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailE2"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
                                 <p>
                                     A name given to a Method that is unique for its <a href="methodclassification.html#class">Class</a> and <a href="#stages">Stage</a>.
                                 </p>
-                                <div class="collapse" id="detailC2">
+                                <div class="collapse" id="detailE2">
                                     <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> 34x34.16x12x16x12x16x12x16x12x16.34x34.16 (Kent).
@@ -729,11 +738,11 @@
                             </div>
                         </div>
                         <div class="row" id="methodtitle">
-                            <div class="col-sm-1">C.3</div>
+                            <div class="col-sm-1">E.3</div>
                             <div class="col-xl-2 col-sm-3">
                                 Method Title
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailC3"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailE3"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -741,7 +750,7 @@
                                     The full description of a Method formed by concatenating its Method Name,
                                     <a href="methodclassification.html#classname">Class Name</a> and <a href="#stages">Stage Name</a>.
                                 </p>
-                                <div class="collapse" id="detailC3">
+                                <div class="collapse" id="detailE3">
                                     <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> Plain Bob Doubles. 'Plain' is the Method Name, 'Bob' is the Class, and 'Doubles' is the Stage Name.
@@ -751,11 +760,11 @@
                             </div>
                         </div>
                     <div class="row" id="lead">
-                        <div class="col-sm-1">H.1</div>
+                        <div class="col-sm-1">E.4</div>
                         <div class="col-xl-2 col-sm-3">
                             Lead
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH1"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE4"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -763,7 +772,7 @@
                                 A Block produced, starting from an initial Row, by applying a Method's sequence of
                                 Changes once.
                             </p>
-                            <div class="collapse" id="detailH1">
+                            <div class="collapse" id="detailE4">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> The sequence of Changes for the Method 'Little Bob Minor' is x16x14x16x12.
@@ -782,11 +791,11 @@
                         </div>
                     </div>
                     <div class="row" id="plaincourse">
-                        <div class="col-sm-1">H.2</div>
+                        <div class="col-sm-1">E.5</div>
                         <div class="col-xl-2 col-sm-3">
                             Plain Course
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH2"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE5"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -794,20 +803,25 @@
                                 A Block produced, starting from Rounds, by applying a Method's sequence of
                                 Changes repeatedly until a Round Block is obtained.
                             </p>
-                            <div class="collapse" id="detailH2">
+                            <div class="collapse" id="detailE5">
                                 <hr />
-                                <img src="images\bastowlittlebobminimus.svg" alt="Bastow Little Bob Minimus" align="left" width=72 height=216>
-                                <br />
-                                <p class="text-danger">
-                                    <b>Example:</b> This is a Plain Course of Bastow Little Bob Minimus.
-                                </p>
-                                <p class="text-primary">
-                                    The sequence of Changes for Bastow Little Bob Minimus is x12x14.
-                                    These Changes produce one Lead, bringing up the row 1423 when starting from Rounds, as
-                                    shown in the diagram. If these Changes are applied twice more, Rounds is produced.
-                                    Bastow Little Bob Minimus therefore has three Leads in its Plain Course.
-                                </p>
-                                <br />
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <img src="images\bastowlittlebobminimus.svg" alt="Bastow Little Bob Minimus" width=72 height=216>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <br />
+                                        <p class="text-danger">
+                                            <b>Example:</b> This is a Plain Course of Bastow Little Bob Minimus.
+                                        </p>
+                                        <p class="text-primary">
+                                            The sequence of Changes for Bastow Little Bob Minimus is x12x14.
+                                            These Changes produce one Lead, bringing up the row 1423 when starting from Rounds, as
+                                            shown in the diagram. If these Changes are applied twice more, Rounds is produced.
+                                            Bastow Little Bob Minimus therefore has three Leads in its Plain Course.
+                                        </p>
+                                    </div>
+                                </div>
                                 <hr />
                                 <p class="text-muted">
                                     <b>Technical comments:</b> This term applies to all Static Methods, but does not necessarily apply to
@@ -818,11 +832,11 @@
                         </div>
                     </div>
                     <div class="row" id="rotation">
-                        <div class="col-sm-1">C.5</div>
+                        <div class="col-sm-1">E.6</div>
                         <div class="col-xl-2 col-sm-3">
                             Rotation
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC5"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE6"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -831,7 +845,7 @@
                                 that the Changes, when considered as a cycle, start at a
                                 different point in the cycle.
                             </p>
-                            <div class="collapse" id="detailC5">
+                            <div class="collapse" id="detailE6">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> The Method Plain Bob Minimus has the Changes -14-14-14-12. The Method
@@ -854,7 +868,7 @@
                         </div>
                     </div>
                         <div class="row" id="methodlibrary">
-                            <div class="col-sm-1">C.4</div>
+                            <div class="col-sm-1">E.7</div>
                             <div class="col-xl-2 col-sm-3">
                                 CCCBR Method Library
                             </div>
@@ -865,7 +879,7 @@
                             </div>
                         </div>
                         <div class="row" id="methodringing">
-                            <div class="col-sm-1">C.6</div>
+                            <div class="col-sm-1">E.8</div>
                             <div class="col-xl-2 col-sm-3">
                                 Method Ringing
                             </div>
@@ -879,15 +893,15 @@
                         </div>
                         <!-- Cover Bells -->
                         <div class="row" id="coverbells">
-                            <div class="col-sm-1"><h5>D</h5></div>
+                            <div class="col-sm-1"><h5>F</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Cover Bells</h5></div>
                         </div>
                         <div class="row" id="coverbell">
-                            <div class="col-sm-1">D.1</div>
+                            <div class="col-sm-1">F.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Cover Bell
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailD1"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailF1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -895,7 +909,7 @@
                                     A bell that occupies a Place in a Row that is not one of the Places operated on by
                                     the Changes of the Method being rung.
                                 </p>
-                                <div class="collapse" id="detailD1">
+                                <div class="collapse" id="detailF1">
                                     <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> A Doubles Method is often rung with 6-bell Rows, where the Method's Changes
@@ -914,18 +928,18 @@
                             </div>
                         </div>
                     <div class="row" id="fixedplace">
-                        <div class="col-sm-1">G.5</div>
+                        <div class="col-sm-1">F.2</div>
                         <div class="col-xl-2 col-sm-3">
                             Fixed Cover Place
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailG5"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailF2"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Place occupied by the same Cover Bell in every Row of a Block.
                             </p>
-                            <div class="collapse" id="detailG5">
+                            <div class="collapse" id="detailF2">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> Assume Plain Bob Doubles is being rung on the front 5 of a ring of 8, and
@@ -950,15 +964,15 @@
                     </div>
                         <!-- Calls -->
                         <div class="row" id="calls">
-                            <div class="col-sm-1"><h5>E</h5></div>
+                            <div class="col-sm-1"><h5>G</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Calls</h5></div>
                         </div>
                         <div class="row" id="call">
-                            <div class="col-sm-1">E.1</div>
+                            <div class="col-sm-1">G.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Call
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailE1"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailG1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -966,7 +980,7 @@
                                     An instruction to replace Change(s) from a Method with different Change(s), change the
                                     Method being rung to another, or exchange Cover Bell(s).
                                 </p>
-                                <div class="collapse" id="detailE1">
+                                <div class="collapse" id="detailG1">
                                     <hr />
                                     <p class="text-danger">
                                         <b>Example:</b> The Change '12' when the Treble is leading in Plain Bob Minor is replaced with
@@ -997,15 +1011,15 @@
                         </div>
                         <!-- Compositions -->
                         <div class="row" id="compositions">
-                            <div class="col-sm-1"><h5>F</h5></div>
+                            <div class="col-sm-1"><h5>H</h5></div>
                             <div class="col-sm-11"><h5 class="border-bottom">Compositions</h5></div>
                         </div>
                         <div class="row" id="composition">
-                            <div class="col-sm-1">F.1</div>
+                            <div class="col-sm-1">H.1</div>
                             <div class="col-xl-2 col-sm-3">
                                 Composition
                                 <span class="float-right">
-                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailF1"></a>
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailH1"></a>
                                 </span>
                             </div>
                             <div class="col-xl-9 col-sm-8">
@@ -1013,7 +1027,7 @@
                                     An arrangement of Method(s) and Call(s), all operating on the same set of bells,
                                     that is used to generate a Block.
                                 </p>
-                                <div class="collapse" id="detailF1">
+                                <div class="collapse" id="detailH1">
                                     <hr />
                                     <p class="text-primary">
                                         <b>Further explanation:</b> Any subset of a Method's sequence of Changes may be used in a Composition.
@@ -1130,9 +1144,10 @@
                                     <p class="text-danger"><b>Examples:</b></p>
                                     <div class="row">
                                         <div class="col-xl-1 col-sm-3">
-                                            <img src="images\trueexample1.png" alt="Example 1" align="left" width=80 height=200>
+                                            <img src="images\trueexample1.svg" alt="Example 1" width=80 height=200>
                                         </div>
                                         <div class="col-xl-11 col-sm-9 text-danger">
+                                            <br />
                                             <p>
                                                 The first example shows a Round Block at the Singles Stage.  Since there are no Fixed Cover Places,
                                                 the Effective Stage of the Block is also Singles.
@@ -1149,9 +1164,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-1 col-sm-3">
-                                            <img src="images\trueexample2.png" alt="Example 2" align="left" width=100 height=220>
+                                            <img src="images\trueexample2.svg" alt="Example 2" width=100 height=220>
                                         </div>
                                         <div class="col-xl-11 col-sm-9 text-danger">
+                                            <br />
                                             <p>
                                                 The second example shows a non-Round Block at the Minimus Stage.  Since 4th's Place is a Fixed Cover Place,
                                                 the Effective Stage of the Block is Singles.
@@ -1247,11 +1263,11 @@
                             </div>
                         </div>
                     <div class="row" id="recordlength">
-                        <div class="col-sm-1">H.10</div>
+                        <div class="col-sm-1">K.4</div>
                         <div class="col-xl-2 col-sm-3">
                             Record Length
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH10"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailK4"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
@@ -1259,7 +1275,7 @@
                                 A Long Length Performance that, when rung, is the longest Length yet rung in a single Method or the same set
                                 of Methods.
                             </p>
-                            <div class="collapse" id="detailH10">
+                            <div class="collapse" id="detailK4">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Record Lengths are also Peals and Long Lengths -- they are a subset of both.

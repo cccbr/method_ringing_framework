@@ -1,52 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 132 167" xmlns="http://www.w3.org/2000/svg">
-  <title>Block Minimus</title>
+<svg viewBox="0 0 132 237" xmlns="http://www.w3.org/2000/svg">
+  <title>Plain Hunt Minimus</title>
   <defs>
     <style type="text/css"><![CDATA[text { font-family: Courier New; font-size: 9pt; fill: black; text-anchor: middle; }polyline { fill: none; }.left-text { text-anchor: start; }.place-bell { fill: none; stroke: black; stroke-width: 1pt; }]]></style>
   </defs>
-  <text class="left-text" x="22" y="40" dy="2pt">x</text>
-  <text class="left-text" x="22" y="54" dy="2pt">14</text>
-  <text class="left-text" x="22" y="68" dy="2pt">x</text>
-  <text class="left-text" x="22" y="82" dy="2pt">14</text>
-  <text class="left-text" x="22" y="96" dy="2pt"></text>
-  <text class="left-text" x="22" y="110" dy="2pt"></text>
-  <text class="left-text" x="22" y="124" dy="2pt"></text>
-  <text class="left-text" x="22" y="138" dy="2pt">14</text>
+  <text class="left-text" x="22" y="82" dy="2pt">x</text>
+  <text class="left-text" x="22" y="96" dy="2pt">14</text>
+  <text class="left-text" x="22" y="110" dy="2pt">x</text>
+  <text class="left-text" x="22" y="124" dy="2pt">14</text>
+  <text class="left-text" x="22" y="138" dy="2pt">x</text>
+  <text class="left-text" x="22" y="152" dy="2pt">14</text>
+  <text class="left-text" x="22" y="166" dy="2pt">x</text>
+  <text class="left-text" x="22" y="180" dy="2pt">14</text>
   <text x="75" y="33" dy="2pt">1</text>
   <text x="89" y="33" dy="2pt">2</text>
   <text x="103" y="33" dy="2pt">3</text>
   <text x="117" y="33" dy="2pt">4</text>
-  <text x="75" y="47" dy="2pt">2</text>
-  <text x="89" y="47" dy="2pt">1</text>
-  <text x="103" y="47" dy="2pt">4</text>
-  <text x="117" y="47" dy="2pt">3</text>
-  <text x="75" y="61" dy="2pt">2</text>
-  <text x="89" y="61" dy="2pt">4</text>
-  <text x="103" y="61" dy="2pt">1</text>
-  <text x="117" y="61" dy="2pt">3</text>
-  <text x="75" y="75" dy="2pt">4</text>
+  <text x="75" y="47" dy="2pt">1</text>
+  <text x="89" y="47" dy="2pt">2</text>
+  <text x="103" y="47" dy="2pt">3</text>
+  <text x="117" y="47" dy="2pt">4</text>
+  <text x="75" y="61" dy="2pt">1</text>
+  <text x="89" y="61" dy="2pt">2</text>
+  <text x="103" y="61" dy="2pt">3</text>
+  <text x="117" y="61" dy="2pt">4</text>
+  <text x="75" y="75" dy="2pt">1</text>
   <text x="89" y="75" dy="2pt">2</text>
   <text x="103" y="75" dy="2pt">3</text>
-  <text x="117" y="75" dy="2pt">1</text>
-  <text x="75" y="89" dy="2pt">4</text>
-  <text x="89" y="89" dy="2pt">3</text>
-  <text x="103" y="89" dy="2pt">2</text>
-  <text x="117" y="89" dy="2pt">1</text>
-  <text x="75" y="103" dy="2pt">3</text>
+  <text x="117" y="75" dy="2pt">4</text>
+  <text x="75" y="89" dy="2pt">2</text>
+  <text x="89" y="89" dy="2pt">1</text>
+  <text x="103" y="89" dy="2pt">4</text>
+  <text x="117" y="89" dy="2pt">3</text>
+  <text x="75" y="103" dy="2pt">2</text>
   <text x="89" y="103" dy="2pt">4</text>
   <text x="103" y="103" dy="2pt">1</text>
-  <text x="117" y="103" dy="2pt">2</text>
-  <text x="75" y="117" dy="2pt">3</text>
-  <text x="89" y="117" dy="2pt">1</text>
-  <text x="103" y="117" dy="2pt">4</text>
-  <text x="117" y="117" dy="2pt">2</text>
-  <text x="75" y="131" dy="2pt">1</text>
+  <text x="117" y="103" dy="2pt">3</text>
+  <text x="75" y="117" dy="2pt">4</text>
+  <text x="89" y="117" dy="2pt">2</text>
+  <text x="103" y="117" dy="2pt">3</text>
+  <text x="117" y="117" dy="2pt">1</text>
+  <text x="75" y="131" dy="2pt">4</text>
   <text x="89" y="131" dy="2pt">3</text>
   <text x="103" y="131" dy="2pt">2</text>
-  <text x="117" y="131" dy="2pt">4</text>
-  <text x="75" y="145" dy="2pt">1</text>
-  <text x="89" y="145" dy="2pt">2</text>
-  <text x="103" y="145" dy="2pt">3</text>
-  <text x="117" y="145" dy="2pt">4</text>
-  <polyline stroke="Black" stroke-width="1" points="68,138 124,138" />
+  <text x="117" y="131" dy="2pt">1</text>
+  <text x="75" y="145" dy="2pt">3</text>
+  <text x="89" y="145" dy="2pt">4</text>
+  <text x="103" y="145" dy="2pt">1</text>
+  <text x="117" y="145" dy="2pt">2</text>
+  <text x="75" y="159" dy="2pt">3</text>
+  <text x="89" y="159" dy="2pt">1</text>
+  <text x="103" y="159" dy="2pt">4</text>
+  <text x="117" y="159" dy="2pt">2</text>
+  <text x="75" y="173" dy="2pt">1</text>
+  <text x="89" y="173" dy="2pt">3</text>
+  <text x="103" y="173" dy="2pt">2</text>
+  <text x="117" y="173" dy="2pt">4</text>
+  <text x="75" y="187" dy="2pt">1</text>
+  <text x="89" y="187" dy="2pt">2</text>
+  <text x="103" y="187" dy="2pt">3</text>
+  <text x="117" y="187" dy="2pt">4</text>
+  <text x="75" y="201" dy="2pt">1</text>
+  <text x="89" y="201" dy="2pt">2</text>
+  <text x="103" y="201" dy="2pt">3</text>
+  <text x="117" y="201" dy="2pt">4</text>
+  <text x="75" y="215" dy="2pt">1</text>
+  <text x="89" y="215" dy="2pt">2</text>
+  <text x="103" y="215" dy="2pt">3</text>
+  <text x="117" y="215" dy="2pt">4</text>
+  <text x="75" y="215" dy="2pt">1</text>
+  <text x="89" y="215" dy="2pt">2</text>
+  <text x="103" y="215" dy="2pt">3</text>
+  <text x="117" y="215" dy="2pt">4</text>
+  <polyline stroke="Black" stroke-width="1" points="68,67 124,67" />
+  <polyline stroke="Black" stroke-width="1" points="68,179 124,179" />
 </svg>
