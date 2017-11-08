@@ -115,7 +115,7 @@
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
-                            <p>A sequence of unique bells.</p>
+                            <p>A sequence of numbered bells in which no bell appears more than once.</p>
                             <div class="collapse" id="detailA1">
                                 <hr />
                                 <p class="text-danger">
@@ -123,8 +123,8 @@
                                 </p>
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> Bells are uniquely numbered in descending order of pitch,
-                                    and both cardinal numbers (e.g. 1, 2, 3 ...) and ordinal numbers (e.g. 1st, 2nd, 3rd ...) are used.
+                                    <b>Further explanation:</b> Bells are uniquely numbered in descending order of pitch.
+                                    Both cardinal numbers (e.g. 1, 2, 3 ...) and ordinal numbers (e.g. 1st, 2nd, 3rd ...) are used.
                                 </p>
                                 <p class="text-primary">
                                     When using cardinals, number 1 is used for the bell with the highest pitch, number 2 for the next highest pitch and so on.
@@ -154,7 +154,7 @@
                                     comprise, at minimum, one bell.
                                 </p>
                                 <p class="text-muted">
-                                	This definition of Row precludes cylindrical ringing, where a bell can ring twice in some
+                                	This definition of Row precludes cylindrical ringing, where a bell can appear twice in some
                                     Rows and not at all in other Rows.  Cylindrical ringing is considered beyond the scope of this framework -- it would
                                     likely require its own framework, with modified definitions in areas such as Truth.
                                 </p>
@@ -194,23 +194,23 @@
                             <div class="collapse" id="detailA3">
                                 <hr />
                                 <p class="text-danger">
-                                    <b>Example:</b> In the Row 142536, the 2nd is ringing in 3rd's Place.
+                                    <b>Example:</b> In the Row 142536, the 2nd bell is in 3rd's Place.
                                 </p>
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> Places are numbered starting with 1 for the bell that
-                                    rings first, and increasing sequentially for each next bell to ring.  E.g. the bell that
-                                    rings second in a Row is in Place 2.
+                                    <b>Further explanation:</b> Places are numbered starting with 1 for the first bell in the Row,
+                                    and increasing sequentially for each next bell in the Row.  E.g. the bell that
+                                    is second in a Row is in Place 2.
                                 </p>
                                 <p class="text-primary">
-                                    Each bell in a Row rings in a different Place to all other bells in that Row,
+                                    Each bell in a Row appears in a different Place to all other bells in that Row,
                                     and therefore there are the same number of Places in a Row as there
                                     are bells in that Row.
                                 </p>
                                 <p class="text-primary">
                                     Places are often referred to using ordinal numbers in the possessive form,
                                     so Place 2 is often '2nd's Place'. 2nd's Place is a reference to the Place the
-                                    2nd bell occupies when ringing Rounds.
+                                    2nd bell occupies in Rounds.
                                 </p>
                                 <p class="text-primary">
                                     The bell in 1st's Place is often said to be leading, and the bell in the
@@ -241,7 +241,7 @@
                                 </p>
                                 <hr />
                                 <p class="text-muted">
-                                    <b>Technical comments:</b> <i>[The following may move to a later section of the document where it could be more in context.]</i>
+                                    <b>Technical comments:</b> <i>[The following may move to a later section of the framework to be more in context.]</i>
                                     A sequence of Rows may include the Rows of an Extent one or more times. However, this definition of Extent neither
                                     implies that the Rows appear in any particular order in the sequence, nor that the Rows making up an Extent are necessarily
                                     contiguous within the sequence of Rows.
@@ -290,7 +290,7 @@
                             <p>Names that are given to Stages:</p>
                             <p>1 = One; 3 = Singles; 5 = Doubles; 7 = Triples; 9 = Caters; 11 = Cinques; 13 = Sextuples; 15 = Septuples.</p>
                             <p>2 = Two; 4 = Minimus; 6 = Minor; 8 = Major; 10 = Royal; 12 = Maximus; 14 = Fourteen; 16 = Sixteen.</p>
-                            <p>Odd and even Stages above 16 are named with the written form of the corresponding Stage number.  For example, Seventeen, Twenty-two.</p>
+                            <p>Odd and even Stages above 16 are named with the written form of the corresponding Stage number.  For example: Seventeen, Twenty-two.</p>
                         </div>
                     </div>
                     <!-- Changes -->
@@ -318,8 +318,9 @@
                                     <b>Further explanation:</b> The Stage of a Change is the number of bells on which that Change operates.
                                 </p>
                                 <p class="text-primary">
-                                    A Change can be applied to any Row of the same Stage.  For example, a Change applied to the Row
-                                    1342 might produce the Row 1432.  The same Change applied to the Row 4123 would produce the Row 4213.
+                                    Note that the same Change applied to different Rows will have the same relative effect.
+                                    For example, a Change applied to the Row 1342 might produce the Row 1432.
+                                    The same Change applied to the Row 4123 would produce the Row 4213.
                                 </p>
                                 <hr />
                             </div>
@@ -388,7 +389,7 @@
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> The Change that transposes the bells from Row 12345678 to Row 23415678 is a
-                                    Jump Change because the Treble moves from 1st's Place to 4th's Place, which are not adjacent Places.
+                                    Jump Change because the treble moves from 1st's Place to 4th's Place, which are not adjacent Places.
                                 </p>
                                 <hr />
                                 <p class="text-primary">
@@ -418,7 +419,7 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A defined sequence of Changes, all with the same Stage, that is referred to with a name.
+                                A defined sequence of Changes, all with the same Stage.
                             </p>
                             <div class="collapse" id="detailD1">
                                 <hr />
@@ -427,16 +428,17 @@
                                 </p>
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Futher explanation:</b> Changes may be represented using place notation, and place notation is used in the example above 
-                                    as well as elsewhere in this framework.  Place notation is described in Section 8.
+                                 	<b>Futher explanation:</b> Individual Changes and sequences of Changes may be represented using place notation,
+                                 	and place notation is used in the example above as well as elsewhere in this framework.
+                                 	Place notation is described in Section 8.
+                                </p>
+                                <p class="text-primary">
+                                    A Method is usually given a name that is used in ringing to refer to the Method's sequence of Changes.
+                                    A Method (including its name) may be recorded in the Central Council's Method Library when certain requirements have been met.
+                                    Section 5.B (Method Naming) describes these requirements.
                                 </p>
                                 <p class="text-primary">
                                      A Method has the Stage of its constituent Changes.
-                                </p>
-                                <hr />
-                                <p class="text-muted">
-                                    <b>Technical comments:</b> As described below under Dynamic Method, a Method can also be an algorithm for generating a sequence of Changes.  More formally therefore,
-                                    a Method is a defined sequence of Changes, or an algorithm for generating a defined sequence of Changes, where all Changes have the same Stage, that is referred to with a name.
                                 </p>
                                 <hr />
                             </div>
@@ -565,19 +567,19 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A bell that occupies a Place in a Row that is not one of the Places operated on by
-                                the Changes of the Method being rung.
+                                A bell that occupies a Place in a Row that is not one of the Places operated on by the
+                                    Method being applied to that Row.
                             </p>
                             <div class="collapse" id="detailE1">
                                 <hr />
                                 <p class="text-danger">
-                                    <b>Example:</b> A Doubles Method is often rung with 6-bell Rows, where the Method's Changes
-                                    operate on Places 1 to 5, and 6th's Place contains a Cover Bell (normally the tenor).
+                                    <b>Example:</b> A Doubles Method is used with 6-bell Rows, where the Method's Changes
+                                    operate on Places 1 to 5, and 6th's Place contains a Cover Bell (usually the tenor).
                                 </p>
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Note that in a Row containing one or more Cover Bells, the numbering of the Places
-                                    may be modified to exclude the Cover Bell(s). For example, when ringing Doubles with a Cover
+                                    may be modified to exclude the Cover Bell(s). For example, in Doubles with a Cover
                                     Bell in 6th's Place, the bell in 5th's Place may be said to be lying.
                                 </p>
                                 <hr />
@@ -608,7 +610,7 @@
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 An instruction to replace Change(s) from a Method with different Change(s), change the
-                                Method being rung to another, or exchange Cover Bell(s).
+                                current Method to a different one, or exchange Cover Bell(s).
                             </p>
                             <div class="collapse" id="detailF1">
                                 <hr />
@@ -619,16 +621,16 @@
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Most commonly a call replaces an individual Change with another, but a call may also
-                                    add Changes, remove Changes, or replace a number of Changes with a different number of Changes.
+                                    add Changes, remove Changes, or replace a set of Changes with a different set of Changes.
                                 </p>
                                 <p class="text-primary">
-                                    When a Call adds or removes Changes, these Changes are respectively added to or subtracted from the related
-                                    Method's total number of Changes rung for Performance Reporting purposes.
+                                    When a Call adds or removes Changes to or from a Method, these Changes are respectively added to or subtracted from
+                                    the count of Changes for that Method that is used for Performance Reporting purposes.
                                 </p>
                                 <hr />
                                 <p class="text-muted">
                                     <b>Technical comments:</b> More formally, a Call is an instruction to replace zero or more Changes from one or
-                                    more Methods with a different set of zero or more Changes, or to change the Method(s) being rung to other Method(s).
+                                    more Methods with a different set of zero or more Changes, or to change the current Method(s) to other Method(s).
                                     Calls may also operate on Cover Bell(s) to produce variable cover ringing.
                                 </p>
                                 <p class="text-muted">
@@ -674,6 +676,7 @@
                                     However, in certain cases, such as a Composition of Doubles on the front 5, a fixed Cover Bell in 6th's place, and Minor on the back 6, the Composition could
                                     include fixed Cover Bells.
                                 </p>
+                                <hr />
                             </div>
                         </div>
                     </div>
