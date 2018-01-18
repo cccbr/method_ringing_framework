@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
     <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
 
-    <title>Framework for Method Ringing - Definitions</title>
+    <title>Framework for Method Ringing - General Definitions</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
                         <a class="nav-link" href="principles.html">2. Design Principles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="definitions.html">3. Definitions</a>
+                        <a class="nav-link active" href="definitions.html">3. General Definitions</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <!-- Anchors are deliberately pointing to the section above -->
                             <li class="nav-item">
@@ -124,7 +124,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                        	<h2>3. Definitions</h2>
+                        	<h2>3. General Definitions</h2>
                         </div>
                     </div>
 
@@ -496,7 +496,11 @@
 
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> A Block has the Stage of its constituent Rows.
+                                    <b>Further explanation:</b> The Stage of the Changes in the sequence is the same as the Stage of the initial Row.
+                                </p>
+
+                                <p class="text-primary">
+                                    A Block has the Stage of its constituent Rows.
                                 </p>
 
                                 <p class="text-primary">
@@ -505,6 +509,10 @@
                                     - Then apply the second Change in the sequence to the second Row to produce a third Row.<br/>
                                     - Then apply the third Change in the sequence to the third Row to produce a fourth Row, and so on.<br/>
                                     - The Row that is produced by applying the final Change in the sequence is referred to as the final Row.
+                                </p>
+
+                                <p class="text-primary">
+                                    Note that a Block always has one more Row than it has Changes.
                                 </p>
                                 
                                  <p class="text-primary">
@@ -522,6 +530,10 @@
                                     at different points in the Composition.<br />
                                     While this framework uses the term Block to refer to a sequence of Changes and the Rows produced by applying these Changes,
                                     this does not preclude the term Block from being used to refer just to a sequence of Changes in other contexts.
+                                </p>
+
+                                <p class="text-muted">
+                                    A Block has a minimum size of one Change and two Rows.
                                 </p>
 
                                 <p class="text-muted">
@@ -1273,11 +1285,23 @@
                         </div>
                         <div class="col-xl-2 col-sm-3">
                             Effective Stage
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailJ3"></a>
+                            </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 The Stage of a Touch after any Fixed Cover Places are excluded.
                             </p>
+                            <div class="collapse" id="detailJ3">
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> If all Places in a Touch are Fixed Cover Places, the Effective Stage is zero.
+                                    Note that an Effective Stage of one is not possible -- once the Effective Stage falls below two, it becomes zero.
+                                </p>
+                                
+                                <hr />
+                            </div>
                         </div>
                     </div>
 
@@ -1306,6 +1330,11 @@
                                 <p>
                              		<img src="images\definitions\openingclosingrounds.svg" width=400 height=450>	
                              	</p>
+
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> If the Effective Stage of a Touch is zero, the Touch is considered to be True.
+                                </p>
 
                                 <hr />
                             </div>
