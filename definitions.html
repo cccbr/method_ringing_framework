@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
     <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
 
-    <title>Framework for Method Ringing - General Definitions</title>
+    <title>Framework for Method Ringing - Fundamentals of Method Ringing</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
                         <a class="nav-link" href="principles.html">2. Design Principles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="definitions.html">3. General Definitions</a>
+                        <a class="nav-link active" href="definitions.html">3. Fundamentals of Method Ringing</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <!-- Anchors are deliberately pointing to the section above -->
                             <li class="nav-item">
@@ -124,7 +124,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                        	<h2>3. General Definitions</h2>
+                        	<h2>3. Fundamentals of Method Ringing</h2>
                         </div>
                     </div>
 
@@ -217,8 +217,8 @@
                                 <p class="text-danger">
                                     <b>Example:</b> 531246 is a Row with a Stage of Minor (or equivalently, a Minor Row).
                                 </p>
-                                <hr />
                                 
+                                <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> The Stage of a Row is the number of bells in that Row.
                                 </p>
@@ -250,16 +250,13 @@
                                     'Q' (Twenty-six); 'R' (Twenty-seven); 'S' (Twenty-eight); 'U' (Twenty-nine); 'V' (Thirty); 'W' (Thirty-one);
                                     'Y' (Thirty-two); 'Z' (Thirty-three)
                                 <p>
+                                
                                 <hr />
                                 <p class="text-muted">
                                     <b>Technical comments:</b> While this definition of Row refers to a sequence of <i>bells</i>, a Row can
                                     comprise, at minimum, one bell.
                                 </p>
-                                <p class="text-muted">
-                                	This definition of Row precludes cylindrical ringing, where a bell can appear twice in some
-                                    Rows and not at all in other Rows.  Cylindrical ringing is considered beyond the scope of this framework -- it would
-                                    likely require its own framework, with modified definitions in areas such as Truth.
-                                </p>
+                               
                                 <hr />
                             </div>
                         </div>
@@ -774,8 +771,8 @@
                                 <hr />
                                 <p class="text-muted">
                                 	<b>Technical comments:</b> For a Method that is false in the Plain Course (Truth is covered in Section J below)
-                                    Rounds might come up in the middle of a lead.  However the Plain Course does not end until Rounds is obtained
-                                    in the last Row after applying a Static Method's whole sequence of Changes.
+                                    the initial Row might come up in the middle of a Plain Lead.  However the Plain Course does not end until the initial Row
+                                    comes up as the last Row after applying a Static Method's whole sequence of Changes.
                                 </p>
 
                                 <p class="text-muted">
@@ -878,6 +875,21 @@
                                     When a Call adds or removes Changes to or from a Method, these Changes are respectively added to or subtracted from
                                     the count of Changes for that Method that is used for Performance Reporting purposes.
                                     Performance Reporting is covered in Section 6.
+                                </p>
+
+                                <p class="text-primary">
+                                    While the name and effect of Calls are defined as part of the Composition (see Section G below) in which they are used,
+                                    the following is a list of Calls that are commonly used in many Compositions:<br />
+                                    <u>Bob:</u> a Call rotating the coursing order of 3 bells;<br />
+                                    <u>Single:</u> a Call swapping two bells in the coursing order;<br />
+                                    <u>Double:</u> a Call swapping two pairs of two bells in the coursing order;<br />
+                                    <u>Big Bob:</u> a Call rotating the coursing order of 5,7,9, etc bells in the coursing order;<br />
+                                    <u>Big Single:</u> a Call changing the nature of the resultant Row (+ to - or vice versa) where Places are added that are not Made
+                                        adjacent to existing Places. E.g. 12 is replaced with 1256;<br />
+                                    <u>BobSingle:</u> the combination of a bob and a single;<br />
+                                    <u>Extreme:</u> in Grandsire, a Call with the place notation, 3.12n. For other Methods, a Call swapping a different pair of bells
+                                        in the coursing order than is swapped by a single.<br/>
+                                    The above list is not exhaustive, and a Composition may define one of the Calls above to have a different effect in the Composition.
                                 </p>
                                 
                                 <hr />
@@ -1005,13 +1017,9 @@
                                 </p>
 
                                 <p class="text-primary">
-                                    When a Composition is used to produce a Block with a higher Stage than the Stage of the Composition, it is necessary
-                                    to indicate which Places the Composition operates on.  In the example above, the Doubles Composition
-                                    is applied to Places 1 to 5 so that 6th's Place contains a Cover Bell.
-                                    The tenor as Cover Bell is the usual implementation when the Stage of a Block is one higher
-                                    than the Stage of a Composition.
-                                    However, it could be specified that the Doubles Composition is applied to Places 2 to 6 so that 1st's Place
-                                    contains a Cover Bell.
+                                    In the example above, the Doubles Composition is applied to Places 1 to 5 so that 6th's Place contains a Cover Bell.
+                                    The tenor as Cover Bell is the usual implementation when the Stage of a Block is one higher than the Stage of a Composition.
+                                    However, the Doubles Composition could be applied to Places 2 to 6 so that 1st's Place contains a Cover Bell.
                                 </p>
 
                                 <p class="text-primary">
@@ -1270,7 +1278,7 @@
                         	2.
                         </div>
                         <div class="col-xl-2 col-sm-3">
-                            Fixed Cover Place
+                            Fixed Place
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
@@ -1291,12 +1299,12 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                The Stage of a Touch after any Fixed Cover Places are excluded.
+                                The Stage of a Touch after any Fixed Places are excluded.
                             </p>
                             <div class="collapse" id="detailJ3">
                                 <hr />
                                 <p class="text-muted">
-                                    <b>Technical comments:</b> If all Places in a Touch are Fixed Cover Places, the Effective Stage is zero.
+                                    <b>Technical comments:</b> If all Places in a Touch are Fixed Places, the Effective Stage is zero.
                                     Note that an Effective Stage of one is not possible -- once the Effective Stage falls below two, it becomes zero.
                                 </p>
                                 
