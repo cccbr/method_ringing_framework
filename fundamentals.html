@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="A proposed replacement for sections D, E, F, G, I and J of the Central Council's Decisions.">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
+
+    <title>Framework for Method Ringing - Fundamentals of Method Ringing</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    <link href="mrf.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+	    	<a class="navbar-brand" href="index.html">Framework for Method Ringing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	    	<a class="navbar-brand" href="https://cccbr.org.uk/ "><img src="images/cc-header.png" height="60" alt="CCCBR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	    	<img src="images\version.svg" width=200 height=36 />
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">1. Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="principles.html">2. Design Principles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                        <ul class="nav nav-pills flex-column nav-subsection">
+                            <!-- Anchors are deliberately pointing to the section above -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#stages">A. Stages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#rows">B. Rows</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#changes">C. Changes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#blocks">D. Blocks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#methods">E. Methods</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#calls">F. Calls</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#compositions">G. Compositions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#coverbells">H. Cover Bells</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#touches">I. Touches</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#truth">J. Truth</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#performances">K. Performances</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extension.html">8. Method Extension and Contraction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="placenotation.html">10. Place Notation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leadheadcodes.html">11. Leadhead Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transition.html">12. Transitional Arrangements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedmaterial.html">13. Related Material</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="issues.html">14. Issue Log</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faqs.html">15. FAQs</a>
+                    </li>
+                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block  btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                        	<h2>3. Fundamentals of Method Ringing</h2>
+                        </div>
+                    </div>
+
+                    <!-- Stages -->
+                    <div class="row"  id="stages">
+                        <div class="col-sm-1">
+                        	<h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Stages</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Stage
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>A property of several method ringing terms that indicates the number of bells participating.</p>
+                            <div class="collapse" id="detailA1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Stage applies to the following method ringing terms: Rows, Changes, Blocks, Methods
+                                    and Compositions.
+                                </p>
+                                <p class="text-primary">
+                                    The application of Stage to each of these terms will be covered below in the 'Further explanation' sections of
+                                    the definitions of these terms.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Stage Name
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>Names that are given to the different Stages.</p>
+                            <div class="collapse" id="detailA2">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b>
+                                </p>
+                                <p class="text-primary">1 = One; 3 = Singles; 5 = Doubles; 7 = Triples; 9 = Caters; 11 = Cinques; 13 = Sextuples; 15 = Septuples.</p>
+                                <p class="text-primary">2 = Two; 4 = Minimus; 6 = Minor; 8 = Major; 10 = Royal; 12 = Maximus; 14 = Fourteen; 16 = Sixteen.</p>
+                                <p class="text-primary">Odd and even Stages above 16 are named with the written form of the corresponding Stage number.  For example: Seventeen, Twenty-two.</p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rows -->
+                    <div class="row" id="rows">
+                        <div class="col-sm-1">
+                        	<h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Rows</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                    	</div>
+                        <div class="col-xl-2 col-sm-3">
+                            Row
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>A sequence of numbered bells in which no bell appears more than once.</p>
+                            <div class="collapse" id="detailB1">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> 531246 is a Row with a Stage of Minor (or equivalently, a Minor Row).
+                                </p>
+                                
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The Stage of a Row is the number of bells in that Row.
+                                </p>
+
+                                <p class="text-primary">
+                                    Bells are uniquely numbered in descending order of pitch.
+                                    Both cardinal numbers (e.g. 1, 2, 3 ...) and ordinal numbers (e.g. 1st, 2nd, 3rd ...) are used.
+                                </p>
+                                
+                                <p class="text-primary">
+                                    When using cardinals, number 1 is used for the bell with the highest pitch, number 2 for the next highest pitch and so on.
+                                    When using ordinals, bell number 2 becomes 'the 2nd', bell number 3 becomes 'the 3rd', and so on.
+                                    However bell number 1 is usually referred to as 'the treble' rather than 'the 1st', and the bell with the lowest pitch
+                                    is usually referred to as 'the tenor' rather than the corresponding ordinal.
+                                </p>
+                                <p class="text-primary">
+                                    Bells are numbered relative to how many are in use.  For example, if a tower has eight bells but only the six with the lowest pitches are in use,
+                                    these bells are numbered 1 to 6 instead of 3 to 8.
+                                </p>
+                                <p class="text-primary">
+                                    Rows are normally shown in columns so that the path of individual bells can be visualised by looking down the columns.
+                                    In order to keep the columns aligned, a fixed font can be used with single characters representing each bell.
+                                    Conventionally '0' (zero) is used to represent the 10th, and upper (or sometimes lower) case
+                                    letters (excluding 'I', 'O' and 'X') are used for bells 11 to 33 as follows:
+                                </p>
+                                <p class="text-primary">
+                                    'E' (Eleven); 'T' (Twelve); 'A' (Thirteen); 'B' (Fourteen); 'C' (Fifteen); 'D' (Sixteen); 'F' (Seventeen); 'G' (Eighteen);
+                                    'H' (Nineteen); 'J' (Twenty); 'K' (Twenty-one); 'L' (Twenty-two); 'M' (Twenty-three); 'N' (Twenty-four); 'P' (Twenty-five);
+                                    'Q' (Twenty-six); 'R' (Twenty-seven); 'S' (Twenty-eight); 'U' (Twenty-nine); 'V' (Thirty); 'W' (Thirty-one);
+                                    'Y' (Thirty-two); 'Z' (Thirty-three)
+                                <p>
+                                
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> While this definition of Row refers to a sequence of <i>bells</i>, a Row can
+                                    comprise, at minimum, one bell.
+                                </p>
+                               
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Rounds
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>A Row in which the bells are ordered from the lowest number to the highest number.</p>
+                            <div class="collapse" id="detailB2">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> 12345678 is Rounds for a Major Row.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Place
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>The position of a bell within a Row.</p>
+                            <div class="collapse" id="detailB3">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> In the Row 142536, the 2nd bell is in 3rd's Place.
+                                </p>
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Places are numbered starting with 1 for the first bell in the Row,
+                                    and increasing sequentially for each next bell in the Row.  E.g. the bell that
+                                    is second in a Row is in Place 2.
+                                </p>
+                                <p class="text-primary">
+                                    Each bell in a Row appears in a different Place to all other bells in that Row,
+                                    and therefore there are the same number of Places in a Row as there
+                                    are bells in that Row.
+                                </p>
+                                <p class="text-primary">
+                                    Places are often referred to using ordinal numbers in the possessive form,
+                                    so Place 2 is often '2nd's Place'. 2nd's Place is a reference to the Place the
+                                    2nd bell occupies in Rounds.
+                                </p>
+                                <p class="text-primary">
+                                    The bell in 1st's Place is often said to be leading, and the bell in the
+                                    last Place of the Row is often said to be lying. E.g. in the Row 214365,
+                                    the 2nd is leading and the 5th is lying.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Changes -->
+                    <div class="row" id="changes">
+                        <div class="col-sm-1">
+                        	<h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>A transposition of bells from an existing Row to a new Row, where both Rows have the same Stage.</p>
+                            <div class="collapse" id="detailC1">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> A Change might transpose the bells from the Row 214365 to the Row 241356.
+                                </p>
+                                <p>
+                             		<img src="images\definitions\change.svg" width=300 height=90>	
+                             	</p>
+                                <hr />                         
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The Stage of a Change is the number of bells on which that Change operates.
+                                </p>
+                                <p class="text-primary">
+                                    Note that the same Change applied to different Rows will have the same relative effect.
+                                    For example, a Change applied to the Row 1342 might produce the Row 1432.
+                                    The same Change applied to the Row 4123 would produce the Row 4213.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Identity Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Change that transposes each bell to the same Place in a new Row.
+                            </p>
+                            <div class="collapse" id="detailC2">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The Change that transposes the bells from Row 54321 to Row 54321 is an Identity Change.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Adjacent Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Change that transposes each bell to either the same Place or an adjacent Place in
+                                a new Row, but which is not an Identity Change.
+                            </p>
+                            <div class="collapse" id="detailC3">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The Change that transposes the bells from Row 21436587 to Row 12346857 is an Adjacent Change.
+                                </p>
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> An Adjacent Change has a minimum Stage of 2.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Jump Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC4"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Change that transposes at least one bell to a different and non-adjacent Place in a new Row.
+                            </p>
+                            <div class="collapse" id="detailC4">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The Change that transposes the bells from Row 12345678 to Row 23415678 is a
+                                    Jump Change because the treble moves from 1st's Place to 4th's Place, which are not adjacent Places.
+                                </p>
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> When ringing heavy bells, Jump Changes are more commonly used to jump from an earlier Place to a later
+                                    Place, rather than vice versa, due to the physical difficulty of reducing the time between bell strikes.
+                                </p>
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> A Jump Change has a minimum Stage of 3.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+					<!-- Blocks -->
+                    <div class="row" id="blocks">
+                        <div class="col-sm-1">
+                        	<h5>D.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Blocks</h5>
+                        </div>
+                    </div>
+					
+					<div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Block
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailD1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A sequence of Changes, all with the same Stage, and the Rows produced by applying these Changes, starting from an initial Row.
+                            </p>
+                            <div class="collapse" id="detailD1">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b>
+                                </p>
+                                <p>
+                             		<img src="images\definitions\block.svg" width=250 height=150 />	
+                             	</p>
+
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The Stage of the Changes in the sequence is the same as the Stage of the initial Row.
+                                </p>
+
+                                <p class="text-primary">
+                                    A Block has the Stage of its constituent Rows.
+                                </p>
+
+                                <p class="text-primary">
+                                    A sequence of Changes is used to produce a sequence of Rows as follows:<br/>
+                                    - Apply the first Change in the sequence to an initial Row to produce a second Row.<br/>
+                                    - Then apply the second Change in the sequence to the second Row to produce a third Row.<br/>
+                                    - Then apply the third Change in the sequence to the third Row to produce a fourth Row, and so on.<br/>
+                                    - The Row that is produced by applying the final Change in the sequence is referred to as the final Row.
+                                </p>
+
+                                <p class="text-primary">
+                                    Note that a Block always has one more Row than it has Changes.
+                                </p>
+                                
+                                 <p class="text-primary">
+                                	Dividing lines are often drawn in Blocks, such as those shown over the initial and final Rows in the example above.
+                                	Dividing lines have no effect on the Rows produced -- they are merely to highlight features of a Block.
+                                	In this example, the dividing lines highlight that the treble moves in a symmetrical pattern
+                                	in the Block.
+                                </p>
+                                
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> The term Block is also used in method ringing to refer to a sequence of Changes
+                                    without reference to the Rows they can produce.
+                                    For example, a Composition (see Section G below) may specify a Block of Changes that is repeated
+                                    at different points in the Composition.<br />
+                                    While this framework uses the term Block to refer to a sequence of Changes and the Rows produced by applying these Changes,
+                                    this does not preclude the term Block from being used to refer just to a sequence of Changes in other contexts.
+                                </p>
+
+                                <p class="text-muted">
+                                    A Block has a minimum size of one Change and two Rows.
+                                </p>
+
+                                <p class="text-muted">
+                                    The following diagram shows the relationships between the various components of method ringing.
+                                    Terms in the diagram that are not defined above are defined elsewhere in the framework.
+                                </p>
+                                <p>
+                                    <img src="images\definitions\hierarchy.svg" width=1024 height=576 /> 
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Round Block
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailD2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Block whose final Row is the same as its initial Row.
+                            </p>
+                            <div class="collapse" id="detailD2">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b>
+                                </p>
+                                <p>
+                             		<img src="images\definitions\roundblock.svg" width=225 height=150>	
+                             	</p>
+
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> In the example above, the final Row is the same as the initial Row,
+                                    and therefore this is a Round Block.
+                                </p>
+                                
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Methods -->
+                    <div class="row" id="methods">
+                        <div class="col-sm-1"><h5>
+                        	E.
+                        </h5></div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Methods</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A sequence of Changes all of the same Stage, or a process to generate such a sequence.
+                            </p>
+                            <div class="collapse" id="detailE1">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The sequence of Changes x16x14x16x12 is the Method that has been given the name Little Bob Minor.
+                                </p>
+                                <hr />
+                                <p class="text-primary">
+                                 	<b>Futher explanation:</b> A Method has the Stage of its constituent Changes.
+                                 </p>
+
+                                 <p class="text-primary">
+                                 	Individual Changes and sequences of Changes may be represented using place notation,
+                                 	and place notation is used in the example above as well as elsewhere in this framework.
+                                 	Place notation is described in Section 8.
+                                </p>
+                                <p class="text-primary">
+                                    A Method is usually referred to by a name it is given.
+                                    A Method (including its name) may be recorded in the Central Council's Method Library when certain requirements have been met.
+                                    Section 5.B (Method Naming) describes these requirements.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Static Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Method whose sequence of Changes is fixed and finite.
+                            </p>
+                            <div class="collapse" id="detailE2">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> x16x14x16x12 (Little Bob Minor) is an example of a Static Method.
+                                    This Method can be represented by a fixed length place notation.
+                                </p>
+                                
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row"">
+                        <div class="col-sm-1">
+                        	3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Dynamic Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Method whose sequence of Changes is not fixed or is not finite.
+                            </p>
+                            <div class="collapse" id="detailE3">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Dixon's Bob Minor.
+                                </p>
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Dixon's Bob Minor specifies that Rows are produced by successively
+                                    applying the pair of Changes x16 except
+                                    (a) if the Treble is leading after an x Change, replace the next 16 Change with a 12 Change, and
+                                    (b) if the 2nd or 4th is leading after an x Change, replace the next 16 Change with a 14 Change.
+                                </p>
+                                <p class="text-primary">
+                                    In this Method, the sequence of Changes varies depending on the Rows produced, so using a
+                                    different initial Row could produce a different sequence of Changes.  This Method's
+                                    sequence of Changes is therefore not fixed, and so Dixon's Bob Minor is an example of
+                                    a Dynamic Method.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Plain Lead
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE4"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Block that is produced by applying a Static Method's sequence of Changes once.
+                            </p>
+                            <div class="collapse" id="detailE4">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Bastow Little Bob Minimus has the sequence of Changes x12x14.  A Plain Lead of
+                                    this Method, starting from Rounds, is therefore:
+                                </p>
+                                <p>
+                             		<img src="images\definitions\plainlead.svg" width=225 height=80>	
+                             	</p>
+
+								<hr />
+                             	<p class="text-primary">
+                                    <b>Further explanation:</b> 'Plain' in this term means that no Calls are used. Calls are covered below in Section F.
+                                </p>
+                                
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Plain Course
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailE5"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Block that is produced by applying a Static Method's sequence of Changes repeatedly,
+                                until a Round Block is obtained.
+                            </p>
+                            <div class="collapse" id="detailE5">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Bastow Little Bob Minimus has the sequence of Changes x12x14.  A Plain Course of
+                                    this Method, starting from Rounds, is therefore:
+                                </p>
+                                <p>
+                             		<img src="images\definitions\plaincourse.svg" width=225 height=215>	
+                             	</p>
+
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> 'Plain' in this term means that no Calls are used. Calls are covered below in Section F.
+                                </p>
+                                <p class="text-primary">
+                                    Since it takes three applications of the Method's sequence of Changes to
+                                    produce a Round Block, the Plain Course of Bastow Little Bob Minimus therefore comprises three Plain Leads.
+                                </p>
+                                <p class="text-primary">
+                                	A Plain Course of a Method is a commonly used Block in method ringing.  Unless otherwise specified,
+                                	a Plain Course is started from Rounds.  A Plain Course starting from Rounds is often referred
+                                	to as <i>The</i> Plain Course of a Method, whereas starting from any other Row might be referred to as <i>A</i> Plain Course.
+                                </p>
+
+                                <hr />
+                                <p class="text-muted">
+                                	<b>Technical comments:</b> For a Method that is false in the Plain Course (Truth is covered in Section J below)
+                                    the initial Row might come up in the middle of a Plain Lead.  However the Plain Course does not end until the initial Row
+                                    comes up as the last Row after applying a Static Method's whole sequence of Changes.
+                                </p>
+
+                                <p class="text-muted">
+                                    While Plain Lead and Plain Course are defined above in terms of a Static Method,
+                                	these terms may also be applicable to some Dynamic Methods.  For example, in Dixon's Bob Minor
+                                	with Rounds as the initial Row, Rounds comes up again after 64 Changes (with no Calls).
+                                	This would be considered the Plain Course of Dixon's.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calls -->
+                    <div class="row" id="calls">
+                        <div class="col-sm-1">
+                        	<h5>F.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Calls</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Call
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailF1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                An instruction to replace Change(s) from a Method with different Change(s), change the
+                                current Method to a different one, or affect Cover Bell(s).
+                            </p>
+                            <div class="collapse" id="detailF1">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The last Change in Little Bob Minor's sequence of Changes is '12'.  This is usually
+                                    replaced with the Change '14' when a 'bob' is called.  A 'bob' is a commonly-used Call in method ringing.
+                                </p>
+                                
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The application of Calls to changing the current Method to a different one
+                                    and to affecting Cover Bell(s) is covered in Sections G and H below.
+                                </p>
+
+                                <p class="text-primary">
+                                    In the application of Calls to replacing Change(s) from a Method with different Change(s),
+                                    a Call most commonly replaces an individual Change with another, as in the example above.
+                                    But a Call may also add Changes, remove Changes, or replace a set of Changes with a different set of Changes.
+                                </p>
+                                
+                                <p class="text-primary">
+                                    When a Call adds or removes Changes to or from a Method, these Changes are respectively added to or subtracted from
+                                    the count of Changes for that Method that is used for Performance Reporting purposes.
+                                    Performance Reporting is covered in Section 6.
+                                </p>
+
+                                <p class="text-primary">
+                                    While the name and effect of Calls are defined as part of the Composition (see Section G below) in which they are used,
+                                    the following is a list of Calls that are commonly used in many Compositions:<br />
+                                    <u>Bob:</u> a Call rotating the coursing order of 3 bells;<br />
+                                    <u>Single:</u> a Call swapping two bells in the coursing order;<br />
+                                    <u>Double:</u> a Call swapping two pairs of two bells in the coursing order;<br />
+                                    <u>Big Bob:</u> a Call rotating the coursing order of 5,7,9, etc bells in the coursing order;<br />
+                                    <u>Big Single:</u> a Call changing the nature of the resultant Row (+ to - or vice versa) where Places are added that are not Made
+                                        adjacent to existing Places. E.g. 12 is replaced with 1256;<br />
+                                    <u>BobSingle:</u> the combination of a bob and a single;<br />
+                                    <u>Extreme:</u> in Grandsire, a Call with the place notation, 3.12n. For other Methods, a Call swapping a different pair of bells
+                                        in the coursing order than is swapped by a single.<br/>
+                                    The above list is not exhaustive, and a Composition may define one of the Calls above to have a different effect in the Composition.
+                                </p>
+                                
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> When a Call affects the Changes of more than one Method (i.e. in spliced), the
+                                    Composition (see Section G below) should make clear how the Change count of each Method is affected
+                                    in order to enable accurate Performance Reporting (see Section 6).
+                                </p>
+                                
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compositions -->
+                    <div class="row" id="compositions">
+                        <div class="col-sm-1">
+                        	<h5>G.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Compositions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Composition
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailG1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                An arrangement of Method(s) and Call(s) that produces a sequence of Changes, all with the same Stage.
+                            </p>
+                            <div class="collapse" id="detailG1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> A Composition has the Stage of the Changes it produces.
+                                </p>
+
+                                <p class="text-primary">
+                                    Larger Compositions may be created by combining other Compositions.  For example, seven different
+                                    Compositions of 720 Minor Changes may be concatenated to produce a Composition of 5040 Minor Changes.
+                                </p>
+
+                                <p class="text-primary">
+                                    In addition to using a Method's whole sequence of Changes one or more times
+                                    in a Composition, any subset of a Method's sequence of Changes may also be used.
+                                </p>
+
+                                <p class="text-primary">
+                                    When a Composition that uses more than one Method is rung, the instruction to change from one Method to another is
+                                    referred to as a Call, and this is another application of the term Call.
+                                </p>
+
+                                <hr />
+                                <p class="text-muted">
+                                	<b>Technical comments:</b> A Composition may use two or more Methods side by side to produce Changes with a higher Stage.
+                                    For example, a Minor Method and a Doubles Method may be combined side by side to create a Composition that produces
+                                    Cinques Changes (so the Composition has a Stage of Cinques).
+                                    Similarly, a Composition may combine a Minor Composition and a Doubles Composition side by side to create
+                                    a Composition that produces Cinques Changes.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cover Bells -->
+                    <div class="row" id="coverbells">
+                        <div class="col-sm-1">
+                        	<h5>H.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Cover Bells</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">1.</div>
+                        <div class="col-xl-2 col-sm-3">
+                            Cover Bell
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailH1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A bell that occupies a Place in a Row that is not one of the Places operated on by the Method(s) of a Composition.
+                            </p>
+                            <div class="collapse" id="detailH1">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> A Composition for a Doubles Method is used with an initial Row that has a Stage of Minor,
+                                    and this produces a Minor Block.
+                                    The Composition operates on Places 1 to 5.  6th's Place therefore contains a Cover Bell (usually the tenor).
+                                </p>
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> A Cover Bell remains in the same Place from one Row to the next.
+                                    In the example above, the Doubles Changes of the Composition are deeemed to become Minor Changes with a place notation of "6"
+                                    added to each Change.
+                                </p>
+
+                                <p>
+                             		<img src="images\definitions\coverbell.svg" width=100 height=90>	
+                             	</p>
+
+                             	<p class="text-primary">
+                                    In a Row containing one or more Cover Bells, the numbering of the Places
+                                    may be modified to exclude the Cover Bell(s). In the example above,
+                                    the bell in 5th's Place (rather that 6th's) may be said to be lying.
+                                </p>
+
+                                <p class="text-primary">
+                                    A Composition of a given Stage can be used to produce either a Block with the same Stage as the Composition,
+                                    or a Block with a higher Stage.
+                                    When the Stage of the Block is higher than the Stage of the Composition, any Places not operated on by the
+                                    Composition contain Cover Bells.
+                                </p>
+
+                                <p class="text-primary">
+                                    In the example above, the Doubles Composition is applied to Places 1 to 5 so that 6th's Place contains a Cover Bell.
+                                    The tenor as Cover Bell is the usual implementation when the Stage of a Block is one higher than the Stage of a Composition.
+                                    However, the Doubles Composition could be applied to Places 2 to 6 so that 1st's Place contains a Cover Bell.
+                                </p>
+
+                                <p class="text-primary">
+                                    Since Cover Bells can be generated by using a Composition of a given Stage to produce a
+                                    Block of a higher Stage, Compositions often do not need to specify the transposition of Cover Bells as these are inferred.
+                                    However, since the Changes produced by a Composition are all of the same Stage,
+                                    there is a second scenario where a Composition's Changes include the transposition of Cover Bells for some or all Changes.
+                                </p>
+
+                                <p class="text-primary">
+                                    For example, if a Composition uses a Doubles Method initially, applying to Places 1 to 5,
+                                    and then switches to a Minor Method, applying to Places 1 to 6, then the Composition's Changes are all specified
+                                    as Minor Changes, with a place notation of "6" added to all Doubles Changes.  This Composition therefore has a Stage of Minor.
+                                </p>
+
+								<p class="text-primary">
+                                	Similarly, a Composition might use a Doubles Method but is designed to produce a Minor Block, and Calls
+                                	are used that occasionally exchange the Cover Bell in 6th's Place.  In this case the Composition's Changes
+                                	are all specified as Minor Changes (so the Composition's Stage is Minor), with a place notation of "6" added to all Changes where the Cover Bell is not affected.
+                                	For example, if the Composition's Doubles Method has a "3" Change, this becomes a "36" Change in the Composition. 
+                                	Where the Cover Bell is affected by a Call, what otherwise might have been a "36" Change might instead become a "34" Change.
+                                </p>
+
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> As discussed above under Compositions, it is possible for a Composition
+                                    to use two or more Methods side by side, or to use two or more Compositions side by side.
+                                    As a further variation, a Composition might also result in an interior Cover Bell.
+                                    For example, a Composition might be designed to be used with Maximus Rows, using a Doubles Method in Places 1 to 5
+                                    and a Minor Method in Places 7 to 12.
+                                    6th's Place does not have any Methods operating on it, and therefore 6th's Place contains a Cover Bell.
+                                    In this case, the Composition would produce Maximus Changes (and therefore have a Stage of Maximus),
+                                    and each of its Changes would include the place notation "6".
+                                </p>
+
+                                <p class="text-muted">
+                                    Every Row in a Block (except for the initial Row) has at least one Method involved in generating it.
+                                    A Row is not made up solely of Cover Bells.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Touches -->
+                    <div class="row" id="touches">
+                        <div class="col-sm-1">
+                        	<h5>I.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Touches</h5>
+                        </div>
+                    </div>
+
+					<div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Touch
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailI1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Block that is produced by applying a Compositions's sequence of Changes.
+                            </p>
+                            <div class="collapse" id="detailI1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Note that since a Composition can be a Plain Course of a Method,
+                                    a Plain Course is therefore also a Touch.  The same applies to a Plain Lead.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Length
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailI2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The number of Changes in a Touch.
+                            </p>
+                            <div class="collapse" id="detailI2">
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> If a Touch uses side by side Changes to produce a single Row, only one Change
+                                    per Row is counted when determining Length.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Short Touch
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch with a Length of 1 to 1249 Changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Quarter Peal
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch with a Length of 1250 to 2499 Changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Half Peal
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch with a Length of 2500 to 4999 Changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Peal
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch with a Length of 5000 or more Changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	7.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Long Length
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailI7"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch with a Length of 10000 or more Changes.
+                            </p>
+                            <div class="collapse" id="detailI7">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> A Long Length is also a Peal -- it is a subset thereof.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	8.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Date Touch
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailI8"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch with a Length that corresponds to a year being commemorated.
+                            </p>
+                            <div class="collapse" id="detailI8">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> A Date Touch commemorating the year 2018 would have 2018 Changes and would
+                                    also be a Quarter Peal.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Truth -->
+                    <div class="row" id="truth">
+                        <div class="col-sm-1">
+                        	<h5>J.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Truth</h5>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extent
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailJ1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The complete set of distinct Rows possible for a given set of bells.
+                            </p>
+                            <div class="collapse" id="detailJ1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Futher explanation:</b> The number of Rows in an Extent for a given set of bells is the factorial of the
+                                    number of bells in the set. E.g. for 4 bells, the Extent has 4! Rows = 1 * 2 * 3 * 4 = 24 Rows.
+                                </p>
+                                
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> A Touch may include the Rows of an Extent one or more times.
+                                    However, the term Extent neither implies that the Rows appear in any particular order in a Touch,
+                                    nor that the Rows making up an Extent are necessarily contiguous within a Touch.
+                                </p>
+                                
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Fixed Place
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A given Place that, in every Row of a Touch, is occupied by the same bell.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Effective Stage
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailJ3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The Stage of a Touch after any Fixed Places are excluded.
+                            </p>
+                            <div class="collapse" id="detailJ3">
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> If all Places in a Touch are Fixed Places, the Effective Stage is zero.
+                                    Note that an Effective Stage of one is not possible -- once the Effective Stage falls below two, it becomes zero.
+                                </p>
+                                
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            True
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailJ4"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch is True if it contains zero or more Extents at the Touch's Effective Stage,
+                                and any further Rows are distinct.<br/>
+                                If a Touch is a Round Block, the final Row is excluded when determining whether the Touch is True.
+                            </p>
+                            <div class="collapse" id="detailJ4">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Futher explanation:</b> When ringing a Touch, it is traditional to ring the initial Row (usually Rounds) several times before starting the Changes, and similarly to ring the final Row several times before standing
+                                    the bells. These Rows (shown in the diagram below) are excluded when determining Truth.
+                                </p>
+                                <p>
+                             		<img src="images\definitions\openingclosingrounds.svg" width=400 height=450>	
+                             	</p>
+
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> If the Effective Stage of a Touch is zero, the Touch is considered to be True.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Accepted Truth
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailJ5"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Touch has Accepted Truth if:<br />
+                                a) It is rung on n bells;<br />
+                                b) It comprises (x) Round Block(s) with an Effective Stage of n and
+                                    (y) Round Block(s) with an Effective Stage of n-1 and with nth's Place a Fixed Place;<br />
+                                c) The Rows in (x) and (y) are True when considered independently using the definition of True in Section 3.J.4; and<br/>
+                                d) The Rows in (x) contain at least one Extent.
+                            </p>
+                            <div class="collapse" id="detailJ5">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Futher explanation:</b> Accepted Truth applies most commonly to Touches of Doubles and Minor rung on 6 bells.
+                                    The bell in 6th's Place when ringing Doubles is a Cover Bell that is not affected by any Calls (i.e. 6th's Place is a Fixed Place).
+                                    Changes of Stage may only occur at the end of a Round Block (which will be the same Row as the initial Row).
+                                    If the Doubles Rows taken together are True, and the Minor Rows taken together are True,
+                                    then the Touch has Accepted Truth.
+                                    Note that a Row occuring at a change of Stage (which will be the same as the initial Row since changes of Stage only occur at the end
+                                    of a Round Block) is counted as a Row of the following Round Block when 
+                                    determining Truth at the individual Stages.
+                                    The initial Row is counted as part of the first Round Block when determining Truth at the individual Stages,
+                                    and the final Row is excluded.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performances -->
+                    <div class="row" id="performances">
+                        <div class="col-sm-1">
+                        	<h5>K.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Performances</h5>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The successful ringing of a Touch where the band strives to maintain a high standard of ringing,
+                                and errors in ringing or calling are corrected quickly.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance Report
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A report of a Performance that includes the contents specified in Section 6.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                        	3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Record Length
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailK3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Performance of a Long Length that is the longest Length yet rung in a single Method or the same set of Methods.
+                            </p>
+                            <div class="collapse" id="detailK3">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> A Record Length is also a Peal and a Long Length -- it is a subset of both.
+                                </p>
+                                <p class="text-primary">
+                                    Requirements for CCCBR recognition of Record Lengths are described in Section 5.A.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="mrf.js"></script>
+</body>
+</html>
