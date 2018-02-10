@@ -215,7 +215,7 @@
                         </div>
                         <div class="col-sm-11">
                             <p>Methods recorded in the Method Library may not have names that conflict with the criteria related
-                            to method extension (see Section 8) or symmetry relationships (see Section 5.C).</p>
+                            to method extension (see Section 8) or the constraints described in Section 5.C.</p>
                         </div>
                     </div>
 
@@ -250,7 +250,7 @@
                             <p>
                                 The Class Descriptor is formed by concatenating up to four terms as follows, and in the order shown:<br />
                                 a)  Add ’Jump’ if the Method has this Class;<br />
-                                b)  Add ‘Differential’ if the Method has this Class;<br />
+                                b)  Add ‘Differential’ if the Method has a Class of Differential or Differential Hunter;<br />
                                 c)  Add ’Little’ if the Method has this Class;<br />
                                 d)  Add one of the following if it applies: ‘Place’, ‘Bob’, ‘Treble Bob’, ‘Surprise’, ‘Delight’, ‘Treble Place’, ‘Alliance’;<br />
                                 e)  Otherwise leave blank.
@@ -353,24 +353,21 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                The sequence of Changes of a Static Method recorded in the Method Library is normally not divisible into two or more equal parts.
+                                A Static Method normally has a sequence of Changes that is not divisible into two or more equal parts.
+                                However this is not mandated as there may be cases where it is beneficial for a Method to have a
+                                repeated sequence to give it a different classification.
+                                Furthermore, a Method is not normally separately recorded in the Method Library if its sequence of
+                                Changes is a multiple of another Method's sequence of Changes (or a fraction of another Method's
+                                sequence of Changes if that other Method has a repeated sequence).
                             </p>
                             <div class="collapse" id="detailC5">
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> A Static Method might have the sequence of Changes 34x34.14.12.14.34x34.14.12.14,
-                                    representing one Plain Lead.  This Method would have two Plain Leads in its Plain Course.
-                                    However, since this sequence of Changes is divisible into two equal parts (each with place notation
-                                    34x34.14.12.14), it would normally be recorded in the Method Library as the sequence 34x34.14.12.14,
-                                    thus a Method with four Plain Leads in its Plain Course.  The longer place notation shown above can be
-                                    obtained simply by using two Plain Leads of the shorter Method.
-                                </p>
-
-                                <p class="text-primary"> However there can be reasons to record a Static Method in the Method Library
-                                    that has a divisible sequence of Changes.  An example is Plain Hunt.  On 6 bells the place
-                                    notation is x16x16x16x16x16x16.  This is recorded in the Method Library as the Method called Original
-                                    with place notation x16.  But since Plain Hunt is widely used and recognized as a Method Name,
-                                    it is considered beneficial for Plain Hunt to be recorded as a Method in the Method Library, in addition to Original.
+                                    <b>Further explanation:</b> The method Magenta Little Place Maximus (56.1T.56.1T.56.1T.56.1T.56.1T)
+                                    could have been recorded in the Method Library as Magenta Differential Maximus (56.1T) but the band
+                                    that rang it preferred it to be classified as a Hunter.
+                                    Subsequently 56.1T and any other repeat of it would not normally be named separately in the Method
+                                    Library unless a band felt there was a compelling reason to do so.
                                 </p>
 
                                 <hr />
@@ -381,10 +378,92 @@
                     <div class="row">
                         <div class="col-sm-1">
                             6.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC6"></a>
+                            </span>
                         </div>
+
                         <div class="col-sm-11">
-                            <p>The prefixes ‘Reverse’, ‘Single’ and ‘Double may only be used to begin a Method Name if the
-                            relevant symmetry relationship is satisfied (see below), in which case their use is optional.</p>
+                            <p>
+                            	Method names should not contain any words that mislead as to the nature of the Method.
+                            </p>
+                            <div class="collapse" id="detailC6">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Certain terms including ‘Reverse’, ‘Single’ and ‘Double' have
+                                    been used to prefix Method names when certain Method features are present.
+                                    Use of these terms is optional, but they should not be used unless the features
+                                    in 1 - 3 below are present.
+                                    Furthermore, terms such as 'True', 'Symmetric' and 'Palindromic' should not be used in
+                                    Method names where these could mislead.
+                                </p>
+
+                                <p class="text-primary">
+                                	1. A Method name should only begin with ‘Reverse’ if:<br />
+                                	a) Another Method in the Method Library has the same Method Title (after excluding ‘Reverse’
+                                	in the new Method); and<br />
+                                	b) That other Method's Changes are the Reverse of the new Method's -- that is, the Places
+                                	within each Change are inverted.
+                                </p>
+
+                                <p class="text-primary">
+                                	Note that 'Reverse' may also be used if b) applies only when one of the Methods is Rotated.
+                                </p>
+
+                                <p class="text-primary">
+                                	E.g. St Simon's Bob Doubles has the place notation 5.1.5.3.5.3.5.1.5.125.<br />
+                                    If these Changes are inverted, the result is the Method 1.5.1.3.1.3.1.5.1.145.<br />
+                                    If this Method is Rotated to become 3.1.5.1.145.1.5.1.3.1, the result is the Method
+                                    named Reverse St Simon's Bob Doubles in the Method Library.
+                            	</p>
+
+                            	<p class="text-primary">
+                                	2. A Method name should only begin with ‘Double’ if:<br />
+                                	a) It is a Double Method -- that is, when the Places of each Change are inverted,
+                                	the same Method results; and<br />
+                                	b) If there is an existing Method in the Method Library that has the same Method Title
+                                	(after excluding ‘Double’ in the new Method, or after excluding ‘Double’ in the new Method
+                                	and excluding 'Single' in the existing Method),
+                                	then both Methods have the same place notation above the Hunt Bell
+                                	(or two or more coursing Hunt Bells).
+                                </p>
+
+                                <p class="text-primary">
+                                	Note that 'Double' may also be used if a) applies only after Rotating the resulting Method,<br />
+                                	or if b) applies only after one of the Methods is Rotated.
+                                </p>
+
+                                <p class="text-primary">
+                                	E.g. Double Court Bob Minor has the place notation x14x36x16x36x14x16.<br />
+                                    If these Changes are inverted, the result is x36x14x16x14x36x16.
+                                    This can be rotated to give the same Changes as above.
+                                    It is therefore a Double method.<br />
+                                    There is also a Method called Single Court Bob Minor in the Method Library.
+                                    Its place notation is x14x16x16x16x14x16.<br/>
+                                    Because the Places above the Hunt Bell in Single Court Bob Minor are the same as in
+                                    Double Court Bob Minor, Double has been appropriately used.
+                            	</p>
+
+                            	<p class="text-primary">
+                                	3. A Method name should only begin with ‘Single’ if:<br />
+                                	a) It is not a Double Method as defined in 2. above;<br />
+                                	b) If there is an existing Method in the Method Library that has the same Method Title
+                                	(after excluding ‘Single’ in the new Method, or after excluding 'Single' in the new Method
+                                	and excluding ‘Double’ in the existing Method),
+                                    then both Methods have the same place notation above the Hunt Bell
+                                    (or two or more coursing Hunt Bells).
+                                </p>
+
+                                <p class="text-primary">
+                                	Note that 'Single' may also be used if b) applies only when one of the Methods is Rotated.
+                                </p>
+
+                                <p class="text-primary">
+                                	E.g. See the example of Single Court Bob Minor and Double Court Bob Minor in 2. above.
+                            	</p>
+
+                                <hr />
+                            </div>
                         </div>
                     </div>
 
@@ -397,94 +476,12 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                A Method Name may only begin with ‘Reverse’ if:<br />
-                                a) Another Method in the Method Library has the same Method Title (after excluding ‘Reverse’ in the new Method); and<br />
-                                b) That other Method's Changes are the Reverse of the new Method's -- that is, the Places within each Change are inverted.
-                            </p>
-                            <div class="collapse" id="detailC7">
-                                <hr />
-                                <p class="text-danger">
-                                    <b>Example:</b> St Simon's Bob Doubles has the place notation 5.1.5.3.5.3.5.1.5.125.<br />
-                                    If each place notation is inverted, the result is 1.5.1.3.1.3.1.5.1.145.
-                                    This method (usually rotated to be rung as 3.1.5.1.145.1.5.1.3.1) is Reverse St Simon's Bob Doubles.
-                                </p>
-
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            8.
-                            <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC8"></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                A Method Name may only begin with ‘Double’ if the following conditions are both met:<br />
-                                a) It is a Double Method -- that is, when the Places of each Change are inverted, the same Method results;<br />
-                                b) If there is an existing Method in the Method Library that has the same Method Title (after excluding ‘Double’ in the new Method,
-                                    or after excluding ‘Double’ in the new Method and excluding 'Single' in the existing Method),
-                                    then both Methods have the same place notation above the Hunt Bell (or two or more coursing Hunt Bells).
-                            </p>
-                            <div class="collapse" id="detailC8">
-                                <hr />
-                                <p class="text-danger">
-                                    <b>Example:</b> Double Court Bob Minor has the place notation x14x36x16x36x14x16.<br />
-                                    If these changes are inverted, the result is x36x14x16x14x36x16.  This can be rotated to give the same Changes as above.<br />
-                                    It is therefore a Double method.<br />
-                                    There is also a Method called Single Court Bob Minor in the Method Library.  It's place notation is x14x16x16x16x14x16.<br/>
-                                    Because the places above the hunt bell in Single Court Bob Minor are the same as in Double Court Bob Minor, Double may be used.
-                                </p>
-
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            9.
-                            <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC9"></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                A Method Name may only begin with ‘Single’ if the following conditions are both met:<br />
-                                a) It is not a Double Method as defined in 8 a) above;<br />
-                                b) If there is an existing Method in the Method Library that has the same Method Title (after excluding ‘Single’ in the new Method,
-                                    or after excluding 'Single' in the new Method and excluding ‘Double’ in the existing Method),
-                                    then both Methods have the same place notation above the Hunt Bell (or two or more coursing Hunt Bells).
-                            </p>
-                            <div class="collapse" id="detailC9">
-                                <hr />
-                                <p class="text-danger">
-                                    <b>Example:</b> See the example of Single Court Bob Minor and Double Court Bob Minor in 7. above.
-                                </p>
-
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            10.
-                            <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC10"></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
                                 If one Extension Process has been used to relate two or more Methods that share a Name in the Method Library then:<br />
                                 a) A new Method at a different Stage that shares the same relationship shall use the same Name; and<br />
                                 b) A new Method at a different Stage that does not share the same relationship shall not use the same Name,
                                 even if it shares a relationship with one of the Methods based on a different Extension Process.
                             </p>
-                            <div class="collapse" id="detailC10">
+                            <div class="collapse" id="detailC7">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> Yorkshire Surprise Royal is related to Yorkshire Surprise Major by an Extension Process, hence these Methods may
@@ -501,9 +498,9 @@
 
                     <div class="row">
                         <div class="col-sm-1">
-                            11.
+                            8.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC11"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC8"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -514,7 +511,7 @@
                                 a) The number of stages at which the Extension Process would create valid Methods; and<br />
                                 b) The number of desirable characteristics that are retained, as described in Section 8.B.
                             </p>
-                            <div class="collapse" id="detailC11">
+                            <div class="collapse" id="detailC8">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> [To be added if appropriate.]
