@@ -244,7 +244,7 @@
                             1.
                         </div>
                         <div class="col-xl-2 col-sm-3">
-                            Class descriptor
+                            Class Descriptor
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
@@ -392,13 +392,64 @@
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Certain terms including ‘Reverse’, ‘Single’ and ‘Double' have
                                     been used to prefix Method names when certain Method features are present.
-                                    Use of these terms is optional, but they should not be used unless the features
-                                    in 1 - 3 below are present.
+                                    Use of these terms is optional, but if used, they should follow the requirements
+                                    in 1 - 3 below.
                                     Furthermore, terms such as 'True', 'Symmetric' and 'Palindromic' should not be used in
                                     Method names where these could mislead.
                                 </p>
 
                                 <p class="text-primary">
+                                    1. A Method name should only begin with ‘Reverse’ if :<br />
+                                    a) Another Method in the Method Library has the same Method Title (after excluding ‘Reverse’
+                                    in the new Method); and<br />
+                                    b) That other Method's Changes, when Rotated if needed, are the Reverse of the new Method's
+                                    -- that is, the Places within each Change are inverted.
+                                </p>
+
+                                <p class="text-primary">
+                                    2. For non-Little Plain Methods, 'Double' and 'Single' may be used as Method name prefixes for
+                                    two Plain Methods that otherwise have the same Method Title where both Methods
+                                    have the same place notation above the Hunt Bell (or two or more coursing Hunt Bells), the Method
+                                    with the 'Double' prefix is a Double Method (that is, when the Places of each Change are
+                                    inverted, and then rotated as needed, the same Method is obtained),
+                                    and the Method with the 'Single' prefix has no internal Places made below the
+                                    Hunt Bell(s).
+                                </p>
+
+                                <p class="text-primary">
+                                    3. For Methods not covered by 2 above, 'Double' should only be used as a prefix if the Method
+                                    is a Double Method (as defined in 2 above), and 'Single' should only be used as a prefix if
+                                    the Method is not a Double Method.
+                                </p>
+
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Examples:</b>
+                                </p>
+
+                                <p class="text-danger">
+                                    St Simon's Bob Doubles has the place notation 5.1.5.3.5.3.5.1.5.125.<br />
+                                    If these Changes are inverted, the result is the sequence 1.5.1.3.1.3.1.5.1.145.<br />
+                                    This sequence may be Rotated to give 3.1.5.1.145.1.5.1.3.1.<br />
+                                    This resulting Method has been appropriately named Reverse St Simon's Bob Doubles in the Method Library.
+                                </p>
+
+                                <p class="text-danger">
+                                    Double Court Bob Minor has the place notation x14x36x16x36x14x16.<br />
+                                    If these Changes are inverted, the result is x36x14x16x14x36x16.<br />
+                                    This can be rotated to give the same Changes started with.<br />
+                                    It is therefore a Double method.<br />
+                                    Single Court Bob Minor has the place notation x14x16x16x16x14x16.<br/>
+                                    Since (1) the Places above the Hunt Bell in Double Court Bob Minor and Single Court Bob Minor are the same,
+                                    (2) Double Court Bob Minor is a Double Method, and
+                                    (3) Single Court Bob Minor has no internal Places made below the Hunt Bell,
+                                    the Double and Single prefixing of the otherwise common Method Title of Court Bob Minor is appropriate naming.
+                                </p>
+
+                                <hr />
+                                <p class="text-muted">
+                                    Previous language considered too complicated to use:<br />
+                                    <br />
                                 	1. A Method name should only begin with ‘Reverse’ if:<br />
                                 	a) Another Method in the Method Library has the same Method Title (after excluding ‘Reverse’
                                 	in the new Method); and<br />
@@ -406,18 +457,18 @@
                                 	within each Change are inverted.
                                 </p>
 
-                                <p class="text-primary">
-                                	Note that 'Reverse' may also be used if b) applies only when one of the Methods is Rotated.
+                                <p class="text-muted">
+                                	Note that 'Reverse' may also be used if b) applies only after Rotating one of the Methods.
                                 </p>
 
-                                <p class="text-primary">
+                                <p class="text-muted">
                                 	E.g. St Simon's Bob Doubles has the place notation 5.1.5.3.5.3.5.1.5.125.<br />
                                     If these Changes are inverted, the result is the Method 1.5.1.3.1.3.1.5.1.145.<br />
                                     If this Method is Rotated to become 3.1.5.1.145.1.5.1.3.1, the result is the Method
                                     named Reverse St Simon's Bob Doubles in the Method Library.
                             	</p>
 
-                            	<p class="text-primary">
+                            	<p class="text-muted">
                                 	2. A Method name should only begin with ‘Double’ if:<br />
                                 	a) It is a Double Method -- that is, when the Places of each Change are inverted,
                                 	the same Method results; and<br />
@@ -428,12 +479,12 @@
                                 	(or two or more coursing Hunt Bells).
                                 </p>
 
-                                <p class="text-primary">
+                                <p class="text-muted">
                                 	Note that 'Double' may also be used if a) applies only after Rotating the resulting Method,<br />
-                                	or if b) applies only after one of the Methods is Rotated.
+                                	or if b) applies only after Rotating one of the Methods.
                                 </p>
 
-                                <p class="text-primary">
+                                <p class="text-muted">
                                 	E.g. Double Court Bob Minor has the place notation x14x36x16x36x14x16.<br />
                                     If these Changes are inverted, the result is x36x14x16x14x36x16.
                                     This can be rotated to give the same Changes as above.
@@ -444,23 +495,33 @@
                                     Double Court Bob Minor, Double has been appropriately used.
                             	</p>
 
-                            	<p class="text-primary">
+                            	<p class="text-muted">
                                 	3. A Method name should only begin with ‘Single’ if:<br />
                                 	a) It is not a Double Method as defined in 2. above;<br />
                                 	b) If there is an existing Method in the Method Library that has the same Method Title
                                 	(after excluding ‘Single’ in the new Method, or after excluding 'Single' in the new Method
                                 	and excluding ‘Double’ in the existing Method),
-                                    then both Methods have the same place notation above the Hunt Bell
+                                    then:<br />
+                                    (i) both Methods have the same place notation above the Hunt Bell
+                                    (or two or more coursing Hunt Bells);<br />
+                                    (ii) if the new Method is a Plain Method, it has no internal Places made below the Hunt Bell
                                     (or two or more coursing Hunt Bells).
                                 </p>
 
-                                <p class="text-primary">
-                                	Note that 'Single' may also be used if b) applies only when one of the Methods is Rotated.
+                                <p class="text-muted">
+                                	Note that 'Single' may also be used if b) applies only after Rotating one of the Methods.
                                 </p>
 
-                                <p class="text-primary">
+                                <p class="text-muted">
                                 	E.g. See the example of Single Court Bob Minor and Double Court Bob Minor in 2. above.
                             	</p>
+
+                                <p class="text-muted">
+                                    4. If a Method exists in the Method Library that begins with Single or Double,
+                                    then a new Method should only be named such that it has the same Method Title as the
+                                    existing Method except that Single or Double is removed if the relationships
+                                    described in 2. and 3. above are maintained.
+                                </p>
 
                                 <hr />
                             </div>

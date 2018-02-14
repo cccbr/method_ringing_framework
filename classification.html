@@ -139,9 +139,10 @@
                             <div class="collapse" id="detailA1">
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> The following diagram shows how Methods are classified.
+                                    <b>Further explanation:</b> The following diagram shows how Static Methods
+                                    and Dynamic Methods are classified.
                                     The terms used in the diagram are all defined below.
-                                    Terms shown in bold form a Method's Class Name (see Section E below).
+                                    Terms shown in bold form a Method's Class Descriptor (see Section 5.B).
                                 </p>
                                 <p>
                                     <img src="images\classification\classification-diagram.svg" width=570 height=479 /> 
@@ -504,7 +505,8 @@
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Static Method that has one or more Hunt Bells, which does not use Jump Changes,
-                                and in which the number of Plain Leads in the Plain Course is the same as the number of Working Bells.
+                                and in which all the Working Bells, if any, first return to their starting Places after
+                                the same number of Plain Leads as there are Working Bells.
                             </p>
                             <div class="collapse" id="detailB2">
                                 <hr />
@@ -550,7 +552,8 @@
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Static Method that has no Hunt Bells, which does not use Jump Changes,
-                                and in which the number of Plain Leads in the Plain Course is the same as the Stage of the Method.
+                                and in which all the bells first return to their starting Places after
+                                the same number of Plain Leads as the Stage of the Method.
                             </p>
                             <div class="collapse" id="detailB3">
                                 <hr />
@@ -594,7 +597,8 @@
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Static Method that has no Hunt Bells, which does not use Jump Changes,
-                                and in which the number of Plain Leads in the Plain Course is not the same as the Stage of the Method.
+                                and in which the bells do not all first return to their starting Places after
+                                the same number of Plain Leads as the Stage of the Method.
                             </p>
                             <div class="collapse" id="detailB4">
                                 <hr />
@@ -644,8 +648,9 @@
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Static Method that has one or more Hunt Bells, which does not use Jump Changes,
-                                and in which the number of Plain Leads in the Plain Course is not the same as the number of Working Bells.
+                                A Static Method that has one or more Hunt Bells, that has four or more Working Bells, which does not use Jump Changes,
+                                and in which the Working Bells do not all first return to their starting Places after
+                                the same number of Plain Leads as there are Working Bells.
                             </p>
                             <div class="collapse" id="detailB5">
                                 <hr />
@@ -984,7 +989,8 @@
                                 1. The Path of the Hunt Bell is the same if it is rung backwards;<br/>
                                 2. The Hunt Bell rings the same number of times in each Place of the Path during a Plain Lead;<br/>
                                 3. The Hunt Bell Makes a Place more than twice within a Plain Lead;<br/>
-                                4. The Hunt Bell is not a Stationary Bell.
+                                4. The Path of the Hunt Bell is symmetrical about Changes and not Rows; and<br/>
+                                5. The Hunt Bell is not a Stationary Bell.
                             </p>
                             <div class="collapse" id="detailC3">
                                 <hr />
@@ -1022,9 +1028,8 @@
                             <p>
                                 A Hunter or Differential Hunter in which:<br/>
 								1. The Path of the Hunt Bell is the same if it is rung backwards;<br/>
-								2. The Hunt Bell does not ring the same number of times in each Place of the Path during a Plain Lead;<br/>
-								3. The Hunt Bell is not a Stationary Bell.
-
+								2. The Hunt Bell is not a Stationary Bell; and<br/>
+                                3. The Path of the Hunt Bell is not Plain, Treble Dodging or Treble Place.
                             </p>
                             <div class="collapse" id="detailC4">
                                 <hr />
@@ -1043,6 +1048,14 @@
                                     the other requirements for an Alliance Method.<br />
                                     Another example is:
                                     <a href="https://complib.org/method/26928">Semiquincentenary Alliance Major</a>.
+                                </p>
+
+                                <hr />
+                                <p class="text-muted">
+                                    <b>Technical comments:</b> In an Alliance Method, the Hunt Bell nearly always does not ring the
+                                    same number of times in each Place of the Path during a Plain Lead.  However there is one
+                                    exception to this: a Path that only spans two Places, in which the Hunt Bell rings the same number
+                                    of times in both Places, and which is symmetrical about Rows and not Changes, is an Alliance Method.
                                 </p>
 
                                 <hr />
