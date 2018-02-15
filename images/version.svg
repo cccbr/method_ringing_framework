@@ -13,16 +13,16 @@
    height="9.5249996mm"
    viewBox="0 0 52.916668 9.5249996"
    version="1.1"
-   id="svg8"
+   id="svg62"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="version.svg">
   <defs
-     id="defs2">
+     id="defs56">
     <clipPath
        id="clipEmfPath1"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path10"
+         id="path64"
          d="M -0.87904995,-0.87904995 H 175.80999 V 31.645798 H -0.87904995 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
@@ -30,7 +30,7 @@
        id="clipEmfPath2"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path13"
+         id="path67"
          d="M 0,0 H 175.80999 V 31.645798 H 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
@@ -38,7 +38,7 @@
        id="clipEmfPath3"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path16"
+         id="path70"
          d="M 0,0 V 31.646484 H 175.81055 V 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
@@ -58,8 +58,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="-294.41056"
-     inkscape:cy="66.706003"
+     inkscape:cx="128.29069"
+     inkscape:cy="-169.66968"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -69,7 +69,7 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata5">
+     id="metadata59">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -84,41 +84,41 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-86.58958,-156.95763)">
+     transform="translate(-71.889756,-94.416565)">
     <g
-       id="g22"
+       id="g76"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,86.58958,156.95763)" />
+       transform="matrix(0.30098783,0,0,0.30098783,71.889756,94.416565)" />
     <path
-       id="path24"
+       id="path78"
        d="M -0.87904995,-0.87904995 H 175.80999 V 31.645798 H -0.87904995 Z"
        clip-path="url(#clipEmfPath2)"
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
        inkscape:connector-curvature="0"
-       transform="matrix(0.30098783,0,0,0.30098783,86.58958,156.95763)" />
+       transform="matrix(0.30098783,0,0,0.30098783,71.889756,94.416565)" />
     <g
-       id="g26"
+       id="g80"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,86.58958,156.95763)" />
+       transform="matrix(0.30098783,0,0,0.30098783,71.889756,94.416565)" />
     <g
-       id="g34"
+       id="g88"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,86.58958,156.95763)">
+       transform="matrix(0.30098783,0,0,0.30098783,71.889756,94.416565)">
       <text
-         id="text32"
+         id="text86"
          y="16.690979"
          x="0"
          transform="translate(2.63715,5.2743)"
          style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;line-height:125%;font-family:Arial;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           id="tspan30"
+           id="tspan84"
            y="16.690979"
            x="0"
            sodipodi:role="line"><tspan
-             id="tspan28"
+             id="tspan82"
              style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;font-family:Arial;fill:#ffffff"
              dy="0"
-             dx="0">Draft: Version 1.71</tspan></tspan></text>
+             dx="0">Draft: Version 1.75</tspan></tspan></text>
     </g>
   </g>
 </svg>
