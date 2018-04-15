@@ -62,16 +62,19 @@
                         <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="extension.html">8. Method Extension and Contraction</a>
+                        <a class="nav-link active" href="extension.html">8. Method Extension</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <li class="nav-item">
                                 <a class="nav-link" href="#definitions">A. Definitions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#general">B. General</a>
+                                <a class="nav-link" href="#requirements">B. Requirements</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#desirablecharacteristicstoretain">C. Desirable Characteristics to Retain</a>
+                                <a class="nav-link" href="#newextensionprocesses">C. New Extension Processes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#exceptions">D. Exceptions</a>
                             </li>
                         </ul>
                     </li>
@@ -114,7 +117,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h2>8. Method Extension and Contraction</h2>
+                            <h2>8. Method Extension</h2>
                         </div>
                     </div>
 
@@ -129,15 +132,32 @@
                     <div class="row">
                         <div class="col-sm-1">
                             1.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA1"></a>
+                            </span>
                         </div>
                         <div class="col-xl-2 col-sm-3">
-                            Parent Method
+                            Extension Process
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Method at a given Stage from which it may be possible to derive related Methods at higher or lower Stages
-                                using extension of contraction processes.
+                                An algorithm that can be applied to the structure of a Method at one Stage to produce the structure of Methods at higher Stages.
+                                The Central Council maintains a collection of recognized Extension Processes.
+                                References in this framework to 'Extension Process' are to those processes that are part of the Central Council's collection.
                             </p>
+                            <div class="collapse" id="detailA1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The Central Council's collection of recognized Extension Processes can be found in Section 13.
+                                </p>
+
+                                <p class="text-primary">
+                                    In the case of a Static Method, the structure of the Method is its place notation.
+                                    In the case of a Dynamic Method, the structure of the Method is the set of rules used to generate its place notation.
+                                </p>
+
+                                <hr />
+                            </div>
                         </div>
                     </div>
 
@@ -146,11 +166,11 @@
                             2.
                         </div>
                         <div class="col-xl-2 col-sm-3">
-                            Extension
+                            Related Methods
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Method at a higher Stage than a Parent Method that is related to the Parent Method by an extension process.
+                                Two Methods at two different Stages are Related Methods if the higher Stage Method can be obtained by applying an Extension Process to the lower Stage Method.
                             </p>
                         </div>
                     </div>
@@ -160,22 +180,65 @@
                             3.
                         </div>
                         <div class="col-xl-2 col-sm-3">
-                            Contraction
+                            Parent Method
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                A Method at a lower Stage than a Parent Method that is related to the Parent Method by a contraction process.
+                                A Method at a given Stage from which it may be possible to derive Related Methods at higher Stages
+                                using an Extension Process.
                             </p>
                         </div>
                     </div>
 
-                    <!-- General -->
-                    <div class="row" id="general">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extension
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Method at a higher Stage than a Parent Method that is related to the Parent Method by an Extension Process.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA5"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extension Path
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                When two Related Methods that have the same Class Descriptors have been given the same Method Name, this establishes an Extension Path for these Methods.
+                                Additional Methods at new Stages with the same Class Descriptors that are related to these existing Methods by the same Extension Process are on this Extension Path.
+                                
+                            </p>
+                            <div class="collapse" id="detailA5">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Yorkshire Surprise Major and Yorkshire Surprise Royal are related by an Extension Process, have the same Class Descriptors ("Surprise"), and have been given
+                                    the same Method Name. An Extension Path for these Methods has therefore been established.
+                                </p>
+                                    
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requirements -->
+                    <div class="row" id="requirements">
                         <div class="col-sm-1">
                             <h5>B.</h5>
                         </div>
                         <div class="col-sm-11">
-                            <h5 class="border-bottom">General</h5>
+                            <h5 class="border-bottom">Requirements</h5>
                         </div>
                     </div>
 
@@ -188,15 +251,28 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                A Method extension (or contraction) process can be applied to the structure of a Parent Method at one Stage
-                                to produce the structure of related Methods at higher (or lower) Stages.
+                                Related Methods with the same Class Descriptors may be given the same Method Name if the requirements of this Section B, as well as Section 5 (Method Naming), have been met.<br />
+                                Methods with the same Class Descriptors that are not Related may not be given the same Method Name.
                             </p>
                             <div class="collapse" id="detailB1">
                                 <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Yorkshire Surprise Royal is related to Yorkshire Surprise Major by an Extension Process, and they both have the same Class Descriptors ("Surprise").
+                                    These Methods may therefore be given the same Method Name (as has been done).
+                                </p>
+
+                                <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> There are different extension and contraction processes.
-                                    Not all Methods have a structure that is amenable to extension,
-                                    and some Methods have a structure that is amenable to more than one extension process.
+                                    <b>Further explanation:</b> A given Parent Method can often be extended to a number of different Extensions using different Extension Processes.
+                                    It is left to bands ringing new Extensions to decide which Extension (if any) they wish to name the same as the Parent Method.<br />
+                                    Similarly, two or more different Parent Methods may extend, using different Extension Processes, to the same Extension.
+                                    Likewise, it is left to the band ringing the new Extension to decide which Parent Method name (if any) they wish to give to the Extension.
+                                </p>
+
+                                <p class="text-primary">
+                                    Note that Extension Processes often only apply to Parent Methods with a certain structure.
+                                    If there is not an Extension Process that can be applied to a given Parent Method,
+                                    a higher Stage Method with the same Class Descriptors may not be given the same name as the Parent Method.
                                 </p>
 
                                 <hr />
@@ -213,15 +289,42 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                Processes for extending and contracting Methods are recorded in the the Central Council’s Collection of
-                                Recognised Processes for Method Extension and Contraction, which includes full definitions
-                                and advice on their interpretation and application.
+                                Once an Extension Path has been established for two Related Methods with the same Class Descriptors then:<br />
+                                a) New Extensions of these Methods created using the same Extension Process, and which have the same Class Descriptors, shall be given the same Method Name; and<br />
+                                b) A new Method at a different Stage with the same Class Descriptors that is not on the Extension Path shall not be given the same Name.
                             </p>
                             <div class="collapse" id="detailB2">
                                 <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Yorkshire Surprise Royal is an Extension of Parent Method Yorkshire Surprise Major,
+                                    they both have the same Class Descriptors ("Surprise"),
+                                    and they have been given the same Name, establishing an Extension Path.
+                                </p>
+
+                                <p class="text-danger">
+                                    When the same Extension Process is applied to Yorkshire Surprise Major to obtain a Maximus Method, if the resulting Maximus
+                                    Method has the same Class Descriptors, it must be given the name Yorkshire because the new Method is on the Extension Path.
+                                    (The resulting Maximus Method in this example is a Surprise Method, and so it has been named Yorkshire, giving Yorkshire Surprise Maximus.)
+                                </p>
+
+                                <p class="text-danger">
+                                    Southwark Surprise Maximus is also an Extension of Yorkshire Surprise Major by a different Extension Process.
+                                    Since an Extension Path has already been established by the naming of Yorkshire Surprise Royal,
+                                    Southwark Surprise Maximus could not have been named Yorkshire, even if the Method now known as Yorkshire Surprise Maximus had not already
+                                    been named. Southwark, although related and having the same Class Descriptors, is off the Extension Path.
+                                </p>
+
+                                <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> The Collection of Recognised Processes for Method Extension
-                                    and Contraction can be accessed here: [add link]
+                                    <b>Further explanation:</b> Note that an Extension Path also applies to lower Stage Methods.
+                                    For example, if Cambridge Surprise Major and Cambridge Surprise Royal established an Extension Path, 
+                                    since there's a Surprise Minor Method that extends using the same Extension Process to give Cambridge Surprise Major,
+                                    this Surprise Minor Method is on the Extension Path and so is also named Cambridge.
+                                </p>
+
+                                <p class="text-primary">
+                                    It is possible that a new Method may be on two or more existing Extension Paths.
+                                    In this case, the Method Name from any of the Extension Paths may be used for the new Method.
                                 </p>
 
                                 <hr />
@@ -238,21 +341,20 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                If one Extension Process has been used to relate two or more Methods that share a Name in the Methods Library then:<br />
-                                a) A new Method at a different Stage that shares the same relationship shall use the same Name; and<br />
-                                b) A new Method at a different Stage that does not share the same relationship shall not use the same Name,
-                                even if it shares a relationship with one of the Methods based on a different Extension Process.
+                                There are no Extension naming restrictions per se between two Methods that have different Class Descriptors.
+                                However, when a new Extension is produced that has different Class Descriptors from its Parent Method,
+                                the new Extension may only be given the same name as its Parent Method if this doesn't conflict with B.1 and B.2 above as they relate to the
+                                Class Descriptors of the new Extension.
                             </p>
                             <div class="collapse" id="detailB3">
                                 <hr />
                                 <p class="text-danger">
-                                    <b>Example:</b> Yorkshire Surprise Royal is related to Yorkshire Surprise Major by an Extension Process, hence these Methods may
-                                    share a Name.<br />
-                                    Southwark Surprise Maximus is also related to Yorkshire Surprise Major by a different Extension Process.
-                                    Since the extension process
-                                    for the name Yorkshire has already been established by the naming of Yorkshire Surprise Royal,
-                                    Southwark could not have been named Yorkshire
-                                    Surprise Maximus.
+                                    <b>Example:</b> A Method designer extends Beverley Surprise Minor with an Extension Process and the resulting Extension is a Delight Royal Method.
+                                    Since the Extension has different Class Descriptors from the Parent Method, a band ringing the new Delight Royal Method may choose to name it
+                                    Beverley, or give it a different name.
+                                    However, the band may not name the new Method Beverley if<br />
+                                    (1) there is already a Beverley Delight Method at a different Stage to which the new Extension is not related, or<br/>
+                                    (2) there is already an established Extension Path for Beverley Delight, and the new Extension is not on this Extension Path.
                                 </p>
 
                                 <hr />
@@ -260,62 +362,52 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-1">
-                            4.
-                            <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB4"></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                If a new method is related to more than one method in the Methods Library by different Extension Processes,
-                                and none of the existing Methods are related by an Extension Process to any other Method in the Library,
-                                then any of the valid Extension Processes may be used to name the new Method, but consideration should be given to:<br />
-                                a) The number of stages at which the Extension Process would create valid Methods; and<br />
-                                b) The number of desirable characteristics that are retained, as described in Section 8.B.
-                            </p>
-                            <div class="collapse" id="detailB4">
-                                <hr />
-                                <p class="text-danger">
-                                    <b>Example:</b> [To be added if appropriate.]
-                                </p>
-
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Desirable Characteristics to Retain -->
-                    <div class="row" id="desirablecharacteristicstoretain">
+                    <!-- New Extension Processes -->
+                    <div class="row" id="newextensionprocesses">
                         <div class="col-sm-1">
                             <h5>C.</h5>
                         </div>
                         <div class="col-sm-11">
-                            <h5 class="border-bottom">Desirable Characteristics to Retain</h5>
+                            <h5 class="border-bottom">New Extension Processes</h5>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-1">
                             1.
-                            <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC1"></a>
-                            </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                The extension relationship should cover an indefinite number of stages.
+                                A band that wishes to use a different Extension Process from those included in the Central Council's collection to create a new Extension is invited to submit the proposed process
+                                to the Central Council for review.
                             </p>
-                            <div class="collapse" id="detailC1">
-                                <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> An extension process does not need to produce extensions at every higher stage,
-                                    but it should not stop producing extensions before stage 32.
-                                </p>
 
-                                <hr />
-                            </div>
+                            <p>
+                                The Central Council will add the new Extension Process to its collection of recognized Extension Processes if it believes the proposed process
+                                is a valid manner in which to extend Parent Methods to higher Stages.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Exceptions -->
+                    <div class="row" id="exceptions">
+                        <div class="col-sm-1">
+                            <h5>D.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Exceptions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Many higher Stage methods were named and recorded in the Methods Library before the Central Council implemented requirements for Method Extension.
+                                All such Methods retain their existing names, and the requirements of this framework only apply to new Methods.
+                            </p>
                         </div>
                     </div>
 
@@ -325,107 +417,9 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                The extension of a method should have the same symmetry as the parent.
-                            </p>
-                            <p class="text-danger">
-                                [Need to define the symmetries to be preserved, e.g. palindromic and double.]
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            3.
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                The extension of a method should have the same number of hunt bells as the parent.
-                            </p>
-                            <p class="text-danger">
-                                [Needs refining to cover extension by one stage by adding a hunt bell.]
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            4.
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                The extension of a method should have the same number of cycles of working bells as the parent.
-                                Where a method has two or more cycles of the same size, this characteristic should be retained in all extensions.
-                            </p>
-                            <p class="text-danger">
-                                [To be discussed – some non-differential methods extend quite naturally to short-course.]
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            5.
-                            <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC5"></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                The extension of a method should retain the same lead-end type.
-                            </p>
-                            <div class="collapse" id="detailC5">
-                                <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> There are 4 lead-end types:  Plain Bob, Grandsire, Cyclic, and Other.
-                                </p>
-                                <p class="text-danger">
-                                    [Need to define these lead end types.]
-                                </p>
-
-                                <hr />
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            6.
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                The extension of a method should not have a bell making more or fewer consecutive blows than are made at the related position in the parent.
-                            </p>
-                            <p class="text-danger">
-                                [To be discussed – is this sufficiently desirable to justify retaining?]
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            7.
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                Wherever the parent has a place made adjacent to the path of a hunt bell, this characteristic should be retained in all extensions.
-                            </p>
-                            <p class="text-danger">
-                                [To be discussed – is this sufficiently desirable to justify retaining?]
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            8.
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                Wherever the parent has working bells making adjacent places, this characteristic should be retained in all extensions.
-                            </p>
-                            <p class="text-danger">
-                                [To be discussed – is this sufficiently desirable to justify retaining?]
+                                If a new Extension that is on an Extension Path ought, under Section 8.B, to be given the same name as its Parent Method,
+                                but that name has already been used for a different Method recorded in the Methods Library before the Central Council implemented requirements for Method Extension,
+                                then another name can be given to the new Extension.
                             </p>
                         </div>
                     </div>
