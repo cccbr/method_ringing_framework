@@ -59,10 +59,13 @@
                         <a class="nav-link active" href="reporting.html">6. Performance Reporting</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <li class="nav-item">
-                                <a class="nav-link" href="#content">A. Content</a>
+                                <a class="nav-link" href="#definitions">A. Definitions</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#performancenorms">B. Performance Norms</a>
+                                <a class="nav-link" href="#content">B. Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#performancenorms">C. Performance Norms</a>
                             </li>
                         </ul>
                     </li>
@@ -118,10 +121,10 @@
                      <!-- Definitions -->
                     <div class="row" id="definitions">
                         <div class="col-sm-1">
-                            <h5>Z.</h5>
+                            <h5>A.</h5>
                         </div>
                         <div class="col-sm-11">
-                            <h5 class="border-bottom">Definitions (to be re-ordered)</h5>
+                            <h5 class="border-bottom">Definitions</h5>
                         </div>
                     </div>
 
@@ -132,108 +135,82 @@
                         <div class="col-xl-2 col-sm-3">
                             Performance Title
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailZ1"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA1"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
                                 A Performance Title takes the following form:<br />
-                                a) Number of Changes in the Performance;<br />
-                                b) 'Spliced' if the Performance was Spliced (see Section 6.A.3 below);<br />
-                                c) Name(s) of the Method(s) rung in the Performance. Where a Performance comprised more than one Method, this component of the Performance Title is optional -- 
-                                   the Method Names can be determined from the Performance Detail (see Section 6.Z.2 below);<br />
-                                d) Common Method Class(es), if any;<br />
-                                e) 'Variable Cover' if the Performance included Calls that affected Cover Bell(s);<br />
-                                f) Name(s) of the Stage(s) of the Method(s) rung in the Performance, listed in order of lowest Stage to highest Stage.<br />
-                                   However, if the Effective Stage of the Performance is lower than the Stage of the highest Stage Method rung in the Performance,
-                                   then only the Effective Stage is shown in the Performance Title.<br />
-                                   This does not apply to Performances with Accepted Truth -- in this case, the two Stages rung are included in the Performance Title.
+                                a) If the Performance was in a single Method:
                             </p>
-                            <div class="collapse" id="detailZ1">
+                            
+                            <ol>
+                                <li>
+                                    The number of Changes in the Performance;
+                                </li>
+                                <li>
+                                    The Name of the Method rung;
+                                </li>
+                                <li>
+                                    The Class Descriptors (if any) of the Method rung;
+                                </li>
+                                <li>
+                                    'Variable Cover' if the Performance included Call(s) that affected Cover Bell(s);
+                                </li>
+                                <li>
+                                    The Stage Name of the Method rung.
+                                </li>
+                            </ol>
+
+                            <p>
+                                b) If the Performance was in more than one Method:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The number of Changes in the Performance;
+                                </li>
+                                <li>
+                                    'Spliced' if the Performance was Spliced (see Section 6.B.3 below);
+                                </li>
+                                <li>
+                                    The Class Descriptor(s) if the Methods rung in the Performance all have the same Class Descriptor(s);
+                                </li>
+                                <li>
+                                    'Plain' if the Methods rung in the Performance do not all have the same Class Descriptors,
+                                    but are all members of the Plain Class of Methods;
+                                </li>
+                                <li>
+                                    'Treble Dodging' if the Methods rung in the Performance do not all have the same Class Descriptors,
+                                    but are all members of the Treble Dodging Class of Methods;
+                                </li>
+                                <li>
+                                    'Variable Cover' if the Performance included Call(s) that affected Cover Bell(s);
+                                </li>
+                                <li>
+                                    The Stage Name(s) of the Methods rung in the Performance, listed in order of lowest Stage to highest Stage.
+                                </li>
+                            </ol>
+
+                            <p>
+                                c) In order for Performance Titles not to mislead,
+                                if the highest Stage of Method rung in the Performance exceeds the Effective Stage of the Performance,
+                                then:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Layout b) above is always used, even for a single Method Performance;
+                                </li>
+                                <li>
+                                    The Effective Stage Name is used for b) 7 above, instead of the Stage Name(s) of the Method(s) rung.
+                                </li>
+                            </ol>
+
+                            <div class="collapse" id="detailA1">
                                 <hr />
-                                <p class="text-danger">
-                                    <b>Examples:</b>
-                                </p>
-
-                                <ol class="text-danger">
-                                    <li>
-                                        1260 Plain Bob Minor
-                                    </li>
-                                    <li>
-                                        5040 Grandsire Triples
-                                    </li>
-                                    <li>
-                                        5040 Cambridge and Norwich Surprise Minor
-                                    </li>
-                                    <li>
-                                        5056 Spliced Plain and Canterbury Little Bob Major
-                                    </li>
-                                    <li>
-                                        5024 Spliced Surprise Major
-                                    </li>
-                                    <li>
-                                        5067 Spliced Differential Treble Place Caters
-                                    </li>
-                                    <li>
-                                        2520 Spliced Treble Dodging Royal
-                                    </li>
-                                    <li>
-                                        5070 Plain Doubles and Minor
-                                    </li>
-                                    <li>
-                                        5040 Minor
-                                    </li>
-                                    <li>
-                                        5016 Spliced Maximus
-                                    </li>
-                                    <li>
-                                        1320 Spliced Variable Cover Cinques and Maximus
-                                    </li>
-                                </ol>
-                                
-                                <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b>
-                                </p>
-                                
-                                <p class="text-primary">
-                                     Where a Performance comprised a single Method, the Performance Title simplifies to:<br />
-                                     a) Number of Changes in the Performance;<br />
-                                     b) Method Title.<br />
-                                    See examples 1 and 2 above.<br />
-                                    Note that Grandsire does not have a Class word because it is one of the Methods
-                                    with a Method Title exception (see Section 5.F).
-                                </p>
-
-                                <p class="text-primary">
-                                    Where a Performance comprised a small number of Methods / Variations, these may optionally be listed in the Performance Title.
-                                    See examples 3 and 4 above.
-                                    However this is not necessary since the same information is included in the Performance Detail (see Section 6.Z.2 below).
-                                    Examples 5 to 11 above shown Performance Titles where Method / Variation Names are not included.
-                                </p>
-
-                                <p class="text-primary">
-                                    Where a Performance comprised Methods / Variations that all have the same Class Descriptor(s)
-                                    (e.g. 'Surprise', 'Little Alliance', or 'Differential Little Bob')
-                                    the Class Descriptor(s) are included in the Performance Title.
-                                    See examples 5 and 6 above.  In this case, the Class Descriptors do not need to be included in the Performance Detail (see Section 6.Z.2 below).
-                                </p>
-
-                                <p class="text-primary">
-                                    If the Methods / Variations do not all have the same Class Descriptors, but are all either Treble Dodging Methods, or Plain Methods / Variations,
-                                    then 'Treble Dodging' or 'Plain' respectively is included in the Performance Title.  See examples 7 and 8 above.
-                                    In this case, the Class Descriptors are included in the Performance Detail (see Section 6.Z.2 below).
-                                </p>
-
-                                <p class="text-primary">
-                                    If the Methods / Variations do not all have the same Class Descriptors, and are not all either Treble Dodging or Plain Methods / Variations,
-                                    then no Class words are included in the Performance Title.  See examples 9 and 10 above.
-                                    In this case, the Class Descriptors are included in the Performance Detail (see Section 6.Z.2 below).
-                                </p>
-
-                                <p class="text-primary">
-                                    Examples 8 and 11 above show Performance Titles when more than one Stage was rung.<br />
-                                    Example 11 above shows a Performance Title when Variable Cover was rung.
+                                    <b>Further explanation:</b> See Section 6.A.2 below for examples of Performance Titles.
                                 </p>
 
                                 <hr />
@@ -248,61 +225,192 @@
                         <div class="col-xl-2 col-sm-3">
                             Performance Detail
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailZ2"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA2"></a>
                             </span>
                         </div>
                         <div class="col-xl-9 col-sm-8">
                             <p>
-                                The Performance Detail lists:<br/>
-                                a) The number of Methods and, separately, the number of Variations rung in the Performance (as applicable);<br/>
-                                b) The number of Changes rung of each Method and Variation;<br />
-                                c) The number of Changes of Method / Variation in the Performance;<br />
-                                d) Optionally, key features of the Composition such as 'atw' for 'all the work', and 'eld' for 'each lead different'.
+                                The Performance Detail takes the following form:<br/>
+                                a) If the Performance was in a single Method and the Effective Stage of the Performance was the same as the Stage of the Method:
                             </p>
+
+                            <ol>
+                                <li>
+                                    The Performance Detail is left blank.
+                                </li>
+                            </ol>
 
                             <p>
-                                Where a Performance comprised multiple Round Blocks (such as a Peal of 7 Round Extents of Minor),
-                                the Performance Detail may optionally, and instead of a) to c) above, list the Methods that were rung in each Round Block.
+                                b) If the Performance was in more than one Method, or was in a single Method where the Effective Stage of the Performance was less than the 
+                                Stage of the Method:
+                            </p> 
+
+                            <ol>
+                                <li>
+                                    The number of Methods and/or Variations rung in the Performance;
+                                </li>
+                                <li>
+                                    The number of Changes rung of each Method and Variation, together with the Name and, if not apparent from the Performance Title,
+                                    the Class Descriptor(s) and Stage of each Method and Variation;
+                                </li>
+                                <li>
+                                    The number of Changes of Method / Variation ('com', 'cov', or 'com/v') in the Performance;
+                                </li>
+                                <li>
+                                    Optionally, key features of the Composition such as 'atw' for 'all the work', and 'eld' for 'each lead different'.
+                                </li>
+                            </ol>
+
+                            <p>
+                                c) Where a multi-Method Performance comprised multiple Round Blocks where each Round Block was a whole multiple of an Extent in Length
+                                (e.g. a Peal of 7 single Extent Round Blocks of Minor), the Performance Detail may optionally, and instead of b) 1 to 3 above,
+                                list the number(s) of the Extents in the order they were rung, and the Methods / Variations that were rung in each Round Block.
                             </p>
-                            <div class="collapse" id="detailZ2">
-                                <hr />
-                                <p class="text-danger">
-                                    <b>Examples:</b>
-                                </p>
-                                <ol class="text-danger">
-                                    <li>
-                                        8m: 640 each Bristol, Pudsey, Rutland, Superlative, Yorkshire; 608 each Cambridge, Lincolnshire, London; 120 com; atw.
-                                    </li>
 
-                                    <li>
-                                        (1) Carlisle; (2) Beverley, Surfleet; (3) London, Wells; (4) York, Durham; (5) Norwich; (6) Ipswich; (7) Cambridge.
-                                    </li>
-                                </ol>
-
+                            <div class="collapse" id="detailA2">
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b>
-                                </p>
-                                
-                                <p class="text-primary">
-                                    The first example above is the Performance Detail for a Peal of Spliced Surprise Major.<br />
-                                    8m indicates the Peal included 8 Methods.<br/>
-                                    120 com indicates there were 120 changes of Method.
+                                    <b>Further explanation:</b> Following are some examples of Performance Titles and Performance Details:
                                 </p>
 
-                                <p class="text-primary">
-                                    If a Performance included both Methods and Variations, the Performance Detail would include,
-                                    for example, 11m / 31v.<br />
-                                    If the Performance just comprised Variations, the Performance Detail would include,
-                                    for example, 21v.
-                                </p>
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 1260 Plain Bob Minor
+                                    </li>
+                                    <li>
+                                        Performance Detail: [None required]
+                                    </li>
+                                    <li>
+                                        This is the most straightforward scenario, where a single Method was rung in a Performance.
+                                    </li>
+                                </ul>
 
-                                <p class="text-primary">
-                                    The second example above is the alternative form of Performance Detail that may optionally be used for Performances comprising multiple Round Blocks.<br />
-                                    This example is the Performance Detail for a Peal of Surprise Minor.<br />
-                                    The numbers in brackets represent each Round Block in the Performance in the order they were rung,
-                                    followed by the Methods (or Variations where applicable) that were rung in each Round Block.
-                                </p>
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 1251 Stedman Variable Cover Triples
+                                    </li>
+                                    <li>
+                                        Performance Detail: [None required]
+                                    </li>
+                                    <li>
+                                        Here a single Method was rung in a Performance, and the Performance included Variable Cover.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 5024 Spliced Surprise Major
+                                    </li>
+                                    <li>
+                                        Performance Detail: 8m: 640 each Bristol, Pudsey, Rutland, Superlative, Yorkshire; 608 each Cambridge, Lincolnshire, London; 120 com; atw
+                                    </li>
+                                    <li>
+                                        Since all the Methods rung in this Performance have a Surprise Class Descriptor, Surprise is included in the Performance Title
+                                        and the Performance Detail only needs to include the Method Names.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 5040 Spliced Surprise Minor
+                                    </li>
+                                    <li>
+                                        Performance Detail: 9m: (1) Carlisle; (2-3) Beverley, Surfleet; (4) London, Wells; (5) York, Durham; (6) Norwich; (7) Cambridge
+                                    </li>
+                                    <li>
+                                        This is an example of a Performance comprising multiple Round Blocks where each Round Block was a whole multiple of an Extent in Length.
+                                        Since the Performance was of Minor, the first Round Block
+                                        was 720 Changes, the second Round Block was 1440 Changes, and the remaining Round Blocks were all 720 Changes.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 1280 Spliced Treble Dodging Major
+                                    </li>
+                                    <li>
+                                        Performance Detail: 3m: 416 each Cambridge Surprise, Megan Delight; 448 Imperial Treble Bob; 2 com; atw
+                                    </li>
+                                    <li>
+                                        In this example the Methods rung do not have the same Class Descriptors, but they are all Treble Dodging Methods.
+                                        Treble Dodging is therefore included in the Performance Title, and the Method Names and Class Descriptors are included
+                                        in the Performance Detail.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 5000 Spliced Royal
+                                    </li>
+                                    <li>
+                                        Performance Detail: 8m: 800 each Dr No Differential Surprise, Kananga Surprise, Zorin Surprise; 640 Largo Alliance;
+                                        600 Jaws Little Alliance; 560 each Drax Little Alliance, Elektra Alliance; 240 Nick Nack Differential; 139 com; atw
+                                    </li>
+                                    <li>
+                                        In this example the Methods rung do not have the same Class Descriptors, and they are not all either Plain or Treble Dodging Methods.
+                                        Therefore no Class names are used in the Performance Title, and the Method Names and Class Descriptors are included
+                                        in the Performance Detail.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 1320 Plain Doubles
+                                    </li>
+                                    <li>
+                                        Performance Detail: 6m/v: (1-2) Grandsire; (3-4) St Simon's Bob; (5-6) St Martin's Bob; (7) April Day; (8) Kennington; (9-11) Plain Bob
+                                    </li>
+                                    <li>
+                                        This example comprises 4 Methods and 2 Variations. The two Variations, April Day and Kennington, are based on Plain Bob,
+                                        and so are members of the Plain Class.
+                                        Variations do not use Class Descriptors, so this Performance doesn't have common Class Descriptor(s) that can be used in the
+                                        Performance Title.
+                                        However, Plain is used in the Performance Title since all Methods and Variations are members of this Class.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 5040 Plain Doubles and Minor
+                                    </li>
+                                    <li>
+                                        Performance Detail: 2m: 2880 St Clement's Bob Minor; 2160 Grandsire Doubles; 6 com
+                                    </li>
+                                    <li>
+                                        Since this example is a multi-Stage Performance, the Stage Names are included in the Performance Detail.
+                                        Also, although Plain Bob and Grandsire are both members of the Bob Class of Methods,
+                                        Grandsire is an exception (see Section 5.F.1) in which the Bob Class Descriptor is not used.
+                                        Bob therefore cannot be used in the Performance Title, but since St Clement's and Grandsire are both part of the Plain Class of Methods,
+                                        Plain is used in the Performance Title.
+                                    </li>
+                                </ul>
+
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 1392 Spliced Variable Cover Cinques and Maximus
+                                    </li>
+                                    <li>
+                                        Performance Detail: 2m: 528 Stedman Cinques; 864 Bristol Surprise Maximus; 3 com
+                                    </li>
+                                    <li>
+                                        This example shows the format for a Performance that was Spliced, variable Cover and multi-Stage.
+                                    </li>
+                                </ul>
+                              
+                                <ul class="text-primary">
+                                    <li>
+                                        Performance Title: 240 Triples
+                                    </li>
+                                    <li>
+                                        Performance Detail: 1m: 240 Martyrs Link Major
+                                    </li>
+                                    <li>
+                                        Martyrs Link has one Stationary Bell, and in this example, the Stationary Bell was not affected by any Calls.
+                                        The Effective Stage of the Performance was therefore Triples.
+                                        Since the Effective Stage is lower than the highest Stage of Method rung, the Performance Title and Performance Detail
+                                        are constructed as above.
+                                    </li>
+                                </ul>
 
                                 <hr />
                             </div>
@@ -312,7 +420,7 @@
                     <!-- Content -->
                     <div class="row" id="content">
                         <div class="col-sm-1">
-                            <h5>A.</h5>
+                            <h5>B.</h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">Content</h5>
@@ -323,7 +431,7 @@
                         <div class="col-sm-1">
                             1.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA1"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB1"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -337,7 +445,7 @@
                                 f) The names of the ringers in the Performance and the number(s) of the bell(s) each rang; and<br/>
                                 g) The names of any umpire(s) present.
                             </p>
-                            <div class="collapse" id="detailA1">
+                            <div class="collapse" id="detailB1">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> The Location in a) above should be sufficient to identify unambiguously where the performance was rung,
@@ -361,20 +469,20 @@
                         <div class="col-sm-1">
                             2.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA2"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB2"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
                                 A Performance Report may also include additional information such as:<br/>
                                 a) The society for which the Performance was rung;<br/>
-                                b) Details of the Composition used in the Performance or a reference to it;<br/>
+                                b) Details of the Composition used in the Performance, or a reference to it;<br/>
                                 c) The name(s) of the composer(s);<br/>
                                 d) The time the Performance took to ring;<br/>
                                 e) The weight of the tenor for full-circle style ringing, or the size of the tenor for handbell ringing; and/or<br/>
                                 f) Dedications and other footnotes.
                             </p>
-                            <div class="collapse" id="detailA2">
+                            <div class="collapse" id="detailB2">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> Inclusion of the Composition per b) above is encouraged in all Performance Reports.
@@ -396,40 +504,21 @@
                         <div class="col-sm-1">
                             3.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA3"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB3"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                A Performance involving more than one Method is described as Spliced if changes of Method
-                                occur at more than one distinct Row.
+                                A Performance involving more than one Method is described as Spliced if change(s) of Method / Variation
+                                during the Performance occur at a Row that is not the same as the initial Row of the Performance.
                             </p>
-                            <div class="collapse" id="detailA3">
+                            <div class="collapse" id="detailB3">
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further explanation:</b> The format is [number of Changes] Spliced [common Class Descriptors]
-                                    Stage(s), followed by the number of Methods
-                                    rung, and the Name and number of Changes rung of each Method.
-                                    E.g. ‘5024 Spliced Surprise Major (8m: 640 Bristol, 608 Cambridge, [etc])’.
-                                </p>
-
-                                <p class="text-primary">
-                                    If a multi-Method Performance is not Spliced, the format is [number of Changes]
-                                    [common Class Descriptors] Stage(s), followed by the number of Methods
-                                    rung, and the Name and number of Changes rung of each Method.
-                                    E.g. ‘5040 Surprise Minor (7m: 1 extent each Cambridge, Beverley, Surfleet, [etc])’.
-                                </p>
-
-                                <p class="text-primary">
-                                    If the Methods that were spliced have more than one Class Descriptor, any common class elements are
-                                    included in the Performance title,
-                                    and the remainder are included in the Method list.
-                                    E.g. 1280 Spliced Treble Dodging Major (2m: 672 Kent Treble Bob, 608 Cambridge Surprise),
-                                    or 5008 Spliced Major (3m: 1360 Plain Bob, 2688 Yorkshire Surprise, 960 Duffield).
-                                </p>
-                                <p class="text-primary">
-                                    If Methods with more than one Stage were rung, each Stage is included in the Performance title.
-                                    E.g. 5208 Spliced Triples and Major (2m: 2520 Stedman Triples, 2688 Bristol Surprise Major).
+                                    <b>Further explanation:</b> If, for example, a Performance starts in Rounds, and changes of Method / Variation
+                                    only occur at Rounds during the Performance, then the Performance is not Spliced.
+                                    But if a change of Method / Variation occurs during the Performance at any Row other than Rounds,
+                                    then the Performance is Spliced.
                                 </p>
 
                                 <hr />
@@ -461,9 +550,9 @@
                     </div>                  
 
                     <!-- Performance Norms -->
-                    <div class="row" id="content">
+                    <div class="row" id="performancenorms">
                         <div class="col-sm-1">
-                            <h5>B.</h5>
+                            <h5>C.</h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">Performance Norms</h5>
@@ -486,7 +575,7 @@
                         <div class="col-sm-1">
                             2.
                              <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB2"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC2"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -505,45 +594,24 @@
                                 j) If Cover Bell(s) were used, these were in the highest Place(s) of the Rows;<br />
                                 k) Jump Changes were not used;<br />
                                 l) Only one Method was rung in any one Row;<br />
-                                m) The Effective Stage of the Performance was not lower than the highest Stage of Method rung in the Performance;<br />
+                                m) A Performance with only one ringer was witnessed by an umpire;<br />
                                 n) The Performance was consistent with this framework.
                             </p>
-                            <div class="collapse" id="detailB2">
+                            <div class="collapse" id="detailC2">
                                 <hr />
                                 <p class="text-primary">
-                                    <b>Further Explanation:</b> For norm k), if Methods with Jump Changes were used, this will be evident from 6.A.1 d) above, since these Methods include "Jump" in their Titles.
-                                    Therefore disclosure relating to Jump Changes is only required if Jump Calls (i.e. Calls involving Jump Changes) were used but Jump Methods (i.e. Methods involving Jump Changes) were not.
+                                    <b>Further Explanation:</b> For norm k), if Methods with Jump Changes were used, this will be evident from 6.B.1 c) or d)
+                                    above, since these Methods include "Jump" in their Titles.
+                                    Therefore disclosure relating to Jump Changes is only required if Jump Calls (i.e. Calls involving Jump Changes) were used but
+                                    Jump Methods (i.e. Methods involving Jump Changes) were not.
                                 </p>
 
                                 <p class="text-primary">
-                                    Norm m) does not apply to Performances with Accepted Truth.
-                                </p>
-
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1">
-                            3.
-                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB3"></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-11">
-                            <p>
-                                A performance with only one ringer should be witnessed by an umpire.
-                            </p>
-                            <div class="collapse" id="detailB3">
-                                <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> One person could ring a Performance of Minimus four in hand.  The umpire
-                                    provides corroboration that the Performance took place as reported.
-                                </p>
-                                <p class="text-primary">
+                                    For norm m), one person could ring a Performance of Minimus four in hand.
+                                    The umpire provides corroboration that the Performance took place as reported.
                                     Note that if this norm is not followed (i.e. no umpire was present for a single person performance),
-                                    this will be evident from 6.A.1 g) and h) above, so no further disclosure is required.
+                                    this will be evident from 6.B.1 f) and g) above, so in practice no further disclosure is required.
+                                </p>
 
                                 <hr />
                             </div>

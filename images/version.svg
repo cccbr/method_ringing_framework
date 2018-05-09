@@ -57,9 +57,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="65.661231"
-     inkscape:cy="36.401449"
+     inkscape:zoom="0.7"
+     inkscape:cx="40.762138"
+     inkscape:cy="-1.3199745"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -84,26 +84,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-88.460466,-148.93955)">
+     transform="translate(-95.048351,-138.95909)">
     <g
        id="g22"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,88.460466,148.93955)" />
+       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)" />
     <path
        id="path24"
        d="M -0.87904995,-0.87904995 H 175.80999 V 31.645798 H -0.87904995 Z"
        clip-path="url(#clipEmfPath2)"
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
        inkscape:connector-curvature="0"
-       transform="matrix(0.30098783,0,0,0.30098783,88.460466,148.93955)" />
+       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)" />
     <g
        id="g26"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,88.460466,148.93955)" />
+       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)" />
     <g
        id="g34"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,88.460466,148.93955)">
+       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)">
       <text
          id="text32"
          y="16.690979"
@@ -118,7 +118,7 @@
              id="tspan28"
              style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;font-family:Arial;fill:#ffffff"
              dy="0"
-             dx="0">Draft: Version 1.93</tspan></tspan></text>
+             dx="0">Draft: Version 1.94</tspan></tspan></text>
     </g>
   </g>
 </svg>
