@@ -22,7 +22,7 @@
        id="clipEmfPath1"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path10"
+         id="path3699"
          d="M -0.87904995,-0.87904995 H 175.80999 V 31.645798 H -0.87904995 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
@@ -30,7 +30,7 @@
        id="clipEmfPath2"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path13"
+         id="path3702"
          d="M 0,0 H 175.80999 V 31.645798 H 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
@@ -38,7 +38,7 @@
        id="clipEmfPath3"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path16"
+         id="path3705"
          d="M 0,0 V 31.646484 H 175.81055 V 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
@@ -57,9 +57,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="40.762138"
-     inkscape:cy="-1.3199745"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="109.09779"
+     inkscape:cy="56.604498"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -84,41 +84,41 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-95.048351,-138.95909)">
+     transform="translate(-76.967877,-154.28494)">
     <g
-       id="g22"
+       id="g3711"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)" />
+       transform="matrix(0.30098783,0,0,0.30098783,76.967877,154.28494)" />
     <path
-       id="path24"
+       id="path3713"
        d="M -0.87904995,-0.87904995 H 175.80999 V 31.645798 H -0.87904995 Z"
        clip-path="url(#clipEmfPath2)"
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
        inkscape:connector-curvature="0"
-       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)" />
+       transform="matrix(0.30098783,0,0,0.30098783,76.967877,154.28494)" />
     <g
-       id="g26"
+       id="g3715"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)" />
+       transform="matrix(0.30098783,0,0,0.30098783,76.967877,154.28494)" />
     <g
-       id="g34"
+       id="g3723"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098783,0,0,0.30098783,95.048351,138.95909)">
+       transform="matrix(0.30098783,0,0,0.30098783,76.967877,154.28494)">
       <text
-         id="text32"
+         id="text3721"
          y="16.690979"
          x="0"
          transform="translate(2.63715,5.2743)"
          style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;line-height:125%;font-family:Arial;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           id="tspan30"
+           id="tspan3719"
            y="16.690979"
            x="0"
            sodipodi:role="line"><tspan
-             id="tspan28"
+             id="tspan3717"
              style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;font-family:Arial;fill:#ffffff"
              dy="0"
-             dx="0">Draft: Version 1.94</tspan></tspan></text>
+             dx="0">Draft: Version 1.95</tspan></tspan></text>
     </g>
   </g>
 </svg>
