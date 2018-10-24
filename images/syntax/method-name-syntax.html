@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://www.ringing.org/html/method-names.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./method-name-syntax_files/css" rel="stylesheet">
+<style>
+html {font-family: 'Roboto', sans-serif; line-height: 130%;}
+code {font-family: 'Roboto Mono', monospace;}
+body {max-width: 40em; margin-left: 3em;}
+th, td {padding-left: 3em;}
+aside {font-size:smaller; color: DarkGray; font-style: italic;}
+</style>
+<title>Method Name Syntax</title>
+</head>
+
+<body>
+
+<h1 id="methodnamesyntax">Method Name Syntax</h1>
+
+<aside>dfm, version 1.2, 20 May 2018</aside>
+
+<p><strong>tl;dnr: Skip the motivation and <a href="http://www.ringing.org/html/method-names.html#recommendation">jump straight to the recommendation</a></strong></p>
+
+<p>This is a discussion of some of the issues around the naming of methods,
+and proposes possible solutions to some of the problems arising.</p>
+
+<p>It concerns itself only with the syntax of method names.
+In the past the CCCBR has gotten itself embroiled in various controversies
+involving the semantics of names — for example, prohibiting use of words
+CCCBR members considered offensive. This discussion ignores such matters
+entirely.</p>
+
+<p>Much of what is discussed here involves the minutiae of the orthography of
+various languages, and how this is handled in the Unicode standard for
+electronic representation of such things. I am no expert on any of this, and
+so may well have much wrong, and have omitted many important things, here.
+This is simply my best shot given my current state of knowledge, augmented
+with the comments in New Framework for Ringing discussion on Slack.</p>
+
+<p>It should be noted that the CCCBR today distinguishes between method names
+and method titles, the name being a part of the title. It appears this
+distinction will continue in the Central Council Framework for Method Ringing (CCFMR).
+As current used no serious syntactic issues arise for parts of a title
+other than the name. Any complexity arising in the parts of a method’s title
+beyond it’s name involve classification of methods. Such matters are also
+not part of this discussion.</p>
+
+<p>This discussion begins with some thoughts on why we even have method names,
+that being possibly germane to how we structure those names. It then moves on
+to consider what sets of characters we might choose to use to form names; this
+consideration naturally leaks into a later section, too, as issues about what characters to include
+also arise from how we compare names, the subject of a later section.
+And is leaked into by yet another, later section, on current practice since
+we probably want to preserve existing method names.
+There is also a section devoted to current practice, which sadly is ill-defined
+and confusing. Then the promised section on comparing names. And finally a
+concrete recommendation.</p>
+
+<h2 id="whyhavemethodnames">Why have method names?</h2>
+
+<p>The primary reason we worry about names, or more precisely, titles,
+of methods is so that different ringers can talk about the same method.
+So that when ringers from Edinburgh get together with ringers from Sydney,
+and one of them says “Let’s ringing Cambridge Surprise Major” they all
+mean the same thing.</p>
+
+<p>This, of course, glosses over the fact that deciding whether or not
+two methods are the same or different is itself a not so obvious
+problem, and is addressed, directly or indirectly, by much of
+what is in the CCFMR.</p>
+
+<p>There are other, lesser, reasons we worry about names:</p>
+
+<ul>
+<li><p>So that when ringing we can say “Go Yorkshire.” Or, even more importantly, for giving
+directions in spliced.</p></li>
+
+<li><p>So we have some way of indexing collections of methods.</p></li>
+
+<li><p>To commemorate events or places.</p></li>
+</ul>
+
+<p>There are two, complementary issues with binding method names to methods. These
+issues are really about method titles, but the only tricky part is the name portion
+of a method’s title. These two issues are:</p>
+
+<ul>
+<li><p>Can the same method have two or more different titles, or must a particular
+method always have the same title?</p></li>
+
+<li><p>Must a title uniquely identify a method, or can the same title be used for multiple,
+different methods?</p></li>
+</ul>
+
+<p>The rest of this discussion will ignore the name/title distinction, and informally talk
+about things like “Must a name uniquely identify a method”, as a short hand for discussing
+names in the context of titles.</p>
+
+<p>While for the most part we like to have a reasonably unique name, for
+any given method, I don’t think there is a great deal of harm in some
+methods being known by two or more names, so long as it doesn’t get
+out of hand. Though the current CCCBR decisions deprecate this, a
+prohibition ignored by, say, Bastow Doubles, St Helen’s Doubles and
+Cloister Doubles, which seems to have caused no harm.</p>
+
+<p>Even I, however, draw the line at the same name referring to unrelated methods.
+If we are going to keep collections of named methods, it seems inescapable
+that we must always have a name always mean the same method to satisfy
+our primary reason for having names, described above.</p>
+
+<p>For either of these issues to be addressed it becomes important to be
+able to tell whether or not two names are the same. While at first
+this may sound trivial, it is not. Is the name “London No.3 Surprise
+Royal” the same as “London No 3 Surprise Royal”? What about “Aluminum
+Surprise Major” and “Aluminium Surprise Major”? “Décembre Delight
+Major” and “Decembre Delight Major”?</p>
+
+<p>A further consideration is what practical influence does the CCCBR
+have over method names. It is primarily what names are enshrined in the
+method collections that the Council maintains and publishes. To a lesser
+extent how the Council publishes performances which cite methods. It has far
+less control over what ringers say, or even write, themselves.
+The CCFMR is really more about how the Council chooses to record identifiers
+for methods than it is about how ringers refer to methods, or identify them
+in their own minds.</p>
+
+<h2 id="characterset">Character set</h2>
+
+<p>An obvious issue to be considered is what characters can be used to form method names?</p>
+
+<p>Historically change ringing has been practiced almost exclusively by English speakers.
+Based on this a not indefensible position might be to limit method names to the twenty-six
+Latin letters used to write English words. There are some impediments to this, however:</p>
+
+<ul>
+<li><p>While the majority of existing method names have been formed just
+from the twenty-six Latin letters, there is still a substantial body
+of existing names that have augmented those with digits and other
+non-letter characters, including hyphens, apostrophes, full stops,
+commas, exclamation marks, question marks, ampersands, quotation
+marks, solidi, equals signs, the pound sterling symbol, parentheses,
+and even the trademark symbol.
+It might be awkward to abandon these now.</p></li>
+
+<li><p>While historically change ringing has been an English speaking
+pastime, it is broadening its reach. As this continues it will
+undoubtedly become less and less defensible to prohibit names in
+languages spoken and written by new ringers. And, again, there are
+existing names using Latin letters augmented with a variety of
+diacritics.</p></li>
+
+<li><p>And even in English diacritical marks are used, even if rarely and mostly
+for loanwords. For example, “résumé” or “Brontë”. Though in English it
+is common to simply omit them.</p></li>
+</ul>
+
+<p>Perhaps the most persuasive argument that we need a richer repertoire of
+characters in names than a minimal English language set is that ringers
+have, by using them already, demonstrated an appetite for such richness.
+If we are attempting to support what ringers choose to do rather than
+limit what they may do it behooves us to support a rich character set.</p>
+
+<p>Assuming we wish to support all existing names, one obvious thing to
+do is augment the letters with all other characters, including
+diacritics, that have been used to date. Even this is not as obvious
+as it might seem, as there is there is ambiguity about what characters
+<em>have</em> been used to date, as discussed in the next section on current
+practice.</p>
+
+<p>And freezing the characters allowed to just those used to date also
+raises some possible problems:</p>
+
+<ul>
+<li><p>While a variety of diacritics have been used, there are languages that
+we might want to support that would not be completely covered. For example,
+one of the most active towers for peals today is in the Netherlands, but
+if we froze support for diacritics to just those used to date we would
+omit some required by Dutch.</p></li>
+
+<li><p>The freezing of punctuation and other non-letter symbols might be
+viewed as somewhat capricious. If <code>£</code>,<code>&amp;</code> and <code>=</code> are allowed, why
+not <code>$</code>, <code>%</code> and <code>+</code>? On the other hand such an argument is a slippery
+slope, with many thousands of increasingly obscure symbols <em>someone</em>
+might want to use. We will likely want to draw the line somewhere.</p></li>
+</ul>
+
+<p>In addition to Latin letters, possibly augmented with diacritics,
+some languages using the Latin script also add a small repertoire of
+other characters or ligatures. For example, the eth, <code>ð</code> used in Icelandic and Faroese,
+or the ash, <code>æ</code>, in Danish, Norwegian, Icelandic and Faroese, where it is viewed
+and used as a distinct letter, as opposed to the diphthong <code>ae</code> it is in English.
+It may well be that we don’t need to worry about
+such characters as they are only used in languages of countries to which
+change ringing has not yet spread. But it is still an issue to bear in mind.</p>
+
+<p>When deciding what characters to include it is important to consider one
+of the reasons we want names: for use in method collections supplied and
+maintained by the CCCBR. Such collections are, of course, now maintained
+electronically. And use of such collections by software is an important
+consideration, as well. In the past much software could support only a
+severely limited character repertoire, and such a limitation can still afflict
+legacy software which is still in use. Recently written software, on the other
+hand, can be easily crafted to store and manipulate any of the over 130,000
+characters of Unicode. However many, most, computer fonts available do not cover the
+whole of Unicode, so display of names using obscure characters can be a problem.
+And similar problems arise when preparing printed versions of collections, or
+printing method names in performance reports.</p>
+
+<p>A further consideration, most clearly for electronic use, but also for even
+non-electronic communication, is that punctuation, besides possibly being used
+within names, may be needed to demark method names from surrounding matter.
+If we swallow all common punctuation marks into the reportoire of characters
+from which names can be built those having such needs will have to craft
+more complex escape mechanisms when embedding method names in other text.
+Not an insurmountable problem, but again one worth bearing in mind.</p>
+
+<p>If we decide to allow a wider variety of diacritics than have been
+used to date it might be appropriate to adopt all those of some
+electronic standard that covers a variety of languages. For example,
+we might cite the Unicode standard
+(<a href="http://www.unicode.org/versions/Unicode10.0.0/">http://www.unicode.org/versions/Unicode10.0.0/</a>), and include all
+characters with the major category “letter” selected from from the Basic
+Latin, Latin-1 Supplement and Latin Extended-A blocks. It is worth
+noting that in this context a basic letter with a diacritic, such as <code>é</code> (e-acute),
+is considered a letter.</p>
+
+<p>This particular choice covers all European languages using the Latin
+script, and, with one exception, Uluṟu Delight Minor, includes all
+diacritics used in method names to date. The latter case would also
+hold if we excluded the Latin Extended-A block, but in that case there
+would be some characters required by, for example, French and Dutch,
+which would be omitted.</p>
+
+<p>An alternative scheme might be to more finely tune exactly which
+characters we do and don’t want, and enumerate them. However trying to
+craft our own repertoire of letter characters is going to be both
+fussy and error-prone, and require a long enumeration of letters in
+the CCFMR, which might be awkward. If we do want to support some
+repertoire of diacritics it will probably be best to succinctly cite
+some outside standard, even if that brings in more than we might
+otherwise want.</p>
+
+<p>One important character we’ve glossed over here is the space character. There are many
+extant method names that are made up of two or more words. And there is at least one case,
+White Hall Surprise Major and Whitehall Surprise Major, where two method names differ
+only in how they are broken into words. Thus it would seem essential to include the
+space character in the repertoire of characters allowed.</p>
+
+<p>However it is more complicated than just including it. While we would
+undoubtedly consider “Need” and “Ned” different names, we surely don’t
+want to consider “New Cambridge” and “New&nbsp;&nbsp;Cambridge” (the latter with
+two spaces) distinct. And we almost certainly don’t want names like
+“&nbsp;Cambridge” or “Cambridge&nbsp;” (with leading or lying spaces). So, while
+we will have to include the space character, its use will have to be modified
+by extra considerations in some way.</p>
+
+<p>Similar considerations may also apply to the use of the hyphen.</p>
+
+<p>Even leaving aside space and hyphen, simply having a repertoire of
+characters from which we can assemble names may not be sufficient.
+Even if we limit the available punctuation characters to those
+in existing method names, will we be comfortable with names such as
+“.”, “,”, “)” or “&amp;”?</p>
+
+<p>Or even “'&amp;&amp;&amp;"&amp;(&amp;&amp;).,,,.,&amp;=&amp;”?</p>
+
+<p>It seems likely that sensible name construction may require thought
+about how non-letter characters can be used.</p>
+
+<p>Were such names allowed it would complicate both indexing method collections
+and calling spliced. In neither case insurmountably so, but enough to be an
+annoyance we should bear in mind.</p>
+
+<p>Something further not yet mention is superscript and subscript numerals. These
+have been used, sort of, in existing method names. This seems best discussed further
+in the imminent, next section, on current practice.</p>
+
+<h2 id="currentpractice">Current practice</h2>
+
+<p>Arguably the de facto current standard is the Methods Committee’s collection of methods,
+maintained by Tony Smith.</p>
+
+<p>Unfortunately it is itself inconsistent. This collection is presented
+in multiple formats, and and method names are not all presented in the
+same form. Sometimes a richer representation is used, and at others a
+more primitive one. Here are some example pairings:</p>
+
+<table>
+<tbody><tr><td>Janáček Surprise Major</td><td>Janacek Surprise Major</td></tr>
+<tr><td>E=mc² Surprise Major</td><td>E=mc2 Surprise Major</td></tr>
+<tr><td>UB₃₁₃ Surprise Major</td><td>UB313 Surprise Major</td></tr>
+<tr><td>Nu.Q™ Alliance Maximus</td><td>Nu.QTM Alliance Maximus</td></tr>
+</tbody></table>
+
+<p>The more primitive form generally omits diacritics, just using the
+base letter; and converts subscript and superscript numerals to lining
+numerals; and makes a similar transformation to <code>™</code>.</p>
+
+<p>In this collection names are normally presented in title case with the
+first word and all other important words capitalized. For example,
+“Champion of the Thames”. But not always: “Sugar beet Surprise Major”.</p>
+
+<p>As far as I know little thought or definition has gone into names used
+here, things just sort of happening with no pre-planning, and has
+changed over time. This is not
+necessarily a bad thing since it allows easily adhering to what
+ringers have chosen to do, but it may (or may not) eventually lead to
+confusion. And it certainly complicates things for people writing
+software who have to try to intuit what is needed, and has generally
+led to inconsistency in the results.</p>
+
+<p>Other resources include:</p>
+
+<ul>
+<li><p>Martin Bright and Richard Smith’s methods.ringing.org: usage here appears to correspond to the “primitive” version used by Tony.</p></li>
+
+<li><p>ringing.org: the usage here corresponds to the “rich” version used by Tony, though an attempt is made to support searching
+using the more primitive form when possible.</p></li>
+
+<li><p>Composition Library: I believe the usage here corresponds to the “rich” version used by Tony, though Graham would obviously
+be a better source of information about this.</p></li>
+
+<li><p>Microsiril method libraries: names here are limited to single words, no spaces, apparently always with an initial capital
+and no further, internal capitals, and the remaining letters generally corresponding to those used in Tony’s “primitive”
+version.</p></li>
+</ul>
+
+<h2 id="comparingnames">Comparing names</h2>
+
+<p>One of the most fundamental things we need to do with method names is compare them for some sort of equality.</p>
+
+<p>An initial, naïve comparison is simply to compare the two names as
+sequences of characters, and if the sequences are of the same length
+and each character in the same position is the same, declare the names
+the same, and otherwise different.</p>
+
+<p>When this comparison says they are the same, all is well. But we may disagree with it when it says they are different.</p>
+
+<p>The first issue is case. We don’t want “Cambridge” and “cambridge” to be different, so we must ignore case in this comparison.
+Even if we insist that for the well known method it always be spelled “Cambridge”, we will want to view “cambridge” as equal
+to it so a different method doesn’t get names “cambridge”.</p>
+
+<p>This gets more complicated with diacritics, however. While an English speaker may prefer either “résumé” or “resume”
+the accents are rarely viewed as mandatory, and we would probably view “Résumé Surprise Major” as equivalent
+to “Resume Surprise Major”. In many other languages, however, accents are a mandatory part of spelling. For example, the German words
+“schon” and “schön” have completely different meanings; in fact, if you’re ever in Mainz you can visit the
+Kulturclub Schon Schön. If you were unable to use umlauts for some reason you’d spell this club’s name “Kulturclub Schon Schoen”, not
+“Kulturclub Schon Schon”.</p>
+
+<p>I believe there is no way to make a one size fits all comparator of words that works for any language.
+Typically, modern software deals with these issues by using “locales”, and only compares words in a
+context for one language. Method names, though, are a cross-locale problem. It will probably be best
+to simply treat method names as essentially English, possibly augmented with loan words. When we want to compare
+two names, simply ignore any accents. This isn’t right for many languages, but it is probably the best we can do.</p>
+
+<p>A further complication for those implementing software to compare method names, though
+not directly relevant for defining that comparison, is the issue of precomposed characters
+versus combining diacritical marks. Typically a letter with a diacritic can be described in
+Unicode in at least two ways: as a single character, or as a two character sequence, and
+software needs to be aware that it may be holding the same name in two different formats.
+These need to be canonicalized into one or the other form for comparison. This may need to be noted
+in some ancillary material in the CCFMR as advice to software authors. It will also be
+useful to us below in the Recommendation section.</p>
+
+<p>Diacritics are not the only issue in this vicinity. Consider the letter <code>æ</code>. In Enlish this is simply a ligature of
+<code>a</code> and <code>e</code>, but in Danish it is a distinct letter. It is tempting to compare <code>æ</code> as equivalent to <code>ae</code>. This
+may be an appropriate way forward, for example “Cæsium Surprise Major” is the same as “Caesium Surprise Major”.
+However this is a little more complex than dropping accents, as English words
+spelled using <code>æ</code> are occasionally spelled differently when the ligature is not available. Consider, for example
+“æternal” and “eternal”. On balance, though, it will likely be best to treat such ligatures as equivalent to the
+two letter sequences.</p>
+
+<p>Since various punctuation characters are (or, at least, have been)
+allowed in method names the issue of space adjacent to punctuation
+characters becomes important. There is currently a method known
+“London No.3 Surprise Royal”. We probably want to consider that as
+equivalent to “London No. 3 Surprise Royal” and “London No 3 Surprise
+Royal”, lest someone give a new method one of those latter names.
+Similarly “Calf of Man (Low) Lighthouse Surprise Minor”, “Calf of
+Man(Low) Lighthouse Surprise Minor”, “Calf of Man(Low)Lighthouse
+Surprise Minor”, and “Calf of Man ( Low ) Lighthouse Surprise Minor”.</p>
+
+<p>A similar issue arises with superscript and subscript numerals. Do <code>⁴</code>, <code>₄</code> and <code>4</code> compare as the same?
+It seems prudent that they do.</p>
+
+<h2 id="recommendation">Recommendation</h2>
+
+<p>Based on the on all the above, together with folks’ comments in recent
+months, here’s my second pass recommendation of how to form method
+names. Here “name” is being used strictly as defined in the
+CCFMR, not as shorthand for “title”.
+I don’t claim this recommendation is the best we can do, it’s just as good as I’ve been able
+to think of so far. It may be better to tweak this in various ways, or
+to go in a completely different direction.</p>
+
+<blockquote>
+  <p>In the following “the Unicode standard” refers to version 10.0.0 (<a href="http://www.unicode.org/versions/Unicode10.0.0/">http://www.unicode.org/versions/Unicode10.0.0/</a>).
+  Various attributes of individual characters are given the files comprising the Unicode Character
+  Database (UCD, <a href="http://unicode.org/ucd/">http://unicode.org/ucd/</a>), and particularly the
+  file <a href="https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt">https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt</a>, which contains both general category information
+  and case folding information.
+  Unicode blocks are defined in <a href="https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt">https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt</a>.
+  Normalization is described in <a href="https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms">https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms</a>.</p>
+
+  <p>Method names are a sequence of from 1 to 120 characters selected from</p>
+
+  <ul>
+  <li><p>All those enumerated in the Unicode standard as being in the Basic Latin block and having a
+  general category of Lu, Ll, or Nd (upper and lower case letters, and digits)</p></li>
+
+  <li><p>All those enumerated in the Unicode standard as being in the Latin-1 Supplement block and having
+  a general category of Lu or Ll.</p></li>
+
+  <li><p>All those enumerated in the Unicode standard as being in the Latin Extended-A block, except Latin Small Letter N Preceded By
+  Apostrophe</p></li>
+
+  <li><p>All those enumerated in the Unicode standard as being in the Latin Extend-B block</p></li>
+
+  <li><p>The Unicode characters named Space,  Exclamation Mark, Quotation Mark, Ampersand, Apostrophe,
+  Left Parenthesis, Right Parenthesis, Comma, Hyphen-minus, Full Stop, Solidus, Equal Sign, Percent Sign,
+  Question Mark, Pound Sign, Dollar Sign, Euro Sign and Trade Mark Sign</p></li>
+
+  <li><p>and those named Superscript Zero, Superscript One, Superscript Two, Superscript Three, Superscript Four,
+  Superscript Five, Superscript Six, Superscript Seven, Superscript Eight, Superscript Nine,
+  Subscript Zero, Subscript One, Subscript Two, Subscript Three, Subscript Four,
+  Subscript Five, Subscript Six, Subscript Seven, Subscript Eight and Subscript Nine</p></li>
+  </ul>
+
+  <p>subject to the further constraints that
+  a name must (a) contain at least one character of Unicode general category Lu, Li or Nd,
+  and (b) that a name may neither begin nor end with a Space character, nor may it
+  contain within it two consecutive Space characters.</p>
+
+  <p>Two names are considered the same if they would be reduced to the same sequence of characters by the following process:</p>
+
+  <ul>
+  <li><p>The sequence of characters is converted to Unicode Normalization Form KD (NFKD, Normalization Form Compatibility Decomposition)</p></li>
+
+  <li><p>All characters now appearing in the sequence that are not allowed in a method name, above, are removed.</p></li>
+
+  <li><p>All characters for which the UCD defines a case folding are converted to that folded character (upper case)</p></li>
+
+  <li><p>The following conversions are made: ‘<code>Ø</code>’ to ‘<code>O</code>’, ‘<code>Æ</code>’ to the two character sequence ‘<code>AE</code>’, and ‘<code>Œ</code>’ to the two character
+  sequence ‘<code>OE</code>’.</p></li>
+
+  <li><p>Each character for which the Unicode general category is not Lu or Nd is replaced by the Space character.</p></li>
+
+  <li><p>Any Spaces now at the beginning or end of the sequence are removed, and any internal runs of two or more
+  Space characters are replaced by a single Space character.</p></li>
+  </ul>
+</blockquote>
+
+<p>Notes:</p>
+
+<ul>
+<li><p>I believe all current method names are correctly captured by this recommendation.</p></li>
+
+<li><p>Note that an empty name is not a name. In particular, Little Bob has no name, not an empty one, a subtle distinction.</p></li>
+
+<li><p>The exclusion of Latin Small Letter N Preceded By Apostrophe is because that character is now deprecated in Unicode.</p></li>
+
+<li><p>The normalization to NFKD followed by deletion of inappropriate characters eliminates diacritics, brings
+the superscript and subscript numerals to the baseline, and replaces , ‘<code>™</code>’ TO by the two character sequence ‘<code>TM</code>’.</p></li>
+
+<li><p>Note that punctuation and symbols are ignored for method name comparisons. Thus “London No.3” is the same as “London No 3”,
+which is good. Less obviously, “E=mc²” is the same as “e &amp; (MC)₂”; given how rare, and potentially troublesome, punctuation
+is in method names this seems a small price to pay, as in practice it just prevents otherwise likely pathological names
+from being used. Sadly, however, “London No3” is considered a different name than either “London No.3” or “London No 3”.</p></li>
+</ul>
+
+
+</body></html>

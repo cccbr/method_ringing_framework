@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
             <a class="navbar-brand" href="index.html">Framework for Method Ringing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             <a class="navbar-brand" href="https://cccbr.org.uk/ "><img src="images/cc-header.png" height="60" alt="CCCBR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            <img src="images\version.svg" width=200 height=36 />
+            <img src="images/version.svg" width=200 height=36 />
         </nav>
     </header>
 
@@ -41,16 +41,13 @@
                         <a class="nav-link" href="index.html">1. Introduction</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="principles.html">2. Design Principles</a>
+                        <a class="nav-link" href="versioning.html">2. Versioning</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="classification.html">4. Method Classification (Alt A)</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="classification2.html">4. Method Classification (Alt B)</a>
+                        <a class="nav-link" href="classification.html">4. Method Classification</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="naming.html">5. Method Naming</a>
@@ -68,16 +65,17 @@
                         <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="placenotation.html">10. Place Notation</a>
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;<u>Appendices</u><br />
+                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="syntax.html">11. Method Name Syntax</a>
+                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="leadheadcodes.html">12. Leadhead Codes</a>
+                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="extensionprocesses.html">13. Extension Processes</a>
+                        <a class="nav-link active" href="extensionprocesses.html">D. Extension Processes</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <li class="nav-item">
                                 <a class="nav-link" href="#definitions">A. Defintions</a>
@@ -97,16 +95,19 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="transition.html">14. Transitional Arrangements</a>
+                        <a class="nav-link" href="development.html">E. Framework Development</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="relatedmaterial.html">15. Related Material</a>
+                        <a class="nav-link" href="transition.html">F. Transitional Arrangements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="consultation.html">16. Consultation</a>
+                        <a class="nav-link" href="relatedmaterial.html">G. Related Material</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faqs.html">17. FAQs</a>
+                        <a class="nav-link" href="consultation.html">H. Consultation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faqs.html">I. FAQs</a>
                     </li>
                 </ul>
                 <div class="btn-navbar">
@@ -120,7 +121,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h2>13. Method Extension Processes</h2>
+                            <h2>Appendix D. Method Extension Processes</h2>
                         </div>
                     </div>
 
@@ -188,7 +189,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Norwich Leadends and Leadheads</th>
+                                            <th>Norwich S Leadends and Leadheads</th>
                                             <th>Plain Bob Leadends and Leadheads</th>
                                         </tr>
                                     </thead>
@@ -247,6 +248,53 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Mode
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA4"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The Mode of an Extension Process specifies which Places remain static, and which Places expand.
+                            </p>
+                            <div class="collapse" id="detailA4">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Mode m means that all Places up to and including Place m remain static,
+                                    and all Places above Place m expand.<br />
+                                    E.g. an Extension Process might operate by copying 4 Changes
+                                    and inserting them into a Method's sequence of Changes immediately following
+                                    these copied 4 Changes.<br />
+                                    Assume the 4 Changes to be copied are x12x36.<br />
+                                    If the Mode used is 1, the resulting sequence is x12x36x14x58.
+                                    I.e. the 1 in 12 remains static, but all Places higher than 1 expand (i.e. increase) by 2 Places
+                                    in the inserted section.<br />
+                                    If the Mode used is 2, the resulting sequence is x12x36x12x58.
+                                    I.e. the 12 remains static, but all Places higher than 2 expand by 2 Places
+                                    in the inserted section.<br />
+                                    If the Mode used is 3, the resulting sequence is x12x36x12x38.
+                                    I.e. the 12 and the 3 in 36 remain static, and all Places higher than 3 expand by 2 Places
+                                    in the inserted section.
+                                </p>
+
+                                <p class="text-primary">
+                                    Note that some Extension Processes operate separately on below-the-treble Places and
+                                    above-the-treble Places.
+                                    When Mode is used with above-the-treble Places, it may operate with respect to the highest Place
+                                    (i.e. the Method's Stage) rather than Place 1.
+                                    Examples of this are included in Extension Process 3 below.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- General -->
                     <div class="row" id="general">
                         <div class="col-sm-1">
@@ -263,7 +311,7 @@
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                Below are the Extension Processes that are currently recognized by the Central Council for extending Methods to higher Stages.
+                                Below are the Extension Processes that are currently recognised by the Central Council for extending Methods to higher Stages.
                             </p>
                         </div>
                     </div>
@@ -271,11 +319,26 @@
                     <div class="row">
                         <div class="col-sm-1">
                             2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB2"></a>
+                            </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
-                                Only one Extension Process may be used to extend any one Method -- Extension Processes may not be combined.
+                                Only one Extension Process may be used to extend any one Method to a given Stage -- Extension Processes may not be combined.
                             </p>
+                            <div class="collapse" id="detailB2">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> While Extension Processes may not be combined to extend any one Method to a given Stage,
+                                    different Extension Processes may be used to extend a single Method to different Stages.
+                                    E.g. St Simon's Bob Doubles is extended to Triples, Caters, Cinques, etc, using Extension Process 3 below.
+                                    St Simon's Bob Doubles is also extended to St Simon's Bob Minor using Extension Process 2 below
+                                    (and St Simon's Bob Major is obtained from St Simon's Bob Triples using Extension Process 2, etc).
+                                </p>
+
+                                <hr />
+                            </div>
                         </div>
                     </div>
 
@@ -302,7 +365,8 @@
 
                             <ol>
                                 <li>
-                                    The Parent Method is a Principle, a Differential that is not a Hunter, or a Hunter (including a Differential Hunter) with a Hunt Bell that has a Little Path.
+                                    The Parent Method is a Method with no Hunt Bells, 
+                                    or a Hunter (including a Differential Hunter) with a Hunt Bell that has a Little Path.
                                 </li>
                                 <li>
                                     The Parent Method does not use Jump Changes.
@@ -318,18 +382,18 @@
                             </p>
 
                             <p>
-                                <img src="images\extensionprocesses\example-1-1.svg" width=806 height=241 />  
+                                <img src="images/extensionprocesses/example-1.svg" width=806 height=241 />  
                             </p>
 
                             <ol>
                                 <li>
-                                    Select a mode m, where m is between 1 and the Stage of the Parent Method, inclusive.
-                                    In the example above, the selected mode is 4.
+                                    Select a Mode m to be used, where m is greater than or equal to 1, and less than the Stage of the Parent Method.
+                                    In the example above, the selected Mode is 4.
                                 </li>
                                 
                                 <li>
-                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made up to and including the mode,
-                                    and Places Made above the mode.  These Places are entered in the columns headed <=m and >m respectively.                                    
+                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made up to and including the Mode,
+                                    and Places Made above the Mode.  These Places are entered in the columns headed <=m and >m respectively.                                    
                                 </li>
                                 
                                 <li>
@@ -360,7 +424,8 @@
                                 </li>
 
                                 <li>
-                                    The Extension has the same number of Hunt Bells as the Parent Method.
+                                    The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
+                                    and has no Working Bells, in which case the Extension also only has Hunt Bells.
                                 </li>
 
                                 <li>
@@ -387,12 +452,12 @@
 
                             <ol>
                                 <li>
-                                    The Extension Construction for referring to this Extension Process is "EP1-m", where EP1 refers to Extension Process 1, and m is the mode.
+                                    The Extension Construction for referring to this Extension Process is 'EP1-m', where EP1 refers to Extension Process 1, and m is the Mode.
                                     So Little Bob Minor is extended using Extension Construction EP1-4.
                                 </li>
 
                                 <li>
-                                    When two or more modes produce the same Extension, the lowest mode is designated as the mode used.
+                                    When two or more Modes produce the same Extension, the lowest Mode is designated as the Mode used.
                                     For example, Extension Constructions EP1-4 and EP1-5 both give the same Extensions for Little Bob Minor.
                                     EP1-4 is therefore designated as the Extension Construction used.
                                 </li>
@@ -452,7 +517,7 @@
                             </p>
 
                             <p>
-                                <img src="images\extensionprocesses\example-2-1.svg" width=494 height=321 />  
+                                <img src="images/extensionprocesses/example-2.svg" width=494 height=321 />  
                             </p>
 
                             <ol>
@@ -517,7 +582,7 @@
 
                             <ol>
                                 <li>
-                                    The Extension Construction for referring to this Extension Process is "EP2", where EP2 refers to Extension Process 2.
+                                    The Extension Construction for referring to this Extension Process is 'EP2', where EP2 refers to Extension Process 2.
                                     So St Simon's Bob Doubles is extended using Extension Construction EP2.
                                     This Extension Process does not use any parameters.
                                 </li>
@@ -574,7 +639,7 @@
                             </p>
 
                             <p>
-                                <img src="images\extensionprocesses\example-3-1.svg" width=1420 height=601 />  
+                                <img src="images/extensionprocesses/example-3.svg" width=1420 height=601 />  
                             </p>
 
                             <ol>
@@ -630,15 +695,15 @@
                                 </li>
                                 
                                 <li>
-                                    Select a mode to be used above the treble and below the treble.
-                                    Mode is between 1 and the Stage of the Method, inclusive.
-                                    In the example above, mode 2 has been selected for both above and below the treble.
-                                    However, the modes can be different above and below.
+                                    Select a Mode m to be used above the treble and below the treble.
+                                    Mode is greater than or equal to 1, and less than the Stage of the Parent Method.
+                                    In the example above, Mode 2 has been selected for both above and below the treble.
+                                    However, the Modes can be different above and below.
                                 </li>
 
                                 <li>
-                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made below the treble ("B"),
-                                    Places Made by the treble ("H" for Hunt Bel), and Places Made above the treble ("A").
+                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made below the treble ('B'),
+                                    Places Made by the treble ('H' for Hunt Bel), and Places Made above the treble ('A').
                                 </li>
 
                                 <li>
@@ -647,13 +712,13 @@
                                 </li>
 
                                 <li>
-                                    Then sub-divide the Places above the treble and below the treble into those that are less than or equal to the mode, and those greater than the mode.
-                                    In the example above, since the mode selected is 2, Places in 1st's or 2nd's are in one sub-division, and the other Places are in the other sub-division.
+                                    Then sub-divide the Places above the treble and below the treble into those that are less than or equal to the Mode, and those greater than the Mode.
+                                    In the example above, since the Mode selected is 2, Places in 1st's or 2nd's are in one sub-division, and the other Places are in the other sub-division.
                                 </li>
 
                                 <li>
                                     The resulting Places are then entered into their respective 5 columns as shown above: B (<=m), B (>m), H, Inv A (>m), and Inv A (<=m),
-                                    where m is the mode.
+                                    where m is the Mode.
                                 </li>
 
                                 <li>
@@ -672,8 +737,8 @@
                                 <li>
                                     The Places in the selected sections are copied and inserted into the sequence immediately following
                                     the selected sections.<br />
-                                    For Places that are less than or equal to the mode, no changes are made to these Places during the copying.<br />
-                                    For Places that are greater than the mode, these are increased by the step size when copied.<br />
+                                    For Places that are less than or equal to the Mode, no changes are made to these Places during the copying.<br />
+                                    For Places that are greater than the Mode, these are increased by the step size when copied.<br />
                                     In the example above, the inserted sections are shown in darker green.  It can be seen that Places 12
                                     remain as 12 in the inserted sections, whereas 3 becomes 5 in the inserted sections.
                                 </li>
@@ -686,7 +751,7 @@
 
                                 <li>
                                     Places in the sections following the sections that have been inserted are also increased by the step size
-                                    if they are greater than the mode m.<br />
+                                    if they are greater than the Mode m.<br />
                                     In the example above, the sections following the inserted sections are shaded in orange.  It can be seen that Places 12
                                     remain 12, whereas 5 becomes 7 in the Extension.
                                 </li>
@@ -698,7 +763,8 @@
 
                                 <li>
                                     The process for extending the Places above the treble is the same as below the treble, except that the copying and expanding
-                                    occurs in the reverse direction (i.e. starting from the half lead and working back towards the start of the lead).
+                                    occurs in the reverse direction (i.e. starting from the half lead and working back towards the start of the lead),
+                                    and the Mode is counted from the back of the Row instead of from the front.
                                     In the example above, sections C and D are selected for copying above the treble.
                                     These are inserted earlier in the lead as C2 and D2 respectively.
                                     The sections before the inserted sections (A and B) become A2 and B2 respectively in the Extension to Major.
@@ -719,7 +785,7 @@
 
                                 <li>
                                     To obtain further Extensions at higher Stages, each higher by the step size, the sections selected for copying can be inserted repeatedly,
-                                    increasing the Places that are greater than the mode by the step size for each insertion.
+                                    increasing the Places that are greater than the Mode by the step size for each insertion.
                                     In the example above, Royal is obtained by inserting the D, E sections below the treble twice, once as D2, E2, and again as D4, E4.
                                     To obtain Maximus, the C, D sections above the treble have been inserted three times, once as C2, D2, once as C4, D4, and again as C6, D6.
                                 </li>
@@ -739,7 +805,8 @@
                                 </li>
 
                                 <li>
-                                    The Extension has the same number of Hunt Bells as the Parent Method.
+                                    The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
+                                    and has no Working Bells, in which case the Extension also only has Hunt Bells.
                                 </li>
 
                                 <li>
@@ -766,13 +833,13 @@
 
                             <ol>
                                 <li>
-                                    The Extension Construction for referring to this Extension Process is "EP3-[mode above the treble][sections copied above the treble]/[mode
-                                    below the treble][sections copied below the treble]".
+                                    The Extension Construction for referring to this Extension Process is 'EP3-[Mode above the treble][sections copied above the treble]/[Mode
+                                    below the treble][sections copied below the treble]'.
                                 </li>
 
                                 <li>
                                     EP3 refers to Extension Process 3.
-                                    In the example above, the mode was 2 both above and below the treble.
+                                    In the example above, the Mode was 2 both above and below the treble.
                                     Sections C and D were copied above the treble, and sections D and E were copied below the treble.
                                     The Extension Construction used in the example is therefore EP3-2CD/2DE.
                                 </li>
@@ -809,14 +876,14 @@
                                 <li>
                                     When the same results are obtained by copying different sections, designate the sections closest to the start of the lead as the ones that were copied.
                                     This ensures that whatever Stage Method is taken as the Parent Method in a set of Methods that are on the same Extension Path, the same Extension Construction will result.
-                                    E.g. in the Milton Surprise Minor example above, it can be seen that if sections A and B were copied above the treble instead of sections C and D (while keeping the mode as 2)
+                                    E.g. in the Milton Surprise Minor example above, it can be seen that if sections A and B were copied above the treble instead of sections C and D (while keeping the Mode as 2)
                                     the same results would be obtained.
                                     Therefore the Extension Construction for Milton Surprise Minor above should be described as EP3-2AB/2DE, rather than EP3-2CD/2DE.
                                     (The CD sections above the treble were used in the example above to show what happens to the AB sections above the treble in the Extension.)
                                 </li>
 
                                 <li>
-                                    When two or more different modes give the same results, designate the mode used as the lowest one.
+                                    When two or more different Modes give the same results, designate the Mode used as the lowest one.
                                 </li>
 
                                 <li>
