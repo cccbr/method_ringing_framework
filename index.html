@@ -107,6 +107,11 @@
                         <a class="nav-link" href="faqs.html">I. FAQs</a>
                     </li>
                 </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block  btn-success close-button" type="button">Hide all notes</button>
+                </div>
             </nav>
 
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
@@ -143,6 +148,7 @@
                                 It is mandatory for anything included in the CC's various collections and records
                                 (methods, variations, calls, extension processes, record lengths),
                                 including how things are recorded, classified, analysed and reported.
+                                The framework is implemented by the Central Council's Executive.
                             </p>
                         </div>
                     </div>
@@ -150,7 +156,12 @@
                     <!-- Material -->
                     <div class="row" id="material">
                         <div class="col-sm-1">
-                            <h5>B.</h5>
+                            <h5>
+                                B.
+                                <span class="float-right">
+                                    <a class="text-success more collapsed" data-toggle="collapse" href="#detailB1"></a>
+                                </span>
+                            </h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">
@@ -167,11 +178,7 @@
                                 The top level parts of Sections 1 to 9 of this website are the framework.
                                 'Top level' means the parts of these sections excluding the expanded material that displays when the '+' buttons are pressed.
                                 The appendices of this website, as well as the expanded parts of Sections 1 to 9, are supporting material.
-                            </p>
-
-                            <p> 
-                                 The framework is implemented by the Central Council's Executive,
-                                 and the supporting material is updated by the Council's Technical &amp; Taxonomy Workgroup when the need arises.
+                                The supporting material is updated by the Central Council's Executive when the need arises.
                             </p>
 
                             <p>
@@ -182,6 +189,15 @@
                                 A hardcopy version of the framework (in pdf format) is available
                                 <a class="text-success" href="images/index/framework-for-method-ringing-v1.00.pdf">here</a>.
                             </p>
+                            <div class="collapse" id="detailB1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The framework and supporting material are maintained by
+                                    the Central Council's Technical &amp; Taxonomy Workgroup.
+                                </p>
+
+                                <hr />
+                            </div>
                         </div>
                     </div>
 
