@@ -2,8 +2,8 @@
 
 This repository holds the documents that form the Central Council for Church Bell Ringer's Framework for Method Ringing.
 
-The framework is currently in development with the intention of presentation and adoption at the Council's next AGM in May-2018. 
-Until that time, these documents represent work in progress, and have no official standing.
+The first version of the framework was approved by the Central Council Executive on 24 February 2019. It was issued to members
+and affiliated societies on 28 February 2019 giving notice of 1 June 2019 as its effective implementation date.
 
 The principal branches are:
 
