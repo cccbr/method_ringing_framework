@@ -182,6 +182,10 @@
                                 </li>
 
                                 <li>
+                                	All those enumerated in the Unicode standard as being in the Latin Extended Additional block;
+                                </li>
+
+                                <li>
                                     The Unicode characters named:
                                     Space, Exclamation Mark, Quotation Mark, Ampersand, Apostrophe, Left Parenthesis, Right Parenthesis, Comma, Hyphen-minus,
                                     Full Stop, Solidus, Equal Sign, Percent Sign, Question Mark, Pound Sign, Dollar Sign, Euro Sign and Trade Mark Sign;
@@ -231,16 +235,16 @@
                                 </li>
 
                                 <li>
-                                    All characters for which the UCD defines a case folding are converted to that folded character (upper case);
+                                    All characters for which the UCD defines a case folding are converted to that folded character (typically lower case);
                                 </li>
 
                                 <li>
-                                    The following conversions are made: ‘Ø’ to ‘O’, ‘Æ’ to the two character sequence ‘AE’,
-                                    and ‘Œ’ to the two character sequence ‘OE’;
+                                    The following conversions are made: ‘ø’ to ‘o’, ‘æ’ to the two character sequence ‘ae’,
+                                    and ‘œ’ to the two character sequence ‘oe’;
                                 </li>
 
                                 <li>
-                                    Each character for which the Unicode general category is not Lu or Nd is replaced by the Space character; and
+                                    Each character for which the Unicode general category is not Ll or Nd is replaced by the Space character; and
                                 </li>
 
                                 <li>
@@ -273,7 +277,7 @@
                                 <li>
                                     Punctuation and symbols are ignored for Method Name comparisons.
                                     Thus ‘London No.3’ is the same as ‘London No 3’.
-                                    Less obviously, ‘E=mc²’ is the same as ‘e & (MC)₂’.
+                                    Less obviously, ‘E=mc²’ is the same as ‘e & MC₂’.
                                     Given how rare, and potentially troublesome, punctuation is in Method Names, 
                                     this seems a small price to pay, as in practice it just prevents otherwise likely pathological Method Names from being used.
                                 </li>

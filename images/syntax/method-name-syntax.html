@@ -15,10 +15,9 @@ aside {font-size:smaller; color: DarkGray; font-style: italic;}
 </head>
 
 <body>
-
 <h1 id="methodnamesyntax">Method Name Syntax</h1>
 
-<aside>dfm, version 1.2, 20 May 2018</aside>
+<aside>dfm, version 1.4, 1 October 2019</aside>
 
 <p><strong>tl;dnr: Skip the motivation and <a href="http://www.ringing.org/html/method-names.html#recommendation">jump straight to the recommendation</a></strong></p>
 
@@ -41,9 +40,9 @@ with the comments in New Framework for Ringing discussion on Slack.</p>
 <p>It should be noted that the CCCBR today distinguishes between method names
 and method titles, the name being a part of the title. It appears this
 distinction will continue in the Central Council Framework for Method Ringing (CCFMR).
-As current used no serious syntactic issues arise for parts of a title
+As currently used no serious syntactic issues arise for parts of a title
 other than the name. Any complexity arising in the parts of a method’s title
-beyond it’s name involve classification of methods. Such matters are also
+beyond its name involve classification of methods. Such matters are also
 not part of this discussion.</p>
 
 <p>This discussion begins with some thoughts on why we even have method names,
@@ -100,7 +99,7 @@ names in the context of titles.</p>
 <p>While for the most part we like to have a reasonably unique name, for
 any given method, I don’t think there is a great deal of harm in some
 methods being known by two or more names, so long as it doesn’t get
-out of hand. Though the current CCCBR decisions deprecate this, a
+out of hand. Though the current CCCBR decisions deprecate this, it is a
 prohibition ignored by, say, Bastow Doubles, St Helen’s Doubles and
 Cloister Doubles, which seems to have caused no harm.</p>
 
@@ -272,16 +271,18 @@ about how non-letter characters can be used.</p>
 and calling spliced. In neither case insurmountably so, but enough to be an
 annoyance we should bear in mind.</p>
 
-<p>Something further not yet mention is superscript and subscript numerals. These
+<p>Something further not yet mentioned is superscript and subscript numerals. These
 have been used, sort of, in existing method names. This seems best discussed further
 in the imminent, next section, on current practice.</p>
 
 <h2 id="currentpractice">Current practice</h2>
 
-<p>Arguably the de facto current standard is the Methods Committee’s collection of methods,
-maintained by Tony Smith.</p>
+<p>Arguably the de facto standard at the time this document was first written was
+the Methods Committee’s collection of methods, maintained by Tony Smith. That collection
+continues to be maintained by Tony and will continue to be referred to here, though
+it has now been superseded by the Council’s new online collection.</p>
 
-<p>Unfortunately it is itself inconsistent. This collection is presented
+<p>Unfortunately the now superseded Methods Committee’s collection is itself inconsistent. This collection is presented
 in multiple formats, and and method names are not all presented in the
 same form. Sometimes a richer representation is used, and at others a
 more primitive one. Here are some example pairings:</p>
@@ -316,7 +317,7 @@ led to inconsistency in the results.</p>
 <li><p>Martin Bright and Richard Smith’s methods.ringing.org: usage here appears to correspond to the “primitive” version used by Tony.</p></li>
 
 <li><p>ringing.org: the usage here corresponds to the “rich” version used by Tony, though an attempt is made to support searching
-using the more primitive form when possible.</p></li>
+using the more primitive form when practical.</p></li>
 
 <li><p>Composition Library: I believe the usage here corresponds to the “rich” version used by Tony, though Graham would obviously
 be a better source of information about this.</p></li>
@@ -339,7 +340,7 @@ the same, and otherwise different.</p>
 
 <p>The first issue is case. We don’t want “Cambridge” and “cambridge” to be different, so we must ignore case in this comparison.
 Even if we insist that for the well known method it always be spelled “Cambridge”, we will want to view “cambridge” as equal
-to it so a different method doesn’t get names “cambridge”.</p>
+to it so a different method doesn’t get named “cambridge”.</p>
 
 <p>This gets more complicated with diacritics, however. While an English speaker may prefer either “résumé” or “resume”
 the accents are rarely viewed as mandatory, and we would probably view “Résumé Surprise Major” as equivalent
@@ -387,12 +388,12 @@ It seems prudent that they do.</p>
 <h2 id="recommendation">Recommendation</h2>
 
 <p>Based on the on all the above, together with folks’ comments in recent
-months, here’s my second pass recommendation of how to form method
+months, here’s my third pass recommendation of how to form method
 names. Here “name” is being used strictly as defined in the
 CCFMR, not as shorthand for “title”.
-I don’t claim this recommendation is the best we can do, it’s just as good as I’ve been able
-to think of so far. It may be better to tweak this in various ways, or
-to go in a completely different direction.</p>
+I don’t claim this recommendation is the best we can do, and it does gloss over
+some of the pitfalls described above; it’s just as good as I’ve been able
+to think of so far for a practical approach.</p>
 
 <blockquote>
   <p>In the following “the Unicode standard” refers to version 10.0.0 (<a href="http://www.unicode.org/versions/Unicode10.0.0/">http://www.unicode.org/versions/Unicode10.0.0/</a>).
@@ -402,50 +403,52 @@ to go in a completely different direction.</p>
   and case folding information.
   Unicode blocks are defined in <a href="https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt">https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt</a>.
   Normalization is described in <a href="https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms">https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms</a>.</p>
-
+  
   <p>Method names are a sequence of from 1 to 120 characters selected from</p>
-
+  
   <ul>
   <li><p>All those enumerated in the Unicode standard as being in the Basic Latin block and having a
   general category of Lu, Ll, or Nd (upper and lower case letters, and digits)</p></li>
-
+  
   <li><p>All those enumerated in the Unicode standard as being in the Latin-1 Supplement block and having
   a general category of Lu or Ll.</p></li>
-
+  
   <li><p>All those enumerated in the Unicode standard as being in the Latin Extended-A block, except Latin Small Letter N Preceded By
   Apostrophe</p></li>
-
-  <li><p>All those enumerated in the Unicode standard as being in the Latin Extend-B block</p></li>
-
-  <li><p>The Unicode characters named Space,  Exclamation Mark, Quotation Mark, Ampersand, Apostrophe,
+  
+  <li><p>All those enumerated in the Unicode standard as being in the Latin Extended-B block</p></li>
+  
+  <li><p>All those enumerated in the Unicode standard as being in the Latin Extended Additional block</p></li>
+  
+  <li><p>The Unicode characters named Space, Exclamation Mark, Quotation Mark, Ampersand, Apostrophe,
   Left Parenthesis, Right Parenthesis, Comma, Hyphen-minus, Full Stop, Solidus, Equal Sign, Percent Sign,
   Question Mark, Pound Sign, Dollar Sign, Euro Sign and Trade Mark Sign</p></li>
-
+  
   <li><p>and those named Superscript Zero, Superscript One, Superscript Two, Superscript Three, Superscript Four,
   Superscript Five, Superscript Six, Superscript Seven, Superscript Eight, Superscript Nine,
   Subscript Zero, Subscript One, Subscript Two, Subscript Three, Subscript Four,
   Subscript Five, Subscript Six, Subscript Seven, Subscript Eight and Subscript Nine</p></li>
   </ul>
-
+  
   <p>subject to the further constraints that
   a name must (a) contain at least one character of Unicode general category Lu, Li or Nd,
   and (b) that a name may neither begin nor end with a Space character, nor may it
   contain within it two consecutive Space characters.</p>
-
+  
   <p>Two names are considered the same if they would be reduced to the same sequence of characters by the following process:</p>
-
+  
   <ul>
   <li><p>The sequence of characters is converted to Unicode Normalization Form KD (NFKD, Normalization Form Compatibility Decomposition)</p></li>
-
+  
   <li><p>All characters now appearing in the sequence that are not allowed in a method name, above, are removed.</p></li>
-
-  <li><p>All characters for which the UCD defines a case folding are converted to that folded character (upper case)</p></li>
-
-  <li><p>The following conversions are made: ‘<code>Ø</code>’ to ‘<code>O</code>’, ‘<code>Æ</code>’ to the two character sequence ‘<code>AE</code>’, and ‘<code>Œ</code>’ to the two character
-  sequence ‘<code>OE</code>’.</p></li>
-
-  <li><p>Each character for which the Unicode general category is not Lu or Nd is replaced by the Space character.</p></li>
-
+  
+  <li><p>All characters for which the UCD defines a case folding are converted to that folded character (typically lower case)</p></li>
+  
+  <li><p>The following conversions are made: ‘<code>ø</code>’ to ‘<code>o</code>’, ‘<code>æ</code>’ to the two character sequence ‘<code>ae</code>’, and ‘<code>œ</code>’ to the two character
+  sequence ‘<code>oe</code>’.</p></li>
+  
+  <li><p>Each character for which the Unicode general category is not Ll or Nd is replaced by the Space character.</p></li>
+  
   <li><p>Any Spaces now at the beginning or end of the sequence are removed, and any internal runs of two or more
   Space characters are replaced by a single Space character.</p></li>
   </ul>
@@ -464,10 +467,11 @@ to go in a completely different direction.</p>
 the superscript and subscript numerals to the baseline, and replaces , ‘<code>™</code>’ TO by the two character sequence ‘<code>TM</code>’.</p></li>
 
 <li><p>Note that punctuation and symbols are ignored for method name comparisons. Thus “London No.3” is the same as “London No 3”,
-which is good. Less obviously, “E=mc²” is the same as “e &amp; (MC)₂”; given how rare, and potentially troublesome, punctuation
+which is good. Less obviously, “E=mc²” is the same as “e &amp; MC₂”; given how rare, and potentially troublesome, punctuation
 is in method names this seems a small price to pay, as in practice it just prevents otherwise likely pathological names
 from being used. Sadly, however, “London No3” is considered a different name than either “London No.3” or “London No 3”.</p></li>
 </ul>
+
 
 
 </body></html>
