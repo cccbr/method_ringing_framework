@@ -67,6 +67,14 @@
                     <li class="nav-item">
                         <br />&nbsp;&nbsp;&nbsp;&nbsp;<u>Appendices</u><br />
                         <a class="nav-link active" href="placenotation.html">A. Place Notation</a>
+                        <ul class="nav nav-pills flex-column nav-subsection">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#adjacent-identitychanges">A. Adjacent and Identity Changes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#jumpchanges">B. Jump Changes</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
@@ -108,7 +116,16 @@
                         </div>
                     </div>
 
-					<div class="row">
+                    <div class="row" id="adjacent-identitychanges">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Adjacent and Identity Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm-1">
                             1.
                         </div>
@@ -123,7 +140,7 @@
                         <div class="col-sm-1">
                             2.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail2"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA2"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -131,7 +148,7 @@
                                 A Change is represented in place notation by listing the Places made, starting from the earliest Place to the latest Place.
                                 All remaining pairs of adjacent bells swap.
                             </p>
-                            <div class="collapse" id="detail2">
+                            <div class="collapse" id="detailA2">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> With 6 bells, the Change between the Row 214365 and the Row 241356 is written ‘14’.
@@ -152,14 +169,14 @@
                         <div class="col-sm-1">
                             3.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail3"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA3"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
                                 Places are represented by the same single characters as are used for bells, as described in 3.B.1.
                             </p>
-                            <div class="collapse" id="detail3">
+                            <div class="collapse" id="detailA3">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> With 12 bells, the Change between the Row 2143658709TE and the Row 123456780T9E is written ‘9T’.
@@ -174,7 +191,7 @@
                         <div class="col-sm-1">
                             4.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail4"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA4"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -182,7 +199,7 @@
                                 In an even-Stage Change only, all adjacent pairs of bells may swap, such that no Places are made.
                                 This is called the cross Change, and it is denoted in place notation with either ‘x’, ‘X’ or ‘-’.
                             </p>
-                            <div class="collapse" id="detail4">
+                            <div class="collapse" id="detailA4">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Example:</b> With 8 bells, the Change between the Row 12463857 and the Row 21648375 is the cross Change.
@@ -197,7 +214,7 @@
                         <div class="col-sm-1">
                             5.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail5"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA5"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -210,7 +227,7 @@
                                 this may be abbreviated to either just 1st’s Place or just the
                                 highest-numbered Place of the Change because the other external Place can be inferred.
                             </p>
-                            <div class="collapse" id="detail5">
+                            <div class="collapse" id="detailA5">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Examples:</b> With 6 bells, the Change 14 can be abbreviated to 4.<br />
@@ -218,17 +235,26 @@
                                     With 8 bells, the Change 1458 can be abbreviated to 45.<br />
                                     With 12 bells, the Change 1T can be abbreviated to 1 or to T.
                                 </p>
+                                <hr />
+
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Note that, by convention, internal Places are never abbreviated, even when it would still be
+                                    clear what the full Change is.<br />
+                                    For example, the 7-bell Change 12347 could be abbreviated to 24, and 3rd's Place,
+                                    as well as 1st's Place and 7th's Place, could all be inferred.
+                                    However, by convention, this Change is only abbreviated to 234 -- internal Places are always specified.
+                                </p>
 
                                 <hr />
                             </div>
                         </div>
                     </div>
 
-					<div class="row">
+                    <div class="row">
                         <div class="col-sm-1">
                             6.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail6"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA6"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
@@ -236,7 +262,7 @@
                                 When using place notation to describe a sequence of Changes, a dot is inserted between the place notation for each change.
                                 However the dot is omitted on either side of a cross Change.
                             </p>
-                            <div class="collapse" id="detail6">
+                            <div class="collapse" id="detailA6">
                                 <hr />
                                 <p class="text-danger">
                                     <b>Examples:</b> On 5 bells, an example sequence of 6 Changes is 3.1.5.3.1.3.<br />
@@ -253,35 +279,265 @@
                         <div class="col-sm-1">
                             7.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail7"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA7"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
                                 Many Methods have a sequence of Changes that takes the form A, B, ~A, C, where A is a sequence of Changes,
-                                ~A is the same sequence of Changes as A but in reverse order, and B and C are individual Changes.<br />
-                                There are various ways in which this can be represented in abbreviated form to avoid writing out the full place
-                                notation.
+                                ~A is the same sequence of Changes as A but in reverse order, and B and C are individual Changes.
+                                The recommended way to notate this sequence of Changes is: AB,C
                             </p>
-                            <div class="collapse" id="detail7">
+
+                            <div class="collapse" id="detailA7">
                                 <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> Consider Canterbury Little Bob Minor, which has a full place notation of 34.16x14x16.34.12.<br />
-                                	This sequence takes the form A, B, ~A, C where
-                                    A = 34.16x so ~A = x16.34. B = 14. C = 12.<br />
-                                	This might be written &amp;34.16x14+12. The &amp; indicates that the string following it, up to the + symbol,
-                                	should be expanded into A, B, ~A, where B is the last change in the sequence (i.e. 14),
-                                	and A is the sequence excluding the last change.  The + symbol indicates that the C change (12) is added at the end.
+                                <p class="text-danger">
+                                    <b>Example:</b> Canterbury Little Bob Minor has a full place notation of 34.16x14x16.34.12.<br />
+                                    This sequence takes the form A, B, ~A, C where:<br />
+                                    A = 34.16x so ~A = x16.34<br />
+                                    B = 14<br />
+                                    C = 12
                                 </p>
+
+                                <p class="text-danger">
+                                    The recommended way to notate Canterbury Little Bob Minor is therefore:<br />
+                                    34.16x14,12
+                                </p>
+                                <hr />
+
                                 <p class="text-primary">
-                                	Another form is 34.16x14,12. Here any sequence of place notations greater than one Change in length is assumed
-                                	to expand in the same form as the &amp; operater above. An individual change, as shown after the comma, is appended to the end
-                                	of the expanded sequence in the same way as the + operater above.
+                                    <b>Further explanation:</b> Here the comma operator indicates that any sequence of place notations,
+                                    either side of the comma, that is greater than one Change in length,
+                                    is of the form AB, where B is the last Change, and A is all the preceding Changes.
+                                    The comma operator further indicates that the sequence should be expanded as A, B, ~A,
+                                    where ~A is A read in reverse order.
+                                </p>
+
+                                <p class="text-primary">
+                                    Where there is a single place notation either side of the comma, this is incorporated into the expanded place notation
+                                    without any adjustment.
+                                </p>
+
+                                <p class="text-primary">
+                                    For sequences of Changes that don't use an A, B, ~A structure, these are notated in full,
+                                    without the use of a comma.
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="jumpchanges">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Jump Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Additional notation is required to describe Jump Changes. The following sections give the recommended approach.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                A pair of Places enclosed in parentheses indicates that the bell in the first Place
+                                jumps to the second Place in the the next Row.
+                                The rest of the bells in this span of Places each move by one Place to accommodate the jump.
+                            </p>
+
+                            <div class="collapse" id="detailB2">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> (14) indicates that the bell in 1st's Place jumps to 4th's Place in the next Row.
+                                    The bells currently in 2nd's, 3rd's and 4th's Places each move down a Place in the next Row.
+                                    So, (14) would take Row 1234 to Row 2341.
+                                    Similarly, (41) would take Row 2143 to Row 3214.
                                 </p>
 
                                 <hr />
-                                <p class="text-muted">
-                                    <b>Technical comment:</b> See 8. below for an additional consideration on how ~A applies when Jump Changes are used.
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The two Places enclosed in parentheses are at least two Places apart.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                A contiguous set of Places enclosed in square brackets indicates how the bells in these Places
+                                are transposed from one Row to the next.
+                            </p>
+
+                            <div class="collapse" id="detailB3">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> [3412] indicates that the bells in the current Row are "read" in the order
+                                    3rd's Place, 4th's Place, 1st's Place, 2nd's Place in order to generate the next Row.
+                                    So, [3412] would take Row 2143 to Row 4321,
+                                    and [4321] would take Row 1324 to Row 4231.
+                                </p>
+
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The set of Places enclosed in square brackets comprises at least three Places,
+                                    and these Places are contiguous -- i.e. they comprise a set of Places that form an adjacent set.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB4"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Where the parenthetical or square bracketed notations don't account for all Places in a Change,
+                                standard place notation conventions apply.
+                                I.e. remaining pairs of bells cross, and there may be inferred external Place(s).
+                            </p>
+
+                            <div class="collapse" id="detailB4">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The Minor Change (24) specifies what happens to the bells in Places 2, 3 and 4.
+                                    The remaining places are therefore 1st's, 5th's and 6th's.
+                                    Following standard place notation conventions, 1st's place is Made, and the bells in 5th's and 6th's Places cross.
+                                    So, Minor Change (24) would take Row 123456 to Row 134265.
+                                    Similarly, Caters Change [6543] would take Row 214365978 to Row 125634798.
+                                </p>
+
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> If desired, the full Change may be specified in square brackets, even when external
+                                    Places and/or crosses could be inferred.
+                                    So, the Caters Change [6543] above could also be specified as [216543879].
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB5"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                One instance of the parenthetical or square bracketed notation may be sufficient to define a single Change.
+                                However, these notations may also be used more than once in defining a single Change.
+                                These notations may also be combined with standard place notation to define a single Change.
+                                Where more than one instance of parenthetical, square bracketed and/or standard place notation are used to define
+                                a single Change, there should be no overlap of Places.
+                            </p>
+
+                            <div class="collapse" id="detailB5">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> (13)4(75) defines the Triples Change that
+                                    would take Row 1234567 to Row 2314756.
+                                    Note that there is no overlap of Places in the three sections of the notation.<br />
+
+                                    (14)(53) should not be used as the Places in the second section overlap with the Places in the first section.
+                                    This Change is more clearly described as [23514].<br />
+
+                                    (24)[765]8 defines the Royal Change that
+                                    would take Row 1234567890 to Row 1342765809. Again there is no overlap of Places between sections of the notation.
+                                </p>
+
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Following standard place notation convention, the various elements
+                                    are written from lowest Place to highest Place. Hence, (24)[765]8 and not (24)8[765].
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            6.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB6"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Dot notation is used to delineate Changes in the same way as for standard place notation.
+                                Dots are only omitted before and after the cross Change.
+                                Also, as with standard place notation, internal Places Made are always specified, even when
+                                these could be inferred.
+                            </p>
+
+                            <div class="collapse" id="detailB6">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> (13)(64) defines a single Change, whereas (13).(64) defines two Changes.
+
+                                    (31)4[765] correctly defines a Triples Change. Convention is to include the 4 since it's an internal
+                                    Place Made, even though it could be inferred.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            7.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB7"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Where the same Change can be represented in more than one way, use the simplest form.
+                                This makes the Change's operation more apparent to the reader.
+                            </p>
+
+                            <div class="collapse" id="detailB7">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> Use (25) rather than [3452].
+
+                                    Use (24)5[876] rather than [3425876].
                                 </p>
 
                                 <hr />
@@ -293,33 +549,26 @@
                         <div class="col-sm-1">
                             8.
                             <span class="float-right">
-                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail8"></a>
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB8"></a>
                             </span>
                         </div>
                         <div class="col-sm-11">
                             <p>
-                            	Extended place notation is required to describe Jump Changes.  There is not yet a standard form of extended place notation
-                            	though several forms have been proposed.
+                                When a Method has the structure A, B, ~A, C as described in A.7 above,
+                                there is an additional consideration when Jump Changes are involved.
+                                Adjacent Changes are self-inverse, meaning that the same Change applied twice in succession brings you back to the starting Row.
+                                However this may not apply to Jump Changes.
+                                Therefore if a Method with Jump Changes has a structure including ~A, not only are the Changes in ~A in reverse order,
+                                but any Jump Changes in A are inverted in ~A.<br />
+                                Furthermore, the comma notation described in A.7 above should not be used if Change B or Change C are not self-inverse Changes.
+                                In this case, the sequence of Changes should be written in full, without the use of the comma notation.
                             </p>
-                            <div class="collapse" id="detail8">
+
+                            <div class="collapse" id="detailB8">
                                 <hr />
                                 <p class="text-danger">
-                                    <b>Example:</b> The Change from Row 2143658709 to Row 2134586790 can be represented as 12(675)8.
-                                </p>
-
-                                <hr />
-                                <p class="text-primary">
-                                    <b>Further explanation:</b> A bracketed section can be included within a place notation that contains the transposition
-                                    of an adjacent set of places within a Row.  Places outside the brackets follow the normal place notation rules.
-                                </p>
-
-                                <p class="text-primary">
-                                    When a Method has the structure A, B, ~A, C as described in 7. above, there is an additional consideration when Jump Changes are involved.
-                                    Adjacent Changes are self-inverse, meaning that the same Change applied twice in succession brings you back to the initial Row.
-                                    However this may not apply to Jump Changes.
-                                    Therefore if a Method with Jump Changes has a structure including ~A, not only are the Changes in ~A in reverse order,
-                                    but any Jump Changes in A are inverted in ~A.
-                                    For example, if A includes the Change 12(675)8, then in ~A that Change will be 12(756)8.
+                                    <b>Example:</b> In a Method with structure A, B, ~A, C, if A includes the Change (24),
+                                    then in ~A this Change will be the inverse, i.e. (42).
                                 </p>
 
                                 <hr />
