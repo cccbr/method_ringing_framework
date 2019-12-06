@@ -9,37 +9,37 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="34.395832mm"
-   height="9.5250006mm"
-   viewBox="0 0 34.395832 9.5250006"
+   width="41.864754mm"
+   height="8.3729506mm"
+   viewBox="0 0 41.864754 8.3729506"
    version="1.1"
-   id="svg8"
+   id="svg4521"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="version.svg">
   <defs
-     id="defs2">
+     id="defs4515">
     <clipPath
        id="clipEmfPath1"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path10"
-         d="M -0.87904995,-0.87904995 H 114.27649 V 31.645798 H -0.87904995 Z"
+         id="path4523"
+         d="M -0.87904995,-0.87904995 H 158.22899 V 31.645798 H -0.87904995 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
     <clipPath
        id="clipEmfPath2"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path13"
-         d="M 0,0 H 114.27649 V 31.645798 H 0 Z"
+         id="path4526"
+         d="M 0,0 H 158.22899 V 31.645798 H 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
     <clipPath
        id="clipEmfPath3"
        clipPathUnits="userSpaceOnUse">
       <path
-         id="path16"
-         d="M 0,0 V 31.646484 H 114.27734 V 0 Z"
+         id="path4529"
+         d="M 0,0 V 31.646484 H 158.22852 V 0 Z"
          inkscape:connector-curvature="0" />
     </clipPath>
     <pattern
@@ -58,8 +58,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="-418.66402"
-     inkscape:cy="-24.207696"
+     inkscape:cx="100.30729"
+     inkscape:cy="-36.329547"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -69,14 +69,14 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata5">
+     id="metadata4518">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -84,41 +84,41 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-79.495586,-132.90338)">
+     transform="translate(-79.293696,-130.84819)">
     <g
-       id="g22"
+       id="g4535"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098784,0,0,0.30098784,79.495586,132.90338)" />
+       transform="matrix(0.26458333,0,0,0.26458333,79.293696,130.84819)" />
     <path
-       id="path24"
-       d="M -0.87904995,-0.87904995 H 114.27649 V 31.645798 H -0.87904995 Z"
+       id="path4537"
+       d="M -0.87904995,-0.87904995 H 158.22899 V 31.645798 H -0.87904995 Z"
        clip-path="url(#clipEmfPath2)"
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
        inkscape:connector-curvature="0"
-       transform="matrix(0.30098784,0,0,0.30098784,79.495586,132.90338)" />
+       transform="matrix(0.26458333,0,0,0.26458333,79.293696,130.84819)" />
     <g
-       id="g26"
+       id="g4539"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098784,0,0,0.30098784,79.495586,132.90338)" />
+       transform="matrix(0.26458333,0,0,0.26458333,79.293696,130.84819)" />
     <g
-       id="g34"
+       id="g4547"
        clip-path="url(#clipEmfPath2)"
-       transform="matrix(0.30098784,0,0,0.30098784,79.495586,132.90338)">
+       transform="matrix(0.26458333,0,0,0.26458333,79.293696,130.84819)">
       <text
-         id="text32"
+         id="text4545"
          y="16.690979"
          x="0"
          transform="translate(2.63715,5.2743)"
          style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;line-height:125%;font-family:Arial;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           id="tspan30"
+           id="tspan4543"
            y="16.690979"
            x="0"
            sodipodi:role="line"><tspan
-             id="tspan28"
+             id="tspan4541"
              style="font-style:normal;font-variant:normal;font-weight:400;font-size:18.4375px;font-family:Arial;fill:#ffffff"
              dy="0"
-             dx="0">Version 1.01</tspan></tspan></text>
+             dx="0">Draft Version 1.1</tspan></tspan></text>
     </g>
   </g>
 </svg>
