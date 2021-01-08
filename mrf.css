@@ -42,6 +42,14 @@ a {
         text-decoration: none;
     }
 
+    a.undrln {
+        text-decoration: underline;
+    }
+
+        a.undrln:hover {
+            text-decoration: underline;
+        }
+
     /*
  * Navbar
 */
