@@ -302,35 +302,38 @@
                             <p>
                                 The sequence of Places that a given bell occupies as it progresses through the Rows
                                 of a Block in question.<br />
-                                Paths are often cyclical in nature -- i.e. the ending Place of a Path is the same
-                                as its starting Place, and the Path can then repeat.<br />
-                                Two cyclical Paths are considered to be the same if any rotation of the first Path
-                                gives the second Path.
+                                A Path whose final Place is the same as its initial Place, such that the final Place
+                                is also the initial Place of another iteration of the same Path, is a Round Path.<br />
+                                Two Round Paths are considered to be the same if the first Path can be started from a
+                                Place that gives the second Path.
                             </p>
                             <div class="collapse" id="detailA5">
                                 <hr />
                                 <p class="text-primary">
                                     <b>Further explanation:</b> The Block in question when referring to a Path is
                                     often a Plain Lead or a Plain Course of a Method.<br />
-                                    A Path is often highlighted by drawing a line through the bell in question.
+                                    A Path is commonly depicted by drawing a line through the bell in question.
                                     The treble’s Path is shown this way using a red line in the example in
                                     Section 4.A.2 above.
+                                    Further iterations of this Path would occur in the remainder of the Plain Course
+                                    of the example Method in Section 4.A.2, so this Path is also an example of a
+                                    Round Path.<br />
                                 </p>
 
                                 <hr />
                                 <p class="text-danger">
-                                    <b>Examples:</b> The Path of a Hunt Bell through a Plain Lead, and the Path of
-                                    a Working Bell through a Plain Course, are examples of cyclical Paths.
-                                </p>
-
-                                <p class="text-danger">
-                                    Consider the following two cyclical Paths:<br />
+                                    <b>Example:</b> Consider the following two Round Paths:<br />
                                     Path 1: 112344321<br />
                                     Path 2: 123443211<br />
-                                    where the last Place of each Path is also the first Place of another cycle
+                                    where the final Place of each Path is also the initial Place of another iteration
                                     of the same Path.<br />
-                                    These two cyclical Paths are considered to be the same because path 1 can
-                                    be rotated to give path 2.
+                                    Since these Paths are Round, they can also be written as:<br />
+                                    Path 1: 11234432 11234432 11234432 etc<br />
+                                    Path 2: 12344321 12344321 12344321 etc<br />
+                                    These two Round Paths are considered to be the same because starting path 1 from
+                                    its second Place gives:<br />
+                                    12344321 12344321 12344321 etc<br />
+                                    which is the same as path 2.
                                 </p>
 
                                 <hr />
