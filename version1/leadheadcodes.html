@@ -1,0 +1,1376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="A proposed replacement for sections D, E, F, G, I and J of the Central Council's Decisions.">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
+
+    <title>Framework for Method Ringing - Leadhead Codes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    <link href="mrf.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/ "><img src="images/cc-header.png" height="60" alt="CCCBR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <img src="images/version.svg" width=200 height=36 />
+            <small><a id="switchv" href="../index.html">[Switch version]</a></small>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">1. Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="versioning.html">2. Versioning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;<u>Appendices</u><br />
+                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                    </li>                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="leadheadcodes.html">C. Leadhead Codes</a>
+                        <ul class="nav nav-pills flex-column nav-subsection">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#leadheadgrouping">A. Leadhead Grouping</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#plainbobleadheadcodeseven">B. Plain Bob Leadhead Codes for Even Stages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#plainbobleadheadcodesodd">C. Plain Bob Leadhead Codes for Odd Stages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#grandsireleadheadcodesodd">D. Grandsire Leadhead Codes for Odd Stages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#grandsireleadheadcodeseven">E. Grandsire Leadhead Codes for Even Stages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="development.html">E. Framework Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transition.html">F. Transitional Arrangements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedmaterial.html">G. Related Material</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consultation.html">H. Consultation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faqs.html">I. FAQs</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Appendix C. Leadhead Codes</h2>
+                        </div>
+                    </div>
+                    <div class="row" id="leadheadgrouping">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Leadhead Grouping</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">1.</div>
+                        <div class="col-sm-11">
+                            <p>
+                                Methods that have a first leadhead that is the same as one of the leadheads found in the Plain Course of Plain Bob or Grandsire
+                                have been assigned a code according to the order in which the leadheads occur in its Plain Course.
+                                They are a useful shorthand for communicating the Lead order of a Method.
+                            </p>
+
+                            <p>
+                                Originally lowercase letters were ascribed
+                                and these were later extended with numbers to cover higher stages. In the framework the codes associated with the letters
+                                p, q, r and s have been renumbered to include the leadheads previously omitted before the Differential classes were added.
+                            </p>
+                            <p>
+                                Methods with Plain Bob leadheads are split into different leadhead groups according to the place notation (where n is the Stage) immediately
+                                <a>before</a> the leadhead as follows:
+                            </p>
+                            <ul>
+                                <li>Those with <i>even</i> Stages and a lead end place notation of <i>12</i> have codes a-f</li>
+                                <li>Those with <i>even</i> Stages and a lead end place notation of <i>1n</i> have codes g-m</li>
+                                <li>Those with <i>odd</i> Stages and a lead end place notation of <i>12n</i> have codes p-q</li>
+                                <li>Those with <i>odd</i> Stages and a lead end place notation of <i>1</i> have codes r-s</li>
+                            </ul>
+                            <p>
+                                Methods with Grandsire leadheads are split into different leadhead groups according to the place notation (where n is the Stage) immediately
+                                <a>after</a> the leadhead as follows:
+                            </p>
+                            <ul>
+                                <li>Those with <i>odd</i> Stages and a place notation of <i>3</i> following the leadhead have codes a-f</li>
+                                <li>Those with <i>odd</i> Stages and a place notation of <i>n</i> following the leadhead have codes g-m</li>
+                                <li>Those with <i>even</i> Stages and a place notation of <i>3n</i> following the leadhead have codes p-q</li>
+                                <li>Those with <i>even</i> Stages and a place notation of <i>-</i> following the leadhead have codes r-s</li>
+                            </ul>
+                            <p>
+                                Any methods not falling in the above groupings are not given a leadhead code even if they
+                                have Plain Bob or Grandsire leadheads.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" id="plainbobleadheadcodeseven">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Plain Bob Leadhead Codes for Even Stages</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1"><b>LH Code</b></div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"><b>Minimus</b></div>
+                                <div class="col-sm-1"><b>Minor</b></div>
+                                <div class="col-sm-2"><b>Major</b></div>
+                                <div class="col-sm-2"><b>Royal</b></div>
+                                <div class="col-sm-2"><b>Maximus</b></div>
+                                <div class="col-sm-2"><b>Fourteen</b></div>
+                                <div class="col-sm-2"><b>Sixteen</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6"><b>PN12</b></div>
+                                <div class="col-sm-6"><b>PN1n</b></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">a</div>
+                                <div class="col-sm-6">g</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1">1342</div>
+                                <div class="col-sm-1">135264</div>
+                                <div class="col-sm-2">13527486</div>
+                                <div class="col-sm-2">1352749608</div>
+                                <div class="col-sm-2">13527496E8T0</div>
+                                <div class="col-sm-2">13527496E8A0BT</div>
+                                <div class="col-sm-2">13527496E8A0CTDB</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">b</div>
+                                <div class="col-sm-6">h</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1">156342</div>
+                                <div class="col-sm-2">15738264</div>
+                                <div class="col-sm-2">1573920486</div>
+                                <div class="col-sm-2">157392E4T608</div>
+                                <div class="col-sm-2">157392E4A6B8T0</div>
+                                <div class="col-sm-2">157392E4A6C8D0BT</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">c</div>
+                                <div class="col-sm-6">j</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">17856342</div>
+                                <div class="col-sm-2">1795038264</div>
+                                <div class="col-sm-2">1795E3T20486</div>
+                                <div class="col-sm-2">1795E3A2B4T608</div>
+                                <div class="col-sm-2">1795E3A2C4D6B8T0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">c1</div>
+                                <div class="col-sm-6">j1</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1907856342</div>
+                                <div class="col-sm-2">19E7T5038264</div>
+                                <div class="col-sm-2">19E7A5B3T20486</div>
+                                <div class="col-sm-2">19E7A5C3D2B4T608</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">c2</div>
+                                <div class="col-sm-6">j2</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1ET907856342</div>
+                                <div class="col-sm-2">1EA9B7T5038264</div>
+                                <div class="col-sm-2">1EA9C7D5B3T20486</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">c3</div>
+                                <div class="col-sm-6">j3</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1ABET907856342</div>
+                                <div class="col-sm-2">1ACED9B7T5038264</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">c4</div>
+                                <div class="col-sm-6">j4</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1CDABET907856342</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">d4</div>
+                                <div class="col-sm-6">k4</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1DBCTA0E89674523</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">d3</div>
+                                <div class="col-sm-6">k3</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1BTA0E89674523</div>
+                                <div class="col-sm-2">1BTD0C8A6E492735</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">d2</div>
+                                <div class="col-sm-6">k2</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1T0E89674523</div>
+                                <div class="col-sm-2">1T0B8A6E492735</div>
+                                <div class="col-sm-2">1T0B8D6C4A2E3957</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">d1</div>
+                                <div class="col-sm-6">k1</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1089674523</div>
+                                <div class="col-sm-2">108T6E492735</div>
+                                <div class="col-sm-2">108T6B4A2E3957</div>
+                                <div class="col-sm-2">108T6B4D2C3A5E79</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">d</div>
+                                <div class="col-sm-6">k</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">18674523</div>
+                                <div class="col-sm-2">1860492735</div>
+                                <div class="col-sm-2">18604T2E3957</div>
+                                <div class="col-sm-2">18604T2B3A5E79</div>
+                                <div class="col-sm-2">18604T2B3D5C7A9E</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">e</div>
+                                <div class="col-sm-6">l</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1">164523</div>
+                                <div class="col-sm-2">16482735</div>
+                                <div class="col-sm-2">1648203957</div>
+                                <div class="col-sm-2">1648203T5E79</div>
+                                <div class="col-sm-2">1648203T5B7A9E</div>
+                                <div class="col-sm-2">1648203T5B7D9CEA</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">f</div>
+                                <div class="col-sm-6">m</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1">1423</div>
+                                <div class="col-sm-1">142635</div>
+                                <div class="col-sm-2">14263857</div>
+                                <div class="col-sm-2">1426385079</div>
+                                <div class="col-sm-2">142638507T9E</div>
+                                <div class="col-sm-2">142638507T9BEA</div>
+                                <div class="col-sm-2">142638507T9BEDAC</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" id="plainbobleadheadcodesodd">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Plain Bob Leadhead Codes for Odd Stages</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1"><b>LH Code</b></div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"><b>Doubles</b></div>
+                                <div class="col-sm-1"><b>Triples</b></div>
+                                <div class="col-sm-2"><b>Caters</b></div>
+                                <div class="col-sm-2"><b>Cinques</b></div>
+                                <div class="col-sm-2"><b>Sextuples</b></div>
+                                <div class="col-sm-2"><b>Septuples</b></div>
+                                <div class="col-sm-2"><b>Octuples</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6"><b>PN12n</b></div>
+                                <div class="col-sm-6"><b>PN1</b></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p</div>
+                                <div class="col-sm-6">r</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1">13524</div>
+                                <div class="col-sm-1">1352746</div>
+                                <div class="col-sm-2">135274968</div>
+                                <div class="col-sm-2">13527496E80</div>
+                                <div class="col-sm-2">13527496E8A0T</div>
+                                <div class="col-sm-2">13527496E8A0CTB</div>
+                                <div class="col-sm-2">13527496E8A0CTFBD</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p1</div>
+                                <div class="col-sm-6">r1</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1">15432</div>
+                                <div class="col-sm-1">1573624</div>
+                                <div class="col-sm-2">157392846</div>
+                                <div class="col-sm-2">157392E4068</div>
+                                <div class="col-sm-2">157392E4A6T80</div>
+                                <div class="col-sm-2">157392E4A6C8B0T</div>
+                                <div class="col-sm-2">157392E4A6C8F0DTB</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p2</div>
+                                <div class="col-sm-6">r2</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1">1765432</div>
+                                <div class="col-sm-2">179583624</div>
+                                <div class="col-sm-2">1795E302846</div>
+                                <div class="col-sm-2">1795E3A2T4068</div>
+                                <div class="col-sm-2">1795E3A2C4B6T80</div>
+                                <div class="col-sm-2">1795E3A2C4F6D8B0T</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p3</div>
+                                <div class="col-sm-6">r3</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">198765432</div>
+                                <div class="col-sm-2">19E70583624</div>
+                                <div class="col-sm-2">19E7A5T302846</div>
+                                <div class="col-sm-2">19E7A5C3B2T4068</div>
+                                <div class="col-sm-2">19E7A5C3F2D4B6T80</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p4</div>
+                                <div class="col-sm-6">r4</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1E098765432</div>
+                                <div class="col-sm-2">1EA9T70583624</div>
+                                <div class="col-sm-2">1EA9C7B5T302846</div>
+                                <div class="col-sm-2">1EA9C7F5D3B2T4068</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p5</div>
+                                <div class="col-sm-6">r5</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1ATE098765432</div>
+                                <div class="col-sm-2">1ACEB9T70583624</div>
+                                <div class="col-sm-2">1ACEF9D7B5T302846</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p6</div>
+                                <div class="col-sm-6">r6</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1CBATE098765432</div>
+                                <div class="col-sm-2">1CFADEB9T70583624</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">p7</div>
+                                <div class="col-sm-6">r7</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1FDCBATE098765432</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q6</div>
+                                <div class="col-sm-6">s6</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1DBFTC0A8E6947253</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q5</div>
+                                <div class="col-sm-6">s5</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1BTC0A8E6947253</div>
+                                <div class="col-sm-2">1BTD0F8C6A4E29375</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q4</div>
+                                <div class="col-sm-6">s4</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">1T0A8E6947253</div>
+                                <div class="col-sm-2">1T0B8C6A4E29375</div>
+                                <div class="col-sm-2">1T0B8D6F4C2A3E597</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q3</div>
+                                <div class="col-sm-6">s3</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2">108E6947253</div>
+                                <div class="col-sm-2">108T6A4E29375</div>
+                                <div class="col-sm-2">108T6B4C2A3E597</div>
+                                <div class="col-sm-2">108T6B4D2F3C5A7E9</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q2</div>
+                                <div class="col-sm-6">s2</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">186947253</div>
+                                <div class="col-sm-2">18604E29375</div>
+                                <div class="col-sm-2">18604T2A3E597</div>
+                                <div class="col-sm-2">18604T2B3C5A7E9</div>
+                                <div class="col-sm-2">18604T2B3D5F7C9AE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q1</div>
+                                <div class="col-sm-6">s1</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-1">1647253</div>
+                                <div class="col-sm-2">164829375</div>
+                                <div class="col-sm-2">1648203E597</div>
+                                <div class="col-sm-2">1648203T5A7E9</div>
+                                <div class="col-sm-2">1648203T5B7C9AE</div>
+                                <div class="col-sm-2">1648203T5B7D9FECA</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <div class="col-sm-6">q</div>
+                                <div class="col-sm-6">s</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div class="col-sm-1">14253</div>
+                                <div class="col-sm-1">1426375</div>
+                                <div class="col-sm-2">142638597</div>
+                                <div class="col-sm-2">142638507E9</div>
+                                <div class="col-sm-2">142638507T9AE</div>
+                                <div class="col-sm-2">142638507T9BECA</div>
+                                <div class="col-sm-2">142638507T9BEDAFC</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="row" id="grandsireleadheadcodesodd">
+                    <div class="col-sm-1">
+                        <h5>D.</h5>
+                    </div>
+                    <div class="col-sm-11">
+                        <h5 class="border-bottom">Grandsire Leadhead Codes for Odd Stages</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"><b>LH Code</b></div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"><b>Doubles</b></div>
+                            <div class="col-sm-1"><b>Triples</b></div>
+                            <div class="col-sm-2"><b>Caters</b></div>
+                            <div class="col-sm-2"><b>Cinques</b></div>
+                            <div class="col-sm-2"><b>Sextuples</b></div>
+                            <div class="col-sm-2"><b>Septuples</b></div>
+                            <div class="col-sm-2"><b>Octuples</b></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6"><b>PN3</b></div>
+                            <div class="col-sm-6"><b>PNn</b></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">a</div>
+                            <div class="col-sm-6">g</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1">12534</div>
+                            <div class="col-sm-1">1253746</div>
+                            <div class="col-sm-2">125374968</div>
+                            <div class="col-sm-2">12537496E80</div>
+                            <div class="col-sm-2">12537496E8A0T</div>
+                            <div class="col-sm-2">12537496E8A0CTB</div>
+                            <div class="col-sm-2">12537496E8A0CTFBD</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">b</div>
+                            <div class="col-sm-6">h</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">1275634</div>
+                            <div class="col-sm-2">127593846</div>
+                            <div class="col-sm-2">127593E4068</div>
+                            <div class="col-sm-2">127593E4A6T80</div>
+                            <div class="col-sm-2">127593E4A6C8B0T</div>
+                            <div class="col-sm-2">127593E4A6C8F0DTB</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">c</div>
+                            <div class="col-sm-6">j</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">129785634</div>
+                            <div class="col-sm-2">1297E503846</div>
+                            <div class="col-sm-2">1297E5A3T4068</div>
+                            <div class="col-sm-2">1297E5A3C4B6T80</div>
+                            <div class="col-sm-2">1297E5A3C4F6D8B0T</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">c1</div>
+                            <div class="col-sm-6">j1</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12E90785634</div>
+                            <div class="col-sm-2">12E9A7T503846</div>
+                            <div class="col-sm-2">12E9A7C5B3T4068</div>
+                            <div class="col-sm-2">12E9A7C5F3D4B6T80</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">c2</div>
+                            <div class="col-sm-6">j2</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12AET90785634</div>
+                            <div class="col-sm-2">12AEC9B7T503846</div>
+                            <div class="col-sm-2">12AEC9F7D5B3T4068</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">c3</div>
+                            <div class="col-sm-6">j3</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12CABET90785634</div>
+                            <div class="col-sm-2">12CAFED9B7T503846</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">c4</div>
+                            <div class="col-sm-6">j4</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12FCDABET90785634</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">d4</div>
+                            <div class="col-sm-6">k4</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12DFBCTA0E8967453</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">d3</div>
+                            <div class="col-sm-6">k3</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12BCTA0E8967453</div>
+                            <div class="col-sm-2">12BDTF0C8A6E49375</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">d2</div>
+                            <div class="col-sm-6">k2</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12TA0E8967453</div>
+                            <div class="col-sm-2">12TB0C8A6E49375</div>
+                            <div class="col-sm-2">12TB0D8F6C4A3E597</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">d1</div>
+                            <div class="col-sm-6">k1</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">120E8967453</div>
+                            <div class="col-sm-2">120T8A6E49375</div>
+                            <div class="col-sm-2">120T8B6C4A3E597</div>
+                            <div class="col-sm-2">120T8B6D4F3C5A7E9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">d</div>
+                            <div class="col-sm-6">k</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">128967453</div>
+                            <div class="col-sm-2">12806E49375</div>
+                            <div class="col-sm-2">12806T4A3E597</div>
+                            <div class="col-sm-2">12806T4B3C5A7E9</div>
+                            <div class="col-sm-2">12806T4B3D5F7C9AE</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">e</div>
+                            <div class="col-sm-6">l</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">1267453</div>
+                            <div class="col-sm-2">126849375</div>
+                            <div class="col-sm-2">1268403E597</div>
+                            <div class="col-sm-2">1268403T5A7E9</div>
+                            <div class="col-sm-2">1268403T5B7C9AE</div>
+                            <div class="col-sm-2">1268403T5B7D9FECA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">f</div>
+                            <div class="col-sm-6">m</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1">12453</div>
+                            <div class="col-sm-1">1246375</div>
+                            <div class="col-sm-2">124638597</div>
+                            <div class="col-sm-2">124638507E9</div>
+                            <div class="col-sm-2">124638507T9AE</div>
+                            <div class="col-sm-2">124638507T9BECA</div>
+                            <div class="col-sm-2">124638507T9BEDAFC</div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row" id="grandsireleadheadcodeseven">
+                    <div class="col-sm-1">
+                        <h5>E.</h5>
+                    </div>
+                    <div class="col-sm-11">
+                        <h5 class="border-bottom">Grandsire Leadhead Codes for Even Stages</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"><b>LH Code</b></div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"><b>Minimus</b></div>
+                            <div class="col-sm-1"><b>Minor</b></div>
+                            <div class="col-sm-2"><b>Major</b></div>
+                            <div class="col-sm-2"><b>Royal</b></div>
+                            <div class="col-sm-2"><b>Maximus</b></div>
+                            <div class="col-sm-2"><b>Fourteen</b></div>
+                            <div class="col-sm-2"><b>Sixteen</b></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6"><b>PN3n</b></div>
+                            <div class="col-sm-6"><b>PN-</b></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">p</div>
+                            <div class="col-sm-6">r</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">125364</div>
+                            <div class="col-sm-2">12537486</div>
+                            <div class="col-sm-2">1253749608</div>
+                            <div class="col-sm-2">12537496E8T0</div>
+                            <div class="col-sm-2">12537496E8A0BT</div>
+                            <div class="col-sm-2">12537496E8A0CTDB</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">p1</div>
+                            <div class="col-sm-6">r1</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">12758364</div>
+                            <div class="col-sm-2">1275930486</div>
+                            <div class="col-sm-2">127593E4T608</div>
+                            <div class="col-sm-2">127593E4A6B8T0</div>
+                            <div class="col-sm-2">127593E4A6C8D0BT</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">p2</div>
+                            <div class="col-sm-6">r2</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">1297058364</div>
+                            <div class="col-sm-2">1297E5T30486</div>
+                            <div class="col-sm-2">1297E5A3B4T608</div>
+                            <div class="col-sm-2">1297E5A3C4D6B8T0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">p3</div>
+                            <div class="col-sm-6">r3</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12E9T7058364</div>
+                            <div class="col-sm-2">12E9A7B5T30486</div>
+                            <div class="col-sm-2">12E9A7C5D3B4T608</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">p4</div>
+                            <div class="col-sm-6">r4</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12AEB9T7058364</div>
+                            <div class="col-sm-2">12AEC9D7B5T30486</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">p5</div>
+                            <div class="col-sm-6">r5</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12CADEB9T7058364</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q6</div>
+                            <div class="col-sm-6">s6</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12DCBATE09876543</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q5</div>
+                            <div class="col-sm-6">s5</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12BATE09876543</div>
+                            <div class="col-sm-2">12BDTC0A8E694735</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q4</div>
+                            <div class="col-sm-6">s4</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">12TE09876543</div>
+                            <div class="col-sm-2">12TB0A8E694735</div>
+                            <div class="col-sm-2">12TB0D8C6A4E3957</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q3</div>
+                            <div class="col-sm-6">s3</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2">1209876543</div>
+                            <div class="col-sm-2">120T8E694735</div>
+                            <div class="col-sm-2">120T8B6A4E3957</div>
+                            <div class="col-sm-2">120T8B6D4C3A5E79</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q2</div>
+                            <div class="col-sm-6">s2</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">12876543</div>
+                            <div class="col-sm-2">1280694735</div>
+                            <div class="col-sm-2">12806T4E3957</div>
+                            <div class="col-sm-2">12806T4B3A5E79</div>
+                            <div class="col-sm-2">12806T4B3D5C7A9E</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q1</div>
+                            <div class="col-sm-6">s1</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">126543</div>
+                            <div class="col-sm-2">12684735</div>
+                            <div class="col-sm-2">1268403957</div>
+                            <div class="col-sm-2">1268403T5E79</div>
+                            <div class="col-sm-2">1268403T5B7A9E</div>
+                            <div class="col-sm-2">1268403T5B7D9CEA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="row">
+                            <div class="col-sm-6">q</div>
+                            <div class="col-sm-6">s</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-1">1243</div>
+                            <div class="col-sm-1">124635</div>
+                            <div class="col-sm-2">12463857</div>
+                            <div class="col-sm-2">1246385079</div>
+                            <div class="col-sm-2">124638507T9E</div>
+                            <div class="col-sm-2">124638507T9BEA</div>
+                            <div class="col-sm-2">124638507T9BEDAC</div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="mrf.js"></script>
+</body>
+</html>

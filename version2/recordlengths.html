@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="A proposed replacement for sections D, E, F, G, I and J of the Central Council's Decisions.">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
+
+    <title>Framework for Method Ringing - Record Lengths</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    <link href="mrf.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/ "><img src="images/cc-header.png" height="60" alt="CCCBR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <img src="images/version.svg" width=200 height=36 />
+            <small><a id="switchv" href="../index.html">[Switch version]</a></small>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">1. Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="versioning.html">2. Versioning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="recordlengths.html">7. Record Lengths</a>
+                        <ul class="nav nav-pills flex-column nav-subsection">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#requirements">A. Requirements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#notificationandverification">B. Notification and Verification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reporting">C. Reporting</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;<u>Appendices</u><br />
+                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="development.html">E. Framework Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transition.html">F. Transitional Arrangements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedmaterial.html">G. Related Material</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consultation.html">H. Consultation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faqs.html">I. FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="falsecourseheads.html">J. False Courseheads</a>
+                    </li>
+                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block  btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>7. Record Lengths</h2>
+                        </div>
+                    </div>
+
+                    <!-- Requirements -->
+                    <div class="row" id="requirements">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Requirements</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                To be included in the Central Council's register of Record Lengths,
+                                the Performance must comply with all the requirements of Sections 7.A, 7.B and 7.C.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                All the norms listed in Section 6.C.2 applied to the Performance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                For a Performance using Handbell Style (see Section 6.A.4),
+                                every ringer rang at least two bells.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                The Performance was rung by an all-human Band.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Notification and Verification -->
+                    <div class="row" id="notificationandverification">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Notification and Verification</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Notice of the attempt must be provided to The Ringing World to enable the notice to be published at least 14 days prior to the attempt.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                The notice must state the location, start date and start time of the attempt, the Length and the Method(s) to be rung.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                A copy of the notice must also be provided to the Central Council at least 14 days prior to the attempt.
+                            </p>
+                            <div class="collapse" id="detailB3">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The notice can be emailed to the Central Council's History &amp; Archive Workgroup at
+                                    <a class="text-success undrln" href="mailto:records@cccbr.org.uk">records@cccbr.org.uk</a>.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Arrangement must be made for interested people to be able to listen to the Performance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB5"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                The ringing must be heard, and the figures of the Composition checked throughout, by competent umpire(s).
+                            </p>
+                            <div class="collapse" id="detailB5">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The umpire(s) should do sufficient checking during
+                                    the Performance to be confident that the composition
+                                    was correctly called, and that there were no substantive errors or shifts.
+                                    The umpire(s) should also ensure that, in their opinion, the quality of the ringing
+                                    remains sufficiently high throughout the Performance for a Record Length.
+                                    If the umpire(s) believe the quality has dropped below an acceptable level,
+                                    and the ringing is continuing, they should let the conductor know this so the attempt can be stopped.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reporting -->
+                    <div class="row" id="reporting">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Reporting</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC1"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                A Performance Report must be sent to both The Ringing World (preferably via BellBoard) for publication, and to the Central Council.
+                            </p>
+                            <div class="collapse" id="detailC1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The Performance Report can be emailed to the Central Council's History &amp; Archive Workgroup at
+                                    <a class="text-success undrln" href="mailto:records@cccbr.org.uk">records@cccbr.org.uk</a>.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                The Performance Report must comply with the requirements of Section 6.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                The Performance Report must include the Composition that was rung.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailC4"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                An umpire(s)' report must be sent with the Performance Report to both The Ringing World and the Central Council.
+                            </p>
+                            <div class="collapse" id="detailC4">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The umpire(s)' report can be emailed to the Central Council's History &amp; Archive Workgroup at
+                                    <a class="text-success undrln" href="mailto:records@cccbr.org.uk">records@cccbr.org.uk</a>.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="mrf.js"></script>
+</body>
+</html>
