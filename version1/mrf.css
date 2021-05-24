@@ -50,7 +50,11 @@ a {
             text-decoration: underline;
         }
 
-    /*
+a#switchv {
+    color: white;
+}
+
+/*
  * Navbar
 */
 
