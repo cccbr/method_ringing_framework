@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2018/11/cropped-CCCBR_Logo_col_Concept-32x32.png" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2018/11/cropped-CCCBR_Logo_col_Concept-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://cccbr.org.uk/wp-content/uploads/2018/11/cropped-CCCBR_Logo_col_Concept-180x180.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="A technical standard that defines the terminology used in method ringing and the Central Council requirements for record length performances and naming new methods.">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
+
+    <title>Framework for Method Ringing - Method Name Syntax</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    <link href="mrf.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/ "><img src="images/cc-header.png" height="60" alt="CCCBR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <img src="images/version.svg" width=200 height=36 />
+            <small><a id="switchv" href="../index.html">[Switch version]</a></small>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">1. Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="versioning.html">2. Versioning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;<u>Appendices</u><br />
+                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="syntax.html">B. Method Name Syntax</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="principles.html">F. Framework Principles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="development.html">G. Version 2 Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consultation.html">H. Version 2 Consultation</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Appendix B. Method Name Syntax</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                This appendix defines the set of characters that are recognised for use in Method Names.
+                                Having a defined character set serves two purposes:
+                            <p>
+
+                                <ul>
+                                    <li>
+                                        <p>
+                                            It rules out certain characters that are hard to distinguish from other characters,
+                                            which could otherwise lead to the misidentification of Methods.
+                                            For example, the Unicode character LATIN SMALL LETTER L WITH STROKE (U+0142)
+                                            could be used in a new Method called Płain Bob Doubles.
+                                            This could easily be mistaken for Plain Bob Doubles.
+                                        </p>
+                                    </li>
+
+                                    <li>
+                                        <p>
+                                            It enables the growing number of software developers who make use of the Methods Library
+                                            to know which characters their applications should support.
+                                        </p>
+                                    </li>
+                                </ul>
+
+                            <p>
+                                The Central Council plans to make available a tool that will let users verify whether the characters they plan to use
+                                in a new Method Name are part of the recognised set.
+                            </p>
+
+                            <p>
+                                The Central Council will also consider adding characters to the recognised set on request.
+                                Requests can be emailed to <a class="text-success undrln" href="mailto:methods@cccbr.org.uk">methods@cccbr.org.uk</a>.
+                            </p>
+
+                            <p>
+                                This appendix also defines a Method Name comparison process to ensure Method Names remain
+                                clearly unique.
+                                For example, London No. 3 Surprise Royal is an existing Method. The comparison process
+                                would prevent London No 3 Surprise Royal or London No3 Surprise Royal from being named.
+                                This is considered beneficial to reduce the likelihood of misidentification of Methods.
+                            </p>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                In the following, 'the Unicode standard' refers to the latest version of the standard. See
+                                <a class="text-success undrln" href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>.
+                            </p>
+
+                            <p>
+                                Various attributes of individual characters are provided in the files comprising the Unicode Character Database (UCD). See
+                                <a class="text-success undrln" href="https://www.unicode.org/Public/UCD/latest/ucd/">https://www.unicode.org/Public/UCD/latest/ucd/</a>.
+                            </p>
+
+                            <p>
+                                The UCD file
+                                <a class="text-success undrln" href="https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt">https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt</a>
+                                contains general category information (field 2, zero-based), normalization information (field 5), and lowercase folding information (field 13).
+                                These are used in the Method Name comparison process below.
+                            </p>
+
+                            <p>
+                                Unicode blocks are defined in
+                                <a class="text-success undrln" href="https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt">https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt</a>.
+                            </p>
+
+                            <p>
+                                Normalization is described in
+                                <a class="text-success undrln" href="https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms">https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms</a>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Method Names are a sequence of from 1 to 120 characters selected from:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    <p>
+                                        All those enumerated in the Unicode standard as being in the Basic Latin block and having a general category of Lu, Ll, or Nd
+                                        (upper and lower case letters, and digits). (62 characters)
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        All those enumerated in the Unicode standard as being in the Latin-1 Supplement block and having a general category of Lu or Ll,
+                                        except for the Unicode character named MICRO SIGN. (62 characters)
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        The 18 Unicode characters named:<br />
+                                        SPACE<br />
+                                        EXCLAMATION MARK<br />
+                                        QUOTATION MARK<br />
+                                        DOLLAR SIGN<br />
+                                        PERCENT SIGN<br />
+                                        AMPERSAND<br />
+                                        APOSTROPHE<br />
+                                        LEFT PARENTHESIS<br />
+                                        RIGHT PARENTHESIS<br />
+                                        COMMA<br />
+                                        HYPHEN-MINUS<br />
+                                        FULL STOP<br />
+                                        SOLIDUS<br />
+                                        EQUALS SIGN<br />
+                                        QUESTION MARK<br />
+                                        POUND SIGN<br />
+                                        EURO SIGN<br />
+                                        TRADE MARK SIGN
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        The 20 Unicode characters named:<br />
+                                        SUPERSCRIPT ZERO<br />
+                                        SUPERSCRIPT ONE<br />
+                                        SUPERSCRIPT TWO<br />
+                                        SUPERSCRIPT THREE<br />
+                                        SUPERSCRIPT FOUR<br />
+                                        SUPERSCRIPT FIVE<br />
+                                        SUPERSCRIPT SIX<br />
+                                        SUPERSCRIPT SEVEN<br />
+                                        SUPERSCRIPT EIGHT<br />
+                                        SUPERSCRIPT NINE<br />
+                                        SUBSCRIPT ZERO<br />
+                                        SUBSCRIPT ONE<br />
+                                        SUBSCRIPT TWO<br />
+                                        SUBSCRIPT THREE<br />
+                                        SUBSCRIPT FOUR<br />
+                                        SUBSCRIPT FIVE<br />
+                                        SUBSCRIPT SIX<br />
+                                        SUBSCRIPT SEVEN<br />
+                                        SUBSCRIPT EIGHT<br />
+                                        SUBSCRIPT NINE
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        The 10 Unicode characters named:<br />
+                                        LATIN CAPITAL LETTER A WITH MACRON<br />
+                                        LATIN SMALL LETTER A WITH MACRON<br />
+                                        LATIN CAPITAL LETTER C WITH CARON<br />
+                                        LATIN SMALL LETTER C WITH CARON<br />
+                                        LATIN CAPITAL LIGATURE OE<br />
+                                        LATIN SMALL LIGATURE OE<br />
+                                        LATIN CAPITAL LETTER U WITH RING ABOVE<br />
+                                        LATIN SMALL LETTER U WITH RING ABOVE<br />
+                                        LATIN CAPITAL LETTER R WITH LINE BELOW<br />
+                                        LATIN SMALL LETTER R WITH LINE BELOW
+                                    </p>
+                                </li>
+                            </ul>
+
+                            <p>
+                                subject to the further constraints that a Method Name:
+                            </p>
+
+                            <ol type="a">
+                                <li>
+                                    <p>
+                                        Must contain at least one character of Unicode general category Lu, Ll, or Nd; and
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        May neither begin nor end with a Space character, nor may it contain within it two consecutive Space characters.
+                                    </p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                The above 172 recognised characters are listed in a text file
+                                <a class="text-success undrln" href="syntax/FrameworkRecognisedChars.txt">here</a>.
+                                Information about the format of this file is provided further below.
+                            </p>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB5"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Method Name comparison: Two Method Names are considered the same if they would be reduced to the same sequence of characters by the following process:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    <p>
+                                        The sequence of characters is converted to Unicode Normalization Form KD (NFKD, Normalization Form Compatibility Decomposition);
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        All characters now appearing in the sequence that are not allowed in a Method Name, as per 3 above, are removed;
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        All characters for which the UCD defines a lowercase mapping (per field 13 of UnicodeData.txt -- see 2. above) are converted to that lowercase character;
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        The following conversions are made:<br />
+                                        ‘ß’ (U+00DF) to the two character sequence ‘ss’<br />
+                                        ‘æ’ (U+00E6) to the two character sequence ‘ae’<br />
+                                        ‘ð’ (U+00F0) to ‘d’<br />
+                                        ‘ø’ (U+00F8) to ‘o’<br />
+                                        ‘þ’ (U+00FE) to the two character sequence ‘th’<br />
+                                        ‘œ’ (U+0153) to the two character sequence ‘oe’
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        If the name is now one of ‘white hall’, ‘christ church’, ‘potter
+                                        hanworth’ or ‘up avon’ then no further changes are made.
+                                        Otherwise, each character for which the Unicode general category
+                                        is not either Ll or Nd is removed.
+                                    </p>
+                                </li>
+                            </ul>
+
+                            <div class="collapse" id="detailB5">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> For the fifth bullet point, method pairs Whitehall and White Hall, Christchurch and Christ Church,
+                                    Potter Hanworth and Potterhanworth, and Upavon and Up Avon were all named prior to the implementation of this Appendix B.
+                                    Spaces are therefore not removed in the method name comparison process for the four method names listed in bullet 5, whereas all other spaces
+                                    are removed. The latter prevents (e.g.) London No 3 and London No3 being used as distinct method names.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Notes:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    <p>
+                                        The text file listing the 172 recognised characters for Method Names (see 4. above) has the following fields:<br />
+                                        Field 0: Unicode id of the character (hexadecimal)<br />
+                                        Field 1: Unicode character<br />
+                                        Field 2: Unicode general category of the character<br />
+                                        Field 3: Unicode character name<br />
+                                        Field 4: The character's Unicode block<br />
+                                        Field 5: Unicode id(s) that result from the NKFD conversion process<br />
+                                        Field 6: Unicode character(s) that result from the NKFD conversion process<br />
+                                        Field 7: Unicode general category(s) that result from the NKFD conversion process
+                                    </p>
+
+                                    <p>
+                                        If more than one character results from the NKFD conversion process (e.g. ™ normalises to t m),
+                                        then fields 5 to 7 will contain data for each of these characters, delimited by a space.
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        The normalization to NFKD followed by deletion of unrecognised characters eliminates diacritics,
+                                        brings the superscript and subscript numerals to the baseline, and replaces ‘™’ with the two character sequence ‘TM’;
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        Punctuation and symbols are ignored for Method Name comparisons.
+                                        Thus ‘London No. 3’ is the same as ‘London No 3’.
+                                        Less obviously, ‘E=mc²’ is the same as ‘e & MC₂’.
+                                        Given how rare, and potentially troublesome, punctuation is in Method Names,
+                                        this seems a small price to pay, as in practice it just prevents otherwise likely pathological Method Names from being used.
+                                    </p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            7.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Additional background on Method Names and Method Name syntax is available
+                                <a class="text-success undrln" href="images/syntax/method-name-syntax.html">here</a> in an article written by Don Morrison.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="mrf.js"></script>
+</body>
+</html>
