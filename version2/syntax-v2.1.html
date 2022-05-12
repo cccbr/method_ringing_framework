@@ -131,8 +131,9 @@
                                 </ul>
 
                             <p>
-                                The Central Council plans to make available a tool that will let users verify whether the characters they plan to use
-                                in a new Method Name are part of the recognised set.
+                                The recognised character set is provided in a text file -- see section 4 below.
+                                In addition, the 'Create New Method' feature in CompLib (https://complib.org/) will give a
+                                warning if one or more characters used in the name of a new Method are not part of the recognised set.
                             </p>
 
                             <p>
@@ -144,7 +145,7 @@
                                 This appendix also defines a Method Name comparison process to ensure Method Names remain
                                 clearly unique.
                                 For example, London No. 3 Surprise Royal is an existing Method. The comparison process
-                                would prevent London No 3 Surprise Royal or London No3 Surprise Royal from being named.
+                                would prevent London No.3 Surprise Royal, London No 3 Surprise Royal, and London No3 Surprise Royal from being named.
                                 This is considered beneficial to reduce the likelihood of misidentification of Methods.
                             </p>
                         </div>
@@ -209,15 +210,15 @@
                             <ul>
                                 <li>
                                     <p>
-                                        All those enumerated in the Unicode standard as being in the Basic Latin block and having a general category of Lu, Ll, or Nd
-                                        (upper and lower case letters, and digits). (62 characters)
+                                        The 62 Unicode characters enumerated in the Unicode standard as being in the Basic Latin block and having a general category of Lu, Ll, or Nd
+                                        (upper and lower case letters, and digits).
                                     </p>
                                 </li>
 
                                 <li>
                                     <p>
-                                        All those enumerated in the Unicode standard as being in the Latin-1 Supplement block and having a general category of Lu or Ll,
-                                        except for the Unicode character named MICRO SIGN. (62 characters)
+                                        The 62 Unicode characters enumerated in the Unicode standard as being in the Latin-1 Supplement block and having a general category of Lu or Ll,
+                                        after excluding the Unicode character named MICRO SIGN.
                                     </p>
                                 </li>
 
@@ -337,7 +338,7 @@
                                 Method Name comparison: Two Method Names are considered the same if they would be reduced to the same sequence of characters by the following process:
                             </p>
 
-                            <ul>
+                            <ol type="a">
                                 <li>
                                     <p>
                                         The sequence of characters is converted to Unicode Normalization Form KD (NFKD, Normalization Form Compatibility Decomposition);
@@ -358,7 +359,7 @@
 
                                 <li>
                                     <p>
-                                        The following conversions are made:<br />
+                                        The following additional conversions are made:<br />
                                         ‘ß’ (U+00DF) to the two character sequence ‘ss’<br />
                                         ‘æ’ (U+00E6) to the two character sequence ‘ae’<br />
                                         ‘ð’ (U+00F0) to ‘d’<br />
@@ -376,7 +377,7 @@
                                         is not either Ll or Nd is removed.
                                     </p>
                                 </li>
-                            </ul>
+                            </ol>
 
                             <div class="collapse" id="detailB5">
                                 <hr />
@@ -403,7 +404,7 @@
                                 Notes:
                             </p>
 
-                            <ol>
+                            <ol type="a">
                                 <li>
                                     <p>
                                         The text file listing the 172 recognised characters for Method Names (see 4. above) has the following fields:<br />
@@ -418,7 +419,7 @@
                                     </p>
 
                                     <p>
-                                        If more than one character results from the NKFD conversion process (e.g. ™ normalizes to t m),
+                                        If more than one character results from the NKFD conversion process (e.g. ™ normalizes to TM),
                                         then fields 5 to 7 will contain data for each of these characters, delimited by a space.
                                     </p>
                                 </li>
@@ -432,11 +433,11 @@
 
                                 <li>
                                     <p>
-                                        Punctuation and symbols are ignored for Method Name comparisons.
-                                        Thus ‘London No. 3’ is the same as ‘London No 3’.
+                                        Punctuation, symbols and spaces are ignored for Method Name comparisons.
+                                        Thus ‘London No. 3’ is the same as ‘London No3’.
                                         Less obviously, ‘E=mc²’ is the same as ‘e & MC₂’.
-                                        Given how rare, and potentially troublesome, punctuation is in Method Names,
-                                        this seems a small price to pay, as in practice it just prevents otherwise likely pathological Method Names from being used.
+                                        Given how rare, and potentially troublesome, punctuation and symbols are in Method Names,
+                                        this seems a small price to pay for reducing the likelihood of Method misidentification.
                                     </p>
                                 </li>
                             </ol>
