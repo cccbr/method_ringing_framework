@@ -407,25 +407,6 @@
                             <ol type="a">
                                 <li>
                                     <p>
-                                        The text file listing the 172 recognised characters for Method Names (see 4. above) has the following fields:<br />
-                                        Field 0: Unicode id of the character (hexadecimal)<br />
-                                        Field 1: Unicode character<br />
-                                        Field 2: Unicode general category of the character<br />
-                                        Field 3: Unicode character name<br />
-                                        Field 4: The character's Unicode block<br />
-                                        Field 5: Unicode id(s) that result from the NKFD conversion process<br />
-                                        Field 6: Unicode character(s) that result from the NKFD conversion process<br />
-                                        Field 7: Unicode general category(s) that result from the NKFD conversion process
-                                    </p>
-
-                                    <p>
-                                        If more than one character results from the NKFD conversion process (e.g. ™ normalizes to TM),
-                                        then fields 5 to 7 will contain data for each of these characters, delimited by a space.
-                                    </p>
-                                </li>
-
-                                <li>
-                                    <p>
                                         The normalization to NFKD followed by deletion of unrecognised characters eliminates diacritics,
                                         brings the superscript and subscript numerals to the baseline, and replaces ‘™’ with the two character sequence ‘TM’;
                                     </p>
@@ -438,6 +419,25 @@
                                         Less obviously, ‘E=mc²’ is the same as ‘e & MC₂’.
                                         Given how rare, and potentially troublesome, punctuation and symbols are in Method Names,
                                         this seems a small price to pay for reducing the likelihood of Method misidentification.
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <p>
+                                        The text file listing the 172 recognised characters for Method Names (see 4. above) has the following fields:<br />
+                                        Field 0: Unicode id of the character (hexadecimal)<br />
+                                        Field 1: Unicode character<br />
+                                        Field 2: Unicode general category of the character<br />
+                                        Field 3: Unicode character name<br />
+                                        Field 4: The character's Unicode block<br />
+                                        Field 5: Unicode id(s) that result from applying the Method Name comparison process above<br />
+                                        Field 6: Unicode character(s) that result from applying the Method Name comparison process above<br />
+                                        Field 7: Unicode general category(s) that result from applying the Method Name comparison process above
+                                    </p>
+
+                                    <p>
+                                        If more than one character results from applying the Method Name comparison process above (e.g. ™ becomes tm),
+                                        then fields 5 to 7 will contain data for each of these characters, delimited by a space.
                                     </p>
                                 </li>
                             </ol>
