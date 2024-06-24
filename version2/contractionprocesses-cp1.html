@@ -82,15 +82,15 @@
                         <a class="nav-link" href="extensionprocesses-ep4.html">D2. Extension Processes - EP4</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="extensionprocesses-ep5.html">D3. Extension Processes - EP5</a>
-                        <ul class="nav nav-pills flex-column nav-subsection">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#extensionprocess5">1. Extension Process 5</a>
-                            </li>
-                        </ul>
+                        <a class="nav-link" href="extensionprocesses-ep5.html">D3. Extension Processes - EP5</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contractionprocesses-cp1.html">D4. Contraction Processes - CP1</a>
+                        <a class="nav-link active" href="contractionprocesses-cp1.html">D4. Contraction Processes - CP1</a>
+                        <ul class="nav nav-pills flex-column nav-subsection">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contractionprocess1">1. Contraction Process 1</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
@@ -116,31 +116,39 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h2>Appendix D3. Method Extension Process EP5 (DRAFT ONLY)</h2>
+                            <h2>Appendix D4. Method Contraction Process CP1 (DRAFT ONLY)</h2>
                         </div>
                     </div>
                     
                     <!-- Extension Process 5 -->
-                    <div class="row" id="extensionprocess5">
+                    <div class="row" id="contractionprocess1">
                         <div class="col-sm-1">
-                            <h5>5.</h5>
+                            <h5>1.</h5>
                         </div>
                         <div class="col-sm-11">
-                            <h5 class="border-bottom">Extension Process 5 (EP5)</h5>
+                            <h5 class="border-bottom">Contraction Process 1 (CP1)</h5>
 
                             <p>
-                                EP5 enables extension by copying a section of a method's full place notation
-                                (rather than first dividing the place notation into hunt places, below places and above places)
-                                and then extending all places that are above the mode.
+                                CP1 provides a way to obtain a related lower stage method from a parent method, where the parent method cannot be obtained by extending
+                                the lower stage method.
+                                Kent Treble Bob Minimus is an example of where contraction can be applied. The 4.34x34.4 section in Minimus cannot be extended to give the
+                                required 6.34x34.6 in Minor because the operation of the mode parameter only provides for either 6.36x36.6 or 4.34x34.4 in the Minor.
+                                Contraction allows us to start with 6.34x34.6 in the Minor and contract it to 4.34x34.4 in the Minimus, as shown in the example below.
                             </p>
 
                             <p>
                                 <u>Prerequisites</u>
                             </p>
 
+                            <p>
+                                The prerequisites for this Contraction Process are as follows:
+                            </p>
+
                             <ol>
                                 <li>
-                                    The Parent Method is a static method.
+                                    The Parent Method is a non-Little Plain or Treble Dodging Method, or a non-Little Alliance Method with a Hunt Bell Path
+                                    formed from these two.
+                                    This Contraction Process may also be applied to some other forms of Hunter with a Hunt Bell that has a non-Little Path.
                                 </li>
 
                                 <li>
@@ -153,16 +161,16 @@
                             </p>
 
                             <p>
-                                The steps to implement this Extension Process are shown using the following example where
-                                <a class="text-success undrln" href="https://complib.org/method/11369">
-                                    St Clement's College Bob Minor
+                                The steps to implement this Contraction Process are shown using the following example where
+                                <a class="text-success undrln" href="https://complib.org/method/26082">
+                                    Kent Treble Bob Minor
                                 </a>
                                 is the Parent Method.
                                 Further instructions on these steps are provided after the example.
                             </p>
 
                             <p>
-                                <img src="images/extensionprocesses-ep4/ep5-st-clements-b.svg" />
+                                <img src="images/extensionprocesses-ep4/cp1-kent-tb.svg" />
                             </p>
 
                             <p>
@@ -171,15 +179,30 @@
 
                             <ol>
                                 <li>
+                                    Rotate the place notation of the method into a form that includes both pivot points for palindromic methods,
+                                    and starts at the lowest pivot place of the hunt bell.
+                                    For pallindromic methods, this typically means starting with the lead end change and finishing with the half lead change.
+                                    Application of CP1 to non-pallindromic methods is covered further below.
+                                </li>
+
+                                <li>
+                                    The place notation is divided into three components:
+                                    places made by the hunt bell (line 2 in the example);
+                                    places made below the hunt bell (line 8); and
+                                    places made above the hunt bell (line 14).
+                                    The places above the hunt bell are reversed and inverted so that they can be treated identically to the hunt bell places and the places below the hunt bell.
+                                </li>
+
+                                <li>
                                     4 parameters are selected:
 
                                     <ul>
                                         <li>
-                                            Overlap start: This determines the starting change of the section of the method's place notation that will be copied.
+                                            Overlap start: This determines the starting change of the section of the method's place notation that will be consolidated.
                                         </li>
 
                                         <li>
-                                            Overlap length: This determines how many changes will be added to a half-lead of the method.
+                                            Overlap length: This determines how many changes will be subtracted from a half-lead of the method.
                                         </li>
 
                                         <li>
@@ -187,33 +210,33 @@
                                         </li>
 
                                         <li>
-                                            Place increment: This specifies how many places are added to the corresponding place in the parent method.
-                                            For example, if the place increment is 2 and the parent method contains the place 5, then this place may
-                                            become 7 (5 + 2) in the extension.
+                                            Place decrement: This specifies how many places are added to the corresponding place in the parent method.
+                                            For example, if the place decrement is 2 and the parent method contains the place 5, then this place may
+                                            become 3 (5 - 2) in the contraction.
                                         </li>
                                     </ul>
                                 </li>
 
                                 <li>
-                                    The combination of overlap length and place increment determines the stage increment of the extension.
-                                    If the method is Plain, the overlap length is 2, and the place increment is 2, then the extension will be 2 stages higher than the
-                                    parent method (e.g. Minor extends to Major).
-                                    If the method is Treble Dodging, the overlap length is 4, and the place increment is 2, then the extension will also be 2 stages higher than the
+                                    The combination of overlap length and place decrement determines the stage decrement of the contraction.
+                                    If the method is Plain, the overlap length is 2, and the place decrement is 2, then the contraction will be 2 stages lower than the
+                                    parent method (e.g. Minor contracts to Minimus).
+                                    If the method is Treble Dodging, the overlap length is 4, and the place decrement is 2, then the contraction will also be 2 stages lower than the
                                     parent method.
-                                    Extension in stage increments greater than 2 can be achieved with different overlap length and place increment parameters.
-                                    For example, to extend a treble dodging method in steps of 4 stages, use an overlap length of 8 and a place increment of 4.
+                                    Contraction in stage decrements greater than 2 can be achieved with different overlap length and place decrement parameters.
+                                    For example, to contract a treble dodging method in steps of 4 stages, use an overlap length of 8 and a place decrement of 4.
                                 </li>
 
                                 <li>
-                                    The method's place notation is then split into two overlapping segments based on the overlap start and overlap length parameters.
-                                    These two segments are then joined.
-                                    All places in the joined segments are then extended according to the mode and the place increment.
-                                    Places that are less than or equal to the mode are left unchanged.
-                                    All other places are increased by the place increment.
+                                    Each of the 3 components above are then split into two segments based on the overlap start and overlap length parameters.
+                                    The places in the first segment are left unchanged, and the places in the second segment are contracted according to the mode and the place decrement.
+                                    Places in the second segment that are less than or equal to the mode are left unchanged. All other places in the second segment are decreased by the place decrement.
                                 </li>
 
                                 <li>
-                                    Apply the same process above to the extension to obtains further extensions at higher stages.
+                                    The second segment is then moved so that it starts at the overlap start change.
+                                    Contraction is possible only if the place notation in the overlapping section of the two segments is the same,
+                                    and the contracted place notation is then the consolidated notation of both overlapped segments.
                                 </li>
                             </ol>
 
@@ -222,50 +245,48 @@
                             </p>
 
                             <p>
-                                An Extension produced using EP4 is only valid if:
+                                A Contraction produced using CP1 is only valid if:
                             </p>
 
                             <ol>
                                 <li>
-                                    The Extension has the same Symmetry (see Section 4.B) as the Parent Method.
+                                    The Contraction has the same Symmetry (see Section 4.B) as the Parent Method.
                                 </li>
 
                                 <li>
-                                    The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
-                                    and has no Working Bells, in which case the Extension also only has Hunt Bells.
+                                    The Contaction has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
+                                    and has no Working Bells, in which case the Contaction also only has Hunt Bells.
                                 </li>
 
                                 <li>
-                                    The Extension has the same number of Cycles of Working Bells as the Parent Method.<br />
+                                    The Contaction has the same number of Cycles of Working Bells as the Parent Method.<br />
                                 </li>
 
                                 <li>
-                                    If the Parent Method comprises two or more Cycles of Working Bells of equal size, the Extension has this same feature.
+                                    If the Parent Method comprises two or more Cycles of Working Bells of equal size, the Contraction has this same feature.
                                 </li>
 
                                 <li>
-                                    If the Parent Method has Plain Bob Leadheads, the Extension also has Plain Bob Leadheads.<br />
-                                    If the Parent Method does not have Plain Bob Leadheads, the Extension also does not have Plain Bob Leadheads.
-                                </li>
-
-                                <li>
-                                    The Extension Construction used, when applied to the Parent Method in question,
-                                    creates an Extension Path containing a minimum of 3 Methods (including the Parent Method) with Stages that are less than or equal to Stage 24.
+                                    If the Parent Method has Plain Bob Leadheads, the Contraction also has Plain Bob Leadheads.<br />
+                                    If the Parent Method does not have Plain Bob Leadheads, the Contaction also does not have Plain Bob Leadheads.
                                 </li>
                             </ol>
 
                             <p>
-                                <u>Extension Construction</u>
+                                <u>Contraction Construction</u>
                             </p>
 
                             <ol>
                                 <li>
-                                    The Extension Construction for referring to this Extension Process is:<br />
-                                    EP5 - [Overlap start] : [Overlap length] : [Mode] : [Place increment]
+                                    The Contraction Construction for referring to this Contraction Process is:<br />
+                                    CP1 -<br />
+                                    [Overlap start for hunt places] : [Overlap length for hunt places] : [Mode for hunt places] : [Place decrement for hunt places] /<br />
+                                    [Overlap start for below places] : [Overlap length for below places] : [Mode for below places] : [Place decrement for below places] /<br />
+                                    [Overlap start for above places] : [Overlap length for above places] : [Mode for above places] : [Place decrement for above places]
                                 </li>
 
                                 <li>
-                                    The Extension Construction used in the example above is therefore EP5-3:2:3:2
+                                    The Contraction Construction used in the example above is therefore CP1-1:4:2:2/3:4:2:2/1:4:2:2
                                 </li>
                             </ol>
 
@@ -275,14 +296,7 @@
 
                             <ol>
                                 <li>
-                                    The example above uses an overlap length of 2 and a place increment of 2, giving an extension that is 2 stages higher that the parent
-                                    since the hunt bell follows a plain path.
-                                    If an overlap length of 4 and a place increment of 4 were used, the extension would be 4 stages higher than the parent.
-                                </li>
-
-                                <li>
                                     When the same results are obtained using different overlaps starts, designate the lowest start as the one that was used.
-                                    This ensures that whatever Stage Method is taken as the Parent Method in a set of Methods that are on the same Extension Path, the same Extension Construction will result.
                                 </li>
 
                                 <li>
@@ -297,31 +311,46 @@
                             <ol>
                                 <li>
                                     The example and descriptions above assume the Parent Method has Palindomic Symmetry about the Leadend Change and the Halflead Change.
-                                    For non-Palindromic Methods, EP5 may be applied separately in both halves of the Plain Lead, subject to the following:
+                                    For non-Palindromic Methods, CP1 may be applied separately in both halves of the Plain Lead, subject to the following:
                                 </li>
 
                                 <li>
-                                    If the method is a hunter and the Places Made below the hunt bell are Palindromic, or the Places Made above the hunt bell are Palindromic,
-                                    then an Extension Construction is selected that retains that symmetry in the Extension.
+                                    If the Places Made below the hunt bell are Palindromic, or the Places Made above the hunt bell are Palindromic,
+                                    then a Contraction Construction is selected that retains that symmetry in the Contraction.
                                 </li>
 
                                 <li>
-                                    If the method is a hunter
-                                    and the Places Made above the hunt bell in the first half of the Plain Lead have Rotational Symmetry with the Places Made below the hunt bell in the second half of the Plain Lead,
+                                    If the Places Made above the hunt bell in the first half of the Plain Lead have Rotational Symmetry with the Places Made below the hunt bell in the second half of the Plain Lead,
                                     or the Places Made below the hunt bell in the first half of the Plain Lead have Rotational Symmetry with the Places Made above the hunt bell in the second half of the Plain Lead,
-                                    then an Extension Construction is selected that retains that symmetry in the Extension.
+                                    then a Contraction Construction is selected that retains that symmetry in the Contraction.
                                 </li>
 
                                 <li>
-                                    An example of an Extension Construction for a non-Palindromic Method is EP5-3:2:3:2/9:2:3:2
+                                    An example of a Contraction Construction for a non-Palindromic Method is CP1-1:4:2:2/3:4:2:2/1:4:2:2/13:4:2:2/15:4:2:2/13:4:2:2
                                     The sections are respectively:
                                     <ul>
                                         <li>
-                                            Parameters for the first half lead
+                                            Parameters for the hunt places for the first half lead
                                         </li>
 
                                         <li>
-                                            Parameters for the second half lead
+                                            Parameters for the below places for the first half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the above places for the first half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the hunt places for the second half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the below places for the second half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the above places for the second half lead
                                         </li>
                                     </ul>
                                 </li>
