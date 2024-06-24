@@ -87,6 +87,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="extensionprocesses-ep5.html">D3. Extension Processes - EP5</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
                     </li>
                     <li class="nav-item">
@@ -176,7 +179,8 @@
                                 <li>
                                     Rotate the place notation of the method into a form that includes both pivot points for palindromic methods,
                                     and for a hunter, starts at the lowest pivot place of the hunt bell.
-                                    This typically means starting with the lead end change and finishing with the half lead change.
+                                    For pallindromic methods, this typically means starting with the lead end change and finishing with the half lead change.
+                                    Application of EP4 to non-pallindromic methods is covered further below.
                                 </li>
 
                                 <li>
@@ -189,9 +193,7 @@
 
                                 <li>
                                     For each of the three components, 4 parameters are selected:
-                                </li>
 
-                                <li>
                                     <ul>
                                         <li>
                                             Overlap start: This determines the starting change of the section of the method's place notation that will be copied and possibly extended in the extension.
@@ -216,7 +218,7 @@
                                 <li>
                                     The combination of overlap length and place increment determines the stage increment of the extension.
                                     If the method is Plain, the overlap length is 2, and the place increment is 2, then the extension will be 2 stages higher than the
-                                    parent method (e.g. Mino extends to Major).
+                                    parent method (e.g. Minor extends to Major).
                                     If the method is Treble Dodging, the overlap length is 4, and the place increment is 2, then the extension will also be 2 stages higher than the
                                     parent method.
                                     Extension in stage increments greater than 2 can be achieved with different overlap length and place increment parameters.
@@ -226,7 +228,8 @@
                                 <li>
                                     Each of the 3 components above are then split into two overlapping segments based on the overlap start and overlap length parameters.
                                     The places in the first segment are left unchanged, and the places in the second segment are extended according to the mode and the place increment.
-                                    Up to the mode the places remain unchanged, and above the mode the places are extended by adding the place increment to the parent place.
+                                    Places in the second segment that are less than or equal to the mode are left unchanged.
+                                    All other places in the second segment are increased by the place increment.
                                     For each component, the two segments are then recombined to form the hunt places, below places and above places of the extension.
                                 </li>
 
@@ -326,9 +329,15 @@
                                 <li>
                                     When two or more different Modes give the same results, designate the lowest mode as the one that was used.
                                 </li>
+                            </ol>
 
+                            <p>
+                                <u>Non-pallindromic methods</u>
+                            </p>
+
+                            <ol>
                                 <li>
-                                    Finally, the example and descriptions above assume the Parent Method has Palindomic Symmetry about the Leadend Change and the Halflead Change.
+                                    The example and descriptions above assume the Parent Method has Palindomic Symmetry about the Leadend Change and the Halflead Change.
                                     For non-Palindromic Methods, EP4 may be applied separately in both halves of the Plain Lead, subject to the following:
                                 </li>
 
