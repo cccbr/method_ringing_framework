@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
     <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
 
-    <title>Framework for Method Ringing - Extension Process EP4</title>
+    <title>Framework for Method Ringing - Extension Processes 2</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
@@ -79,18 +79,24 @@
                         <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="extensionprocesses-ep4.html">D2. Extension Processes - EP4</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="extensionprocesses-ep5.html">D3. Extension Processes - EP5</a>
+                        <a class="nav-link active" href="extensionprocesses-ep4.html">D. Extension Processes (cont.)</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <li class="nav-item">
-                                <a class="nav-link" href="#extensionprocess5">1. Extension Process 5</a>
+                                <a class="nav-link" href="#extensionprocess4intro">1. EP4 Introduction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess4singlemode">2. EP4 Single Mode</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess4doublemode">3. EP4 Double Mode</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess4triplemode">4. EP4 Triple Mode</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess5">5. EP5 Single Stage Extension</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contractionprocesses-cp1.html">D4. Contraction Processes - CP1</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
@@ -116,31 +122,117 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h2>Appendix D3. Method Extension Process EP5 (DRAFT ONLY)</h2>
+                            <h2>Appendix D cont. Method Extension Processes (DRAFT ONLY)</h2>
                         </div>
                     </div>
-                    
-                    <!-- Extension Process 5 -->
-                    <div class="row" id="extensionprocess5">
+
+                    <!-- Extension Process 4 -->
+                    <div class="row" id="extensionprocess4intro">
                         <div class="col-sm-1">
-                            <h5>5.</h5>
+                            <h5>4.</h5>
                         </div>
                         <div class="col-sm-11">
-                            <h5 class="border-bottom">Extension Process 5 (EP5)</h5>
+                            <h5 class="border-bottom">Extension Process 4</h5>
 
                             <p>
-                                EP5 enables extension by copying a section of a method's full place notation
-                                (rather than first dividing the place notation into hunt places, below places and above places)
-                                and then extending all places that are above the mode.
+                                EP4 replaces the former EP1 and EP3 extension processes.
+                                It produces extensions that can both keep the lead length fixed (replacing EP1), and expand the lead length (replacing EP3).
+                                EP4 can also contract a parent method to lower stages in some cases.
+                                And EP4 can produce extensions that are a single stage higher, as well as the more common scenario of producing extensions
+                                that are an even number of stages (usually two) higher.
+                                Finally, EP4 can operate in three different modes: single mode, double mode, and triple mode.
+                                This choice of mode simplifies the extension process in some cases, and supports a wider range of extensions in other cases.
+                                The above variants of EP4 are all described below. It will be seen that EP4 uses the same core process to generate extensions,
+                                but with different parameters to specify which of the above variants is used.
+                            </p>
+
+                            <p>
+                                There are three key parameters to specify when using EP4:
+                                <ol>
+                                    <li>
+                                        Single mode, double mode or triple mode.
+                                        <ol>
+                                            <li>
+                                                In a single mode extension, a method's places are processed together, without any further splitting.
+                                            </li>
+                                            <li>
+                                                In a double mode extension, a method's places are split into below-the-hunt places and above-the hunt places,
+                                                with each subset processed separately,
+                                                before being recombined in the final step of the process.
+                                                Double mode extension relies on the hunt bell having a path for which the extended path is obvious.
+                                            </li>
+                                            <li>
+                                                In a triple mode extension, a method's places are split into hunt bell places, below-the-hunt places, and above-the hunt places,
+                                                with each subset processed separately,
+                                                before being recombined in the final step of the process.
+                                                Triple mode extension is used when the extension of the hunt bell path isn't necessarily obvious and needs to be specified,
+                                                as may be the case in Alliance and Treble Place methods.
+                                            </li>
+                                        </ol>
+                                    <li>
+                                        Lead length increment (zero or a higher even number)
+                                    </li>
+                                    <li>
+                                        Stage increment (one or a higher even number).
+                                    </li>
+                                </ol>
+                            </p>
+
+                            <p>
+                                <u>Example 1</u>
+                            </p>
+
+                            <p>
+                                The simplest EP4 case is a single mode, fixed lead length extension with a stage increment of 2.
+                                The diagram below shows this applied to
+                                <a class="text-success undrln" href="https://complib.org/method/27834">Stedman Doubles</a>.
+                                Further details are provided after the diagram.
+                            </p>
+
+                            <p>
+                                <img src="images/extensionprocesses2/ep4-stedman.svg" />
+                            </p>
+
+                            <p>
+                                [Further details on the above to be added.]
+                            </p>
+
+                            <p>
+                                <u>Example 2</u>
+                            </p>
+
+                            <p>
+                                The next EP4 case is a single mode, expanding lead length extension with a stage increment of 2.
+                                The diagram below shows this applied to
+                                <a class="text-success undrln" href="https://complib.org/method/27834">Stedman Doubles</a>.
+                                Further details are provided after the diagram.
+                            </p>
+
+                            <p>
+                                As it relates to replacing EP3, EP4 is similar to EP3 except that it gives greater flexibility in
+                                selecting which sets of changes in a lead are copied and possibly extended to generate the extension.
+                                In EP3, the set of copied changes is limited to specified sections, where sections are based on the
+                                place of the hunt bell. EP4 allows the copied section to begin at any change in the lead.
+                            </p>
+
+                            <p>
+                                EP4 is designed to extend Parent Methods that are Hunters with a Hunt Bell that has a non-Little Path.
+                                The resulting Extension is an even number of Stages higher than the Parent Method.
                             </p>
 
                             <p>
                                 <u>Prerequisites</u>
                             </p>
 
+                            <p>
+                                The prerequisites for this Extension Process are as follows:
+                            </p>
+
                             <ol>
                                 <li>
-                                    The Parent Method is a static method.
+                                    The Parent Method is a non-Little Plain or Treble Dodging Method, or a non-Little Alliance Method with a Hunt Bell Path
+                                    formed from these two.
+                                    This Extension Process may also be applied to some other forms of Hunter with a Hunt Bell that has a non-Little Path.
                                 </li>
 
                                 <li>
@@ -154,15 +246,12 @@
 
                             <p>
                                 The steps to implement this Extension Process are shown using the following example where
-                                <a class="text-success undrln" href="https://complib.org/method/11369">
-                                    St Clement's College Bob Minor
-                                </a>
-                                is the Parent Method.
+                                <a class="text-success undrln" href="https://complib.org/method/14568">Cambridge Surprise Minor</a> is the Parent Method.
                                 Further instructions on these steps are provided after the example.
                             </p>
 
                             <p>
-                                <img src="images/extensionprocesses-ep4/ep5-st-clements-b.svg" />
+                                <img src="images/extensionprocesses-ep4/ep4-cambridge-s.svg" />
                             </p>
 
                             <p>
@@ -171,11 +260,26 @@
 
                             <ol>
                                 <li>
-                                    4 parameters are selected:
+                                    Rotate the place notation of the method into a form that includes both pivot points for palindromic methods,
+                                    and starts at the lowest pivot place of the hunt bell.
+                                    For pallindromic methods, this typically means starting with the lead end change and finishing with the half lead change.
+                                    Application of EP4 to non-pallindromic methods is covered further below.
+                                </li>
+
+                                <li>
+                                    The place notation is divided into three components:
+                                    places made by the hunt bell (line 2 in the example);
+                                    places made below the hunt bell (line 7); and
+                                    places made above the hunt bell (line 12).
+                                    The places above the hunt bell are reversed and inverted so that they can be treated identically to the hunt bell places and the places below the hunt bell.
+                                </li>
+
+                                <li>
+                                    For each of the three components, 4 parameters are selected:
 
                                     <ul>
                                         <li>
-                                            Overlap start: This determines the starting change of the section of the method's place notation that will be copied.
+                                            Overlap start: This determines the starting change of the section of the method's place notation that will be copied and possibly extended in the extension.
                                         </li>
 
                                         <li>
@@ -205,11 +309,16 @@
                                 </li>
 
                                 <li>
-                                    The method's place notation is then split into two overlapping segments based on the overlap start and overlap length parameters.
-                                    These two segments are then joined.
-                                    All places in the joined segments are then extended according to the mode and the place increment.
-                                    Places that are less than or equal to the mode are left unchanged.
-                                    All other places are increased by the place increment.
+                                    Each of the 3 components above are then split into two overlapping segments based on the overlap start and overlap length parameters.
+                                    The places in the first segment are left unchanged, and the places in the second segment are extended according to the mode and the place increment.
+                                    Places in the second segment that are less than or equal to the mode are left unchanged.
+                                    All other places in the second segment are increased by the place increment.
+                                    For each component, the two segments are then recombined to form the hunt places, below places and above places of the extension.
+                                </li>
+
+                                <li>
+                                    After reversing and inverting the extended places above the hunt bell back to their original orientation,
+                                    the 3 components are then recombined into a single place notation for the extension.
                                 </li>
 
                                 <li>
@@ -261,11 +370,14 @@
                             <ol>
                                 <li>
                                     The Extension Construction for referring to this Extension Process is:<br />
-                                    EP5 - [Overlap start] : [Overlap length] : [Mode] : [Place increment]
+                                    EP4 -<br />
+                                    [Overlap start for hunt places] : [Overlap length for hunt places] : [Mode for hunt places] : [Place increment for hunt places] /<br />
+                                    [Overlap start for below places] : [Overlap length for below places] : [Mode for below places] : [Place increment for below places] /<br />
+                                    [Overlap start for above places] : [Overlap length for above places] : [Mode for above places] : [Place increment for above places]
                                 </li>
 
                                 <li>
-                                    The Extension Construction used in the example above is therefore EP5-3:2:3:2
+                                    The Extension Construction used in the example above is therefore EP4-1:4:1:2/5:4:1:2/7:4:1:2
                                 </li>
                             </ol>
 
@@ -275,9 +387,21 @@
 
                             <ol>
                                 <li>
-                                    The example above uses an overlap length of 2 and a place increment of 2, giving an extension that is 2 stages higher that the parent
-                                    since the hunt bell follows a plain path.
-                                    If an overlap length of 4 and a place increment of 4 were used, the extension would be 4 stages higher than the parent.
+                                    The example above uses an overlap length of 4 and a place increment of 2, giving an extension that is 2 stages higher that the parent
+                                    since the hunt bell follows a treble dodging path.
+                                    If an overlap length of 8 and a place increment of 4 were used, the extension would be 4 stages higher than the parent.
+                                    Superlative Surprise Major is an example of a Method that extends in steps of 4 stages.
+                                    The Extension Construction for Superlative's Extension Process is EP4-1:8:1:4/9:8:3:4/9:8:3:4
+                                </li>
+
+                                <li>
+                                    Different overlap lengths and place increments may be used for the different components.
+                                    For example, an overlap length of 8 and a place increment of 4 could be selected for the hunt places and the below places,
+                                    and an overlap length of 4 and a place increment of 2 could be selected for the above places.
+                                    In this case, the extension process for the above places is applied twice for every one time the process is applied to the hunt places and below places,
+                                    and the resulting extensions would have a stage increment of 4.
+                                    For example, there is an Extension Process for Cambridge Surprise Major that uses steps of 2 above the treble and steps of 4 below the treble.
+                                    The Extension Construction for this Extension Process is EP4-1:8:1:4/4:8:4:4/13:4:1:2
                                 </li>
 
                                 <li>
@@ -297,31 +421,46 @@
                             <ol>
                                 <li>
                                     The example and descriptions above assume the Parent Method has Palindomic Symmetry about the Leadend Change and the Halflead Change.
-                                    For non-Palindromic Methods, EP5 may be applied separately in both halves of the Plain Lead, subject to the following:
+                                    For non-Palindromic Methods, EP4 may be applied separately in both halves of the Plain Lead, subject to the following:
                                 </li>
 
                                 <li>
-                                    If the method is a hunter and the Places Made below the hunt bell are Palindromic, or the Places Made above the hunt bell are Palindromic,
+                                    If the Places Made below the treble are Palindromic, or the Places Made above the treble are Palindromic,
                                     then an Extension Construction is selected that retains that symmetry in the Extension.
                                 </li>
 
                                 <li>
-                                    If the method is a hunter
-                                    and the Places Made above the hunt bell in the first half of the Plain Lead have Rotational Symmetry with the Places Made below the hunt bell in the second half of the Plain Lead,
-                                    or the Places Made below the hunt bell in the first half of the Plain Lead have Rotational Symmetry with the Places Made above the hunt bell in the second half of the Plain Lead,
+                                    If the Places Made above the treble in the first half of the Plain Lead have Rotational Symmetry with the Places Made below the treble in the second half of the Plain Lead,
+                                    or the Places Made below the treble in the first half of the Plain Lead have Rotational Symmetry with the Places Made above the treble in the second half of the Plain Lead,
                                     then an Extension Construction is selected that retains that symmetry in the Extension.
                                 </li>
 
                                 <li>
-                                    An example of an Extension Construction for a non-Palindromic Method is EP5-3:2:3:2/9:2:3:2
+                                    An example of an Extension Construction for a non-Palindromic Method is EP4-1:4:1:2/5:4:1:2/7:4:1:2/13:4:1:2/17:4:1:2/19:4:1:2
                                     The sections are respectively:
                                     <ul>
                                         <li>
-                                            Parameters for the first half lead
+                                            Parameters for the hunt places for the first half lead
                                         </li>
 
                                         <li>
-                                            Parameters for the second half lead
+                                            Parameters for the below places for the first half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the above places for the first half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the hunt places for the second half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the below places for the second half lead
+                                        </li>
+
+                                        <li>
+                                            Parameters for the above places for the second half lead
                                         </li>
                                     </ul>
                                 </li>
