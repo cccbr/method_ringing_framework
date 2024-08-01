@@ -82,28 +82,31 @@
                         <a class="nav-link active" href="extensionprocesses-ep4.html">D. Extension Processes (cont.)</a>
                         <ul class="nav nav-pills flex-column nav-subsection">
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4intro">1. EP4 Introduction</a>
+                                <a class="nav-link" href="#ep4intro">4 a) EP4 Introduction</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4singlefixed">2. EP4 Single Mode, Fixed Lead Length</a>
+                                <a class="nav-link" href="#ep4singlefixed">4 b) EP4 Single Mode, Fixed Lead Length</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4singleexpanding">2. EP4 Single Mode, Expanding Lead Length</a>
+                                <a class="nav-link" href="#ep4singleexpanding">4 c) EP4 Single Mode, Expanding Lead Length</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4double">3. EP4 Double Mode</a>
+                                <a class="nav-link" href="#ep4double">4 d) EP4 Double Mode</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4triple">4. EP4 Triple Mode</a>
+                                <a class="nav-link" href="#ep4triple">4 e) EP4 Triple Mode</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4contraction">4. EP4 Contraction</a>
+                                <a class="nav-link" href="#ep4contraction">4 f) EP4 Contraction</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep4singlestage">4. EP4 Single Stage Extension</a>
+                                <a class="nav-link" href="#ep4singlestage">4 g) EP4 Single Stage Extension</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep5singlestage">5. EP5 Single Stage Extension</a>
+                                <a class="nav-link" href="#ep4singlestagealt">4 h). EP4 Single Stage Extension - Alternative Process</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ep4additional">4 i). EP4 Additional Considerations</a>
                             </li>
                         </ul>
                     </li>
@@ -144,48 +147,60 @@
                             <h5 class="border-bottom">Extension Process 4 - Introduction</h5>
 
                             <p>
-                                EP4 replaces the former EP1 and EP3 extension processes.
+                                EP4 replaces the former EP1 and EP3 extension processes, and also enables a greater range of extensions beyond those provided by EP1 and EP3.
                                 It produces extensions that can both keep the lead length fixed (replacing EP1), and expand the lead length (replacing EP3).
-                                EP4 can also contract a parent method to lower stages in some cases.
-                                And EP4 can produce extensions that are a single stage higher, as well as the more common scenario of producing extensions
+                                EP4 can also contract a parent method to lower stages.
+                                In addition, EP4 can produce extensions that are a single stage higher, as well as the more common scenario of producing extensions
                                 that are an even number of stages (usually two) higher.
-                                Finally, EP4 can operate in three different modes: single mode, double mode, and triple mode.
-                                This choice of mode simplifies the extension process in some cases, and supports a wider range of extensions in other cases.
-                                The above variants of EP4 are all described below. It will be seen that EP4 uses the same core process to generate extensions,
-                                but with different parameters to specify which of the above variants is used.
                             </p>
 
                             <p>
-                                There are three key parameters to specify when using EP4:
-                                <ol>
-                                    <li>
-                                        Single mode, double mode or triple mode.
-                                        <ol>
-                                            <li>
-                                                In a single mode extension, a method's places are processed together, without any further splitting.
-                                            </li>
-                                            <li>
-                                                In a double mode extension, a method's places are split into below-the-hunt places and above-the hunt places,
-                                                with each subset processed separately,
-                                                before being recombined in the final step of the process.
-                                                Double mode extension relies on the hunt bell having a path for which the extended path is obvious.
-                                            </li>
-                                            <li>
-                                                In a triple mode extension, a method's places are split into hunt bell places, below-the-hunt places, and above-the hunt places,
-                                                with each subset processed separately,
-                                                before being recombined in the final step of the process.
-                                                Triple mode extension is used when the extension of the hunt bell path isn't necessarily obvious and needs to be specified,
-                                                as may be the case in Alliance and Treble Place methods.
-                                            </li>
-                                        </ol>
-                                    <li>
-                                        Lead length increment (zero or a higher even number)
-                                    </li>
-                                    <li>
-                                        Stage increment (one or a higher even number).
-                                    </li>
-                                </ol>
+                                There are three variants of EP4: single mode, double mode, and triple mode.
+                                These are described below, and examples are provided further below for each one.
                             </p>
+
+                            <ol>
+                                <li>
+                                    In a single mode extension, a method's places are extended together, without any further separation, in a single process.
+                                </li>
+
+                                <li>
+                                    In a double mode extension, a method's places are separated into below-the-hunt places and above-the hunt places,
+                                    with each subset extended separately.
+                                    Double mode extension relies on the hunt bell having a path for which the extended path is obvious, such as with Plain
+                                    and Treble Dodging methods.
+                                </li>
+
+                                <li>
+                                    In a triple mode extension, a method's places are separated into hunt bell places, below-the-hunt places, and above-the hunt places,
+                                    with each subset extended separately.
+                                    Triple mode extension is used when the extension of the hunt bell path isn't obvious and needs to be specified,
+                                    such as with Alliance and Treble Place methods.
+                                </li>
+                            </ol>
+
+                            <p>
+                                The ability to use different modes simplifies the extension process for some methods, and supports a wider range of extensions in other cases.
+                                The above variants of EP4 are all described below.
+                                It will be seen that EP4 in all variants uses the same core process to generate extensions.
+                            </p>
+
+                            <p>
+                                In addition to mode, there are two other key parameters to specify when using EP4:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Half-lead length increment: This specifies the increase in the half-lead length of the extension versus the parent,
+                                    and is zero (giving a fixed lead length extension), a positive integer (where the extension has an expanded lead length),
+                                    or a negative integer (used in contraction).
+                                </li>
+
+                                <li>
+                                    Stage increment: This specifies the increase in the stage of the extension versus the parent,
+                                    and is a positive integer, except that in contraction it is a negative integer.
+                                </li>
+                            </ol>
                         </div>
                     </div>
 
@@ -198,16 +213,7 @@
                             <h5 class="border-bottom">Extension Process 4 - Single Mode, Fixed Lead Length</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The simplest EP4 case is a single mode, fixed lead length extension with a stage increment of 2.
-                                The diagram below shows this applied to
+                                The diagram below shows EP4 used in single mode with a fixed lead length to extend
                                 <a class="text-success undrln" href="https://complib.org/method/27834">Stedman Doubles</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -217,7 +223,23 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                As will be seen below, EP4 usually works by specifying two overlapping segments of place notation
+                                (segment 1 and segement 2).
+                                But when the lead length is fixed, no overlap is required.  Segment 1 is therefore not used,
+                                and all the place notation is included in segment 2.
+                            </p>
+
+                            <p>
+                                The places in line 4 above either remain unchanged in line 5 if they are less than or equal to the mode,
+                                or they increase by the stage increment if they are greater than the mode.
+                                Since the mode in this example is 3, we see that all the places in line 5 are the same as line 4,
+                                except that 5th's place in line 4 becomes 7th's place in line 5.
+                            </p>
+
+                            <p>
+                                EP4 in single mode with a fixed lead length can be used for Principles and Little methods.
+                                It can't be used for Hunters with non-Little paths.
+                                But note that Principles and Little methods can also be extended on an expanding lead length basis.
                             </p>
                         </div>
                     </div>
@@ -231,16 +253,7 @@
                             <h5 class="border-bottom">Extension Process 4 - Single Mode, Expanding Lead Length</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The next EP4 case is a single mode, expanding lead length extension with a stage increment of 2.
-                                The diagram below shows this applied to
+                                The diagram below shows EP4 used in single mode with an expanding lead length to extend
                                 <a class="text-success undrln" href="https://complib.org/method/11369">St Clement's College Bob Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -250,7 +263,22 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                This example shows the overlapping segments in use.
+                                The first step is to list the place notation for a half lead of the method (line 1).
+                                By convention, the lead end change is shown first, and is labelled as change 0.
+                                The subsequent changes for a half-lead are then shown and are labelled as changes 1 to n, where n is half the lead length.
+                            </p>
+
+                            <p>
+                                The next step is to separate the place notation into two overlapping segements, as specified by the Overlap start and Overlap length parameters.
+                                This gives segements 1 and 2, as shown in lines 2 and 3 above, and we then connect these two segments as shown in line 4.
+                                Different extensions can be produced by selecting different overlap start parameters.
+                                The overlap length must be consistent with the half-lead length increment parameter.
+                            </p>
+
+                            <p>
+                                Finally, the relevant places are extended. Since the mode is 3, the places in line 5 are the same as line 4 if they
+                                are 3rd's place or lower, otherwise they are 2 places higher.
                             </p>
                         </div>
                     </div>
@@ -258,22 +286,13 @@
                     <!-- Extension Process 4 double mode -->
                     <div class="row" id="ep4double">
                         <div class="col-sm-1">
-                            <h5>4 c)</h5>
+                            <h5>4 d)</h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">Extension Process 4 - Double Mode</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The next EP4 case is a double mode extension with a stage increment of 2.
-                                The diagram below shows this applied to
+                                The diagram below shows EP4 used in double mode to extend
                                 <a class="text-success undrln" href="https://complib.org/method/14568">Cambridge Surprise Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -283,7 +302,30 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                In a double mode extension, the place notation is separated into places below the hunt bell and places above the hunt bell.
+                                Each of these subsets is then processed in a similar manner to the previous example, but with two differences:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    In a single mode extension, the place notation is extended after the two segments are connected.
+                                    But in a double mode extension (and also triple mode), only the places in segment 2 are extended.
+                                    The extension of the places therefore occurs before the two segments are connected, as can be seen in lines 4, 5 and 6
+                                    above.
+                                </li>
+
+                                <li>
+                                    When extending the places above the hunt bell, the first step is to reverse and invert the places (see line 8 above).
+                                    This restates the places on a basis that is equivalent to places below the hunt bell,
+                                    such that the same process used to extend below-the-hunt places can be used for above-the-hunt places.
+                                    A final step is then added to reverse and invert the resulting extended places, to convert them back to above-the-hunt places (see line 13).
+                                </li>
+                            </ol>
+
+                            <p>
+                                Double mode is used to extend Hunters where the extension of the hunt bell is obvious, such as with Plain and Treble Dodging methods.
+                                This can include Little methods where the hunt bell path has an obvious extension
+                                (the extension will be 'less Little', but will still be Little).
                             </p>
                         </div>
                     </div>
@@ -291,22 +333,13 @@
                     <!-- Extension Process 4 triple mode -->
                     <div class="row" id="ep4triple">
                         <div class="col-sm-1">
-                            <h5>4 c)</h5>
+                            <h5>4 e)</h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">Extension Process 4 - Triple Mode</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The next EP4 case is a triple mode extension with a stage increment of 2.
-                                The diagram below shows this applied to
+                                The diagram below shows EP4 used in triple mode to extend
                                 <a class="text-success undrln" href="https://complib.org/method/29353">Nightingale Treble Place Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -316,7 +349,14 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                In a triple mode extension, the place notation is separated into places of the hunt bell, places below the hunt bell, and places above the hunt bell.
+                                Each of these subsets is then processed in a similar manner to the previous example.
+                            </p>
+
+                            <p>
+                                Triple mode is used to extend Hunters where the extension of the hunt bell isn't obvious, such as with Alliance and Treble Place methods.
+                                This can include Little methods where the hunt bell path could be extended in more than one way
+                                (the extension will be 'less Little', but will still be Little).
                             </p>
                         </div>
                     </div>
@@ -324,22 +364,13 @@
                     <!-- Extension Process 4 contraction -->
                     <div class="row" id="ep4contraction">
                         <div class="col-sm-1">
-                            <h5>4 c)</h5>
+                            <h5>4 f)</h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">Extension Process 4 - Contraction</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The next EP4 case is contraction, stage decrement of 2.
-                                The diagram below shows this applied to
+                                The diagram below shows EP4 used in double mode to contract
                                 <a class="text-success undrln" href="https://complib.org/method/26082">Kent Treble Bob Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -349,7 +380,8 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                In most cases, extension can work in both directions. E.g. Kent Treble Bob Minor can be extended to Kent Treble Bob Major,
+                                and Kent Treble Bob Major can be contracted with the inverse process to obtain Kent Treble Bob Minor.
                             </p>
                         </div>
                     </div>
@@ -357,7 +389,7 @@
                     <!-- Extension Process 4 single stage -->
                     <div class="row" id="ep4singlestage">
                         <div class="col-sm-1">
-                            <h5>4 c)</h5>
+                            <h5>4 g)</h5>
                         </div>
                         <div class="col-sm-11">
                             <h5 class="border-bottom">Extension Process 4 - Single Stage</h5>
@@ -387,13 +419,13 @@
                         </div>
                     </div>
 
-                    <!-- Extension Process 5 single stage -->
-                    <div class="row" id="ep5singlestage">
+                    <!-- Extension Process 4 single stage alternative process -->
+                    <div class="row" id="ep4singlestagealt">
                         <div class="col-sm-1">
-                            <h5>4 c)</h5>
+                            <h5>4 h)</h5>
                         </div>
                         <div class="col-sm-11">
-                            <h5 class="border-bottom">Extension Process 5 - Single Stage</h5>
+                            <h5 class="border-bottom">Extension Process 4 - Single Stage - Alternative Process</h5>
 
                             <p>
                                 [Description]
@@ -404,17 +436,37 @@
                             </p>
 
                             <p>
-                                The diagram below shows EP5 applied to
+                                The diagram below shows EP4 applied to
                                 <a class="text-success undrln" href="https://complib.org/method/11901">Brampford Speke Bob Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
 
                             <p>
-                                <img src="images/extensionprocesses2/ep5-brampford-speke.svg" />
+                                <img src="images/extensionprocesses2/ep4-brampford-speke-alt.svg" />
                             </p>
 
                             <p>
                                 [Further details]
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Extension Process 4 single stage alternative process -->
+                    <div class="row" id="ep4additional">
+                        <div class="col-sm-1">
+                            <h5>4 i)</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Extension Process 4 - Additional Considerations</h5>
+
+                            <p>
+                                Multiple hunt bells
+                                Non palindromic
+                                Overlap length is a fraction of the half-lead length increment
+                                Requirements for extensions to be valid
+                                Jump changes
+                                Dynamic methods
+
                             </p>
                         </div>
                     </div>
