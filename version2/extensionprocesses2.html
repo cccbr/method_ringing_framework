@@ -380,8 +380,30 @@
                             </p>
 
                             <p>
-                                In most cases, extension can work in both directions. E.g. Kent Treble Bob Minor can be extended to Kent Treble Bob Major,
+                                In most cases, extension works in both directions. E.g. Kent Treble Bob Minor can be extended to Kent Treble Bob Major,
                                 and Kent Treble Bob Major can be contracted with the inverse process to obtain Kent Treble Bob Minor.
+                                The parent method is usually designated as the version of a method family that has the lowest stage, and then
+                                only extensions above that stage need to be considered.
+                            </p>
+
+                            <p>
+                                However, is some cases a method can be contracted to give a recognizable version of the method at a lower stage,
+                                but it can't then be extended back to the original stage. The reason for this is that places can 'cross the mode'.
+                                Kent Treble Bob Minimus provides a good example of this. Kent is usually extended above the treble using a
+                                mode of 1, as this causes the 3-4 Kent places to remain in 3-4 as the method is extended.
+                            </p>
+
+                            <p>
+                                However, when Kent is contracted from Minor to Minimus, places made in 6th's become places made in 4th's.
+                                But when attempting to re-extend Minimus back to Minor, it isn't possible under EP4 to specify that the 4th's
+                                places that are part of the Kent 3-4 places should remain in 4th's, but the other places in 4th's should extend to 6th's.
+                                Contraction therefore enables designation of Kent TB Minor as the parent stage, with higher stages obtained by extension,
+                                and one lower stage (Minimus) obtained by contraction.
+                            </p>
+
+                            <p>
+                                It will be seen from the diagram above that the contraction process is the inverse of the extension process.
+                                Crucially, contraction only works if the places that become overlapped are the same in both segments.
                             </p>
                         </div>
                     </div>
@@ -395,16 +417,7 @@
                             <h5 class="border-bottom">Extension Process 4 - Single Stage</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The next EP4 case is single stage extension.
-                                The diagram below shows this applied to
+                                The diagram below shows EP4 used with a single stage increment to extend
                                 <a class="text-success undrln" href="https://complib.org/method/11901">Brampford Speke Bob Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -414,7 +427,10 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                [Notes: this process doesn't give a satisfactory extension in this case.
+                                3rd's place made at the half lead is discarded in the extension,
+                                and 5th's place made at change 1 is moved to the lead end,
+                                whereas it should remain at change 1. To be discussed.]
                             </p>
                         </div>
                     </div>
@@ -428,15 +444,7 @@
                             <h5 class="border-bottom">Extension Process 4 - Single Stage - Alternative Process</h5>
 
                             <p>
-                                [Description]
-                            </p>
-
-                            <p>
-                                <u>Example</u>
-                            </p>
-
-                            <p>
-                                The diagram below shows EP4 applied to
+                                The diagram below shows EP4 used with a single stage increment to extend
                                 <a class="text-success undrln" href="https://complib.org/method/11901">Brampford Speke Bob Minor</a>.
                                 Further details are provided after the diagram.
                             </p>
@@ -446,7 +454,36 @@
                             </p>
 
                             <p>
-                                [Further details]
+                                Single stage extension requires two modifications to the processes seen previously:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Single stage extension is used primarily with Plain methods.
+                                    In such methods, the presence or absence of external places
+                                    (in changes where there isn't an internal place)
+                                    is the result of needing to keep the hunt bell plain hunting.
+                                    For example, 7th's place at change 1 in Plain Bob Triples is not derived from 6th's place at change 1 in Minor&mdash;change 1
+                                    in Minor has the cross change.
+                                    Single stage extension therefore can't be derived solely from operations on the place notation&mdash;it
+                                    is also necessary to extend the movements of the hunt bell.
+                                    The movement notation a→b is used to mean 'In this change, the hunt bell moves from place a to place b',
+                                    where a and b are adjacent places. E.g. 1→2 and 5→4.
+                                    Following on from this, only internal places need to be part of the extension process,
+                                    as any additional external places needed result from the hunt bell movements.
+                                </li>
+
+                                <li>
+                                    In single stage extension, segment 2 may not continue all the way to the half lead change,
+                                    and segment 1 may continue past the end of segment 2.
+                                    We therefore need to specify the start and end changes for segments 1 and 2 individually,
+                                    rather than specifying an overlap start and an overlap length.
+                                </li>
+                            </ol>
+
+                            <p>
+                                Using these two modifications, the diagram above shows how hunt bell places and movements, internal places below the hunt
+                                bell, and internal places above the hunt bell are each extended.
                             </p>
                         </div>
                     </div>
@@ -460,13 +497,76 @@
                             <h5 class="border-bottom">Extension Process 4 - Additional Considerations</h5>
 
                             <p>
-                                Multiple hunt bells
-                                Non palindromic
-                                Overlap length is a fraction of the half-lead length increment
-                                Requirements for extensions to be valid
-                                Jump changes
-                                Dynamic methods
+                                <u>Multiple hunt bells:</u>
+                                The examples above are limited to methods with no more than one hunt bell.
+                                Methods with multiple coursing hunt bells can be extended in the same way.
+                                [Add examples of Grandsire extended in steps of two stages using double mode, and also in steps of one stage using triple mode.]
+                            </p>
 
+                            <p>
+                                <u>Non palindromic methods:</u>
+                                The examples above use palindromic methods.
+                                Non-palindromic methods can be extended by applying the processes above separately to each half of the method.
+                                The changes of the second half of the method are reversed prior to applying the extension operations,
+                                and the resulting extended changes are then re-reversed as the final step.
+                                [Add an example of a non-palindromic extension.]
+                            </p>
+
+                            <p>
+                                <u>Half-lead length increment and overlap length:</u>
+                                In general, the overlap length is the same as the half-lead length increment.
+                                However, it is also possible for the overlap length to be a fraction of the half-lead length increment.
+                                For example, a Treble Dodging method might be extended directly from Major to Maximus.
+                                The half-lead length increment would be 8, and the extension below the hunt bell
+                                might use an overlap length of 8.
+                                But the extension above the hunt bell might use an overlap length of 4.
+                                In this case, the extension process above the hunt bell is applied twice for every one time
+                                the process below the hunt bell is applied.
+                                This ensures the same number of changes are added both above and below the hunt bell.
+                                [Add an example of this type of extension.]
+                            </p>
+
+                            <p>
+                                <u>Jump changes and dynamic methods:</u>
+                                EP4 is not designed to be used with methods containing jump changes, or dynamic methods.
+                            </p>
+
+                            <p>
+                                <u>Requirements for extensions to be valid</u>
+                                <ol>
+                                    <li>The Extension has the same Symmetry (see Section 4.B) as the Parent Method.</li>
+
+                                    <li>
+                                        The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
+                                        and has no Working Bells, in which case the Extension also only has Hunt Bells.
+                                    </li>
+
+                                    <li>The Extension has the same number of Cycles of Working Bells as the Parent Method.</li>
+
+                                    <li>If the Parent Method comprises two or more Cycles of Working Bells of equal size, the Extension has this same feature.</li>
+
+                                    <li>
+                                        If the Parent Method has Plain Bob Leadheads, the Extension also has Plain Bob Leadheads.
+                                        If the Parent Method does not have Plain Bob Leadheads, the Extension also does not have Plain Bob Leadheads.
+                                    </li>
+
+                                    <li>
+                                        The Extension Construction used, when applied to the Parent Method in question, creates an Extension Path containing a minimum of 3 Methods
+                                        (including the Parent Method) with Stages that are less than or equal to Stage 24.
+                                    </li>
+                                </ol>
+                            </p>
+
+                            <p>
+                                <u>Standard parameters:</u>
+                                When the same results are obtained by using different overlap starts, use the overlap start that is closest to the start of the lead.
+                                When the same results are obtained by using different modes, use the lowest mode.
+                            </p>
+
+
+                            <p>
+                                <u>EP4 extension construction notation:</u>
+                                [To be discussesd.]
                             </p>
                         </div>
                     </div>
