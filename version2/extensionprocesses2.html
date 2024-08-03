@@ -167,15 +167,15 @@
                                 <li>
                                     In a double mode extension, a method's places are separated into below-the-hunt places and above-the hunt places,
                                     with each subset extended separately.
-                                    Double mode extension relies on the hunt bell having a path for which the extended path is obvious, such as with Plain
+                                    Double mode extension relies on the hunt bell having a path that can only extend in one way, such as with Plain
                                     and Treble Dodging methods.
                                 </li>
 
                                 <li>
                                     In a triple mode extension, a method's places are separated into hunt bell places, below-the-hunt places, and above-the hunt places,
                                     with each subset extended separately.
-                                    Triple mode extension is used when the extension of the hunt bell path isn't obvious and needs to be specified,
-                                    such as with Alliance and Treble Place methods.
+                                    Triple mode extension is used when it is necessary to specify how hunt bell places extend,
+                                    such as with certain Alliance and Treble Place methods.
                                 </li>
                             </ol>
 
@@ -191,14 +191,17 @@
 
                             <ol>
                                 <li>
-                                    Half-lead length increment: This specifies the increase in the half-lead length of the extension versus the parent,
-                                    and is zero (giving a fixed lead length extension), a positive integer (where the extension has an expanded lead length),
-                                    or a negative integer (used in contraction).
+                                    Stage increment: This specifies the increase in the stage of the extension versus the parent,
+                                    and is a positive integer, except that in contraction it is a negative integer.
                                 </li>
 
                                 <li>
-                                    Stage increment: This specifies the increase in the stage of the extension versus the parent,
-                                    and is a positive integer, except that in contraction it is a negative integer.
+                                    Overlap length: This specifies how the half lead length changes in the extension versus the parent.
+                                    It can be zero (giving an extension where the lead length doesn't change), or a positive integer.
+                                    If the overlap length is a positive integer and the stage increment is positive,
+                                    then the half lead length of the extension (versus the parent) increases by the overlap length.
+                                    If the overlap length is a positive integer and the stage increment is negative,
+                                    then contraction is being performed, and the half lead length decreases by the overlap length.
                                 </li>
                             </ol>
                         </div>
@@ -213,9 +216,8 @@
                             <h5 class="border-bottom">Extension Process 4 - Single Mode, Fixed Lead Length</h5>
 
                             <p>
-                                The diagram below shows EP4 used in single mode with a fixed lead length to extend
+                                The diagram below shows EP4 used in single mode with an overlap length of zero to extend
                                 <a class="text-success undrln" href="https://complib.org/method/27834">Stedman Doubles</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -223,21 +225,14 @@
                             </p>
 
                             <p>
-                                As will be seen below, EP4 usually works by specifying two overlapping segments of place notation
-                                (segment 1 and segement 2).
-                                But when the lead length is fixed, no overlap is required.  Segment 1 is therefore not used,
-                                and all the place notation is included in segment 2.
-                            </p>
-
-                            <p>
-                                The places in line 4 above either remain unchanged in line 5 if they are less than or equal to the mode,
+                                The places in line 1 above either remain unchanged in line 2 if they are less than or equal to the mode,
                                 or they increase by the stage increment if they are greater than the mode.
-                                Since the mode in this example is 3, we see that all the places in line 5 are the same as line 4,
-                                except that 5th's place in line 4 becomes 7th's place in line 5.
+                                Since the mode in this example is 3, the places in line 2 are the same as line 1,
+                                except that 5th's place in line 1 becomes 7th's place in line 2.
                             </p>
 
                             <p>
-                                EP4 in single mode with a fixed lead length can be used for Principles and Little methods.
+                                EP4 in single mode with a fixed lead length can be used to extend Principles and Little methods.
                                 It can't be used for Hunters with non-Little paths.
                                 But note that Principles and Little methods can also be extended on an expanding lead length basis.
                             </p>
@@ -255,7 +250,6 @@
                             <p>
                                 The diagram below shows EP4 used in single mode with an expanding lead length to extend
                                 <a class="text-success undrln" href="https://complib.org/method/11369">St Clement's College Bob Minor</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -263,17 +257,17 @@
                             </p>
 
                             <p>
-                                This example shows the overlapping segments in use.
+                                This example shows how overlapping segments are used to generate extensions.
                                 The first step is to list the place notation for a half lead of the method (line 1).
                                 By convention, the lead end change is shown first, and is labelled as change 0.
                                 The subsequent changes for a half-lead are then shown and are labelled as changes 1 to n, where n is half the lead length.
                             </p>
 
                             <p>
-                                The next step is to separate the place notation into two overlapping segements, as specified by the Overlap start and Overlap length parameters.
-                                This gives segements 1 and 2, as shown in lines 2 and 3 above, and we then connect these two segments as shown in line 4.
-                                Different extensions can be produced by selecting different overlap start parameters.
-                                The overlap length must be consistent with the half-lead length increment parameter.
+                                The next step is to separate the place notation into two overlapping segments, as specified by the Overlap start and Overlap length parameters.
+                                This gives segments 1 and 2, as shown in lines 2 and 3 above.
+                                These two segments are then connected as shown in line 4.
+                                Different extensions can be produced by selecting different overlap start and mode parameters.
                             </p>
 
                             <p>
@@ -294,7 +288,6 @@
                             <p>
                                 The diagram below shows EP4 used in double mode to extend
                                 <a class="text-success undrln" href="https://complib.org/method/14568">Cambridge Surprise Minor</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -323,8 +316,9 @@
                             </ol>
 
                             <p>
-                                Double mode is used to extend Hunters where the extension of the hunt bell is obvious, such as with Plain and Treble Dodging methods.
-                                This can include Little methods where the hunt bell path has an obvious extension
+                                Double mode is used to extend Hunters where the hunt bell path can only extend in one way,
+                                such as with Plain and Treble Dodging methods.
+                                This can include Little Plain and Little Treble Dodging methods
                                 (the extension will be 'less Little', but will still be Little).
                             </p>
                         </div>
@@ -341,7 +335,6 @@
                             <p>
                                 The diagram below shows EP4 used in triple mode to extend
                                 <a class="text-success undrln" href="https://complib.org/method/29353">Nightingale Treble Place Minor</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -354,9 +347,9 @@
                             </p>
 
                             <p>
-                                Triple mode is used to extend Hunters where the extension of the hunt bell isn't obvious, such as with Alliance and Treble Place methods.
-                                This can include Little methods where the hunt bell path could be extended in more than one way
-                                (the extension will be 'less Little', but will still be Little).
+                                Triple mode is used to extend Hunters where it is necessary to specify how hunt bell places extend,
+                                such as with certain Alliance and Treble Place methods.
+                                This can include Little methods where the hunt bell path could be extended in more than one way.
                             </p>
                         </div>
                     </div>
@@ -372,7 +365,6 @@
                             <p>
                                 The diagram below shows EP4 used in double mode to contract
                                 <a class="text-success undrln" href="https://complib.org/method/26082">Kent Treble Bob Minor</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -419,7 +411,6 @@
                             <p>
                                 The diagram below shows EP4 used with a single stage increment to extend
                                 <a class="text-success undrln" href="https://complib.org/method/11901">Brampford Speke Bob Minor</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -427,10 +418,14 @@
                             </p>
 
                             <p>
-                                [Notes: this process doesn't give a satisfactory extension in this case.
-                                3rd's place made at the half lead is discarded in the extension,
-                                and 5th's place made at change 1 is moved to the lead end,
-                                whereas it should remain at change 1. To be discussed.]
+                                [Notes: this process requires a different overlap length for the places below the hunt bell,
+                                compared with the overlap length for the places of the hunt bell and the places above the hunt bell.
+                                It is also necessary to discard a place that overflows the half-lead.
+                                An alternative process that addresses these issues is shown below, but it requires other
+                                modifications to the general process.
+                                At the moment, the process above also includes places made adjacent to a hunt bell place
+                                as part of the process to extend the hunt bell.
+                                All to be discussed.]
                             </p>
                         </div>
                     </div>
@@ -446,7 +441,6 @@
                             <p>
                                 The diagram below shows EP4 used with a single stage increment to extend
                                 <a class="text-success undrln" href="https://complib.org/method/11901">Brampford Speke Bob Minor</a>.
-                                Further details are provided after the diagram.
                             </p>
 
                             <p>
@@ -476,8 +470,9 @@
                                 <li>
                                     In single stage extension, segment 2 may not continue all the way to the half lead change,
                                     and segment 1 may continue past the end of segment 2.
-                                    We therefore need to specify the start and end changes for segments 1 and 2 individually,
-                                    rather than specifying an overlap start and an overlap length.
+                                    Start and end changes for segments 1 and 2 are therefore specified individually,
+                                    instead of specifying an overlap start.
+                                    The values chosen for the segment starts and ends must be consistent with the Overlap length parameter.
                                 </li>
                             </ol>
 
@@ -510,20 +505,6 @@
                                 The changes of the second half of the method are reversed prior to applying the extension operations,
                                 and the resulting extended changes are then re-reversed as the final step.
                                 [Add an example of a non-palindromic extension.]
-                            </p>
-
-                            <p>
-                                <u>Half-lead length increment and overlap length:</u>
-                                In general, the overlap length is the same as the half-lead length increment.
-                                However, it is also possible for the overlap length to be a fraction of the half-lead length increment.
-                                For example, a Treble Dodging method might be extended directly from Major to Maximus.
-                                The half-lead length increment would be 8, and the extension below the hunt bell
-                                might use an overlap length of 8.
-                                But the extension above the hunt bell might use an overlap length of 4.
-                                In this case, the extension process above the hunt bell is applied twice for every one time
-                                the process below the hunt bell is applied.
-                                This ensures the same number of changes are added both above and below the hunt bell.
-                                [Add an example of this type of extension.]
                             </p>
 
                             <p>
