@@ -36,55 +36,73 @@ def copy_asset(src, dst_dir):
         return src
 
 
+def clean_text(s):
+    if s is None:
+        return ''
+    # replace NBSP and normalize to preserve internal spacing but trim ends
+    return s.replace('\xa0',' ').strip()
+
+
+def append_text(elem, txt):
+    """Append cleaned txt to elem.text or last child's tail, ensuring single-space separation."""
+    txt = clean_text(txt)
+    if not txt:
+        return
+    children = list(elem)
+    if not children:
+        if elem.text is None or elem.text.strip() == '':
+            elem.text = txt
+        else:
+            # ensure single space separation
+            elem.text = elem.text.rstrip() + ' ' + txt
+    else:
+        last = children[-1]
+        if last.tail is None or last.tail.strip() == '':
+            last.tail = txt
+        else:
+            last.tail = last.tail.rstrip() + ' ' + txt
+
+
 def render_inline(bsnode, para, assets_dir, base_uri, file_rel_path, version_id, status):
     """Render inline HTML children into a DocBook <para>, mapping common inline tags."""
     from bs4 import NavigableString, Tag
     for child in bsnode.children:
         if isinstance(child, NavigableString):
-            txt = str(child)
-            if para.text is None:
-                para.text = txt
-            else:
-                # append to last child tail if exists
-                children = list(para)
-                if children:
-                    last = children[-1]
-                    last.tail = (last.tail or '') + txt
-                else:
-                    para.text = (para.text or '') + txt
+            txt = clean_text(str(child))
+            append_text(para, txt)
             continue
         if not isinstance(child, Tag):
             continue
         tag = child.name
-        text = child.get_text()
+        text = clean_text(child.get_text())
         if tag in ('b','strong'):
             e = etree.SubElement(para, 'emphasis')
             e.set('role', 'bold')
-            e.text = text
+            append_text(e, text)
             continue
         if tag in ('i','em'):
             e = etree.SubElement(para, 'emphasis')
             e.set('role', 'italic')
-            e.text = text
+            append_text(e, text)
             continue
         if tag in ('code','tt'):
             e = etree.SubElement(para, 'literal')
-            e.text = text
+            append_text(e, text)
             continue
         if tag == 'a':
             e = etree.SubElement(para, 'ulink')
             href = child.get('href','')
             if href:
                 e.set('url', href)
-            e.text = text
+            append_text(e, text)
             continue
         if tag == 'dfn':
             # inline definition: emit glossentry inline with termmeta
             gloss = etree.SubElement(para, 'glossentry')
             term = etree.SubElement(gloss, 'glossterm')
-            term.text = text.strip()
+            append_text(term, text)
             termmeta = etree.SubElement(gloss, 'termmeta')
-            tid = child.get('id') or (os.path.splitext(os.path.basename(file_rel_path))[0] + '-' + re.sub(r'\s+','-', term.text))
+            tid = child.get('id') or (os.path.splitext(os.path.basename(file_rel_path))[0] + '-' + re.sub(r'\s+','-', term.text or ''))
             termmeta.set('{http://www.w3.org/XML/1998/namespace}id', tid)
             authority = etree.SubElement(termmeta, 'authority')
             authority.text = 'CCCBR'
@@ -99,15 +117,7 @@ def render_inline(bsnode, para, assets_dir, base_uri, file_rel_path, version_id,
             continue
         # fallback: render the inner text
         if text:
-            if para.text is None:
-                para.text = text
-            else:
-                children = list(para)
-                if children:
-                    last = children[-1]
-                    last.tail = (last.tail or '') + text
-                else:
-                    para.text = (para.text or '') + text
+            append_text(para, text)
 
 
 def element_to_docbook(el, parent, assets_dir, base_uri, file_rel_path, version_id, status):
@@ -115,10 +125,10 @@ def element_to_docbook(el, parent, assets_dir, base_uri, file_rel_path, version_
     name = el.name
     # text nodes
     if isinstance(el, NavigableString):
-        text = str(el).strip()
+        text = clean_text(str(el))
         if text:
             p = etree.SubElement(parent, 'para')
-            p.text = text
+            append_text(p, text)
         return
     # headings anywhere in the tree
     if name and re.match(r'h([1-6])', name):
