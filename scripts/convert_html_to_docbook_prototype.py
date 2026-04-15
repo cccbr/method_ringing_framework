@@ -36,41 +36,145 @@ def copy_asset(src, dst_dir):
         return src
 
 
-def element_to_docbook(el, parent, assets_dir, base_uri, file_rel_path, version_id, status):
-    name = el.name
-    if name is None:
-        text = el.strip()
+def render_inline(bsnode, para, assets_dir, base_uri, file_rel_path, version_id, status):
+    """Render inline HTML children into a DocBook <para>, mapping common inline tags."""
+    from bs4 import NavigableString, Tag
+    for child in bsnode.children:
+        if isinstance(child, NavigableString):
+            txt = str(child)
+            if para.text is None:
+                para.text = txt
+            else:
+                # append to last child tail if exists
+                children = list(para)
+                if children:
+                    last = children[-1]
+                    last.tail = (last.tail or '') + txt
+                else:
+                    para.text = (para.text or '') + txt
+            continue
+        if not isinstance(child, Tag):
+            continue
+        tag = child.name
+        text = child.get_text()
+        if tag in ('b','strong'):
+            e = etree.SubElement(para, 'emphasis')
+            e.set('role', 'bold')
+            e.text = text
+            continue
+        if tag in ('i','em'):
+            e = etree.SubElement(para, 'emphasis')
+            e.set('role', 'italic')
+            e.text = text
+            continue
+        if tag in ('code','tt'):
+            e = etree.SubElement(para, 'literal')
+            e.text = text
+            continue
+        if tag == 'a':
+            e = etree.SubElement(para, 'ulink')
+            href = child.get('href','')
+            if href:
+                e.set('url', href)
+            e.text = text
+            continue
+        if tag == 'dfn':
+            # inline definition: emit glossentry inline with termmeta
+            gloss = etree.SubElement(para, 'glossentry')
+            term = etree.SubElement(gloss, 'glossterm')
+            term.text = text.strip()
+            termmeta = etree.SubElement(gloss, 'termmeta')
+            tid = child.get('id') or (os.path.splitext(os.path.basename(file_rel_path))[0] + '-' + re.sub(r'\s+','-', term.text))
+            termmeta.set('{http://www.w3.org/XML/1998/namespace}id', tid)
+            authority = etree.SubElement(termmeta, 'authority')
+            authority.text = 'CCCBR'
+            status_el = etree.SubElement(termmeta, 'status')
+            status_el.text = status
+            version_el = etree.SubElement(termmeta, 'version-id')
+            version_el.text = version_id
+            uri_el = etree.SubElement(termmeta, 'canonical-uri')
+            uri_el.text = base_uri.rstrip('/') + '/' + file_rel_path.replace('\\','/')
+            prov = etree.SubElement(termmeta, 'provenance')
+            prov.text = file_rel_path
+            continue
+        # fallback: render the inner text
         if text:
-            parent.append(etree.Element('para'))
-            parent[-1].text = text
+            if para.text is None:
+                para.text = text
+            else:
+                children = list(para)
+                if children:
+                    last = children[-1]
+                    last.tail = (last.tail or '') + text
+                else:
+                    para.text = (para.text or '') + text
+
+
+def element_to_docbook(el, parent, assets_dir, base_uri, file_rel_path, version_id, status):
+    from bs4 import NavigableString
+    name = el.name
+    # text nodes
+    if isinstance(el, NavigableString):
+        text = str(el).strip()
+        if text:
+            p = etree.SubElement(parent, 'para')
+            p.text = text
         return
-    if name in ['h1','h2','h3','h4','h5','h6']:
-        sec = etree.SubElement(parent, 'section')
-        title = etree.SubElement(sec, 'title')
-        title.text = el.get_text().strip()
-        return sec
+    # headings anywhere in the tree
+    if name and re.match(r'h([1-6])', name):
+        level = int(name[1])
+        if level == 1:
+            chap = etree.SubElement(parent, 'chapter')
+            title = etree.SubElement(chap, 'title')
+            title.text = el.get_text().strip()
+            return
+        elif level == 2:
+            sect = etree.SubElement(parent, 'sect1')
+            title = etree.SubElement(sect, 'title')
+            title.text = el.get_text().strip()
+            return
+        else:
+            # h3 -> sect2, h4 -> sect3 etc.
+            sect_tag = 'sect' + str(level-1)
+            sect = etree.SubElement(parent, sect_tag)
+            title = etree.SubElement(sect, 'title')
+            title.text = el.get_text().strip()
+            return
+    # paragraphs
     if name == 'p':
         p = etree.SubElement(parent, 'para')
-        p.text = el.get_text().strip()
+        render_inline(el, p, assets_dir, base_uri, file_rel_path, version_id, status)
         return
+    # container-like tags: recurse into children rather than flattening
+    if name in ('div', 'section', 'main', 'article', 'row', 'container', 'container-fluid', 'col', 'col-sm-12', 'col-sm-11', 'col-xl-9'):
+        for child in el.children:
+            # skip purely navigational or script/style children
+            if getattr(child, 'name', None) and child.name.lower() in ('script','style'):
+                continue
+            # recurse
+            element_to_docbook(child, parent, assets_dir, base_uri, file_rel_path, version_id, status)
+        return
+    # lists
     if name == 'ul':
         lst = etree.SubElement(parent, 'itemizedlist')
         for li in el.find_all('li', recursive=False):
             item = etree.SubElement(lst, 'listitem')
             para = etree.SubElement(item, 'para')
-            para.text = li.get_text().strip()
+            render_inline(li, para, assets_dir, base_uri, file_rel_path, version_id, status)
         return
     if name == 'ol':
         lst = etree.SubElement(parent, 'orderedlist')
         for li in el.find_all('li', recursive=False):
             item = etree.SubElement(lst, 'listitem')
             para = etree.SubElement(item, 'para')
-            para.text = li.get_text().strip()
+            render_inline(li, para, assets_dir, base_uri, file_rel_path, version_id, status)
         return
+    # code blocks
     if name in ['pre','code']:
         code = etree.SubElement(parent, 'programlisting')
         code.text = el.get_text()
         return
+    # images
     if name == 'img':
         media = etree.SubElement(parent, 'mediaobject')
         imageobject = etree.SubElement(media, 'imageobject')
@@ -84,12 +188,11 @@ def element_to_docbook(el, parent, assets_dir, base_uri, file_rel_path, version_
         else:
             imagedata.set('fileref', src)
         return
+    # explicit definition tag
     if name == 'dfn':
-        # treat as definition term
         gloss = etree.SubElement(parent, 'glossentry')
         term = etree.SubElement(gloss, 'glossterm')
         term.text = el.get_text().strip()
-        # add termmeta
         termmeta = etree.SubElement(gloss, 'termmeta')
         tid = el.get('id') or (os.path.splitext(os.path.basename(file_rel_path))[0] + '-' + re.sub(r'\s+','-', term.text))
         termmeta.set('{http://www.w3.org/XML/1998/namespace}id', tid)
@@ -104,11 +207,34 @@ def element_to_docbook(el, parent, assets_dir, base_uri, file_rel_path, version_
         prov = etree.SubElement(termmeta, 'provenance')
         prov.text = file_rel_path
         return
-    # fallback: render text
+    # example blocks (by class)
+    if name == 'div' and ('example' in (el.get('class') or [])):
+        ex = etree.SubElement(parent, 'example')
+        # optional title
+        if el.find(True):
+            # render children inside example
+            for child in el.children:
+                if getattr(child, 'name', None) == 'h3':
+                    t = etree.SubElement(ex, 'title')
+                    t.text = child.get_text().strip()
+                else:
+                    if getattr(child, 'name', None):
+                        element_to_docbook(child, ex, assets_dir, base_uri, file_rel_path, version_id, status)
+                    else:
+                        if child.strip():
+                            p = etree.SubElement(ex, 'para')
+                            p.text = child.strip()
+        return
+    # note/explanatory blocks (by class)
+    if name == 'div' and ('explanation' in (el.get('class') or []) or 'explanatory' in (el.get('class') or [])):
+        note = etree.SubElement(parent, 'note')
+        render_inline(el, note, assets_dir, base_uri, file_rel_path, version_id, status)
+        return
+    # fallback: render inline text into a para
     text = el.get_text().strip()
     if text:
         p = etree.SubElement(parent, 'para')
-        p.text = text
+        render_inline(el, p, assets_dir, base_uri, file_rel_path, version_id, status)
 
 
 def pretty_print_xml_string(xml_bytes, indent_spaces=4):
@@ -123,7 +249,8 @@ def pretty_print_xml_string(xml_bytes, indent_spaces=4):
         s = s.decode('utf-8')
     # collapse inline tags so <b>..</b> stays on one line
     inline_tags_pattern = r"\\n(\\s*)<(?:" + '|'.join(INLINE_TAGS) + r")( [^>]*)?>\\n(\\s*)([^<]+)\\n(\\s*)</(?:" + '|'.join(INLINE_TAGS) + r")( [^>]*)?>"
-    # simple post-processing: replace patterns like \n    for tag in INLINE_TAGS:
+    # simple post-processing: move common inline tags onto the same line
+    for tag in INLINE_TAGS:
         open_re = re.compile(r"\\n(\\s*)<%s([^>]*)>\\n(\\s*)" % re.escape(tag))
         close_re = re.compile(r"\\n(\\s*)</%s>\\n" % re.escape(tag))
         s = open_re.sub(r"<%s\2>" % tag, s)
@@ -139,7 +266,11 @@ def convert_file(in_path, out_path, assets_dir, base_uri, version_id, status, in
     title_text = None
     if soup.title:
         title_text = soup.title.string
-    body = soup.body
+    body = soup.body or soup
+
+    # heuristics to find the main content container
+    main = soup.find('main') or soup.find(id='content') or soup.find('article') or soup.find('div', class_='content') or body
+
     root = etree.Element('article', nsmap=NSMAP)
     info = etree.SubElement(root, 'info')
     if title_text:
@@ -147,9 +278,69 @@ def convert_file(in_path, out_path, assets_dir, base_uri, version_id, status, in
         t.text = title_text
     meta = etree.SubElement(info, 'othermeta')
     meta.text = 'source=' + in_path
-    content = etree.SubElement(root, 'section')
-    for child in body.find_all(recursive=False):
-        element_to_docbook(child, content, assets_dir, base_uri, os.path.relpath(in_path, start=os.getcwd()), version_id, status)
+
+    # heading stack: level -> element
+    stack = {1: None, 2: None, 3: None, 4: None}
+    # default top-level container if no h1 present
+    default_section = etree.SubElement(root, 'section')
+    stack[1] = default_section
+
+    def is_navigational(el):
+        if not getattr(el, 'name', None):
+            return False
+        tag = el.name.lower()
+        if tag in ('header', 'nav', 'footer', 'aside', 'script', 'style'):
+            return True
+        cls = ' '.join(el.get('class') or []).lower()
+        idv = (el.get('id') or '').lower()
+        for token in ('nav', 'menu', 'breadcrumb', 'toc', 'sidebar', 'version-switch', 'search', 'masthead', 'skip'):
+            if token in cls or token in idv:
+                return True
+        return False
+
+    for child in main.find_all(recursive=False):
+        if is_navigational(child):
+            continue
+        if getattr(child, 'name', None) and re.match(r'h([1-6])', child.name):
+            level = int(child.name[1])
+            if level == 1:
+                chap = etree.SubElement(root, 'chapter')
+                title = etree.SubElement(chap, 'title')
+                title.text = child.get_text().strip()
+                stack[1] = chap
+                stack[2] = stack[3] = stack[4] = None
+            elif level == 2:
+                parent = stack[1] if stack.get(1) is not None else root
+                sect = etree.SubElement(parent, 'sect1')
+                title = etree.SubElement(sect, 'title')
+                title.text = child.get_text().strip()
+                stack[2] = sect
+                stack[3] = stack[4] = None
+            elif level == 3:
+                parent = stack[2] if stack.get(2) is not None else (stack[1] if stack.get(1) is not None else root)
+                sect = etree.SubElement(parent, 'sect2')
+                title = etree.SubElement(sect, 'title')
+                title.text = child.get_text().strip()
+                stack[3] = sect
+                stack[4] = None
+            else:
+                parent = stack.get(level-1) if stack.get(level-1) is not None else (stack[1] if stack.get(1) is not None else root)
+                sect_tag = 'sect' + str(level-1)
+                sect = etree.SubElement(parent, sect_tag)
+                title = etree.SubElement(sect, 'title')
+                title.text = child.get_text().strip()
+                stack[level] = sect
+            continue
+        # not a heading: attach to deepest stack level available
+        parent = None
+        for lvl in (4, 3, 2, 1):
+            if stack.get(lvl) is not None:
+                parent = stack[lvl]
+                break
+        if parent is None:
+            parent = root
+        element_to_docbook(child, parent, assets_dir, base_uri, os.path.relpath(in_path, start=os.getcwd()), version_id, status)
+
     ensure_dir(os.path.dirname(out_path))
     # serialize to bytes then pretty print with control over indentation
     xml_bytes = etree.tostring(root, encoding='utf-8', xml_declaration=True)
