@@ -100,6 +100,7 @@ def extract_metadata_from_xml(xml_dir: Path) -> dict:
 
 
 def generate_master_tex(
+    version_name: str,
     title: str,
     subtitle: str,
     edition: str,
@@ -107,13 +108,38 @@ def generate_master_tex(
     authority: str,
     canonical: str,
     content_files: list[str],
-    preamble_path: str = "../../../scripts/templates/docbook-preamble.tex",
-) -> str:
-    """Generate master TeX file that includes preamble and all content."""
-
+    output_path: str,
+    preamble_path: str = "../../templates/docbook-preamble.tex",
+    xml_dir: str | None = None,
+) -> None:
+    """Generate master TeX file that includes preamble and all content.
+    
+    Args:
+        version_name: Version identifier
+        title: Document title
+        subtitle: Document subtitle
+        edition: Edition number
+        status: Publication status
+        authority: Document authority
+        canonical: Canonical URI
+        content_files: List of content .tex file names to include
+        output_path: Path where master .tex file will be written
+        preamble_path: Path to preamble template (relative or absolute)
+        xml_dir: Optional directory to extract metadata from
+    """
+    # Extract metadata from XML if provided
+    if xml_dir:
+        metadata = extract_metadata_from_xml(Path(xml_dir))
+        title = metadata.get("title", title)
+        subtitle = metadata.get("subtitle", subtitle)
+        edition = metadata.get("edition", edition)
+        status = metadata.get("status", status)
+        authority = metadata.get("authority", authority)
+        canonical = metadata.get("canonical", canonical)
+    
     includes = "\n".join(f"\\input{{{cf}}}" for cf in content_files)
 
-    return rf"""\input{{{preamble_path}}}
+    tex_content = rf"""\input{{{preamble_path}}}
 
 \hypersetup{{
     pdftitle={{{title}}},
@@ -154,13 +180,15 @@ def generate_master_tex(
 
 \end{{document}}
 """
+    
+    Path(output_path).write_text(tex_content, encoding="utf-8", newline="\n")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate a master LaTeX file for a framework version.")
     parser.add_argument("version_name", help="Version identifier (e.g., version1, version2)")
     parser.add_argument("output", help="Path to the output master .tex file")
-    parser.add_argument("--preamble", default="../../../scripts/templates/docbook-preamble.tex", help="Path to preamble template")
+    parser.add_argument("--preamble", default="../../templates/docbook-preamble.tex", help="Path to preamble template")
     parser.add_argument("--content-dir", default=None, help="Directory containing content .tex files")
     parser.add_argument("--xml-dir", default=None, help="Directory containing original XML files for metadata extraction")
     return parser.parse_args()
@@ -170,22 +198,6 @@ def main() -> int:
     args = parse_args()
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    # Extract metadata from XML if available
-    metadata = {
-        "title": "Framework for Method Ringing",
-        "subtitle": "Complete Framework",
-        "edition": "1.0",
-        "status": "draft",
-        "authority": "CCCBR",
-        "canonical": "",
-    }
-
-    if args.xml_dir:
-        xml_dir = Path(args.xml_dir)
-        first_xml = next(xml_dir.glob("*.xml"), None)
-        if first_xml:
-            metadata = extract_metadata_from_xml(first_xml)
 
     # Determine content files
     if args.content_dir:
@@ -198,18 +210,20 @@ def main() -> int:
     else:
         raise ValueError("Must provide --content-dir")
 
-    master_tex = generate_master_tex(
-        title=metadata["title"],
-        subtitle=metadata["subtitle"],
-        edition=metadata["edition"],
-        status=metadata["status"],
-        authority=metadata["authority"],
-        canonical=metadata["canonical"],
+    generate_master_tex(
+        version_name=args.version_name,
+        title="Framework for Method Ringing",
+        subtitle="Complete Framework",
+        edition="1.0",
+        status="draft",
+        authority="CCCBR",
+        canonical="",
         content_files=content_files,
+        output_path=str(output_path),
         preamble_path=args.preamble,
+        xml_dir=args.xml_dir,
     )
 
-    output_path.write_text(master_tex, encoding="utf-8", newline="\n")
     return 0
 
 
