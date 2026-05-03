@@ -270,134 +270,22 @@ def render_section(section: etree._Element, asset_root: str) -> str:
 
 
 def build_document(article: etree._Element, asset_root: str) -> str:
-    info = article.find("db:info", NS)
-    title = escape_latex(read_text(info.find("db:title", NS) if info is not None else None))
-    subtitle = escape_latex(read_text(info.find("db:subtitle", NS) if info is not None else None))
-    edition = escape_latex(read_text(info.find("db:edition", NS) if info is not None else None))
-    canonical = escape_latex(read_text(info.find('db:uri[@type="canonical"]', NS) if info is not None else None))
-    status = escape_latex(article.get(f"{{{NS['mrf']}}}status", ""))
-    authority = escape_latex(article.get(f"{{{NS['mrf']}}}authority", ""))
     sections = article.findall("db:glossary/db:glossdiv", NS)
-
     section_body = "\n\n".join(render_section(section, asset_root) for section in sections)
+    return section_body
 
-    return rf"""\documentclass[11pt,a4paper]{{article}}
-\usepackage[margin=1in]{{geometry}}
-\usepackage[T1]{{fontenc}}
-\usepackage[utf8]{{inputenc}}
-\usepackage{{lmodern}}
-\usepackage{{parskip}}
-\usepackage{{array}}
-\usepackage{{tabularx}}
-\usepackage{{graphicx}}
-\usepackage{{xcolor}}
-\usepackage{{hyperref}}
-\usepackage{{fancyhdr}}
-\usepackage{{textcomp}}
-\usepackage{{xparse}}
 
-\definecolor{{mrfHeader}}{{HTML}}{{132243}}
-\definecolor{{mrfExample}}{{HTML}}{{C0392B}}
-\definecolor{{mrfFurther}}{{HTML}}{{1F5F99}}
-\definecolor{{mrfTechnical}}{{HTML}}{{6C757D}}
-
-\hypersetup{{
-    colorlinks=true,
-    linkcolor=mrfHeader,
-    urlcolor=mrfHeader,
-    pdftitle={{{title}}},
-    pdfauthor={{{authority or "CCCBR"}}}
-}}
-
-\setlength{{\parindent}}{{0pt}}
-\setlength{{\parskip}}{{0.65em}}
-\renewcommand{{\arraystretch}}{{1.1}}
-
-\newcommand{{\MRFImagePlaceholder}}[1]{{%
-  \fbox{{\parbox{{0.82\linewidth}}{{\centering\textit{{Illustration omitted in this build}}\\\small\texttt{{#1}}}}}}%
-}}
-
-\NewDocumentCommand{{\MRFSection}}{{m}}{{%
-  \section*{{#1}}%
-  \addcontentsline{{toc}}{{section}}{{#1}}%
-}}
-
-\NewDocumentCommand{{\MRFMainPara}}{{+m}}{{#1\par}}
-\NewDocumentCommand{{\MRFExamplePara}}{{+m}}{{\noindent #1\par}}
-\NewDocumentCommand{{\MRFFurtherPara}}{{+m}}{{\noindent #1\par}}
-\NewDocumentCommand{{\MRFTechnicalPara}}{{+m}}{{\noindent #1\par}}
-
-\NewDocumentCommand{{\MRFDetailBlock}}{{m m +m}}{{%
-  \medskip
-  {{\color{{#1}}\noindent\textbf{{#2}}\par
-  #3}}%
-}}
-
-\NewDocumentCommand{{\MRFExample}}{{+m}}{{\MRFDetailBlock{{mrfExample}}{{Example:}}{{#1}}}}
-\NewDocumentCommand{{\MRFFurther}}{{+m}}{{\MRFDetailBlock{{mrfFurther}}{{Further explanation:}}{{#1}}}}
-\NewDocumentCommand{{\MRFTechnical}}{{+m}}{{\MRFDetailBlock{{mrfTechnical}}{{Technical comment:}}{{#1}}}}
-
-\NewDocumentCommand{{\MRFImage}}{{m m m m m m}}{{%
-  \begin{{center}}
-  \IfFileExists{{#2}}{{\includegraphics[width=#6]{{#2}}}}{{%
-    \IfFileExists{{#3}}{{\includegraphics[width=#6]{{#3}}}}{{%
-      \IfFileExists{{#4}}{{\includegraphics[width=#6]{{#4}}}}{{%
-        \IfFileExists{{#5}}{{\includegraphics[width=#6]{{#5}}}}{{%
-          \MRFImagePlaceholder{{#1}}%
-        }}%
-      }}%
-    }}%
-  }}%
-  \end{{center}}
-}}
-
-\NewDocumentCommand{{\MRFEntry}}{{m m +m}}{{%
-  \begin{{tabularx}}{{\textwidth}}{{@{{}}>{{\raggedleft\arraybackslash}}p{{0.06\textwidth}} >{{\raggedright\arraybackslash}}p{{0.22\textwidth}} X@{{}}}}
-  \textbf{{#1}} & \textbf{{#2}} & \begin{{minipage}}[t]{{\linewidth}}
-  #3
-  \end{{minipage}} \\
-  \end{{tabularx}}
-  \vspace{{0.9\baselineskip}}
-}}
-
-\pagestyle{{fancy}}
-\fancyhf{{}}
-\fancyhead[L]{{\textit{{Framework for Method Ringing}}}}
-\fancyhead[R]{{\textit{{{title}}}}}
-\fancyfoot[C]{{\thepage}}
-
-\begin{{document}}
-
-% Compile after installing LaTeX with:
-%   cd version2
-%   pdflatex fundamentals-sample.tex
-
-\begin{{center}}
-\setlength{{\fboxsep}}{{10pt}}
-\colorbox{{mrfHeader}}{{%
-  \parbox{{0.96\linewidth}}{{%
-    \color{{white}}\Large\textbf{{Framework for Method Ringing}}\\[0.35em]
-    \large {title}
-  }}%
-}}
-\end{{center}}
-
-{{\large\textbf{{{subtitle}}}\par}}
-\smallskip
-\textbf{{Edition:}} {edition} \hfill \textbf{{Status:}} {status} \\
-\textbf{{Authority:}} {authority} \\
-\textbf{{Canonical URI:}} \url{{{canonical}}}
-
-\medskip
-\textit{{Note: SVG illustrations are rendered as placeholders unless matching PDF, PNG or JPG files are available alongside them.}}
-
-\tableofcontents
-\bigskip
-
-{section_body}
-
-\end{{document}}
-"""
+def get_article_metadata(article: etree._Element) -> dict:
+    """Extract metadata from article for master .tex file generation."""
+    info = article.find("db:info", NS)
+    return {
+        "title": escape_latex(read_text(info.find("db:title", NS) if info is not None else None)),
+        "subtitle": escape_latex(read_text(info.find("db:subtitle", NS) if info is not None else None)),
+        "edition": escape_latex(read_text(info.find("db:edition", NS) if info is not None else None)),
+        "canonical": escape_latex(read_text(info.find('db:uri[@type="canonical"]', NS) if info is not None else None)),
+        "status": escape_latex(article.get(f"{{{NS['mrf']}}}status", "")),
+        "authority": escape_latex(article.get(f"{{{NS['mrf']}}}authority", "CCCBR")),
+    }
 
 
 def parse_args() -> argparse.Namespace:
