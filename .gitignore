@@ -1,1 +1,6 @@
 .vs/
+node_modules
+__pycache__
+*.log
+*.pdf
+generated/
