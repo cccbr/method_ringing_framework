@@ -141,28 +141,14 @@ def width_to_latex(width: str | None) -> str:
 
 def build_image_include(fileref: str, width: str | None, asset_root: str) -> str:
     asset_path = Path(asset_root) / Path(fileref)
-    asset_tex = escape_latex(asset_path.as_posix())
     width_tex = width_to_latex(width)
     suffix = Path(fileref).suffix.lower()
 
-    if suffix in {".pdf", ".png", ".jpg", ".jpeg"}:
-        return (
-            rf"\IfFileExists{{{asset_tex}}}{{\includegraphics[width={width_tex}]{{{asset_tex}}}}}"
-            rf"{{\MRFImagePlaceholder{{{asset_tex}}}}}"
-        )
-
     if suffix == ".svg":
-        candidates = [".pdf", ".png", ".jpg", ".jpeg"]
-        chain = rf"\MRFImagePlaceholder{{{asset_tex}}}"
-        for ext in reversed(candidates):
-            candidate = escape_latex(asset_path.with_suffix(ext).as_posix())
-            chain = (
-                rf"\IfFileExists{{{candidate}}}{{\includegraphics[width={width_tex}]{{{candidate}}}}}"
-                rf"{{{chain}}}"
-            )
-        return chain
+        asset_path = asset_path.with_suffix(".pdf")
 
-    return rf"\MRFImagePlaceholder{{{asset_tex}}}"
+    asset_tex = escape_latex(asset_path.as_posix())
+    return rf"\includegraphics[width={width_tex}]{{{asset_tex}}}"
 
 
 def render_mediaobject(node: etree._Element, asset_root: str) -> str:
@@ -171,14 +157,17 @@ def render_mediaobject(node: etree._Element, asset_root: str) -> str:
         return ""
 
     fileref = image.get("fileref", "")
-    asset_path = Path(asset_root) / Path(fileref)
-    return (
-        rf"\MRFImage{{{escape_latex(asset_path.as_posix())}}}"
-        rf"{{{escape_latex(asset_path.with_suffix('.pdf').as_posix())}}}"
-        rf"{{{escape_latex(asset_path.with_suffix('.png').as_posix())}}}"
-        rf"{{{escape_latex(asset_path.with_suffix('.jpg').as_posix())}}}"
-        rf"{{{escape_latex(asset_path.with_suffix('.jpeg').as_posix())}}}"
-        rf"{{{width_to_latex(image.get('width') or image.get('contentwidth'))}}}"
+    include = build_image_include(
+        fileref,
+        image.get("width") or image.get("contentwidth"),
+        asset_root,
+    )
+    return "\n".join(
+        [
+            r"\begin{center}",
+            include,
+            r"\end{center}",
+        ]
     )
 
 

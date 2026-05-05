@@ -109,7 +109,7 @@ def generate_master_tex(
     canonical: str,
     content_files: list[str],
     output_path: str,
-    preamble_path: str = "../../templates/docbook-preamble.tex",
+    preamble_path: str = "../../../templates/docbook-preamble.tex",
     xml_dir: str | None = None,
 ) -> None:
     """Generate master TeX file that includes preamble and all content.
@@ -170,8 +170,6 @@ def generate_master_tex(
 
 \medskip
 
-\textit{{Note: SVG illustrations are rendered as placeholders unless matching PDF, PNG or JPG files are available alongside them.}}
-
 \tableofcontents
 
 \bigskip
@@ -188,7 +186,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate a master LaTeX file for a framework version.")
     parser.add_argument("version_name", help="Version identifier (e.g., version1, version2)")
     parser.add_argument("output", help="Path to the output master .tex file")
-    parser.add_argument("--preamble", default="../../templates/docbook-preamble.tex", help="Path to preamble template")
+    parser.add_argument("--preamble", default="../../../templates/docbook-preamble.tex", help="Path to preamble template")
     parser.add_argument("--content-dir", default=None, help="Directory containing content .tex files")
     parser.add_argument("--xml-dir", default=None, help="Directory containing original XML files for metadata extraction")
     return parser.parse_args()

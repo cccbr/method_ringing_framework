@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -19,6 +21,105 @@ NS = {
     "xlink": "http://www.w3.org/1999/xlink",
     "mrf": "https://cccbr.org.uk/ns/method-ringing-framework",
 }
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def find_headless_browser() -> str | None:
+    """Find a Chromium-based browser that can print SVGs to PDF."""
+    candidates = [
+        shutil.which("msedge"),
+        shutil.which("chrome"),
+        shutil.which("chromium"),
+        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+        r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+    ]
+    for candidate in candidates:
+        if candidate and Path(candidate).exists():
+            return candidate
+    return None
+
+
+def resolve_asset_path(fileref: str, version: str, version_xml_dir: Path) -> Path | None:
+    """Resolve a DocBook image reference to a real repository file."""
+    candidates = [
+        REPO_ROOT / version / fileref,
+        version_xml_dir / fileref,
+        REPO_ROOT / fileref,
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def copy_if_stale(source: Path, destination: Path) -> None:
+    """Copy an asset when the destination is missing or older."""
+    if destination.exists() and destination.stat().st_mtime >= source.stat().st_mtime:
+        return
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+
+
+def render_svg_to_pdf(source: Path, destination: Path, browser: str) -> None:
+    """Render an SVG source file to PDF via a headless browser."""
+    if destination.exists() and destination.stat().st_mtime >= source.stat().st_mtime:
+        return
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    command = [
+        browser,
+        "--headless",
+        "--disable-gpu",
+        f"--print-to-pdf={destination.resolve()}",
+        source.resolve().as_uri(),
+    ]
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    if result.returncode != 0 or not destination.exists():
+        detail = result.stderr.strip() or result.stdout.strip() or "unknown error"
+        raise RuntimeError(f"Failed to render SVG {source} to PDF: {detail}")
+
+
+def stage_latex_assets(version: str, article: etree._Element, version_xml_dir: Path, tex_dir: Path) -> None:
+    """Materialize image assets alongside the generated TeX files."""
+    browser: str | None = None
+
+    for image in article.findall(".//db:imagedata", NS):
+        fileref = image.get("fileref", "").strip()
+        if not fileref:
+            continue
+
+        source = resolve_asset_path(fileref, version, version_xml_dir)
+        if source is None:
+            raise FileNotFoundError(f"Image asset not found for fileref '{fileref}'")
+
+        source_suffix = source.suffix.lower()
+        if source_suffix == ".svg":
+            destination = tex_dir / Path(fileref).with_suffix(".pdf")
+            sibling_pdf = source.with_suffix(".pdf")
+            if sibling_pdf.exists():
+                copy_if_stale(sibling_pdf, destination)
+                continue
+
+            if browser is None:
+                browser = find_headless_browser()
+                if browser is None:
+                    raise RuntimeError(
+                        "No supported headless browser found for SVG to PDF conversion. "
+                        "Install Microsoft Edge or Google Chrome."
+                    )
+            render_svg_to_pdf(source, destination, browser)
+            continue
+
+        destination = tex_dir / Path(fileref)
+        copy_if_stale(source, destination)
 
 
 def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, tex_output_dir: Path, html_only: bool = False) -> bool:
@@ -66,6 +167,7 @@ def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, te
 
             # LaTeX output
             tex_output = tex_dir / f"{xml_file.stem}.tex"
+            stage_latex_assets(version, article, version_xml_dir, tex_dir)
             latex_text = build_document(article, asset_root="")
             tex_output.write_text(latex_text, encoding="utf-8", newline="\n")
 
@@ -94,7 +196,7 @@ def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, te
                 canonical="",
                 content_files=content_files,
                 output_path=str(master_tex_path),
-                preamble_path="../../templates/docbook-preamble.tex",
+                preamble_path="../../../templates/docbook-preamble.tex",
                 xml_dir=str(version_xml_dir),
             )
             print(f"  Generated master TeX file: {master_tex_path.name}")

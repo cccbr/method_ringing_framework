@@ -4,10 +4,10 @@
 from __future__ import annotations
 
 import argparse
-import re
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 
@@ -26,42 +26,7 @@ def find_pdflatex() -> str | None:
     return None
 
 
-def prepare_build_dir(version: str, tex_dir: Path, aux_dir: Path, templates_dir: Path) -> bool:
-    """Copy TeX files and preamble to build directory."""
-    print(f"  Preparing build directory...")
-
-    # Copy master TeX file
-    master_src = tex_dir / f"framework-{version}.tex"
-    master_dst = aux_dir / f"framework-{version}.tex"
-    if not master_src.exists():
-        print(f"    Error: Master TeX not found: {master_src}")
-        return False
-
-    shutil.copy2(master_src, master_dst)
-
-    # Copy preamble
-    preamble_src = templates_dir / "docbook-preamble.tex"
-    preamble_dst = aux_dir / "docbook-preamble.tex"
-    if not preamble_src.exists():
-        print(f"    Error: Preamble not found: {preamble_src}")
-        return False
-
-    shutil.copy2(preamble_src, preamble_dst)
-
-    # Copy all content TeX files
-    for tex_file in tex_dir.glob("*.tex"):
-        if not tex_file.name.startswith("framework-"):
-            shutil.copy2(tex_file, aux_dir / tex_file.name)
-
-    # Update preamble path in master file
-    master_content = master_dst.read_text(encoding="utf-8")
-    master_content = re.sub(r'\\input\{[^}]*docbook-preamble\.tex\}', r'\\input{docbook-preamble.tex}', master_content)
-    master_dst.write_text(master_content, encoding="utf-8")
-
-    return True
-
-
-def compile_pdf(version: str, aux_dir: Path, output_dir: Path, pdflatex_cmd: str) -> bool:
+def compile_pdf(version: str, tex_dir: Path, aux_dir: Path, output_dir: Path, pdflatex_cmd: str) -> bool:
     """Compile TeX to PDF using pdflatex."""
     print(f"  Compiling PDF...")
 
@@ -72,8 +37,13 @@ def compile_pdf(version: str, aux_dir: Path, output_dir: Path, pdflatex_cmd: str
         print(f"    Pass {pass_num}...")
         try:
             result = subprocess.run(
-                [pdflatex_cmd, "-interaction=nonstopmode", master_tex],
-                cwd=aux_dir,
+                [
+                    pdflatex_cmd,
+                    "-interaction=nonstopmode",
+                    f"-output-directory={aux_dir.name}",
+                    master_tex,
+                ],
+                cwd=tex_dir,
                 capture_output=True,
                 text=True,
                 timeout=120,
@@ -99,7 +69,16 @@ def compile_pdf(version: str, aux_dir: Path, output_dir: Path, pdflatex_cmd: str
     if pdf_src.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
         pdf_dst = output_dir / f"framework-{version}.pdf"
-        shutil.copy2(pdf_src, pdf_dst)
+        last_error: PermissionError | None = None
+        for _ in range(20):
+            try:
+                shutil.copy2(pdf_src, pdf_dst)
+                break
+            except PermissionError as exc:
+                last_error = exc
+                time.sleep(1)
+        else:
+            raise last_error
         size_mb = pdf_dst.stat().st_size / 1000000
         print(f"  [OK] PDF created: {pdf_dst} ({size_mb:.2f} MB)")
         return True
@@ -121,13 +100,14 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
     aux_dir = version_tex_dir / ".build-aux"
     aux_dir.mkdir(parents=True, exist_ok=True)
 
-    # Prepare build directory
-    if not prepare_build_dir(version, version_tex_dir, aux_dir, templates_dir):
+    master_tex = version_tex_dir / f"framework-{version}.tex"
+    if not master_tex.exists():
+        print(f"  Error: Master TeX not found: {master_tex}")
         return False
 
     # Compile PDF
     version_pdf_dir = pdf_output_dir / version
-    if not compile_pdf(version, aux_dir, version_pdf_dir, pdflatex_cmd):
+    if not compile_pdf(version, version_tex_dir, aux_dir, version_pdf_dir, pdflatex_cmd):
         return False
 
     # Cleanup

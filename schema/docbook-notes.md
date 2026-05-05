@@ -14,7 +14,6 @@ Current workflow:
 
 Current state:
 - The old prototype HTML-to-DocBook scripts and preview XML outputs have been removed.
-- `xml/version2/fundamentals-sample.xml` is the hand-authored benchmark for conversion quality.
 - Generated pipeline output now targets `generated/xml/`, `generated/html/`, and `generated/tex/`.
 
 Provenance: This file is committed to the xml-format feature branch as the authoritative plan document.

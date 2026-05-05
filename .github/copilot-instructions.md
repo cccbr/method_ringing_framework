@@ -29,7 +29,6 @@ There is no repo-wide build system, test runner, or linter. Validation in this r
 - The repository is primarily a **versioned static website**, not an app with a build pipeline. `index.html` is the version picker; `version1\` and `version2\` are complete published site trees with their own HTML pages, assets, `mrf.css`, and `mrf.js`.
 - `latest` is a **symbolic link to `version2`**. Treat `version2` as the source of truth and do not make parallel edits in both places.
 - The site layout is hand-authored Bootstrap 4 HTML with a fixed header, left sidebar navigation, and content in `<main>`. Collapsible “notes” are part of the content model and are driven by `mrf.js` plus CSS classes in `mrf.css`.
-- `xml\version2\fundamentals-sample.xml` is the checked-in semantic benchmark. New conversion work should be judged against that sample rather than against the deleted prototype outputs.
 - Generated artifacts live under the ignored `generated\` tree:
   - `generated\xml\version1\` and `generated\xml\version2\` for DocBook output from the source HTML
   - `generated\html\...` for HTML rendered back from DocBook
@@ -43,7 +42,7 @@ There is no repo-wide build system, test runner, or linter. Validation in this r
 ## Key conventions
 
 - Prefer the **current Python conversion pipeline** over any older notes about prototype tooling. The old HTML-to-XML prototype scripts were removed and replaced by `scripts\convert_html_to_docbook.py` plus the PowerShell tree wrappers.
-- When iterating on conversion quality, use `version2\fundamentals.html` and `xml\version2\fundamentals-sample.xml` as the primary reference pair. The sample XML captures the intended glossary-oriented structure more accurately than the earlier generated files that were removed.
+- When iterating on conversion quality, use the current `version2\fundamentals.html` source together with regenerated DocBook output under `generated\`.
 - Keep authoritative definitions **in page context**. The current target DocBook shape is glossary-oriented (`article > info > glossary > glossdiv > glossentry > glossdef`) with CCCBR-specific metadata in the `mrf:` namespace, rather than extracting a separate editorial glossary.
 - In the source HTML, note types are encoded by CSS classes and layout rather than semantic tags:
   - `text-danger` = example
