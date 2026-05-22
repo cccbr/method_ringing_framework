@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Generate a master LaTeX file that includes all content files and compiles to a single PDF per version."""
+"""Generate styled master LaTeX files for the rendered framework volumes."""
 
 from __future__ import annotations
 
 import argparse
+import re
+from dataclasses import dataclass
 from pathlib import Path
 
 from lxml import etree
@@ -14,6 +16,32 @@ NS = {
     "xlink": "http://www.w3.org/1999/xlink",
     "mrf": "https://cccbr.org.uk/ns/method-ringing-framework",
 }
+
+SECTION_RE = re.compile(r"Section\s+(\d+)")
+APPENDIX_RE = re.compile(r"Appendix\s+([A-Z])")
+GLOSSDIV_PREFIX_RE = re.compile(r"^((?:Appendix\s+[A-Z]|\d+|[A-Z])\.)\s+(.*)$")
+SUPPLEMENTAL_APPENDIX_ORDERS = {
+    "extensionprocesses2": (4, 1),
+}
+
+
+@dataclass(frozen=True)
+class TocItem:
+    label_id: str
+    number: str
+    title: str
+
+
+@dataclass(frozen=True)
+class ContentDocument:
+    tex_name: str
+    source_stem: str
+    title: str
+    subtitle: str
+    volume: str
+    sort_key: tuple[int, int, str, str]
+    page_item: TocItem
+    subsections: tuple[TocItem, ...]
 
 
 def escape_latex(text: str | None) -> str:
@@ -37,10 +65,7 @@ def escape_latex(text: str | None) -> str:
         "\u00a0": " ",
     }
 
-    result: list[str] = []
-    for char in text:
-        result.append(replacements.get(char, char))
-    return "".join(result)
+    return "".join(replacements.get(char, char) for char in text)
 
 
 def read_text(elem: etree._Element | None) -> str:
@@ -49,146 +74,312 @@ def read_text(elem: etree._Element | None) -> str:
     return "".join(elem.itertext()).strip()
 
 
-def extract_metadata_from_xml(xml_dir: Path) -> dict:
-    """Extract metadata from XML files in the directory.
-    
-    Look for consistent metadata across all files (e.g., status, authority).
-    Use a default title that includes the version name.
-    """
+def format_edition(edition: str) -> str:
+    try:
+        return f"{float(edition):.2f}"
+    except ValueError:
+        return edition
+
+
+def extract_metadata_from_xml(xml_dir: Path) -> dict[str, str]:
+    """Extract shared document metadata from a version XML directory."""
     metadata = {
-        "title": "Framework for Method Ringing",
-        "subtitle": "Complete Framework",
-        "edition": "1.0",
+        "edition": "1.00",
         "status": "draft",
         "authority": "CCCBR",
         "canonical": "",
+        "implementation_date": "",
+        "effective_date": "",
     }
 
-    try:
-        # Look at first few files to extract consistent metadata
-        xml_files = list(xml_dir.glob("*.xml"))[:3]
-        parser = etree.XMLParser(remove_blank_text=False)
-        
-        for xml_file in xml_files:
-            try:
-                article = etree.parse(str(xml_file), parser).getroot()
-                info = article.find("db:info", NS)
-                
-                # Extract status and authority from article root (consistent across all files)
-                status = article.get(f"{{{NS['mrf']}}}status")
-                if status:
-                    metadata["status"] = escape_latex(status)
-                
-                authority = article.get(f"{{{NS['mrf']}}}authority")
-                if authority:
-                    metadata["authority"] = escape_latex(authority)
-                
-                # Get edition from first file that has it
-                if not metadata["edition"].startswith("1.0"):
-                    continue
-                edition = read_text(info.find("db:edition", NS) if info is not None else None)
-                if edition:
-                    metadata["edition"] = escape_latex(edition)
-                    
-            except Exception:
-                continue
-                
-    except Exception as e:
-        print(f"Warning: Could not extract metadata from {xml_dir}: {e}")
+    parser = etree.XMLParser(remove_blank_text=False)
+    for xml_file in sorted(xml_dir.glob("*.xml"))[:5]:
+        try:
+            article = etree.parse(str(xml_file), parser).getroot()
+            info = article.find("db:info", NS)
+
+            status = article.get(f"{{{NS['mrf']}}}status")
+            if status:
+                metadata["status"] = escape_latex(status)
+
+            authority = article.get(f"{{{NS['mrf']}}}authority")
+            if authority:
+                metadata["authority"] = escape_latex(authority)
+
+            edition = read_text(info.find("db:edition", NS) if info is not None else None)
+            if edition:
+                metadata["edition"] = format_edition(edition)
+
+            implementation_date = read_text(
+                info.find("db:releaseinfo[@role='implementation-date']", NS) if info is not None else None
+            )
+            if implementation_date:
+                metadata["implementation_date"] = implementation_date
+
+            effective_date = read_text(
+                info.find("db:releaseinfo[@role='effective-date']", NS) if info is not None else None
+            )
+            if effective_date:
+                metadata["effective_date"] = effective_date
+        except Exception:
+            continue
 
     return metadata
 
 
+def classify_content_document(source_stem: str, title: str, subtitle: str) -> tuple[str, tuple[int, int, str, str], str]:
+    """Classify a content file into the main or appendices volume."""
+    section_match = SECTION_RE.search(subtitle)
+    if section_match:
+        number = f"{section_match.group(1)}."
+        return (
+            "main",
+            (int(section_match.group(1)), 0, title.casefold(), source_stem),
+            number,
+        )
+
+    appendix_match = APPENDIX_RE.search(subtitle)
+    if appendix_match:
+        appendix_index = ord(appendix_match.group(1)) - ord("A") + 1
+        number = f"Appendix {appendix_match.group(1)}."
+        return (
+            "appendices",
+            (appendix_index, 0, title.casefold(), source_stem),
+            number,
+        )
+
+    if source_stem in SUPPLEMENTAL_APPENDIX_ORDERS:
+        appendix_number, supplement_rank = SUPPLEMENTAL_APPENDIX_ORDERS[source_stem]
+        return (
+            "appendices",
+            (appendix_number, supplement_rank, title.casefold(), source_stem),
+            "",
+        )
+
+    return (
+        "appendices",
+        (999, 0, title.casefold(), source_stem),
+        "",
+    )
+
+
+def build_toc_subsections(article: etree._Element, source_stem: str, page_item: TocItem) -> tuple[TocItem, ...]:
+    """Build subsection TOC items from glossdiv or section headings."""
+    subsections: list[TocItem] = []
+
+    glossdivs = article.findall("db:glossary/db:glossdiv", NS)
+    if glossdivs:
+        section_nodes = glossdivs
+        label_prefix = "mrf-subsection"
+    else:
+        section_nodes = article.findall("db:section", NS)
+        label_prefix = "mrf-section"
+
+    for index, section_node in enumerate(section_nodes, start=1):
+        title = read_text(section_node.find("db:title", NS))
+        if not title:
+            continue
+
+        match = GLOSSDIV_PREFIX_RE.match(title)
+        if match:
+            number, label = match.group(1), match.group(2)
+        else:
+            number, label = "", title
+
+        if page_item.number and title == f"{page_item.number} {page_item.title}".strip():
+            continue
+        if not page_item.number and title == page_item.title:
+            continue
+
+        subsections.append(
+            TocItem(
+                label_id=f"{label_prefix}-{source_stem}-{index}",
+                number=number,
+                title=label,
+            )
+        )
+
+    return tuple(subsections)
+
+
+def load_content_documents(content_dir: Path, xml_dir: Path) -> list[ContentDocument]:
+    """Load ordering metadata for rendered TeX content files."""
+    parser = etree.XMLParser(remove_blank_text=False)
+    documents: list[ContentDocument] = []
+
+    for tex_file in sorted(content_dir.glob("*.tex")):
+        if tex_file.name.startswith("framework-"):
+            continue
+
+        xml_file = xml_dir / f"{tex_file.stem}.xml"
+        if not xml_file.exists():
+            volume, sort_key, page_number = classify_content_document(tex_file.stem, tex_file.stem, "")
+            page_item = TocItem(
+                label_id=f"mrf-page-{tex_file.stem}",
+                number=page_number,
+                title=tex_file.stem,
+            )
+            documents.append(
+                ContentDocument(
+                    tex_name=tex_file.name,
+                    source_stem=tex_file.stem,
+                    title=tex_file.stem,
+                    subtitle="",
+                    volume=volume,
+                    sort_key=sort_key,
+                    page_item=page_item,
+                    subsections=(),
+                )
+            )
+            continue
+
+        article = etree.parse(str(xml_file), parser).getroot()
+        info = article.find("db:info", NS)
+        title = read_text(info.find("db:title", NS) if info is not None else None) or tex_file.stem
+        subtitle = read_text(info.find("db:subtitle", NS) if info is not None else None)
+        source_meta = info.find("db:othermeta[@role='source-path']", NS) if info is not None else None
+        source_stem = Path(read_text(source_meta)).stem or tex_file.stem
+        volume, sort_key, page_number = classify_content_document(source_stem, title, subtitle)
+        page_item = TocItem(
+            label_id=f"mrf-page-{source_stem}",
+            number=page_number,
+            title=title,
+        )
+        documents.append(
+            ContentDocument(
+                tex_name=tex_file.name,
+                source_stem=source_stem,
+                title=title,
+                subtitle=subtitle,
+                volume=volume,
+                sort_key=sort_key,
+                page_item=page_item,
+                subsections=build_toc_subsections(article, source_stem, page_item),
+            )
+        )
+
+    return documents
+
+
+def partition_content_documents(content_dir: Path, xml_dir: Path) -> dict[str, list[ContentDocument]]:
+    """Split rendered TeX files into ordered main and appendices volumes."""
+    volumes: dict[str, list[ContentDocument]] = {
+        "main": [],
+        "appendices": [],
+    }
+
+    for document in load_content_documents(content_dir, xml_dir):
+        volumes[document.volume].append(document)
+
+    return {
+        volume: sorted(documents, key=lambda document: document.sort_key)
+        for volume, documents in volumes.items()
+    }
+
+
+def build_contents_page(content_documents: list[ContentDocument]) -> str:
+    """Build the custom contents page for one volume."""
+    lines = [
+        r"\MRFStartContents",
+        r"\MRFContentsTitle{Contents}",
+        r"\begin{MRFContentsTable}",
+        r"\MRFContentsPageHeading",
+    ]
+
+    for document in content_documents:
+        lines.append(
+            rf"\MRFContentsSectionRow{{{escape_latex(document.page_item.number)}}}"
+            rf"{{{escape_latex(document.page_item.title)}}}"
+            rf"{{{document.page_item.label_id}}}"
+        )
+        for subsection in document.subsections:
+            lines.append(
+                rf"\MRFContentsSubsectionRow{{{escape_latex(subsection.number)}}}"
+                rf"{{{escape_latex(subsection.title)}}}"
+                rf"{{{subsection.label_id}}}"
+            )
+
+    lines.extend(
+        [
+            r"\end{MRFContentsTable}",
+            r"\clearpage",
+            r"\pagenumbering{arabic}",
+            r"\setcounter{page}{1}",
+            r"\pagestyle{mrfcontent}",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def build_includes(content_documents: list[ContentDocument]) -> str:
+    return "\n".join(rf"\input{{{document.tex_name}}}" for document in content_documents)
+
+
+def build_cover_lines(volume_name: str) -> tuple[str, str]:
+    if volume_name == "appendices":
+        return ("Framework for Method Ringing --- Appendices", "Appendices")
+    return ("Framework for Method Ringing", "")
+
+
+def build_layout_commands(layout_mode: str, include_details: bool) -> str:
+    layout_command = r"\MRFSetContentLayoutTable" if layout_mode == "table" else r"\MRFSetContentLayoutNarrative"
+    details_command = r"\MRFShowDetails" if include_details else r"\MRFHideDetails"
+    return "\n".join([layout_command, details_command])
+
+
 def generate_master_tex(
     version_name: str,
-    title: str,
+    volume_name: str,
     subtitle: str,
-    edition: str,
-    status: str,
-    authority: str,
-    canonical: str,
-    content_files: list[str],
     output_path: str,
+    content_documents: list[ContentDocument],
+    *,
+    layout_mode: str,
+    include_details: bool,
     preamble_path: str = "../../../templates/docbook-preamble.tex",
+    logo_path: str = "../../../images/CCCBR_WorkgroupIcon_Col_600_TT.png",
     xml_dir: str | None = None,
 ) -> None:
-    """Generate master TeX file that includes preamble and all content.
-    
-    Args:
-        version_name: Version identifier
-        title: Document title
-        subtitle: Document subtitle
-        edition: Edition number
-        status: Publication status
-        authority: Document authority
-        canonical: Canonical URI
-        content_files: List of content .tex file names to include
-        output_path: Path where master .tex file will be written
-        preamble_path: Path to preamble template (relative or absolute)
-        xml_dir: Optional directory to extract metadata from
-    """
-    # Extract metadata from XML if provided
-    if xml_dir:
-        metadata = extract_metadata_from_xml(Path(xml_dir))
-        title = metadata.get("title", title)
-        subtitle = metadata.get("subtitle", subtitle)
-        edition = metadata.get("edition", edition)
-        status = metadata.get("status", status)
-        authority = metadata.get("authority", authority)
-        canonical = metadata.get("canonical", canonical)
-    
-    includes = "\n".join(f"\\input{{{cf}}}" for cf in content_files)
+    """Generate a styled master TeX file for one framework volume."""
+    metadata = extract_metadata_from_xml(Path(xml_dir)) if xml_dir else {}
+    edition = metadata.get("edition", "1.00")
+    authority = metadata.get("authority", "CCCBR")
+    implementation_date = metadata.get("implementation_date", "")
+    edition_text = f"Edition {edition}"
+    cover_title, cover_suffix = build_cover_lines(volume_name)
+    contents = build_contents_page(content_documents)
+    includes = build_includes(content_documents)
+    layout_commands = build_layout_commands(layout_mode, include_details)
 
     tex_content = rf"""\input{{{preamble_path}}}
 
 \hypersetup{{
-    pdftitle={{{title}}},
-    pdfauthor={{{authority}}}
+    pdftitle={{Framework for Method Ringing - {escape_latex(subtitle)}}},
+    pdfauthor={{{escape_latex(authority)}}}
 }}
-
-\fancyhead[R]{{\textit{{{title}}}}}
 
 \begin{{document}}
 
-\begin{{center}}
-\setlength{{\fboxsep}}{{10pt}}
-\colorbox{{mrfHeader}}{{%
-  \parbox{{0.96\linewidth}}{{%
-    \color{{white}}\Large\textbf{{Framework for Method Ringing}}\\[0.35em]
-    \large {title}
-  }}%
-}}
-\end{{center}}
-
-{{\large\textbf{{{subtitle}}}\par}}
-
-\smallskip
-
-\textbf{{Edition:}} {edition} \hfill \textbf{{Status:}} {status} \\
-\textbf{{Authority:}} {authority} \\
-\textbf{{Canonical URI:}} \url{{{canonical}}}
-
-\medskip
-
-\tableofcontents
-
-\bigskip
-
+\MRFSetEditionText{{{escape_latex(edition_text)}}}
+{layout_commands}
+\MRFTitlePage{{{escape_latex(cover_title)}}}{{{escape_latex(cover_suffix)}}}{{{escape_latex(edition_text)}}}{{{escape_latex(implementation_date)}}}{{{logo_path}}}
+{contents}
 {includes}
 
 \end{{document}}
 """
-    
+
     Path(output_path).write_text(tex_content, encoding="utf-8", newline="\n")
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate a master LaTeX file for a framework version.")
+    parser = argparse.ArgumentParser(description="Generate a master LaTeX file for a framework volume.")
     parser.add_argument("version_name", help="Version identifier (e.g., version1, version2)")
+    parser.add_argument("volume_name", help="Volume name (e.g., main, main-full, appendices)")
     parser.add_argument("output", help="Path to the output master .tex file")
     parser.add_argument("--preamble", default="../../../templates/docbook-preamble.tex", help="Path to preamble template")
-    parser.add_argument("--content-dir", default=None, help="Directory containing content .tex files")
-    parser.add_argument("--xml-dir", default=None, help="Directory containing original XML files for metadata extraction")
+    parser.add_argument("--content-dir", required=True, help="Directory containing content .tex files")
+    parser.add_argument("--xml-dir", required=True, help="Directory containing original XML files for metadata extraction")
     return parser.parse_args()
 
 
@@ -197,27 +388,27 @@ def main() -> int:
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Determine content files
-    if args.content_dir:
-        content_dir = Path(args.content_dir)
-        # Get all .tex files except the master file itself, sorted
-        content_files = sorted(
-            cf.name for cf in content_dir.glob("*.tex")
-            if not cf.name.startswith("framework-") and cf.name != output_path.name
-        )
+    partitions = partition_content_documents(Path(args.content_dir), Path(args.xml_dir))
+    if args.volume_name.startswith("main"):
+        content_documents = partitions.get("main", [])
     else:
-        raise ValueError("Must provide --content-dir")
+        content_documents = partitions.get("appendices", [])
+
+    if not content_documents:
+        raise ValueError(f"No content found for volume '{args.volume_name}'")
+
+    layout_mode = "table" if args.volume_name == "main" else "narrative"
+    include_details = args.volume_name != "main"
+    subtitle = "Appendices" if args.volume_name == "appendices" else "Framework"
 
     generate_master_tex(
         version_name=args.version_name,
-        title="Framework for Method Ringing",
-        subtitle="Complete Framework",
-        edition="1.0",
-        status="draft",
-        authority="CCCBR",
-        canonical="",
-        content_files=content_files,
+        volume_name=args.volume_name,
+        subtitle=subtitle,
         output_path=str(output_path),
+        content_documents=content_documents,
+        layout_mode=layout_mode,
+        include_details=include_details,
         preamble_path=args.preamble,
         xml_dir=args.xml_dir,
     )

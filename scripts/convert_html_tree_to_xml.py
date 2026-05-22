@@ -46,11 +46,13 @@ def main() -> int:
         print(f"  Converting {html_file.name}...")
 
         # Infer version defaults from path
-        version_id, status, framework_version = infer_version_defaults(
-            html_file, 
-            version_id=None, 
-            status=None, 
-            framework_version=None
+        version_id, status, framework_version, _implementation_date, _effective_date = infer_version_defaults(
+            html_file,
+            version_id=None,
+            status=None,
+            framework_version=None,
+            implementation_date=None,
+            effective_date=None,
         )
 
         try:

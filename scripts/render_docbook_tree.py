@@ -14,7 +14,7 @@ from lxml import etree
 sys.path.insert(0, str(Path(__file__).parent))
 from convert_docbook_to_html import build_html
 from convert_docbook_to_latex import build_document
-from generate_master_latex import generate_master_tex
+from generate_master_latex import generate_master_tex, partition_content_documents
 
 NS = {
     "db": "http://docbook.org/ns/docbook",
@@ -180,26 +180,34 @@ def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, te
     # Generate master TeX file
     if not html_only:
         try:
-            content_files = sorted(
-                cf.name for cf in tex_dir.glob("*.tex")
-                if not cf.name.startswith("framework-")
-            )
+            volume_content = partition_content_documents(tex_dir, version_xml_dir)
+            legacy_master = tex_dir / f"framework-{version}.tex"
+            if legacy_master.exists():
+                legacy_master.unlink()
 
-            master_tex_path = tex_dir / f"framework-{version}.tex"
-            generate_master_tex(
-                version_name=version,
-                title="Framework for Method Ringing",
-                subtitle="Complete Framework",
-                edition="1.0",
-                status="draft",
-                authority="CCCBR",
-                canonical="",
-                content_files=content_files,
-                output_path=str(master_tex_path),
-                preamble_path="../../../templates/docbook-preamble.tex",
-                xml_dir=str(version_xml_dir),
-            )
-            print(f"  Generated master TeX file: {master_tex_path.name}")
+            for volume_name, subtitle, layout_mode, include_details in (
+                ("main", "Framework", "table", False),
+                ("main-full", "Framework", "narrative", True),
+                ("appendices", "Appendices", "narrative", True),
+            ):
+                target_volume = "main" if volume_name.startswith("main") else "appendices"
+                content_documents = volume_content.get(target_volume, [])
+                if not content_documents:
+                    continue
+
+                master_tex_path = tex_dir / f"framework-{version}-{volume_name}.tex"
+                generate_master_tex(
+                    version_name=version,
+                    volume_name=volume_name,
+                    subtitle=subtitle,
+                    content_documents=content_documents,
+                    output_path=str(master_tex_path),
+                    layout_mode=layout_mode,
+                    include_details=include_details,
+                    preamble_path="../../../templates/docbook-preamble.tex",
+                    xml_dir=str(version_xml_dir),
+                )
+                print(f"  Generated master TeX file: {master_tex_path.name}")
         except Exception as e:
             print(f"  Error generating master TeX file: {e}")
             import traceback

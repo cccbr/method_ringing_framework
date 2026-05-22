@@ -26,11 +26,35 @@ def find_pdflatex() -> str | None:
     return None
 
 
-def compile_pdf(version: str, tex_dir: Path, aux_dir: Path, output_dir: Path, pdflatex_cmd: str) -> bool:
-    """Compile TeX to PDF using pdflatex."""
-    print(f"  Compiling PDF...")
+def copy_pdf_with_retry(pdf_src: Path, pdf_dst: Path) -> Path:
+    """Copy a generated PDF, tolerating transient locks on Windows."""
+    last_error: PermissionError | None = None
+    for _ in range(20):
+        try:
+            shutil.copy2(pdf_src, pdf_dst)
+            return pdf_dst
+        except PermissionError as exc:
+            last_error = exc
+            time.sleep(1)
 
-    master_tex = f"framework-{version}.tex"
+    fallback_dst = pdf_dst.with_name(f"{pdf_dst.stem}-rebuilt{pdf_dst.suffix}")
+    for _ in range(20):
+        try:
+            shutil.copy2(pdf_src, fallback_dst)
+            print(f"  Warning: {pdf_dst.name} is locked; wrote rebuilt PDF to {fallback_dst.name} instead")
+            return fallback_dst
+        except PermissionError as exc:
+            last_error = exc
+            time.sleep(1)
+
+    raise last_error
+
+
+def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path, pdflatex_cmd: str) -> bool:
+    """Compile TeX to PDF using pdflatex."""
+    print(f"  Compiling {master_tex.name}...")
+
+    document_name = master_tex.stem
 
     # Run pdflatex twice (first for document, second for TOC)
     for pass_num in [1, 2]:
@@ -41,7 +65,7 @@ def compile_pdf(version: str, tex_dir: Path, aux_dir: Path, output_dir: Path, pd
                     pdflatex_cmd,
                     "-interaction=nonstopmode",
                     f"-output-directory={aux_dir.name}",
-                    master_tex,
+                    master_tex.name,
                 ],
                 cwd=tex_dir,
                 capture_output=True,
@@ -51,7 +75,7 @@ def compile_pdf(version: str, tex_dir: Path, aux_dir: Path, output_dir: Path, pd
             # pdflatex may return non-zero exit code due to MiKTeX update check
             # Check if PDF was created instead
             if pass_num == 2:
-                pdf_file = aux_dir / f"framework-{version}.pdf"
+                pdf_file = aux_dir / f"{document_name}.pdf"
                 if not pdf_file.exists():
                     print(f"    Error: PDF not created")
                     if result.stderr:
@@ -65,22 +89,13 @@ def compile_pdf(version: str, tex_dir: Path, aux_dir: Path, output_dir: Path, pd
             return False
 
     # Move PDF to output directory
-    pdf_src = aux_dir / f"framework-{version}.pdf"
+    pdf_src = aux_dir / f"{document_name}.pdf"
     if pdf_src.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
-        pdf_dst = output_dir / f"framework-{version}.pdf"
-        last_error: PermissionError | None = None
-        for _ in range(20):
-            try:
-                shutil.copy2(pdf_src, pdf_dst)
-                break
-            except PermissionError as exc:
-                last_error = exc
-                time.sleep(1)
-        else:
-            raise last_error
-        size_mb = pdf_dst.stat().st_size / 1000000
-        print(f"  [OK] PDF created: {pdf_dst} ({size_mb:.2f} MB)")
+        pdf_dst = output_dir / f"{document_name}.pdf"
+        written_pdf = copy_pdf_with_retry(pdf_src, pdf_dst)
+        size_mb = written_pdf.stat().st_size / 1000000
+        print(f"  [OK] PDF created: {written_pdf} ({size_mb:.2f} MB)")
         return True
     else:
         print(f"    Error: PDF not found after compilation")
@@ -100,15 +115,24 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
     aux_dir = version_tex_dir / ".build-aux"
     aux_dir.mkdir(parents=True, exist_ok=True)
 
-    master_tex = version_tex_dir / f"framework-{version}.tex"
-    if not master_tex.exists():
-        print(f"  Error: Master TeX not found: {master_tex}")
-        return False
+    master_files = sorted(version_tex_dir.glob(f"framework-{version}-*.tex"))
+    if not master_files:
+        legacy_master = version_tex_dir / f"framework-{version}.tex"
+        if legacy_master.exists():
+            master_files = [legacy_master]
+        else:
+            print(f"  Error: No master TeX files found in {version_tex_dir}")
+            return False
 
     # Compile PDF
     version_pdf_dir = pdf_output_dir / version
-    if not compile_pdf(version, version_tex_dir, aux_dir, version_pdf_dir, pdflatex_cmd):
-        return False
+    if len(master_files) > 1:
+        legacy_pdf = version_pdf_dir / f"framework-{version}.pdf"
+        if legacy_pdf.exists():
+            legacy_pdf.unlink()
+    for master_file in master_files:
+        if not compile_pdf(master_file, version_tex_dir, aux_dir, version_pdf_dir, pdflatex_cmd):
+            return False
 
     # Cleanup
     if not no_cleanup:
@@ -160,8 +184,7 @@ def main() -> int:
     print("[OK] PDF Generation Complete!")
     print("=" * 60)
     for v in args.versions:
-        pdf_path = pdf_output_dir / v / f"framework-{v}.pdf"
-        if pdf_path.exists():
+        for pdf_path in sorted((pdf_output_dir / v).glob(f"framework-{v}*.pdf")):
             size_mb = pdf_path.stat().st_size / 1000000
             print(f"[OK] {pdf_path} ({size_mb:.2f} MB)")
 

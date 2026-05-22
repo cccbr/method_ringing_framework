@@ -18,6 +18,47 @@ NS = {
 }
 
 WHITESPACE_RE = re.compile(r"\s+")
+NON_GLOSSTERM_LABELS = {
+    "[add issue]",
+    "1. introduction",
+    "3. fundamentals",
+    "3. fundamentals of method ringing",
+    "4. classification",
+    "5. method naming",
+    "7. record lengths",
+    "9. related roles",
+    "appendix b. method name syntax",
+    "appendix d. extension processes",
+    "appendix e. development",
+    "appendix f. framework principles",
+    "appendix f. transitional arrangements",
+    "appendix g. related material",
+    "appendix g. version 2 development",
+    "appendix i. faqs",
+    "articles by john harrison",
+    "articles by peter scott",
+    "continuity",
+    "decisions to be replaced",
+    "define and explain",
+    "description not prescription",
+    "faq articles",
+    "fifth workgroup rw article",
+    "first workgroup rw article",
+    "fourth workgroup rw article",
+    "framework presentation to the 2018 central council meeting",
+    "cover bells",
+    "length and stage",
+    "notice of framework implementation",
+    "performance reporting",
+    "q.",
+    "scope",
+    "second workgroup rw article",
+    "simple, generic, consistent",
+    "simple, generic and consistent",
+    "third workgroup rw article",
+    "version 1",
+    "version 2",
+}
 
 
 def qname(local: str, prefix: str = "db") -> str:
@@ -74,6 +115,15 @@ def append_text(elem: etree._Element, text: str | None) -> None:
     last.tail = merge_inline_text(last.tail, value)
 
 
+def trim_para_whitespace(para: etree._Element) -> None:
+    if para.text is not None:
+        para.text = para.text.strip()
+    if len(para):
+        last = para[-1]
+        if last.tail is not None:
+            last.tail = last.tail.strip()
+
+
 def looks_like_heading_row(row: Tag) -> bool:
     return row.find("h2") is not None
 
@@ -126,11 +176,20 @@ def derive_subtitle(heading_text: str, framework_title: str) -> str:
     return framework_title
 
 
-def infer_version_defaults(html_path: Path, version_id: str | None, status: str | None, framework_version: str | None) -> tuple[str, str, str]:
+def infer_version_defaults(
+    html_path: Path,
+    version_id: str | None,
+    status: str | None,
+    framework_version: str | None,
+    implementation_date: str | None,
+    effective_date: str | None,
+) -> tuple[str, str, str, str, str]:
     parts = {part.lower() for part in html_path.parts}
     inferred_version_id = version_id
     inferred_status = status
     inferred_framework_version = framework_version
+    inferred_implementation_date = implementation_date
+    inferred_effective_date = effective_date
 
     if inferred_version_id is None:
         if "version1" in parts:
@@ -156,7 +215,29 @@ def infer_version_defaults(html_path: Path, version_id: str | None, status: str 
         else:
             inferred_framework_version = "0.0"
 
-    return inferred_version_id, inferred_status, inferred_framework_version
+    if inferred_implementation_date is None:
+        if inferred_version_id == "v1":
+            inferred_implementation_date = "February 24, 2019"
+        elif inferred_version_id == "v2":
+            inferred_implementation_date = "January 26, 2022"
+        else:
+            inferred_implementation_date = ""
+
+    if inferred_effective_date is None:
+        if inferred_version_id == "v1":
+            inferred_effective_date = "June 1, 2019"
+        elif inferred_version_id == "v2":
+            inferred_effective_date = "May 1, 2022"
+        else:
+            inferred_effective_date = ""
+
+    return (
+        inferred_version_id,
+        inferred_status,
+        inferred_framework_version,
+        inferred_implementation_date,
+        inferred_effective_date,
+    )
 
 
 def parse_number(text: str) -> str | None:
@@ -171,6 +252,37 @@ def extract_term(column: Tag) -> str:
     return clean_text(clone.get_text(" ", strip=True))
 
 
+def row_term_label(number: str | None, term: str) -> str:
+    term = clean_text(term)
+    if number and term:
+        return f"{number}. {term}"
+    return term
+
+
+def is_non_glossterm_label(number: str | None, term: str) -> bool:
+    label = row_term_label(number, term).casefold()
+    return term.casefold() in NON_GLOSSTERM_LABELS or label in NON_GLOSSTERM_LABELS
+
+
+def extract_embedded_label(content_col: Tag) -> str:
+    first_para = content_col.find("p", recursive=False)
+    if first_para is None:
+        return ""
+    text = clean_text(first_para.get_text(" ", strip=True))
+    if ":" not in text:
+        return ""
+    label = clean_text(text.split(":", 1)[0])
+    label = re.sub(r"\s*\([^)]*\)\s*$", "", label).strip()
+    return clean_text(label)
+
+
+def display_row_label(section_title: str, number: str | None, label: str) -> str:
+    display_number = compose_mrf_number(section_title, number) or number
+    if display_number:
+        return f"{display_number}. {clean_text(label)}"
+    return clean_text(label)
+
+
 def compose_mrf_number(section_title: str, number: str | None) -> str | None:
     if not number:
         return None
@@ -180,7 +292,19 @@ def compose_mrf_number(section_title: str, number: str | None) -> str | None:
     return number
 
 
-def make_article(source_path: Path, base_uri: str, framework_title: str, title: str, subtitle: str, version_id: str, status: str, framework_version: str) -> etree._Element:
+def make_article(
+    source_path: Path,
+    base_uri: str,
+    framework_title: str,
+    title: str,
+    subtitle: str,
+    version_id: str,
+    status: str,
+    framework_version: str,
+    implementation_date: str,
+    effective_date: str,
+    content_model: str,
+) -> etree._Element:
     root = etree.Element(
         qname("article"),
         nsmap={None: NS["db"], "xlink": NS["xlink"], "mrf": NS["mrf"]},
@@ -205,6 +329,14 @@ def make_article(source_path: Path, base_uri: str, framework_title: str, title: 
     release_authority.set("role", "authority")
     release_authority.text = "CCCBR"
 
+    release_implementation_date = etree.SubElement(info, qname("releaseinfo"))
+    release_implementation_date.set("role", "implementation-date")
+    release_implementation_date.text = implementation_date
+
+    release_effective_date = etree.SubElement(info, qname("releaseinfo"))
+    release_effective_date.set("role", "effective-date")
+    release_effective_date.text = effective_date
+
     canonical = etree.SubElement(info, qname("uri"))
     canonical.set("type", "canonical")
     canonical.text = base_uri.rstrip("/") + "/" + source_path.name
@@ -213,9 +345,43 @@ def make_article(source_path: Path, base_uri: str, framework_title: str, title: 
     source_meta.set("role", "source-path")
     source_meta.text = source_path.as_posix()
 
-    glossary = etree.SubElement(root, qname("glossary"))
-    glossary.set(qname("source-title", "mrf"), framework_title)
+    if content_model == "glossary":
+        glossary = etree.SubElement(root, qname("glossary"))
+        glossary.set(qname("source-title", "mrf"), framework_title)
     return root
+
+
+def get_or_create_glossary(article: etree._Element, framework_title: str) -> etree._Element:
+    glossary = article.find(qname("glossary"))
+    if glossary is None:
+        glossary = etree.SubElement(article, qname("glossary"))
+        glossary.set(qname("source-title", "mrf"), framework_title)
+    return glossary
+
+
+def build_section(parent: etree._Element, title_text: str, section_id: str | None = None) -> etree._Element:
+    root = parent.getroottree().getroot() if parent.getroottree() is not None else parent
+    section = etree.SubElement(parent, qname("section"))
+    section.set(
+        "{http://www.w3.org/XML/1998/namespace}id",
+        unique_xml_id(root, section_id or title_text or "section"),
+    )
+    etree.SubElement(section, qname("title")).text = clean_text(title_text)
+    return section
+
+
+def unique_xml_id(root: etree._Element, raw_id: str) -> str:
+    base_id = slugify(raw_id)
+    existing_ids = {
+        elem.get("{http://www.w3.org/XML/1998/namespace}id")
+        for elem in root.xpath(".//*[@xml:id]", namespaces={"xml": "http://www.w3.org/XML/1998/namespace"})
+    }
+    if base_id not in existing_ids:
+        return base_id
+    suffix = 2
+    while f"{base_id}-{suffix}" in existing_ids:
+        suffix += 1
+    return f"{base_id}-{suffix}"
 
 
 def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> None:
@@ -299,6 +465,8 @@ def add_paragraph(tag: Tag, parent: etree._Element, strip_prefix_labels: set[str
         parent.remove(para)
         return False
 
+    trim_para_whitespace(para)
+
     return True
 
 
@@ -310,6 +478,7 @@ def add_list(tag: Tag, parent: etree._Element) -> None:
         para = etree.SubElement(list_item, qname("para"))
         for child in item.children:
             render_inline(child, para, None)
+        trim_para_whitespace(para)
 
 
 def add_media_from_img(tag: Tag, parent: etree._Element) -> None:
@@ -322,6 +491,7 @@ def add_main_blocks(container: Tag, glossdef: etree._Element) -> None:
             if clean_text(str(child)):
                 para = etree.SubElement(glossdef, qname("para"))
                 append_text(para, str(child))
+                trim_para_whitespace(para)
             continue
 
         if not isinstance(child, Tag):
@@ -376,7 +546,7 @@ def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | N
     elif kind:
         target = etree.SubElement(parent, qname("note"))
         target.set("role", kind)
-        strip_labels = {"further explanation", "technical comment", "technical comments"}
+        strip_labels = {"further explanation", "futher explanation", "technical comment", "technical comments"}
     else:
         target = parent
         strip_labels = None
@@ -408,12 +578,43 @@ def add_detail_blocks(container: Tag, glossdef: etree._Element) -> None:
         add_segment_blocks(segment, glossdef, detect_segment_kind(segment))
 
 
-def build_glossentry(term: str, number: str | None, content_col: Tag, section_title: str, status: str, entry_id: str) -> etree._Element:
+def add_content_blocks(container: Tag, parent: etree._Element) -> None:
+    add_main_blocks(container, parent)
+    add_detail_blocks(container, parent)
+
+
+def add_labeled_content(parent: etree._Element, label: str, content_col: Tag, content_id: str | None = None) -> etree._Element:
+    if etree.QName(parent).localname == "glossdiv":
+        para = etree.SubElement(parent, qname("para"))
+        emphasis = etree.SubElement(para, qname("emphasis"))
+        emphasis.set("role", "bold")
+        emphasis.text = clean_text(label)
+        trim_para_whitespace(para)
+        add_content_blocks(content_col, parent)
+        return parent
+
+    section = build_section(parent, label, content_id or label)
+    add_content_blocks(content_col, section)
+    return section
+
+
+def build_ordered_list(parent: etree._Element) -> etree._Element:
+    ordered_list = etree.SubElement(parent, qname("orderedlist"))
+    ordered_list.set("numeration", "arabic")
+    return ordered_list
+
+
+def add_numbered_list_item(ordered_list: etree._Element, content_col: Tag) -> etree._Element:
+    list_item = etree.SubElement(ordered_list, qname("listitem"))
+    add_content_blocks(content_col, list_item)
+    return list_item
+
+
+def build_glossentry(term: str, number: str | None, content_col: Tag, section_title: str, entry_id: str) -> etree._Element:
     entry = etree.Element(qname("glossentry"))
     entry.set("{http://www.w3.org/XML/1998/namespace}id", entry_id)
     if number:
         entry.set(qname("number", "mrf"), compose_mrf_number(section_title, number) or number)
-    entry.set(qname("status", "mrf"), status)
 
     glossterm = etree.SubElement(entry, qname("glossterm"))
     glossterm.text = term
@@ -435,7 +636,8 @@ def build_glossdiv(glossary: etree._Element, row: Tag, title_text: str | None = 
         section_title = f"{marker} {label}".strip()
 
     glossdiv = etree.SubElement(glossary, qname("glossdiv"))
-    glossdiv.set("{http://www.w3.org/XML/1998/namespace}id", slugify(row_id))
+    root = glossary.getroottree().getroot() if glossary.getroottree() is not None else glossary
+    glossdiv.set("{http://www.w3.org/XML/1998/namespace}id", unique_xml_id(root, row_id))
     etree.SubElement(glossdiv, qname("title")).text = clean_text(section_title)
     return glossdiv
 
@@ -459,11 +661,95 @@ def infer_row_kind(columns: list[Tag]) -> tuple[str, str | None, Tag | None, Tag
     return "full-width-entry", None, None, columns[-1]
 
 
+def detect_glossary_page(rows: list[Tag]) -> bool:
+    for row in rows:
+        if looks_like_heading_row(row):
+            continue
+        if looks_like_section_header_row(row):
+            continue
+        columns = direct_columns(row)
+        kind, number, term_col, _content_col = infer_row_kind(columns)
+        term = extract_term(term_col) if term_col is not None else ""
+        if kind == "term-entry" and not is_non_glossterm_label(number, term) and (number or term):
+            return True
+    return False
+
+
+def narrative_row_label(columns: list[Tag]) -> str:
+    if len(columns) >= 2:
+        return clean_text(columns[0].get_text(" ", strip=True))
+    return ""
+
+
+def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title: str) -> None:
+    current_section: etree._Element | None = None
+    current_container: etree._Element | None = None
+    current_numbered_list: etree._Element | None = None
+
+    for row_index, row in enumerate(rows, start=1):
+        if looks_like_heading_row(row):
+            continue
+
+        if looks_like_section_header_row(row):
+            columns = direct_columns(row)
+            marker = clean_text(columns[0].find("h5").get_text(" ", strip=True) if columns and columns[0].find("h5") else "")
+            label = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
+            section_title = f"{marker} {label}".strip()
+            current_section = build_section(article, section_title, row.get("id") or f"section-{row_index}")
+            current_container = current_section
+            current_numbered_list = None
+            content_col = columns[1] if len(columns) > 1 else None
+            if content_col is not None:
+                clone = BeautifulSoup(str(content_col), "lxml").find("div")
+                if clone is not None:
+                    for heading in clone.find_all("h5", recursive=False):
+                        heading.decompose()
+                    if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
+                        add_content_blocks(clone, current_section)
+            continue
+
+        columns = direct_columns(row)
+        kind, number, _term_col, content_col = infer_row_kind(columns)
+        if kind == "skip" or content_col is None:
+            continue
+
+        if current_section is None:
+            current_section = build_section(article, page_title, row.get("id") or f"section-{row_index}")
+            current_container = current_section
+            current_numbered_list = None
+
+        label = narrative_row_label(columns)
+        if label and len(columns) >= 2 and clean_text(content_col.get_text(" ", strip=True)):
+            if number:
+                if current_numbered_list is None or current_numbered_list.getparent() is not current_section:
+                    current_numbered_list = build_ordered_list(current_section)
+                current_container = add_numbered_list_item(current_numbered_list, content_col)
+            else:
+                current_numbered_list = None
+                current_container = add_labeled_content(
+                    current_section,
+                    label,
+                    content_col,
+                    row.get("id") or f"{current_section.get('{http://www.w3.org/XML/1998/namespace}id')}-row-{row_index}",
+                )
+            continue
+
+        target = current_container if current_container is not None else current_section
+        add_content_blocks(content_col, target)
+
+
 def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id: str | None, status: str | None, framework_version: str | None) -> None:
     with input_path.open("r", encoding="utf-8") as handle:
         soup = BeautifulSoup(handle, "lxml")
 
-    version_id, status, framework_version = infer_version_defaults(input_path, version_id, status, framework_version)
+    version_id, status, framework_version, implementation_date, effective_date = infer_version_defaults(
+        input_path,
+        version_id,
+        status,
+        framework_version,
+        None,
+        None,
+    )
     main = soup.find("main") or soup.body or soup
     content_root = main.find("div", class_="container-fluid", recursive=False) or main
     rows = [row for row in content_root.find_all("div", recursive=False) if "row" in (row.get("class") or [])]
@@ -473,51 +759,81 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
     page_title = derive_title(soup, heading_text, input_path)
     subtitle = derive_subtitle(heading_text or page_title, framework_title)
 
-    article = make_article(input_path, base_uri, framework_title, page_title, subtitle, version_id, status, framework_version)
-    glossary = article.find(qname("glossary"))
-    assert glossary is not None
+    content_model = "glossary" if detect_glossary_page(rows) else "narrative"
 
-    current_div: etree._Element | None = None
-    current_section_title = clean_text(heading_text or page_title)
+    article = make_article(
+        input_path,
+        base_uri,
+        framework_title,
+        page_title,
+        subtitle,
+        version_id,
+        status,
+        framework_version,
+        implementation_date,
+        effective_date,
+        content_model,
+    )
+    if content_model == "narrative":
+        convert_narrative_rows(article, rows, page_title)
+    else:
+        glossary = get_or_create_glossary(article, framework_title)
+        current_div: etree._Element | None = None
+        current_section_title = clean_text(heading_text or page_title)
+        entry_index = 0
 
-    entry_index = 0
+        for row in rows:
+            if looks_like_heading_row(row):
+                continue
 
-    for row in rows:
-        if looks_like_heading_row(row):
-            continue
+            if looks_like_section_header_row(row):
+                columns = direct_columns(row)
+                marker = clean_text(columns[0].find("h5").get_text(" ", strip=True) if columns and columns[0].find("h5") else "")
+                label = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
+                current_section_title = f"{marker} {label}".strip()
+                current_div = build_glossdiv(glossary, row, current_section_title)
+                content_col = columns[1] if len(columns) > 1 else None
+                if content_col is not None:
+                    clone = BeautifulSoup(str(content_col), "lxml").find("div")
+                    if clone is not None:
+                        for heading in clone.find_all("h5", recursive=False):
+                            heading.decompose()
+                        if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
+                            add_content_blocks(clone, current_div)
+                continue
 
-        if looks_like_section_header_row(row):
+            if current_div is None:
+                current_div = build_glossdiv(glossary, row, current_section_title or page_title)
+
             columns = direct_columns(row)
-            marker = clean_text(columns[0].find("h5").get_text(" ", strip=True) if columns and columns[0].find("h5") else "")
-            label = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
-            current_section_title = f"{marker} {label}".strip()
-            current_div = build_glossdiv(glossary, row, current_section_title)
-            content_col = columns[1] if len(columns) > 1 else None
-            if content_col is not None:
-                clone = BeautifulSoup(str(content_col), "lxml").find("div")
-                if clone is not None:
-                    for heading in clone.find_all("h5", recursive=False):
-                        heading.decompose()
-                    if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
-                        entry_index += 1
-                        entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}"
-                        current_div.append(build_glossentry("", None, clone, current_section_title, status, entry_id))
-            continue
+            kind, number, term_col, content_col = infer_row_kind(columns)
+            if kind == "skip" or content_col is None:
+                continue
 
-        if current_div is None:
-            current_div = build_glossdiv(glossary, row, current_section_title or page_title)
-
-        columns = direct_columns(row)
-        kind, number, term_col, content_col = infer_row_kind(columns)
-        if kind == "skip" or content_col is None:
-            continue
-
-        term = extract_term(term_col) if term_col is not None else ""
-        entry_index += 1
-        entry_slug = term or f"entry-{entry_index}"
-        entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(entry_slug)}"
-        entry = build_glossentry(term, number, content_col, current_section_title, status, entry_id)
-        current_div.append(entry)
+            term = extract_term(term_col) if term_col is not None else ""
+            embedded_label = extract_embedded_label(content_col)
+            if kind == "term-entry" and is_non_glossterm_label(number, term):
+                add_labeled_content(
+                    current_div,
+                    display_row_label(current_section_title, number, term),
+                    content_col,
+                    row.get("id") or row_term_label(number, term),
+                )
+            elif embedded_label and is_non_glossterm_label(number, embedded_label):
+                add_content_blocks(content_col, current_div)
+            elif kind == "term-entry" and (number or term):
+                entry_index += 1
+                entry_slug = term or f"entry-{entry_index}"
+                entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(entry_slug)}"
+                entry = build_glossentry(term, number, content_col, current_section_title, entry_id)
+                current_div.append(entry)
+            elif number:
+                entry_index += 1
+                entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(number)}"
+                entry = build_glossentry("", number, content_col, current_section_title, entry_id)
+                current_div.append(entry)
+            else:
+                add_content_blocks(content_col, current_div)
 
     etree.indent(article, space="  ")
     output_path.parent.mkdir(parents=True, exist_ok=True)

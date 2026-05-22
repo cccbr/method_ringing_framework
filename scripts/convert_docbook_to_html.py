@@ -234,6 +234,25 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
     return main_blocks, detail_groups
 
 
+def render_block_children(node: etree._Element, asset_prefix: str, *, skip_titles: bool = True, skip_entries: bool = True) -> list[str]:
+    blocks: list[str] = []
+    for child in node:
+        name = local_name(child)
+        if skip_titles and name == "title":
+            continue
+        if skip_entries and name == "glossentry":
+            continue
+        if name == "para":
+            blocks.append(render_para(child, asset_prefix))
+        elif name in {"example", "note", "mediaobject", "itemizedlist", "orderedlist"}:
+            rendered = render_detail_group(child, asset_prefix)
+            if rendered:
+                blocks.append(rendered)
+        elif name == "section":
+            blocks.append(render_section(child, asset_prefix))
+    return [block for block in blocks if block]
+
+
 def render_entry(entry: etree._Element, asset_prefix: str) -> str:
     term = entry_term(entry)
     number = entry_number_text(entry)
@@ -314,11 +333,12 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
     marker, name = split_section_title(title)
     section_id = glossdiv.get("{http://www.w3.org/XML/1998/namespace}id", "")
     entries = glossdiv.findall("db:glossentry", NS)
+    intro_html = "\n".join(render_block_children(glossdiv, asset_prefix))
 
     if len(entries) == 1 and blank_unheaded_entry(entries[0]) and show_header:
         glossdef = entries[0].find("db:glossdef", NS)
         main_blocks, detail_groups = render_glossdef(glossdef, asset_prefix) if glossdef is not None else ([], [])
-        combined_content = "\n".join(main_blocks + detail_groups)
+        combined_content = "\n".join([intro_html, *main_blocks, *detail_groups]).strip()
         return (
             f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'
             '                        <div class="col-sm-1">\n'
@@ -345,16 +365,35 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
         )
 
     rendered_entries = "\n\n".join(render_entry(entry, asset_prefix) for entry in entries if render_entry(entry, asset_prefix))
-    return header_html + rendered_entries
+    body_parts = [part for part in [intro_html, rendered_entries] if part]
+    return header_html + "\n\n".join(body_parts)
 
 
-def render_sidebar(glossdivs: list[etree._Element], page_title: str, page_href: str) -> str:
+def render_section(section: etree._Element, asset_prefix: str) -> str:
+    title = read_text(section.find("db:title", NS))
+    marker, name = split_section_title(title)
+    section_id = section.get("{http://www.w3.org/XML/1998/namespace}id", "")
+    content_html = "\n".join(render_block_children(section, asset_prefix, skip_titles=True, skip_entries=False))
+    return (
+        f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'
+        '                        <div class="col-sm-1">\n'
+        f"                            <h5>{html.escape(marker)}</h5>\n"
+        "                        </div>\n"
+        '                        <div class="col-sm-11">\n'
+        f'                            <h5 class="border-bottom">{html.escape(name)}</h5>\n'
+        f"{indent_block(content_html, 28)}\n"
+        "                        </div>\n"
+        "                    </div>"
+    )
+
+
+def render_sidebar(section_nodes: list[etree._Element], page_title: str, page_href: str) -> str:
     section_links = []
-    for glossdiv in glossdivs:
-        title = read_text(glossdiv.find("db:title", NS))
+    for section_node in section_nodes:
+        title = read_text(section_node.find("db:title", NS))
         if not re.match(r"^[A-Z]\.\s+", title):
             continue
-        section_id = glossdiv.get("{http://www.w3.org/XML/1998/namespace}id", "")
+        section_id = section_node.get("{http://www.w3.org/XML/1998/namespace}id", "")
         section_links.append(
             "                            <li class=\"nav-item\">\n"
             f'                                <a class="nav-link" href="#{html.escape(section_id, quote=True)}">{html.escape(title)}</a>\n'
@@ -385,12 +424,18 @@ def build_html(article: etree._Element, asset_prefix: str, page_href: str, switc
     subtitle = read_text(info.find("db:subtitle", NS) if info is not None else None)
     canonical = read_text(info.find('db:uri[@type="canonical"]', NS) if info is not None else None)
     glossdivs = article.findall("db:glossary/db:glossdiv", NS)
+    sections = article.findall("db:section", NS)
     heading = main_heading(title, subtitle)
     description = f"{title} ({article.get(f'{{{NS['mrf']}}}status', 'working')} version {article.get(f'{{{NS['mrf']}}}framework-version', '')})".strip()
 
-    skip_redundant_header = len(glossdivs) == 1 and read_text(glossdivs[0].find("db:title", NS)) == heading
-    section_html = "\n\n".join(render_glossdiv(glossdiv, asset_prefix, not skip_redundant_header) for glossdiv in glossdivs)
-    sidebar = render_sidebar(glossdivs, heading, page_href)
+    if glossdivs:
+        skip_redundant_header = len(glossdivs) == 1 and read_text(glossdivs[0].find("db:title", NS)) == heading
+        section_html = "\n\n".join(render_glossdiv(glossdiv, asset_prefix, not skip_redundant_header) for glossdiv in glossdivs)
+        sidebar_nodes = glossdivs
+    else:
+        section_html = "\n\n".join(render_section(section, asset_prefix) for section in sections)
+        sidebar_nodes = sections
+    sidebar = render_sidebar(sidebar_nodes, heading, page_href)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
