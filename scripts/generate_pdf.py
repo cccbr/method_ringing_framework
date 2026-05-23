@@ -11,19 +11,22 @@ import time
 from pathlib import Path
 
 
-def find_pdflatex() -> str | None:
-    """Find pdflatex executable."""
-    result = shutil.which("pdflatex")
-    if result:
-        return result
-    # Try common locations on Windows
-    for path in [
-        r"C:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.exe",
-        r"C:\Program Files (x86)\MiKTeX\miktex\bin\pdflatex.exe",
-    ]:
-        if Path(path).exists():
-            return path
-    return None
+def find_latex_engine() -> tuple[str, str] | tuple[None, None]:
+    """Find a LaTeX engine, preferring XeLaTeX for system font support."""
+    candidates = [
+        ("xelatex", shutil.which("xelatex")),
+        ("lualatex", shutil.which("lualatex")),
+        ("pdflatex", shutil.which("pdflatex")),
+        ("xelatex", r"C:\Program Files\MiKTeX\miktex\bin\x64\xelatex.exe"),
+        ("xelatex", r"C:\Program Files (x86)\MiKTeX\miktex\bin\xelatex.exe"),
+        ("lualatex", r"C:\Program Files\MiKTeX\miktex\bin\x64\lualatex.exe"),
+        ("pdflatex", r"C:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.exe"),
+        ("pdflatex", r"C:\Program Files (x86)\MiKTeX\miktex\bin\pdflatex.exe"),
+    ]
+    for engine_name, path in candidates:
+        if path and Path(path).exists():
+            return engine_name, path
+    return None, None
 
 
 def copy_pdf_with_retry(pdf_src: Path, pdf_dst: Path) -> Path:
@@ -50,8 +53,8 @@ def copy_pdf_with_retry(pdf_src: Path, pdf_dst: Path) -> Path:
     raise last_error
 
 
-def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path, pdflatex_cmd: str) -> bool:
-    """Compile TeX to PDF using pdflatex."""
+def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path, latex_cmd: str, engine_name: str) -> bool:
+    """Compile TeX to PDF using the selected LaTeX engine."""
     print(f"  Compiling {master_tex.name}...")
 
     document_name = master_tex.stem
@@ -62,7 +65,7 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
         try:
             result = subprocess.run(
                 [
-                    pdflatex_cmd,
+                    latex_cmd,
                     "-interaction=nonstopmode",
                     f"-output-directory={aux_dir.name}",
                     master_tex.name,
@@ -72,7 +75,7 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
                 text=True,
                 timeout=120,
             )
-            # pdflatex may return non-zero exit code due to MiKTeX update check
+            # MiKTeX engines may return non-zero exit codes due to background checks.
             # Check if PDF was created instead
             if pass_num == 2:
                 pdf_file = aux_dir / f"{document_name}.pdf"
@@ -82,10 +85,10 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
                         print(f"    stderr: {result.stderr[:200]}")
                     return False
         except subprocess.TimeoutExpired:
-            print(f"    Error: pdflatex timed out")
+            print(f"    Error: {engine_name} timed out")
             return False
         except FileNotFoundError:
-            print(f"    Error: pdflatex not found")
+            print(f"    Error: {engine_name} not found")
             return False
 
     # Move PDF to output directory
@@ -102,7 +105,7 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
         return False
 
 
-def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_dir: Path, pdflatex_cmd: str, no_cleanup: bool = False) -> bool:
+def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_dir: Path, latex_cmd: str, engine_name: str, no_cleanup: bool = False) -> bool:
     """Build PDF for a single version."""
     print(f"\nCompiling {version}...")
 
@@ -131,7 +134,7 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
         if legacy_pdf.exists():
             legacy_pdf.unlink()
     for master_file in master_files:
-        if not compile_pdf(master_file, version_tex_dir, aux_dir, version_pdf_dir, pdflatex_cmd):
+        if not compile_pdf(master_file, version_tex_dir, aux_dir, version_pdf_dir, latex_cmd, engine_name):
             return False
 
     # Cleanup
@@ -154,13 +157,13 @@ def main() -> int:
     if not args.versions:
         args.versions = ["version1", "version2"]
 
-    # Find pdflatex
-    pdflatex_cmd = find_pdflatex()
-    if not pdflatex_cmd:
-        print("Error: pdflatex not found. Please install MiKTeX or TeX Live.")
+    # Find LaTeX engine
+    engine_name, latex_cmd = find_latex_engine()
+    if not latex_cmd:
+        print("Error: no LaTeX engine found. Please install MiKTeX or TeX Live.")
         return 1
 
-    print(f"Using pdflatex: {pdflatex_cmd}")
+    print(f"Using {engine_name}: {latex_cmd}")
 
     tex_dir = Path(args.tex_dir)
     pdf_output_dir = Path(args.pdf_dir)
@@ -177,7 +180,7 @@ def main() -> int:
     print("\nGenerating PDFs...")
 
     for version in args.versions:
-        if not build_version(version, tex_dir, pdf_output_dir, templates_dir, pdflatex_cmd, args.no_cleanup):
+        if not build_version(version, tex_dir, pdf_output_dir, templates_dir, latex_cmd, engine_name, args.no_cleanup):
             return 1
 
     print("\n" + "=" * 60)

@@ -168,8 +168,9 @@ def render_mediaobject(node: etree._Element, asset_root: str) -> str:
     return rf"\MRFContentImage{{{build_image_include(image.get('fileref', ''), image.get('width') or image.get('contentwidth'), asset_root)}}}"
 
 
-def render_list(node: etree._Element, asset_root: str) -> str:
+def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
     ordered = local_name(node) == "orderedlist"
+    numeration = (node.get("numeration") or "").lower()
     items: list[str] = []
     for index, item in enumerate(node.findall("db:listitem", NS), start=1):
         parts: list[str] = []
@@ -180,11 +181,18 @@ def render_list(node: etree._Element, asset_root: str) -> str:
             elif child_name == "mediaobject":
                 parts.append(render_mediaobject(child, asset_root))
             elif child_name in {"itemizedlist", "orderedlist"}:
-                parts.append(render_list(child, asset_root))
-        label = f"{index}." if ordered else "--"
-        body = " ".join(part for part in parts if part).strip()
+                parts.append(render_list(child, asset_root, level + 1))
+            elif child_name in {"example", "note"}:
+                detail = render_detail(child, asset_root)
+                if detail:
+                    parts.append(detail)
+        if ordered and numeration == "loweralpha":
+            label = f"{chr(ord('a') + index - 1)})"
+        else:
+            label = f"{index}." if ordered else r"\textbullet"
+        body = "\n".join(part for part in parts if part).strip()
         if body:
-            items.append(rf"\MRFListItem{{{escape_latex(label)}}}{{{body}}}")
+            items.append(rf"\MRFListItem{{{level}}}{{{label}}}{{{body}}}")
     return "\n".join(items)
 
 
@@ -193,7 +201,7 @@ def render_detail_body(node: etree._Element, asset_root: str) -> str:
     for child in node:
         name = local_name(child)
         if name == "para":
-            blocks.append(rf"\MRFBodyPara{{{render_mixed(child)}}}")
+            blocks.append(rf"\MRFDetailPara{{{render_mixed(child)}}}")
         elif name == "mediaobject":
             blocks.append(render_mediaobject(child, asset_root))
         elif name in {"itemizedlist", "orderedlist"}:
@@ -203,6 +211,10 @@ def render_detail_body(node: etree._Element, asset_root: str) -> str:
 
 def render_detail(node: etree._Element, asset_root: str) -> str:
     name = local_name(node)
+    if name == "mediaobject":
+        return render_mediaobject(node, asset_root)
+    if name in {"itemizedlist", "orderedlist"}:
+        return render_list(node, asset_root)
     body = render_detail_body(node, asset_root)
     if not body:
         return ""
@@ -213,16 +225,12 @@ def render_detail(node: etree._Element, asset_root: str) -> str:
         if role == "technical-comment":
             return rf"\MRFTechnical{{{body}}}"
         return rf"\MRFFurther{{{body}}}"
-    if name == "mediaobject":
-        return render_mediaobject(node, asset_root)
-    if name in {"itemizedlist", "orderedlist"}:
-        return render_list(node, asset_root)
     return ""
 
 
-def render_glossdef(glossdef: etree._Element | None, asset_root: str) -> str:
+def render_glossdef_blocks(glossdef: etree._Element | None, asset_root: str) -> list[str]:
     if glossdef is None:
-        return ""
+        return []
 
     parts: list[str] = []
     for child in glossdef:
@@ -233,7 +241,11 @@ def render_glossdef(glossdef: etree._Element | None, asset_root: str) -> str:
             detail = render_detail(child, asset_root)
             if detail:
                 parts.append(detail)
-    return "\n".join(parts)
+    return parts
+
+
+def render_glossdef(glossdef: etree._Element | None, asset_root: str) -> str:
+    return "\n".join(render_glossdef_blocks(glossdef, asset_root))
 
 
 def render_block_children(node: etree._Element, asset_root: str, *, skip_titles: bool = True, skip_entries: bool = True) -> list[str]:

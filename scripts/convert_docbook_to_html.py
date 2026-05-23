@@ -130,7 +130,16 @@ def render_mediaobject(node: etree._Element, asset_prefix: str) -> str:
 
 
 def render_list(node: etree._Element, asset_prefix: str) -> str:
-    tag_name = "ol" if local_name(node) == "orderedlist" else "ul"
+    ordered = local_name(node) == "orderedlist"
+    numeration = (node.get("numeration") or "").lower()
+    if ordered and numeration == "loweralpha":
+        open_tag = '<ol type="a">'
+        close_tag = "</ol>"
+    else:
+        tag_name = "ol" if ordered else "ul"
+        open_tag = f"<{tag_name}>"
+        close_tag = f"</{tag_name}>"
+
     items: list[str] = []
     for item in node.findall("db:listitem", NS):
         pieces: list[str] = []
@@ -140,8 +149,12 @@ def render_list(node: etree._Element, asset_prefix: str) -> str:
                 pieces.append(render_mixed(child, asset_prefix))
             elif child_name == "mediaobject":
                 pieces.append(render_mediaobject(child, asset_prefix))
+            elif child_name in {"example", "note", "itemizedlist", "orderedlist"}:
+                rendered = render_detail_group(child, asset_prefix)
+                if rendered:
+                    pieces.append(rendered)
         items.append(f"<li>{''.join(pieces).strip()}</li>")
-    return f"<{tag_name}>{''.join(items)}</{tag_name}>"
+    return f"{open_tag}{''.join(items)}{close_tag}"
 
 
 def render_group(node: etree._Element, asset_prefix: str, css_class: str, label: str) -> str:

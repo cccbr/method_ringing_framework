@@ -25,6 +25,22 @@ NS = {
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
+def find_inkscape() -> str | None:
+    """Find an Inkscape executable for high-quality SVG conversion."""
+    candidates = [
+        shutil.which("inkscape"),
+        r"C:\Program Files\Inkscape\bin\inkscape.exe",
+        r"C:\Program Files\Inkscape\inkscape.exe",
+        r"C:\Program Files (x86)\Inkscape\inkscape.exe",
+        str(Path.home() / "AppData/Local/Programs/Inkscape/bin/inkscape.exe"),
+        str(Path.home() / "AppData/Local/Programs/Inkscape/inkscape.exe"),
+    ]
+    for candidate in candidates:
+        if candidate and Path(candidate).exists():
+            return candidate
+    return None
+
+
 def find_headless_browser() -> str | None:
     """Find a Chromium-based browser that can print SVGs to PDF."""
     candidates = [
@@ -63,7 +79,30 @@ def copy_if_stale(source: Path, destination: Path) -> None:
     shutil.copy2(source, destination)
 
 
-def render_svg_to_pdf(source: Path, destination: Path, browser: str) -> None:
+def render_svg_to_pdf_with_inkscape(source: Path, destination: Path, inkscape: str) -> None:
+    """Render an SVG source file to PDF using Inkscape."""
+    if destination.exists() and destination.stat().st_mtime >= source.stat().st_mtime:
+        return
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    command = [
+        inkscape,
+        str(source.resolve()),
+        "--export-filename",
+        str(destination.resolve()),
+    ]
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    if result.returncode != 0 or not destination.exists():
+        detail = result.stderr.strip() or result.stdout.strip() or "unknown error"
+        raise RuntimeError(f"Failed to render SVG {source} to PDF with Inkscape: {detail}")
+
+
+def render_svg_to_pdf_with_browser(source: Path, destination: Path, browser: str) -> None:
     """Render an SVG source file to PDF via a headless browser."""
     if destination.exists() and destination.stat().st_mtime >= source.stat().st_mtime:
         return
@@ -84,11 +123,12 @@ def render_svg_to_pdf(source: Path, destination: Path, browser: str) -> None:
     )
     if result.returncode != 0 or not destination.exists():
         detail = result.stderr.strip() or result.stdout.strip() or "unknown error"
-        raise RuntimeError(f"Failed to render SVG {source} to PDF: {detail}")
+        raise RuntimeError(f"Failed to render SVG {source} to PDF with browser: {detail}")
 
 
 def stage_latex_assets(version: str, article: etree._Element, version_xml_dir: Path, tex_dir: Path) -> None:
     """Materialize image assets alongside the generated TeX files."""
+    inkscape: str | None = None
     browser: str | None = None
 
     for image in article.findall(".//db:imagedata", NS):
@@ -108,14 +148,19 @@ def stage_latex_assets(version: str, article: etree._Element, version_xml_dir: P
                 copy_if_stale(sibling_pdf, destination)
                 continue
 
+            if inkscape is None:
+                inkscape = find_inkscape()
+            if inkscape is not None:
+                render_svg_to_pdf_with_inkscape(source, destination, inkscape)
+                continue
+
             if browser is None:
                 browser = find_headless_browser()
-                if browser is None:
-                    raise RuntimeError(
-                        "No supported headless browser found for SVG to PDF conversion. "
-                        "Install Microsoft Edge or Google Chrome."
-                    )
-            render_svg_to_pdf(source, destination, browser)
+            if browser is None:
+                raise RuntimeError(
+                    "No SVG to PDF converter found. Install Inkscape, Microsoft Edge, or Google Chrome."
+                )
+            render_svg_to_pdf_with_browser(source, destination, browser)
             continue
 
         destination = tex_dir / Path(fileref)

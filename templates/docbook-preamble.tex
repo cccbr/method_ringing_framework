@@ -1,9 +1,17 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[margin=1in,headheight=30pt,headsep=16pt,footskip=26pt]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[scaled]{helvet}
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[scaled]{helvet}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Calibri}
+  \setsansfont{Calibri}
+  \setmonofont{Consolas}
+\fi
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
@@ -14,6 +22,7 @@
 \usepackage{longtable}
 \usepackage{lastpage}
 \usepackage{etoolbox}
+\usepackage{ragged2e}
 
 \definecolor{mrfHeader}{HTML}{132243}
 \definecolor{mrfExample}{HTML}{C0392B}
@@ -33,8 +42,31 @@
 \clubpenalty=10000
 \widowpenalty=10000
 \displaywidowpenalty=10000
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\doublehyphendemerits=100000
+\finalhyphendemerits=100000
+\emergencystretch=2em
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
+\newlength{\MRFContentIndent}
+\setlength{\MRFContentIndent}{1.8em}
+\newlength{\MRFNestedListIndent}
+\newlength{\MRFListLabelWidth}
+\setlength{\MRFListLabelWidth}{1.6em}
+\newlength{\MRFListLabelGap}
+\setlength{\MRFListLabelGap}{0.2em}
+\setlength{\MRFNestedListIndent}{\dimexpr\MRFListLabelWidth+\MRFListLabelGap\relax}
+\newlength{\MRFTableNumberWidth}
+\setlength{\MRFTableNumberWidth}{0.10\textwidth}
+\newlength{\MRFTableTermWidth}
+\setlength{\MRFTableTermWidth}{0.22\textwidth}
+\newlength{\MRFTableBodyWidth}
+\setlength{\MRFTableBodyWidth}{0.62\textwidth}
+\newlength{\MRFTableSpanWidth}
+\setlength{\MRFTableSpanWidth}{\dimexpr\MRFTableNumberWidth+\MRFTableTermWidth+\MRFTableBodyWidth+6\tabcolsep+4\arrayrulewidth\relax}
+\newlength{\MRFTableBodyOffset}
+\setlength{\MRFTableBodyOffset}{\dimexpr\MRFTableNumberWidth+\MRFTableTermWidth+4\tabcolsep+2\arrayrulewidth\relax}
 
 \newcommand{\MRFHeaderText}{Central Council Framework for Method Ringing}
 \newcommand{\MRFEditionText}{Edition 0.00}
@@ -49,6 +81,7 @@
 \newcommand{\MRFSetContentLayoutNarrative}{\MRFTableLayoutfalse}
 \newcommand{\MRFShowDetails}{\MRFIncludeDetailstrue}
 \newcommand{\MRFHideDetails}{\MRFIncludeDetailsfalse}
+\newcounter{MRFEntryCount}
 
 \fancypagestyle{mrfcontents}{
   \fancyhf{}
@@ -128,48 +161,78 @@
   \phantomsection
   \label{#3}
   {\fontsize{14}{18}\selectfont\bfseries #1\space #2\par}
-  \vspace{0.55cm}
+  \vspace{0.25cm}
 }
 
 \NewDocumentCommand{\MRFSubsectionHeading}{m m m}{%
   \phantomsection
   \label{#3}
-  \hspace*{1.8em}{\fontsize{12}{15}\selectfont\bfseries #1\space #2\par}
-  \vspace{0.35cm}
+  {\fontsize{12}{15}\selectfont\bfseries #1\space #2\par}
+  \vspace{0.15cm}
 }
 
 \NewDocumentEnvironment{MRFEntries}{}{%
   \ifMRFTableLayout
-    \begin{longtable}{|>{\raggedright\arraybackslash}p{0.10\textwidth}|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}p{0.58\textwidth}|}
+    \begingroup
+    \setlength{\LTleft}{0pt}
+    \setlength{\LTright}{0pt}
+    \setlength{\tabcolsep}{4pt}
+    \begin{longtable}{@{}|>{\RaggedRight\arraybackslash}p{\MRFTableNumberWidth}|>{\RaggedRight\arraybackslash}p{\MRFTableTermWidth}|>{\RaggedRight\arraybackslash}p{\MRFTableBodyWidth}|@{}}
     \hline
   \fi
 }{%
   \ifMRFTableLayout
     \end{longtable}
+    \endgroup
   \fi
 }
 
 \NewDocumentCommand{\MRFEntry}{m m +m}{%
   \ifMRFTableLayout
-    #1 & \textbf{#2} & #3 \\
+    #1 & #2 & {\setlength{\parskip}{0.25\baselineskip}\RaggedRight #3} \\
     \hline
   \else
-    {\fontsize{11}{13}\selectfont\bfseries #1\space #2\par}
+    {\fontsize{11}{13}\selectfont #1\space #2\par}
     #3
     \vspace{0.35cm}
   \fi
 }
 
-\NewDocumentCommand{\MRFBodyPara}{+m}{#1\par}
-
-\NewDocumentCommand{\MRFContentImage}{+m}{%
-  \begin{center}
-  #1
-  \end{center}
+\NewDocumentCommand{\MRFEntryCont}{+m}{%
+  \ifMRFTableLayout
+    #1
+  \else
+    #1
+  \fi
 }
 
-\NewDocumentCommand{\MRFListItem}{m +m}{%
-  \hangindent=1.8em\hangafter=1\noindent\makebox[1.6em][l]{#1}#2\par
+\NewDocumentCommand{\MRFBodyPara}{+m}{%
+  {\parindent=0pt\RaggedRight #1\par}%
+}
+
+\NewDocumentCommand{\MRFDetailPara}{+m}{%
+  {\parindent=0pt\RaggedRight #1\par}%
+}
+
+\NewDocumentCommand{\MRFContentImage}{+m}{%
+  \hspace*{\MRFContentIndent}\begin{minipage}{\dimexpr\linewidth-\MRFContentIndent\relax}
+  \centering
+  #1
+  \end{minipage}\par
+}
+
+\NewDocumentCommand{\MRFListItemIndent}{m}{%
+  0pt
+}
+
+\NewDocumentCommand{\MRFListItem}{m m +m}{%
+  \par\noindent\hspace*{\MRFListItemIndent{#1}}%
+  \makebox[\MRFListLabelWidth][l]{#2}%
+  \hspace*{\MRFListLabelGap}%
+  \begin{minipage}[t]{\dimexpr\linewidth-\MRFListItemIndent{#1}-\MRFListLabelWidth-\MRFListLabelGap\relax}
+  \parindent=0pt\RaggedRight
+  #3
+  \end{minipage}\par\vspace{0.5\baselineskip}
 }
 
 \NewDocumentCommand{\MRFDetailDivider}{}{%
@@ -178,9 +241,12 @@
 
 \NewDocumentCommand{\MRFDetailBlock}{m m +m}{%
   \ifMRFIncludeDetails
+    {\hspace*{\MRFContentIndent}\begin{minipage}{\dimexpr\linewidth-\MRFContentIndent\relax}
+    \parindent=0pt\RaggedRight
     \MRFDetailDivider
     {\color{#1}\textbf{#2}}\par
     {\color{#1}#3}\par
+    \end{minipage}\par}
   \fi
 }
 

@@ -18,6 +18,8 @@ NS = {
 }
 
 WHITESPACE_RE = re.compile(r"\s+")
+ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\d+[\.\)]\s+")
+LOWER_ALPHA_LIST_MARKER_RE = re.compile(r"^\s*[a-z]\)\s+")
 NON_GLOSSTERM_LABELS = {
     "[add issue]",
     "1. introduction",
@@ -122,6 +124,116 @@ def trim_para_whitespace(para: etree._Element) -> None:
         last = para[-1]
         if last.tail is not None:
             last.tail = last.tail.strip()
+
+
+def strip_leading_pattern(elem: etree._Element, pattern: re.Pattern[str]) -> bool:
+    if elem.text is not None:
+        updated, count = pattern.subn("", elem.text, count=1)
+        if count:
+            elem.text = updated.lstrip()
+            return True
+        if elem.text.strip():
+            return False
+
+    for child in elem:
+        if strip_leading_pattern(child, pattern):
+            return True
+        if child.tail is not None:
+            updated, count = pattern.subn("", child.tail, count=1)
+            if count:
+                child.tail = updated.lstrip()
+                return True
+            if child.tail.strip():
+                return False
+
+    return False
+
+
+def split_nodes_on_breaks(tag: Tag) -> list[list[Tag | NavigableString]]:
+    segments: list[list[Tag | NavigableString]] = []
+    current: list[Tag | NavigableString] = []
+
+    for child in tag.children:
+        if isinstance(child, Tag) and child.name.lower() == "br":
+            if current:
+                segments.append(current)
+                current = []
+            continue
+        current.append(child)
+
+    if current:
+        segments.append(current)
+
+    return segments
+
+
+def segment_text(nodes: list[Tag | NavigableString]) -> str:
+    parts: list[str] = []
+    for node in nodes:
+        if isinstance(node, NavigableString):
+            parts.append(str(node))
+        elif isinstance(node, Tag):
+            parts.append(node.get_text(" ", strip=False))
+    return clean_text("".join(parts))
+
+
+def add_nodes_as_para(
+    nodes: list[Tag | NavigableString],
+    parent: etree._Element,
+    strip_marker: re.Pattern[str] | None = None,
+    strip_prefix_labels: set[str] | None = None,
+) -> bool:
+    para = etree.SubElement(parent, qname("para"))
+    for child in nodes:
+        render_inline(child, para, strip_prefix_labels)
+
+    if strip_marker:
+        strip_leading_pattern(para, strip_marker)
+
+    if not clean_text("".join(para.itertext())) and len(para) == 0:
+        parent.remove(para)
+        return False
+
+    trim_para_whitespace(para)
+    return True
+
+
+def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
+    if not any(isinstance(child, Tag) and child.name.lower() == "br" for child in tag.children):
+        return False
+
+    segments = [segment for segment in split_nodes_on_breaks(tag) if segment_text(segment)]
+    if len(segments) < 2:
+        return False
+
+    markers = [parse_list_marker(segment_text(segment)) for segment in segments]
+    if not any(marker is not None for marker in markers):
+        return False
+
+    index = 0
+    converted = False
+    while index < len(segments):
+        marker = markers[index]
+        if marker is None:
+            next_index = index + 1
+            if next_index < len(segments) and markers[next_index] is not None:
+                add_nodes_as_para(segments[index], parent)
+                index += 1
+                continue
+            return False
+
+        numeration = marker[0]
+        ordered_list = build_ordered_list(parent, numeration)
+        while index < len(segments):
+            marker = markers[index]
+            if marker is None or marker[0] != numeration:
+                break
+            list_item = etree.SubElement(ordered_list, qname("listitem"))
+            add_nodes_as_para(segments[index], list_item, marker[1])
+            index += 1
+            converted = True
+
+    return converted
 
 
 def looks_like_heading_row(row: Tag) -> bool:
@@ -243,6 +355,14 @@ def infer_version_defaults(
 def parse_number(text: str) -> str | None:
     match = re.match(r"^(\d+)\.\s*$", clean_text(text))
     return match.group(1) if match else None
+
+
+def parse_list_marker(text: str) -> tuple[str, re.Pattern[str]] | None:
+    if ARABIC_LIST_MARKER_RE.match(text):
+        return "arabic", ARABIC_LIST_MARKER_RE
+    if LOWER_ALPHA_LIST_MARKER_RE.match(text):
+        return "loweralpha", LOWER_ALPHA_LIST_MARKER_RE
+    return None
 
 
 def extract_term(column: Tag) -> str:
@@ -457,6 +577,9 @@ def add_paragraph(tag: Tag, parent: etree._Element, strip_prefix_labels: set[str
             render_inline(image, parent, None)
         return True
 
+    if add_break_separated_list(tag, parent):
+        return True
+
     para = etree.SubElement(parent, qname("para"))
     for child in tag.children:
         render_inline(child, para, strip_prefix_labels)
@@ -473,6 +596,9 @@ def add_paragraph(tag: Tag, parent: etree._Element, strip_prefix_labels: set[str
 def add_list(tag: Tag, parent: etree._Element) -> None:
     list_tag = qname("orderedlist") if tag.name.lower() == "ol" else qname("itemizedlist")
     doc_list = etree.SubElement(parent, list_tag)
+    if tag.name.lower() == "ol":
+        list_type = clean_text(tag.get("type", "")).lower()
+        doc_list.set("numeration", "loweralpha" if list_type == "a" else "arabic")
     for item in tag.find_all("li", recursive=False):
         list_item = etree.SubElement(doc_list, qname("listitem"))
         para = etree.SubElement(list_item, qname("para"))
@@ -598,9 +724,9 @@ def add_labeled_content(parent: etree._Element, label: str, content_col: Tag, co
     return section
 
 
-def build_ordered_list(parent: etree._Element) -> etree._Element:
+def build_ordered_list(parent: etree._Element, numeration: str = "arabic") -> etree._Element:
     ordered_list = etree.SubElement(parent, qname("orderedlist"))
-    ordered_list.set("numeration", "arabic")
+    ordered_list.set("numeration", numeration)
     return ordered_list
 
 
@@ -779,6 +905,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
     else:
         glossary = get_or_create_glossary(article, framework_title)
         current_div: etree._Element | None = None
+        current_numbered_list: etree._Element | None = None
         current_section_title = clean_text(heading_text or page_title)
         entry_index = 0
 
@@ -792,6 +919,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                 label = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
                 current_section_title = f"{marker} {label}".strip()
                 current_div = build_glossdiv(glossary, row, current_section_title)
+                current_numbered_list = None
                 content_col = columns[1] if len(columns) > 1 else None
                 if content_col is not None:
                     clone = BeautifulSoup(str(content_col), "lxml").find("div")
@@ -813,6 +941,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
             term = extract_term(term_col) if term_col is not None else ""
             embedded_label = extract_embedded_label(content_col)
             if kind == "term-entry" and is_non_glossterm_label(number, term):
+                current_numbered_list = None
                 add_labeled_content(
                     current_div,
                     display_row_label(current_section_title, number, term),
@@ -820,19 +949,21 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                     row.get("id") or row_term_label(number, term),
                 )
             elif embedded_label and is_non_glossterm_label(number, embedded_label):
+                current_numbered_list = None
                 add_content_blocks(content_col, current_div)
             elif kind == "term-entry" and (number or term):
+                current_numbered_list = None
                 entry_index += 1
                 entry_slug = term or f"entry-{entry_index}"
                 entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(entry_slug)}"
                 entry = build_glossentry(term, number, content_col, current_section_title, entry_id)
                 current_div.append(entry)
             elif number:
-                entry_index += 1
-                entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(number)}"
-                entry = build_glossentry("", number, content_col, current_section_title, entry_id)
-                current_div.append(entry)
+                if current_numbered_list is None or current_numbered_list.getparent() is not current_div:
+                    current_numbered_list = build_ordered_list(current_div)
+                add_numbered_list_item(current_numbered_list, content_col)
             else:
+                current_numbered_list = None
                 add_content_blocks(content_col, current_div)
 
     etree.indent(article, space="  ")

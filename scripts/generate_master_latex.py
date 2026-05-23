@@ -191,13 +191,14 @@ def build_toc_subsections(article: etree._Element, source_stem: str, page_item: 
         if not page_item.number and title == page_item.title:
             continue
 
-        subsections.append(
-            TocItem(
-                label_id=f"{label_prefix}-{source_stem}-{index}",
-                number=number,
-                title=label,
-            )
-        )
+        if label_prefix == "mrf-subsection":
+            label_id = f"{label_prefix}-{source_stem}-{index}"
+        else:
+            label_suffix = section_node.get("{http://www.w3.org/XML/1998/namespace}id", "") or f"{source_stem}-{index}".strip("-")
+            label_suffix = re.sub(r"[^A-Za-z0-9:-]+", "-", label_suffix).strip("-") or "section"
+            label_id = f"{label_prefix}-{label_suffix}"
+
+        subsections.append(TocItem(label_id=label_id, number=number, title=label))
 
     return tuple(subsections)
 
