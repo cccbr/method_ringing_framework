@@ -10,6 +10,8 @@ import sys
 import time
 from pathlib import Path
 
+from publishing_paths import edition_output_dir, normalize_version_id
+
 
 def find_latex_engine() -> tuple[str, str] | tuple[None, None]:
     """Find a LaTeX engine, preferring XeLaTeX for system font support."""
@@ -107,9 +109,10 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
 
 def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_dir: Path, latex_cmd: str, engine_name: str, no_cleanup: bool = False) -> bool:
     """Build PDF for a single version."""
-    print(f"\nCompiling {version}...")
+    print(f"\nCompiling {edition_output_dir(version)}...")
 
-    version_tex_dir = tex_dir / version
+    edition_dir = edition_output_dir(version)
+    version_tex_dir = tex_dir / edition_dir
     if not version_tex_dir.exists():
         print(f"  Error: TeX directory not found: {version_tex_dir}")
         return False
@@ -128,7 +131,7 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
             return False
 
     # Compile PDF
-    version_pdf_dir = pdf_output_dir / version
+    version_pdf_dir = pdf_output_dir / edition_dir
     if len(master_files) > 1:
         legacy_pdf = version_pdf_dir / f"framework-{version}.pdf"
         if legacy_pdf.exists():
@@ -146,7 +149,7 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate PDFs from TeX files")
-    parser.add_argument("--version", action="append", dest="versions", help="Version(s) to compile")
+    parser.add_argument("--edition", "--version", action="append", dest="editions", help="Edition ids to compile (e.g., edition2). Legacy version2 ids are also accepted.")
     parser.add_argument("--tex-dir", default="generated/tex", help="TeX files directory")
     parser.add_argument("--pdf-dir", default="generated/pdf", help="Output PDF directory")
     parser.add_argument("--templates-dir", default="templates", help="Templates directory (for preamble)")
@@ -154,8 +157,12 @@ def main() -> int:
 
     args = parser.parse_args()
 
-    if not args.versions:
-        args.versions = ["version1", "version2"]
+    if not args.editions:
+        args.editions = ["version1", "version2"]
+    else:
+        args.editions = [normalize_version_id(version) for version in args.editions]
+
+    args.editions = [normalize_version_id(version) for version in args.editions]
 
     # Find LaTeX engine
     engine_name, latex_cmd = find_latex_engine()
@@ -179,15 +186,15 @@ def main() -> int:
 
     print("\nGenerating PDFs...")
 
-    for version in args.versions:
+    for version in args.editions:
         if not build_version(version, tex_dir, pdf_output_dir, templates_dir, latex_cmd, engine_name, args.no_cleanup):
             return 1
 
     print("\n" + "=" * 60)
     print("[OK] PDF Generation Complete!")
     print("=" * 60)
-    for v in args.versions:
-        for pdf_path in sorted((pdf_output_dir / v).glob(f"framework-{v}*.pdf")):
+    for v in args.editions:
+        for pdf_path in sorted((pdf_output_dir / edition_output_dir(v)).glob(f"framework-{v}*.pdf")):
             size_mb = pdf_path.stat().st_size / 1000000
             print(f"[OK] {pdf_path} ({size_mb:.2f} MB)")
 

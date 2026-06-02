@@ -3,7 +3,7 @@
 Build orchestrator: converts HTML → XML → HTML/LaTeX/PDF
 
 Usage:
-    python scripts/build.py [--version VERSION] [--html-only] [--xml-only] [--pdf-only] [--no-cleanup]
+    python scripts/build.py [--edition EDITION] [--html-only] [--xml-only] [--pdf-only] [--no-cleanup]
 """
 
 from __future__ import annotations
@@ -14,6 +14,17 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
+
+from publishing_paths import edition_output_dir, normalize_version_id, source_site_dir
+
+
+def discover_render_versions() -> list[str]:
+    versions = {
+        path.name for path in Path("generated/xml").iterdir() if path.is_dir() and (path / "index.xml").exists()
+    } if Path("generated/xml").exists() else set()
+    if Path("xml").exists():
+        versions.update(path.name for path in Path("xml").iterdir() if path.is_dir() and (path / "index.xml").exists())
+    return sorted(versions)
 
 
 def run_command(cmd: list[str], description: str, cwd: Optional[Path] = None) -> bool:
@@ -46,10 +57,10 @@ def build_xml(versions: list[str]) -> bool:
         return False
 
     for version in versions:
-        html_dir = Path(f"version{version[7:]}" if version.startswith("version") else version)
+        html_dir = Path(source_site_dir(version))
         if not html_dir.exists():
-            print(f"[ERROR] HTML directory not found: {html_dir}")
-            return False
+            print(f"[SKIP] No HTML source directory for {version}: {html_dir}")
+            continue
 
         if not run_command(
             [sys.executable, str(script), str(html_dir), f"generated/xml/{version}"],
@@ -79,9 +90,9 @@ def build_outputs(versions: list[str], html_only: bool = False, pdf_only: bool =
         args.append("--pdf-only")
     if versions:
         for v in versions:
-            args.extend(["--version", v])
+            args.extend(["--edition", v])
     else:
-        args.append("--version")
+        args.append("--edition")
         args.append("all")
 
     if not run_command(args, "Rendering XML to outputs"):
@@ -104,7 +115,7 @@ def generate_pdfs(versions: list[str], no_cleanup: bool = False) -> bool:
 
     args = [sys.executable, str(script)]
     for v in versions:
-        args.extend(["--version", v])
+        args.extend(["--edition", v])
     if no_cleanup:
         args.append("--no-cleanup")
 
@@ -116,7 +127,7 @@ def generate_pdfs(versions: list[str], no_cleanup: bool = False) -> bool:
     print("PDF Generation Complete!")
     print("=" * 60)
     for v in versions:
-        pdf_path = Path(f"generated/pdf/{v}/framework-{v}.pdf")
+        pdf_path = Path(f"generated/pdf/{edition_output_dir(v)}/framework-{v}.pdf")
         if pdf_path.exists():
             size_mb = pdf_path.stat().st_size / 1000000
             print(f"[OK] {pdf_path} ({size_mb:.2f} MB)")
@@ -130,20 +141,21 @@ def main() -> int:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python scripts/build.py                              # Full build (all versions)
-  python scripts/build.py --version version2           # Build only version2
-  python scripts/build.py --version version1 version2  # Build both versions
-  python scripts/build.py --version version2 --xml-only  # Only convert HTML to XML
-  python scripts/build.py --version version2 --html-only # Only generate HTML (no PDF)
-  python scripts/build.py --version version2 --pdf-only  # Only compile PDFs
+  python scripts/build.py                              # Full build (all editions)
+  python scripts/build.py --edition edition2           # Build only edition 2
+  python scripts/build.py --edition edition1 --edition edition2  # Build both editions
+  python scripts/build.py --edition edition2 --xml-only  # Only convert HTML to XML
+  python scripts/build.py --edition edition2 --html-only # Only generate HTML (no PDF)
+  python scripts/build.py --edition edition2 --pdf-only  # Only compile PDFs
         """
     )
 
     parser.add_argument(
+        "--edition",
         "--version",
         action="append",
-        dest="versions",
-        help="Version(s) to build (e.g., version1, version2). Can be specified multiple times. Defaults to all."
+        dest="editions",
+        help="Edition ids to build (e.g., edition2). Legacy version2 ids are also accepted. Can be specified multiple times. Defaults to all."
     )
     parser.add_argument(
         "--xml-only",
@@ -169,41 +181,41 @@ Examples:
     args = parser.parse_args()
 
     # Determine versions to build
-    if not args.versions:
-        args.versions = ["version1", "version2"]
+    if not args.editions:
+        args.editions = discover_render_versions() or ["version1", "version2"]
+    else:
+        args.editions = [normalize_version_id(v) for v in args.editions]
 
     # Validate versions
-    for v in args.versions:
-        if not v.startswith("version"):
-            v = f"version{v}"
+    args.editions = [normalize_version_id(v) for v in args.editions]
 
     print("\n" + "=" * 60)
-    print(f"Building versions: {', '.join(args.versions)}")
+    print(f"Building editions: {', '.join(edition_output_dir(v) for v in args.editions)}")
     print("=" * 60)
 
     # Phase 1: HTML to XML
     if not args.pdf_only and not args.html_only:
-        if not build_xml(args.versions):
+        if not build_xml(args.editions):
             return 1
 
     # Phase 2: XML to HTML/LaTeX
     if not args.xml_only and not args.pdf_only:
-        if not build_outputs(args.versions, html_only=args.html_only):
+        if not build_outputs(args.editions, html_only=args.html_only):
             return 1
 
     # Phase 3: TeX to PDF
     if not args.xml_only and not args.html_only:
-        if not generate_pdfs(args.versions, no_cleanup=args.no_cleanup):
+        if not generate_pdfs(args.editions, no_cleanup=args.no_cleanup):
             return 1
 
     if args.pdf_only:
-        if not generate_pdfs(args.versions, no_cleanup=args.no_cleanup):
+        if not generate_pdfs(args.editions, no_cleanup=args.no_cleanup):
             return 1
 
     print("\n" + "=" * 60)
     print("[OK] Build Complete!")
     print("=" * 60)
-    print(f"Output: generated/xml/, generated/html/, generated/pdf/")
+    print("Output: generated/xml/version*, generated/html/edition*, generated/pdf/edition*")
     return 0
 
 

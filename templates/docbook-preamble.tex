@@ -241,12 +241,10 @@
 
 \NewDocumentCommand{\MRFDetailBlock}{m m +m}{%
   \ifMRFIncludeDetails
-    {\hspace*{\MRFContentIndent}\begin{minipage}{\dimexpr\linewidth-\MRFContentIndent\relax}
-    \parindent=0pt\RaggedRight
+    {\parindent=0pt\RaggedRight
     \MRFDetailDivider
     {\color{#1}\textbf{#2}}\par
-    {\color{#1}#3}\par
-    \end{minipage}\par}
+    {\color{#1}#3}\par}
   \fi
 }
 

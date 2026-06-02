@@ -20,9 +20,9 @@ There is no repo-wide build system, test runner, or linter. Validation in this r
 - Convert one HTML page into DocBook XML:
   - `python scripts\convert_html_to_docbook.py -i version2\fundamentals.html -o generated\xml\version2\fundamentals.xml --base-uri https://cccbr.github.io/method_ringing_framework/version2`
 - Render one DocBook XML file back into HTML:
-  - `python scripts\convert_docbook_to_html.py generated\xml\version2\fundamentals.xml generated\html\version2\fundamentals.html --asset-prefix ../../../version2 --switch-version-href ../../../index.html`
+  - `python scripts\convert_docbook_to_html.py generated\xml\version2\fundamentals.xml generated\html\edition2\fundamentals.html --asset-prefix ../../../version2 --switch-version-href ../../../index.html`
 - Render one DocBook XML file into LaTeX:
-  - `python scripts\convert_docbook_to_latex.py generated\xml\version2\fundamentals.xml generated\tex\version2\fundamentals.tex --asset-root ../../../version2`
+  - `python scripts\convert_docbook_to_latex.py generated\xml\version2\fundamentals.xml generated\tex\edition2\fundamentals.tex --asset-root ../../../version2`
 
 ## High-level architecture
 
@@ -31,8 +31,8 @@ There is no repo-wide build system, test runner, or linter. Validation in this r
 - The site layout is hand-authored Bootstrap 4 HTML with a fixed header, left sidebar navigation, and content in `<main>`. Collapsible “notes” are part of the content model and are driven by `mrf.js` plus CSS classes in `mrf.css`.
 - Generated artifacts live under the ignored `generated\` tree:
   - `generated\xml\version1\` and `generated\xml\version2\` for DocBook output from the source HTML
-  - `generated\html\...` for HTML rendered back from DocBook
-  - `generated\tex\...` for LaTeX rendered back from DocBook
+  - `generated\html\edition*\` for HTML rendered back from DocBook
+  - `generated\tex\edition*\` for LaTeX rendered back from DocBook
 - The active converters are:
   - `scripts\convert_html_to_docbook.py` converts source HTML pages into DocBook 5 XML with glossary-oriented structure and `mrf:` metadata.
   - `scripts\convert_docbook_to_html.py` renders DocBook back into pages that match the original site styling.

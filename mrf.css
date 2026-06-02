@@ -107,6 +107,15 @@ a {
         text-align: center;
     }
 
+    .dropdown .btn-outline-light:hover,
+    .dropdown .btn-outline-light:focus,
+    .dropdown .btn-outline-light:not(:disabled):not(.disabled):active,
+    .dropdown.show .btn-outline-light.dropdown-toggle {
+        color: #212529;
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+    }
+
     .nav-subsection {
         font-size: smaller;
         margin-left: 10px;
@@ -141,3 +150,79 @@ a {
         margin-right: auto;
         max-width: initial;
     }
+
+.mrf-numbered-item {
+    margin-bottom: 0.5rem;
+}
+
+.mrf-numbered-marker {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.mrf-numbered-marker .float-right {
+    margin-left: 0.35rem;
+}
+
+.mrf-numbered-content > :first-child {
+    margin-top: 0;
+}
+
+.mrf-list {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.mrf-list-level-1 {
+    margin-left: 1.25rem;
+}
+
+.mrf-list-level-2,
+.mrf-list-level-3 {
+    margin-left: 2rem;
+}
+
+.mrf-list li {
+    margin-bottom: 0.35rem;
+}
+
+.mrf-list .collapse {
+    margin-top: 0.5rem;
+}
+
+.mrf-detail-group + .mrf-detail-group {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #eee;
+}
+
+.mrf-table {
+    width: auto;
+    max-width: 100%;
+    background-color: white;
+}
+
+.mrf-code-table th,
+.mrf-code-table td {
+    white-space: nowrap;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: small;
+    padding: 0.25rem 0.5rem;
+}
+
+.mrf-code-table th {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 575.98px) {
+    .mrf-numbered-marker {
+        margin-bottom: 0.25rem;
+    }
+
+    .mrf-list-level-1,
+    .mrf-list-level-2,
+    .mrf-list-level-3 {
+        margin-left: 1rem;
+    }
+}

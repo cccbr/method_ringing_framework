@@ -10,6 +10,8 @@ from pathlib import Path
 
 from lxml import etree
 
+from publishing_paths import is_revision_stem
+
 
 NS = {
     "db": "http://docbook.org/ns/docbook",
@@ -23,6 +25,7 @@ GLOSSDIV_PREFIX_RE = re.compile(r"^((?:Appendix\s+[A-Z]|\d+|[A-Z])\.)\s+(.*)$")
 SUPPLEMENTAL_APPENDIX_ORDERS = {
     "extensionprocesses2": (4, 1),
 }
+EXCLUDED_PDF_STEMS = {"xref", "issues"}
 
 
 @dataclass(frozen=True)
@@ -75,16 +78,16 @@ def read_text(elem: etree._Element | None) -> str:
 
 
 def format_edition(edition: str) -> str:
-    try:
-        return f"{float(edition):.2f}"
-    except ValueError:
-        return edition
+    edition = (edition or "").strip()
+    if re.fullmatch(r"\d+(?:\.0+)?", edition):
+        return edition.split(".", 1)[0]
+    return edition
 
 
 def extract_metadata_from_xml(xml_dir: Path) -> dict[str, str]:
     """Extract shared document metadata from a version XML directory."""
     metadata = {
-        "edition": "1.00",
+        "edition": "1",
         "status": "draft",
         "authority": "CCCBR",
         "canonical": "",
@@ -203,6 +206,14 @@ def build_toc_subsections(article: etree._Element, source_stem: str, page_item: 
     return tuple(subsections)
 
 
+def document_identity(document: ContentDocument) -> tuple[str, str, str]:
+    return (document.volume, document.page_item.number, document.page_item.title.casefold())
+
+
+def document_preference(document: ContentDocument) -> tuple[int, str]:
+    return (1 if is_revision_stem(document.source_stem) else 0, document.source_stem)
+
+
 def load_content_documents(content_dir: Path, xml_dir: Path) -> list[ContentDocument]:
     """Load ordering metadata for rendered TeX content files."""
     parser = etree.XMLParser(remove_blank_text=False)
@@ -240,6 +251,8 @@ def load_content_documents(content_dir: Path, xml_dir: Path) -> list[ContentDocu
         subtitle = read_text(info.find("db:subtitle", NS) if info is not None else None)
         source_meta = info.find("db:othermeta[@role='source-path']", NS) if info is not None else None
         source_stem = Path(read_text(source_meta)).stem or tex_file.stem
+        if source_stem in EXCLUDED_PDF_STEMS:
+            continue
         volume, sort_key, page_number = classify_content_document(source_stem, title, subtitle)
         page_item = TocItem(
             label_id=f"mrf-page-{source_stem}",
@@ -259,7 +272,14 @@ def load_content_documents(content_dir: Path, xml_dir: Path) -> list[ContentDocu
             )
         )
 
-    return documents
+    deduped_documents: dict[tuple[str, str, str], ContentDocument] = {}
+    for document in documents:
+        identity = document_identity(document)
+        existing = deduped_documents.get(identity)
+        if existing is None or document_preference(document) < document_preference(existing):
+            deduped_documents[identity] = document
+
+    return list(deduped_documents.values())
 
 
 def partition_content_documents(content_dir: Path, xml_dir: Path) -> dict[str, list[ContentDocument]]:
@@ -322,10 +342,13 @@ def build_cover_lines(volume_name: str) -> tuple[str, str]:
     return ("Framework for Method Ringing", "")
 
 
-def build_layout_commands(layout_mode: str, include_details: bool) -> str:
+def build_layout_commands(layout_mode: str, include_details: bool, volume_name: str) -> str:
     layout_command = r"\MRFSetContentLayoutTable" if layout_mode == "table" else r"\MRFSetContentLayoutNarrative"
     details_command = r"\MRFShowDetails" if include_details else r"\MRFHideDetails"
-    return "\n".join([layout_command, details_command])
+    commands = [layout_command, details_command]
+    if volume_name == "appendices":
+        commands.append(r"\renewcommand{\MRFHeaderText}{Central Council Framework for Method Ringing - Appendices}")
+    return "\n".join(commands)
 
 
 def generate_master_tex(
@@ -343,14 +366,14 @@ def generate_master_tex(
 ) -> None:
     """Generate a styled master TeX file for one framework volume."""
     metadata = extract_metadata_from_xml(Path(xml_dir)) if xml_dir else {}
-    edition = metadata.get("edition", "1.00")
+    edition = metadata.get("edition", "1")
     authority = metadata.get("authority", "CCCBR")
     implementation_date = metadata.get("implementation_date", "")
     edition_text = f"Edition {edition}"
     cover_title, cover_suffix = build_cover_lines(volume_name)
     contents = build_contents_page(content_documents)
     includes = build_includes(content_documents)
-    layout_commands = build_layout_commands(layout_mode, include_details)
+    layout_commands = build_layout_commands(layout_mode, include_details, volume_name)
 
     tex_content = rf"""\input{{{preamble_path}}}
 
@@ -375,7 +398,7 @@ def generate_master_tex(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate a master LaTeX file for a framework volume.")
-    parser.add_argument("version_name", help="Version identifier (e.g., version1, version2)")
+    parser.add_argument("version_name", help="Edition identifier (e.g., edition2; legacy version2 ids are also accepted)")
     parser.add_argument("volume_name", help="Volume name (e.g., main, main-full, appendices)")
     parser.add_argument("output", help="Path to the output master .tex file")
     parser.add_argument("--preamble", default="../../../templates/docbook-preamble.tex", help="Path to preamble template")

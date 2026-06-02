@@ -4,6 +4,9 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+import re
 import shutil
 import subprocess
 import sys
@@ -12,9 +15,10 @@ from pathlib import Path
 from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).parent))
-from convert_docbook_to_html import build_html
+from convert_docbook_to_html import SidebarPage, SidebarSubsection, VersionOption, build_html
 from convert_docbook_to_latex import build_document
-from generate_master_latex import generate_master_tex, partition_content_documents
+from generate_master_latex import classify_content_document, generate_master_tex, partition_content_documents
+from publishing_paths import edition_output_dir, is_revision_stem, normalize_version_id, source_site_dir
 
 NS = {
     "db": "http://docbook.org/ns/docbook",
@@ -23,6 +27,18 @@ NS = {
 }
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+METADATA_XML_ROOT = REPO_ROOT / "xml"
+
+
+@dataclass(frozen=True)
+class VersionMetadata:
+    version_id: str
+    version_name: str
+    status: str
+    edition_label: str
+    approval_date: str | None = None
+    superseded_date: str | None = None
+    state: str | None = None
 
 
 def find_inkscape() -> str | None:
@@ -61,7 +77,7 @@ def find_headless_browser() -> str | None:
 def resolve_asset_path(fileref: str, version: str, version_xml_dir: Path) -> Path | None:
     """Resolve a DocBook image reference to a real repository file."""
     candidates = [
-        REPO_ROOT / version / fileref,
+        REPO_ROOT / source_site_dir(version) / fileref,
         version_xml_dir / fileref,
         REPO_ROOT / fileref,
     ]
@@ -167,20 +183,312 @@ def stage_latex_assets(version: str, article: etree._Element, version_xml_dir: P
         copy_if_stale(source, destination)
 
 
-def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, tex_output_dir: Path, html_only: bool = False) -> bool:
+def read_version_metadata(version_id: str, version_xml_dir: Path) -> VersionMetadata:
+    index_xml = version_xml_dir / "index.xml"
+    if not index_xml.exists():
+        return VersionMetadata(
+            version_id=version_id,
+            version_name=version_id,
+            status="draft",
+            edition_label=version_id,
+            state="draft",
+        )
+
+    article = etree.parse(str(index_xml), etree.XMLParser(remove_blank_text=False)).getroot()
+    version_name = article.get(f"{{{NS['mrf']}}}framework-version", version_xml_dir.name)
+    status = article.get(f"{{{NS['mrf']}}}status", "draft")
+    edition_label = article.get(f"{{{NS['mrf']}}}edition-label", "")
+    approval_date = article.get(f"{{{NS['mrf']}}}approval-date")
+    superseded_date = article.get(f"{{{NS['mrf']}}}superseded-date")
+    state = article.get(f"{{{NS['mrf']}}}edition-state") or article.get(f"{{{NS['mrf']}}}version-state")
+
+    info = article.find("db:info", NS)
+    if info is not None:
+        for release in info.findall("db:releaseinfo", NS):
+            role = (release.get("role") or "").strip()
+            value = (release.text or "").strip()
+            if role in {"implementation-date", "approval-date"} and value and not approval_date:
+                approval_date = value
+            elif role == "superseded-date" and value and not superseded_date:
+                superseded_date = value
+
+    if not edition_label:
+        if re.fullmatch(r"\d+(?:\.0+)?", version_name):
+            edition_label = f"Edition {version_name.split('.', 1)[0]}"
+        else:
+            edition_label = version_name
+
+    return VersionMetadata(
+        version_id=version_id,
+        version_name=version_name,
+        status=status,
+        edition_label=edition_label,
+        approval_date=approval_date,
+        superseded_date=superseded_date,
+        state=state,
+    )
+
+
+def version_key(version_name: str) -> tuple[int, ...]:
+    digits = re.findall(r"\d+", version_name)
+    if not digits:
+        return (0,)
+    return tuple(int(part) for part in digits)
+
+
+def parse_display_date(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    for fmt in ("%Y-%m-%d", "%d %B %Y", "%d %b %Y", "%B %d, %Y", "%b %d, %Y"):
+        try:
+            return datetime.strptime(value, fmt)
+        except ValueError:
+            continue
+    return None
+
+
+def format_display_date(value: str | None) -> str | None:
+    parsed = parse_display_date(value)
+    if parsed is None:
+        return value
+    return parsed.strftime("%d %b %Y")
+
+
+def resolve_version_dir(version_id: str, source_xml_dir: Path, metadata_xml_dir: Path) -> Path | None:
+    generated_dir = source_xml_dir / version_id
+    if generated_dir.exists():
+        return generated_dir
+    metadata_dir = metadata_xml_dir / version_id
+    if metadata_dir.exists():
+        return metadata_dir
+    return None
+
+
+def resolve_asset_version(version_id: str, source_xml_dir: Path, metadata_xml_dir: Path) -> str:
+    source_dir = source_site_dir(version_id)
+    if (REPO_ROOT / source_dir).exists():
+        return source_dir
+
+    version_ids = {path.name for path in source_xml_dir.iterdir() if path.is_dir()}
+    if metadata_xml_dir.exists():
+        version_ids.update(path.name for path in metadata_xml_dir.iterdir() if path.is_dir())
+
+    approved_versions: list[VersionMetadata] = []
+    for candidate in version_ids:
+        if not (REPO_ROOT / source_site_dir(candidate)).exists():
+            continue
+        candidate_dir = resolve_version_dir(candidate, source_xml_dir, metadata_xml_dir)
+        if candidate_dir is None:
+            continue
+        metadata = read_version_metadata(candidate, candidate_dir)
+        if metadata.status != "draft":
+            approved_versions.append(metadata)
+
+    if approved_versions:
+        return max(approved_versions, key=lambda meta: version_key(meta.version_name)).version_id
+    return version_id
+
+
+def build_version_options(current_version: str, source_xml_dir: Path, metadata_xml_dir: Path) -> list[VersionOption]:
+    version_ids = {path.name for path in source_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists()}
+    if metadata_xml_dir.exists():
+        version_ids.update(path.name for path in metadata_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists())
+
+    metadata_by_id: dict[str, VersionMetadata] = {}
+    for version_id in sorted(version_ids):
+        version_dir = resolve_version_dir(version_id, source_xml_dir, metadata_xml_dir)
+        if version_dir is None:
+            continue
+        metadata_by_id[version_id] = read_version_metadata(version_id, version_dir)
+
+    approved_versions = [meta for meta in metadata_by_id.values() if meta.status != "draft"]
+    latest_approved = max(approved_versions, key=lambda meta: version_key(meta.version_name)).version_id if approved_versions else None
+    latest_approved_date = (
+        parse_display_date(metadata_by_id[latest_approved].approval_date) if latest_approved and metadata_by_id.get(latest_approved) else None
+    )
+
+    for version_id, meta in list(metadata_by_id.items()):
+        if meta.status == "draft" or version_id == latest_approved or meta.superseded_date or latest_approved_date is None:
+            continue
+        metadata_by_id[version_id] = VersionMetadata(
+            version_id=meta.version_id,
+            version_name=meta.version_name,
+            status=meta.status,
+            edition_label=meta.edition_label,
+            approval_date=meta.approval_date,
+            superseded_date=(latest_approved_date - timedelta(days=1)).strftime("%Y-%m-%d"),
+            state=meta.state,
+        )
+
+    def metadata_order(meta: VersionMetadata) -> tuple[int, tuple[int, ...]]:
+        state = meta.state
+        if not state:
+            if meta.status == "draft":
+                state = "draft"
+            elif meta.version_id == latest_approved:
+                state = "latest-approved"
+            else:
+                state = "superseded"
+        rank = {"latest-approved": 0, "superseded": 1, "draft": 2}.get(state, 9)
+        return (rank, tuple(-value for value in version_key(meta.version_name)))
+
+    options: list[VersionOption] = []
+    for meta in sorted(metadata_by_id.values(), key=metadata_order):
+        state = meta.state
+        if not state:
+            if meta.status == "draft":
+                state = "draft"
+            elif meta.version_id == latest_approved:
+                state = "latest-approved"
+            else:
+                state = "superseded"
+
+        if state == "draft":
+            label = f"Draft - {meta.edition_label} (unapproved)"
+        elif state == "latest-approved":
+            approved = format_display_date(meta.approval_date)
+            label = f"Latest Approved - {meta.edition_label}" + (f" (approved {approved})" if approved else "")
+        else:
+            approved = format_display_date(meta.approval_date)
+            superseded = format_display_date(meta.superseded_date)
+            if approved and superseded:
+                dates = f" ({approved} - {superseded})"
+            elif approved:
+                dates = f" ({approved})"
+            else:
+                dates = ""
+            label = f"Superseded - {meta.edition_label}{dates}"
+
+        href = "index.html" if meta.version_id == current_version else f"../{edition_output_dir(meta.version_id)}/index.html"
+        options.append(VersionOption(label=label, button_label=label, href=href, active=meta.version_id == current_version))
+
+    return options
+
+
+def sidebar_page_label(page_number: str, title: str) -> str:
+    appendix_match = re.fullmatch(r"Appendix ([A-Z])\.", page_number)
+    if appendix_match:
+        return f"{appendix_match.group(1)}. {title}"
+    if page_number:
+        return f"{page_number} {title}"
+    return title
+
+
+def extract_sidebar_subsections(article: etree._Element) -> tuple[SidebarSubsection, ...]:
+    section_nodes = article.findall("db:glossary/db:glossdiv", NS)
+    if not section_nodes:
+        section_nodes = article.findall("db:section", NS)
+
+    subsections: list[SidebarSubsection] = []
+    for section_node in section_nodes:
+        title = (section_node.findtext("db:title", default="", namespaces=NS) or "").strip()
+        if not re.match(r"^[A-Z]\.\s+", title):
+            continue
+        section_id = section_node.get("{http://www.w3.org/XML/1998/namespace}id", "").strip()
+        if not section_id:
+            continue
+        subsections.append(SidebarSubsection(title=title, href=f"#{section_id}"))
+    return tuple(subsections)
+
+
+def sidebar_identity(page_number: str, title: str) -> tuple[str, str]:
+    return (page_number, title.casefold())
+
+
+def sidebar_preference(source_stem: str, current_stem: str) -> tuple[int, int, str]:
+    return (
+        0 if source_stem == current_stem else 1,
+        1 if is_revision_stem(source_stem) else 0,
+        source_stem,
+    )
+
+
+def build_sidebar_pages(version_xml_dir: Path, current_stem: str) -> list[SidebarPage]:
+    parser = etree.XMLParser(remove_blank_text=False)
+    page_entries: list[tuple[int, tuple[int, int, str, str], str, str, str, SidebarPage]] = []
+
+    for xml_file in sorted(version_xml_dir.glob("*.xml")):
+        article = etree.parse(str(xml_file), parser).getroot()
+        info = article.find("db:info", NS)
+        title = (info.findtext("db:title", default="", namespaces=NS) or "").strip() if info is not None else ""
+        subtitle = (info.findtext("db:subtitle", default="", namespaces=NS) or "").strip() if info is not None else ""
+        volume, sort_key, page_number = classify_content_document(xml_file.stem, title, subtitle)
+        if not page_number:
+            continue
+
+        page_entries.append(
+            (
+                0 if volume == "main" else 1,
+                sort_key,
+                xml_file.stem,
+                page_number,
+                title,
+                SidebarPage(
+                    label=sidebar_page_label(page_number, title),
+                    href=f"{xml_file.stem}.html",
+                    active=xml_file.stem == current_stem,
+                    subsections=extract_sidebar_subsections(article) if xml_file.stem == current_stem else (),
+                ),
+            )
+        )
+
+    deduped_entries: dict[tuple[int, tuple[str, str]], tuple[int, tuple[int, int, str, str], str, SidebarPage]] = {}
+    for volume_order, sort_key, source_stem, page_number, title, page in page_entries:
+        identity = (volume_order, sidebar_identity(page_number, title))
+        existing = deduped_entries.get(identity)
+        candidate = (volume_order, sort_key, source_stem, page)
+        if existing is None or sidebar_preference(source_stem, current_stem) < sidebar_preference(existing[2], current_stem):
+            deduped_entries[identity] = candidate
+
+    sorted_pages = [page for _, _, _, page in sorted(deduped_entries.values(), key=lambda entry: (entry[0], entry[1]))]
+    appendix_header_inserted = False
+    sidebar_pages: list[SidebarPage] = []
+    for page in sorted_pages:
+        if not appendix_header_inserted and page.label.startswith(tuple(f"{letter}." for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")):
+            sidebar_pages.append(
+                SidebarPage(
+                    label=page.label,
+                    href=page.href,
+                    active=page.active,
+                    appendices_header=True,
+                    subsections=page.subsections,
+                )
+            )
+            appendix_header_inserted = True
+            continue
+        sidebar_pages.append(page)
+
+    return sidebar_pages
+
+
+def render_version(
+    version: str,
+    source_xml_dir: Path,
+    metadata_xml_dir: Path,
+    html_output_dir: Path,
+    tex_output_dir: Path,
+    html_only: bool = False,
+) -> bool:
     """Render a single version to HTML and LaTeX."""
     print(f"\nProcessing {version}...")
 
-    version_xml_dir = source_xml_dir / version
-    if not version_xml_dir.exists():
+    version_xml_dir = resolve_version_dir(version, source_xml_dir, metadata_xml_dir)
+    if version_xml_dir is None or not version_xml_dir.exists():
         print(f"  Error: XML directory not found: {version_xml_dir}")
         return False
 
     # Create output directories
-    html_dir = html_output_dir / version
-    tex_dir = tex_output_dir / version
+    html_dir = html_output_dir / edition_output_dir(version)
+    tex_dir = tex_output_dir / edition_output_dir(version)
     html_dir.mkdir(parents=True, exist_ok=True)
     tex_dir.mkdir(parents=True, exist_ok=True)
+    asset_version = resolve_asset_version(version, source_xml_dir, metadata_xml_dir)
+    html_asset_prefix = f"../../../{asset_version}"
+    version_options = build_version_options(version, source_xml_dir, metadata_xml_dir)
+    sidebar_pages_by_stem = {
+        xml_file.stem: build_sidebar_pages(version_xml_dir, xml_file.stem)
+        for xml_file in sorted(version_xml_dir.glob("*.xml"))
+    }
 
     # Get all XML files
     xml_files = sorted(version_xml_dir.glob("*.xml"))
@@ -200,15 +508,17 @@ def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, te
             article = tree.getroot()
 
             # HTML output
-            if not html_only:
-                html_output = html_dir / f"{xml_file.stem}.html"
-                html_text = build_html(
-                    article,
-                    asset_prefix="",
-                    page_href=html_output.name,
-                    switch_version_href="../index.html"
-                )
-                html_output.write_text(html_text, encoding="utf-8", newline="\n")
+            html_output = html_dir / f"{xml_file.stem}.html"
+            html_text = build_html(
+                article,
+                asset_prefix=html_asset_prefix,
+                page_href=html_output.name,
+                switch_version_href="../index.html",
+                sidebar_pages=sidebar_pages_by_stem.get(xml_file.stem),
+                version_options=version_options,
+                home_href="index.html",
+            )
+            html_output.write_text(html_text, encoding="utf-8", newline="\n")
 
             # LaTeX output
             tex_output = tex_dir / f"{xml_file.stem}.tex"
@@ -264,37 +574,49 @@ def render_version(version: str, source_xml_dir: Path, html_output_dir: Path, te
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Render DocBook XML to HTML and LaTeX")
-    parser.add_argument("--version", action="append", dest="versions", default=[], help="Specific versions to render (can specify multiple times)")
+    parser.add_argument(
+        "--edition",
+        "--version",
+        action="append",
+        dest="editions",
+        default=[],
+        help="Specific editions to render (e.g., edition2). Legacy version2 ids are also accepted.",
+    )
     parser.add_argument("--html-only", action="store_true", help="Only render HTML, skip LaTeX")
     parser.add_argument("--pdf-only", action="store_true", help="Skip rendering, only generate PDFs (not supported in this script)")
     parser.add_argument("--source-xml", default="generated/xml", help="Source XML directory")
+    parser.add_argument("--metadata-xml", default="xml", help="Committed XML stubs/metadata directory")
     parser.add_argument("--output-html", default="generated/html", help="Output HTML directory")
     parser.add_argument("--output-tex", default="generated/tex", help="Output TeX directory")
     args = parser.parse_args()
 
     xml_dir = Path(args.source_xml)
+    metadata_xml_dir = Path(args.metadata_xml)
     if not xml_dir.exists():
         print(f"Error: XML directory not found: {xml_dir}")
         return 1
 
     # If no versions specified, process all subdirectories
-    if not args.versions:
-        versions = sorted([d.name for d in xml_dir.iterdir() if d.is_dir() and d.name != "__pycache__"])
+    if not args.editions:
+        versions = {d.name for d in xml_dir.iterdir() if d.is_dir() and d.name != "__pycache__" and (d / "index.xml").exists()}
+        if metadata_xml_dir.exists():
+            versions.update(d.name for d in metadata_xml_dir.iterdir() if d.is_dir() and d.name != "__pycache__" and (d / "index.xml").exists())
+        versions = sorted(normalize_version_id(version) for version in versions)
     else:
-        versions = args.versions
+        versions = [normalize_version_id(version) for version in args.editions]
 
     if not versions:
-        print("No versions found to process")
+        print("No editions found to process")
         return 1
 
-    print(f"Rendering {len(versions)} version(s): {', '.join(versions)}")
+    print(f"Rendering {len(versions)} edition(s): {', '.join(edition_output_dir(version) for version in versions)}")
 
     for version in versions:
-        if not render_version(version, xml_dir, Path(args.output_html), Path(args.output_tex), args.html_only):
+        if not render_version(version, xml_dir, metadata_xml_dir, Path(args.output_html), Path(args.output_tex), args.html_only):
             print(f"Error: Failed to render {version}")
             return 1
 
-    print("\nAll versions rendered successfully")
+    print("\nAll editions rendered successfully")
     return 0
 
 

@@ -7,7 +7,7 @@ import argparse
 import re
 from pathlib import Path
 
-from bs4 import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 from lxml import etree
 
 
@@ -119,11 +119,11 @@ def append_text(elem: etree._Element, text: str | None) -> None:
 
 def trim_para_whitespace(para: etree._Element) -> None:
     if para.text is not None:
-        para.text = para.text.strip()
+        para.text = para.text.lstrip() if len(para) else para.text.strip()
     if len(para):
         last = para[-1]
         if last.tail is not None:
-            last.tail = last.tail.strip()
+            last.tail = last.tail.rstrip()
 
 
 def strip_leading_pattern(elem: etree._Element, pattern: re.Pattern[str]) -> bool:
@@ -251,6 +251,59 @@ def direct_columns(row: Tag) -> list[Tag]:
     return [child for child in row.find_all("div", recursive=False)]
 
 
+def make_table_text_cell(text: str, bold: bool = False) -> Tag:
+    soup = BeautifulSoup("", "lxml")
+    div = soup.new_tag("div")
+    if text:
+        if bold:
+            strong = soup.new_tag("b")
+            strong.string = text
+            div.append(strong)
+        else:
+            div.string = text
+    return div
+
+
+def nested_row_columns(column: Tag) -> list[Tag]:
+    for child in column.find_all("div", recursive=False):
+        if "row" in (child.get("class") or []):
+            return direct_columns(child)
+    return []
+
+
+def bootstrap_table_columns(row: Tag) -> list[Tag]:
+    columns = direct_columns(row)
+    if not columns:
+        return []
+
+    if "flex-nowrap" in (row.get("class") or []):
+        normalized = list(columns)
+    elif len(columns) == 2:
+        left_nested = nested_row_columns(columns[0])
+        right_columns = nested_row_columns(columns[1])
+        if not left_nested:
+            return []
+        left_columns = left_nested or [columns[0]]
+        normalized = left_columns + right_columns
+    else:
+        return []
+
+    first_text = clean_text(normalized[0].get_text(" ", strip=True)) if normalized else ""
+    if first_text == "LH Code" and len(normalized) == 8:
+        normalized = [normalized[0], make_table_text_cell("")] + normalized[1:]
+    elif "flex-nowrap" in (row.get("class") or []) and normalized:
+        first_is_bold = normalized[0].find(["b", "strong"]) is not None
+        split_values = first_text.split()
+        if len(split_values) == 2:
+            normalized = [
+                make_table_text_cell(split_values[0], bold=first_is_bold),
+                make_table_text_cell(split_values[1], bold=first_is_bold),
+                *normalized[1:],
+            ]
+
+    return normalized
+
+
 def extract_heading_text(main: Tag) -> str:
     heading = main.find("h2")
     return clean_text(heading.get_text(" ", strip=True) if heading else "")
@@ -321,11 +374,11 @@ def infer_version_defaults(
 
     if inferred_framework_version is None:
         if inferred_version_id == "v1":
-            inferred_framework_version = "1.0"
+            inferred_framework_version = "1"
         elif inferred_version_id == "v2":
-            inferred_framework_version = "2.0"
+            inferred_framework_version = "2"
         else:
-            inferred_framework_version = "0.0"
+            inferred_framework_version = "0"
 
     if inferred_implementation_date is None:
         if inferred_version_id == "v1":
@@ -353,7 +406,7 @@ def infer_version_defaults(
 
 
 def parse_number(text: str) -> str | None:
-    match = re.match(r"^(\d+)\.\s*$", clean_text(text))
+    match = re.match(r"^(\d+(?:\.\d+)*)\.?\s*$", clean_text(text))
     return match.group(1) if match else None
 
 
@@ -435,6 +488,7 @@ def make_article(
     root.set(qname("status", "mrf"), status)
     root.set(qname("authority", "mrf"), "CCCBR")
     root.set(qname("framework-version", "mrf"), framework_version)
+    root.set(qname("edition-label", "mrf"), f"Edition {framework_version}")
 
     info = etree.SubElement(root, qname("info"))
     etree.SubElement(info, qname("title")).text = title
@@ -536,6 +590,13 @@ def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_pre
             render_inline(child, elem, None)
         return
 
+    if tag == "u":
+        elem = etree.SubElement(parent, qname("emphasis"))
+        elem.set("role", "underline")
+        for child in node.children:
+            render_inline(child, elem, None)
+        return
+
     if tag in {"code", "tt"}:
         elem = etree.SubElement(parent, qname("literal"))
         append_text(elem, node.get_text(" ", strip=True))
@@ -607,31 +668,197 @@ def add_list(tag: Tag, parent: etree._Element) -> None:
         trim_para_whitespace(para)
 
 
+def add_table_cell(column: Tag, row_elem: etree._Element) -> None:
+    entry = etree.SubElement(row_elem, qname("entry"))
+    segments = split_nodes_on_breaks(column)
+    if not segments:
+        return
+
+    added_content = False
+    for segment in segments:
+        para = etree.SubElement(entry, qname("para"))
+        for child in segment:
+            render_inline(child, para, None)
+        if not clean_text("".join(para.itertext())) and len(para) == 0:
+            entry.remove(para)
+            continue
+        trim_para_whitespace(para)
+        added_content = True
+
+    if not added_content:
+        return
+
+
+def is_bootstrap_table_row(row: Tag) -> bool:
+    return bool(bootstrap_table_columns(row))
+
+
+def is_bootstrap_table_header_row(row: Tag) -> bool:
+    nonempty_columns = [column for column in bootstrap_table_columns(row) if clean_text(column.get_text(" ", strip=True))]
+    if not nonempty_columns:
+        return False
+    if all(column.find(["b", "strong"]) is not None for column in nonempty_columns):
+        return True
+    return "background-color" in (row.get("style") or "").lower()
+
+
+def bootstrap_table_role(rows: list[Tag]) -> str | None:
+    for row in rows:
+        columns = bootstrap_table_columns(row)
+        if not columns:
+            continue
+        if clean_text(columns[0].get_text(" ", strip=True)) == "LH Code":
+            return "leadhead-codes"
+    return None
+
+
+def html_table_rows(table: Tag) -> list[Tag]:
+    sections = table.find_all(["thead", "tbody"], recursive=False)
+    if sections:
+        rows: list[Tag] = []
+        for section in sections:
+            rows.extend(section.find_all("tr", recursive=False))
+        return rows
+    return table.find_all("tr", recursive=False)
+
+
+def add_html_table(table: Tag, parent: etree._Element) -> None:
+    rows = html_table_rows(table)
+    if not rows:
+        return
+
+    cols = max(len(row.find_all(["th", "td"], recursive=False)) for row in rows)
+    doc_table = etree.SubElement(parent, qname("informaltable"))
+    tgroup = etree.SubElement(doc_table, qname("tgroup"))
+    tgroup.set("cols", str(cols))
+
+    body = etree.SubElement(tgroup, qname("tbody"))
+    for row in rows:
+        row_elem = etree.SubElement(body, qname("row"))
+        cells = row.find_all(["th", "td"], recursive=False)
+        for cell in cells:
+            add_table_cell(cell, row_elem)
+        for _ in range(len(cells), cols):
+            add_table_cell(make_table_text_cell(""), row_elem)
+
+
+def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> None:
+    children = list(container.children)
+    child_index = 0
+    first_para = True
+
+    while child_index < len(children):
+        child = children[child_index]
+        if isinstance(child, Comment):
+            child_index += 1
+            continue
+        if isinstance(child, NavigableString):
+            if clean_text(str(child)):
+                para = etree.SubElement(parent, qname("para"))
+                append_text(para, str(child))
+                trim_para_whitespace(para)
+            child_index += 1
+            continue
+
+        if not isinstance(child, Tag):
+            child_index += 1
+            continue
+
+        child_name = child.name.lower()
+        if child_name == "div" and "collapse" in (child.get("class") or []):
+            child_index += 1
+            continue
+
+        if is_bootstrap_table_row(child):
+            table_rows: list[Tag] = []
+            while child_index < len(children):
+                row_candidate = children[child_index]
+                if isinstance(row_candidate, Comment):
+                    child_index += 1
+                    continue
+                if isinstance(row_candidate, NavigableString):
+                    if clean_text(str(row_candidate)):
+                        break
+                    child_index += 1
+                    continue
+                if not isinstance(row_candidate, Tag) or not is_bootstrap_table_row(row_candidate):
+                    break
+                table_rows.append(row_candidate)
+                child_index += 1
+            add_bootstrap_table(table_rows, parent)
+            first_para = False
+            continue
+
+        if child_name == "p":
+            labels = strip_prefix_labels if first_para else None
+            added = add_paragraph(child, parent, labels)
+            first_para = first_para and not added
+        elif child_name in {"ul", "ol"}:
+            add_list(child, parent)
+            first_para = False
+        elif child_name == "img":
+            add_media_from_img(child, parent)
+            first_para = False
+        elif child_name == "table":
+            add_html_table(child, parent)
+            first_para = False
+        else:
+            nested_images = child.find_all("img", recursive=False)
+            if nested_images:
+                for image in nested_images:
+                    add_media_from_img(image, parent)
+                first_para = False
+
+        child_index += 1
+
+
+def add_bootstrap_table(rows: list[Tag], parent: etree._Element) -> None:
+    if not rows:
+        return
+
+    normalized_rows = [bootstrap_table_columns(row) for row in rows]
+    cols = max(len(columns) for columns in normalized_rows)
+    table = etree.SubElement(parent, qname("informaltable"))
+    role = bootstrap_table_role(rows)
+    if role:
+        table.set("role", role)
+    tgroup = etree.SubElement(table, qname("tgroup"))
+    tgroup.set("cols", str(cols))
+
+    header_rows: list[Tag] = []
+    body_rows: list[Tag] = []
+    seen_body = False
+    for row in rows:
+        if not seen_body and is_bootstrap_table_header_row(row):
+            header_rows.append(row)
+        else:
+            seen_body = True
+            body_rows.append(row)
+
+    if header_rows:
+        thead = etree.SubElement(tgroup, qname("thead"))
+        for columns in normalized_rows[: len(header_rows)]:
+            row_elem = etree.SubElement(thead, qname("row"))
+            for column in columns:
+                add_table_cell(column, row_elem)
+            for _ in range(len(columns), cols):
+                add_table_cell(make_table_text_cell(""), row_elem)
+
+    tbody = etree.SubElement(tgroup, qname("tbody"))
+    for columns in normalized_rows[len(header_rows) :]:
+        row_elem = etree.SubElement(tbody, qname("row"))
+        for column in columns:
+            add_table_cell(column, row_elem)
+        for _ in range(len(columns), cols):
+            add_table_cell(make_table_text_cell(""), row_elem)
+
+
 def add_media_from_img(tag: Tag, parent: etree._Element) -> None:
     render_inline(tag, parent, None)
 
 
 def add_main_blocks(container: Tag, glossdef: etree._Element) -> None:
-    for child in container.children:
-        if isinstance(child, NavigableString):
-            if clean_text(str(child)):
-                para = etree.SubElement(glossdef, qname("para"))
-                append_text(para, str(child))
-                trim_para_whitespace(para)
-            continue
-
-        if not isinstance(child, Tag):
-            continue
-
-        if child.name.lower() == "div" and "collapse" in (child.get("class") or []):
-            continue
-
-        if child.name.lower() == "p":
-            add_paragraph(child, glossdef)
-        elif child.name.lower() in {"ul", "ol"}:
-            add_list(child, glossdef)
-        elif child.name.lower() == "img":
-            add_media_from_img(child, glossdef)
+    add_child_blocks(container, glossdef)
 
 
 def collapse_segments(collapse: Tag) -> list[list[Tag]]:
@@ -677,22 +904,10 @@ def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | N
         target = parent
         strip_labels = None
 
-    first_para = True
+    wrapper = BeautifulSoup("", "lxml").new_tag("div")
     for child in segment:
-        child_name = child.name.lower()
-        if child_name == "p":
-            labels = strip_labels if first_para else None
-            added = add_paragraph(child, target, labels)
-            first_para = first_para and not added
-        elif child_name in {"ul", "ol"}:
-            add_list(child, target)
-        elif child_name == "img":
-            add_media_from_img(child, target)
-        else:
-            nested_images = child.find_all("img", recursive=False)
-            if nested_images:
-                for image in nested_images:
-                    add_media_from_img(image, target)
+        wrapper.append(child)
+    add_child_blocks(wrapper, target, strip_labels)
 
 
 def add_detail_blocks(container: Tag, glossdef: etree._Element) -> None:
@@ -812,8 +1027,12 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
     current_container: etree._Element | None = None
     current_numbered_list: etree._Element | None = None
 
-    for row_index, row in enumerate(rows, start=1):
+    row_index = 0
+    while row_index < len(rows):
+        row = rows[row_index]
+        display_index = row_index + 1
         if looks_like_heading_row(row):
+            row_index += 1
             continue
 
         if looks_like_section_header_row(row):
@@ -821,7 +1040,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             marker = clean_text(columns[0].find("h5").get_text(" ", strip=True) if columns and columns[0].find("h5") else "")
             label = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
             section_title = f"{marker} {label}".strip()
-            current_section = build_section(article, section_title, row.get("id") or f"section-{row_index}")
+            current_section = build_section(article, section_title, row.get("id") or f"section-{display_index}")
             current_container = current_section
             current_numbered_list = None
             content_col = columns[1] if len(columns) > 1 else None
@@ -832,15 +1051,32 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
                         heading.decompose()
                     if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
                         add_content_blocks(clone, current_section)
+            row_index += 1
+            continue
+
+        if is_bootstrap_table_row(row):
+            if current_section is None:
+                current_section = build_section(article, page_title, row.get("id") or f"section-{display_index}")
+                current_container = current_section
+                current_numbered_list = None
+
+            table_rows: list[Tag] = []
+            while row_index < len(rows) and is_bootstrap_table_row(rows[row_index]):
+                table_rows.append(rows[row_index])
+                row_index += 1
+            add_bootstrap_table(table_rows, current_section)
+            current_container = current_section
+            current_numbered_list = None
             continue
 
         columns = direct_columns(row)
         kind, number, _term_col, content_col = infer_row_kind(columns)
         if kind == "skip" or content_col is None:
+            row_index += 1
             continue
 
         if current_section is None:
-            current_section = build_section(article, page_title, row.get("id") or f"section-{row_index}")
+            current_section = build_section(article, page_title, row.get("id") or f"section-{display_index}")
             current_container = current_section
             current_numbered_list = None
 
@@ -856,12 +1092,14 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
                     current_section,
                     label,
                     content_col,
-                    row.get("id") or f"{current_section.get('{http://www.w3.org/XML/1998/namespace}id')}-row-{row_index}",
+                    row.get("id") or f"{current_section.get('{http://www.w3.org/XML/1998/namespace}id')}-row-{display_index}",
                 )
+            row_index += 1
             continue
 
         target = current_container if current_container is not None else current_section
         add_content_blocks(content_col, target)
+        row_index += 1
 
 
 def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id: str | None, status: str | None, framework_version: str | None) -> None:
@@ -976,9 +1214,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("-i", "--input", required=True, help="Input HTML file or directory")
     parser.add_argument("-o", "--output", required=True, help="Output XML file or directory")
     parser.add_argument("--base-uri", required=True, help="Base URI for canonical links")
-    parser.add_argument("--version-id", default=None, help="Version identifier such as v1 or v2")
+    parser.add_argument("--edition-id", "--version-id", dest="version_id", default=None, help="Edition identifier such as edition1 or edition2")
     parser.add_argument("--status", default=None, help="Publication status such as definitive or historic")
-    parser.add_argument("--framework-version", default=None, help="Framework version label such as 2.0")
+    parser.add_argument("--framework-edition", "--framework-version", dest="framework_version", default=None, help="Framework edition number such as 2")
     return parser.parse_args()
 
 

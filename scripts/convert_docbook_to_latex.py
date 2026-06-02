@@ -100,6 +100,8 @@ def render_inline(node: etree._Element) -> str:
             return rf"\textbf{{{body}}}"
         if role == "italic":
             return rf"\textit{{{body}}}"
+        if role == "underline":
+            return rf"\underline{{{body}}}"
         return rf"\emph{{{body}}}"
 
     if name in {"link", "ulink"}:
@@ -168,6 +170,72 @@ def render_mediaobject(node: etree._Element, asset_root: str) -> str:
     return rf"\MRFContentImage{{{build_image_include(image.get('fileref', ''), image.get('width') or image.get('contentwidth'), asset_root)}}}"
 
 
+def render_table_cell(node: etree._Element, asset_root: str, *, monospace: bool) -> str:
+    parts: list[str] = []
+    if node.text and collapse_ws(node.text, strip=True):
+        parts.append(escape_latex(collapse_ws(node.text, strip=True)))
+
+    for child in node:
+        name = local_name(child)
+        if name == "para":
+            parts.append(render_mixed(child))
+        elif name in {"itemizedlist", "orderedlist"}:
+            parts.append(render_list(child, asset_root))
+        elif name == "mediaobject":
+            parts.append(render_mediaobject(child, asset_root))
+        elif name == "informaltable":
+            parts.append(render_informaltable(child, asset_root))
+        else:
+            parts.append(render_inline(child))
+        if child.tail and collapse_ws(child.tail, strip=True):
+            parts.append(escape_latex(collapse_ws(child.tail, strip=True)))
+
+    body = r" \\ ".join(part for part in parts if part).strip()
+    if monospace and body:
+        return rf"\texttt{{{body}}}"
+    return body
+
+
+def render_informaltable(node: etree._Element, asset_root: str) -> str:
+    role = (node.get("role") or "").strip()
+    monospace = False
+    font_size = r"\footnotesize" if role == "leadhead-codes" else r"\small"
+    tabcolsep = "2pt" if role == "leadhead-codes" else "4pt"
+    tgroup = node.find("db:tgroup", NS)
+    table_root = tgroup if tgroup is not None else node
+    head_rows = table_root.findall("db:thead/db:row", NS)
+    body_rows = table_root.findall("db:tbody/db:row", NS)
+    if not head_rows and not body_rows:
+        body_rows = table_root.findall("db:row", NS)
+
+    max_cols = 0
+    for row in [*head_rows, *body_rows]:
+        max_cols = max(max_cols, len(row.findall("db:entry", NS)))
+    if max_cols == 0:
+        return ""
+
+    lines = [
+        r"\begingroup",
+        font_size,
+        rf"\setlength{{\tabcolsep}}{{{tabcolsep}}}",
+        rf"\begin{{longtable}}{{@{{}}{'l' * max_cols}@{{}}}}",
+    ]
+
+    def append_rows(rows: list[etree._Element], *, header: bool) -> None:
+        for row in rows:
+            cells = [render_table_cell(entry, asset_root, monospace=monospace) for entry in row.findall("db:entry", NS)]
+            cells.extend([""] * (max_cols - len(cells)))
+            if header:
+                cells = [rf"\textbf{{{cell}}}" if cell else "" for cell in cells]
+            lines.append(" & ".join(cells) + r" \\")
+            lines.append(r"\hline")
+
+    append_rows(head_rows, header=True)
+    append_rows(body_rows, header=False)
+    lines.extend([r"\end{longtable}", r"\endgroup"])
+    return "\n".join(lines)
+
+
 def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
     ordered = local_name(node) == "orderedlist"
     numeration = (node.get("numeration") or "").lower()
@@ -186,6 +254,8 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
                 detail = render_detail(child, asset_root)
                 if detail:
                     parts.append(detail)
+            elif child_name == "informaltable":
+                parts.append(render_informaltable(child, asset_root))
         if ordered and numeration == "loweralpha":
             label = f"{chr(ord('a') + index - 1)})"
         else:
@@ -213,11 +283,14 @@ def render_detail(node: etree._Element, asset_root: str) -> str:
     name = local_name(node)
     if name == "mediaobject":
         return render_mediaobject(node, asset_root)
+    if name == "informaltable":
+        return render_informaltable(node, asset_root)
     if name in {"itemizedlist", "orderedlist"}:
         return render_list(node, asset_root)
     body = render_detail_body(node, asset_root)
     if not body:
         return ""
+
     if name == "example":
         return rf"\MRFExample{{{body}}}"
     if name == "note":
@@ -248,6 +321,17 @@ def render_glossdef(glossdef: etree._Element | None, asset_root: str) -> str:
     return "\n".join(render_glossdef_blocks(glossdef, asset_root))
 
 
+def render_block(node: etree._Element, asset_root: str) -> str:
+    name = local_name(node)
+    if name == "para":
+        return rf"\MRFBodyPara{{{render_mixed(node)}}}"
+    if name in {"example", "note", "mediaobject", "itemizedlist", "orderedlist", "informaltable"}:
+        return render_detail(node, asset_root)
+    if name == "section":
+        return render_narrative_section(node, asset_root, "", node.get("{http://www.w3.org/XML/1998/namespace}id", ""))
+    return ""
+
+
 def render_block_children(node: etree._Element, asset_root: str, *, skip_titles: bool = True, skip_entries: bool = True) -> list[str]:
     blocks: list[str] = []
     for child in node:
@@ -256,20 +340,16 @@ def render_block_children(node: etree._Element, asset_root: str, *, skip_titles:
             continue
         if skip_entries and name == "glossentry":
             continue
-        if name == "para":
-            blocks.append(rf"\MRFBodyPara{{{render_mixed(child)}}}")
-        elif name in {"example", "note", "mediaobject", "itemizedlist", "orderedlist"}:
-            detail = render_detail(child, asset_root)
-            if detail:
-                blocks.append(detail)
-        elif name == "section":
-            blocks.append(render_narrative_section(child, asset_root, "", child.get("{http://www.w3.org/XML/1998/namespace}id", "")))
+        block = render_block(child, asset_root)
+        if block:
+            blocks.append(block)
     return [block for block in blocks if block]
 
 
 def render_entry_row(entry: etree._Element, asset_root: str) -> str:
     number = entry.get(f"{{{NS['mrf']}}}number", "")
-    display_number = number.split(".")[-1] + "." if "." in number else number
+    local_number = re.sub(r"^[A-Z]\.", "", number)
+    display_number = local_number if local_number.endswith(".") else local_number + "." if local_number else ""
     term = escape_latex(read_text(entry.find("db:glossterm", NS)))
     body = render_glossdef(entry.find("db:glossdef", NS), asset_root)
 
@@ -326,21 +406,36 @@ def build_document(article: etree._Element, asset_root: str) -> str:
                         rf"{{mrf-subsection-{source_stem}-{index}}}"
                     )
 
-            section_blocks.extend(render_block_children(glossdiv, asset_root))
+            entry_rows: list[str] = []
 
-            entry_rows = [
-                render_entry_row(entry, asset_root)
-                for entry in glossdiv.findall("db:glossentry", NS)
-            ]
-            entry_rows = [row for row in entry_rows if row]
-            if entry_rows:
-                section_blocks.extend(
-                    [
-                        r"\begin{MRFEntries}",
-                        *entry_rows,
-                        r"\end{MRFEntries}",
-                    ]
-                )
+            def flush_entries() -> None:
+                nonlocal entry_rows
+                if entry_rows:
+                    section_blocks.extend(
+                        [
+                            r"\begin{MRFEntries}",
+                            *entry_rows,
+                            r"\end{MRFEntries}",
+                        ]
+                    )
+                    entry_rows = []
+
+            for child in glossdiv:
+                name = local_name(child)
+                if name == "title":
+                    continue
+                if name == "glossentry":
+                    row = render_entry_row(child, asset_root)
+                    if row:
+                        entry_rows.append(row)
+                    continue
+
+                flush_entries()
+                block = render_block(child, asset_root)
+                if block:
+                    section_blocks.append(block)
+
+            flush_entries()
 
             if section_blocks:
                 sections.append("\n".join(section_blocks))
