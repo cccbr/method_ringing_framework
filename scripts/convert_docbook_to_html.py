@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -45,6 +46,16 @@ class SidebarPage:
     subsections: tuple[SidebarSubsection, ...] = ()
 
 
+@dataclass(frozen=True)
+class SchemaVersionContext:
+    edition_label: str
+    status: str
+    version_url: str
+    approval_date: str | None = None
+    superseded_by_label: str | None = None
+    superseded_by_url: str | None = None
+
+
 def local_name(elem: etree._Element) -> str:
     return etree.QName(elem).localname
 
@@ -72,6 +83,11 @@ def read_text(elem: etree._Element | None) -> str:
     if elem is None:
         return ""
     return collapse_ws("".join(elem.itertext()), strip=True)
+
+
+def schema_fragment(text: str) -> str:
+    cleaned = re.sub(r"[^A-Za-z0-9]+", "-", text).strip("-").lower()
+    return cleaned or "item"
 
 
 def normalize_inline_spacing(text: str) -> str:
@@ -464,10 +480,12 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
     )
 
     content = indent_block("\n".join(main_blocks), 28) if main_blocks else ""
+    entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id", "")
+    row_id_attr = f' id="{html.escape(entry_id, quote=True)}"' if entry_id else ""
 
     if term and number:
         return (
-            "                    <div class=\"row\">\n"
+            f"                    <div class=\"row\"{row_id_attr}>\n"
             "                        <div class=\"col-sm-1\">\n"
             f"                            {html.escape(number)}\n"
             "                        </div>\n"
@@ -482,7 +500,7 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
 
     if term and not number:
         return (
-            "                    <div class=\"row\">\n"
+            f"                    <div class=\"row\"{row_id_attr}>\n"
             "                        <div class=\"col-xl-2 col-sm-3\">\n"
             f"                            {html.escape(term)}{toggle_html}\n"
             "                        </div>\n"
@@ -494,7 +512,7 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
 
     if not term and number:
         return (
-            "                    <div class=\"row\">\n"
+            f"                    <div class=\"row\"{row_id_attr}>\n"
             "                        <div class=\"col-sm-1\">\n"
             f"                            {html.escape(number)}\n"
             "                        </div>\n"
@@ -559,8 +577,6 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
 
 def render_section(section: etree._Element, asset_prefix: str) -> str:
     title = read_text(section.find("db:title", NS))
-    marker, name = split_section_title(title)
-    section_id = section.get("{http://www.w3.org/XML/1998/namespace}id", "")
     main_blocks: list[str] = []
     detail_groups: list[str] = []
     section_seed = context_seed(section, title or "section")
@@ -587,6 +603,11 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
             if rendered:
                 main_blocks.append(rendered)
     content_html = "\n".join(main_blocks)
+    if not title:
+        return content_html
+
+    marker, name = split_section_title(title)
+    section_id = section.get("{http://www.w3.org/XML/1998/namespace}id", "")
     toggle_html, detail_html = build_detail_collapse(
         section_id or title,
         detail_groups,
@@ -666,6 +687,98 @@ def render_version_switcher(version_options: Sequence[VersionOption] | None, swi
     )
 
 
+def build_schema_metadata(
+    article: etree._Element,
+    *,
+    page_url: str,
+    title: str,
+    description: str,
+    schema_version: SchemaVersionContext | None,
+) -> str:
+    if not page_url:
+        return ""
+
+    publisher_id = "https://cccbr.org.uk/#publisher"
+    graph: list[dict[str, object]] = [
+        {
+            "@id": publisher_id,
+            "@type": "Organization",
+            "name": "CCCBR",
+            "url": "https://cccbr.org.uk/",
+        }
+    ]
+
+    version_label = schema_version.edition_label if schema_version else article.get(f"{{{NS['mrf']}}}edition-label", "")
+    version_url = schema_version.version_url if schema_version else page_url
+    term_set_id = f"{version_url}#defined-term-set-{schema_fragment(version_label or title)}"
+
+    creative_work: dict[str, object] = {
+        "@id": page_url,
+        "@type": "CreativeWork",
+        "name": title,
+        "url": page_url,
+        "description": description,
+        "publisher": {"@id": publisher_id},
+    }
+    if version_label:
+        creative_work["version"] = version_label
+    if schema_version:
+        creative_work["isBasedOn"] = {"@id": term_set_id}
+        if schema_version.approval_date:
+            creative_work["datePublished"] = schema_version.approval_date
+        if schema_version.superseded_by_url:
+            creative_work["supersededBy"] = {"@id": schema_version.superseded_by_url}
+    graph.append(creative_work)
+
+    term_set: dict[str, object] = {
+        "@id": term_set_id,
+        "@type": "DefinedTermSet",
+        "name": f"Framework for Method Ringing {version_label}".strip(),
+        "url": version_url,
+        "publisher": {"@id": publisher_id},
+        "isPartOf": {"@id": page_url},
+    }
+    if version_label:
+        term_set["version"] = version_label
+    if schema_version and schema_version.superseded_by_url:
+        term_set["supersededBy"] = {"@id": schema_version.superseded_by_url}
+
+    term_ids: list[dict[str, str]] = []
+    for entry in article.findall(".//db:glossentry", NS):
+        term = read_text(entry.find("db:glossterm", NS))
+        if not term:
+            continue
+
+        entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id") or f"term-{schema_fragment(term)}"
+        term_url = f"{page_url}#{entry_id}"
+        term_object: dict[str, object] = {
+            "@id": term_url,
+            "@type": "DefinedTerm",
+            "name": term,
+            "url": term_url,
+            "inDefinedTermSet": {"@id": term_set_id},
+        }
+
+        number = entry.get(f"{{{NS['mrf']}}}number", "").strip()
+        if number:
+            term_object["termCode"] = number
+
+        glossdef = entry.find("db:glossdef", NS)
+        description_node = glossdef.find("db:para", NS) if glossdef is not None else None
+        term_description = read_text(description_node)
+        if term_description:
+            term_object["description"] = term_description
+
+        graph.append(term_object)
+        term_ids.append({"@id": term_url})
+
+    if term_ids:
+        term_set["hasDefinedTerm"] = term_ids
+    graph.append(term_set)
+
+    return json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=4)
+
+
 def build_html(
     article: etree._Element,
     asset_prefix: str,
@@ -675,6 +788,7 @@ def build_html(
     sidebar_pages: Sequence[SidebarPage] | None = None,
     version_options: Sequence[VersionOption] | None = None,
     home_href: str | None = None,
+    schema_version: SchemaVersionContext | None = None,
 ) -> str:
     info = article.find("db:info", NS)
     title = read_text(info.find("db:title", NS) if info is not None else None)
@@ -707,6 +821,18 @@ def build_html(
         )
     version_switcher = render_version_switcher(version_options, switch_version_href)
     page_home_href = home_href or join_href(asset_prefix, "index.html")
+    schema_json = build_schema_metadata(
+        article,
+        page_url=canonical or page_href,
+        title=title,
+        description=description,
+        schema_version=schema_version,
+    )
+    schema_block = (
+        f'    <script type="application/ld+json">\n{indent_block(schema_json, 8)}\n    </script>\n'
+        if schema_json
+        else ""
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -727,6 +853,7 @@ def build_html(
     <title>Framework for Method Ringing - {html.escape(title)}</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
     <link href="{html.escape(join_href(asset_prefix, 'mrf.css'), quote=True)}" rel="stylesheet">
+{schema_block.rstrip()}
 </head>
 <body>
     <header>

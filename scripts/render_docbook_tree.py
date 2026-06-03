@@ -15,10 +15,10 @@ from pathlib import Path
 from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).parent))
-from convert_docbook_to_html import SidebarPage, SidebarSubsection, VersionOption, build_html
+from convert_docbook_to_html import SchemaVersionContext, SidebarPage, SidebarSubsection, VersionOption, build_html
 from convert_docbook_to_latex import build_document
 from generate_master_latex import classify_content_document, generate_master_tex, partition_content_documents
-from publishing_paths import edition_output_dir, is_revision_stem, normalize_version_id, source_site_dir
+from publishing_paths import discover_version_ids, edition_output_dir, is_revision_stem, normalize_version_id, source_site_dir
 
 NS = {
     "db": "http://docbook.org/ns/docbook",
@@ -264,6 +264,31 @@ def resolve_version_dir(version_id: str, source_xml_dir: Path, metadata_xml_dir:
     return None
 
 
+def load_version_metadata(source_xml_dir: Path, metadata_xml_dir: Path) -> dict[str, VersionMetadata]:
+    version_ids = {path.name for path in source_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists()}
+    if metadata_xml_dir.exists():
+        version_ids.update(path.name for path in metadata_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists())
+
+    metadata_by_id: dict[str, VersionMetadata] = {}
+    for version_id in sorted(version_ids):
+        version_dir = resolve_version_dir(version_id, source_xml_dir, metadata_xml_dir)
+        if version_dir is None:
+            continue
+        metadata_by_id[version_id] = read_version_metadata(version_id, version_dir)
+    return metadata_by_id
+
+
+def approved_successor_map(metadata_by_id: dict[str, VersionMetadata]) -> dict[str, VersionMetadata]:
+    approved = sorted(
+        (meta for meta in metadata_by_id.values() if meta.status != "draft"),
+        key=lambda meta: version_key(meta.version_name),
+    )
+    return {
+        approved[index].version_id: approved[index + 1]
+        for index in range(len(approved) - 1)
+    }
+
+
 def resolve_asset_version(version_id: str, source_xml_dir: Path, metadata_xml_dir: Path) -> str:
     source_dir = source_site_dir(version_id)
     if (REPO_ROOT / source_dir).exists():
@@ -290,16 +315,7 @@ def resolve_asset_version(version_id: str, source_xml_dir: Path, metadata_xml_di
 
 
 def build_version_options(current_version: str, source_xml_dir: Path, metadata_xml_dir: Path) -> list[VersionOption]:
-    version_ids = {path.name for path in source_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists()}
-    if metadata_xml_dir.exists():
-        version_ids.update(path.name for path in metadata_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists())
-
-    metadata_by_id: dict[str, VersionMetadata] = {}
-    for version_id in sorted(version_ids):
-        version_dir = resolve_version_dir(version_id, source_xml_dir, metadata_xml_dir)
-        if version_dir is None:
-            continue
-        metadata_by_id[version_id] = read_version_metadata(version_id, version_dir)
+    metadata_by_id = load_version_metadata(source_xml_dir, metadata_xml_dir)
 
     approved_versions = [meta for meta in metadata_by_id.values() if meta.status != "draft"]
     latest_approved = max(approved_versions, key=lambda meta: version_key(meta.version_name)).version_id if approved_versions else None
@@ -363,6 +379,29 @@ def build_version_options(current_version: str, source_xml_dir: Path, metadata_x
         options.append(VersionOption(label=label, button_label=label, href=href, active=meta.version_id == current_version))
 
     return options
+
+
+def build_schema_version_context(
+    current_version: str,
+    metadata_by_id: dict[str, VersionMetadata],
+) -> SchemaVersionContext | None:
+    current_meta = metadata_by_id.get(current_version)
+    if current_meta is None:
+        return None
+
+    successor = approved_successor_map(metadata_by_id).get(current_version)
+    return SchemaVersionContext(
+        edition_label=current_meta.edition_label,
+        status=current_meta.status,
+        version_url=f"https://cccbr.org.uk/{edition_output_dir(current_version)}/index.html",
+        approval_date=current_meta.approval_date,
+        superseded_by_label=successor.edition_label if successor is not None else None,
+        superseded_by_url=(
+            f"https://cccbr.org.uk/{edition_output_dir(successor.version_id)}/index.html"
+            if successor is not None
+            else None
+        ),
+    )
 
 
 def sidebar_page_label(page_number: str, title: str) -> str:
@@ -467,6 +506,7 @@ def render_version(
     metadata_xml_dir: Path,
     html_output_dir: Path,
     tex_output_dir: Path,
+    html_asset_prefix_template: str,
     html_only: bool = False,
 ) -> bool:
     """Render a single version to HTML and LaTeX."""
@@ -483,8 +523,13 @@ def render_version(
     html_dir.mkdir(parents=True, exist_ok=True)
     tex_dir.mkdir(parents=True, exist_ok=True)
     asset_version = resolve_asset_version(version, source_xml_dir, metadata_xml_dir)
-    html_asset_prefix = f"../../../{asset_version}"
+    html_asset_prefix = html_asset_prefix_template.format(
+        asset_version=asset_version,
+        version=version,
+        edition=edition_output_dir(version),
+    )
     version_options = build_version_options(version, source_xml_dir, metadata_xml_dir)
+    metadata_by_id = load_version_metadata(source_xml_dir, metadata_xml_dir)
     sidebar_pages_by_stem = {
         xml_file.stem: build_sidebar_pages(version_xml_dir, xml_file.stem)
         for xml_file in sorted(version_xml_dir.glob("*.xml"))
@@ -517,6 +562,7 @@ def render_version(
                 sidebar_pages=sidebar_pages_by_stem.get(xml_file.stem),
                 version_options=version_options,
                 home_href="index.html",
+                schema_version=build_schema_version_context(version, metadata_by_id),
             )
             html_output.write_text(html_text, encoding="utf-8", newline="\n")
 
@@ -588,6 +634,11 @@ def main() -> int:
     parser.add_argument("--metadata-xml", default="xml", help="Committed XML stubs/metadata directory")
     parser.add_argument("--output-html", default="generated/html", help="Output HTML directory")
     parser.add_argument("--output-tex", default="generated/tex", help="Output TeX directory")
+    parser.add_argument(
+        "--html-asset-prefix-template",
+        default="../../../{asset_version}",
+        help="Format string for HTML asset paths; available fields: asset_version, version, edition",
+    )
     args = parser.parse_args()
 
     xml_dir = Path(args.source_xml)
@@ -598,10 +649,7 @@ def main() -> int:
 
     # If no versions specified, process all subdirectories
     if not args.editions:
-        versions = {d.name for d in xml_dir.iterdir() if d.is_dir() and d.name != "__pycache__" and (d / "index.xml").exists()}
-        if metadata_xml_dir.exists():
-            versions.update(d.name for d in metadata_xml_dir.iterdir() if d.is_dir() and d.name != "__pycache__" and (d / "index.xml").exists())
-        versions = sorted(normalize_version_id(version) for version in versions)
+        versions = discover_version_ids(xml_dir, metadata_xml_dir)
     else:
         versions = [normalize_version_id(version) for version in args.editions]
 
@@ -612,7 +660,15 @@ def main() -> int:
     print(f"Rendering {len(versions)} edition(s): {', '.join(edition_output_dir(version) for version in versions)}")
 
     for version in versions:
-        if not render_version(version, xml_dir, metadata_xml_dir, Path(args.output_html), Path(args.output_tex), args.html_only):
+        if not render_version(
+            version,
+            xml_dir,
+            metadata_xml_dir,
+            Path(args.output_html),
+            Path(args.output_tex),
+            args.html_asset_prefix_template,
+            args.html_only,
+        ):
             print(f"Error: Failed to render {version}")
             return 1
 

@@ -15,16 +15,14 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from publishing_paths import edition_output_dir, normalize_version_id, source_site_dir
+from publishing_paths import discover_version_ids, edition_output_dir, normalize_version_id, source_site_dir
 
 
 def discover_render_versions() -> list[str]:
-    versions = {
-        path.name for path in Path("generated/xml").iterdir() if path.is_dir() and (path / "index.xml").exists()
-    } if Path("generated/xml").exists() else set()
-    if Path("xml").exists():
-        versions.update(path.name for path in Path("xml").iterdir() if path.is_dir() and (path / "index.xml").exists())
-    return sorted(versions)
+    versions = discover_version_ids(Path("generated/xml"), Path("xml"))
+    if versions:
+        return versions
+    return discover_version_ids(Path("."), required_file="index.html")
 
 
 def run_command(cmd: list[str], description: str, cwd: Optional[Path] = None) -> bool:
@@ -127,8 +125,7 @@ def generate_pdfs(versions: list[str], no_cleanup: bool = False) -> bool:
     print("PDF Generation Complete!")
     print("=" * 60)
     for v in versions:
-        pdf_path = Path(f"generated/pdf/{edition_output_dir(v)}/framework-{v}.pdf")
-        if pdf_path.exists():
+        for pdf_path in sorted((Path("generated/pdf") / edition_output_dir(v)).glob(f"framework-{v}*.pdf")):
             size_mb = pdf_path.stat().st_size / 1000000
             print(f"[OK] {pdf_path} ({size_mb:.2f} MB)")
 
@@ -182,12 +179,15 @@ Examples:
 
     # Determine versions to build
     if not args.editions:
-        args.editions = discover_render_versions() or ["version1", "version2"]
+        args.editions = discover_render_versions()
     else:
         args.editions = [normalize_version_id(v) for v in args.editions]
 
     # Validate versions
     args.editions = [normalize_version_id(v) for v in args.editions]
+    if not args.editions:
+        print("[ERROR] No editions found. Add version*/edition* source folders or XML folders with index.xml.")
+        return 1
 
     print("\n" + "=" * 60)
     print(f"Building editions: {', '.join(edition_output_dir(v) for v in args.editions)}")

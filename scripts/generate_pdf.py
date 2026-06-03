@@ -10,7 +10,7 @@ import sys
 import time
 from pathlib import Path
 
-from publishing_paths import edition_output_dir, normalize_version_id
+from publishing_paths import discover_version_ids, edition_output_dir, normalize_version_id
 
 
 def find_latex_engine() -> tuple[str, str] | tuple[None, None]:
@@ -61,8 +61,8 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
 
     document_name = master_tex.stem
 
-    # Run pdflatex twice (first for document, second for TOC)
-    for pass_num in [1, 2]:
+    # Run the engine enough times for labels and contents page references to settle.
+    for pass_num in [1, 2, 3]:
         print(f"    Pass {pass_num}...")
         try:
             result = subprocess.run(
@@ -79,7 +79,7 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
             )
             # MiKTeX engines may return non-zero exit codes due to background checks.
             # Check if PDF was created instead
-            if pass_num == 2:
+            if pass_num == 3:
                 pdf_file = aux_dir / f"{document_name}.pdf"
                 if not pdf_file.exists():
                     print(f"    Error: PDF not created")
@@ -147,6 +147,16 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
     return True
 
 
+def discover_tex_editions(tex_dir: Path) -> list[str]:
+    """Discover rendered editions that have master TeX files ready for PDF compilation."""
+    editions: list[str] = []
+    for version in discover_version_ids(tex_dir, required_file=None):
+        version_tex_dir = tex_dir / edition_output_dir(version)
+        if any(version_tex_dir.glob(f"framework-{version}-*.tex")) or (version_tex_dir / f"framework-{version}.tex").exists():
+            editions.append(version)
+    return editions
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate PDFs from TeX files")
     parser.add_argument("--edition", "--version", action="append", dest="editions", help="Edition ids to compile (e.g., edition2). Legacy version2 ids are also accepted.")
@@ -157,12 +167,19 @@ def main() -> int:
 
     args = parser.parse_args()
 
+    tex_dir = Path(args.tex_dir)
+    pdf_output_dir = Path(args.pdf_dir)
+    templates_dir = Path(args.templates_dir)
+
     if not args.editions:
-        args.editions = ["version1", "version2"]
+        args.editions = discover_tex_editions(tex_dir)
     else:
         args.editions = [normalize_version_id(version) for version in args.editions]
 
     args.editions = [normalize_version_id(version) for version in args.editions]
+    if not args.editions:
+        print(f"Error: no edition TeX folders found in {tex_dir}")
+        return 1
 
     # Find LaTeX engine
     engine_name, latex_cmd = find_latex_engine()
@@ -171,10 +188,6 @@ def main() -> int:
         return 1
 
     print(f"Using {engine_name}: {latex_cmd}")
-
-    tex_dir = Path(args.tex_dir)
-    pdf_output_dir = Path(args.pdf_dir)
-    templates_dir = Path(args.templates_dir)
 
     if not tex_dir.exists():
         print(f"Error: TeX directory not found: {tex_dir}")

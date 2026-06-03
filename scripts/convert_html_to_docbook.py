@@ -285,6 +285,20 @@ def bootstrap_table_columns(row: Tag) -> list[Tag]:
             return []
         left_columns = left_nested or [columns[0]]
         normalized = left_columns + right_columns
+    elif len(columns) == 3:
+        first_classes = set(columns[0].get("class") or [])
+        second_classes = set(columns[1].get("class") or [])
+        third_classes = set(columns[2].get("class") or [])
+        first_text = clean_text(columns[0].get_text(" ", strip=True))
+        if (
+            not first_text
+            and "col-sm-1" in first_classes
+            and "col-sm-5" in second_classes
+            and "col-sm-6" in third_classes
+        ):
+            normalized = [columns[1], columns[2]]
+        else:
+            return []
     else:
         return []
 
@@ -305,7 +319,7 @@ def bootstrap_table_columns(row: Tag) -> list[Tag]:
 
 
 def extract_heading_text(main: Tag) -> str:
-    heading = main.find("h2")
+    heading = main.find("h2") or main.find("h3")
     return clean_text(heading.get_text(" ", strip=True) if heading else "")
 
 
@@ -318,6 +332,13 @@ def split_framework_title(title_text: str) -> tuple[str, str]:
 
 
 def derive_title(soup: BeautifulSoup, heading_text: str, html_path: Path) -> str:
+    if heading_text:
+        normalized_heading = clean_text(heading_text)
+        if soup.title and soup.title.string:
+            _, page_title = split_framework_title(soup.title.string)
+            if clean_text(page_title).lower() in {"faq", "faqs"} and normalized_heading.lower() != clean_text(page_title).lower():
+                match = re.match(r"^(?:\d+\.|Appendix\s+[A-Z]\.|[A-Z]\.)\s+(.*)$", normalized_heading)
+                return clean_text(match.group(1) if match else normalized_heading)
     if soup.title and soup.title.string:
         _, page_title = split_framework_title(soup.title.string)
         if page_title:
@@ -361,6 +382,8 @@ def infer_version_defaults(
             inferred_version_id = "v1"
         elif "version2" in parts:
             inferred_version_id = "v2"
+        elif "version3" in parts:
+            inferred_version_id = "v3"
         else:
             inferred_version_id = "v0"
 
@@ -377,6 +400,8 @@ def infer_version_defaults(
             inferred_framework_version = "1"
         elif inferred_version_id == "v2":
             inferred_framework_version = "2"
+        elif inferred_version_id == "v3":
+            inferred_framework_version = "3"
         else:
             inferred_framework_version = "0"
 
@@ -533,14 +558,16 @@ def get_or_create_glossary(article: etree._Element, framework_title: str) -> etr
     return glossary
 
 
-def build_section(parent: etree._Element, title_text: str, section_id: str | None = None) -> etree._Element:
+def build_section(parent: etree._Element, title_text: str | None, section_id: str | None = None) -> etree._Element:
     root = parent.getroottree().getroot() if parent.getroottree() is not None else parent
     section = etree.SubElement(parent, qname("section"))
     section.set(
         "{http://www.w3.org/XML/1998/namespace}id",
         unique_xml_id(root, section_id or title_text or "section"),
     )
-    etree.SubElement(section, qname("title")).text = clean_text(title_text)
+    cleaned_title = clean_text(title_text)
+    if cleaned_title:
+        etree.SubElement(section, qname("title")).text = cleaned_title
     return section
 
 
@@ -632,7 +659,12 @@ def paragraph_is_image_only(p_tag: Tag) -> bool:
     return bool(children) and all(isinstance(child, Tag) and child.name.lower() == "img" for child in children)
 
 
-def add_paragraph(tag: Tag, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> bool:
+def add_paragraph(
+    tag: Tag,
+    parent: etree._Element,
+    strip_prefix_labels: set[str] | None = None,
+    strip_marker: re.Pattern[str] | None = None,
+) -> bool:
     if paragraph_is_image_only(tag):
         for image in tag.find_all("img", recursive=False):
             render_inline(image, parent, None)
@@ -648,6 +680,12 @@ def add_paragraph(tag: Tag, parent: etree._Element, strip_prefix_labels: set[str
     if not clean_text("".join(para.itertext())) and len(para) == 0:
         parent.remove(para)
         return False
+
+    if strip_marker:
+        strip_leading_pattern(para, strip_marker)
+        if not clean_text("".join(para.itertext())) and len(para) == 0:
+            parent.remove(para)
+            return False
 
     trim_para_whitespace(para)
 
@@ -697,7 +735,7 @@ def is_bootstrap_table_header_row(row: Tag) -> bool:
     nonempty_columns = [column for column in bootstrap_table_columns(row) if clean_text(column.get_text(" ", strip=True))]
     if not nonempty_columns:
         return False
-    if all(column.find(["b", "strong"]) is not None for column in nonempty_columns):
+    if all(column.find(["b", "strong"]) is not None for column in nonempty_columns) and all(column.find("a") is None for column in nonempty_columns):
         return True
     return "background-color" in (row.get("style") or "").lower()
 
@@ -742,6 +780,52 @@ def add_html_table(table: Tag, parent: etree._Element) -> None:
             add_table_cell(make_table_text_cell(""), row_elem)
 
 
+def paragraph_list_marker(tag: Tag) -> tuple[str, re.Pattern[str]] | None:
+    if tag.name.lower() != "p":
+        return None
+    return parse_list_marker(clean_text(tag.get_text(" ", strip=True)))
+
+
+def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index: int, parent: etree._Element) -> int:
+    first_child = children[start_index]
+    if not isinstance(first_child, Tag):
+        return 0
+
+    first_marker = paragraph_list_marker(first_child)
+    if first_marker is None:
+        return 0
+
+    numeration, marker_pattern = first_marker
+    matched_tags: list[Tag] = []
+    index = start_index
+    while index < len(children):
+        child = children[index]
+        if isinstance(child, Comment):
+            index += 1
+            continue
+        if isinstance(child, NavigableString):
+            if clean_text(str(child)):
+                break
+            index += 1
+            continue
+        if not isinstance(child, Tag):
+            break
+        marker = paragraph_list_marker(child)
+        if marker is None or marker[0] != numeration:
+            break
+        matched_tags.append(child)
+        index += 1
+
+    if len(matched_tags) < 2:
+        return 0
+
+    ordered_list = build_ordered_list(parent, numeration)
+    for tag in matched_tags:
+        list_item = etree.SubElement(ordered_list, qname("listitem"))
+        add_paragraph(tag, list_item, strip_marker=marker_pattern)
+    return index - start_index
+
+
 def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> None:
     children = list(container.children)
     child_index = 0
@@ -767,6 +851,12 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
         child_name = child.name.lower()
         if child_name == "div" and "collapse" in (child.get("class") or []):
             child_index += 1
+            continue
+
+        converted_paragraphs = add_paragraph_marker_list(children, child_index, parent)
+        if converted_paragraphs:
+            child_index += converted_paragraphs
+            first_para = False
             continue
 
         if is_bootstrap_table_row(child):
@@ -1056,7 +1146,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
 
         if is_bootstrap_table_row(row):
             if current_section is None:
-                current_section = build_section(article, page_title, row.get("id") or f"section-{display_index}")
+                current_section = build_section(article, None, row.get("id") or f"section-{display_index}")
                 current_container = current_section
                 current_numbered_list = None
 
@@ -1076,7 +1166,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             continue
 
         if current_section is None:
-            current_section = build_section(article, page_title, row.get("id") or f"section-{display_index}")
+            current_section = build_section(article, None, row.get("id") or f"section-{display_index}")
             current_container = current_section
             current_numbered_list = None
 

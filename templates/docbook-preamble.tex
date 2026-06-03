@@ -8,9 +8,9 @@
   \renewcommand{\familydefault}{\sfdefault}
 \else
   \usepackage{fontspec}
-  \setmainfont{Calibri}
-  \setsansfont{Calibri}
-  \setmonofont{Consolas}
+  \IfFontExistsTF{Calibri}{\setmainfont{Calibri}}{\setmainfont{Carlito}}
+  \IfFontExistsTF{Calibri}{\setsansfont{Calibri}}{\setsansfont{Carlito}}
+  \IfFontExistsTF{Consolas}{\setmonofont{Consolas}}{\setmonofont{DejaVu Sans Mono}}
 \fi
 \usepackage{array}
 \usepackage{graphicx}
