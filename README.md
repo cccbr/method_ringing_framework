@@ -1,37 +1,38 @@
-# Method Ringing Framework
+# Framework for Method Ringing Repository
 
-This branch is establishing an XML-led publishing workflow for the Framework.
+This repository holds the documents that form the Central Council for Church Bell Ringer's Framework for Method Ringing.
 
-The existing `version1\`, `version2\` and `version3\` website trees remain the published source material used to bootstrap the XML, but the goal of this work is to make the XML the maintained editorial source going forward. From that XML, the repository can regenerate both website HTML and PDF document outputs.
+The first version of the framework was approved by the Central Council Executive on 24 February 2019. It was issued to members and affiliated societies on 28 February 2019 giving notice of 1 June 2019 as its effective implementation date.
 
-## Workflow
+The principal branches are:
 
-1. **Bootstrap or refresh XML from the existing website HTML**
-   - `scripts\convert_html_to_docbook.py` converts a single HTML page into DocBook XML.
-   - `scripts\convert_html_tree_to_xml.py` converts a whole versioned HTML tree into XML.
-   - This step is used to capture the current website content in structured XML form.
+* `master` - Documents for downloading
+* `gh-pages` - Public web pages of the framework accessible at https://cccbr.github.io/method_ringing_framework/
 
-2. **Maintain the Framework in XML**
-   - The intention of this branch is that future content maintenance happens in XML rather than by hand-editing the published HTML trees.
-   - The checked-in XML under `xml\` is the long-term source to edit and review.
+## XML-led publishing workflow
 
-3. **Regenerate website HTML from XML**
-   - `scripts\convert_docbook_to_html.py` renders a single XML file back to website HTML.
-   - `scripts\render_docbook_tree.py` renders a whole XML tree to HTML and LaTeX.
-   - Edition folders are discovered automatically, so additional `versionN\` / `editionN\` XML folders are picked up without hard-coded script updates.
+The repository is moving to XML as the maintained editorial source.
 
-4. **Generate PDF document versions from XML**
-   - `scripts\convert_docbook_to_latex.py` renders a single XML file to LaTeX.
-   - `scripts\generate_master_latex.py` assembles volume-level LaTeX documents.
-   - `scripts\generate_pdf.py` compiles the generated LaTeX into PDFs.
-   - The PDF outputs currently include:
-     - `framework-versionN-main.pdf` - main Framework volume without notes
-     - `framework-versionN-main-full.pdf` - main Framework volume with notes
-     - `framework-versionN-appendices.pdf` - appendices volume with notes
+1. Bootstrap or refresh XML from the existing website HTML with `scripts\convert_html_tree_to_xml.py`.
+2. Maintain the Framework in XML.
+3. Regenerate website HTML from XML with `scripts\render_docbook_tree.py`.
+4. Generate PDF document versions from XML with `scripts\generate_pdf.py`.
+5. Regenerate the published outputs in CI when XML changes are pushed.
 
-5. **Automate regeneration in CI**
-   - `.github\workflows\ci.yml` is intended to run on pushes to `main` that change `xml\**`, and can also be run manually.
-   - The workflow regenerates the HTML and PDF outputs from committed XML and publishes them to the `gh-pages` branch.
+The existing `version1\`, `version2\` and `version3\` website trees remain the source material used to bootstrap the XML.
+
+## Outputs
+
+- `generated\xml\` - generated DocBook XML
+- `generated\html\edition*\` - regenerated website HTML
+- `generated\tex\edition*\` - generated LaTeX
+- `generated\pdf\edition*\` - generated PDFs
+
+The PDF outputs currently include:
+
+- `framework-versionN-main.pdf` - main Framework volume without notes
+- `framework-versionN-main-full.pdf` - main Framework volume with notes
+- `framework-versionN-appendices.pdf` - appendices volume with notes
 
 ## Prerequisites for local generation
 
@@ -43,17 +44,9 @@ The existing `version1\`, `version2\` and `version3\` website trees remain the p
 
 Install the Python dependencies with:
 
-- `py -3.14 -m pip install -r requirements.txt`
+`py -3.14 -m pip install -r requirements.txt`
 
-## Local orchestration
-
-- `build.ps1` is the Windows entry point for local builds.
-- `scripts\build.py` orchestrates the full pipeline:
-  - HTML -> XML
-  - XML -> HTML / LaTeX
-  - LaTeX -> PDF
-
-Typical local commands:
+## Local commands
 
 - Full build:
   - `powershell -ExecutionPolicy Bypass -File .\build.ps1`
@@ -61,17 +54,53 @@ Typical local commands:
   - `powershell -ExecutionPolicy Bypass -File .\build.ps1 -Edition edition2`
 - Regenerate XML only:
   - `py -3.14 scripts\build.py --edition edition2 --xml-only`
-- Render committed XML to website HTML/LaTeX:
+- Render committed XML to website HTML and LaTeX:
   - `py -3.14 scripts\render_docbook_tree.py --source-xml xml --metadata-xml xml`
 - Compile PDFs from the rendered TeX:
   - `py -3.14 scripts\generate_pdf.py`
 
-## Output locations
+## Framework XML tags
 
-- Maintained XML source: `xml\`
-- Intermediate/generated XML: `generated\xml\`
-- Regenerated HTML: `generated\html\edition*\`
-- Generated LaTeX: `generated\tex\edition*\`
-- Generated PDFs: `generated\pdf\edition*\`
+The XML is DocBook 5 with a small `mrf:` metadata namespace. The main tags used are:
 
-The `generated\` tree is build output and is ignored by git.
+| Tag | Purpose |
+| --- | --- |
+| `article` | Root document element for each page |
+| `info` | Document metadata container |
+| `title` / `subtitle` | Page and section titles |
+| `edition` | Framework edition number in metadata |
+| `releaseinfo` | Status, authority, and date metadata |
+| `uri` | Canonical source URL |
+| `othermeta` | Source-path metadata |
+| `glossary` | Glossary-oriented content container |
+| `glossdiv` | Glossary or appendix subsection wrapper |
+| `glossentry` | Individual glossary entry |
+| `glossterm` | Term name in a glossary entry |
+| `glossdef` | Definition text for a glossary entry |
+| `section` | Narrative section or appendix section |
+| `para` | Paragraph text |
+| `orderedlist` | Ordered list |
+| `itemizedlist` | Unordered list |
+| `listitem` | List item |
+| `emphasis` | Bold, italic, underline, or other inline emphasis |
+| `literal` | Literal or code-style inline text |
+| `link` | Cross-reference or external link |
+| `informaltable` | Tables without formal captions |
+| `tgroup` | Table group and column definition container |
+| `thead` / `tbody` | Table header and body |
+| `row` / `entry` | Table rows and cells |
+| `example` | Example block |
+| `note` | Further explanation or technical comment block |
+| `mediaobject` / `imageobject` / `imagedata` | Embedded images and diagrams |
+
+The framework metadata attributes in the `mrf:` namespace are:
+
+| Attribute | Purpose |
+| --- | --- |
+| `mrf:status` | Publication status such as historic, definitive, or draft |
+| `mrf:authority` | Publishing authority, currently CCCBR |
+| `mrf:framework-version` | Numeric framework edition version |
+| `mrf:edition-label` | Display label such as Edition 1 |
+| `mrf:source-title` | Original source title used for generated glossary content |
+
+The generated XML also uses standard XML attributes such as `xml:id` and `xml:lang`.
