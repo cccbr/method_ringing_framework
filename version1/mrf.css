@@ -104,9 +104,13 @@ a {
         border-color: #f8f9fa;
     }
 
-    @media (min-width: 576px) and (max-width: 991.98px) {
-        .navbar {
-            position: relative;
+    @media (min-width: 992px) {
+        .navbar.fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
         }
 
         .navbar-brand {
@@ -129,16 +133,6 @@ a {
 
         .navbar > .dropdown .btn {
             width: auto;
-        }
-    }
-
-    @media (min-width: 992px) {
-        .navbar.fixed-top {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1030;
         }
     }
 
