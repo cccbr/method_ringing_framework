@@ -104,6 +104,51 @@ a {
         border-color: #f8f9fa;
     }
 
+    @media (min-width: 576px) {
+        .navbar {
+            position: relative;
+        }
+
+        .navbar-brand {
+            width: auto;
+        }
+
+        .navbar-brand + .navbar-brand {
+            margin-left: auto;
+        }
+
+        .navbar > .dropdown,
+        .navbar > small {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: 0 !important;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+        }
+
+        .navbar > .dropdown .btn {
+            width: auto;
+        }
+    }
+
+    @media (min-width: 576px) and (max-width: 991.98px) {
+        .navbar-brand + .navbar-brand {
+            display: none !important;
+        }
+
+        .navbar > .dropdown,
+        .navbar > small {
+            left: auto;
+            right: 0;
+            transform: translate(0, -50%);
+        }
+
+        .navbar > .dropdown {
+            width: auto;
+        }
+    }
+
     .nav-subsection {
         font-size: smaller;
         margin-left: 10px;
