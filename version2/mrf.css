@@ -34,6 +34,7 @@ body {
         border-bottom: 1px solid silver;
     }
 
+
 a {
     text-decoration: none;
 }
@@ -49,11 +50,7 @@ a {
             text-decoration: underline;
         }
 
-a#switchv {
-    color: white;
-}
-
-/*
+    /*
  * Navbar
 */
 
@@ -70,18 +67,6 @@ a#switchv {
     /*
  * Sidebar
  */
-
-    .sidebar {
-        position: fixed;
-        top: 55px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        padding: 20px;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        border-right: 1px solid #eee;
-    }
 
     /* Sidebar navigation */
     .sidebar {
@@ -122,6 +107,24 @@ a#switchv {
     .nav-subsection {
         font-size: smaller;
         margin-left: 10px;
+    }
+
+    .mrf-mobile-tools {
+        margin-bottom: 1rem;
+    }
+
+    .mrf-mobile-nav-collapse {
+        margin-bottom: 1rem;
+    }
+
+    .mrf-mobile-nav {
+        border: 1px solid #eee;
+        border-radius: 0.25rem;
+        padding: 0.5rem 0;
+    }
+
+    .mrf-mobile-nav .nav {
+        margin-bottom: 0;
     }
 
     /* Content */
@@ -218,7 +221,72 @@ a#switchv {
     background-color: #f8f9fa;
 }
 
+@media (min-width: 576px) {
+    .sidebar {
+        position: fixed;
+        top: 55px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        border-right: 1px solid #eee;
+    }
+}
+
 @media (max-width: 575.98px) {
+    body {
+        padding-top: 0;
+    }
+
+    .navbar.fixed-top {
+        position: static;
+    }
+
+    .navbar {
+        padding: 0.5rem 0.75rem;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        display: block;
+        width: 100%;
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 0;
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+
+    .navbar-brand + .navbar-brand {
+        display: none !important;
+    }
+
+    .navbar > img,
+    .navbar > small {
+        display: none !important;
+    }
+
+    .navbar > img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .navbar > .dropdown {
+        display: block !important;
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+        margin-left: 0 !important;
+    }
+
+    .navbar > .dropdown .btn {
+        width: 100%;
+    }
+
     .mrf-numbered-marker {
         margin-bottom: 0.25rem;
     }

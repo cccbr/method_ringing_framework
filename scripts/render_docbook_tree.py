@@ -15,7 +15,7 @@ from pathlib import Path
 from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).parent))
-from convert_docbook_to_html import SchemaVersionContext, SidebarPage, SidebarSubsection, VersionOption, build_html
+from convert_docbook_to_html import GlossaryTermLink, SchemaVersionContext, SidebarPage, SidebarSubsection, VersionOption, build_html
 from convert_docbook_to_latex import build_document
 from generate_master_latex import classify_content_document, generate_master_tex, partition_content_documents
 from publishing_paths import discover_version_ids, edition_output_dir, is_revision_stem, normalize_version_id, source_site_dir
@@ -252,6 +252,12 @@ def format_display_date(value: str | None) -> str | None:
     if parsed is None:
         return value
     return parsed.strftime("%d %b %Y")
+
+
+def read_text(elem: etree._Element | None) -> str:
+    if elem is None:
+        return ""
+    return " ".join("".join(elem.itertext()).replace("\xa0", " ").split()).strip()
 
 
 def resolve_version_dir(version_id: str, source_xml_dir: Path, metadata_xml_dir: Path) -> Path | None:
@@ -500,6 +506,29 @@ def build_sidebar_pages(version_xml_dir: Path, current_stem: str) -> list[Sideba
     return sidebar_pages
 
 
+def collect_glossary_terms(
+    xml_files: list[Path],
+    articles_by_file: dict[Path, etree._Element],
+) -> list[GlossaryTermLink]:
+    terms_by_text: dict[str, GlossaryTermLink] = {}
+    for xml_file in xml_files:
+        article = articles_by_file[xml_file]
+        page_href = f"{xml_file.stem}.html"
+        for entry in article.findall(".//db:glossentry", NS):
+            term = read_text(entry.find("db:glossterm", NS))
+            entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id", "").strip()
+            if not term or not entry_id:
+                continue
+            terms_by_text.setdefault(
+                term.casefold(),
+                GlossaryTermLink(term=term, page_href=page_href, anchor_id=entry_id),
+            )
+    return sorted(
+        terms_by_text.values(),
+        key=lambda item: (-len(item.term), item.term.casefold()),
+    )
+
+
 def render_version(
     version: str,
     source_xml_dir: Path,
@@ -541,6 +570,13 @@ def render_version(
         print(f"  No XML files found in {version_xml_dir}")
         return False
 
+    parser = etree.XMLParser(remove_blank_text=False)
+    articles_by_file = {
+        xml_file: etree.parse(str(xml_file), parser).getroot()
+        for xml_file in xml_files
+    }
+    glossary_terms = collect_glossary_terms(xml_files, articles_by_file)
+
     print(f"  Found {len(xml_files)} XML files")
 
     # Render each XML file
@@ -548,9 +584,7 @@ def render_version(
         print(f"  Rendering {xml_file.name}...")
 
         try:
-            # Parse XML
-            tree = etree.parse(str(xml_file), etree.XMLParser(remove_blank_text=False))
-            article = tree.getroot()
+            article = articles_by_file[xml_file]
 
             # HTML output
             html_output = html_dir / f"{xml_file.stem}.html"
@@ -563,6 +597,7 @@ def render_version(
                 version_options=version_options,
                 home_href="index.html",
                 schema_version=build_schema_version_context(version, metadata_by_id),
+                glossary_terms=glossary_terms,
             )
             html_output.write_text(html_text, encoding="utf-8", newline="\n")
 

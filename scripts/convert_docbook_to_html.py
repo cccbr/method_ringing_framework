@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
 
-from lxml import etree
+from lxml import etree, html as lxml_html
 
 
 NS = {
@@ -54,6 +54,13 @@ class SchemaVersionContext:
     approval_date: str | None = None
     superseded_by_label: str | None = None
     superseded_by_url: str | None = None
+
+
+@dataclass(frozen=True)
+class GlossaryTermLink:
+    term: str
+    page_href: str
+    anchor_id: str
 
 
 def local_name(elem: etree._Element) -> str:
@@ -443,6 +450,10 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
     return main_blocks, detail_groups
 
 
+def render_term_label(term: str) -> str:
+    return html.escape(term)
+
+
 def render_block_children(node: etree._Element, asset_prefix: str, *, skip_titles: bool = True, skip_entries: bool = True) -> list[str]:
     blocks: list[str] = []
     node_seed = context_seed(node, local_name(node))
@@ -482,15 +493,17 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
     content = indent_block("\n".join(main_blocks), 28) if main_blocks else ""
     entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id", "")
     row_id_attr = f' id="{html.escape(entry_id, quote=True)}"' if entry_id else ""
+    row_term_attr = f' data-glossterm="{html.escape(term, quote=True)}"' if term else ""
+    rendered_term = render_term_label(term)
 
     if term and number:
         return (
-            f"                    <div class=\"row\"{row_id_attr}>\n"
+            f"                    <div class=\"row\"{row_id_attr}{row_term_attr}>\n"
             "                        <div class=\"col-sm-1\">\n"
             f"                            {html.escape(number)}\n"
             "                        </div>\n"
             "                        <div class=\"col-xl-2 col-sm-3\">\n"
-            f"                            {html.escape(term)}{toggle_html}\n"
+            f"                            {rendered_term}{toggle_html}\n"
             "                        </div>\n"
             "                        <div class=\"col-xl-9 col-sm-8\">\n"
             f"{content}{detail_html}\n"
@@ -500,9 +513,9 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
 
     if term and not number:
         return (
-            f"                    <div class=\"row\"{row_id_attr}>\n"
+            f"                    <div class=\"row\"{row_id_attr}{row_term_attr}>\n"
             "                        <div class=\"col-xl-2 col-sm-3\">\n"
-            f"                            {html.escape(term)}{toggle_html}\n"
+            f"                            {rendered_term}{toggle_html}\n"
             "                        </div>\n"
             "                        <div class=\"col-xl-10 col-sm-9\">\n"
             f"{content}{detail_html}\n"
@@ -779,6 +792,171 @@ def build_schema_metadata(
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=4)
 
 
+def build_glossary_autolink_data(
+    glossary_terms: Sequence[GlossaryTermLink],
+    current_page_href: str,
+) -> tuple[re.Pattern[str] | None, dict[str, str]]:
+    unique_terms: dict[str, GlossaryTermLink] = {}
+    for glossary_term in glossary_terms:
+        normalized = collapse_ws(glossary_term.term, strip=True)
+        if not normalized:
+            continue
+        unique_terms.setdefault(normalized.casefold(), glossary_term)
+
+    ordered_terms = sorted(
+        unique_terms.values(),
+        key=lambda item: (-len(item.term), item.term.casefold()),
+    )
+    if not ordered_terms:
+        return None, {}
+
+    pattern = re.compile(
+        rf"(?<![A-Za-z0-9])(?:{'|'.join(re.escape(item.term) for item in ordered_terms)})(?![A-Za-z0-9])",
+        re.IGNORECASE,
+    )
+    hrefs = {
+        item.term.casefold(): (
+            f"#{item.anchor_id}" if item.page_href == current_page_href else f"{item.page_href}#{item.anchor_id}"
+        )
+        for item in ordered_terms
+    }
+    return pattern, hrefs
+
+
+def linkify_text_segments(
+    text: str,
+    pattern: re.Pattern[str],
+    hrefs_by_term: dict[str, str],
+    excluded_terms: frozenset[str],
+) -> list[tuple[str, str, str]] | None:
+    segments: list[tuple[str, str, str]] = []
+    cursor = 0
+    replaced = False
+
+    for match in pattern.finditer(text):
+        matched_text = match.group(0)
+        matched_key = matched_text.casefold()
+        href = hrefs_by_term.get(matched_key)
+        if href is None or matched_key in excluded_terms:
+            continue
+
+        if match.start() > cursor:
+            segments.append(("text", text[cursor:match.start()], ""))
+        segments.append(("link", matched_text, href))
+        cursor = match.end()
+        replaced = True
+
+    if not replaced:
+        return None
+
+    if cursor < len(text):
+        segments.append(("text", text[cursor:], ""))
+    return segments
+
+
+def replace_element_text(
+    parent: etree._Element,
+    text: str,
+    pattern: re.Pattern[str],
+    hrefs_by_term: dict[str, str],
+    excluded_terms: frozenset[str],
+) -> None:
+    segments = linkify_text_segments(text, pattern, hrefs_by_term, excluded_terms)
+    if not segments:
+        return
+
+    parent.text = None
+    previous: etree._Element | None = None
+    insert_index = 0
+    for segment_type, value, href in segments:
+        if segment_type == "text":
+            if previous is None:
+                parent.text = (parent.text or "") + value
+            else:
+                previous.tail = (previous.tail or "") + value
+            continue
+
+        anchor = etree.Element("a")
+        anchor.set("class", "text-success undrln")
+        anchor.set("href", href)
+        anchor.text = value
+        if previous is None:
+            parent.insert(insert_index, anchor)
+            insert_index += 1
+        else:
+            previous.addnext(anchor)
+        previous = anchor
+
+
+def replace_tail_text(
+    node: etree._Element,
+    text: str,
+    pattern: re.Pattern[str],
+    hrefs_by_term: dict[str, str],
+    excluded_terms: frozenset[str],
+) -> None:
+    segments = linkify_text_segments(text, pattern, hrefs_by_term, excluded_terms)
+    if not segments:
+        return
+
+    node.tail = None
+    previous = node
+    for segment_type, value, href in segments:
+        if segment_type == "text":
+            previous.tail = (previous.tail or "") + value
+            continue
+
+        anchor = etree.Element("a")
+        anchor.set("class", "text-success undrln")
+        anchor.set("href", href)
+        anchor.text = value
+        previous.addnext(anchor)
+        previous = anchor
+
+
+def autolink_html_element(
+    element: etree._Element,
+    pattern: re.Pattern[str],
+    hrefs_by_term: dict[str, str],
+    excluded_terms: frozenset[str] = frozenset(),
+) -> None:
+    tag_name = (element.tag or "").lower() if isinstance(element.tag, str) else ""
+    if tag_name in {"a", "code", "script", "style", "h1", "h2", "h3", "h4", "h5", "h6"}:
+        return
+
+    scoped_exclusions = excluded_terms
+    definition_term = collapse_ws(element.get("data-glossterm"), strip=True)
+    if definition_term:
+        scoped_exclusions = excluded_terms | {definition_term.casefold()}
+
+    original_children = list(element)
+    if element.text:
+        replace_element_text(element, element.text, pattern, hrefs_by_term, scoped_exclusions)
+
+    for child in original_children:
+        autolink_html_element(child, pattern, hrefs_by_term, scoped_exclusions)
+        if child.tail:
+            replace_tail_text(child, child.tail, pattern, hrefs_by_term, scoped_exclusions)
+
+
+def autolink_glossary_terms(
+    html_text: str,
+    glossary_terms: Sequence[GlossaryTermLink],
+    current_page_href: str,
+) -> str:
+    pattern, hrefs_by_term = build_glossary_autolink_data(glossary_terms, current_page_href)
+    if pattern is None or not hrefs_by_term:
+        return html_text
+
+    document = lxml_html.document_fromstring(html_text)
+    main = document.find(".//main")
+    if main is None:
+        return html_text
+
+    autolink_html_element(main, pattern, hrefs_by_term)
+    return lxml_html.tostring(document, encoding="unicode", method="html", doctype="<!DOCTYPE html>")
+
+
 def build_html(
     article: etree._Element,
     asset_prefix: str,
@@ -789,6 +967,7 @@ def build_html(
     version_options: Sequence[VersionOption] | None = None,
     home_href: str | None = None,
     schema_version: SchemaVersionContext | None = None,
+    glossary_terms: Sequence[GlossaryTermLink] = (),
 ) -> str:
     info = article.find("db:info", NS)
     title = read_text(info.find("db:title", NS) if info is not None else None)
@@ -834,7 +1013,7 @@ def build_html(
         else ""
     )
 
-    return f"""<!DOCTYPE html>
+    html_text = f"""<!DOCTYPE html>
 <html lang="en">
 <head prefix="og: http://ogp.me/ns/#">
     <meta charset="utf-8">
@@ -896,6 +1075,7 @@ def build_html(
 </body>
 </html>
 """
+    return autolink_glossary_terms(html_text, glossary_terms, page_href)
 
 
 def parse_args() -> argparse.Namespace:
