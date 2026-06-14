@@ -294,14 +294,17 @@ def render_list(node: etree._Element, asset_prefix: str, level: int = 0, collaps
         collapse_seed = f"list-{id(node)}"
     ordered = local_name(node) == "orderedlist"
     numeration = (node.get("numeration") or "").lower()
+    role = (node.get("role") or "").lower()
     if ordered and numeration != "loweralpha" and level == 0:
         return render_numbered_list(node, asset_prefix, level=level, collapse_seed=collapse_seed)
 
-    attrs = [f'class="mrf-list mrf-list-level-{level}"']
+    classes = [f"mrf-list", f"mrf-list-level-{level}"]
     if ordered and numeration == "loweralpha":
-        attrs.append('type="a"')
+        classes.append("mrf-loweralpha")
+    if role == "compact":
+        classes.append("mrf-list-compact")
     tag_name = "ol" if ordered else "ul"
-    open_tag = f"<{tag_name} {' '.join(attrs)}>"
+    open_tag = f'<{tag_name} class="{" ".join(classes)}">'
     close_tag = f"</{tag_name}>"
 
     items: list[str] = []
@@ -433,6 +436,7 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
     main_blocks: list[str] = []
     detail_groups: list[str] = []
     glossdef_seed = context_seed(glossdef.getparent() if glossdef.getparent() is not None else glossdef, "glossdef")
+    saw_detail_group = False
 
     for index, child in enumerate(glossdef, start=1):
         name = local_name(child)
@@ -441,8 +445,10 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
         elif name == "informaltable":
             main_blocks.append(render_informaltable(child, asset_prefix))
         elif name in {"itemizedlist", "orderedlist"}:
-            detail_groups.append(render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}"))
+            target = detail_groups if saw_detail_group else main_blocks
+            target.append(render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}"))
         elif name in {"example", "note", "mediaobject"}:
+            saw_detail_group = True
             rendered = render_detail_group(child, asset_prefix)
             if rendered:
                 detail_groups.append(rendered)

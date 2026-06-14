@@ -20,6 +20,7 @@ NS = {
 WHITESPACE_RE = re.compile(r"\s+")
 ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\d+[\.\)]\s+")
 LOWER_ALPHA_LIST_MARKER_RE = re.compile(r"^\s*[a-z]\)\s+")
+BULLET_LIST_MARKER_RE = re.compile(r"^\s*-\s+")
 NON_GLOSSTERM_LABELS = {
     "[add issue]",
     "1. introduction",
@@ -206,7 +207,7 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
     if len(segments) < 2:
         return False
 
-    markers = [parse_list_marker(segment_text(segment)) for segment in segments]
+    markers = [parse_any_list_marker(segment_text(segment)) for segment in segments]
     if not any(marker is not None for marker in markers):
         return False
 
@@ -222,14 +223,17 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
                 continue
             return False
 
-        numeration = marker[0]
-        ordered_list = build_ordered_list(parent, numeration)
+        list_kind, numeration, marker_pattern = marker
+        if list_kind == "bullet":
+            doc_list = build_unordered_list(parent, compact=True)
+        else:
+            doc_list = build_ordered_list(parent, numeration, compact=True)
         while index < len(segments):
             marker = markers[index]
-            if marker is None or marker[0] != numeration:
+            if marker is None or marker[0] != list_kind or marker[1] != numeration:
                 break
-            list_item = etree.SubElement(ordered_list, qname("listitem"))
-            add_nodes_as_para(segments[index], list_item, marker[1])
+            list_item = etree.SubElement(doc_list, qname("listitem"))
+            add_nodes_as_para(segments[index], list_item, marker_pattern)
             index += 1
             converted = True
 
@@ -440,6 +444,15 @@ def parse_list_marker(text: str) -> tuple[str, re.Pattern[str]] | None:
         return "arabic", ARABIC_LIST_MARKER_RE
     if LOWER_ALPHA_LIST_MARKER_RE.match(text):
         return "loweralpha", LOWER_ALPHA_LIST_MARKER_RE
+    return None
+
+
+def parse_any_list_marker(text: str) -> tuple[str, str, re.Pattern[str]] | None:
+    ordered = parse_list_marker(text)
+    if ordered is not None:
+        return ("ordered", ordered[0], ordered[1])
+    if BULLET_LIST_MARKER_RE.match(text):
+        return ("bullet", "bullet", BULLET_LIST_MARKER_RE)
     return None
 
 
@@ -780,10 +793,10 @@ def add_html_table(table: Tag, parent: etree._Element) -> None:
             add_table_cell(make_table_text_cell(""), row_elem)
 
 
-def paragraph_list_marker(tag: Tag) -> tuple[str, re.Pattern[str]] | None:
+def paragraph_list_marker(tag: Tag) -> tuple[str, str, re.Pattern[str]] | None:
     if tag.name.lower() != "p":
         return None
-    return parse_list_marker(clean_text(tag.get_text(" ", strip=True)))
+    return parse_any_list_marker(clean_text(tag.get_text(" ", strip=True)))
 
 
 def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index: int, parent: etree._Element) -> int:
@@ -795,7 +808,7 @@ def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index
     if first_marker is None:
         return 0
 
-    numeration, marker_pattern = first_marker
+    list_kind, numeration, marker_pattern = first_marker
     matched_tags: list[Tag] = []
     index = start_index
     while index < len(children):
@@ -811,7 +824,7 @@ def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index
         if not isinstance(child, Tag):
             break
         marker = paragraph_list_marker(child)
-        if marker is None or marker[0] != numeration:
+        if marker is None or marker[0] != list_kind or marker[1] != numeration:
             break
         matched_tags.append(child)
         index += 1
@@ -819,9 +832,12 @@ def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index
     if len(matched_tags) < 2:
         return 0
 
-    ordered_list = build_ordered_list(parent, numeration)
+    if list_kind == "bullet":
+        list_container = build_unordered_list(parent, compact=True)
+    else:
+        list_container = build_ordered_list(parent, numeration, compact=True)
     for tag in matched_tags:
-        list_item = etree.SubElement(ordered_list, qname("listitem"))
+        list_item = etree.SubElement(list_container, qname("listitem"))
         add_paragraph(tag, list_item, strip_marker=marker_pattern)
     return index - start_index
 
@@ -943,6 +959,13 @@ def add_bootstrap_table(rows: list[Tag], parent: etree._Element) -> None:
             add_table_cell(make_table_text_cell(""), row_elem)
 
 
+def build_unordered_list(parent: etree._Element, compact: bool = False) -> etree._Element:
+    itemized_list = etree.SubElement(parent, qname("itemizedlist"))
+    if compact:
+        itemized_list.set("role", "compact")
+    return itemized_list
+
+
 def add_media_from_img(tag: Tag, parent: etree._Element) -> None:
     render_inline(tag, parent, None)
 
@@ -1029,9 +1052,11 @@ def add_labeled_content(parent: etree._Element, label: str, content_col: Tag, co
     return section
 
 
-def build_ordered_list(parent: etree._Element, numeration: str = "arabic") -> etree._Element:
+def build_ordered_list(parent: etree._Element, numeration: str = "arabic", compact: bool = False) -> etree._Element:
     ordered_list = etree.SubElement(parent, qname("orderedlist"))
     ordered_list.set("numeration", numeration)
+    if compact:
+        ordered_list.set("role", "compact")
     return ordered_list
 
 

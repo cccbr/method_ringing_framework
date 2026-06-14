@@ -229,6 +229,11 @@ a {
     padding-left: 1.5rem;
 }
 
+.mrf-list-compact {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .mrf-list-level-1 {
     margin-left: 1.25rem;
 }
@@ -240,6 +245,30 @@ a {
 
 .mrf-list li {
     margin-bottom: 0.35rem;
+}
+
+.mrf-list-compact li,
+.mrf-loweralpha > li {
+    margin-bottom: 0;
+}
+
+.mrf-loweralpha {
+    list-style: none;
+    counter-reset: mrf-loweralpha;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.mrf-loweralpha > li {
+    counter-increment: mrf-loweralpha;
+    position: relative;
+    padding-left: 1.8rem;
+}
+
+.mrf-loweralpha > li::before {
+    content: counter(mrf-loweralpha, lower-alpha) ")";
+    position: absolute;
+    left: 0;
 }
 
 .mrf-list .collapse {
