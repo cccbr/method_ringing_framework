@@ -412,6 +412,9 @@ def main_heading(title: str, subtitle: str) -> str:
     section_match = re.search(r"Section\s+(\d+)", subtitle)
     if section_match and not re.match(rf"^{section_match.group(1)}\.\s+", title):
         return f"{section_match.group(1)}. {title}"
+    appendix_match = re.search(r"Appendix\s+([A-Z])", subtitle)
+    if appendix_match and not re.match(rf"^Appendix\s+{appendix_match.group(1)}\.\s+", title):
+        return f"Appendix {appendix_match.group(1)}. {title}"
     return title
 
 

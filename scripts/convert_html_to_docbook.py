@@ -475,6 +475,10 @@ def is_non_glossterm_label(number: str | None, term: str) -> bool:
     return term.casefold() in NON_GLOSSTERM_LABELS or label in NON_GLOSSTERM_LABELS
 
 
+def is_appendix_no_glossterm_page(page_title: str) -> bool:
+    return page_title in {"Framework Development", "Framework Principles"}
+
+
 def extract_embedded_label(content_col: Tag) -> str:
     first_para = content_col.find("p", recursive=False)
     if first_para is None:
@@ -1237,6 +1241,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
     framework_title, _ = split_framework_title(soup.title.string if soup.title and soup.title.string else "Framework for Method Ringing")
     page_title = derive_title(soup, heading_text, input_path)
     subtitle = derive_subtitle(heading_text or page_title, framework_title)
+    suppress_glossterms = is_appendix_no_glossterm_page(page_title)
 
     content_model = "glossary" if detect_glossary_page(rows) else "narrative"
 
@@ -1304,6 +1309,14 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
             elif embedded_label and is_non_glossterm_label(number, embedded_label):
                 current_numbered_list = None
                 add_content_blocks(content_col, current_div)
+            elif kind == "term-entry" and suppress_glossterms and (number or term):
+                current_numbered_list = None
+                add_labeled_content(
+                    current_div,
+                    display_row_label(current_section_title, number, term),
+                    content_col,
+                    row.get("id") or row_term_label(number, term),
+                )
             elif kind == "term-entry" and (number or term):
                 current_numbered_list = None
                 entry_index += 1
