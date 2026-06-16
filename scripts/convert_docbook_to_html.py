@@ -183,6 +183,17 @@ def render_body_para(node: etree._Element, asset_prefix: str) -> str:
     return render_body_block(render_para(node, asset_prefix))
 
 
+def render_glossary_detail_block(detail_html: str) -> str:
+    return (
+        '                    <div class="row">\n'
+        '                        <div class="col-sm-1"></div>\n'
+        '                        <div class="col-xl-9 col-sm-8">'
+        f"{detail_html}\n"
+        "                        </div>\n"
+        "                    </div>"
+    )
+
+
 def render_mediaobject(node: etree._Element, asset_prefix: str) -> str:
     image = node.find(".//db:imagedata", NS)
     if image is None:
@@ -318,13 +329,20 @@ def render_numbered_list(node: etree._Element, asset_prefix: str, *, level: int,
     return "\n\n".join(items)
 
 
-def render_list(node: etree._Element, asset_prefix: str, level: int = 0, collapse_seed: str | None = None) -> str:
+def render_list(
+    node: etree._Element,
+    asset_prefix: str,
+    level: int = 0,
+    collapse_seed: str | None = None,
+    *,
+    top_level: bool = False,
+) -> str:
     if collapse_seed is None:
         collapse_seed = f"list-{id(node)}"
     ordered = local_name(node) == "orderedlist"
     numeration = (node.get("numeration") or "").lower()
     role = (node.get("role") or "").lower()
-    if ordered and numeration != "loweralpha" and level == 0:
+    if ordered and numeration != "loweralpha" and level == 0 and top_level:
         return render_numbered_list(node, asset_prefix, level=level, collapse_seed=collapse_seed)
 
     classes = [f"mrf-list", f"mrf-list-level-{level}"]
@@ -404,22 +422,27 @@ def build_detail_collapse(collapse_seed: str, detail_groups: Sequence[str], togg
     return toggle_html, detail_html
 
 
-def render_detail_group(node: etree._Element, asset_prefix: str) -> str:
+def render_detail_group(node: etree._Element, asset_prefix: str, *, glossary_context: bool = False) -> str:
     name = local_name(node)
     if name == "example":
-        return render_group(node, asset_prefix, "text-danger", "Example:")
+        rendered = render_group(node, asset_prefix, "text-danger", "Example:")
+        return rendered
     if name == "note":
         role = (node.get("role") or "").lower()
         if role == "technical-comment":
-            return render_group(node, asset_prefix, "text-muted", "Technical comment:")
-        return render_group(node, asset_prefix, "text-primary", "Further explanation:")
+            rendered = render_group(node, asset_prefix, "text-muted", "Technical comment:")
+            return rendered
+        rendered = render_group(node, asset_prefix, "text-primary", "Further explanation:")
+        return rendered
     if name == "mediaobject":
-        return render_body_block(render_mediaobject(node, asset_prefix))
+        rendered = render_mediaobject(node, asset_prefix)
+        return rendered if glossary_context else render_body_block(rendered)
     if name in {"itemizedlist", "orderedlist"}:
         rendered = render_list(node, asset_prefix)
-        return render_body_block(rendered) if name == "itemizedlist" else rendered
+        return rendered if glossary_context else (render_body_block(rendered) if name == "itemizedlist" else rendered)
     if name == "informaltable":
-        return render_body_block(render_informaltable(node, asset_prefix))
+        rendered = render_informaltable(node, asset_prefix)
+        return rendered if glossary_context else render_body_block(rendered)
     return ""
 
 
@@ -479,18 +502,17 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
     for index, child in enumerate(glossdef, start=1):
         name = local_name(child)
         if name == "para":
-            main_blocks.append(render_body_para(child, asset_prefix))
+            main_blocks.append(render_para(child, asset_prefix))
         elif name == "informaltable":
-            main_blocks.append(render_body_block(render_informaltable(child, asset_prefix)))
+            main_blocks.append(render_informaltable(child, asset_prefix))
         elif name in {"itemizedlist", "orderedlist"}:
             target = detail_groups if saw_detail_group else main_blocks
-            rendered = render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}")
-            if name == "itemizedlist":
-                rendered = render_body_block(rendered)
-            target.append(rendered)
+            target.append(
+                render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}")
+            )
         elif name in {"example", "note", "mediaobject"}:
             saw_detail_group = True
-            rendered = render_detail_group(child, asset_prefix)
+            rendered = render_detail_group(child, asset_prefix, glossary_context=True)
             if rendered:
                 detail_groups.append(rendered)
 
@@ -554,9 +576,10 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
             f"                            {rendered_term}{toggle_html}\n"
             "                        </div>\n"
             "                        <div class=\"col-xl-9 col-sm-8\">\n"
-            f"{content}{detail_html}\n"
+            f"{content}\n"
             "                        </div>\n"
-            "                    </div>"
+            "                    </div>\n\n"
+            f"{render_glossary_detail_block(detail_html) if detail_html else ''}"
         )
 
     if term and not number:
@@ -566,9 +589,10 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
             f"                            {rendered_term}{toggle_html}\n"
             "                        </div>\n"
             "                        <div class=\"col-xl-10 col-sm-9\">\n"
-            f"{content}{detail_html}\n"
+            f"{content}\n"
             "                        </div>\n"
-            "                    </div>"
+            "                    </div>\n\n"
+            f"{render_glossary_detail_block(detail_html) if detail_html else ''}"
         )
 
     if not term and number:
@@ -648,7 +672,12 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
             if child_name == "orderedlist" and not orderedlist_started and glossentry_count > 0 and not child.get("startingnumber"):
                 child.set("startingnumber", str(glossentry_count + 1))
                 orderedlist_started = True
-            rendered = render_list(child, asset_prefix, collapse_seed=f"{context_seed(glossdiv, title or 'glossdiv')}-{child_name}-{index}")
+            rendered = render_list(
+                child,
+                asset_prefix,
+                collapse_seed=f"{context_seed(glossdiv, title or 'glossdiv')}-{child_name}-{index}",
+                top_level=True,
+            )
             if child_name == "itemizedlist":
                 rendered = render_body_block(rendered)
         elif child_name in {"example", "note", "mediaobject"}:
@@ -674,7 +703,12 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         elif child_name == "informaltable":
             main_blocks.append(render_body_block(render_informaltable(child, asset_prefix)))
         elif child_name in {"itemizedlist", "orderedlist"}:
-            rendered = render_list(child, asset_prefix, collapse_seed=f"{section_seed}-{child_name}-{index}")
+            rendered = render_list(
+                child,
+                asset_prefix,
+                collapse_seed=f"{section_seed}-{child_name}-{index}",
+                top_level=True,
+            )
             main_blocks.append(render_body_block(rendered) if child_name == "itemizedlist" else rendered)
         elif child_name == "mediaobject":
             main_blocks.append(render_body_block(render_mediaobject(child, asset_prefix)))
