@@ -162,8 +162,25 @@ def render_para(node: etree._Element, asset_prefix: str, css_class: str | None =
     body = render_mixed(node, asset_prefix)
     if prefix:
         body = f"<b>{html.escape(prefix)}</b>" if not body else f"<b>{html.escape(prefix)}</b> {body}"
-    class_attr = f' class="{css_class}"' if css_class else ""
-    return f"<p{class_attr}>{body}</p>"
+    classes = ["mrf-para"]
+    if css_class:
+        classes.append(css_class)
+    return f'<div class="{" ".join(classes)}">{body}</div>'
+
+
+def render_body_block(content_html: str) -> str:
+    return (
+        '                    <div class="row">\n'
+        '                        <div class="col-sm-1"></div>\n'
+        '                        <div class="col-sm-11">\n'
+        f"{indent_block(content_html, 28)}\n"
+        "                        </div>\n"
+        "                    </div>"
+    )
+
+
+def render_body_para(node: etree._Element, asset_prefix: str) -> str:
+    return render_body_block(render_para(node, asset_prefix))
 
 
 def render_mediaobject(node: etree._Element, asset_prefix: str) -> str:
@@ -182,7 +199,7 @@ def render_mediaobject(node: etree._Element, asset_prefix: str) -> str:
         attrs.append(f'width="{html.escape(width, quote=True)}"')
     if depth:
         attrs.append(f'height="{html.escape(depth, quote=True)}"')
-    return f"<p><img {' '.join(attrs)} /></p>"
+    return f'<div class="mrf-mediaobject"><img {" ".join(attrs)} /></div>'
 
 
 def render_table_cell(node: etree._Element, asset_prefix: str) -> str:
@@ -206,6 +223,16 @@ def render_table_cell(node: etree._Element, asset_prefix: str) -> str:
             parts.append(html.escape(collapse_ws(child.tail, strip=True)))
 
     return "<br />".join(part for part in parts if part).strip()
+
+
+def list_start(node: etree._Element) -> int:
+    value = node.get("startingnumber") or node.get("start")
+    if not value:
+        return 1
+    try:
+        return max(1, int(value))
+    except ValueError:
+        return 1
 
 
 def render_informaltable(node: etree._Element, asset_prefix: str) -> str:
@@ -263,7 +290,9 @@ def render_list_item_blocks(
 
 def render_numbered_list(node: etree._Element, asset_prefix: str, *, level: int, collapse_seed: str) -> str:
     items: list[str] = []
-    for index, item in enumerate(node.findall("db:listitem", NS), start=1):
+    start = list_start(node)
+    for offset, item in enumerate(node.findall("db:listitem", NS), start=0):
+        index = start + offset
         main_blocks, detail_groups = render_list_item_blocks(
             item,
             asset_prefix,
@@ -304,7 +333,9 @@ def render_list(node: etree._Element, asset_prefix: str, level: int = 0, collaps
     if role == "compact":
         classes.append("mrf-list-compact")
     tag_name = "ol" if ordered else "ul"
-    open_tag = f'<{tag_name} class="{" ".join(classes)}">'
+    start = list_start(node) if ordered else 1
+    start_attr = f' start="{start}"' if ordered and start != 1 else ""
+    open_tag = f'<{tag_name}{start_attr} class="{" ".join(classes)}">'
     close_tag = f"</{tag_name}>"
 
     items: list[str] = []
@@ -336,17 +367,17 @@ def render_group(node: etree._Element, asset_prefix: str, css_class: str, label:
             first_para = False
         elif child_name == "mediaobject":
             if first_para:
-                blocks.append(f'<p class="{css_class}"><b>{html.escape(label)}</b></p>')
+                blocks.append(f'<div class="{css_class} mrf-para"><b>{html.escape(label)}</b></div>')
                 first_para = False
             blocks.append(render_mediaobject(child, asset_prefix))
         elif child_name in {"itemizedlist", "orderedlist"}:
             if first_para:
-                blocks.append(f'<p class="{css_class}"><b>{html.escape(label)}</b></p>')
+                blocks.append(f'<div class="{css_class} mrf-para"><b>{html.escape(label)}</b></div>')
                 first_para = False
             blocks.append(render_list(child, asset_prefix, level=1, collapse_seed=label.lower().replace(" ", "-")))
 
     if first_para:
-        blocks.append(f'<p class="{css_class}"><b>{html.escape(label)}</b></p>')
+        blocks.append(f'<div class="{css_class} mrf-para"><b>{html.escape(label)}</b></div>')
 
     group_slug = re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-")
     return f'<div class="mrf-detail-group mrf-detail-group-{group_slug}">{"".join(blocks)}</div>'
@@ -383,15 +414,19 @@ def render_detail_group(node: etree._Element, asset_prefix: str) -> str:
             return render_group(node, asset_prefix, "text-muted", "Technical comment:")
         return render_group(node, asset_prefix, "text-primary", "Further explanation:")
     if name == "mediaobject":
-        return render_mediaobject(node, asset_prefix)
+        return render_body_block(render_mediaobject(node, asset_prefix))
     if name in {"itemizedlist", "orderedlist"}:
-        return render_list(node, asset_prefix)
+        rendered = render_list(node, asset_prefix)
+        return render_body_block(rendered) if name == "itemizedlist" else rendered
     if name == "informaltable":
-        return render_informaltable(node, asset_prefix)
+        return render_body_block(render_informaltable(node, asset_prefix))
     return ""
 
 
 def split_section_title(title: str) -> tuple[str, str]:
+    match = re.match(r"^(\d+\.)\s+(.*)$", title)
+    if match:
+        return match.group(1), match.group(2)
     match = re.match(r"^([A-Z]\.)\s+(.*)$", title)
     if match:
         return match.group(1), match.group(2)
@@ -444,12 +479,15 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
     for index, child in enumerate(glossdef, start=1):
         name = local_name(child)
         if name == "para":
-            main_blocks.append(render_para(child, asset_prefix))
+            main_blocks.append(render_body_para(child, asset_prefix))
         elif name == "informaltable":
-            main_blocks.append(render_informaltable(child, asset_prefix))
+            main_blocks.append(render_body_block(render_informaltable(child, asset_prefix)))
         elif name in {"itemizedlist", "orderedlist"}:
             target = detail_groups if saw_detail_group else main_blocks
-            target.append(render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}"))
+            rendered = render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}")
+            if name == "itemizedlist":
+                rendered = render_body_block(rendered)
+            target.append(rendered)
         elif name in {"example", "note", "mediaobject"}:
             saw_detail_group = True
             rendered = render_detail_group(child, asset_prefix)
@@ -473,9 +511,10 @@ def render_block_children(node: etree._Element, asset_prefix: str, *, skip_title
         if skip_entries and name == "glossentry":
             continue
         if name == "para":
-            blocks.append(render_para(child, asset_prefix))
+            blocks.append(render_body_para(child, asset_prefix))
         elif name in {"itemizedlist", "orderedlist"}:
-            blocks.append(render_list(child, asset_prefix, collapse_seed=f"{node_seed}-{name}-{index}"))
+            rendered = render_list(child, asset_prefix, collapse_seed=f"{node_seed}-{name}-{index}")
+            blocks.append(render_body_block(rendered) if name == "itemizedlist" else rendered)
         elif name in {"example", "note", "mediaobject", "informaltable"}:
             rendered = render_detail_group(child, asset_prefix)
             if rendered:
@@ -556,7 +595,6 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
     marker, name = split_section_title(title)
     section_id = glossdiv.get("{http://www.w3.org/XML/1998/namespace}id", "")
     entries = glossdiv.findall("db:glossentry", NS)
-    intro_html = "\n".join(render_block_children(glossdiv, asset_prefix))
 
     if len(entries) == 1 and blank_unheaded_entry(entries[0]) and show_header:
         glossdef = entries[0].find("db:glossdef", NS)
@@ -566,7 +604,7 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
             detail_groups,
             f"details for section {marker or name or title}",
         )
-        combined_content = "\n".join(part for part in [intro_html, *main_blocks] if part).strip()
+        combined_content = "\n".join(part for part in main_blocks if part).strip()
         return (
             f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'
             '                        <div class="col-sm-1">\n'
@@ -574,9 +612,9 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
             "                        </div>\n"
             '                        <div class="col-sm-11">\n'
             f'                            <h5 class="border-bottom">{html.escape(name)}</h5>\n'
-            f"{indent_block(combined_content, 28) if combined_content else ''}{detail_html}\n"
             "                        </div>\n"
-            "                    </div>"
+            "                    </div>\n\n"
+            f"{indent_block(combined_content, 28) if combined_content else ''}{detail_html}"
         )
 
     header_html = ""
@@ -592,8 +630,33 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
             "                    </div>\n\n"
         )
 
-    rendered_entries = "\n\n".join(render_entry(entry, asset_prefix) for entry in entries if render_entry(entry, asset_prefix))
-    body_parts = [part for part in [intro_html, rendered_entries] if part]
+    body_parts: list[str] = []
+    glossentry_count = 0
+    orderedlist_started = False
+    for index, child in enumerate(glossdiv, start=1):
+        child_name = local_name(child)
+        if child_name == "title":
+            continue
+        if child_name == "glossentry":
+            glossentry_count += 1
+            rendered = render_entry(child, asset_prefix)
+        elif child_name == "para":
+            rendered = render_body_para(child, asset_prefix)
+        elif child_name == "informaltable":
+            rendered = render_body_block(render_informaltable(child, asset_prefix))
+        elif child_name in {"itemizedlist", "orderedlist"}:
+            if child_name == "orderedlist" and not orderedlist_started and glossentry_count > 0 and not child.get("startingnumber"):
+                child.set("startingnumber", str(glossentry_count + 1))
+                orderedlist_started = True
+            rendered = render_list(child, asset_prefix, collapse_seed=f"{context_seed(glossdiv, title or 'glossdiv')}-{child_name}-{index}")
+            if child_name == "itemizedlist":
+                rendered = render_body_block(rendered)
+        elif child_name in {"example", "note", "mediaobject"}:
+            rendered = render_detail_group(child, asset_prefix)
+        else:
+            rendered = ""
+        if rendered:
+            body_parts.append(rendered)
     return header_html + "\n\n".join(body_parts)
 
 
@@ -607,13 +670,14 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         if child_name == "title":
             continue
         if child_name == "para":
-            main_blocks.append(render_para(child, asset_prefix))
+            main_blocks.append(render_body_para(child, asset_prefix))
+        elif child_name == "informaltable":
+            main_blocks.append(render_body_block(render_informaltable(child, asset_prefix)))
         elif child_name in {"itemizedlist", "orderedlist"}:
-            main_blocks.append(render_list(child, asset_prefix, collapse_seed=f"{section_seed}-{child_name}-{index}"))
-        elif child_name in {"mediaobject", "informaltable"}:
-            rendered = render_detail_group(child, asset_prefix)
-            if rendered:
-                main_blocks.append(rendered)
+            rendered = render_list(child, asset_prefix, collapse_seed=f"{section_seed}-{child_name}-{index}")
+            main_blocks.append(render_body_block(rendered) if child_name == "itemizedlist" else rendered)
+        elif child_name == "mediaobject":
+            main_blocks.append(render_body_block(render_mediaobject(child, asset_prefix)))
         elif child_name in {"example", "note"}:
             rendered = render_detail_group(child, asset_prefix)
             if rendered:
@@ -642,9 +706,9 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         "                        </div>\n"
         '                        <div class="col-sm-11">\n'
         f'                            <h5 class="border-bottom">{html.escape(name)}</h5>\n'
-        f"{indent_block(content_html, 28) if content_html else ''}{detail_html}\n"
         "                        </div>\n"
-        "                    </div>"
+        "                    </div>\n\n"
+        f"{content_html}{detail_html}"
     )
 
 

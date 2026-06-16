@@ -261,19 +261,18 @@ def read_text(elem: etree._Element | None) -> str:
 
 
 def resolve_version_dir(version_id: str, source_xml_dir: Path, metadata_xml_dir: Path) -> Path | None:
-    generated_dir = source_xml_dir / version_id
-    if generated_dir.exists():
-        return generated_dir
-    metadata_dir = metadata_xml_dir / version_id
-    if metadata_dir.exists():
-        return metadata_dir
+    for candidate_name in (edition_output_dir(version_id), normalize_version_id(version_id), source_site_dir(version_id)):
+        generated_dir = source_xml_dir / candidate_name
+        if generated_dir.exists():
+            return generated_dir
+        metadata_dir = metadata_xml_dir / candidate_name
+        if metadata_dir.exists():
+            return metadata_dir
     return None
 
 
 def load_version_metadata(source_xml_dir: Path, metadata_xml_dir: Path) -> dict[str, VersionMetadata]:
-    version_ids = {path.name for path in source_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists()}
-    if metadata_xml_dir.exists():
-        version_ids.update(path.name for path in metadata_xml_dir.iterdir() if path.is_dir() and (path / "index.xml").exists())
+    version_ids = set(discover_version_ids(source_xml_dir, metadata_xml_dir))
 
     metadata_by_id: dict[str, VersionMetadata] = {}
     for version_id in sorted(version_ids):
@@ -300,9 +299,7 @@ def resolve_asset_version(version_id: str, source_xml_dir: Path, metadata_xml_di
     if (REPO_ROOT / source_dir).exists():
         return source_dir
 
-    version_ids = {path.name for path in source_xml_dir.iterdir() if path.is_dir()}
-    if metadata_xml_dir.exists():
-        version_ids.update(path.name for path in metadata_xml_dir.iterdir() if path.is_dir())
+    version_ids = set(discover_version_ids(source_xml_dir, metadata_xml_dir, required_file=None))
 
     approved_versions: list[VersionMetadata] = []
     for candidate in version_ids:

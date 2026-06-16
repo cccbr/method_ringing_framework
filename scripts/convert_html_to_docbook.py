@@ -479,6 +479,17 @@ def is_appendix_no_glossterm_page(page_title: str) -> bool:
     return page_title in {"Framework Development", "Framework Principles"}
 
 
+def add_labeled_numbered_list_item(ordered_list: etree._Element, label: str, content_col: Tag) -> etree._Element:
+    list_item = etree.SubElement(ordered_list, qname("listitem"))
+    para = etree.SubElement(list_item, qname("para"))
+    emphasis = etree.SubElement(para, qname("emphasis"))
+    emphasis.set("role", "bold")
+    emphasis.text = clean_text(label)
+    trim_para_whitespace(para)
+    add_content_blocks(content_col, list_item)
+    return list_item
+
+
 def extract_embedded_label(content_col: Tag) -> str:
     first_para = content_col.find("p", recursive=False)
     if first_para is None:
@@ -850,6 +861,8 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
     children = list(container.children)
     child_index = 0
     first_para = True
+    glossentry_count = 0
+    orderedlist_started = False
 
     while child_index < len(children):
         child = children[child_index]
@@ -872,6 +885,13 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
         if child_name == "div" and "collapse" in (child.get("class") or []):
             child_index += 1
             continue
+
+        if etree.QName(parent).localname == "glossdiv":
+            if child_name == "glossentry":
+                glossentry_count += 1
+            elif child_name == "orderedlist" and not orderedlist_started and glossentry_count > 0 and not child.get("startingnumber"):
+                child.set("startingnumber", str(glossentry_count + 1))
+                orderedlist_started = True
 
         converted_paragraphs = add_paragraph_marker_list(children, child_index, parent)
         if converted_paragraphs:
@@ -1200,6 +1220,16 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             current_numbered_list = None
 
         label = narrative_row_label(columns)
+        section_title = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
+        if number and section_title:
+            current_numbered_list = None
+            current_container = build_section(
+                current_section,
+                f"{number}. {section_title}",
+                row.get("id") or f"{current_section.get('{http://www.w3.org/XML/1998/namespace}id')}-subsection-{display_index}",
+            )
+            row_index += 1
+            continue
         if label and len(columns) >= 2 and clean_text(content_col.get_text(" ", strip=True)):
             if number:
                 if current_numbered_list is None or current_numbered_list.getparent() is not current_section:
@@ -1298,7 +1328,11 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
 
             term = extract_term(term_col) if term_col is not None else ""
             embedded_label = extract_embedded_label(content_col)
-            if kind == "term-entry" and is_non_glossterm_label(number, term):
+            if kind == "term-entry" and suppress_glossterms and (number or term):
+                if current_numbered_list is None or current_numbered_list.getparent() is not current_div:
+                    current_numbered_list = build_ordered_list(current_div)
+                add_labeled_numbered_list_item(current_numbered_list, term or number or "", content_col)
+            elif kind == "term-entry" and is_non_glossterm_label(number, term):
                 current_numbered_list = None
                 add_labeled_content(
                     current_div,
@@ -1309,14 +1343,6 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
             elif embedded_label and is_non_glossterm_label(number, embedded_label):
                 current_numbered_list = None
                 add_content_blocks(content_col, current_div)
-            elif kind == "term-entry" and suppress_glossterms and (number or term):
-                current_numbered_list = None
-                add_labeled_content(
-                    current_div,
-                    display_row_label(current_section_title, number, term),
-                    content_col,
-                    row.get("id") or row_term_label(number, term),
-                )
             elif kind == "term-entry" and (number or term):
                 current_numbered_list = None
                 entry_index += 1
@@ -1327,6 +1353,9 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
             elif number:
                 if current_numbered_list is None or current_numbered_list.getparent() is not current_div:
                     current_numbered_list = build_ordered_list(current_div)
+                    prior_glossentries = len(current_div.findall(qname("glossentry")))
+                    if prior_glossentries > 0 and not current_numbered_list.get("startingnumber"):
+                        current_numbered_list.set("startingnumber", str(prior_glossentries + 1))
                 add_numbered_list_item(current_numbered_list, content_col)
             else:
                 current_numbered_list = None

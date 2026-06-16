@@ -18,11 +18,11 @@ There is no repo-wide build system, test runner, or linter. Validation in this r
 - Render the generated DocBook XML tree back into HTML and LaTeX:
   - `powershell -ExecutionPolicy Bypass -File scripts\render_docbook_tree.ps1`
 - Convert one HTML page into DocBook XML:
-  - `python scripts\convert_html_to_docbook.py -i version2\fundamentals.html -o generated\xml\version2\fundamentals.xml --base-uri https://cccbr.github.io/method_ringing_framework/version2`
+  - `python scripts\convert_html_to_docbook.py -i version2\fundamentals.html -o generated\xml\edition2\fundamentals.xml --base-uri https://cccbr.github.io/method_ringing_framework/version2`
 - Render one DocBook XML file back into HTML:
-  - `python scripts\convert_docbook_to_html.py generated\xml\version2\fundamentals.xml generated\html\edition2\fundamentals.html --asset-prefix ../../../version2 --switch-version-href ../../../index.html`
+  - `python scripts\convert_docbook_to_html.py generated\xml\edition2\fundamentals.xml generated\html\edition2\fundamentals.html --asset-prefix ../../../version2 --switch-version-href ../../../index.html`
 - Render one DocBook XML file into LaTeX:
-  - `python scripts\convert_docbook_to_latex.py generated\xml\version2\fundamentals.xml generated\tex\edition2\fundamentals.tex --asset-root ../../../version2`
+  - `python scripts\convert_docbook_to_latex.py generated\xml\edition2\fundamentals.xml generated\tex\edition2\fundamentals.tex --asset-root ../../../version2`
 
 ## High-level architecture
 
@@ -30,7 +30,7 @@ There is no repo-wide build system, test runner, or linter. Validation in this r
 - `latest` is a **symbolic link to `version2`**. Treat `version2` as the source of truth and do not make parallel edits in both places.
 - The site layout is hand-authored Bootstrap 4 HTML with a fixed header, left sidebar navigation, and content in `<main>`. Collapsible “notes” are part of the content model and are driven by `mrf.js` plus CSS classes in `mrf.css`.
 - Generated artifacts live under the ignored `generated\` tree:
-  - `generated\xml\version1\` and `generated\xml\version2\` for DocBook output from the source HTML
+  - `generated\xml\edition1\` and `generated\xml\edition2\` for DocBook output from the source HTML
   - `generated\html\edition*\` for HTML rendered back from DocBook
   - `generated\tex\edition*\` for LaTeX rendered back from DocBook
 - The active converters are:

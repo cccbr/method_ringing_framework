@@ -61,7 +61,7 @@ def build_xml(versions: list[str]) -> bool:
             continue
 
         if not run_command(
-            [sys.executable, str(script), str(html_dir), f"generated/xml/{version}"],
+            [sys.executable, str(script), str(html_dir), f"generated/xml/{edition_output_dir(version)}"],
             f"Converting {version} HTML to XML"
         ):
             return False
@@ -215,7 +215,7 @@ Examples:
     print("\n" + "=" * 60)
     print("[OK] Build Complete!")
     print("=" * 60)
-    print("Output: generated/xml/version*, generated/html/edition*, generated/pdf/edition*")
+    print("Output: generated/xml/edition*, generated/html/edition*, generated/pdf/edition*")
     return 0
 
 
