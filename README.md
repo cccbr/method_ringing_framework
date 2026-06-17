@@ -82,6 +82,8 @@ The XML is DocBook 5 with a small `mrf:` metadata namespace. The main tags used 
 | `orderedlist` | Ordered list |
 | `itemizedlist` | Unordered list |
 | `listitem` | List item |
+| `question` | FAQ question block, including nested list content where needed |
+| `answer` | FAQ answer block |
 | `emphasis` | Bold, italic, underline, or other inline emphasis |
 | `literal` | Literal or code-style inline text |
 | `link` | Cross-reference or external link |
@@ -102,5 +104,6 @@ The framework metadata attributes in the `mrf:` namespace are:
 | `mrf:framework-version` | Numeric framework edition version |
 | `mrf:edition-label` | Display label such as Edition 1 |
 | `mrf:source-title` | Original source title used for generated glossary content |
+| `mrf:label` | Display label for structured list items such as FAQ subitems |
 
 The generated XML also uses standard XML attributes such as `xml:id` and `xml:lang`.

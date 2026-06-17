@@ -57,6 +57,10 @@
 \newlength{\MRFListLabelGap}
 \setlength{\MRFListLabelGap}{0.2em}
 \setlength{\MRFNestedListIndent}{\dimexpr\MRFListLabelWidth+\MRFListLabelGap\relax}
+\newlength{\MRFFAQLabelWidth}
+\setlength{\MRFFAQLabelWidth}{1.6em}
+\newlength{\MRFFAQLabelGap}
+\setlength{\MRFFAQLabelGap}{0.2em}
 \newlength{\MRFTableNumberWidth}
 \setlength{\MRFTableNumberWidth}{0.10\textwidth}
 \newlength{\MRFTableTermWidth}
@@ -251,3 +255,11 @@
 \NewDocumentCommand{\MRFExample}{+m}{\MRFDetailBlock{mrfExample}{Example:}{#1}}
 \NewDocumentCommand{\MRFFurther}{+m}{\MRFDetailBlock{mrfFurther}{Further explanation:}{#1}}
 \NewDocumentCommand{\MRFTechnical}{+m}{\MRFDetailBlock{mrfTechnical}{Technical comment:}{#1}}
+\NewDocumentCommand{\MRFFAQBlock}{m +m}{%
+  \par\noindent\makebox[\MRFFAQLabelWidth][l]{#1}%
+  \hspace*{\MRFFAQLabelGap}%
+  \begin{minipage}[t]{\dimexpr\linewidth-\MRFFAQLabelWidth-\MRFFAQLabelGap\relax}
+  \parindent=0pt\RaggedRight
+  #2
+  \end{minipage}\par\vspace{0.35\baselineskip}
+}

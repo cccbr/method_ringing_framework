@@ -187,8 +187,41 @@ def render_glossary_detail_block(detail_html: str) -> str:
     return (
         '                    <div class="row">\n'
         '                        <div class="col-sm-1"></div>\n'
-        '                        <div class="col-xl-9 col-sm-8">'
+        '                        <div class="col-sm-11">'
         f"{detail_html}\n"
+        "                        </div>\n"
+        "                    </div>"
+    )
+
+
+def render_faq_body(node: etree._Element, asset_prefix: str, *, level: int = 1, collapse_seed: str = "faq") -> str:
+    blocks: list[str] = []
+    for index, child in enumerate(node, start=1):
+        name = local_name(child)
+        if name == "para":
+            blocks.append(render_para(child, asset_prefix))
+        elif name == "mediaobject":
+            blocks.append(render_mediaobject(child, asset_prefix))
+        elif name == "informaltable":
+            blocks.append(render_informaltable(child, asset_prefix))
+        elif name in {"itemizedlist", "orderedlist"}:
+            blocks.append(render_list(child, asset_prefix, level=level, collapse_seed=f"{collapse_seed}-{index}"))
+        elif name in {"example", "note"}:
+            rendered = render_detail_group(child, asset_prefix)
+            if rendered:
+                blocks.append(rendered)
+    return "\n".join(blocks)
+
+
+def render_faq_block(node: etree._Element, asset_prefix: str, label: str) -> str:
+    body = render_faq_body(node, asset_prefix)
+    if not body:
+        return ""
+    return (
+        '                    <div class="row">\n'
+        f'                        <div class="col-sm-1">{html.escape(label)}</div>\n'
+        '                        <div class="col-sm-11">\n'
+        f"{indent_block(body, 28)}\n"
         "                        </div>\n"
         "                    </div>"
     )
@@ -289,6 +322,10 @@ def render_list_item_blocks(
             main_blocks.append(render_mediaobject(child, asset_prefix))
         elif child_name == "informaltable":
             main_blocks.append(render_informaltable(child, asset_prefix))
+        elif child_name == "question":
+            main_blocks.append(render_faq_block(child, asset_prefix, "Q."))
+        elif child_name == "answer":
+            main_blocks.append(render_faq_block(child, asset_prefix, "A."))
         elif child_name in {"itemizedlist", "orderedlist"}:
             main_blocks.append(render_list(child, asset_prefix, level=level + 1, collapse_seed=f"{collapse_seed}-{index}"))
         elif child_name in {"example", "note"}:
@@ -304,6 +341,7 @@ def render_numbered_list(node: etree._Element, asset_prefix: str, *, level: int,
     start = list_start(node)
     for offset, item in enumerate(node.findall("db:listitem", NS), start=0):
         index = start + offset
+        custom_label = item.get(f"{{{NS['mrf']}}}label")
         main_blocks, detail_groups = render_list_item_blocks(
             item,
             asset_prefix,
@@ -316,10 +354,11 @@ def render_numbered_list(node: etree._Element, asset_prefix: str, *, level: int,
             f"details for item {index}",
         )
         content = indent_block("\n".join(main_blocks), 28) if main_blocks else ""
+        marker = html.escape(custom_label) if custom_label else f"{index}."
         items.append(
             "                    <div class=\"row mrf-numbered-item mrf-numbered-level-0\">\n"
             "                        <div class=\"col-sm-1 mrf-numbered-marker\">\n"
-            f"                            {index}.{toggle_html}\n"
+            f"                            {marker}{toggle_html}\n"
             "                        </div>\n"
             "                        <div class=\"col-sm-11 mrf-numbered-content\">\n"
             f"{content}{detail_html}\n"
@@ -392,7 +431,8 @@ def render_group(node: etree._Element, asset_prefix: str, css_class: str, label:
             if first_para:
                 blocks.append(f'<div class="{css_class} mrf-para"><b>{html.escape(label)}</b></div>')
                 first_para = False
-            blocks.append(render_list(child, asset_prefix, level=1, collapse_seed=label.lower().replace(" ", "-")))
+            rendered_list = render_list(child, asset_prefix, level=1, collapse_seed=label.lower().replace(" ", "-"))
+            blocks.append(f'<div class="{css_class}">{rendered_list}</div>')
 
     if first_para:
         blocks.append(f'<div class="{css_class} mrf-para"><b>{html.escape(label)}</b></div>')
@@ -401,7 +441,13 @@ def render_group(node: etree._Element, asset_prefix: str, css_class: str, label:
     return f'<div class="mrf-detail-group mrf-detail-group-{group_slug}">{"".join(blocks)}</div>'
 
 
-def build_detail_collapse(collapse_seed: str, detail_groups: Sequence[str], toggle_context: str) -> tuple[str, str]:
+def build_detail_collapse(
+    collapse_seed: str,
+    detail_groups: Sequence[str],
+    toggle_context: str,
+    *,
+    body_aligned: bool = False,
+) -> tuple[str, str]:
     if not detail_groups:
         return "", ""
 
@@ -413,6 +459,8 @@ def build_detail_collapse(collapse_seed: str, detail_groups: Sequence[str], togg
         "                                <hr />\n"
         "                            </div>"
     )
+    if body_aligned:
+        detail_html = render_body_block(detail_html)
     toggle_title = f"Show or hide {toggle_context}"
     toggle_html = (
         '\n                            <span class="float-right">\n'
@@ -732,6 +780,7 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         section_id or title,
         detail_groups,
         f"details for section {marker or name or title}",
+        body_aligned=True,
     )
     return (
         f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'

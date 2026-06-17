@@ -241,6 +241,7 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
     numeration = (node.get("numeration") or "").lower()
     items: list[str] = []
     for index, item in enumerate(node.findall("db:listitem", NS), start=1):
+        custom_label = item.get(f"{{{NS['mrf']}}}label")
         parts: list[str] = []
         for child in item:
             child_name = local_name(child)
@@ -248,6 +249,10 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
                 parts.append(render_mixed(child))
             elif child_name == "mediaobject":
                 parts.append(render_mediaobject(child, asset_root))
+            elif child_name == "question":
+                parts.append(render_faq_block(child, asset_root, "Q."))
+            elif child_name == "answer":
+                parts.append(render_faq_block(child, asset_root, "A."))
             elif child_name in {"itemizedlist", "orderedlist"}:
                 parts.append(render_list(child, asset_root, level + 1))
             elif child_name in {"example", "note"}:
@@ -258,12 +263,40 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
                 parts.append(render_informaltable(child, asset_root))
         if ordered and numeration == "loweralpha":
             label = f"{chr(ord('a') + index - 1)})"
+        elif custom_label:
+            label = custom_label
         else:
             label = f"{index}." if ordered else r"\textbullet"
         body = "\n".join(part for part in parts if part).strip()
         if body:
             items.append(rf"\MRFListItem{{{level}}}{{{label}}}{{{body}}}")
     return "\n".join(items)
+
+
+def render_faq_body(node: etree._Element, asset_root: str, *, level: int = 1) -> str:
+    blocks: list[str] = []
+    for child in node:
+        name = local_name(child)
+        if name == "para":
+            blocks.append(rf"\MRFBodyPara{{{render_mixed(child)}}}")
+        elif name == "mediaobject":
+            blocks.append(render_mediaobject(child, asset_root))
+        elif name == "informaltable":
+            blocks.append(render_informaltable(child, asset_root))
+        elif name in {"itemizedlist", "orderedlist"}:
+            blocks.append(render_list(child, asset_root, level=level))
+        elif name in {"example", "note"}:
+            detail = render_detail(child, asset_root)
+            if detail:
+                blocks.append(detail)
+    return "\n".join(blocks)
+
+
+def render_faq_block(node: etree._Element, asset_root: str, label: str) -> str:
+    body = render_faq_body(node, asset_root)
+    if not body:
+        return ""
+    return rf"\MRFFAQBlock{{{escape_latex(label)}}}{{{body}}}"
 
 
 def render_detail_body(node: etree._Element, asset_root: str) -> str:
@@ -332,7 +365,14 @@ def render_block(node: etree._Element, asset_root: str) -> str:
     return ""
 
 
-def render_block_children(node: etree._Element, asset_root: str, *, skip_titles: bool = True, skip_entries: bool = True) -> list[str]:
+def render_block_children(
+    node: etree._Element,
+    asset_root: str,
+    *,
+    skip_titles: bool = True,
+    skip_entries: bool = True,
+    wrap_notes: bool = False,
+) -> list[str]:
     blocks: list[str] = []
     for child in node:
         name = local_name(child)
@@ -341,6 +381,8 @@ def render_block_children(node: etree._Element, asset_root: str, *, skip_titles:
         if skip_entries and name == "glossentry":
             continue
         block = render_block(child, asset_root)
+        if wrap_notes and name == "note" and block:
+            block = rf"\MRFBodyPara{{{block}}}"
         if block:
             blocks.append(block)
     return [block for block in blocks if block]
@@ -458,7 +500,7 @@ def render_narrative_section(section: etree._Element, asset_root: str, source_st
             rf"{{{escape_latex(subsection_title)}}}"
             rf"{{mrf-section-{label_suffix}}}"
         )
-    blocks.extend(render_block_children(section, asset_root, skip_titles=True, skip_entries=False))
+    blocks.extend(render_block_children(section, asset_root, skip_titles=True, skip_entries=False, wrap_notes=True))
     return "\n".join(blocks)
 
 

@@ -18,7 +18,7 @@ NS = {
 }
 
 WHITESPACE_RE = re.compile(r"\s+")
-ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\d+[\.\)]\s+")
+ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\(?\d+[\.\)]\s+")
 LOWER_ALPHA_LIST_MARKER_RE = re.compile(r"^\s*[a-z]\)\s+")
 BULLET_LIST_MARKER_RE = re.compile(r"^\s*-\s+")
 NON_GLOSSTERM_LABELS = {
@@ -488,6 +488,41 @@ def add_labeled_numbered_list_item(ordered_list: etree._Element, label: str, con
     trim_para_whitespace(para)
     add_content_blocks(content_col, list_item)
     return list_item
+
+
+def add_labeled_faq_list_item(ordered_list: etree._Element, label: str, content_col: Tag) -> etree._Element:
+    list_item = etree.SubElement(ordered_list, qname("listitem"))
+    list_item.set(qname("label", "mrf"), clean_text(label))
+    add_content_blocks(content_col, list_item)
+    return list_item
+
+
+def split_faq_item_children(children: list[etree._Element]) -> tuple[list[etree._Element], list[etree._Element]] | None:
+    if not children:
+        return None
+
+    paras = [child for child in children if etree.QName(child).localname == "para"]
+    if len(paras) >= 2 and len(paras) == len(children):
+        return [children[0]], children[1:]
+
+    orderedlist_indexes = [index for index, child in enumerate(children) if etree.QName(child).localname == "orderedlist"]
+    if not orderedlist_indexes or len(paras) < 2:
+        return None
+
+    first_orderedlist = orderedlist_indexes[0]
+    answer_start = None
+    for index, child in enumerate(children[first_orderedlist + 1 :], start=first_orderedlist + 1):
+        if etree.QName(child).localname == "para":
+            answer_start = index
+            break
+
+    if answer_start is None:
+        return None
+
+    if any(etree.QName(child).localname != "para" for child in children[answer_start:]):
+        return None
+
+    return children[:answer_start], children[answer_start:]
 
 
 def extract_embedded_label(content_col: Tag) -> str:
@@ -1076,6 +1111,27 @@ def add_labeled_content(parent: etree._Element, label: str, content_col: Tag, co
     return section
 
 
+def add_faq_questions_and_answers(article: etree._Element) -> None:
+    for orderedlist in article.findall(".//db:orderedlist", NS):
+        for listitem in orderedlist.findall("db:listitem", NS):
+            children = [child for child in listitem if isinstance(child.tag, str)]
+            split_children = split_faq_item_children(children)
+            if split_children is None:
+                continue
+
+            question = etree.Element(qname("question", "mrf"))
+            answer = etree.Element(qname("answer", "mrf"))
+
+            question_children, answer_children = split_children
+            for child in question_children:
+                question.append(child)
+            for child in answer_children:
+                answer.append(child)
+
+            listitem.insert(0, question)
+            listitem.insert(1, answer)
+
+
 def build_ordered_list(parent: etree._Element, numeration: str = "arabic", compact: bool = False) -> etree._Element:
     ordered_list = etree.SubElement(parent, qname("orderedlist"))
     ordered_list.set("numeration", numeration)
@@ -1165,6 +1221,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
     current_section: etree._Element | None = None
     current_container: etree._Element | None = None
     current_numbered_list: etree._Element | None = None
+    faq_page = clean_text(page_title).lower() in {"faq", "faqs"}
 
     row_index = 0
     while row_index < len(rows):
@@ -1221,6 +1278,18 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
 
         label = narrative_row_label(columns)
         section_title = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
+        if faq_page and label and len(columns) >= 2 and clean_text(content_col.get_text(" ", strip=True)):
+            if current_numbered_list is None or current_numbered_list.getparent() is not current_section:
+                if current_section is None:
+                    current_section = build_section(article, None, row.get("id") or f"section-{display_index}")
+                current_numbered_list = build_ordered_list(current_section)
+            current_container = add_labeled_faq_list_item(
+                current_numbered_list,
+                label,
+                content_col,
+            )
+            row_index += 1
+            continue
         if number and section_title:
             current_numbered_list = None
             current_container = build_section(
@@ -1360,6 +1429,9 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
             else:
                 current_numbered_list = None
                 add_content_blocks(content_col, current_div)
+
+    if clean_text(page_title).lower() in {"faq", "faqs"}:
+        add_faq_questions_and_answers(article)
 
     etree.indent(article, space="  ")
     output_path.parent.mkdir(parents=True, exist_ok=True)
