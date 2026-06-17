@@ -184,14 +184,7 @@ def render_body_para(node: etree._Element, asset_prefix: str) -> str:
 
 
 def render_glossary_detail_block(detail_html: str) -> str:
-    return (
-        '                    <div class="row">\n'
-        '                        <div class="col-sm-1"></div>\n'
-        '                        <div class="col-sm-11">'
-        f"{detail_html}\n"
-        "                        </div>\n"
-        "                    </div>"
-    )
+    return detail_html
 
 
 def render_faq_body(node: etree._Element, asset_prefix: str, *, level: int = 1, collapse_seed: str = "faq") -> str:
@@ -625,9 +618,9 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
             "                        </div>\n"
             "                        <div class=\"col-xl-9 col-sm-8\">\n"
             f"{content}\n"
+            f"{indent_block(render_glossary_detail_block(detail_html), 28) if detail_html else ''}\n"
             "                        </div>\n"
-            "                    </div>\n\n"
-            f"{render_glossary_detail_block(detail_html) if detail_html else ''}"
+            "                    </div>"
         )
 
     if term and not number:
@@ -638,9 +631,9 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
             "                        </div>\n"
             "                        <div class=\"col-xl-10 col-sm-9\">\n"
             f"{content}\n"
+            f"{indent_block(render_glossary_detail_block(detail_html), 28) if detail_html else ''}\n"
             "                        </div>\n"
-            "                    </div>\n\n"
-            f"{render_glossary_detail_block(detail_html) if detail_html else ''}"
+            "                    </div>"
         )
 
     if not term and number:
