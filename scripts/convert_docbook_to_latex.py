@@ -263,6 +263,9 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
                 parts.append(render_informaltable(child, asset_root))
         if ordered and numeration == "loweralpha":
             label = f"{chr(ord('a') + index - 1)})"
+        elif ordered and numeration == "lowerroman":
+            romans = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"]
+            label = f"{romans[index - 1]})" if index <= len(romans) else f"{index})"
         elif custom_label:
             label = custom_label
         else:

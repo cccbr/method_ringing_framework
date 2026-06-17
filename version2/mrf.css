@@ -266,7 +266,8 @@ a {
 }
 
 .mrf-list-compact li,
-.mrf-loweralpha > li {
+.mrf-loweralpha > li,
+.mrf-lowerroman > li {
     margin-bottom: 0;
 }
 
@@ -285,6 +286,25 @@ a {
 
 .mrf-loweralpha > li::before {
     content: counter(mrf-loweralpha, lower-alpha) ")";
+    position: absolute;
+    left: 0;
+}
+
+.mrf-lowerroman {
+    list-style: none;
+    counter-reset: mrf-lowerroman;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.mrf-lowerroman > li {
+    counter-increment: mrf-lowerroman;
+    position: relative;
+    padding-left: 1.8rem;
+}
+
+.mrf-lowerroman > li::before {
+    content: counter(mrf-lowerroman, lower-roman) ")";
     position: absolute;
     left: 0;
 }

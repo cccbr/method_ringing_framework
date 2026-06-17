@@ -79,7 +79,7 @@ The XML is DocBook 5 with a small `mrf:` metadata namespace. The main tags used 
 | `glossdef` | Definition text for a glossary entry |
 | `section` | Narrative section or appendix section |
 | `para` | Paragraph text |
-| `orderedlist` | Ordered list |
+| `orderedlist` | Ordered list (`numeration="arabic"`, `numeration="loweralpha"`, or `numeration="lowerroman"`) |
 | `itemizedlist` | Unordered list |
 | `listitem` | List item |
 | `question` | FAQ question block, including nested list content where needed |
@@ -107,3 +107,5 @@ The framework metadata attributes in the `mrf:` namespace are:
 | `mrf:label` | Display label for structured list items such as FAQ subitems |
 
 The generated XML also uses standard XML attributes such as `xml:id` and `xml:lang`.
+
+In the source HTML, ordered-list markers are typically `1.` / `1)` for numeric lists, `a)` for lower-alpha lists, and `i)` / `(i)` for roman lists.

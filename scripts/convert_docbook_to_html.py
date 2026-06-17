@@ -380,6 +380,8 @@ def render_list(
     classes = [f"mrf-list", f"mrf-list-level-{level}"]
     if ordered and numeration == "loweralpha":
         classes.append("mrf-loweralpha")
+    if ordered and numeration == "lowerroman":
+        classes.append("mrf-lowerroman")
     if role == "compact":
         classes.append("mrf-list-compact")
     tag_name = "ol" if ordered else "ul"

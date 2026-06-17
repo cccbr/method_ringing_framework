@@ -19,6 +19,7 @@ NS = {
 
 WHITESPACE_RE = re.compile(r"\s+")
 ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\(?\d+[\.\)]\s+")
+ROMAN_LIST_MARKER_RE = re.compile(r"^\s*\(?[ivx]+\)?[\.\)]?\s+", re.IGNORECASE)
 LOWER_ALPHA_LIST_MARKER_RE = re.compile(r"^\s*[a-z]\)\s+")
 BULLET_LIST_MARKER_RE = re.compile(r"^\s*-\s+")
 NON_GLOSSTERM_LABELS = {
@@ -228,9 +229,30 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
             doc_list = build_unordered_list(parent, compact=True)
         else:
             doc_list = build_ordered_list(parent, numeration, compact=True)
+        list_item: etree._Element | None = None
         while index < len(segments):
             marker = markers[index]
             if marker is None or marker[0] != list_kind or marker[1] != numeration:
+                if (
+                    list_kind == "ordered"
+                    and numeration == "loweralpha"
+                    and marker is not None
+                    and marker[0] == "ordered"
+                    and marker[1] == "lowerroman"
+                    and list_item is not None
+                ):
+                    nested_list = etree.SubElement(list_item, qname("orderedlist"))
+                    nested_list.set("numeration", "lowerroman")
+                    nested_list.set("role", "compact")
+                    while index < len(segments):
+                        nested_marker = markers[index]
+                        if nested_marker is None or nested_marker[0] != "ordered" or nested_marker[1] != "lowerroman":
+                            break
+                        nested_item = etree.SubElement(nested_list, qname("listitem"))
+                        add_nodes_as_para(segments[index], nested_item, nested_marker[2])
+                        index += 1
+                        converted = True
+                    continue
                 break
             list_item = etree.SubElement(doc_list, qname("listitem"))
             add_nodes_as_para(segments[index], list_item, marker_pattern)
@@ -442,6 +464,8 @@ def parse_number(text: str) -> str | None:
 def parse_list_marker(text: str) -> tuple[str, re.Pattern[str]] | None:
     if ARABIC_LIST_MARKER_RE.match(text):
         return "arabic", ARABIC_LIST_MARKER_RE
+    if ROMAN_LIST_MARKER_RE.match(text):
+        return "lowerroman", ROMAN_LIST_MARKER_RE
     if LOWER_ALPHA_LIST_MARKER_RE.match(text):
         return "loweralpha", LOWER_ALPHA_LIST_MARKER_RE
     return None
@@ -1132,6 +1156,38 @@ def add_faq_questions_and_answers(article: etree._Element) -> None:
             listitem.insert(1, answer)
 
 
+def flatten_single_item_loweralpha_lists(article: etree._Element) -> None:
+    for orderedlist in article.findall(".//db:orderedlist[@numeration='loweralpha']", NS):
+        for listitem in list(orderedlist.findall("db:listitem", NS)):
+            wrappers = [
+                child
+                for child in listitem
+                if isinstance(child.tag, str)
+                and etree.QName(child).localname == "orderedlist"
+                and (child.get("numeration") or "").lower() == "loweralpha"
+                and (child.get("role") or "").lower() == "compact"
+                and len(child.findall("db:listitem", NS)) == 1
+            ]
+            for wrapper in wrappers:
+                wrapper_item = wrapper.find("db:listitem", NS)
+                if wrapper_item is None:
+                    continue
+                insert_at = listitem.index(wrapper)
+                if wrapper_item.text:
+                    if insert_at == 0 and not listitem.text:
+                        listitem.text = wrapper_item.text
+                    else:
+                        prior = listitem[insert_at - 1] if insert_at > 0 else None
+                        if prior is not None:
+                            prior.tail = (prior.tail or "") + wrapper_item.text
+                        else:
+                            listitem.text = (listitem.text or "") + wrapper_item.text
+                for child in list(wrapper_item):
+                    listitem.insert(insert_at, child)
+                    insert_at += 1
+                listitem.remove(wrapper)
+
+
 def build_ordered_list(parent: etree._Element, numeration: str = "arabic", compact: bool = False) -> etree._Element:
     ordered_list = etree.SubElement(parent, qname("orderedlist"))
     ordered_list.set("numeration", numeration)
@@ -1432,6 +1488,8 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
 
     if clean_text(page_title).lower() in {"faq", "faqs"}:
         add_faq_questions_and_answers(article)
+
+    flatten_single_item_loweralpha_lists(article)
 
     etree.indent(article, space="  ")
     output_path.parent.mkdir(parents=True, exist_ok=True)
