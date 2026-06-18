@@ -19,7 +19,7 @@ NS = {
 
 WHITESPACE_RE = re.compile(r"\s+")
 ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\(?\d+[\.\)]\s+")
-ROMAN_LIST_MARKER_RE = re.compile(r"^\s*\(?[ivx]+\)?[\.\)]?\s+", re.IGNORECASE)
+ROMAN_LIST_MARKER_RE = re.compile(r"^\s*\([ivx]+\)[\.\)]?\s+", re.IGNORECASE)
 LOWER_ALPHA_LIST_MARKER_RE = re.compile(r"^\s*[a-z]\)\s+")
 BULLET_LIST_MARKER_RE = re.compile(r"^\s*-\s+")
 NON_GLOSSTERM_LABELS = {

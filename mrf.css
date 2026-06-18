@@ -233,11 +233,6 @@ a {
     margin-bottom: 0;
 }
 
-.mrf-list-compact .mrf-para,
-.mrf-loweralpha .mrf-para {
-    margin-bottom: 0;
-}
-
 .mrf-mediaobject {
     margin-bottom: 0.5rem;
 }
@@ -250,25 +245,24 @@ a {
 
 .mrf-list-compact {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
 }
 
 .mrf-list-level-1 {
-    margin-left: 1.25rem;
+    margin-left: 1.5rem;
 }
 
 .mrf-list-level-2,
 .mrf-list-level-3 {
-    margin-left: 2rem;
+    margin-left: 2.25rem;
 }
 
-.mrf-list li {
+.mrf-list-level-0 > li {
     margin-bottom: 0.35rem;
 }
 
-.mrf-list-compact li,
-.mrf-loweralpha > li,
-.mrf-lowerroman > li {
+.mrf-list-compact .mrf-para,
+.mrf-list-compact li {
     margin-bottom: 0;
 }
 
@@ -411,6 +405,6 @@ a {
     .mrf-list-level-1,
     .mrf-list-level-2,
     .mrf-list-level-3 {
-        margin-left: 1rem;
+        margin-left: 1.25rem;
     }
 }
