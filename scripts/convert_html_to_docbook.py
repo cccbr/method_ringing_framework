@@ -20,6 +20,7 @@ NS = {
 WHITESPACE_RE = re.compile(r"\s+")
 ARABIC_LIST_MARKER_RE = re.compile(r"^\s*\(?\d+[\.\)]\s+")
 ROMAN_LIST_MARKER_RE = re.compile(r"^\s*\([ivx]+\)[\.\)]?\s+", re.IGNORECASE)
+BARE_ROMAN_LIST_MARKER_RE = re.compile(r"^\s*[ivx]+\)\s+", re.IGNORECASE)
 LOWER_ALPHA_LIST_MARKER_RE = re.compile(r"^\s*[a-z]\)\s+")
 BULLET_LIST_MARKER_RE = re.compile(r"^\s*-\s+")
 NON_GLOSSTERM_LABELS = {
@@ -210,10 +211,33 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
 
     markers = [parse_any_list_marker(segment_text(segment)) for segment in segments]
     if not any(marker is not None for marker in markers):
-        return False
+        for segment in segments:
+            add_nodes_as_para(segment, parent)
+        return True
 
     index = 0
     converted = False
+    raw_text = clean_text(tag.get_text(" ", strip=True))
+    in_note = False
+    ancestor = parent
+    while ancestor is not None:
+        if etree.QName(ancestor).localname == "note":
+            in_note = True
+            break
+        ancestor = ancestor.getparent()
+    reverse_note = (
+        in_note
+        and "begin with ‘Reverse’ if" in raw_text
+        and "Another Method in the Methods Library" in raw_text
+        and "That other Method's Changes" in raw_text
+    )
+    if reverse_note:
+        markers = [
+            ("ordered", "lowerroman", BARE_ROMAN_LIST_MARKER_RE)
+            if BARE_ROMAN_LIST_MARKER_RE.match(segment_text(segment))
+            else marker
+            for segment, marker in zip(segments, markers, strict=False)
+        ]
     while index < len(segments):
         marker = markers[index]
         if marker is None:
@@ -225,6 +249,13 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
             return False
 
         list_kind, numeration, marker_pattern = marker
+        if (
+            reverse_note
+            and list_kind == "ordered"
+            and numeration == "loweralpha"
+            and BARE_ROMAN_LIST_MARKER_RE.match(segment_text(segments[index]))
+        ):
+            numeration = "lowerroman"
         if list_kind == "bullet":
             doc_list = build_unordered_list(parent, compact=True)
         else:
@@ -741,6 +772,28 @@ def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_pre
         render_inline(child, parent, None)
 
 
+def strip_initial_label_from_para(para: etree._Element, labels: set[str]) -> None:
+    first_child: etree._Element | None = None
+    for child in para:
+        if isinstance(child.tag, str):
+            first_child = child
+            break
+
+    if first_child is None:
+        return
+    if para.text and clean_text(para.text):
+        return
+    if etree.QName(first_child).localname != "emphasis" or (first_child.get("role") or "").lower() != "bold":
+        return
+
+    label = clean_text("".join(first_child.itertext())).rstrip(":").casefold()
+    if label not in labels:
+        return
+
+    para.text = (first_child.tail or "").lstrip()
+    para.remove(first_child)
+
+
 def paragraph_is_image_only(p_tag: Tag) -> bool:
     children = [child for child in p_tag.children if clean_text(str(child)) or isinstance(child, Tag)]
     return bool(children) and all(isinstance(child, Tag) and child.name.lower() == "img" for child in children)
@@ -916,6 +969,67 @@ def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index
     return index - start_index
 
 
+def add_marker_paragraph_with_nested_lists(children: list[Tag | NavigableString], start_index: int, parent: etree._Element) -> int:
+    first_child = children[start_index]
+    if not isinstance(first_child, Tag) or first_child.name.lower() != "p":
+        return 0
+
+    first_marker = paragraph_list_marker(first_child)
+    if first_marker is None:
+        return 0
+
+    list_kind, numeration, marker_pattern = first_marker
+    if list_kind == "bullet":
+        list_container = build_unordered_list(parent, compact=True)
+    else:
+        list_container = build_ordered_list(parent, numeration, compact=True)
+
+    index = start_index
+    converted = 0
+    while index < len(children):
+        child = children[index]
+        if isinstance(child, Comment):
+            index += 1
+            continue
+        if isinstance(child, NavigableString):
+            if clean_text(str(child)):
+                break
+            index += 1
+            continue
+        if not isinstance(child, Tag):
+            break
+
+        marker = paragraph_list_marker(child)
+        if marker is None or marker[0] != list_kind or marker[1] != numeration:
+            break
+
+        list_item = etree.SubElement(list_container, qname("listitem"))
+        add_paragraph(child, list_item, strip_marker=marker_pattern)
+        index += 1
+        converted += 1
+
+        while index < len(children):
+            lookahead = children[index]
+            if isinstance(lookahead, Comment):
+                index += 1
+                continue
+            if isinstance(lookahead, NavigableString):
+                if clean_text(str(lookahead)):
+                    break
+                index += 1
+                continue
+            if not isinstance(lookahead, Tag):
+                break
+            lookahead_name = lookahead.name.lower()
+            if lookahead_name in {"ol", "ul"}:
+                add_list(lookahead, list_item)
+                index += 1
+                continue
+            break
+
+    return (index - start_index) if converted else 0
+
+
 def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> None:
     children = list(container.children)
     child_index = 0
@@ -953,6 +1067,12 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
                 orderedlist_started = True
 
         converted_paragraphs = add_paragraph_marker_list(children, child_index, parent)
+        if converted_paragraphs:
+            child_index += converted_paragraphs
+            first_para = False
+            continue
+
+        converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, parent)
         if converted_paragraphs:
             child_index += converted_paragraphs
             first_para = False
@@ -1091,11 +1211,18 @@ def detect_segment_kind(segment: list[Tag]) -> str | None:
 def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | None) -> None:
     if kind == "example":
         target = etree.SubElement(parent, qname("example"))
-        strip_labels = {"example"}
+        strip_labels = {"example", "examples"}
     elif kind:
         target = etree.SubElement(parent, qname("note"))
         target.set("role", kind)
-        strip_labels = {"further explanation", "futher explanation", "technical comment", "technical comments"}
+        strip_labels = {
+            "further explanation",
+            "further explanations",
+            "futher explanation",
+            "futher explanations",
+            "technical comment",
+            "technical comments",
+        }
     else:
         target = parent
         strip_labels = None
@@ -1104,6 +1231,11 @@ def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | N
     for child in segment:
         wrapper.append(child)
     add_child_blocks(wrapper, target, strip_labels)
+
+    if strip_labels is not None:
+        first_para = target.find(qname("para"))
+        if first_para is not None:
+            strip_initial_label_from_para(first_para, strip_labels)
 
 
 def add_detail_blocks(container: Tag, glossdef: etree._Element) -> None:
@@ -1157,7 +1289,25 @@ def add_faq_questions_and_answers(article: etree._Element) -> None:
 
 
 def flatten_single_item_loweralpha_lists(article: etree._Element) -> None:
-    for orderedlist in article.findall(".//db:orderedlist[@numeration='loweralpha']", NS):
+    for orderedlist in list(article.findall(".//db:orderedlist[@numeration='loweralpha']", NS)):
+        listitems = orderedlist.findall("db:listitem", NS)
+        if len(listitems) == 1:
+            listitem = listitems[0]
+            element_children = [child for child in listitem if isinstance(child.tag, str)]
+            if (
+                len(element_children) == 1
+                and etree.QName(element_children[0]).localname == "orderedlist"
+                and (element_children[0].get("numeration") or "").lower() == "loweralpha"
+                and not clean_text(listitem.text)
+                and not clean_text(element_children[0].tail)
+            ):
+                parent = orderedlist.getparent()
+                if parent is not None:
+                    insert_at = parent.index(orderedlist)
+                    parent.insert(insert_at, element_children[0])
+                    parent.remove(orderedlist)
+                continue
+
         for listitem in list(orderedlist.findall("db:listitem", NS)):
             wrappers = [
                 child

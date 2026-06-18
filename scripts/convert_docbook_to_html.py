@@ -541,6 +541,7 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
     detail_groups: list[str] = []
     glossdef_seed = context_seed(glossdef.getparent() if glossdef.getparent() is not None else glossdef, "glossdef")
     saw_detail_group = False
+    saw_direct_list = False
 
     for index, child in enumerate(glossdef, start=1):
         name = local_name(child)
@@ -550,9 +551,11 @@ def render_glossdef(glossdef: etree._Element, asset_prefix: str) -> tuple[list[s
             main_blocks.append(render_informaltable(child, asset_prefix))
         elif name in {"itemizedlist", "orderedlist"}:
             target = detail_groups if saw_detail_group else main_blocks
+            list_level = 0 if not saw_direct_list else 1
             target.append(
-                render_list(child, asset_prefix, collapse_seed=f"{glossdef_seed}-{name}-{index}")
+                render_list(child, asset_prefix, level=list_level, collapse_seed=f"{glossdef_seed}-{name}-{index}")
             )
+            saw_direct_list = True
         elif name in {"example", "note", "mediaobject"}:
             saw_detail_group = True
             rendered = render_detail_group(child, asset_prefix, glossary_context=True)
