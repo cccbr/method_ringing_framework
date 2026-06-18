@@ -1202,7 +1202,13 @@ def add_numbered_list_item(ordered_list: etree._Element, content_col: Tag) -> et
     return list_item
 
 
-def build_glossentry(term: str, number: str | None, content_col: Tag, section_title: str, entry_id: str) -> etree._Element:
+def build_glossentry(
+    term: str,
+    number: str | None,
+    content_col: Tag,
+    section_title: str,
+    entry_id: str,
+) -> etree._Element:
     entry = etree.Element(qname("glossentry"))
     entry.set("{http://www.w3.org/XML/1998/namespace}id", entry_id)
     if number:
@@ -1215,6 +1221,18 @@ def build_glossentry(term: str, number: str | None, content_col: Tag, section_ti
     add_main_blocks(content_col, glossdef)
     add_detail_blocks(content_col, glossdef)
     return entry
+
+
+def rewrite_initial_definition_text(content_col: Tag, term: str) -> None:
+    paragraph = content_col.find("p")
+    if paragraph is None:
+        return
+    text = clean_text(paragraph.get_text(" ", strip=True))
+    lower_term = term.casefold()
+    prefix = f"{lower_term} is a "
+    if text.casefold().startswith(prefix):
+        paragraph.clear()
+        paragraph.append(NavigableString("A " + text[len(prefix):]))
 
 
 def build_glossdiv(glossary: etree._Element, row: Tag, title_text: str | None = None) -> etree._Element:
@@ -1398,7 +1416,8 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
     subtitle = derive_subtitle(heading_text or page_title, framework_title)
     suppress_glossterms = is_appendix_no_glossterm_page(page_title)
 
-    content_model = "glossary" if detect_glossary_page(rows) else "narrative"
+    special_glossary_pages = {"Place Notation"}
+    content_model = "glossary" if detect_glossary_page(rows) or page_title in special_glossary_pages else "narrative"
 
     article = make_article(
         input_path,
@@ -1421,6 +1440,11 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
         current_numbered_list: etree._Element | None = None
         current_section_title = clean_text(heading_text or page_title)
         entry_index = 0
+        lead_definition_terms: dict[tuple[str, str], str] = {
+            ("naming", "D. Variations", "1"): "Variation",
+            ("naming", "D. Variations", "2"): "Variations Library",
+            ("placenotation", "", "1"): "Place Notation",
+        }
 
         for row in rows:
             if looks_like_heading_row(row):
@@ -1453,6 +1477,26 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
 
             term = extract_term(term_col) if term_col is not None else ""
             embedded_label = extract_embedded_label(content_col)
+            lead_definition_term = (
+                lead_definition_terms.get((input_path.stem, current_section_title, number or ""))
+                or lead_definition_terms.get((input_path.stem, "", number or ""))
+            )
+            if lead_definition_term and number:
+                current_numbered_list = None
+                entry_index += 1
+                entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(lead_definition_term)}"
+                content_clone = BeautifulSoup(str(content_col), "lxml").find("div")
+                if content_clone is not None:
+                    rewrite_initial_definition_text(content_clone, lead_definition_term)
+                entry = build_glossentry(
+                    lead_definition_term,
+                    number,
+                    content_clone if content_clone is not None else content_col,
+                    current_section_title,
+                    entry_id,
+                )
+                current_div.append(entry)
+                continue
             if kind == "term-entry" and suppress_glossterms and (number or term):
                 if current_numbered_list is None or current_numbered_list.getparent() is not current_div:
                     current_numbered_list = build_ordered_list(current_div)
