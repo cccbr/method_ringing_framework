@@ -665,7 +665,7 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
 
     if term and number:
         return (
-            f"                    <div class=\"row\"{row_id_attr}{row_term_attr}>\n"
+            f"                    <div class=\"row mrf-glossary-row\"{row_id_attr}{row_term_attr}>\n"
             "                        <div class=\"col-sm-1\">\n"
             f"                            {html.escape(number)}\n"
             "                        </div>\n"
@@ -681,7 +681,7 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
 
     if term and not number:
         return (
-            f"                    <div class=\"row\"{row_id_attr}{row_term_attr}>\n"
+            f"                    <div class=\"row mrf-glossary-row\"{row_id_attr}{row_term_attr}>\n"
             "                        <div class=\"col-xl-2 col-sm-3\">\n"
             f"                            {rendered_term}{toggle_html}\n"
             "                        </div>\n"
@@ -694,12 +694,12 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
 
     if not term and number:
         return (
-            f"                    <div class=\"row\"{row_id_attr}>\n"
+            f"                    <div class=\"row mrf-glossary-row\"{row_id_attr}>\n"
             "                        <div class=\"col-sm-1\">\n"
             f"                            {html.escape(number)}\n"
             "                        </div>\n"
             "                        <div class=\"col-sm-11\">\n"
-            f"{indent_block('\n'.join(main_blocks), 28) if main_blocks else ''}{detail_html}\n"
+            f"{indent_block(content, 28) if content else ''}{detail_html}\n"
             "                        </div>\n"
             "                    </div>"
         )
@@ -727,7 +727,7 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
         )
         combined_content = "\n".join(part for part in main_blocks if part).strip()
         return (
-            f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'
+            f'                    <div class="row mrf-heading-row" id="{html.escape(section_id, quote=True)}">\n'
             '                        <div class="col-sm-1">\n'
             f"                            <h5>{html.escape(marker)}{toggle_html}</h5>\n"
             "                        </div>\n"
@@ -741,7 +741,7 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
     header_html = ""
     if show_header:
         header_html = (
-            f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'
+            f'                    <div class="row mrf-heading-row" id="{html.escape(section_id, quote=True)}">\n'
             '                        <div class="col-sm-1">\n'
             f"                            <h5>{html.escape(marker)}</h5>\n"
             "                        </div>\n"
@@ -832,7 +832,7 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         body_aligned=True,
     )
     return (
-        f'                    <div class="row" id="{html.escape(section_id, quote=True)}">\n'
+        f'                    <div class="row mrf-heading-row" id="{html.escape(section_id, quote=True)}">\n'
         '                        <div class="col-sm-1">\n'
         f"                            <h5>{html.escape(marker)}{toggle_html}</h5>\n"
         "                        </div>\n"
