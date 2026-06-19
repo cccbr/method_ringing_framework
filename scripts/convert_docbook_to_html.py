@@ -206,15 +206,16 @@ def render_faq_body(node: etree._Element, asset_prefix: str, *, level: int = 1, 
     return "\n".join(blocks)
 
 
-def render_faq_block(node: etree._Element, asset_prefix: str, label: str) -> str:
+def render_faq_block(node: etree._Element, asset_prefix: str, label: str, *, trailing_rule: bool = False) -> str:
     body = render_faq_body(node, asset_prefix)
     if not body:
         return ""
+    rule_html = "\n                            <hr />" if trailing_rule else ""
     return (
         '                    <div class="row">\n'
         f'                        <div class="col-sm-1">{html.escape(label)}</div>\n'
         '                        <div class="col-sm-11">\n'
-        f"{indent_block(body, 28)}\n"
+        f"{indent_block(body, 28)}{rule_html}\n"
         "                        </div>\n"
         "                    </div>"
     )
@@ -341,7 +342,7 @@ def render_list_item_blocks(
         elif child_name == "question":
             main_blocks.append(render_faq_block(child, asset_prefix, "Q."))
         elif child_name == "answer":
-            main_blocks.append(render_faq_block(child, asset_prefix, "A."))
+            main_blocks.append(render_faq_block(child, asset_prefix, "A.", trailing_rule=True))
         elif child_name in {"itemizedlist", "orderedlist"}:
             main_blocks.append(render_list(child, asset_prefix, level=level + 1, collapse_seed=f"{collapse_seed}-{index}"))
         elif child_name in {"example", "note"}:
