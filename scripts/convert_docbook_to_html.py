@@ -291,6 +291,29 @@ def render_informaltable(node: etree._Element, asset_prefix: str) -> str:
 
     thead_html = f"\n<thead>\n{render_rows(head_rows, 'th')}\n</thead>" if head_rows else ""
     tbody_html = f"\n<tbody>\n{render_rows(body_rows, 'td')}\n</tbody>" if body_rows else ""
+    if role == "related-material":
+        rendered_rows: list[str] = []
+        for row in body_rows:
+            entries = row.findall("db:entry", NS)
+            if len(entries) < 3:
+                continue
+            number = html.escape(read_text(entries[0]))
+            title = html.escape(read_text(entries[1]))
+            description = render_table_cell(entries[2], asset_prefix)
+            rendered_rows.append(
+                "                    <div class=\"row\">\n"
+                "                        <div class=\"col-sm-1\">\n"
+                f"                            {number}\n"
+                "                        </div>\n"
+                "                        <div class=\"col-xl-2 col-sm-3\">\n"
+                f"                            {title}\n"
+                "                        </div>\n"
+                "                        <div class=\"col-xl-9 col-sm-8\">\n"
+                f"                            {description}\n"
+                "                        </div>\n"
+                "                    </div>"
+            )
+        return "\n\n".join(rendered_rows)
     return (
         f'<div class="table-responsive"><table class="table table-sm table-bordered mrf-table{role_class}">'
         f"{thead_html}{tbody_html}</table></div>"
@@ -583,10 +606,12 @@ def render_block_children(node: etree._Element, asset_prefix: str, *, skip_title
         elif name in {"itemizedlist", "orderedlist"}:
             rendered = render_list(child, asset_prefix, collapse_seed=f"{node_seed}-{name}-{index}")
             blocks.append(render_body_block(rendered) if name == "itemizedlist" else rendered)
-        elif name in {"example", "note", "mediaobject", "informaltable"}:
+        elif name in {"example", "note", "mediaobject"}:
             rendered = render_detail_group(child, asset_prefix)
             if rendered:
                 blocks.append(rendered)
+        elif name == "informaltable":
+            blocks.append(render_informaltable(child, asset_prefix))
         elif name == "section":
             blocks.append(render_section(child, asset_prefix))
     return [block for block in blocks if block]
@@ -747,7 +772,7 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         if child_name == "para":
             main_blocks.append(render_body_para(child, asset_prefix))
         elif child_name == "informaltable":
-            main_blocks.append(render_body_block(render_informaltable(child, asset_prefix)))
+            main_blocks.append(render_informaltable(child, asset_prefix))
         elif child_name in {"itemizedlist", "orderedlist"}:
             rendered = render_list(
                 child,

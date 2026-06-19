@@ -846,10 +846,7 @@ def add_list(tag: Tag, parent: etree._Element) -> None:
         doc_list.set("numeration", "loweralpha" if list_type == "a" else "arabic")
     for item in tag.find_all("li", recursive=False):
         list_item = etree.SubElement(doc_list, qname("listitem"))
-        para = etree.SubElement(list_item, qname("para"))
-        for child in item.children:
-            render_inline(child, para, None)
-        trim_para_whitespace(para)
+        add_child_blocks(item, list_item)
 
 
 def add_table_cell(column: Tag, row_elem: etree._Element) -> None:
@@ -924,6 +921,34 @@ def add_html_table(table: Tag, parent: etree._Element) -> None:
             add_table_cell(cell, row_elem)
         for _ in range(len(cells), cols):
             add_table_cell(make_table_text_cell(""), row_elem)
+
+
+def is_related_material_row(row: Tag) -> bool:
+    columns = direct_columns(row)
+    if len(columns) < 3:
+        return False
+    if parse_number(columns[0].get_text(" ", strip=True)) is None:
+        return False
+    return not any(column.find("h5") is not None for column in columns[1:3])
+
+
+def add_related_material_table(rows: list[Tag], parent: etree._Element) -> None:
+    if not rows:
+        return
+
+    doc_table = etree.SubElement(parent, qname("informaltable"))
+    doc_table.set("role", "related-material")
+    tgroup = etree.SubElement(doc_table, qname("tgroup"))
+    tgroup.set("cols", "3")
+    tbody = etree.SubElement(tgroup, qname("tbody"))
+
+    for row in rows:
+        columns = direct_columns(row)
+        if len(columns) < 3:
+            continue
+        row_elem = etree.SubElement(tbody, qname("row"))
+        for column in columns[:3]:
+            add_table_cell(column, row_elem)
 
 
 def paragraph_list_marker(tag: Tag) -> tuple[str, str, re.Pattern[str]] | None:
@@ -1074,7 +1099,7 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
                 child.set("startingnumber", str(glossentry_count + 1))
                 orderedlist_started = True
 
-        if child_name == "p" and is_underlined_heading_paragraph(child):
+        if child_name == "p" and is_underlined_heading_paragraph(child) and etree.QName(parent).localname != "listitem":
             if grouped_heading_list is None:
                 grouped_heading_list = build_ordered_list(parent)
             grouped_heading_item = etree.SubElement(grouped_heading_list, qname("listitem"))
@@ -1494,6 +1519,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
     current_container: etree._Element | None = None
     current_numbered_list: etree._Element | None = None
     faq_page = clean_text(page_title).lower() in {"faq", "faqs"}
+    related_material_page = clean_text(page_title).lower() == "related material"
 
     row_index = 0
     while row_index < len(rows):
@@ -1570,6 +1596,20 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
                 row.get("id") or f"{current_section.get('{http://www.w3.org/XML/1998/namespace}id')}-subsection-{display_index}",
             )
             row_index += 1
+            continue
+        if related_material_page and is_related_material_row(row):
+            if current_section is None:
+                current_section = build_section(article, None, row.get("id") or f"section-{display_index}")
+                current_container = current_section
+                current_numbered_list = None
+
+            table_rows: list[Tag] = []
+            while row_index < len(rows) and is_related_material_row(rows[row_index]):
+                table_rows.append(rows[row_index])
+                row_index += 1
+            add_related_material_table(table_rows, current_section)
+            current_container = current_section
+            current_numbered_list = None
             continue
         if label and len(columns) >= 2 and clean_text(content_col.get_text(" ", strip=True)):
             if number:
