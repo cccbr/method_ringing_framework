@@ -63,6 +63,12 @@ class GlossaryTermLink:
     anchor_id: str
 
 
+@dataclass(frozen=True)
+class CrossReferenceLink:
+    label: str
+    href: str
+
+
 def local_name(elem: etree._Element) -> str:
     return etree.QName(elem).localname
 
@@ -206,13 +212,15 @@ def render_faq_body(node: etree._Element, asset_prefix: str, *, level: int = 1, 
     return "\n".join(blocks)
 
 
-def render_faq_block(node: etree._Element, asset_prefix: str, label: str, *, trailing_rule: bool = False) -> str:
+def render_faq_block(node: etree._Element, asset_prefix: str, label: str) -> str:
     body = render_faq_body(node, asset_prefix)
     if not body:
         return ""
+    trailing_rule = (node.get(f"{{{NS['mrf']}}}separator") or "").lower() == "hr"
     rule_html = "\n                            <hr />" if trailing_rule else ""
+    row_class = " mrf-faq-question" if label == "Q." else ""
     return (
-        '                    <div class="row">\n'
+        f'                    <div class="row{row_class}">\n'
         f'                        <div class="col-sm-1">{html.escape(label)}</div>\n'
         '                        <div class="col-sm-11">\n'
         f"{indent_block(body, 28)}{rule_html}\n"
@@ -294,15 +302,16 @@ def render_informaltable(node: etree._Element, asset_prefix: str) -> str:
     tbody_html = f"\n<tbody>\n{render_rows(body_rows, 'td')}\n</tbody>" if body_rows else ""
     if role == "related-material":
         rendered_rows: list[str] = []
-        for row in body_rows:
+        for row_index, row in enumerate(body_rows, start=1):
             entries = row.findall("db:entry", NS)
             if len(entries) < 3:
                 continue
             number = html.escape(read_text(entries[0]))
             title = html.escape(read_text(entries[1]))
             description = render_table_cell(entries[2], asset_prefix)
+            row_id_attr = f' id="{html.escape(table_row_id(role or "table", row_index), quote=True)}"'
             rendered_rows.append(
-                "                    <div class=\"row\">\n"
+                f"                    <div class=\"row\"{row_id_attr}>\n"
                 "                        <div class=\"col-sm-1\">\n"
                 f"                            {number}\n"
                 "                        </div>\n"
@@ -342,7 +351,7 @@ def render_list_item_blocks(
         elif child_name == "question":
             main_blocks.append(render_faq_block(child, asset_prefix, "Q."))
         elif child_name == "answer":
-            main_blocks.append(render_faq_block(child, asset_prefix, "A.", trailing_rule=True))
+            main_blocks.append(render_faq_block(child, asset_prefix, "A."))
         elif child_name in {"itemizedlist", "orderedlist"}:
             main_blocks.append(render_list(child, asset_prefix, level=level + 1, collapse_seed=f"{collapse_seed}-{index}"))
         elif child_name in {"example", "note"}:
@@ -353,7 +362,14 @@ def render_list_item_blocks(
     return main_blocks, detail_groups
 
 
-def render_numbered_list(node: etree._Element, asset_prefix: str, *, level: int, collapse_seed: str) -> str:
+def render_numbered_list(
+    node: etree._Element,
+    asset_prefix: str,
+    *,
+    level: int,
+    collapse_seed: str,
+    top_level: bool,
+) -> str:
     items: list[str] = []
     start = list_start(node)
     for offset, item in enumerate(node.findall("db:listitem", NS), start=0):
@@ -372,8 +388,9 @@ def render_numbered_list(node: etree._Element, asset_prefix: str, *, level: int,
         )
         content = indent_block("\n".join(main_blocks), 28) if main_blocks else ""
         marker = html.escape(custom_label) if custom_label else f"{index}."
+        row_id_attr = f' id="{html.escape(numbered_list_item_id(collapse_seed, index), quote=True)}"' if top_level else ""
         items.append(
-            "                    <div class=\"row mrf-numbered-item mrf-numbered-level-0\">\n"
+            f"                    <div class=\"row mrf-numbered-item mrf-numbered-level-0\"{row_id_attr}>\n"
             "                        <div class=\"col-sm-1 mrf-numbered-marker\">\n"
             f"                            {marker}{toggle_html}\n"
             "                        </div>\n"
@@ -399,7 +416,7 @@ def render_list(
     numeration = (node.get("numeration") or "").lower()
     role = (node.get("role") or "").lower()
     if ordered and numeration != "loweralpha" and level == 0 and top_level:
-        return render_numbered_list(node, asset_prefix, level=level, collapse_seed=collapse_seed)
+        return render_numbered_list(node, asset_prefix, level=level, collapse_seed=collapse_seed, top_level=top_level)
 
     classes = [f"mrf-list", f"mrf-list-level-{level}"]
     if ordered and numeration == "loweralpha":
@@ -531,6 +548,14 @@ def context_seed(node: etree._Element, fallback: str) -> str:
     if title:
         return title
     return fallback
+
+
+def numbered_list_item_id(collapse_seed: str, index: int) -> str:
+    return f"mrf-{schema_fragment(collapse_seed)}-{index}"
+
+
+def table_row_id(collapse_seed: str, index: int) -> str:
+    return f"mrf-{schema_fragment(collapse_seed)}-{index}"
 
 
 def main_heading(title: str, subtitle: str) -> str:
@@ -1003,6 +1028,150 @@ def build_glossary_autolink_data(
     return pattern, hrefs
 
 
+def build_cross_reference_autolink_data(
+    cross_reference_links: Sequence[CrossReferenceLink],
+    current_page_href: str,
+) -> tuple[re.Pattern[str] | None, dict[str, str]]:
+    unique_links: dict[str, CrossReferenceLink] = {}
+    for link in cross_reference_links:
+        normalized = collapse_ws(link.label, strip=True)
+        if not normalized:
+            continue
+        unique_links.setdefault(normalized.casefold(), CrossReferenceLink(normalized, link.href))
+
+    ordered_links = sorted(
+        unique_links.values(),
+        key=lambda item: (-len(item.label), item.label.casefold()),
+    )
+    if not ordered_links:
+        return None, {}
+
+    pattern = re.compile(
+        rf"(?<![A-Za-z0-9])(?:{'|'.join(re.escape(item.label) for item in ordered_links)})(?![A-Za-z0-9]|\.[A-Za-z0-9])",
+        re.IGNORECASE,
+    )
+    hrefs = {
+        item.label.casefold(): (
+            f"#{item.href.split('#', 1)[1]}"
+            if item.href.startswith(f"{current_page_href}#")
+            else item.href
+        )
+        for item in ordered_links
+    }
+    return pattern, hrefs
+
+
+def article_reference_scope(subtitle: str) -> tuple[str, str] | tuple[None, None]:
+    section_match = re.search(r"Section\s+(\d+)", subtitle)
+    if section_match:
+        return "Section", section_match.group(1)
+    appendix_match = re.search(r"Appendix\s+([A-Z])", subtitle)
+    if appendix_match:
+        return "Appendix", appendix_match.group(1)
+    return None, None
+
+
+def add_cross_reference_link(
+    links: dict[str, CrossReferenceLink],
+    label: str,
+    href: str,
+) -> None:
+    normalized = collapse_ws(label, strip=True)
+    if not normalized:
+        return
+    links.setdefault(normalized.casefold(), CrossReferenceLink(normalized, href))
+
+
+def add_prefixed_cross_reference_link(
+    links: dict[str, CrossReferenceLink],
+    page_kind: str,
+    label: str,
+    href: str,
+) -> None:
+    add_cross_reference_link(links, label, href)
+    add_cross_reference_link(links, f"{page_kind} {label}", href)
+
+
+def build_cross_reference_links(article: etree._Element, page_href: str) -> list[CrossReferenceLink]:
+    info = article.find("db:info", NS)
+    subtitle = read_text(info.find("db:subtitle", NS) if info is not None else None)
+    page_kind, page_code = article_reference_scope(subtitle)
+    if not page_kind or not page_code:
+        return []
+
+    links: dict[str, CrossReferenceLink] = {}
+    add_cross_reference_link(links, f"{page_kind} {page_code}", page_href)
+
+    glossary = article.find("db:glossary", NS)
+    if glossary is not None:
+        for glossdiv in glossary.findall("db:glossdiv", NS):
+            div_title = read_text(glossdiv.find("db:title", NS))
+            marker, _ = split_section_title(div_title)
+            if marker:
+                xml_id = glossdiv.get("{http://www.w3.org/XML/1998/namespace}id", "")
+                href = f"{page_href}#{xml_id}" if xml_id else page_href
+                add_prefixed_cross_reference_link(links, page_kind, f"{page_code}.{marker.rstrip('.')}", href)
+            for entry in glossdiv.findall("db:glossentry", NS):
+                number = (entry.get(f"{{{NS['mrf']}}}number") or "").strip()
+                if not number:
+                    continue
+                entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id", "")
+                href = f"{page_href}#{entry_id}" if entry_id else page_href
+                add_prefixed_cross_reference_link(links, page_kind, f"{page_code}.{number}", href)
+            for child_index, child in enumerate(glossdiv, start=1):
+                if local_name(child) != "orderedlist":
+                    continue
+
+                item_prefix = f"{page_code}.{marker.rstrip('.')}" if marker else page_code
+                collapse_seed = f"{context_seed(glossdiv, div_title or 'glossdiv')}-{local_name(child)}-{child_index}"
+                for item_index, _item in enumerate(child.findall("db:listitem", NS), start=list_start(child)):
+                    row_id = numbered_list_item_id(collapse_seed, item_index)
+                    add_prefixed_cross_reference_link(links, page_kind, f"{item_prefix}.{item_index}", f"{page_href}#{row_id}")
+
+    for section in article.findall("db:section", NS):
+        section_title = read_text(section.find("db:title", NS))
+        marker, _ = split_section_title(section_title)
+        section_id = section.get("{http://www.w3.org/XML/1998/namespace}id", "")
+        if marker and section_id:
+            add_prefixed_cross_reference_link(links, page_kind, f"{page_code}.{marker.rstrip('.')}", f"{page_href}#{section_id}")
+
+        section_seed = context_seed(section, section_title or "section")
+        for child_index, child in enumerate(section, start=1):
+            child_name = local_name(child)
+            if child_name == "orderedlist":
+                item_prefix = f"{page_code}.{marker.rstrip('.')}" if marker else page_code
+                collapse_seed = f"{section_seed}-{child_name}-{child_index}"
+                for item_index, _item in enumerate(child.findall("db:listitem", NS), start=list_start(child)):
+                    row_id = numbered_list_item_id(collapse_seed, item_index)
+                    add_prefixed_cross_reference_link(links, page_kind, f"{item_prefix}.{item_index}", f"{page_href}#{row_id}")
+            elif child_name == "informaltable" and (child.get("role") or "").strip() == "related-material":
+                row_prefix = page_code
+                collapse_seed = f"{section_seed}-{child_name}-{child_index}"
+                table_rows = child.findall("db:tgroup/db:tbody/db:row", NS)
+                if not table_rows:
+                    table_rows = child.findall("db:tbody/db:row", NS)
+                if not table_rows:
+                    table_rows = child.findall("db:row", NS)
+                for row_index, _row in enumerate(table_rows, start=1):
+                    row_id = table_row_id("related-material", row_index)
+                    add_prefixed_cross_reference_link(links, page_kind, f"{row_prefix}.{row_index}", f"{page_href}#{row_id}")
+
+    return list(links.values())
+
+
+def build_site_cross_reference_links(source_dir: Path) -> list[CrossReferenceLink]:
+    links: list[CrossReferenceLink] = []
+    parser = etree.XMLParser(remove_blank_text=False)
+    for xml_path in sorted(source_dir.glob("*.xml")):
+        try:
+            article = etree.parse(str(xml_path), parser).getroot()
+        except OSError:
+            continue
+        page_href = xml_path.with_suffix(".html").name
+        links.extend(build_cross_reference_links(article, page_href))
+    return links
+
+
 def linkify_text_segments(
     text: str,
     pattern: re.Pattern[str],
@@ -1103,6 +1272,9 @@ def autolink_html_element(
     tag_name = (element.tag or "").lower() if isinstance(element.tag, str) else ""
     if tag_name in {"a", "code", "script", "style", "h1", "h2", "h3", "h4", "h5", "h6"}:
         return
+    element_classes = set((element.get("class") or "").split())
+    if "mrf-faq-question" in element_classes:
+        return
 
     scoped_exclusions = excluded_terms
     definition_term = collapse_ws(element.get("data-glossterm"), strip=True)
@@ -1137,6 +1309,24 @@ def autolink_glossary_terms(
     return lxml_html.tostring(document, encoding="unicode", method="html", doctype="<!DOCTYPE html>")
 
 
+def autolink_cross_references(
+    html_text: str,
+    cross_reference_links: Sequence[CrossReferenceLink],
+    current_page_href: str,
+) -> str:
+    pattern, hrefs_by_term = build_cross_reference_autolink_data(cross_reference_links, current_page_href)
+    if pattern is None or not hrefs_by_term:
+        return html_text
+
+    document = lxml_html.document_fromstring(html_text)
+    main = document.find(".//main")
+    if main is None:
+        return html_text
+
+    autolink_html_element(main, pattern, hrefs_by_term)
+    return lxml_html.tostring(document, encoding="unicode", method="html", doctype="<!DOCTYPE html>")
+
+
 def build_html(
     article: etree._Element,
     asset_prefix: str,
@@ -1148,6 +1338,7 @@ def build_html(
     home_href: str | None = None,
     schema_version: SchemaVersionContext | None = None,
     glossary_terms: Sequence[GlossaryTermLink] = (),
+    cross_reference_links: Sequence[CrossReferenceLink] = (),
 ) -> str:
     info = article.find("db:info", NS)
     title = read_text(info.find("db:title", NS) if info is not None else None)
@@ -1170,11 +1361,11 @@ def build_html(
         fallback_subsections = []
         section_nodes = glossdivs if glossdivs else sections
         for section_node in section_nodes:
-            title = read_text(section_node.find("db:title", NS))
-            if not re.match(r"^[A-Z]\.\s+", title):
+            section_title = read_text(section_node.find("db:title", NS))
+            if not re.match(r"^[A-Z]\.\s+", section_title):
                 continue
             section_id = section_node.get("{http://www.w3.org/XML/1998/namespace}id", "")
-            fallback_subsections.append(SidebarSubsection(title=title, href=f"#{section_id}"))
+            fallback_subsections.append(SidebarSubsection(title=section_title, href=f"#{section_id}"))
         sidebar = render_sidebar(
             [SidebarPage(label=heading, href=page_href, active=True, subsections=tuple(fallback_subsections))]
         )
@@ -1255,7 +1446,8 @@ def build_html(
 </body>
 </html>
 """
-    return autolink_glossary_terms(html_text, glossary_terms, page_href)
+    html_text = autolink_glossary_terms(html_text, glossary_terms, page_href)
+    return autolink_cross_references(html_text, cross_reference_links, page_href)
 
 
 def parse_args() -> argparse.Namespace:
@@ -1275,11 +1467,13 @@ def main() -> int:
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     article = etree.parse(str(input_path), etree.XMLParser(remove_blank_text=False)).getroot()
+    cross_reference_links = build_site_cross_reference_links(input_path.parent)
     html_text = build_html(
         article,
         asset_prefix=args.asset_prefix,
         page_href=args.page_href or output_path.name,
         switch_version_href=args.switch_version_href,
+        cross_reference_links=cross_reference_links,
     )
     output_path.write_text(html_text, encoding="utf-8", newline="\n")
     return 0

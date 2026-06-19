@@ -566,21 +566,28 @@ def split_faq_item_children(children: list[etree._Element]) -> tuple[list[etree.
     if len(paras) >= 2 and len(paras) == len(children):
         return [children[0]], children[1:]
 
-    orderedlist_indexes = [index for index, child in enumerate(children) if etree.QName(child).localname == "orderedlist"]
-    if not orderedlist_indexes or len(paras) < 2:
+    list_indexes = [index for index, child in enumerate(children) if etree.QName(child).localname in {"orderedlist", "itemizedlist"}]
+    if not list_indexes:
         return None
 
-    first_orderedlist = orderedlist_indexes[0]
+    first_list = list_indexes[0]
     answer_start = None
-    for index, child in enumerate(children[first_orderedlist + 1 :], start=first_orderedlist + 1):
-        if etree.QName(child).localname == "para":
-            answer_start = index
-            break
+    if first_list == 0:
+        for index, child in enumerate(children[1:], start=1):
+            if etree.QName(child).localname == "para":
+                answer_start = index
+                break
+        if answer_start is None:
+            return None
+    else:
+        for index, child in enumerate(children[first_list + 1 :], start=first_list + 1):
+            if etree.QName(child).localname == "para":
+                answer_start = index
+                break
+        if answer_start is None:
+            answer_start = first_list
 
-    if answer_start is None:
-        return None
-
-    if any(etree.QName(child).localname != "para" for child in children[answer_start:]):
+    if answer_start >= len(children):
         return None
 
     return children[:answer_start], children[answer_start:]
@@ -1357,6 +1364,7 @@ def add_faq_questions_and_answers(article: etree._Element) -> None:
             for child in answer_children:
                 answer.append(child)
 
+            answer.set(qname("separator", "mrf"), "hr")
             listitem.insert(0, question)
             listitem.insert(1, answer)
 

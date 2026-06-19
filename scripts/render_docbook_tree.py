@@ -15,7 +15,16 @@ from pathlib import Path
 from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).parent))
-from convert_docbook_to_html import GlossaryTermLink, SchemaVersionContext, SidebarPage, SidebarSubsection, VersionOption, build_html
+from convert_docbook_to_html import (
+    CrossReferenceLink,
+    GlossaryTermLink,
+    SchemaVersionContext,
+    SidebarPage,
+    SidebarSubsection,
+    VersionOption,
+    build_html,
+    build_site_cross_reference_links,
+)
 from convert_docbook_to_latex import build_document
 from generate_master_latex import classify_content_document, generate_master_tex, partition_content_documents
 from publishing_paths import discover_version_ids, edition_output_dir, is_revision_stem, normalize_version_id, source_site_dir
@@ -573,6 +582,7 @@ def render_version(
         for xml_file in xml_files
     }
     glossary_terms = collect_glossary_terms(xml_files, articles_by_file)
+    cross_reference_links = build_site_cross_reference_links(version_xml_dir)
 
     print(f"  Found {len(xml_files)} XML files")
 
@@ -595,6 +605,7 @@ def render_version(
                 home_href="index.html",
                 schema_version=build_schema_version_context(version, metadata_by_id),
                 glossary_terms=glossary_terms,
+                cross_reference_links=cross_reference_links,
             )
             html_output.write_text(html_text, encoding="utf-8", newline="\n")
 
