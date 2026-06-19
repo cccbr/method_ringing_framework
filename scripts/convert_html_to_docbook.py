@@ -338,6 +338,12 @@ def bootstrap_table_columns(row: Tag) -> list[Tag]:
     elif len(columns) == 2:
         left_nested = nested_row_columns(columns[0])
         right_columns = nested_row_columns(columns[1])
+        first_text = clean_text(columns[0].get_text(" ", strip=True))
+        if not left_nested and first_text == "LH Code" and right_columns:
+            normalized = [columns[0], make_table_text_cell("")] + right_columns
+            first_text = clean_text(normalized[0].get_text(" ", strip=True)) if normalized else ""
+            if first_text == "LH Code" and len(normalized) == 9:
+                return normalized
         if not left_nested:
             return []
         left_columns = left_nested or [columns[0]]
@@ -1137,7 +1143,11 @@ def add_bootstrap_table(rows: list[Tag], parent: etree._Element) -> None:
     header_rows: list[Tag] = []
     body_rows: list[Tag] = []
     seen_body = False
-    for row in rows:
+    leadhead_code_table = role == "leadhead-codes"
+    for row_index, row in enumerate(rows):
+        if leadhead_code_table and row_index < 2:
+            header_rows.append(row)
+            continue
         if not seen_body and is_bootstrap_table_header_row(row):
             header_rows.append(row)
         else:
@@ -1160,6 +1170,17 @@ def add_bootstrap_table(rows: list[Tag], parent: etree._Element) -> None:
             add_table_cell(column, row_elem)
         for _ in range(len(columns), cols):
             add_table_cell(make_table_text_cell(""), row_elem)
+
+
+def collect_top_level_rows(main: Tag) -> list[Tag]:
+    rows: list[Tag] = []
+    for child in main.find_all("div", recursive=False):
+        classes = child.get("class") or []
+        if "row" in classes:
+            rows.append(child)
+        elif "container-fluid" in classes:
+            rows.extend(row for row in child.find_all("div", recursive=False) if "row" in (row.get("class") or []))
+    return rows
 
 
 def build_unordered_list(parent: etree._Element, compact: bool = False) -> etree._Element:
@@ -1557,8 +1578,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
         None,
     )
     main = soup.find("main") or soup.body or soup
-    content_root = main.find("div", class_="container-fluid", recursive=False) or main
-    rows = [row for row in content_root.find_all("div", recursive=False) if "row" in (row.get("class") or [])]
+    rows = collect_top_level_rows(main)
 
     heading_text = extract_heading_text(main)
     framework_title, _ = split_framework_title(soup.title.string if soup.title and soup.title.string else "Framework for Method Ringing")
