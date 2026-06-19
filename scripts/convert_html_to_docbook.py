@@ -1042,6 +1042,8 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
     first_para = True
     glossentry_count = 0
     orderedlist_started = False
+    grouped_heading_list: etree._Element | None = None
+    grouped_heading_item: etree._Element | None = None
 
     while child_index < len(children):
         child = children[child_index]
@@ -1072,13 +1074,24 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
                 child.set("startingnumber", str(glossentry_count + 1))
                 orderedlist_started = True
 
-        converted_paragraphs = add_paragraph_marker_list(children, child_index, parent)
+        if child_name == "p" and is_underlined_heading_paragraph(child):
+            if grouped_heading_list is None:
+                grouped_heading_list = build_ordered_list(parent)
+            grouped_heading_item = etree.SubElement(grouped_heading_list, qname("listitem"))
+            add_paragraph(child, grouped_heading_item)
+            first_para = False
+            child_index += 1
+            continue
+
+        target_parent = grouped_heading_item if grouped_heading_item is not None else parent
+
+        converted_paragraphs = add_paragraph_marker_list(children, child_index, target_parent)
         if converted_paragraphs:
             child_index += converted_paragraphs
             first_para = False
             continue
 
-        converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, parent)
+        converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, target_parent)
         if converted_paragraphs:
             child_index += converted_paragraphs
             first_para = False
@@ -1100,28 +1113,28 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
                     break
                 table_rows.append(row_candidate)
                 child_index += 1
-            add_bootstrap_table(table_rows, parent)
+            add_bootstrap_table(table_rows, target_parent)
             first_para = False
             continue
 
         if child_name == "p":
             labels = strip_prefix_labels if first_para else None
-            added = add_paragraph(child, parent, labels)
+            added = add_paragraph(child, target_parent, labels)
             first_para = first_para and not added
         elif child_name in {"ul", "ol"}:
-            add_list(child, parent)
+            add_list(child, target_parent)
             first_para = False
         elif child_name == "img":
-            add_media_from_img(child, parent)
+            add_media_from_img(child, target_parent)
             first_para = False
         elif child_name == "table":
-            add_html_table(child, parent)
+            add_html_table(child, target_parent)
             first_para = False
         else:
             nested_images = child.find_all("img", recursive=False)
             if nested_images:
                 for image in nested_images:
-                    add_media_from_img(image, parent)
+                    add_media_from_img(image, target_parent)
                 first_para = False
 
         child_index += 1
@@ -1192,6 +1205,20 @@ def build_unordered_list(parent: etree._Element, compact: bool = False) -> etree
 
 def add_media_from_img(tag: Tag, parent: etree._Element) -> None:
     render_inline(tag, parent, None)
+
+
+def is_underlined_heading_paragraph(tag: Tag) -> bool:
+    if tag.name.lower() != "p":
+        return False
+
+    element_children = [child for child in tag.children if isinstance(child, Tag)]
+    if len(element_children) != 1 or element_children[0].name.lower() != "u":
+        return False
+
+    if any(clean_text(str(child)) for child in tag.children if isinstance(child, NavigableString)):
+        return False
+
+    return True
 
 
 def add_main_blocks(container: Tag, glossdef: etree._Element) -> None:
