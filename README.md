@@ -87,6 +87,7 @@ The XML is DocBook 5 with a small `mrf:` metadata namespace. The main tags used 
 | `emphasis` | Bold, italic, underline, or other inline emphasis |
 | `literal` | Literal or code-style inline text |
 | `link` | Cross-reference or external link |
+| `nolink` | Inline wrapper that suppresses automatic cross-reference and glossary autolinking |
 | `informaltable` | Tables without formal captions |
 | `tgroup` | Table group and column definition container |
 | `thead` / `tbody` | Table header and body |

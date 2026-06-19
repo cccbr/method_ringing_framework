@@ -113,6 +113,9 @@ def render_inline(node: etree._Element) -> str:
         )
         return rf"\href{{{escape_latex(href)}}}{{{body or escape_latex(href)}}}"
 
+    if name == "nolink":
+        return body
+
     if name == "literal":
         return rf"\texttt{{{body}}}"
 

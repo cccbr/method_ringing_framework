@@ -769,6 +769,12 @@ def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_pre
             render_inline(child, elem, None)
         return
 
+    if tag == "nolink":
+        elem = etree.SubElement(parent, qname("nolink"))
+        for child in node.children:
+            render_inline(child, elem, None)
+        return
+
     if tag == "img":
         media = etree.SubElement(parent, qname("mediaobject"))
         image_object = etree.SubElement(media, qname("imageobject"))

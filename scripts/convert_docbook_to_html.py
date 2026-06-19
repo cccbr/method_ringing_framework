@@ -146,6 +146,9 @@ def render_inline(node: etree._Element, asset_prefix: str) -> str:
         href = qualify_href(href, asset_prefix)
         return f'<a class="text-success undrln" href="{html.escape(href, quote=True)}">{body or html.escape(href)}</a>'
 
+    if name == "nolink":
+        return f'<span class="mrf-nolink">{body}</span>'
+
     if name == "literal":
         return f"<code>{body}</code>"
 
@@ -1273,7 +1276,7 @@ def autolink_html_element(
     if tag_name in {"a", "code", "script", "style", "h1", "h2", "h3", "h4", "h5", "h6"}:
         return
     element_classes = set((element.get("class") or "").split())
-    if "mrf-faq-question" in element_classes:
+    if "mrf-faq-question" in element_classes or "mrf-nolink" in element_classes:
         return
 
     scoped_exclusions = excluded_terms
