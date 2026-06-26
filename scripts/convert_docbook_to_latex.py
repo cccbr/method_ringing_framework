@@ -173,7 +173,7 @@ def render_mediaobject(node: etree._Element, asset_root: str) -> str:
     return rf"\MRFContentImage{{{build_image_include(image.get('fileref', ''), image.get('width') or image.get('contentwidth'), asset_root)}}}"
 
 
-def render_table_cell(node: etree._Element, asset_root: str, *, monospace: bool) -> str:
+def render_table_cell(node: etree._Element, asset_root: str, *, monospace: bool, nested: bool = False) -> str:
     parts: list[str] = []
     if node.text and collapse_ws(node.text, strip=True):
         parts.append(escape_latex(collapse_ws(node.text, strip=True)))
@@ -187,7 +187,7 @@ def render_table_cell(node: etree._Element, asset_root: str, *, monospace: bool)
         elif name == "mediaobject":
             parts.append(render_mediaobject(child, asset_root))
         elif name == "informaltable":
-            parts.append(render_informaltable(child, asset_root))
+            parts.append(render_informaltable(child, asset_root, nested=True))
         else:
             parts.append(render_inline(child))
         if child.tail and collapse_ws(child.tail, strip=True):
@@ -199,11 +199,12 @@ def render_table_cell(node: etree._Element, asset_root: str, *, monospace: bool)
     return body
 
 
-def render_informaltable(node: etree._Element, asset_root: str) -> str:
+def render_informaltable(node: etree._Element, asset_root: str, *, nested: bool = False) -> str:
     role = (node.get("role") or "").strip()
     monospace = False
     font_size = r"\footnotesize" if role == "leadhead-codes" else r"\small"
     tabcolsep = "2pt" if role == "leadhead-codes" else "4pt"
+    row_rules = role not in {"amended-method-titles", "amended-method-titles-summary"}
     tgroup = node.find("db:tgroup", NS)
     table_root = tgroup if tgroup is not None else node
     head_rows = table_root.findall("db:thead/db:row", NS)
@@ -211,32 +212,62 @@ def render_informaltable(node: etree._Element, asset_root: str) -> str:
     if not head_rows and not body_rows:
         body_rows = table_root.findall("db:row", NS)
 
+    if role == "leadhead-code-pair":
+        if not body_rows:
+            return ""
+        entries = body_rows[0].findall("db:entry", NS)
+        if len(entries) != 2:
+            return ""
+        left = render_table_cell(entries[0], asset_root, monospace=monospace, nested=True)
+        right = render_table_cell(entries[1], asset_root, monospace=monospace, nested=True)
+        rendered = "\n".join(
+            [
+                r"\begingroup",
+                font_size,
+                rf"\setlength{{\tabcolsep}}{{{tabcolsep}}}",
+                r"\noindent\begin{tabular}{@{}p{0.49\linewidth}p{0.49\linewidth}@{}}",
+                rf"\begin{{minipage}}[t]{{\linewidth}}\raggedright {left}\end{{minipage}} & \begin{{minipage}}[t]{{\linewidth}}\raggedright {right}\end{{minipage}} \\",
+                r"\end{tabular}",
+                r"\endgroup",
+            ]
+        )
+        return rendered
+
     max_cols = 0
     for row in [*head_rows, *body_rows]:
         max_cols = max(max_cols, len(row.findall("db:entry", NS)))
     if max_cols == 0:
         return ""
 
+    if role in {"amended-method-titles", "amended-method-titles-summary"} and not nested:
+        column_spec = r"@{}p{0.10\linewidth}p{0.45\linewidth}p{0.45\linewidth}@{}"
+    else:
+        column_spec = rf"@{{}}{'l' * max_cols}@{{}}"
+
     lines = [
         r"\begingroup",
         font_size,
         rf"\setlength{{\tabcolsep}}{{{tabcolsep}}}",
-        rf"\begin{{longtable}}{{@{{}}{'l' * max_cols}@{{}}}}",
+        r"\setlength{\LTleft}{\MRFContentIndent}" if role in {"leadhead-codes", "amended-method-titles", "amended-method-titles-summary"} else r"\setlength{\LTleft}{0pt}",
+        r"\setlength{\LTright}{0pt}",
+        rf"\begin{{{'tabular' if nested else 'longtable'}}}{{{column_spec}}}",
     ]
 
     def append_rows(rows: list[etree._Element], *, header: bool) -> None:
         for row in rows:
-            cells = [render_table_cell(entry, asset_root, monospace=monospace) for entry in row.findall("db:entry", NS)]
+            cells = [render_table_cell(entry, asset_root, monospace=monospace, nested=nested) for entry in row.findall("db:entry", NS)]
             cells.extend([""] * (max_cols - len(cells)))
             if header:
                 cells = [rf"\textbf{{{cell}}}" if cell else "" for cell in cells]
             lines.append(" & ".join(cells) + r" \\")
-            lines.append(r"\hline")
+            if row_rules:
+                lines.append(r"\hline")
 
     append_rows(head_rows, header=True)
     append_rows(body_rows, header=False)
-    lines.extend([r"\end{longtable}", r"\endgroup"])
-    return "\n".join(lines)
+    lines.extend([rf"\end{{{'tabular' if nested else 'longtable'}}}", r"\endgroup"])
+    rendered = "\n".join(lines)
+    return rendered
 
 
 def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
@@ -421,6 +452,9 @@ def parse_page_heading(title: str, subtitle: str) -> tuple[str, str]:
 
 def parse_glossdiv_heading(title: str) -> tuple[str, str]:
     match = GLOSSDIV_PREFIX_RE.match(title)
+    if match:
+        return match.group(1), match.group(2)
+    match = re.match(r"^([a-z]\d*\))\s+(.*)$", title)
     if match:
         return match.group(1), match.group(2)
     return "", title

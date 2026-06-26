@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import re
 from pathlib import Path
+from functools import lru_cache
 
 from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 from lxml import etree
@@ -65,6 +66,8 @@ NON_GLOSSTERM_LABELS = {
     "version 2",
 }
 
+NOLINK_EXCEPTION_TERMS = {"place notation"}
+
 
 def qname(local: str, prefix: str = "db") -> str:
     return f"{{{NS[prefix]}}}{local}"
@@ -118,6 +121,69 @@ def append_text(elem: etree._Element, text: str | None) -> None:
 
     last = children[-1]
     last.tail = merge_inline_text(last.tail, value)
+
+
+@lru_cache(maxsize=1)
+def build_lowercase_nolink_pattern() -> re.Pattern[str] | None:
+    xml_root = Path(__file__).resolve().parents[1] / "generated" / "xml"
+    terms: set[str] = set()
+    if not xml_root.exists():
+        return None
+
+    for xml_path in xml_root.rglob("*.xml"):
+        try:
+            root = etree.parse(str(xml_path)).getroot()
+        except OSError:
+            continue
+        except etree.XMLSyntaxError:
+            continue
+        for term in root.findall(".//db:glossterm", NS):
+            term_text = clean_text(term.text)
+            if term_text:
+                terms.add(term_text)
+
+    ordered_terms = sorted(terms, key=lambda text: (-len(text), text.casefold()))
+    if not ordered_terms:
+        return None
+
+    return re.compile(
+        rf"(?<![A-Za-z0-9])(?:{'|'.join(re.escape(term) for term in ordered_terms)})(?![A-Za-z0-9])",
+        re.IGNORECASE,
+    )
+
+
+def append_text_with_nolink(elem: etree._Element, text: str | None) -> None:
+    value = inline_text(text)
+    if not value:
+        return
+
+    pattern = build_lowercase_nolink_pattern()
+    if pattern is None:
+        append_text(elem, value)
+        return
+
+    cursor = 0
+    matched = False
+    for match in pattern.finditer(value):
+        matched_text = match.group(0)
+        if matched_text != matched_text.lower():
+            continue
+        if matched_text.casefold() in NOLINK_EXCEPTION_TERMS:
+            continue
+
+        if match.start() > cursor:
+            append_text(elem, value[cursor:match.start()])
+        nolink = etree.SubElement(elem, qname("nolink"))
+        nolink.text = matched_text
+        cursor = match.end()
+        matched = True
+
+    if not matched:
+        append_text(elem, value)
+        return
+
+    if cursor < len(value):
+        append_text(elem, value[cursor:])
 
 
 def trim_para_whitespace(para: etree._Element) -> None:
@@ -299,8 +365,10 @@ def looks_like_heading_row(row: Tag) -> bool:
 
 def looks_like_section_header_row(row: Tag) -> bool:
     cols = direct_columns(row)
-    if len(cols) < 2:
+    if not cols:
         return False
+    if len(cols) == 1:
+        return cols[0].find("h5") is not None
     return cols[0].find("h5") is not None and cols[1].find("h5") is not None
 
 
@@ -339,15 +407,19 @@ def bootstrap_table_columns(row: Tag) -> list[Tag]:
         left_nested = nested_row_columns(columns[0])
         right_columns = nested_row_columns(columns[1])
         first_text = clean_text(columns[0].get_text(" ", strip=True))
-        if not left_nested and first_text == "LH Code" and right_columns:
+        simple_pair = all("py-1" in (column.get("class") or []) for column in columns)
+        if simple_pair and not left_nested and not right_columns:
+            normalized = [columns[0], columns[1]]
+        elif not left_nested and first_text == "LH Code" and right_columns:
             normalized = [columns[0], make_table_text_cell("")] + right_columns
             first_text = clean_text(normalized[0].get_text(" ", strip=True)) if normalized else ""
             if first_text == "LH Code" and len(normalized) == 9:
                 return normalized
-        if not left_nested:
+        elif not left_nested:
             return []
-        left_columns = left_nested or [columns[0]]
-        normalized = left_columns + right_columns
+        else:
+            left_columns = left_nested or [columns[0]]
+            normalized = left_columns + right_columns
     elif len(columns) == 3:
         first_classes = set(columns[0].get("class") or [])
         second_classes = set(columns[1].get("class") or [])
@@ -371,7 +443,8 @@ def bootstrap_table_columns(row: Tag) -> list[Tag]:
     elif "flex-nowrap" in (row.get("class") or []) and normalized:
         first_is_bold = normalized[0].find(["b", "strong"]) is not None
         split_values = first_text.split()
-        if len(split_values) == 2:
+        code_like_split = len(split_values) == 2 and all(re.fullmatch(r"[A-Za-z0-9+\-]{1,4}", value) for value in split_values)
+        if len(split_values) == 2 and (first_is_bold or code_like_split):
             normalized = [
                 make_table_text_cell(split_values[0], bold=first_is_bold),
                 make_table_text_cell(split_values[1], bold=first_is_bold),
@@ -540,21 +613,33 @@ def is_appendix_no_glossterm_page(page_title: str) -> bool:
     return page_title in {"Framework Development", "Framework Principles"}
 
 
-def add_labeled_numbered_list_item(ordered_list: etree._Element, label: str, content_col: Tag) -> etree._Element:
+def add_labeled_numbered_list_item(
+    ordered_list: etree._Element,
+    label: str,
+    content_col: Tag,
+    *,
+    wrap_nolink: bool = False,
+) -> etree._Element:
     list_item = etree.SubElement(ordered_list, qname("listitem"))
     para = etree.SubElement(list_item, qname("para"))
     emphasis = etree.SubElement(para, qname("emphasis"))
     emphasis.set("role", "bold")
     emphasis.text = clean_text(label)
     trim_para_whitespace(para)
-    add_content_blocks(content_col, list_item)
+    add_content_blocks(content_col, list_item, wrap_nolink=wrap_nolink)
     return list_item
 
 
-def add_labeled_faq_list_item(ordered_list: etree._Element, label: str, content_col: Tag) -> etree._Element:
+def add_labeled_faq_list_item(
+    ordered_list: etree._Element,
+    label: str,
+    content_col: Tag,
+    *,
+    wrap_nolink: bool = False,
+) -> etree._Element:
     list_item = etree.SubElement(ordered_list, qname("listitem"))
     list_item.set(qname("label", "mrf"), clean_text(label))
-    add_content_blocks(content_col, list_item)
+    add_content_blocks(content_col, list_item, wrap_nolink=wrap_nolink)
     return list_item
 
 
@@ -716,9 +801,18 @@ def unique_xml_id(root: etree._Element, raw_id: str) -> str:
     return f"{base_id}-{suffix}"
 
 
-def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> None:
+def render_inline(
+    node: Tag | NavigableString,
+    parent: etree._Element,
+    strip_prefix_labels: set[str] | None = None,
+    *,
+    allow_nolink: bool = True,
+) -> None:
     if isinstance(node, NavigableString):
-        append_text(parent, str(node))
+        if allow_nolink:
+            append_text_with_nolink(parent, str(node))
+        else:
+            append_text(parent, str(node))
         return
 
     if not isinstance(node, Tag):
@@ -738,21 +832,21 @@ def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_pre
         elem = etree.SubElement(parent, qname("emphasis"))
         elem.set("role", "bold")
         for child in node.children:
-            render_inline(child, elem, None)
+            render_inline(child, elem, None, allow_nolink=allow_nolink)
         return
 
     if tag in {"i", "em"}:
         elem = etree.SubElement(parent, qname("emphasis"))
         elem.set("role", "italic")
         for child in node.children:
-            render_inline(child, elem, None)
+            render_inline(child, elem, None, allow_nolink=allow_nolink)
         return
 
     if tag == "u":
         elem = etree.SubElement(parent, qname("emphasis"))
         elem.set("role", "underline")
         for child in node.children:
-            render_inline(child, elem, None)
+            render_inline(child, elem, None, allow_nolink=allow_nolink)
         return
 
     if tag in {"code", "tt"}:
@@ -766,13 +860,13 @@ def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_pre
         if href:
             elem.set(qname("href", "xlink"), href)
         for child in node.children:
-            render_inline(child, elem, None)
+            render_inline(child, elem, None, allow_nolink=False)
         return
 
     if tag == "nolink":
         elem = etree.SubElement(parent, qname("nolink"))
         for child in node.children:
-            render_inline(child, elem, None)
+            render_inline(child, elem, None, allow_nolink=False)
         return
 
     if tag == "img":
@@ -788,7 +882,7 @@ def render_inline(node: Tag | NavigableString, parent: etree._Element, strip_pre
         return
 
     for child in node.children:
-        render_inline(child, parent, None)
+        render_inline(child, parent, None, allow_nolink=allow_nolink)
 
 
 def strip_initial_label_from_para(para: etree._Element, labels: set[str]) -> None:
@@ -823,18 +917,24 @@ def add_paragraph(
     parent: etree._Element,
     strip_prefix_labels: set[str] | None = None,
     strip_marker: re.Pattern[str] | None = None,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
 ) -> bool:
     if paragraph_is_image_only(tag):
         for image in tag.find_all("img", recursive=False):
-            render_inline(image, parent, None)
+            render_inline(image, parent, None, allow_nolink=allow_nolink)
         return True
 
     if add_break_separated_list(tag, parent):
         return True
 
     para = etree.SubElement(parent, qname("para"))
+    target = para
+    if wrap_nolink:
+        target = etree.SubElement(para, qname("nolink"))
     for child in tag.children:
-        render_inline(child, para, strip_prefix_labels)
+        render_inline(child, target, strip_prefix_labels, allow_nolink=allow_nolink)
 
     if not clean_text("".join(para.itertext())) and len(para) == 0:
         parent.remove(para)
@@ -851,7 +951,7 @@ def add_paragraph(
     return True
 
 
-def add_list(tag: Tag, parent: etree._Element) -> None:
+def add_list(tag: Tag, parent: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
     list_tag = qname("orderedlist") if tag.name.lower() == "ol" else qname("itemizedlist")
     doc_list = etree.SubElement(parent, list_tag)
     if tag.name.lower() == "ol":
@@ -859,10 +959,10 @@ def add_list(tag: Tag, parent: etree._Element) -> None:
         doc_list.set("numeration", "loweralpha" if list_type == "a" else "arabic")
     for item in tag.find_all("li", recursive=False):
         list_item = etree.SubElement(doc_list, qname("listitem"))
-        add_child_blocks(item, list_item)
+        add_child_blocks(item, list_item, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
 
 
-def add_table_cell(column: Tag, row_elem: etree._Element) -> None:
+def add_table_cell(column: Tag, row_elem: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
     entry = etree.SubElement(row_elem, qname("entry"))
     segments = split_nodes_on_breaks(column)
     if not segments:
@@ -871,8 +971,11 @@ def add_table_cell(column: Tag, row_elem: etree._Element) -> None:
     added_content = False
     for segment in segments:
         para = etree.SubElement(entry, qname("para"))
+        target = para
+        if wrap_nolink:
+            target = etree.SubElement(para, qname("nolink"))
         for child in segment:
-            render_inline(child, para, None)
+            render_inline(child, target, None, allow_nolink=allow_nolink)
         if not clean_text("".join(para.itertext())) and len(para) == 0:
             entry.remove(para)
             continue
@@ -881,6 +984,10 @@ def add_table_cell(column: Tag, row_elem: etree._Element) -> None:
 
     if not added_content:
         return
+
+
+def bootstrap_direct_rows(container: Tag) -> list[Tag]:
+    return [child for child in container.find_all("div", recursive=False) if "row" in (child.get("class") or [])]
 
 
 def is_bootstrap_table_row(row: Tag) -> bool:
@@ -906,6 +1013,159 @@ def bootstrap_table_role(rows: list[Tag]) -> str | None:
     return None
 
 
+def amended_method_titles_table_columns(row: Tag) -> list[Tag]:
+    columns = direct_columns(row)
+    if len(columns) != 3:
+        return []
+
+    first_classes = set(columns[0].get("class") or [])
+    second_classes = set(columns[1].get("class") or [])
+    third_classes = set(columns[2].get("class") or [])
+    if "col-sm-1" not in first_classes or "col-sm-5" not in second_classes or "col-sm-6" not in third_classes:
+        return []
+
+    if columns[1].find("h5") is not None or columns[2].find("h5") is not None:
+        return []
+
+    return columns
+
+
+def is_amended_method_titles_table_row(row: Tag) -> bool:
+    return bool(amended_method_titles_table_columns(row))
+
+
+def is_amended_method_titles_header_row(row: Tag) -> bool:
+    columns = amended_method_titles_table_columns(row)
+    if not columns:
+        return False
+
+    if clean_text(columns[0].get_text(" ", strip=True)):
+        return False
+
+    second_text = clean_text(columns[1].get_text(" ", strip=True))
+    third_text = clean_text(columns[2].get_text(" ", strip=True))
+    return second_text == "Method Title" and third_text == "Amended Title"
+
+
+def add_amended_method_titles_table(rows: list[Tag], parent: etree._Element, *, wrap_nolink: bool = False) -> None:
+    if not rows:
+        return
+
+    table = etree.SubElement(parent, qname("informaltable"))
+    table.set("role", "amended-method-titles")
+    tgroup = etree.SubElement(table, qname("tgroup"))
+    tgroup.set("cols", "3")
+
+    header_rows: list[Tag] = []
+    body_rows: list[Tag] = []
+    seen_body = False
+    for row in rows:
+        if not seen_body and is_amended_method_titles_header_row(row):
+            header_rows.append(row)
+        else:
+            seen_body = True
+            body_rows.append(row)
+
+    if header_rows:
+        thead = etree.SubElement(tgroup, qname("thead"))
+        for row in header_rows:
+            columns = amended_method_titles_table_columns(row)
+            row_elem = etree.SubElement(thead, qname("row"))
+            for column in columns:
+                add_table_cell(column, row_elem, wrap_nolink=wrap_nolink)
+
+    tbody = etree.SubElement(tgroup, qname("tbody"))
+    for row in body_rows:
+        columns = amended_method_titles_table_columns(row)
+        if not columns:
+            continue
+        row_elem = etree.SubElement(tbody, qname("row"))
+        for column in columns:
+            add_table_cell(column, row_elem, wrap_nolink=wrap_nolink)
+
+
+def amended_method_titles_summary_columns(row: Tag) -> list[Tag]:
+    columns = direct_columns(row)
+    if len(columns) != 3:
+        return []
+
+    first_classes = set(columns[0].get("class") or [])
+    second_classes = set(columns[1].get("class") or [])
+    third_classes = set(columns[2].get("class") or [])
+    if "col-sm-1" not in first_classes or "col-sm-2" not in second_classes or "col-sm-9" not in third_classes:
+        return []
+
+    return columns
+
+
+def is_amended_method_titles_summary_row(row: Tag) -> bool:
+    return bool(amended_method_titles_summary_columns(row))
+
+
+def is_amended_method_titles_summary_header_row(row: Tag) -> bool:
+    columns = amended_method_titles_summary_columns(row)
+    if not columns:
+        return False
+
+    if clean_text(columns[0].get_text(" ", strip=True)):
+        return False
+
+    second_text = clean_text(columns[1].get_text(" ", strip=True))
+    third_text = clean_text(columns[2].get_text(" ", strip=True))
+    return second_text == "Methods affected" and third_text == "Reason"
+
+
+def add_amended_method_titles_summary_table(rows: list[Tag], parent: etree._Element, *, wrap_nolink: bool = False) -> None:
+    if not rows:
+        return
+
+    table = etree.SubElement(parent, qname("informaltable"))
+    table.set("role", "amended-method-titles-summary")
+    tgroup = etree.SubElement(table, qname("tgroup"))
+    tgroup.set("cols", "3")
+
+    header_rows: list[Tag] = []
+    body_rows: list[Tag] = []
+    seen_body = False
+    for row in rows:
+        if not seen_body and is_amended_method_titles_summary_header_row(row):
+            header_rows.append(row)
+        else:
+            seen_body = True
+            body_rows.append(row)
+
+    if header_rows:
+        thead = etree.SubElement(tgroup, qname("thead"))
+        for row in header_rows:
+            columns = amended_method_titles_summary_columns(row)
+            row_elem = etree.SubElement(thead, qname("row"))
+            for column in columns:
+                add_table_cell(column, row_elem, wrap_nolink=wrap_nolink)
+
+    tbody = etree.SubElement(tgroup, qname("tbody"))
+    for row in body_rows:
+        columns = amended_method_titles_summary_columns(row)
+        if not columns:
+            continue
+        row_elem = etree.SubElement(tbody, qname("row"))
+        for column in columns:
+            add_table_cell(column, row_elem, wrap_nolink=wrap_nolink)
+
+
+def is_bootstrap_side_by_side_table_group(container: Tag) -> bool:
+    if container.name.lower() != "div":
+        return False
+    classes = container.get("class") or []
+    if "row" not in classes:
+        return False
+
+    columns = [child for child in container.find_all("div", recursive=False) if "col-12" in (child.get("class") or []) and "col-md-6" in (child.get("class") or [])]
+    if len(columns) != 2:
+        return False
+
+    return all(bootstrap_direct_rows(column) for column in columns)
+
+
 def html_table_rows(table: Tag) -> list[Tag]:
     sections = table.find_all(["thead", "tbody"], recursive=False)
     if sections:
@@ -916,7 +1176,7 @@ def html_table_rows(table: Tag) -> list[Tag]:
     return table.find_all("tr", recursive=False)
 
 
-def add_html_table(table: Tag, parent: etree._Element) -> None:
+def add_html_table(table: Tag, parent: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
     rows = html_table_rows(table)
     if not rows:
         return
@@ -931,9 +1191,27 @@ def add_html_table(table: Tag, parent: etree._Element) -> None:
         row_elem = etree.SubElement(body, qname("row"))
         cells = row.find_all(["th", "td"], recursive=False)
         for cell in cells:
-            add_table_cell(cell, row_elem)
+            add_table_cell(cell, row_elem, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
         for _ in range(len(cells), cols):
-            add_table_cell(make_table_text_cell(""), row_elem)
+            add_table_cell(make_table_text_cell(""), row_elem, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+
+
+def add_bootstrap_side_by_side_tables(container: Tag, parent: etree._Element, *, allow_nolink: bool = True) -> None:
+    columns = [child for child in container.find_all("div", recursive=False) if "col-12" in (child.get("class") or []) and "col-md-6" in (child.get("class") or [])]
+    if len(columns) != 2:
+        return
+
+    table = etree.SubElement(parent, qname("informaltable"))
+    table.set("role", "leadhead-code-pair")
+    tgroup = etree.SubElement(table, qname("tgroup"))
+    tgroup.set("cols", "2")
+    tbody = etree.SubElement(tgroup, qname("tbody"))
+    row_elem = etree.SubElement(tbody, qname("row"))
+
+    for column in columns:
+        entry = etree.SubElement(row_elem, qname("entry"))
+        rows = bootstrap_direct_rows(column)
+        add_bootstrap_table(rows, entry)
 
 
 def is_related_material_row(row: Tag) -> bool:
@@ -1074,7 +1352,27 @@ def add_marker_paragraph_with_nested_lists(children: list[Tag | NavigableString]
     return (index - start_index) if converted else 0
 
 
-def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels: set[str] | None = None) -> None:
+def add_child_blocks(
+    container: Tag,
+    parent: etree._Element,
+    strip_prefix_labels: set[str] | None = None,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+) -> None:
+    if container.name and container.name.lower() == "li":
+        block_children = [
+            child
+            for child in container.children
+            if isinstance(child, Tag) and child.name.lower() in {"p", "ul", "ol", "table", "div", "img", "section", "blockquote", "informaltable"}
+        ]
+        if not block_children:
+            synthetic = BeautifulSoup("", "lxml").new_tag("div")
+            for child in container.children:
+                synthetic.append(child)
+            add_paragraph(synthetic, parent, strip_prefix_labels, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+            return
+
     children = list(container.children)
     child_index = 0
     first_para = True
@@ -1091,7 +1389,10 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
         if isinstance(child, NavigableString):
             if clean_text(str(child)):
                 para = etree.SubElement(parent, qname("para"))
-                append_text(para, str(child))
+                if allow_nolink:
+                    append_text_with_nolink(para, str(child))
+                else:
+                    append_text(para, str(child))
                 trim_para_whitespace(para)
             child_index += 1
             continue
@@ -1116,7 +1417,7 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
             if grouped_heading_list is None:
                 grouped_heading_list = build_ordered_list(parent)
             grouped_heading_item = etree.SubElement(grouped_heading_list, qname("listitem"))
-            add_paragraph(child, grouped_heading_item)
+            add_paragraph(child, grouped_heading_item, wrap_nolink=wrap_nolink)
             first_para = False
             child_index += 1
             continue
@@ -1135,6 +1436,12 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
             first_para = False
             continue
 
+        if child_name == "div" and is_bootstrap_side_by_side_table_group(child):
+            add_bootstrap_side_by_side_tables(child, target_parent, allow_nolink=allow_nolink)
+            first_para = False
+            child_index += 1
+            continue
+
         if is_bootstrap_table_row(child):
             table_rows: list[Tag] = []
             while child_index < len(children):
@@ -1151,22 +1458,22 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
                     break
                 table_rows.append(row_candidate)
                 child_index += 1
-            add_bootstrap_table(table_rows, target_parent)
+            add_bootstrap_table(table_rows, target_parent, wrap_nolink=wrap_nolink)
             first_para = False
             continue
 
         if child_name == "p":
             labels = strip_prefix_labels if first_para else None
-            added = add_paragraph(child, target_parent, labels)
+            added = add_paragraph(child, target_parent, labels, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
             first_para = first_para and not added
         elif child_name in {"ul", "ol"}:
-            add_list(child, target_parent)
+            add_list(child, target_parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
             first_para = False
         elif child_name == "img":
             add_media_from_img(child, target_parent)
             first_para = False
         elif child_name == "table":
-            add_html_table(child, target_parent)
+            add_html_table(child, target_parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
             first_para = False
         else:
             nested_images = child.find_all("img", recursive=False)
@@ -1178,7 +1485,7 @@ def add_child_blocks(container: Tag, parent: etree._Element, strip_prefix_labels
         child_index += 1
 
 
-def add_bootstrap_table(rows: list[Tag], parent: etree._Element) -> None:
+def add_bootstrap_table(rows: list[Tag], parent: etree._Element, *, wrap_nolink: bool = False) -> None:
     if not rows:
         return
 
@@ -1210,17 +1517,17 @@ def add_bootstrap_table(rows: list[Tag], parent: etree._Element) -> None:
         for columns in normalized_rows[: len(header_rows)]:
             row_elem = etree.SubElement(thead, qname("row"))
             for column in columns:
-                add_table_cell(column, row_elem)
+                add_table_cell(column, row_elem, wrap_nolink=wrap_nolink)
             for _ in range(len(columns), cols):
-                add_table_cell(make_table_text_cell(""), row_elem)
+                add_table_cell(make_table_text_cell(""), row_elem, wrap_nolink=wrap_nolink)
 
     tbody = etree.SubElement(tgroup, qname("tbody"))
     for columns in normalized_rows[len(header_rows) :]:
         row_elem = etree.SubElement(tbody, qname("row"))
         for column in columns:
-            add_table_cell(column, row_elem)
+            add_table_cell(column, row_elem, wrap_nolink=wrap_nolink)
         for _ in range(len(columns), cols):
-            add_table_cell(make_table_text_cell(""), row_elem)
+            add_table_cell(make_table_text_cell(""), row_elem, wrap_nolink=wrap_nolink)
 
 
 def collect_top_level_rows(main: Tag) -> list[Tag]:
@@ -1259,8 +1566,8 @@ def is_underlined_heading_paragraph(tag: Tag) -> bool:
     return True
 
 
-def add_main_blocks(container: Tag, glossdef: etree._Element) -> None:
-    add_child_blocks(container, glossdef)
+def add_main_blocks(container: Tag, glossdef: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
+    add_child_blocks(container, glossdef, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
 
 
 def collapse_segments(collapse: Tag) -> list[list[Tag]]:
@@ -1294,7 +1601,14 @@ def detect_segment_kind(segment: list[Tag]) -> str | None:
     return None
 
 
-def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | None) -> None:
+def add_segment_blocks(
+    segment: list[Tag],
+    parent: etree._Element,
+    kind: str | None,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+) -> None:
     if kind == "example":
         target = etree.SubElement(parent, qname("example"))
         strip_labels = {"example", "examples"}
@@ -1316,7 +1630,7 @@ def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | N
     wrapper = BeautifulSoup("", "lxml").new_tag("div")
     for child in segment:
         wrapper.append(child)
-    add_child_blocks(wrapper, target, strip_labels)
+    add_child_blocks(wrapper, target, strip_labels, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
 
     if strip_labels is not None:
         first_para = target.find(qname("para"))
@@ -1324,32 +1638,40 @@ def add_segment_blocks(segment: list[Tag], parent: etree._Element, kind: str | N
             strip_initial_label_from_para(first_para, strip_labels)
 
 
-def add_detail_blocks(container: Tag, glossdef: etree._Element) -> None:
+def add_detail_blocks(container: Tag, glossdef: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
     collapse = container.find("div", class_="collapse", recursive=False)
     if collapse is None:
         return
 
     for segment in collapse_segments(collapse):
-        add_segment_blocks(segment, glossdef, detect_segment_kind(segment))
+        add_segment_blocks(segment, glossdef, detect_segment_kind(segment), allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
 
 
-def add_content_blocks(container: Tag, parent: etree._Element) -> None:
-    add_main_blocks(container, parent)
-    add_detail_blocks(container, parent)
+def add_content_blocks(container: Tag, parent: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
+    add_main_blocks(container, parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+    add_detail_blocks(container, parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
 
 
-def add_labeled_content(parent: etree._Element, label: str, content_col: Tag, content_id: str | None = None) -> etree._Element:
+def add_labeled_content(
+    parent: etree._Element,
+    label: str,
+    content_col: Tag,
+    content_id: str | None = None,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+) -> etree._Element:
     if etree.QName(parent).localname == "glossdiv":
         para = etree.SubElement(parent, qname("para"))
         emphasis = etree.SubElement(para, qname("emphasis"))
         emphasis.set("role", "bold")
         emphasis.text = clean_text(label)
         trim_para_whitespace(para)
-        add_content_blocks(content_col, parent)
+        add_content_blocks(content_col, parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
         return parent
 
     section = build_section(parent, label, content_id or label)
-    add_content_blocks(content_col, section)
+    add_content_blocks(content_col, section, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
     return section
 
 
@@ -1433,9 +1755,15 @@ def build_ordered_list(parent: etree._Element, numeration: str = "arabic", compa
     return ordered_list
 
 
-def add_numbered_list_item(ordered_list: etree._Element, content_col: Tag) -> etree._Element:
+def add_numbered_list_item(
+    ordered_list: etree._Element,
+    content_col: Tag,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+) -> etree._Element:
     list_item = etree.SubElement(ordered_list, qname("listitem"))
-    add_content_blocks(content_col, list_item)
+    add_content_blocks(content_col, list_item, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
     return list_item
 
 
@@ -1445,6 +1773,9 @@ def build_glossentry(
     content_col: Tag,
     section_title: str,
     entry_id: str,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
 ) -> etree._Element:
     entry = etree.Element(qname("glossentry"))
     entry.set("{http://www.w3.org/XML/1998/namespace}id", entry_id)
@@ -1455,8 +1786,8 @@ def build_glossentry(
     glossterm.text = term
 
     glossdef = etree.SubElement(entry, qname("glossdef"))
-    add_main_blocks(content_col, glossdef)
-    add_detail_blocks(content_col, glossdef)
+    add_main_blocks(content_col, glossdef, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+    add_detail_blocks(content_col, glossdef, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
     return entry
 
 
@@ -1534,11 +1865,13 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
     current_numbered_list: etree._Element | None = None
     faq_page = clean_text(page_title).lower() in {"faq", "faqs"}
     related_material_page = clean_text(page_title).lower() == "related material"
+    amended_method_titles_page = clean_text(page_title).lower() == "amended method titles"
 
     row_index = 0
     while row_index < len(rows):
         row = rows[row_index]
         display_index = row_index + 1
+        columns = direct_columns(row)
         if looks_like_heading_row(row):
             row_index += 1
             continue
@@ -1558,9 +1891,51 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
                     for heading in clone.find_all("h5", recursive=False):
                         heading.decompose()
                     if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
-                        add_content_blocks(clone, current_section)
+                        add_content_blocks(clone, current_section, wrap_nolink=amended_method_titles_page)
             row_index += 1
             continue
+
+        if amended_method_titles_page and is_amended_method_titles_table_row(row):
+            if current_section is None:
+                current_section = build_section(article, None, row.get("id") or f"section-{display_index}")
+                current_container = current_section
+                current_numbered_list = None
+
+            table_rows: list[Tag] = []
+            while row_index < len(rows) and is_amended_method_titles_table_row(rows[row_index]):
+                table_rows.append(rows[row_index])
+                row_index += 1
+            add_amended_method_titles_table(table_rows, current_section, wrap_nolink=True)
+            current_container = current_section
+            current_numbered_list = None
+            continue
+
+        if amended_method_titles_page and is_amended_method_titles_summary_row(row):
+            if current_section is None or (current_section.findtext(qname("title")) or "").strip().lower() != "summary of changes":
+                current_section = build_section(article, "Summary of changes", row.get("id") or f"section-{display_index}")
+                current_container = current_section
+                current_numbered_list = None
+
+            table_rows: list[Tag] = []
+            while row_index < len(rows) and is_amended_method_titles_summary_row(rows[row_index]):
+                table_rows.append(rows[row_index])
+                row_index += 1
+            add_amended_method_titles_summary_table(table_rows, current_section, wrap_nolink=True)
+            current_container = current_section
+            current_numbered_list = None
+            continue
+
+        if not columns:
+            direct_content = row.find(["p", "ul", "ol", "img", "table", "div"], recursive=False)
+            if direct_content is not None:
+                if current_section is None:
+                    current_section = build_section(article, None, row.get("id") or f"section-{display_index}")
+                    current_container = current_section
+                    current_numbered_list = None
+                target = current_container if current_container is not None else current_section
+                add_content_blocks(row, target, wrap_nolink=amended_method_titles_page)
+                row_index += 1
+                continue
 
         if is_bootstrap_table_row(row):
             if current_section is None:
@@ -1577,7 +1952,6 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             current_numbered_list = None
             continue
 
-        columns = direct_columns(row)
         kind, number, _term_col, content_col = infer_row_kind(columns)
         if kind == "skip" or content_col is None:
             row_index += 1
@@ -1629,7 +2003,11 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             if number:
                 if current_numbered_list is None or current_numbered_list.getparent() is not current_section:
                     current_numbered_list = build_ordered_list(current_section)
-                current_container = add_numbered_list_item(current_numbered_list, content_col)
+                current_container = add_numbered_list_item(
+                    current_numbered_list,
+                    content_col,
+                    allow_nolink=True,
+                )
             else:
                 current_numbered_list = None
                 current_container = add_labeled_content(
@@ -1642,7 +2020,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             continue
 
         target = current_container if current_container is not None else current_section
-        add_content_blocks(content_col, target)
+        add_content_blocks(content_col, target, wrap_nolink=amended_method_titles_page)
         row_index += 1
 
 
@@ -1690,6 +2068,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
         current_div: etree._Element | None = None
         current_numbered_list: etree._Element | None = None
         current_section_title = clean_text(heading_text or page_title)
+        current_section_allow_nolink = True
         entry_index = 0
         lead_definition_terms: dict[tuple[str, str], str] = {
             ("naming", "D. Variations", "1"): "Variation",
@@ -1706,6 +2085,9 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                 marker = clean_text(columns[0].find("h5").get_text(" ", strip=True) if columns and columns[0].find("h5") else "")
                 label = clean_text(columns[1].find("h5").get_text(" ", strip=True) if len(columns) > 1 and columns[1].find("h5") else "")
                 current_section_title = f"{marker} {label}".strip()
+                current_section_allow_nolink = not (
+                    clean_text(page_title) == "Place Notation" and current_section_title == "B. Jump Changes"
+                )
                 current_div = build_glossdiv(glossary, row, current_section_title)
                 current_numbered_list = None
                 content_col = columns[1] if len(columns) > 1 else None
@@ -1715,7 +2097,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                         for heading in clone.find_all("h5", recursive=False):
                             heading.decompose()
                         if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
-                            add_content_blocks(clone, current_div)
+                            add_content_blocks(clone, current_div, allow_nolink=current_section_allow_nolink)
                 continue
 
             if current_div is None:
@@ -1732,7 +2114,9 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                 lead_definition_terms.get((input_path.stem, current_section_title, number or ""))
                 or lead_definition_terms.get((input_path.stem, "", number or ""))
             )
-            if lead_definition_term and number:
+            if lead_definition_term and number and not (
+                clean_text(page_title) == "Place Notation" and current_section_title == "B. Jump Changes"
+            ):
                 current_numbered_list = None
                 entry_index += 1
                 entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(lead_definition_term)}"
@@ -1745,6 +2129,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                     content_clone if content_clone is not None else content_col,
                     current_section_title,
                     entry_id,
+                    allow_nolink=current_section_allow_nolink,
                 )
                 current_div.append(entry)
                 continue
@@ -1759,16 +2144,24 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                     display_row_label(current_section_title, number, term),
                     content_col,
                     row.get("id") or row_term_label(number, term),
+                    allow_nolink=current_section_allow_nolink,
                 )
             elif embedded_label and is_non_glossterm_label(number, embedded_label):
                 current_numbered_list = None
-                add_content_blocks(content_col, current_div)
+                add_content_blocks(content_col, current_div, allow_nolink=current_section_allow_nolink)
             elif kind == "term-entry" and (number or term):
                 current_numbered_list = None
                 entry_index += 1
                 entry_slug = term or f"entry-{entry_index}"
                 entry_id = f"{current_div.get('{http://www.w3.org/XML/1998/namespace}id')}-entry-{entry_index}-{slugify(entry_slug)}"
-                entry = build_glossentry(term, number, content_col, current_section_title, entry_id)
+                entry = build_glossentry(
+                    term,
+                    number,
+                    content_col,
+                    current_section_title,
+                    entry_id,
+                    allow_nolink=current_section_allow_nolink,
+                )
                 current_div.append(entry)
             elif number:
                 if current_numbered_list is None or current_numbered_list.getparent() is not current_div:
@@ -1776,10 +2169,14 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
                     prior_glossentries = len(current_div.findall(qname("glossentry")))
                     if prior_glossentries > 0 and not current_numbered_list.get("startingnumber"):
                         current_numbered_list.set("startingnumber", str(prior_glossentries + 1))
-                add_numbered_list_item(current_numbered_list, content_col)
+                add_numbered_list_item(
+                    current_numbered_list,
+                    content_col,
+                    allow_nolink=current_section_allow_nolink,
+                )
             else:
                 current_numbered_list = None
-                add_content_blocks(content_col, current_div)
+                add_content_blocks(content_col, current_div, allow_nolink=current_section_allow_nolink)
 
     if clean_text(page_title).lower() in {"faq", "faqs"}:
         add_faq_questions_and_answers(article)

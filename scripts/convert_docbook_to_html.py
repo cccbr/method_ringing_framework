@@ -286,7 +286,32 @@ def list_start(node: etree._Element) -> int:
 
 def render_informaltable(node: etree._Element, asset_prefix: str) -> str:
     role = (node.get("role") or "").strip()
-    role_class = " mrf-code-table" if role == "leadhead-codes" else ""
+    if role == "leadhead-code-pair":
+        tgroup = node.find("db:tgroup", NS)
+        table_root = tgroup if tgroup is not None else node
+        rows = table_root.findall("db:tbody/db:row", NS)
+        if not rows:
+            rows = table_root.findall("db:row", NS)
+        if rows:
+            entries = rows[0].findall("db:entry", NS)
+            if len(entries) == 2:
+                left = render_table_cell(entries[0], asset_prefix)
+                right = render_table_cell(entries[1], asset_prefix)
+                rendered = (
+                    '<div class="row no-gutters my-3">'
+                    f'<div class="col-12 col-md-6">{left}</div>'
+                    f'<div class="col-12 col-md-6">{right}</div>'
+                    "</div>"
+                )
+                return rendered
+    role_class = ""
+    table_class = "table table-sm table-bordered mrf-table"
+    colgroup_html = ""
+    if role == "leadhead-codes":
+        role_class = " mrf-code-table"
+    elif role in {"amended-method-titles", "amended-method-titles-summary"}:
+        table_class = "table table-sm table-borderless mrf-table"
+        colgroup_html = '<colgroup><col style="width:10%"><col style="width:45%"><col style="width:45%"></colgroup>'
     tgroup = node.find("db:tgroup", NS)
     table_root = tgroup if tgroup is not None else node
     head_rows = table_root.findall("db:thead/db:row", NS)
@@ -327,10 +352,13 @@ def render_informaltable(node: etree._Element, asset_prefix: str) -> str:
                 "                    </div>"
             )
         return "\n\n".join(rendered_rows)
-    return (
-        f'<div class="table-responsive"><table class="table table-sm table-bordered mrf-table{role_class}">'
-        f"{thead_html}{tbody_html}</table></div>"
+    rendered = (
+        f'<div class="table-responsive"><table class="{table_class}{role_class}">'
+        f"{colgroup_html}{thead_html}{tbody_html}</table></div>"
     )
+    if role == "leadhead-codes":
+        return render_body_block(rendered)
+    return rendered
 
 
 def render_list_item_blocks(
@@ -538,6 +566,9 @@ def split_section_title(title: str) -> tuple[str, str]:
     if match:
         return match.group(1), match.group(2)
     match = re.match(r"^([A-Z]\.)\s+(.*)$", title)
+    if match:
+        return match.group(1), match.group(2)
+    match = re.match(r"^([a-z]\d*\))\s+(.*)$", title)
     if match:
         return match.group(1), match.group(2)
     return "", title
@@ -801,7 +832,10 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
         if child_name == "para":
             main_blocks.append(render_body_para(child, asset_prefix))
         elif child_name == "informaltable":
-            main_blocks.append(render_informaltable(child, asset_prefix))
+            rendered = render_informaltable(child, asset_prefix)
+            if (child.get("role") or "").strip() in {"amended-method-titles", "amended-method-titles-summary"}:
+                rendered = render_body_block(rendered)
+            main_blocks.append(rendered)
         elif child_name in {"itemizedlist", "orderedlist"}:
             rendered = render_list(
                 child,
