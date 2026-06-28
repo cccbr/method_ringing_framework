@@ -275,6 +275,11 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
     if len(segments) < 2:
         return False
 
+    if paragraph_is_italic_only(tag) and paragraph_looks_like_faq_section_reference(tag):
+        for segment in segments:
+            add_nodes_as_para(segment, parent)
+        return True
+
     markers = [parse_any_list_marker(segment_text(segment)) for segment in segments]
     if not any(marker is not None for marker in markers):
         for segment in segments:
@@ -357,6 +362,20 @@ def add_break_separated_list(tag: Tag, parent: etree._Element) -> bool:
             converted = True
 
     return converted
+
+
+def paragraph_wrapper_for_breaks(tag: Tag) -> Tag | None:
+    element_children = [child for child in tag.children if isinstance(child, Tag)]
+    if len(element_children) != 1:
+        return None
+    wrapper = element_children[0]
+    if wrapper.name.lower() not in {"i", "em"}:
+        return None
+    if not any(isinstance(child, Tag) and child.name.lower() == "br" for child in wrapper.children):
+        return None
+    if any(isinstance(child, NavigableString) and clean_text(str(child)) for child in tag.children if child is not wrapper):
+        return None
+    return wrapper
 
 
 def looks_like_heading_row(row: Tag) -> bool:
@@ -590,6 +609,20 @@ def parse_any_list_marker(text: str) -> tuple[str, str, re.Pattern[str]] | None:
     return None
 
 
+FAQ_SECTION_REFERENCE_RE = re.compile(r"^\s*\d+\s*[\).]")
+
+
+def paragraph_is_italic_only(tag: Tag) -> bool:
+    element_children = [child for child in tag.children if isinstance(child, Tag)]
+    if len(element_children) != 1:
+        return False
+    return element_children[0].name.lower() in {"i", "em"}
+
+
+def paragraph_looks_like_faq_section_reference(tag: Tag) -> bool:
+    return bool(FAQ_SECTION_REFERENCE_RE.match(clean_text(tag.get_text(" ", strip=True))))
+
+
 def extract_term(column: Tag) -> str:
     clone = BeautifulSoup(str(column), "html.parser")
     for unwanted in clone.select("span.float-right"):
@@ -647,8 +680,31 @@ def split_faq_item_children(children: list[etree._Element]) -> tuple[list[etree.
     if not children:
         return None
 
+    def is_question_paragraph(para: etree._Element) -> bool:
+        if etree.QName(para).localname != "para":
+            return False
+        element_children = [child for child in para if isinstance(child.tag, str)]
+        if len(element_children) != 1:
+            return False
+        emphasis = element_children[0]
+        if etree.QName(emphasis).localname != "emphasis" or (emphasis.get("role") or "").lower() != "italic":
+            return False
+        if para.text and clean_text(para.text):
+            return False
+        for child in para:
+            if child is not emphasis and isinstance(child.tag, str):
+                return False
+        return True
+
     paras = [child for child in children if etree.QName(child).localname == "para"]
     if len(paras) >= 2 and len(paras) == len(children):
+        answer_start = None
+        for index, para in enumerate(paras):
+            if not is_question_paragraph(para):
+                answer_start = index
+                break
+        if answer_start is not None and answer_start > 0:
+            return children[:answer_start], children[answer_start:]
         return [children[0]], children[1:]
 
     list_indexes = [index for index, child in enumerate(children) if etree.QName(child).localname in {"orderedlist", "itemizedlist"}]
@@ -657,20 +713,17 @@ def split_faq_item_children(children: list[etree._Element]) -> tuple[list[etree.
 
     first_list = list_indexes[0]
     answer_start = None
-    if first_list == 0:
-        for index, child in enumerate(children[1:], start=1):
-            if etree.QName(child).localname == "para":
-                answer_start = index
-                break
-        if answer_start is None:
+    for index, child in enumerate(children):
+        if etree.QName(child).localname != "para":
+            continue
+        if not is_question_paragraph(child):
+            answer_start = index
+            break
+
+    if answer_start is None:
+        if first_list == 0:
             return None
-    else:
-        for index, child in enumerate(children[first_list + 1 :], start=first_list + 1):
-            if etree.QName(child).localname == "para":
-                answer_start = index
-                break
-        if answer_start is None:
-            answer_start = first_list
+        answer_start = first_list
 
     if answer_start >= len(children):
         return None
@@ -925,6 +978,19 @@ def add_paragraph(
         for image in tag.find_all("img", recursive=False):
             render_inline(image, parent, None, allow_nolink=allow_nolink)
         return True
+
+    wrapped_breaks = paragraph_wrapper_for_breaks(tag)
+    if wrapped_breaks is not None:
+        segments = [segment for segment in split_nodes_on_breaks(wrapped_breaks) if segment_text(segment)]
+        if len(segments) >= 2:
+            for segment in segments:
+                para = etree.SubElement(parent, qname("para"))
+                target = etree.SubElement(para, qname("emphasis"))
+                target.set("role", "italic")
+                for child in segment:
+                    render_inline(child, target, strip_prefix_labels, allow_nolink=allow_nolink)
+                trim_para_whitespace(para)
+            return True
 
     if add_break_separated_list(tag, parent):
         return True
@@ -1256,6 +1322,8 @@ def add_paragraph_marker_list(children: list[Tag | NavigableString], start_index
     first_marker = paragraph_list_marker(first_child)
     if first_marker is None:
         return 0
+    if paragraph_is_italic_only(first_child) and first_marker[0] == "ordered" and first_marker[1] == "arabic" and paragraph_looks_like_faq_section_reference(first_child):
+        return 0
 
     list_kind, numeration, marker_pattern = first_marker
     matched_tags: list[Tag] = []
@@ -1298,6 +1366,8 @@ def add_marker_paragraph_with_nested_lists(children: list[Tag | NavigableString]
 
     first_marker = paragraph_list_marker(first_child)
     if first_marker is None:
+        return 0
+    if paragraph_is_italic_only(first_child) and first_marker[0] == "ordered" and first_marker[1] == "arabic" and paragraph_looks_like_faq_section_reference(first_child):
         return 0
 
     list_kind, numeration, marker_pattern = first_marker
