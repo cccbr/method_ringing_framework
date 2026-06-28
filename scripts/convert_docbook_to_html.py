@@ -361,6 +361,69 @@ def render_informaltable(node: etree._Element, asset_prefix: str) -> str:
     return rendered
 
 
+def render_glossary_style_list_item(item: etree._Element, asset_prefix: str, index: int) -> str:
+    children = [child for child in item if isinstance(child.tag, str)]
+    if not children:
+        return ""
+
+    term_html = ""
+    body_blocks: list[str] = []
+
+    first_child = children[0]
+    if local_name(first_child) == "para":
+        term_html = render_mixed(first_child, asset_prefix)
+        body_children = children[1:]
+    else:
+        body_children = children
+
+    for child in body_children:
+        block = render_block(child, asset_prefix)
+        if block:
+            body_blocks.append(block)
+
+    content = indent_block("\n".join(body_blocks), 28) if body_blocks else ""
+    return (
+        "                    <div class=\"row mrf-glossary-row\">\n"
+        f"                        <div class=\"col-sm-1\">{index}.</div>\n"
+        "                        <div class=\"col-xl-2 col-sm-3\">\n"
+        f"                            {term_html}\n"
+        "                        </div>\n"
+        "                        <div class=\"col-xl-9 col-sm-8\">\n"
+        f"{content}\n"
+        "                        </div>\n"
+        "                    </div>"
+    )
+
+
+def render_glossary_style_list(node: etree._Element, asset_prefix: str) -> str:
+    items: list[str] = []
+    start = list_start(node)
+    for offset, item in enumerate(node.findall("db:listitem", NS), start=0):
+        rendered = render_glossary_style_list_item(item, asset_prefix, start + offset)
+        if rendered:
+            items.append(rendered)
+    return "\n\n".join(items)
+
+
+def render_block(node: etree._Element, asset_prefix: str) -> str:
+    name = local_name(node)
+    if name == "para":
+        return render_para(node, asset_prefix)
+    if name == "mediaobject":
+        return render_mediaobject(node, asset_prefix)
+    if name in {"example", "note"}:
+        return render_detail_group(node, asset_prefix)
+    if name in {"itemizedlist", "orderedlist"}:
+        if (node.get("role") or "").strip() == "glossary-style":
+            return render_glossary_style_list(node, asset_prefix)
+        return render_list(node, asset_prefix)
+    if name == "informaltable":
+        return render_informaltable(node, asset_prefix)
+    if name == "section":
+        return render_section(node, asset_prefix)
+    return render_inline(node, asset_prefix)
+
+
 def render_list_item_blocks(
     item: etree._Element,
     asset_prefix: str,
@@ -664,6 +727,9 @@ def render_block_children(node: etree._Element, asset_prefix: str, *, skip_title
         if name == "para":
             blocks.append(render_body_para(child, asset_prefix))
         elif name in {"itemizedlist", "orderedlist"}:
+            if name == "orderedlist" and (child.get("role") or "").strip() == "glossary-style":
+                blocks.append(render_glossary_style_list(child, asset_prefix))
+                continue
             rendered = render_list(child, asset_prefix, collapse_seed=f"{node_seed}-{name}-{index}")
             blocks.append(render_body_block(rendered) if name == "itemizedlist" else rendered)
         elif name in {"example", "note", "mediaobject"}:
@@ -800,6 +866,10 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
         elif child_name == "informaltable":
             rendered = render_body_block(render_informaltable(child, asset_prefix))
         elif child_name in {"itemizedlist", "orderedlist"}:
+            if child_name == "orderedlist" and (child.get("role") or "").strip() == "glossary-style":
+                rendered = render_glossary_style_list(child, asset_prefix)
+                body_parts.append(rendered)
+                continue
             if child_name == "orderedlist" and not orderedlist_started and glossentry_count > 0 and not child.get("startingnumber"):
                 child.set("startingnumber", str(glossentry_count + 1))
                 orderedlist_started = True
@@ -837,6 +907,9 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
                 rendered = render_body_block(rendered)
             main_blocks.append(rendered)
         elif child_name in {"itemizedlist", "orderedlist"}:
+            if child_name == "orderedlist" and (child.get("role") or "").strip() == "glossary-style":
+                main_blocks.append(render_glossary_style_list(child, asset_prefix))
+                continue
             rendered = render_list(
                 child,
                 asset_prefix,

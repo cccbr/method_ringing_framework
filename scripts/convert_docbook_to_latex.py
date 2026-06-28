@@ -39,6 +39,16 @@ def read_text(elem: etree._Element | None) -> str:
     return collapse_ws("".join(elem.itertext()), strip=True)
 
 
+def list_start(node: etree._Element) -> int:
+    value = node.get("startingnumber") or node.get("start")
+    if not value:
+        return 1
+    try:
+        return max(1, int(value))
+    except ValueError:
+        return 1
+
+
 def escape_latex(text: str | None) -> str:
     if text is None:
         return ""
@@ -356,6 +366,8 @@ def render_detail(node: etree._Element, asset_root: str) -> str:
     if name == "informaltable":
         return render_informaltable(node, asset_root)
     if name in {"itemizedlist", "orderedlist"}:
+        if name == "orderedlist" and (node.get("role") or "").lower() == "glossary-style":
+            return render_glossary_style_list(node, asset_root)
         return render_list(node, asset_root)
     body = render_detail_body(node, asset_root)
     if not body:
@@ -396,6 +408,8 @@ def render_block(node: etree._Element, asset_root: str) -> str:
     if name == "para":
         return rf"\MRFBodyPara{{{render_mixed(node)}}}"
     if name in {"example", "note", "mediaobject", "itemizedlist", "orderedlist", "informaltable"}:
+        if name == "orderedlist" and (node.get("role") or "").lower() == "glossary-style":
+            return render_glossary_style_list(node, asset_root)
         return render_detail(node, asset_root)
     if name == "section":
         return render_narrative_section(node, asset_root, "", node.get("{http://www.w3.org/XML/1998/namespace}id", ""))
@@ -436,6 +450,43 @@ def render_entry_row(entry: etree._Element, asset_root: str) -> str:
         return ""
 
     return rf"\MRFEntry{{{escape_latex(display_number)}}}{{{term}}}{{{body}}}"
+
+
+def render_glossary_style_list_item(item: etree._Element, asset_root: str, index: int) -> str:
+    children = [child for child in item if isinstance(child.tag, str)]
+    if not children:
+        return ""
+
+    term = ""
+    body_parts: list[str] = []
+
+    first_child = children[0]
+    if local_name(first_child) == "para":
+        term = render_mixed(first_child)
+        body_children = children[1:]
+    else:
+        body_children = children
+
+    for child in body_children:
+        block = render_block(child, asset_root)
+        if block:
+            body_parts.append(block)
+
+    body = "\n".join(body_parts)
+    if not term and not body:
+        return ""
+    return rf"\MRFEntry{{{index}.}}{{{term}}}{{{body}}}"
+
+
+def render_glossary_style_list(node: etree._Element, asset_root: str) -> str:
+    rows: list[str] = [r"\begin{MRFEntries}"]
+    start = list_start(node)
+    for offset, item in enumerate(node.findall("db:listitem", NS), start=0):
+        row = render_glossary_style_list_item(item, asset_root, start + offset)
+        if row:
+            rows.append(row)
+    rows.append(r"\end{MRFEntries}")
+    return "\n".join(rows)
 
 
 def parse_page_heading(title: str, subtitle: str) -> tuple[str, str]:
@@ -510,6 +561,10 @@ def build_document(article: etree._Element, asset_root: str) -> str:
                     row = render_entry_row(child, asset_root)
                     if row:
                         entry_rows.append(row)
+                    continue
+                if name == "orderedlist" and (child.get("role") or "").lower() == "glossary-style":
+                    flush_entries()
+                    section_blocks.append(render_glossary_style_list(child, asset_root))
                     continue
 
                 flush_entries()

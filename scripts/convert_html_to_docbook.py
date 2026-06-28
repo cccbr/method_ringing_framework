@@ -1747,6 +1747,41 @@ def flatten_single_item_loweralpha_lists(article: etree._Element) -> None:
                 listitem.remove(wrapper)
 
 
+def restructure_framework_development(article: etree._Element, framework_version: str) -> None:
+    if framework_version != "1":
+        return
+
+    glossary = article.find(qname("glossary"))
+    if glossary is None:
+        return
+
+    for glossdiv in glossary.findall(qname("glossdiv")):
+        title = clean_text(glossdiv.findtext(qname("title")) or "")
+        if title == "C. Goals":
+            ordered_list = etree.Element(qname("orderedlist"))
+            ordered_list.set("numeration", "arabic")
+            ordered_list.set("role", "compact")
+
+            original_children = list(glossdiv)
+            for child in original_children:
+                if etree.QName(child).localname == "title":
+                    continue
+                if etree.QName(child).localname == "orderedlist":
+                    for listitem in list(child.findall(qname("listitem"))):
+                        ordered_list.append(listitem)
+                    continue
+                list_item = etree.SubElement(ordered_list, qname("listitem"))
+                list_item.append(child)
+            for child in list(glossdiv):
+                if etree.QName(child).localname != "title":
+                    glossdiv.remove(child)
+            glossdiv.append(ordered_list)
+
+        if title in {"D. Boundaries", "E. Additional Considerations"}:
+            for orderedlist in glossdiv.findall(qname("orderedlist")):
+                orderedlist.set("role", "glossary-style")
+
+
 def build_ordered_list(parent: etree._Element, numeration: str = "arabic", compact: bool = False) -> etree._Element:
     ordered_list = etree.SubElement(parent, qname("orderedlist"))
     ordered_list.set("numeration", numeration)
@@ -2180,6 +2215,9 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
 
     if clean_text(page_title).lower() in {"faq", "faqs"}:
         add_faq_questions_and_answers(article)
+
+    if clean_text(page_title) == "Framework Development":
+        restructure_framework_development(article, framework_version)
 
     flatten_single_item_loweralpha_lists(article)
 
