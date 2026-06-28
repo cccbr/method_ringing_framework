@@ -444,7 +444,14 @@ def bootstrap_table_columns(row: Tag) -> list[Tag]:
         second_classes = set(columns[1].get("class") or [])
         third_classes = set(columns[2].get("class") or [])
         first_text = clean_text(columns[0].get_text(" ", strip=True))
-        if (
+        # Some small source grids use a leading spacer column plus two real
+        # content columns; keep those as a simple 2-column table.
+        if not first_text and all("col-1" in classes for classes in (first_classes, second_classes, third_classes)):
+            if not nested_row_columns(columns[1]) and not nested_row_columns(columns[2]):
+                normalized = [columns[1], columns[2]]
+            else:
+                return []
+        elif (
             not first_text
             and "col-sm-1" in first_classes
             and "col-sm-5" in second_classes
@@ -1852,6 +1859,19 @@ def restructure_framework_development(article: etree._Element, framework_version
                 orderedlist.set("role", "glossary-style")
 
 
+def restructure_framework_principles(article: etree._Element, page_title: str) -> None:
+    if clean_text(page_title) != "Framework Principles":
+        return
+
+    glossary = article.find(qname("glossary"))
+    if glossary is None:
+        return
+
+    for glossdiv in glossary.findall(qname("glossdiv")):
+        for orderedlist in glossdiv.findall(qname("orderedlist")):
+            orderedlist.set("role", "glossary-style")
+
+
 def build_ordered_list(parent: etree._Element, numeration: str = "arabic", compact: bool = False) -> etree._Element:
     ordered_list = etree.SubElement(parent, qname("orderedlist"))
     ordered_list.set("numeration", numeration)
@@ -2288,6 +2308,7 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
 
     if clean_text(page_title) == "Framework Development":
         restructure_framework_development(article, framework_version)
+    restructure_framework_principles(article, page_title)
 
     flatten_single_item_loweralpha_lists(article)
 
