@@ -738,6 +738,84 @@ def split_faq_item_children(children: list[etree._Element]) -> tuple[list[etree.
     return children[:answer_start], children[answer_start:]
 
 
+def split_question_answer_sections(children: list[etree._Element]) -> list[tuple[list[etree._Element], list[etree._Element]]]:
+    def is_question_paragraph(para: etree._Element) -> bool:
+        if etree.QName(para).localname != "para":
+            return False
+        element_children = [child for child in para if isinstance(child.tag, str)]
+        if len(element_children) != 1:
+            return False
+        emphasis = element_children[0]
+        if etree.QName(emphasis).localname != "emphasis" or (emphasis.get("role") or "").lower() != "italic":
+            return False
+        if para.text and clean_text(para.text):
+            return False
+        for child in para:
+            if child is not emphasis and isinstance(child.tag, str):
+                return False
+        return True
+
+    groups: list[tuple[list[etree._Element], list[etree._Element]]] = []
+    index = 0
+    while index < len(children):
+        child = children[index]
+        if etree.QName(child).localname != "para" or not is_question_paragraph(child):
+            return []
+
+        question_children: list[etree._Element] = []
+        while index < len(children):
+            child = children[index]
+            if etree.QName(child).localname == "para" and is_question_paragraph(child):
+                question_children.append(child)
+                index += 1
+                continue
+            break
+
+        answer_children: list[etree._Element] = []
+        while index < len(children):
+            child = children[index]
+            if etree.QName(child).localname == "para" and is_question_paragraph(child):
+                break
+            answer_children.append(child)
+            index += 1
+
+        if not question_children or not answer_children:
+            return []
+        groups.append((question_children, answer_children))
+
+    return groups
+
+
+def add_consultation_questions_and_answers(article: etree._Element) -> None:
+    submissions = None
+    for section in article.findall(".//db:section", NS):
+        if section.get("{http://www.w3.org/XML/1998/namespace}id") == "submissions":
+            submissions = section
+            break
+    if submissions is None:
+        return
+
+    for subsection in submissions.findall("db:section", NS):
+        children = [child for child in subsection if isinstance(child.tag, str) and etree.QName(child).localname != "title"]
+        groups = split_question_answer_sections(children)
+        if not groups:
+            continue
+
+        for child in list(subsection):
+            if isinstance(child.tag, str) and etree.QName(child).localname != "title":
+                subsection.remove(child)
+
+        for question_children, answer_children in groups:
+            question = etree.SubElement(subsection, qname("question", "mrf"))
+            answer = etree.SubElement(subsection, qname("answer", "mrf"))
+            for child in question_children:
+                question.append(child)
+            for child in answer_children:
+                answer.append(child)
+
+            answer.set(qname("separator", "mrf"), "hr")
+
+
 def extract_embedded_label(content_col: Tag) -> str:
     first_para = content_col.find("p", recursive=False)
     if first_para is None:
@@ -980,6 +1058,7 @@ def add_paragraph(
     *,
     allow_nolink: bool = True,
     wrap_nolink: bool = False,
+    suppress_marker_lists: bool = False,
 ) -> bool:
     if paragraph_is_image_only(tag):
         for image in tag.find_all("img", recursive=False):
@@ -999,7 +1078,7 @@ def add_paragraph(
                 trim_para_whitespace(para)
             return True
 
-    if add_break_separated_list(tag, parent):
+    if not suppress_marker_lists and add_break_separated_list(tag, parent):
         return True
 
     para = etree.SubElement(parent, qname("para"))
@@ -1436,6 +1515,7 @@ def add_child_blocks(
     *,
     allow_nolink: bool = True,
     wrap_nolink: bool = False,
+    suppress_marker_lists: bool = False,
 ) -> None:
     if container.name and container.name.lower() == "li":
         block_children = [
@@ -1447,7 +1527,14 @@ def add_child_blocks(
             synthetic = BeautifulSoup("", "lxml").new_tag("div")
             for child in container.children:
                 synthetic.append(child)
-            add_paragraph(synthetic, parent, strip_prefix_labels, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+            add_paragraph(
+                synthetic,
+                parent,
+                strip_prefix_labels,
+                allow_nolink=allow_nolink,
+                wrap_nolink=wrap_nolink,
+                suppress_marker_lists=suppress_marker_lists,
+            )
             return
 
     children = list(container.children)
@@ -1494,24 +1581,25 @@ def add_child_blocks(
             if grouped_heading_list is None:
                 grouped_heading_list = build_ordered_list(parent)
             grouped_heading_item = etree.SubElement(grouped_heading_list, qname("listitem"))
-            add_paragraph(child, grouped_heading_item, wrap_nolink=wrap_nolink)
+            add_paragraph(child, grouped_heading_item, wrap_nolink=wrap_nolink, suppress_marker_lists=suppress_marker_lists)
             first_para = False
             child_index += 1
             continue
 
         target_parent = grouped_heading_item if grouped_heading_item is not None else parent
 
-        converted_paragraphs = add_paragraph_marker_list(children, child_index, target_parent)
-        if converted_paragraphs:
-            child_index += converted_paragraphs
-            first_para = False
-            continue
+        if not suppress_marker_lists:
+            converted_paragraphs = add_paragraph_marker_list(children, child_index, target_parent)
+            if converted_paragraphs:
+                child_index += converted_paragraphs
+                first_para = False
+                continue
 
-        converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, target_parent)
-        if converted_paragraphs:
-            child_index += converted_paragraphs
-            first_para = False
-            continue
+            converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, target_parent)
+            if converted_paragraphs:
+                child_index += converted_paragraphs
+                first_para = False
+                continue
 
         if child_name == "div" and is_bootstrap_side_by_side_table_group(child):
             add_bootstrap_side_by_side_tables(child, target_parent, allow_nolink=allow_nolink)
@@ -1541,7 +1629,14 @@ def add_child_blocks(
 
         if child_name == "p":
             labels = strip_prefix_labels if first_para else None
-            added = add_paragraph(child, target_parent, labels, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+            added = add_paragraph(
+                child,
+                target_parent,
+                labels,
+                allow_nolink=allow_nolink,
+                wrap_nolink=wrap_nolink,
+                suppress_marker_lists=suppress_marker_lists,
+            )
             first_para = first_para and not added
         elif child_name in {"ul", "ol"}:
             add_list(child, target_parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
@@ -1643,8 +1738,21 @@ def is_underlined_heading_paragraph(tag: Tag) -> bool:
     return True
 
 
-def add_main_blocks(container: Tag, glossdef: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
-    add_child_blocks(container, glossdef, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+def add_main_blocks(
+    container: Tag,
+    glossdef: etree._Element,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+    suppress_marker_lists: bool = False,
+) -> None:
+    add_child_blocks(
+        container,
+        glossdef,
+        allow_nolink=allow_nolink,
+        wrap_nolink=wrap_nolink,
+        suppress_marker_lists=suppress_marker_lists,
+    )
 
 
 def collapse_segments(collapse: Tag) -> list[list[Tag]]:
@@ -1685,6 +1793,7 @@ def add_segment_blocks(
     *,
     allow_nolink: bool = True,
     wrap_nolink: bool = False,
+    suppress_marker_lists: bool = False,
 ) -> None:
     if kind == "example":
         target = etree.SubElement(parent, qname("example"))
@@ -1707,7 +1816,14 @@ def add_segment_blocks(
     wrapper = BeautifulSoup("", "lxml").new_tag("div")
     for child in segment:
         wrapper.append(child)
-    add_child_blocks(wrapper, target, strip_labels, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+    add_child_blocks(
+        wrapper,
+        target,
+        strip_labels,
+        allow_nolink=allow_nolink,
+        wrap_nolink=wrap_nolink,
+        suppress_marker_lists=suppress_marker_lists,
+    )
 
     if strip_labels is not None:
         first_para = target.find(qname("para"))
@@ -1715,18 +1831,51 @@ def add_segment_blocks(
             strip_initial_label_from_para(first_para, strip_labels)
 
 
-def add_detail_blocks(container: Tag, glossdef: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
+def add_detail_blocks(
+    container: Tag,
+    glossdef: etree._Element,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+    suppress_marker_lists: bool = False,
+) -> None:
     collapse = container.find("div", class_="collapse", recursive=False)
     if collapse is None:
         return
 
     for segment in collapse_segments(collapse):
-        add_segment_blocks(segment, glossdef, detect_segment_kind(segment), allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+        add_segment_blocks(
+            segment,
+            glossdef,
+            detect_segment_kind(segment),
+            allow_nolink=allow_nolink,
+            wrap_nolink=wrap_nolink,
+            suppress_marker_lists=suppress_marker_lists,
+        )
 
 
-def add_content_blocks(container: Tag, parent: etree._Element, *, allow_nolink: bool = True, wrap_nolink: bool = False) -> None:
-    add_main_blocks(container, parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
-    add_detail_blocks(container, parent, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)
+def add_content_blocks(
+    container: Tag,
+    parent: etree._Element,
+    *,
+    allow_nolink: bool = True,
+    wrap_nolink: bool = False,
+    suppress_marker_lists: bool = False,
+) -> None:
+    add_main_blocks(
+        container,
+        parent,
+        allow_nolink=allow_nolink,
+        wrap_nolink=wrap_nolink,
+        suppress_marker_lists=suppress_marker_lists,
+    )
+    add_detail_blocks(
+        container,
+        parent,
+        allow_nolink=allow_nolink,
+        wrap_nolink=wrap_nolink,
+        suppress_marker_lists=suppress_marker_lists,
+    )
 
 
 def add_labeled_content(
@@ -1989,6 +2138,7 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
     current_container: etree._Element | None = None
     current_numbered_list: etree._Element | None = None
     faq_page = clean_text(page_title).lower() in {"faq", "faqs"}
+    consultation_page = clean_text(page_title).lower().endswith("consultation")
     related_material_page = clean_text(page_title).lower() == "related material"
     amended_method_titles_page = clean_text(page_title).lower() == "amended method titles"
 
@@ -2016,7 +2166,12 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
                     for heading in clone.find_all("h5", recursive=False):
                         heading.decompose()
                     if clean_text(clone.get_text(" ", strip=True)) or clone.find(["p", "img", "ul", "ol", "div"]):
-                        add_content_blocks(clone, current_section, wrap_nolink=amended_method_titles_page)
+                        add_content_blocks(
+                            clone,
+                            current_section,
+                            wrap_nolink=amended_method_titles_page,
+                            suppress_marker_lists=consultation_page,
+                        )
             row_index += 1
             continue
 
@@ -2058,7 +2213,12 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
                     current_container = current_section
                     current_numbered_list = None
                 target = current_container if current_container is not None else current_section
-                add_content_blocks(row, target, wrap_nolink=amended_method_titles_page)
+                add_content_blocks(
+                    row,
+                    target,
+                    wrap_nolink=amended_method_titles_page,
+                    suppress_marker_lists=consultation_page,
+                )
                 row_index += 1
                 continue
 
@@ -2145,7 +2305,12 @@ def convert_narrative_rows(article: etree._Element, rows: list[Tag], page_title:
             continue
 
         target = current_container if current_container is not None else current_section
-        add_content_blocks(content_col, target, wrap_nolink=amended_method_titles_page)
+        add_content_blocks(
+            content_col,
+            target,
+            wrap_nolink=amended_method_titles_page,
+            suppress_marker_lists=consultation_page,
+        )
         row_index += 1
 
 
@@ -2188,6 +2353,8 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
     )
     if content_model == "narrative":
         convert_narrative_rows(article, rows, page_title)
+        if input_path.stem == "consultation":
+            add_consultation_questions_and_answers(article)
     else:
         glossary = get_or_create_glossary(article, framework_title)
         current_div: etree._Element | None = None

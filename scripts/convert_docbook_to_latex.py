@@ -330,6 +330,8 @@ def render_faq_body(node: etree._Element, asset_root: str, *, level: int = 1) ->
             blocks.append(render_mediaobject(child, asset_root))
         elif name == "informaltable":
             blocks.append(render_informaltable(child, asset_root))
+        elif name in {"question", "answer"}:
+            blocks.append(render_question_answer_block(child, asset_root))
         elif name in {"itemizedlist", "orderedlist"}:
             blocks.append(render_list(child, asset_root, level=level))
         elif name in {"example", "note"}:
@@ -339,11 +341,32 @@ def render_faq_body(node: etree._Element, asset_root: str, *, level: int = 1) ->
     return "\n".join(blocks)
 
 
+def is_inside_listitem(node: etree._Element) -> bool:
+    parent = node.getparent()
+    while parent is not None:
+        if local_name(parent) == "listitem":
+            return True
+        parent = parent.getparent()
+    return False
+
+
 def render_faq_block(node: etree._Element, asset_root: str, label: str) -> str:
     body = render_faq_body(node, asset_root)
     if not body:
         return ""
-    return rf"\MRFFAQBlock{{{escape_latex(label)}}}{{{body}}}"
+    indented = not is_inside_listitem(node)
+    if label == "A.":
+        return rf"\MRFFAQAnswerBlock{'Indented' if indented else ''}{{{body}}}"
+    return rf"\MRFFAQBlock{'Indented' if indented else ''}{{{body}}}"
+
+
+def render_question_answer_block(node: etree._Element, asset_root: str) -> str:
+    if local_name(node) == "question":
+        return render_faq_block(node, asset_root, "Q.")
+    body = render_faq_body(node, asset_root)
+    if not body:
+        return ""
+    return rf"\MRFFAQAnswerBlock{{{body}}}"
 
 
 def render_detail_body(node: etree._Element, asset_root: str) -> str:
@@ -411,6 +434,8 @@ def render_block(node: etree._Element, asset_root: str) -> str:
         if name == "orderedlist" and (node.get("role") or "").lower() == "glossary-style":
             return render_glossary_style_list(node, asset_root)
         return render_detail(node, asset_root)
+    if name in {"question", "answer"}:
+        return render_question_answer_block(node, asset_root)
     if name == "section":
         return render_narrative_section(node, asset_root, "", node.get("{http://www.w3.org/XML/1998/namespace}id", ""))
     return ""

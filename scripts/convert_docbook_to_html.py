@@ -215,21 +215,58 @@ def render_faq_body(node: etree._Element, asset_prefix: str, *, level: int = 1, 
     return "\n".join(blocks)
 
 
+def is_inside_listitem(node: etree._Element) -> bool:
+    parent = node.getparent()
+    while parent is not None:
+        if local_name(parent) == "listitem":
+            return True
+        parent = parent.getparent()
+    return False
+
+
 def render_faq_block(node: etree._Element, asset_prefix: str, label: str) -> str:
     body = render_faq_body(node, asset_prefix)
     if not body:
         return ""
-    trailing_rule = (node.get(f"{{{NS['mrf']}}}separator") or "").lower() == "hr"
-    rule_html = "\n                            <hr />" if trailing_rule else ""
-    row_class = " mrf-faq-question" if label == "Q." else ""
+    indented = not is_inside_listitem(node)
+    if label == "A.":
+        if indented:
+            return (
+                '                    <div class="row">\n'
+                '                        <div class="col-sm-1"></div>\n'
+                '                        <div class="col-sm-11" style="background-color: #eee; padding-top: 9px; margin-bottom: 0.75rem">\n'
+                f"{indent_block(body, 28)}\n"
+                "                        </div>\n"
+                "                    </div>"
+            )
+        return (
+            '                    <div class="row">\n'
+            '                        <div class="col-sm-12" style="background-color: #eee; padding-top: 9px; margin-bottom: 0.75rem">\n'
+            f"{indent_block(body, 28)}\n"
+            "                        </div>\n"
+            "                    </div>"
+        )
+    if indented:
+        return (
+            '                    <div class="row">\n'
+            '                        <div class="col-sm-1"></div>\n'
+            '                        <div class="col-sm-11">\n'
+            f"{indent_block(body, 28)}\n"
+            "                        </div>\n"
+            "                    </div>"
+        )
     return (
-        f'                    <div class="row{row_class}">\n'
-        f'                        <div class="col-sm-1">{html.escape(label)}</div>\n'
-        '                        <div class="col-sm-11">\n'
-        f"{indent_block(body, 28)}{rule_html}\n"
+        '                    <div class="row">\n'
+        '                        <div class="col-sm-12">\n'
+        f"{indent_block(body, 28)}\n"
         "                        </div>\n"
         "                    </div>"
     )
+
+
+def render_question_answer_block(node: etree._Element, asset_prefix: str) -> str:
+    label = "Q." if local_name(node) == "question" else "A."
+    return render_faq_block(node, asset_prefix, label)
 
 
 def render_mediaobject(node: etree._Element, asset_prefix: str) -> str:
@@ -736,6 +773,10 @@ def render_block_children(node: etree._Element, asset_prefix: str, *, skip_title
             rendered = render_detail_group(child, asset_prefix)
             if rendered:
                 blocks.append(rendered)
+        elif name in {"question", "answer"}:
+            rendered = render_question_answer_block(child, asset_prefix)
+            if rendered:
+                blocks.append(rendered)
         elif name == "informaltable":
             blocks.append(render_informaltable(child, asset_prefix))
         elif name == "section":
@@ -923,6 +964,8 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
             rendered = render_detail_group(child, asset_prefix)
             if rendered:
                 detail_groups.append(rendered)
+        elif child_name in {"question", "answer"}:
+            main_blocks.append(render_question_answer_block(child, asset_prefix))
         elif child_name == "section":
             main_blocks.append(render_section(child, asset_prefix))
         else:

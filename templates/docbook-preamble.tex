@@ -29,6 +29,7 @@
 \definecolor{mrfFurther}{HTML}{1F5F99}
 \definecolor{mrfTechnical}{HTML}{6C757D}
 \definecolor{mrfRule}{HTML}{D0D7DE}
+\definecolor{mrfAnswerBg}{HTML}{EEEEEE}
 
 \hypersetup{
     colorlinks=true,
@@ -57,10 +58,6 @@
 \newlength{\MRFListLabelGap}
 \setlength{\MRFListLabelGap}{0.2em}
 \setlength{\MRFNestedListIndent}{\dimexpr\MRFListLabelWidth+\MRFListLabelGap\relax}
-\newlength{\MRFFAQLabelWidth}
-\setlength{\MRFFAQLabelWidth}{1.6em}
-\newlength{\MRFFAQLabelGap}
-\setlength{\MRFFAQLabelGap}{0.2em}
 \newlength{\MRFTableNumberWidth}
 \setlength{\MRFTableNumberWidth}{0.10\textwidth}
 \newlength{\MRFTableTermWidth}
@@ -255,11 +252,40 @@
 \NewDocumentCommand{\MRFExample}{+m}{\MRFDetailBlock{mrfExample}{Example:}{#1}}
 \NewDocumentCommand{\MRFFurther}{+m}{\MRFDetailBlock{mrfFurther}{Further explanation:}{#1}}
 \NewDocumentCommand{\MRFTechnical}{+m}{\MRFDetailBlock{mrfTechnical}{Technical comment:}{#1}}
-\NewDocumentCommand{\MRFFAQBlock}{m +m}{%
-  \par\noindent\makebox[\MRFFAQLabelWidth][l]{#1}%
-  \hspace*{\MRFFAQLabelGap}%
-  \begin{minipage}[t]{\dimexpr\linewidth-\MRFFAQLabelWidth-\MRFFAQLabelGap\relax}
+\NewDocumentCommand{\MRFFAQBlock}{+m}{%
+  \par\noindent%
+  \begin{minipage}[t]{\linewidth}
   \parindent=0pt\RaggedRight
-  #2
+  #1
   \end{minipage}\par\vspace{0.35\baselineskip}
+}
+
+\NewDocumentCommand{\MRFFAQBlockIndented}{+m}{%
+  \par\noindent\hspace*{\MRFContentIndent}%
+  \begin{minipage}[t]{\dimexpr\linewidth-\MRFContentIndent\relax}
+  \parindent=0pt\RaggedRight
+  #1
+  \end{minipage}\par\vspace{0.35\baselineskip}
+}
+
+\NewDocumentCommand{\MRFFAQAnswerBlock}{+m}{%
+  \par\noindent%
+  \colorbox{mrfAnswerBg}{%
+    \begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep\relax}
+    \parindent=0pt\RaggedRight
+    #1
+    \end{minipage}%
+  }%
+  \par\vspace{0.75\baselineskip}
+}
+
+\NewDocumentCommand{\MRFFAQAnswerBlockIndented}{+m}{%
+  \par\noindent\hspace*{\MRFContentIndent}%
+  \colorbox{mrfAnswerBg}{%
+    \begin{minipage}[t]{\dimexpr\linewidth-\MRFContentIndent-2\fboxsep\relax}
+    \parindent=0pt\RaggedRight
+    #1
+    \end{minipage}%
+  }%
+  \par\vspace{0.75\baselineskip}
 }
