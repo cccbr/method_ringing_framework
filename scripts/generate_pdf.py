@@ -55,7 +55,15 @@ def copy_pdf_with_retry(pdf_src: Path, pdf_dst: Path) -> Path:
     raise last_error
 
 
-def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path, latex_cmd: str, engine_name: str) -> bool:
+def remove_pdf_if_possible(pdf_path: Path) -> None:
+    try:
+        if pdf_path.exists():
+            pdf_path.unlink()
+    except PermissionError:
+        pass
+
+
+def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path, output_name: str, latex_cmd: str, engine_name: str) -> bool:
     """Compile TeX to PDF using the selected LaTeX engine."""
     print(f"  Compiling {master_tex.name}...")
 
@@ -75,6 +83,8 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
                 cwd=tex_dir,
                 capture_output=True,
                 text=True,
+                encoding="utf-8",
+                errors="replace",
                 timeout=120,
             )
             # MiKTeX engines may return non-zero exit codes due to background checks.
@@ -97,7 +107,7 @@ def compile_pdf(master_tex: Path, tex_dir: Path, aux_dir: Path, output_dir: Path
     pdf_src = aux_dir / f"{document_name}.pdf"
     if pdf_src.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
-        pdf_dst = output_dir / f"{document_name}.pdf"
+        pdf_dst = output_dir / f"{output_name}.pdf"
         written_pdf = copy_pdf_with_retry(pdf_src, pdf_dst)
         size_mb = written_pdf.stat().st_size / 1000000
         print(f"  [OK] PDF created: {written_pdf} ({size_mb:.2f} MB)")
@@ -132,12 +142,15 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
 
     # Compile PDF
     version_pdf_dir = pdf_output_dir / edition_dir
+    edition_dir = edition_output_dir(version)
     if len(master_files) > 1:
         legacy_pdf = version_pdf_dir / f"framework-{version}.pdf"
-        if legacy_pdf.exists():
-            legacy_pdf.unlink()
+        remove_pdf_if_possible(legacy_pdf)
+    for old_pdf in version_pdf_dir.glob(f"framework-{version}*.pdf"):
+        remove_pdf_if_possible(old_pdf)
     for master_file in master_files:
-        if not compile_pdf(master_file, version_tex_dir, aux_dir, version_pdf_dir, latex_cmd, engine_name):
+        output_name = master_file.name.replace(f"framework-{version}", f"framework-{edition_dir}").removesuffix(".tex")
+        if not compile_pdf(master_file, version_tex_dir, aux_dir, version_pdf_dir, output_name, latex_cmd, engine_name):
             return False
 
     # Cleanup
@@ -207,7 +220,7 @@ def main() -> int:
     print("[OK] PDF Generation Complete!")
     print("=" * 60)
     for v in args.editions:
-        for pdf_path in sorted((pdf_output_dir / edition_output_dir(v)).glob(f"framework-{v}*.pdf")):
+        for pdf_path in sorted((pdf_output_dir / edition_output_dir(v)).glob(f"framework-{edition_output_dir(v)}*.pdf")):
             size_mb = pdf_path.stat().st_size / 1000000
             print(f"[OK] {pdf_path} ({size_mb:.2f} MB)")
 

@@ -15,6 +15,7 @@
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
+\usepackage[bottom,flushmargin]{footmisc}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{textcomp}
@@ -23,6 +24,7 @@
 \usepackage{lastpage}
 \usepackage{etoolbox}
 \usepackage{ragged2e}
+\usepackage{mdframed}
 
 \definecolor{mrfHeader}{HTML}{132243}
 \definecolor{mrfExample}{HTML}{C0392B}
@@ -38,11 +40,11 @@
 }
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.9\baselineskip}
+\setlength{\parskip}{0.5\baselineskip}
 \renewcommand{\arraystretch}{1.15}
-\clubpenalty=10000
-\widowpenalty=10000
-\displaywidowpenalty=10000
+\clubpenalty=150
+\widowpenalty=150
+\displaywidowpenalty=150
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \doublehyphendemerits=100000
@@ -50,8 +52,15 @@
 \emergencystretch=2em
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
+\renewcommand{\footnotelayout}{\normalfont}
 \newlength{\MRFContentIndent}
 \setlength{\MRFContentIndent}{1.8em}
+\newlength{\MRFBlockSkip}
+\setlength{\MRFBlockSkip}{0.5\baselineskip}
+\newlength{\MRFListItemSkip}
+\setlength{\MRFListItemSkip}{0.2\baselineskip}
+\newlength{\MRFRuleSkip}
+\setlength{\MRFRuleSkip}{0.1\baselineskip}
 \newlength{\MRFNestedListIndent}
 \newlength{\MRFListLabelWidth}
 \setlength{\MRFListLabelWidth}{1.6em}
@@ -162,14 +171,17 @@
   \phantomsection
   \label{#3}
   {\fontsize{14}{18}\selectfont\bfseries #1\space #2\par}
-  \vspace{0.25cm}
+  \vspace{0.2cm}
+  \nopagebreak[4]%
 }
 
 \NewDocumentCommand{\MRFSubsectionHeading}{m m m}{%
+  \par\addvspace{\MRFBlockSkip}%
   \phantomsection
   \label{#3}
   {\fontsize{12}{15}\selectfont\bfseries #1\space #2\par}
-  \vspace{0.15cm}
+  \vspace{0.1cm}
+  \nopagebreak[4]%
 }
 
 \NewDocumentEnvironment{MRFEntries}{}{%
@@ -216,34 +228,40 @@
 }
 
 \NewDocumentCommand{\MRFContentImage}{+m}{%
-  \hspace*{\MRFContentIndent}\begin{minipage}{\dimexpr\linewidth-\MRFContentIndent\relax}
+  \par\addvspace{\MRFBlockSkip}%
+  \noindent\hspace*{\MRFContentIndent}\begin{minipage}{\dimexpr\linewidth-\leftskip-\MRFContentIndent\relax}
   \centering
   #1
-  \end{minipage}\par
+  \end{minipage}\par\addvspace{\MRFBlockSkip}%
 }
 
 \NewDocumentCommand{\MRFListItemIndent}{m}{%
   0pt
 }
 
+% Breakable list item: a hanging label is pulled into the left gutter with
+% \llap while the body is set with an advanced \leftskip, so items can split
+% across pages and nested lists indent additively.
 \NewDocumentCommand{\MRFListItem}{m m +m}{%
-  \par\noindent\hspace*{\MRFListItemIndent{#1}}%
-  \makebox[\MRFListLabelWidth][l]{#2}%
-  \hspace*{\MRFListLabelGap}%
-  \begin{minipage}[t]{\dimexpr\linewidth-\MRFListItemIndent{#1}-\MRFListLabelWidth-\MRFListLabelGap\relax}
+  \par\addvspace{\MRFListItemSkip}%
+  \begingroup
+  \advance\leftskip by \dimexpr\MRFListLabelWidth+\MRFListLabelGap\relax
   \parindent=0pt\RaggedRight
-  #3
-  \end{minipage}\par\vspace{0.5\baselineskip}
+  \setlength{\parskip}{\MRFListItemSkip}%
+  \noindent\llap{\makebox[\MRFListLabelWidth][l]{#2}\hspace*{\MRFListLabelGap}}%
+  #3\par
+  \endgroup
+  \addvspace{\MRFListItemSkip}%
 }
 
 \NewDocumentCommand{\MRFDetailDivider}{}{%
-  {\color{mrfRule}\rule{\linewidth}{0.4pt}}\par
+  \par\addvspace{\MRFRuleSkip}{\color{mrfRule}\rule{\dimexpr\linewidth-\leftskip\relax}{0.4pt}}\par\addvspace{\MRFRuleSkip}%
 }
 
 \NewDocumentCommand{\MRFDetailBlock}{m m +m}{%
   \ifMRFIncludeDetails
     {\parindent=0pt\RaggedRight
-    \MRFDetailDivider
+    \setlength{\parskip}{\MRFListItemSkip}%
     {\color{#1}\textbf{#2}}\par
     {\color{#1}#3}\par}
   \fi
@@ -252,40 +270,63 @@
 \NewDocumentCommand{\MRFExample}{+m}{\MRFDetailBlock{mrfExample}{Example:}{#1}}
 \NewDocumentCommand{\MRFFurther}{+m}{\MRFDetailBlock{mrfFurther}{Further explanation:}{#1}}
 \NewDocumentCommand{\MRFTechnical}{+m}{\MRFDetailBlock{mrfTechnical}{Technical comment:}{#1}}
+
+% FAQ question/plain blocks: breakable plain groups (no minipage).
 \NewDocumentCommand{\MRFFAQBlock}{+m}{%
-  \par\noindent%
-  \begin{minipage}[t]{\linewidth}
+  \par\begingroup
   \parindent=0pt\RaggedRight
-  #1
-  \end{minipage}\par\vspace{0.35\baselineskip}
+  \setlength{\parskip}{\MRFBlockSkip}%
+  #1\par
+  \endgroup\addvspace{\MRFBlockSkip}%
 }
 
 \NewDocumentCommand{\MRFFAQBlockIndented}{+m}{%
-  \par\noindent\hspace*{\MRFContentIndent}%
-  \begin{minipage}[t]{\dimexpr\linewidth-\MRFContentIndent\relax}
+  \par\begingroup
+  \advance\leftskip by \MRFContentIndent
   \parindent=0pt\RaggedRight
-  #1
-  \end{minipage}\par\vspace{0.35\baselineskip}
+  \setlength{\parskip}{\MRFBlockSkip}%
+  #1\par
+  \endgroup\addvspace{\MRFBlockSkip}%
 }
 
+% Grey answer box: breakable mdframed frames so long answers can span pages.
+\newmdenv[
+  backgroundcolor=mrfAnswerBg,
+  linewidth=0pt,
+  innerleftmargin=\fboxsep,
+  innerrightmargin=\fboxsep,
+  innertopmargin=\fboxsep,
+  innerbottommargin=\fboxsep,
+  skipabove=0pt,
+  skipbelow=0pt,
+  splittopskip=\baselineskip,
+]{MRFAnswerFrame}
+
+\newmdenv[
+  backgroundcolor=mrfAnswerBg,
+  linewidth=0pt,
+  leftmargin=\MRFContentIndent,
+  innerleftmargin=\fboxsep,
+  innerrightmargin=\fboxsep,
+  innertopmargin=\fboxsep,
+  innerbottommargin=\fboxsep,
+  skipabove=0pt,
+  skipbelow=0pt,
+  splittopskip=\baselineskip,
+]{MRFAnswerFrameIndented}
+
 \NewDocumentCommand{\MRFFAQAnswerBlock}{+m}{%
-  \par\noindent%
-  \colorbox{mrfAnswerBg}{%
-    \begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep\relax}
-    \parindent=0pt\RaggedRight
-    #1
-    \end{minipage}%
-  }%
-  \par\vspace{0.75\baselineskip}
+  \par\addvspace{\MRFBlockSkip}%
+  \begin{MRFAnswerFrame}\parindent=0pt\RaggedRight
+  \setlength{\parskip}{\MRFBlockSkip}%
+  #1\end{MRFAnswerFrame}%
+  \par\addvspace{\MRFBlockSkip}%
 }
 
 \NewDocumentCommand{\MRFFAQAnswerBlockIndented}{+m}{%
-  \par\noindent\hspace*{\MRFContentIndent}%
-  \colorbox{mrfAnswerBg}{%
-    \begin{minipage}[t]{\dimexpr\linewidth-\MRFContentIndent-2\fboxsep\relax}
-    \parindent=0pt\RaggedRight
-    #1
-    \end{minipage}%
-  }%
-  \par\vspace{0.75\baselineskip}
+  \par\addvspace{\MRFBlockSkip}%
+  \begin{MRFAnswerFrameIndented}\parindent=0pt\RaggedRight
+  \setlength{\parskip}{\MRFBlockSkip}%
+  #1\end{MRFAnswerFrameIndented}%
+  \par\addvspace{\MRFBlockSkip}%
 }

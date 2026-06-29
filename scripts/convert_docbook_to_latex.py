@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 import re
 from pathlib import Path
+from functools import lru_cache
+from urllib.parse import urljoin, urlsplit
 
 from lxml import etree
 
@@ -20,6 +22,8 @@ WHITESPACE_RE = re.compile(r"\s+")
 SECTION_RE = re.compile(r"Section\s+(\d+)")
 APPENDIX_RE = re.compile(r"Appendix\s+([A-Z])")
 GLOSSDIV_PREFIX_RE = re.compile(r"^((?:Appendix\s+[A-Z]|\d+|[A-Z])\.)\s+(.*)$")
+
+CURRENT_BASE_URL = ""
 
 
 def local_name(elem: etree._Element) -> str:
@@ -87,17 +91,26 @@ def render_mixed(node: etree._Element) -> str:
 
 
 def normalize_link_phrases(text: str) -> str:
-    text = re.sub(
-        r"(?i)\bclick\s+\\href\{([^}]*)\}\{here\}",
-        lambda match: rf"See \url{{{match.group(1)}}}",
-        text,
-    )
-    text = re.sub(
-        r"(?i)\\href\{([^}]*)\}\{here\}",
-        lambda match: rf"See \url{{{match.group(1)}}}",
-        text,
-    )
     return text
+
+
+def resolve_pdf_href(href: str) -> str:
+    if not href:
+        return ""
+    parsed = urlsplit(href)
+    if parsed.scheme:
+        return href
+    if href.startswith("#"):
+        return urljoin(CURRENT_BASE_URL, href)
+    return urljoin(CURRENT_BASE_URL, href)
+
+
+def render_pdf_link(href: str, body: str) -> str:
+    resolved = resolve_pdf_href(href)
+    display = body or escape_latex(href)
+    if display == escape_latex(resolved):
+        return rf"\href{{{escape_latex(resolved)}}}{{{display}}}"
+    return rf"\href{{{escape_latex(resolved)}}}{{{display}}}\footnote{{\url{{{escape_latex(resolved)}}}}}"
 
 
 def render_inline(node: etree._Element) -> str:
@@ -121,7 +134,7 @@ def render_inline(node: etree._Element) -> str:
             or node.get("href")
             or "#"
         )
-        return rf"\href{{{escape_latex(href)}}}{{{body or escape_latex(href)}}}"
+        return render_pdf_link(href, body)
 
     if name == "nolink":
         return body
@@ -160,19 +173,47 @@ def width_to_latex(width: str | None) -> str:
     if value.endswith("px"):
         try:
             px = float(value[:-2])
-            ratio = max(0.25, min(0.98, px / 420.0))
+            ratio = max(0.10, min(0.98, px / 900.0))
             return f"{ratio:.2f}\\linewidth"
         except ValueError:
             return "0.90\\linewidth"
 
+    try:
+        px = float(value)
+        ratio = max(0.10, min(0.98, px / 900.0))
+        return f"{ratio:.2f}\\linewidth"
+    except ValueError:
+        pass
+
     return "0.90\\linewidth"
+
+
+@lru_cache(maxsize=256)
+def svg_natural_width(asset_path: str) -> str | None:
+    path = Path(asset_path)
+    if not path.exists() or path.suffix.lower() != ".svg":
+        return None
+    try:
+        root = etree.parse(str(path)).getroot()
+    except Exception:
+        return None
+    width = root.get("width")
+    if width:
+        return width
+    view_box = root.get("viewBox") or root.get("viewbox")
+    if view_box:
+        parts = re.split(r"[\s,]+", view_box.strip())
+        if len(parts) == 4:
+            return parts[2]
+    return None
 
 
 def build_image_include(fileref: str, width: str | None, asset_root: str) -> str:
     asset_path = Path(asset_root) / Path(fileref)
     if Path(fileref).suffix.lower() == ".svg":
         asset_path = asset_path.with_suffix(".pdf")
-    return rf"\includegraphics[width={width_to_latex(width)}]{{{escape_latex(asset_path.as_posix())}}}"
+    effective_width = width or svg_natural_width(str(asset_path.with_suffix(".svg"))) or None
+    return rf"\includegraphics[width={width_to_latex(effective_width)}]{{{escape_latex(asset_path.as_posix())}}}"
 
 
 def render_mediaobject(node: etree._Element, asset_root: str) -> str:
@@ -287,8 +328,22 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
     for index, item in enumerate(node.findall("db:listitem", NS), start=1):
         custom_label = item.get(f"{{{NS['mrf']}}}label")
         parts: list[str] = []
+        detail_run: list[etree._Element] = []
+
+        def flush_detail_run() -> None:
+            nonlocal detail_run
+            if detail_run:
+                grouped = render_detail_group(detail_run, asset_root)
+                if grouped:
+                    parts.append(grouped)
+                detail_run = []
+
         for child in item:
             child_name = local_name(child)
+            if child_name in {"example", "note"}:
+                detail_run.append(child)
+                continue
+            flush_detail_run()
             if child_name == "para":
                 parts.append(render_mixed(child))
             elif child_name == "mediaobject":
@@ -299,12 +354,9 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
                 parts.append(render_faq_block(child, asset_root, "A."))
             elif child_name in {"itemizedlist", "orderedlist"}:
                 parts.append(render_list(child, asset_root, level + 1))
-            elif child_name in {"example", "note"}:
-                detail = render_detail(child, asset_root)
-                if detail:
-                    parts.append(detail)
             elif child_name == "informaltable":
                 parts.append(render_informaltable(child, asset_root))
+        flush_detail_run()
         if ordered and numeration == "loweralpha":
             label = f"{chr(ord('a') + index - 1)})"
         elif ordered and numeration == "lowerroman":
@@ -322,8 +374,22 @@ def render_list(node: etree._Element, asset_root: str, level: int = 1) -> str:
 
 def render_faq_body(node: etree._Element, asset_root: str, *, level: int = 1) -> str:
     blocks: list[str] = []
+    detail_run: list[etree._Element] = []
+
+    def flush_detail_run() -> None:
+        nonlocal detail_run
+        if detail_run:
+            grouped = render_detail_group(detail_run, asset_root)
+            if grouped:
+                blocks.append(grouped)
+            detail_run = []
+
     for child in node:
         name = local_name(child)
+        if name in {"example", "note"}:
+            detail_run.append(child)
+            continue
+        flush_detail_run()
         if name == "para":
             blocks.append(rf"\MRFBodyPara{{{render_mixed(child)}}}")
         elif name == "mediaobject":
@@ -334,10 +400,7 @@ def render_faq_body(node: etree._Element, asset_root: str, *, level: int = 1) ->
             blocks.append(render_question_answer_block(child, asset_root))
         elif name in {"itemizedlist", "orderedlist"}:
             blocks.append(render_list(child, asset_root, level=level))
-        elif name in {"example", "note"}:
-            detail = render_detail(child, asset_root)
-            if detail:
-                blocks.append(detail)
+    flush_detail_run()
     return "\n".join(blocks)
 
 
@@ -382,6 +445,18 @@ def render_detail_body(node: etree._Element, asset_root: str) -> str:
     return "\n".join(blocks)
 
 
+def is_detail_block_node(node: etree._Element) -> bool:
+    return local_name(node) in {"example", "note"}
+
+
+def render_detail_group(nodes: list[etree._Element], asset_root: str) -> str:
+    rendered = [render_detail(node, asset_root) for node in nodes]
+    rendered = [block for block in rendered if block]
+    if not rendered:
+        return ""
+    return "\n".join([r"\MRFDetailDivider", *rendered, r"\MRFDetailDivider"])
+
+
 def render_detail(node: etree._Element, asset_root: str) -> str:
     name = local_name(node)
     if name == "mediaobject":
@@ -411,14 +486,29 @@ def render_glossdef_blocks(glossdef: etree._Element | None, asset_root: str) -> 
         return []
 
     parts: list[str] = []
+    detail_run: list[etree._Element] = []
+
+    def flush_detail_run() -> None:
+        nonlocal detail_run
+        if detail_run:
+            rendered = render_detail_group(detail_run, asset_root)
+            if rendered:
+                parts.append(rendered)
+            detail_run = []
+
     for child in glossdef:
         name = local_name(child)
         if name == "para":
+            flush_detail_run()
             parts.append(rf"\MRFBodyPara{{{render_mixed(child)}}}")
         else:
             detail = render_detail(child, asset_root)
-            if detail:
+            if detail and is_detail_block_node(child):
+                detail_run.append(child)
+            elif detail:
+                flush_detail_run()
                 parts.append(detail)
+    flush_detail_run()
     return parts
 
 
@@ -450,17 +540,32 @@ def render_block_children(
     wrap_notes: bool = False,
 ) -> list[str]:
     blocks: list[str] = []
+    detail_run: list[etree._Element] = []
+
+    def flush_detail_run() -> None:
+        nonlocal detail_run
+        if detail_run:
+            rendered = render_detail_group(detail_run, asset_root)
+            if rendered:
+                blocks.append(rendered)
+            detail_run = []
+
     for child in node:
         name = local_name(child)
         if skip_titles and name == "title":
             continue
         if skip_entries and name == "glossentry":
             continue
+        if name in {"example", "note"}:
+            detail_run.append(child)
+            continue
+        flush_detail_run()
         block = render_block(child, asset_root)
         if wrap_notes and name == "note" and block:
             block = rf"\MRFBodyPara{{{block}}}"
         if block:
             blocks.append(block)
+    flush_detail_run()
     return [block for block in blocks if block]
 
 
@@ -537,9 +642,15 @@ def parse_glossdiv_heading(title: str) -> tuple[str, str]:
 
 
 def build_document(article: etree._Element, asset_root: str) -> str:
+    global CURRENT_BASE_URL
     info = article.find("db:info", NS)
     title = read_text(info.find("db:title", NS) if info is not None else None)
     subtitle = read_text(info.find("db:subtitle", NS) if info is not None else None)
+    edition = read_text(info.find("db:edition", NS) if info is not None else None)
+    if edition:
+        CURRENT_BASE_URL = f"https://framework.cccbr.org.uk/edition{edition}/"
+    else:
+        CURRENT_BASE_URL = ""
     source_meta = info.find("db:othermeta[@role='source-path']", NS) if info is not None else None
     source_stem = Path(read_text(source_meta)).stem or article.get("{http://www.w3.org/XML/1998/namespace}id", "page")
     page_number, page_title = parse_page_heading(title, subtitle)

@@ -29,7 +29,7 @@ def run_command(cmd: list[str], description: str, cwd: Optional[Path] = None) ->
     """Run a command and report status."""
     print(f"\n>>> {description}")
     try:
-        result = subprocess.run(cmd, cwd=cwd, check=True, capture_output=True, text=True)
+        result = subprocess.run(cmd, cwd=cwd, check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
         return True
     except subprocess.CalledProcessError as e:
         print(f"[FAILED] {description} failed")
@@ -125,7 +125,8 @@ def generate_pdfs(versions: list[str], no_cleanup: bool = False) -> bool:
     print("PDF Generation Complete!")
     print("=" * 60)
     for v in versions:
-        for pdf_path in sorted((Path("generated/pdf") / edition_output_dir(v)).glob(f"framework-{v}*.pdf")):
+        edition_dir = edition_output_dir(v)
+        for pdf_path in sorted((Path("generated/pdf") / edition_dir).glob(f"framework-{edition_dir}*.pdf")):
             size_mb = pdf_path.stat().st_size / 1000000
             print(f"[OK] {pdf_path} ({size_mb:.2f} MB)")
 

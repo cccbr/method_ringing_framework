@@ -120,6 +120,8 @@ def render_svg_to_pdf_with_inkscape(source: Path, destination: Path, inkscape: s
         command,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         timeout=120,
     )
     if result.returncode != 0 or not destination.exists():
@@ -144,6 +146,8 @@ def render_svg_to_pdf_with_browser(source: Path, destination: Path, browser: str
         command,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         timeout=120,
     )
     if result.returncode != 0 or not destination.exists():

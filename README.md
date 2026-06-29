@@ -109,4 +109,27 @@ The framework metadata attributes in the `mrf:` namespace are:
 
 The generated XML also uses standard XML attributes such as `xml:id` and `xml:lang`.
 
+## Layout roles and modifiers
+
+Both renderers (XML→HTML and XML→LaTeX/PDF) are driven by tags plus generic
+`role` modifiers rather than page-specific code. The `role` vocabulary is the
+single source of truth for layout decisions:
+
+| Element | `role` value | Effect |
+| --- | --- | --- |
+| `emphasis` | `bold` / `italic` / `underline` | Inline emphasis style |
+| `orderedlist` | `glossary-style` | Numbered rows aligned like glossary entries |
+| `itemizedlist` / `orderedlist` | `compact` | Tight list spacing |
+| `note` | `technical-comment` | Renders as a "Technical comment" (otherwise "Further explanation") |
+| `informaltable` | `leadhead-codes` | Compact monospace lead-head code table |
+| `informaltable` | `leadhead-code-pair` | Two side-by-side code tables |
+| `informaltable` | `amended-method-titles` / `amended-method-titles-summary` | Borderless 3-column amendment tables |
+| `informaltable` | `related-material` | Appendix G related-material 3-column layout |
+
+FAQ/consultation question and answer text uses the `question` / `answer`
+elements; answers render in a grey, page-breakable box that starts at the text
+left margin. The older `mrf:separator="hr"` modifier on `answer` is deprecated:
+horizontal rules around notes are now emitted automatically by the renderers as
+a single rule before and after each contiguous run of `example`/`note` blocks.
+
 In the source HTML, ordered-list markers are typically `1.` / `1)` for numeric lists, `a)` for lower-alpha lists, and `i)` / `(i)` for roman lists.
