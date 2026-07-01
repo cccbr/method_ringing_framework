@@ -993,10 +993,13 @@ def render_inline(
         return
 
     if tag == "a":
-        elem = etree.SubElement(parent, qname("link"))
         href = node.get("href", "")
-        if href:
-            elem.set(qname("href", "xlink"), href)
+        if not href:
+            for child in node.children:
+                render_inline(child, parent, None, allow_nolink=False)
+            return
+        elem = etree.SubElement(parent, qname("link"))
+        elem.set(qname("href", "xlink"), href)
         for child in node.children:
             render_inline(child, elem, None, allow_nolink=False)
         return

@@ -26,6 +26,7 @@
 \usepackage{ragged2e}
 \usepackage{mdframed}
 \usepackage{needspace}
+\urlstyle{same}
 
 \definecolor{mrfHeader}{HTML}{132243}
 \definecolor{mrfExample}{HTML}{C0392B}
@@ -67,11 +68,11 @@
 \setlength{\MRFListLabelGap}{0.2em}
 \setlength{\MRFNestedListIndent}{\dimexpr\MRFListLabelWidth+\MRFListLabelGap\relax}
 \newlength{\MRFTableNumberWidth}
-\setlength{\MRFTableNumberWidth}{0.10\textwidth}
+\setlength{\MRFTableNumberWidth}{0.06\textwidth}
 \newlength{\MRFTableTermWidth}
 \setlength{\MRFTableTermWidth}{0.22\textwidth}
 \newlength{\MRFTableBodyWidth}
-\setlength{\MRFTableBodyWidth}{0.62\textwidth}
+\setlength{\MRFTableBodyWidth}{\dimexpr\linewidth-\MRFTableNumberWidth-\MRFTableTermWidth-6\tabcolsep-4\arrayrulewidth\relax}
 \newlength{\MRFTableSpanWidth}
 \setlength{\MRFTableSpanWidth}{\dimexpr\MRFTableNumberWidth+\MRFTableTermWidth+\MRFTableBodyWidth+6\tabcolsep+4\arrayrulewidth\relax}
 \newlength{\MRFTableBodyOffset}
@@ -190,6 +191,9 @@
     \setlength{\LTleft}{0pt}
     \setlength{\LTright}{0pt}
     \setlength{\tabcolsep}{4pt}
+    \setlength{\MRFTableNumberWidth}{0.06\linewidth}
+    \setlength{\MRFTableTermWidth}{0.22\linewidth}
+    \setlength{\MRFTableBodyWidth}{\dimexpr\linewidth-\MRFTableNumberWidth-\MRFTableTermWidth-6\tabcolsep-4\arrayrulewidth\relax}
     \begin{longtable}{@{}|>{\RaggedRight\arraybackslash}p{\MRFTableNumberWidth}|>{\RaggedRight\arraybackslash}p{\MRFTableTermWidth}|>{\RaggedRight\arraybackslash}p{\MRFTableBodyWidth}|@{}}
     \hline
   \fi
@@ -256,7 +260,8 @@
 
 \NewDocumentCommand{\MRFDetailDivider}{}{%
   \ifMRFIncludeDetails
-    \par{\color{mrfRule}\rule{\dimexpr\linewidth-\leftskip\relax}{0.4pt}}\par
+    \par\vspace{-\parskip}\vspace{0.15\baselineskip}%
+    {\color{mrfRule}\rule{\dimexpr\linewidth-\leftskip\relax}{0.4pt}}\par
   \fi
 }
 

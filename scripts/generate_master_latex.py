@@ -25,7 +25,7 @@ GLOSSDIV_PREFIX_RE = re.compile(r"^((?:Appendix\s+[A-Z]|\d+|[A-Z])\.)\s+(.*)$")
 SUPPLEMENTAL_APPENDIX_ORDERS = {
     "extensionprocesses2": (4, 1),
 }
-EXCLUDED_PDF_STEMS = {"xref", "issues"}
+EXCLUDED_PDF_STEMS = {"xref", "issues", "amendedmethodtitles"}
 
 
 @dataclass(frozen=True)

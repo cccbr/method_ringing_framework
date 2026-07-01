@@ -108,9 +108,11 @@ def resolve_pdf_href(href: str) -> str:
 def render_pdf_link(href: str, body: str) -> str:
     resolved = resolve_pdf_href(href)
     display = body or escape_latex(href)
+    if resolved.startswith("mailto:"):
+        return display
     if display == escape_latex(resolved):
-        return rf"\href{{{escape_latex(resolved)}}}{{{display}}}"
-    return rf"\href{{{escape_latex(resolved)}}}{{{display}}}\footnote{{\url{{{escape_latex(resolved)}}}}}"
+        return rf"\url{{{escape_latex(resolved)}}}"
+    return rf"\href{{{escape_latex(resolved)}}}{{{display}}}\footnote{{{escape_latex(resolved)}}}"
 
 
 def render_inline(node: etree._Element) -> str:
@@ -244,7 +246,11 @@ def render_table_cell(node: etree._Element, asset_root: str, *, monospace: bool,
         if child.tail and collapse_ws(child.tail, strip=True):
             parts.append(escape_latex(collapse_ws(child.tail, strip=True)))
 
-    body = r" \\ ".join(part for part in parts if part).strip()
+    filtered = [p for p in parts if p]
+    if len(filtered) <= 1:
+        body = filtered[0] if filtered else ""
+    else:
+        body = rf"\shortstack[l]{{{r' \\ '.join(filtered)}}}"
     if monospace and body:
         return rf"\texttt{{{body}}}"
     return body
@@ -276,7 +282,7 @@ def render_informaltable(node: etree._Element, asset_root: str, *, nested: bool 
                 r"\begingroup",
                 font_size,
                 rf"\setlength{{\tabcolsep}}{{{tabcolsep}}}",
-                r"\noindent\begin{tabular}{@{}p{0.49\linewidth}p{0.49\linewidth}@{}}",
+                r"\par\noindent\begin{tabular}{@{}p{0.49\linewidth}p{0.49\linewidth}@{}}",
                 rf"\begin{{minipage}}[t]{{\linewidth}}\raggedright {left}\end{{minipage}} & \begin{{minipage}}[t]{{\linewidth}}\raggedright {right}\end{{minipage}} \\",
                 r"\end{tabular}",
                 r"\endgroup",
@@ -292,6 +298,10 @@ def render_informaltable(node: etree._Element, asset_root: str, *, nested: bool 
 
     if role in {"amended-method-titles", "amended-method-titles-summary"} and not nested:
         column_spec = r"@{}p{0.10\linewidth}p{0.45\linewidth}p{0.45\linewidth}@{}"
+    elif role == "related-material":
+        column_spec = r"@{}p{0.08\linewidth}p{0.28\linewidth}p{\dimexpr0.64\linewidth-4\tabcolsep\relax}@{}"
+    elif role == "leadhead-codes":
+        column_spec = rf"@{{}}{'l' * max_cols}@{{}}"
     else:
         column_spec = rf"@{{}}{'l' * max_cols}@{{}}"
 
@@ -299,7 +309,7 @@ def render_informaltable(node: etree._Element, asset_root: str, *, nested: bool 
         r"\begingroup",
         font_size,
         rf"\setlength{{\tabcolsep}}{{{tabcolsep}}}",
-        r"\setlength{\LTleft}{\MRFContentIndent}" if role in {"leadhead-codes", "amended-method-titles", "amended-method-titles-summary"} else r"\setlength{\LTleft}{0pt}",
+        r"\setlength{\LTleft}{\MRFContentIndent}" if role in {"leadhead-codes", "amended-method-titles", "amended-method-titles-summary", "related-material"} else r"\setlength{\LTleft}{0pt}",
         r"\setlength{\LTright}{0pt}",
         rf"\begin{{{'tabular' if nested else 'longtable'}}}{{{column_spec}}}",
     ]
@@ -454,10 +464,12 @@ def render_detail_group(nodes: list[etree._Element], asset_root: str) -> str:
     rendered = [block for block in rendered if block]
     if not rendered:
         return ""
-    parts = [r"\MRFDetailDivider"]
-    for block in rendered:
+    parts = []
+    for i, block in enumerate(rendered):
+        if i > 0:
+            parts.append(r"\MRFDetailDivider")
         parts.append(block)
-        parts.append(r"\MRFDetailDivider")
+    parts = [r"\MRFDetailDivider"] + parts + [r"\MRFDetailDivider"]
     return "\n".join(parts)
 
 
