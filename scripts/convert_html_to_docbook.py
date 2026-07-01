@@ -1589,13 +1589,13 @@ def add_child_blocks(
         target_parent = grouped_heading_item if grouped_heading_item is not None else parent
 
         if not suppress_marker_lists:
-            converted_paragraphs = add_paragraph_marker_list(children, child_index, target_parent)
+            converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, target_parent)
             if converted_paragraphs:
                 child_index += converted_paragraphs
                 first_para = False
                 continue
 
-            converted_paragraphs = add_marker_paragraph_with_nested_lists(children, child_index, target_parent)
+            converted_paragraphs = add_paragraph_marker_list(children, child_index, target_parent)
             if converted_paragraphs:
                 child_index += converted_paragraphs
                 first_para = False

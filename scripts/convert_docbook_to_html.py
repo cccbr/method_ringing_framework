@@ -785,6 +785,7 @@ def render_block_children(node: etree._Element, asset_prefix: str, *, skip_title
 
 
 def render_entry(entry: etree._Element, asset_prefix: str) -> str:
+    role = (entry.get(f"{{{NS['mrf']}}}role") or "").lower()
     term = entry_term(entry)
     number = entry_number_text(entry)
     glossdef = entry.find("db:glossdef", NS)
@@ -803,6 +804,20 @@ def render_entry(entry: etree._Element, asset_prefix: str) -> str:
     row_id_attr = f' id="{html.escape(entry_id, quote=True)}"' if entry_id else ""
     row_term_attr = f' data-glossterm="{html.escape(term, quote=True)}"' if term else ""
     rendered_term = render_term_label(term)
+
+    if role == "continuation":
+        return (
+            "                    <div class=\"row mrf-glossary-row mrf-continuation-row\">\n"
+            "                        <div class=\"col-sm-1\">\n"
+            "                        </div>\n"
+            "                        <div class=\"col-xl-2 col-sm-3\">\n"
+            "                        </div>\n"
+            "                        <div class=\"col-xl-9 col-sm-8\">\n"
+            f"{content}\n"
+            f"{indent_block(render_glossary_detail_block(detail_html), 28) if detail_html else ''}\n"
+            "                        </div>\n"
+            "                    </div>"
+        )
 
     if term and number:
         return (

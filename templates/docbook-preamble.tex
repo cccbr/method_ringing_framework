@@ -1,5 +1,5 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=1in,headheight=30pt,headsep=16pt,footskip=26pt]{geometry}
+\usepackage[margin=0.75in,headheight=30pt,headsep=16pt,footskip=26pt]{geometry}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -25,6 +25,7 @@
 \usepackage{etoolbox}
 \usepackage{ragged2e}
 \usepackage{mdframed}
+\usepackage{needspace}
 
 \definecolor{mrfHeader}{HTML}{132243}
 \definecolor{mrfExample}{HTML}{C0392B}
@@ -59,8 +60,6 @@
 \setlength{\MRFBlockSkip}{0.5\baselineskip}
 \newlength{\MRFListItemSkip}
 \setlength{\MRFListItemSkip}{0.2\baselineskip}
-\newlength{\MRFRuleSkip}
-\setlength{\MRFRuleSkip}{0.1\baselineskip}
 \newlength{\MRFNestedListIndent}
 \newlength{\MRFListLabelWidth}
 \setlength{\MRFListLabelWidth}{1.6em}
@@ -176,6 +175,7 @@
 }
 
 \NewDocumentCommand{\MRFSubsectionHeading}{m m m}{%
+  \needspace{3\baselineskip}%
   \par\addvspace{\MRFBlockSkip}%
   \phantomsection
   \label{#3}
@@ -213,9 +213,10 @@
 
 \NewDocumentCommand{\MRFEntryCont}{+m}{%
   \ifMRFTableLayout
-    #1
+    & & {\setlength{\parskip}{0.25\baselineskip}\RaggedRight #1} \\
   \else
     #1
+    \vspace{0.35cm}
   \fi
 }
 
@@ -235,19 +236,18 @@
   \end{minipage}\par\addvspace{\MRFBlockSkip}%
 }
 
-\NewDocumentCommand{\MRFListItemIndent}{m}{%
-  0pt
-}
 
-% Breakable list item: a hanging label is pulled into the left gutter with
-% \llap while the body is set with an advanced \leftskip, so items can split
-% across pages and nested lists indent additively.
+% Breakable list item: labels hang to the left of the current text block
+% via \llap. The parent's \leftskip is saved before \RaggedRight (which
+% resets it), then restored and advanced, so nested lists indent additively.
 \NewDocumentCommand{\MRFListItem}{m m +m}{%
   \par\addvspace{\MRFListItemSkip}%
   \begingroup
-  \advance\leftskip by \dimexpr\MRFListLabelWidth+\MRFListLabelGap\relax
-  \parindent=0pt\RaggedRight
+  \parindent=0pt
   \setlength{\parskip}{\MRFListItemSkip}%
+  \setlength{\MRFNestedListIndent}{\leftskip}%
+  \RaggedRight
+  \leftskip = \dimexpr\MRFNestedListIndent+\MRFListLabelWidth+\MRFListLabelGap\relax
   \noindent\llap{\makebox[\MRFListLabelWidth][l]{#2}\hspace*{\MRFListLabelGap}}%
   #3\par
   \endgroup
@@ -255,7 +255,9 @@
 }
 
 \NewDocumentCommand{\MRFDetailDivider}{}{%
-  \par\addvspace{\MRFRuleSkip}{\color{mrfRule}\rule{\dimexpr\linewidth-\leftskip\relax}{0.4pt}}\par\addvspace{\MRFRuleSkip}%
+  \ifMRFIncludeDetails
+    \par{\color{mrfRule}\rule{\dimexpr\linewidth-\leftskip\relax}{0.4pt}}\par
+  \fi
 }
 
 \NewDocumentCommand{\MRFDetailBlock}{m m +m}{%

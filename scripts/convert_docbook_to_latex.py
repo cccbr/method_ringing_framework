@@ -454,7 +454,11 @@ def render_detail_group(nodes: list[etree._Element], asset_root: str) -> str:
     rendered = [block for block in rendered if block]
     if not rendered:
         return ""
-    return "\n".join([r"\MRFDetailDivider", *rendered, r"\MRFDetailDivider"])
+    parts = [r"\MRFDetailDivider"]
+    for block in rendered:
+        parts.append(block)
+        parts.append(r"\MRFDetailDivider")
+    return "\n".join(parts)
 
 
 def render_detail(node: etree._Element, asset_root: str) -> str:
@@ -570,6 +574,7 @@ def render_block_children(
 
 
 def render_entry_row(entry: etree._Element, asset_root: str) -> str:
+    role = (entry.get(f"{{{NS['mrf']}}}role") or "").lower()
     number = entry.get(f"{{{NS['mrf']}}}number", "")
     local_number = re.sub(r"^[A-Z]\.", "", number)
     display_number = local_number if local_number.endswith(".") else local_number + "." if local_number else ""
@@ -578,6 +583,9 @@ def render_entry_row(entry: etree._Element, asset_root: str) -> str:
 
     if not display_number and not term and not body:
         return ""
+
+    if role == "continuation":
+        return rf"\MRFEntryCont{{{body}}}"
 
     return rf"\MRFEntry{{{escape_latex(display_number)}}}{{{term}}}{{{body}}}"
 
