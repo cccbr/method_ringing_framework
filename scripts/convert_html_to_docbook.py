@@ -2044,6 +2044,54 @@ def add_numbered_list_item(
     return list_item
 
 
+GLOSSARY_SYNONYMS: dict[str, tuple[str, ...]] = {
+    "Method": ("Methods",),
+    "Performance": ("Performances",),
+    "Place": ("Places",),
+    "Stage": ("Stages",),
+    "Change": ("Changes",),
+    "Row": ("Rows",),
+    "Block": ("Blocks",),
+    "Touch": ("Touches",),
+    "Length": ("Lengths",),
+    "Cycle": ("Cycles",),
+    "Band": ("Bands",),
+    "Variation": ("Variations",),
+    "Performance Report": ("Performance Reports", "Performance Reporting"),
+    "Performance Title": ("Performance Titles",),
+    "Performance Detail": ("Performance Details",),
+    "Performance Norm": ("Performance Norms",),
+    "Record Length": ("Record Lengths",),
+    "Method Title": ("Method Titles",),
+    "Class Descriptor": ("Class Descriptors",),
+    "Stage Name": ("Stage Names",),
+    "Extension Process": ("Extension Processes",),
+    "Ringing Style": ("Ringing Styles",),
+    "Methods Library": ("Method Library",),
+    "Variations Library": ("Variation Library",),
+    "Calls Library": ("Call Library",),
+    "Leadhead": ("Leadheads", "Lead Head", "Lead Heads"),
+    "Leadend": ("Leadends", "Lead End", "Lead Ends"),
+    "Leadend Change": ("Leadend Changes", "Lead End Change", "Lead End Changes"),
+    "Halflead Change": ("Halflead Changes", "Half Lead Change", "Half Lead Changes"),
+    "Hunt Bell": ("Hunt Bells",),
+    "Working Bell": ("Working Bells",),
+    "Stationary Bell": ("Stationary Bells",),
+    "Cover Bell": ("Cover Bells",),
+    "Plain Lead": ("Plain Leads",),
+    "Plain Course": ("Plain Courses",),
+    "Rotation": ("Rotations",),
+    "Extent": ("Extents",),
+    "Composition": ("Compositions",),
+    "Principle": ("Principles",),
+    "Differential": ("Differentials",),
+    "Call": ("Calls",),
+    "Spliced": ("Splice",),
+    "True": ("Truth",),
+    "Hunting": ("Hunt",),
+    "Dodging": ("Dodges", "Dodge"),
+}
+
 def build_glossentry(
     term: str,
     number: str | None,
@@ -2053,7 +2101,10 @@ def build_glossentry(
     *,
     allow_nolink: bool = True,
     wrap_nolink: bool = False,
+    alt_terms: tuple[str, ...] | None = None,
 ) -> etree._Element:
+    if alt_terms is None:
+        alt_terms = GLOSSARY_SYNONYMS.get(term, ())
     entry = etree.Element(qname("glossentry"))
     entry.set("{http://www.w3.org/XML/1998/namespace}id", entry_id)
     if number:
@@ -2061,6 +2112,12 @@ def build_glossentry(
 
     glossterm = etree.SubElement(entry, qname("glossterm"))
     glossterm.text = term
+
+    for alt in alt_terms:
+        if alt and alt.casefold() != term.casefold():
+            synonym = etree.SubElement(entry, qname("glossterm"))
+            synonym.set("role", "synonym")
+            synonym.text = alt
 
     glossdef = etree.SubElement(entry, qname("glossdef"))
     add_main_blocks(content_col, glossdef, allow_nolink=allow_nolink, wrap_nolink=wrap_nolink)

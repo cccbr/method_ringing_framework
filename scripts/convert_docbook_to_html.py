@@ -61,6 +61,7 @@ class GlossaryTermLink:
     term: str
     page_href: str
     anchor_id: str
+    alt_terms: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -1175,6 +1176,10 @@ def build_glossary_autolink_data(
         if not normalized:
             continue
         unique_terms.setdefault(normalized.casefold(), glossary_term)
+        for alt in glossary_term.alt_terms:
+            normalized_alt = collapse_ws(alt, strip=True)
+            if normalized_alt:
+                unique_terms.setdefault(normalized_alt.casefold(), glossary_term)
 
     ordered_terms = sorted(
         unique_terms.values(),
@@ -1183,16 +1188,27 @@ def build_glossary_autolink_data(
     if not ordered_terms:
         return None, {}
 
-    pattern = re.compile(
-        rf"(?<![A-Za-z0-9])(?:{'|'.join(re.escape(item.term) for item in ordered_terms)})(?![A-Za-z0-9])",
-        re.IGNORECASE,
-    )
-    hrefs = {
-        item.term.casefold(): (
+    all_terms: list[str] = []
+    hrefs: dict[str, str] = {}
+    for item in ordered_terms:
+        href = (
             f"#{item.anchor_id}" if item.page_href == current_page_href else f"{item.page_href}#{item.anchor_id}"
         )
-        for item in ordered_terms
-    }
+        all_terms.append(item.term)
+        hrefs[item.term.casefold()] = href
+        for alt in item.alt_terms:
+            normalized_alt = collapse_ws(alt, strip=True)
+            if normalized_alt:
+                all_terms.append(normalized_alt)
+                hrefs.setdefault(normalized_alt.casefold(), href)
+
+    if not all_terms:
+        return None, {}
+
+    pattern = re.compile(
+        rf"(?<![A-Za-z0-9])(?:{'|'.join(re.escape(t) for t in all_terms)})(?![A-Za-z0-9])",
+        re.IGNORECASE,
+    )
     return pattern, hrefs
 
 
@@ -1345,6 +1361,7 @@ def linkify_text_segments(
     pattern: re.Pattern[str],
     hrefs_by_term: dict[str, str],
     excluded_terms: frozenset[str],
+    seen_hrefs: set[str],
 ) -> list[tuple[str, str, str]] | None:
     segments: list[tuple[str, str, str]] = []
     cursor = 0
@@ -1354,12 +1371,13 @@ def linkify_text_segments(
         matched_text = match.group(0)
         matched_key = matched_text.casefold()
         href = hrefs_by_term.get(matched_key)
-        if href is None or matched_key in excluded_terms:
+        if href is None or matched_key in excluded_terms or href in seen_hrefs:
             continue
 
         if match.start() > cursor:
             segments.append(("text", text[cursor:match.start()], ""))
         segments.append(("link", matched_text, href))
+        seen_hrefs.add(href)
         cursor = match.end()
         replaced = True
 
@@ -1377,8 +1395,9 @@ def replace_element_text(
     pattern: re.Pattern[str],
     hrefs_by_term: dict[str, str],
     excluded_terms: frozenset[str],
+    seen_hrefs: set[str],
 ) -> None:
-    segments = linkify_text_segments(text, pattern, hrefs_by_term, excluded_terms)
+    segments = linkify_text_segments(text, pattern, hrefs_by_term, excluded_terms, seen_hrefs)
     if not segments:
         return
 
@@ -1411,8 +1430,9 @@ def replace_tail_text(
     pattern: re.Pattern[str],
     hrefs_by_term: dict[str, str],
     excluded_terms: frozenset[str],
+    seen_hrefs: set[str],
 ) -> None:
-    segments = linkify_text_segments(text, pattern, hrefs_by_term, excluded_terms)
+    segments = linkify_text_segments(text, pattern, hrefs_by_term, excluded_terms, seen_hrefs)
     if not segments:
         return
 
@@ -1431,11 +1451,14 @@ def replace_tail_text(
         previous = anchor
 
 
+BLOCK_TAGS = frozenset({"p", "div", "li", "td", "th", "blockquote", "pre"})
+
 def autolink_html_element(
     element: etree._Element,
     pattern: re.Pattern[str],
     hrefs_by_term: dict[str, str],
     excluded_terms: frozenset[str] = frozenset(),
+    seen_hrefs: set[str] | None = None,
 ) -> None:
     tag_name = (element.tag or "").lower() if isinstance(element.tag, str) else ""
     if tag_name in {"a", "code", "script", "style", "h1", "h2", "h3", "h4", "h5", "h6"}:
@@ -1444,6 +1467,9 @@ def autolink_html_element(
     if "mrf-faq-question" in element_classes or "mrf-nolink" in element_classes:
         return
 
+    if seen_hrefs is None or tag_name in BLOCK_TAGS:
+        seen_hrefs = set()
+
     scoped_exclusions = excluded_terms
     definition_term = collapse_ws(element.get("data-glossterm"), strip=True)
     if definition_term:
@@ -1451,12 +1477,12 @@ def autolink_html_element(
 
     original_children = list(element)
     if element.text:
-        replace_element_text(element, element.text, pattern, hrefs_by_term, scoped_exclusions)
+        replace_element_text(element, element.text, pattern, hrefs_by_term, scoped_exclusions, seen_hrefs)
 
     for child in original_children:
-        autolink_html_element(child, pattern, hrefs_by_term, scoped_exclusions)
+        autolink_html_element(child, pattern, hrefs_by_term, scoped_exclusions, seen_hrefs)
         if child.tail:
-            replace_tail_text(child, child.tail, pattern, hrefs_by_term, scoped_exclusions)
+            replace_tail_text(child, child.tail, pattern, hrefs_by_term, scoped_exclusions, seen_hrefs)
 
 
 def autolink_glossary_terms(

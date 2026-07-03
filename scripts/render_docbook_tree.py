@@ -525,13 +525,20 @@ def collect_glossary_terms(
         article = articles_by_file[xml_file]
         page_href = f"{xml_file.stem}.html"
         for entry in article.findall(".//db:glossentry", NS):
-            term = read_text(entry.find("db:glossterm", NS))
-            entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id", "").strip()
-            if not term or not entry_id:
+            glossterms = entry.findall("db:glossterm", NS)
+            if not glossterms:
                 continue
+            primary = read_text(glossterms[0])
+            entry_id = entry.get("{http://www.w3.org/XML/1998/namespace}id", "").strip()
+            if not primary or not entry_id:
+                continue
+            alternatives = tuple(
+                read_text(t) for t in glossterms[1:]
+                if read_text(t) and read_text(t).casefold() != primary.casefold()
+            )
             terms_by_text.setdefault(
-                term.casefold(),
-                GlossaryTermLink(term=term, page_href=page_href, anchor_id=entry_id),
+                primary.casefold(),
+                GlossaryTermLink(term=primary, page_href=page_href, anchor_id=entry_id, alt_terms=alternatives),
             )
     return sorted(
         terms_by_text.values(),
