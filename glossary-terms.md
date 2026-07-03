@@ -28,9 +28,6 @@
 | Dodging Places |  | Y | Y | Y |
 | Double Symmetry |  | Y | Y | Y |
 | Dynamic Method | Dynamic Methods | Y | Y | Y |
-| Edition 1 |  | - | - | Y |
-| Edition 2 |  | - | - | Y |
-| Edition 3 |  | - | - | Y |
 | Effective Stage |  | Y | Y | Y |
 | Extension | Extensions | Y | Y | Y |
 | Extension Construction | Extension Constructions | Y | Y | Y |
@@ -74,7 +71,7 @@
 | Performance Title | Performance Titles | Y | Y | Y |
 | Place | Places | Y | Y | Y |
 | Place Method | Place Methods | Y | Y | Y |
-| Place Notation |  | Y | Y | Y |
+| Place Notation |  | - | - | Y |
 | Plain Bob Leadheads | Plain Bob Leadhead | Y | Y | Y |
 | Plain Course | Plain Courses | Y | Y | Y |
 | Plain Lead | Plain Leads | Y | Y | Y |
@@ -103,6 +100,6 @@
 | Treble Place Method | Treble Place Methods | Y | Y | Y |
 | True | Truth | Y | Y | Y |
 | Variable Cover |  | Y | Y | Y |
-| Variation | Variations | Y | Y | Y |
-| Variations Library | Variation Library | Y | Y | Y |
+| Variation | Variations | - | - | Y |
+| Variations Library | Variation Library | - | - | Y |
 | Working Bell | Working Bells | Y | Y | Y |

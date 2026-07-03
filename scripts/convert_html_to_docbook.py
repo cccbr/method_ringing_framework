@@ -2462,11 +2462,13 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
         current_section_title = clean_text(heading_text or page_title)
         current_section_allow_nolink = True
         entry_index = 0
-        lead_definition_terms: dict[tuple[str, str], str] = {
-            ("naming", "D. Variations", "1"): "Variation",
-            ("naming", "D. Variations", "2"): "Variations Library",
-            ("placenotation", "", "1"): "Place Notation",
-        }
+        lead_definition_terms: dict[tuple[str, str], str] = {}
+        if framework_version == "3":
+            lead_definition_terms = {
+                ("naming", "D. Variations", "1"): "Variation",
+                ("naming", "D. Variations", "2"): "Variations Library",
+                ("placenotation", "", "1"): "Place Notation",
+            }
 
         for row in rows:
             if looks_like_heading_row(row):
@@ -2578,6 +2580,13 @@ def convert_file(input_path: Path, output_path: Path, base_uri: str, version_id:
     restructure_framework_principles(article, page_title)
 
     flatten_single_item_loweralpha_lists(article)
+
+    for entry in article.findall(f".//{qname('glossentry')}"):
+        glossterm = entry.find(qname("glossterm"))
+        if glossterm is not None and glossterm.text and glossterm.text.strip() in {"Edition 1", "Edition 2", "Edition 3"}:
+            parent = entry.getparent()
+            if parent is not None:
+                parent.remove(entry)
 
     etree.indent(article, space="  ")
     output_path.parent.mkdir(parents=True, exist_ok=True)
