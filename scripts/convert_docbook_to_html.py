@@ -1202,6 +1202,8 @@ def build_glossary_autolink_data(
                 all_terms.append(normalized_alt)
                 hrefs.setdefault(normalized_alt.casefold(), href)
 
+    all_terms.sort(key=lambda t: (-len(t), t.casefold()))
+
     if not all_terms:
         return None, {}
 
