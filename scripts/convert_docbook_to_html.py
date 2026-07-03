@@ -1132,7 +1132,10 @@ def build_schema_metadata(
 
     term_ids: list[dict[str, str]] = []
     for entry in article.findall(".//db:glossentry", NS):
-        term = read_text(entry.find("db:glossterm", NS))
+        glossterms = entry.findall("db:glossterm", NS)
+        if not glossterms:
+            continue
+        term = read_text(glossterms[0])
         if not term:
             continue
 
@@ -1145,6 +1148,11 @@ def build_schema_metadata(
             "url": term_url,
             "inDefinedTermSet": {"@id": term_set_id},
         }
+
+        alt_names = [read_text(t) for t in glossterms[1:]]
+        alt_names = [n for n in alt_names if n and n.casefold() != term.casefold()]
+        if alt_names:
+            term_object["alternateName"] = alt_names
 
         number = entry.get(f"{{{NS['mrf']}}}number", "").strip()
         if number:
