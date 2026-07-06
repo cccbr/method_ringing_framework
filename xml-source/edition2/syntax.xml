@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="syntax-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-version="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Method Name Syntax</title>
+    <subtitle>Framework for Method Ringing, Appendix B</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/syntax.html</uri>
+    <othermeta role="source-path">version2/syntax.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The purpose of this section is to define a set of recognised characters for use in Method Names. This is primarily to enable the growing number of software developers who make use of the Method Library to know which characters their applications should support.</para>
+        <para>The character sets below encompass all characters already used in the Method Library, plus many more.</para>
+        <para>The Central Council plans to make available a tool that will let users verify whether the characters they plan to use in a new Method Name are part of the recognised sets. The Central Council will also consider adding additional recognised characters on request. Requests can be emailed to <link xlink:href="mailto:methods@cccbr.org.uk">methods@cccbr.org.uk</link>.</para>
+        <para>The Method Name comparison process below ensures Method Names remain clearly unique. For example, as there is already a Method named 'London No.3 Surprise Royal', the process would prevent a new Method being named 'London No 3 Surprise Royal' or 'London No. 3 Surprise Royal'. This is considered beneficial to reduce the likelihood of misidentification of Methods.</para>
+      </listitem>
+      <listitem>
+        <para>In the following, 'the Unicode standard' refers to version 10.0.0. See <link xlink:href="http://www.unicode.org/versions/Unicode10.0.0/">http://www.unicode.org/versions/Unicode10.0.0/</link>.</para>
+        <para>Various attributes of individual characters are given the files comprising the Unicode Character Database (UCD, <link xlink:href="http://unicode.org/ucd/">http://unicode.org/ucd/</link>), and particularly the file <link xlink:href="https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt">https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt</link>, which contains both general category information and case folding information.</para>
+        <para>Unicode <nolink>blocks</nolink> are defined in <link xlink:href="https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt">https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt</link>.</para>
+        <para>Normalization is described in <link xlink:href="https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms">https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms</link>.</para>
+      </listitem>
+      <listitem>
+        <para>Method Names are a sequence of from 1 to 120 characters selected from:</para>
+        <itemizedlist>
+          <listitem>
+            <para>All those enumerated in the Unicode standard as being in the Basic Latin and having a category of Lu, Ll, or Nd (upper and lower case letters, and digits;</para>
+          </listitem>
+          <listitem>
+            <para>All those enumerated in the Unicode standard as being in the Latin-1 Supplement and having a category of Lu or Ll;</para>
+          </listitem>
+          <listitem>
+            <para>All those enumerated in the Unicode standard as being in the Latin Extended-A , except Latin Small Letter N Preceded By Apostrophe;</para>
+          </listitem>
+          <listitem>
+            <para>All those enumerated in the Unicode standard as being in the Latin Extended-B ;</para>
+          </listitem>
+          <listitem>
+            <para>All those enumerated in the Unicode standard as being in the Latin Extended Additional ;</para>
+          </listitem>
+          <listitem>
+            <para>The Unicode characters named: Space, Exclamation Mark, Quotation Mark, Ampersand, Apostrophe, Left Parenthesis, Right Parenthesis, Comma, Hyphen-minus, Full Stop, Solidus, Equal Sign, Percent Sign, Question Mark, Pound Sign, Dollar Sign, Euro Sign and Trade Mark Sign;</para>
+          </listitem>
+          <listitem>
+            <para>The Unicode characters named: Superscript Zero, Superscript One, Superscript Two, Superscript Three, Superscript Four, Superscript Five, Superscript Six, Superscript Seven, Superscript Eight, Superscript Nine, Subscript Zero, Subscript One, Subscript Two, Subscript Three, Subscript Four, Subscript Five, Subscript Six, Subscript Seven, Subscript Eight and Subscript Nine;</para>
+          </listitem>
+        </itemizedlist>
+        <para>subject to the further constraints that a Method Name:</para>
+        <orderedlist numeration="arabic">
+          <listitem>
+            <para>Must contain at least one character of Unicode general category Lu, Ll, or Nd; and</para>
+          </listitem>
+          <listitem>
+            <para>May neither begin nor end with a Space character, nor may it contain within it two consecutive Space characters.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Two Method Names are considered the same if they would be reduced to the same sequence of characters by the following process:</para>
+        <itemizedlist>
+          <listitem>
+            <para>The sequence of characters is converted to Unicode Normalization Form KD (NFKD, Normalization Form Compatibility Decomposition);</para>
+          </listitem>
+          <listitem>
+            <para>All characters now appearing in the sequence that are not allowed in a Method Name, as per 3 above, are removed;</para>
+          </listitem>
+          <listitem>
+            <para>All characters for which the UCD defines a case folding are converted to that folded character (typically lower case);</para>
+          </listitem>
+          <listitem>
+            <para>The following conversions are made: ‘ø’ to ‘o’, ‘æ’ to the two character sequence ‘ae’, and ‘œ’ to the two character sequence ‘oe’;</para>
+          </listitem>
+          <listitem>
+            <para>Each character for which the Unicode general category is not Ll or Nd is replaced by the Space character; and</para>
+          </listitem>
+          <listitem>
+            <para>Any Spaces now at the beginning or end of the sequence are removed, and any internal runs of two or more Space characters are replaced by a single Space character.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>Notes:</para>
+        <orderedlist numeration="arabic">
+          <listitem>
+            <para>The exclusion of Latin Small Letter N Preceded By Apostrophe is because that character is now deprecated in Unicode;</para>
+          </listitem>
+          <listitem>
+            <para>The normalization to NFKD followed by deletion of inappropriate characters eliminates diacritics, brings the superscript and subscript numerals to the baseline, and replaces ‘™’ with the two character sequence ‘TM’;</para>
+          </listitem>
+          <listitem>
+            <para>Punctuation and symbols are ignored for Method Name comparisons. Thus ‘London No.3’ is the same as ‘London No 3’. Less obviously, ‘E=mc²’ is the same as ‘e &amp; MC₂’. Given how rare, and potentially troublesome, punctuation is in Method Names, this seems a small price to pay, as in practice it just prevents otherwise likely pathological Method Names from being used.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Additional background on Method Names and Method Name syntax is available <link xlink:href="images/syntax/method-name-syntax.html">here</link> in an article written by Don Morrison.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>

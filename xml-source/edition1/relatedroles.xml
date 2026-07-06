@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="relatedroles-v1" xml:lang="en" mrf:status="historic" mrf:authority="CCCBR" mrf:framework-version="1" mrf:edition-label="Edition 1">
+  <info>
+    <title>Related Roles</title>
+    <subtitle>Framework for Method Ringing, Section 9</subtitle>
+    <edition>1</edition>
+    <releaseinfo role="status">historic</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">February 24, 2019</releaseinfo>
+    <releaseinfo role="effective-date">June 1, 2019</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/relatedroles.html</uri>
+    <othermeta role="source-path">version1/relatedroles.html</othermeta>
+  </info>
+  <section xml:id="collections">
+    <title>A. Collections</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The Central Council maintains and makes available:</para>
+        <orderedlist numeration="loweralpha" role="compact">
+          <listitem>
+            <para>A Methods Library (see Section 5.A.1);</para>
+          </listitem>
+          <listitem>
+            <para>A Calls Library (see Section 3.F.2);</para>
+          </listitem>
+          <listitem>
+            <para>A Variations Library (see Section 5.D.2).</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>The Central Council maintains and makes available a collection of recognised Extension Processes (see Section 8.A.1).</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="records">
+    <title>B. Records</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The Central Council maintains and makes available records of the Record Length rung to date in each Method / Variation, or set of Methods / Variations.</para>
+        <note role="further-explanation">
+          <para>'Set of Methods / Variations' refers to multi-Method Record Lengths. Record Lengths can be set for any unique combination of Methods / Variations rung in a multi-Method Performance. For example, there can be separate Record Lengths of Spliced Cambridge, Yorkshire and Superlative Surprise Major, and Spliced Cambridge, Yorkshire and Bristol Surprise Major.</para>
+          <para>Similarly, Variations can also be used to create a unique combination for a Record Length. For example, there can be separate Record Lengths for a Performance of Plain Bob and Kennington, and also for a Performance of Plain Bob and April Day.</para>
+          <para>Note that a Method is always defined at the level of its Method Title. For example, Cambridge Surprise Minor and Cambridge Surprise Major are not the same Method -- they are two different Methods that are related (via a Method Extension Process). Similarly Yorkshire Surprise Major and Yorkshire Delight Major are also two different Methods -- ones that happen to share the same Method Name.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para>The records separately identify:</para>
+        <orderedlist numeration="loweralpha" role="compact">
+          <listitem>
+            <para>Tower bell and handbell Record Lengths;</para>
+          </listitem>
+          <listitem>
+            <para>Variable Cover and non-Variable Cover Record Lengths in the same Method / Variation, or set of Methods / Variations;</para>
+          </listitem>
+          <listitem>
+            <para>Records Lengths rung using simulated sound.</para>
+          </listitem>
+        </orderedlist>
+        <note role="further-explanation">
+          <para>A Variable Cover Record Length is one that included ringing a Variable Cover Composition (see Section 3.H.2).</para>
+        </note>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="advice">
+    <title>C. Advice</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The Central Council will endeavour to provide advice, upon request, on any aspect related to the framework, notably Method Extension.</para>
+        <note role="further-explanation">
+          <para>Enquiries can be emailed to <link xlink:href="mailto:methods@cccbr.org.uk">methods@cccbr.org.uk</link>.</para>
+        </note>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="publication">
+    <title>D. Publication</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The Ringing World is the Central Council’s official medium of publication, both in print and through its BellBoard website.</para>
+      </listitem>
+      <listitem>
+        <orderedlist numeration="loweralpha" role="compact">
+          <listitem>
+            <para>The Ringing World publishes Performance Reports of Quarter Peal Length and longer that it receives, categorising them according to the Lengths defined in Section 3.I;</para>
+          </listitem>
+          <listitem>
+            <para>The Ringing World publishes Performance Reports of less than Quarter Peal Length that it receives when these Performances name a new Method(s);</para>
+          </listitem>
+          <listitem>
+            <para>The Ringing World publishes other Performance Reports that it receives at its discretion;</para>
+          </listitem>
+          <listitem>
+            <para>The Ringing World may abbreviate Performance Reports as commercial considerations necessitate.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>The Ringing World publishes notices of Record Length attempts at least 14 days prior to the attempt, providing the notice is received in sufficient time for such publication.</para>
+      </listitem>
+      <listitem>
+        <para>On receiving a Performance Report of a claimed Record Length, The Ringing World waits for the Central Council's confirmation that it is a new Record Length before publishing the Report in the journal.</para>
+        <note role="further-explanation">
+          <para>Confirmation is provided to The Ringing World by the Central Council's History &amp; Archive workgroup.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para>When publishing the Performance Report of a Record Length in the journal, The Ringing World includes the umpire(s)’ report.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="analysisandreporting">
+    <title>E. Analysis and Reporting</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The Central Council produces, for each calendar year, an analysis of all Performances of Quarter Peal Length or longer that were published by The Ringing World.</para>
+        <para>This analysis will either be published by The Ringing World or made available by the Central Council.</para>
+      </listitem>
+      <listitem>
+        <para>The analysis will separately categorise:</para>
+        <orderedlist numeration="loweralpha" role="compact">
+          <listitem>
+            <para>Performances of the different Lengths defined in Section 3.I;</para>
+          </listitem>
+          <listitem>
+            <para>Tower bell and handbell Performances;</para>
+          </listitem>
+          <listitem>
+            <para>Performances that differed from one or more of the Performance Norms listed in Section 6.C;</para>
+          </listitem>
+          <listitem>
+            <para>Performances that used simulated sound.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="transitionalarrangements">
+    <title>F. Transitional Arrangements</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The Central Council may determine transitional arrangements relating to the implementation of the framework, and to future updates of the framework. For example, these arrangements may provide for retroactive recognition of Methods and Peals that were not recognised under previous Central Council Decisions or earlier versions of the framework.</para>
+        <note role="further-explanation">
+          <para>Transitional Arrangements are described in Appendix F.</para>
+        </note>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>

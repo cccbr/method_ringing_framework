@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="issues-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-version="3" mrf:edition-label="Edition 3">
+  <info>
+    <title>Issue Log</title>
+    <subtitle>Framework for Method Ringing</subtitle>
+    <edition>3</edition>
+    <releaseinfo role="status">draft</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date"></releaseinfo>
+    <releaseinfo role="effective-date"></releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/issues.html</uri>
+    <othermeta role="source-path">version3/issues.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <section xml:id="section-2-row-2">
+      <title>#</title>
+    </section>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>[Add status]</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="section-6">
+    <title>Suggestions for Future Versions of the Framework</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Consider separating out vanilla and exotic concepts into different parts of the framwork.</para>
+      </listitem>
+      <listitem>
+        <para>Should more detail on handstroke gaps, cartwheeling, bell spacing, and other striking considerations be added to the Framework?</para>
+      </listitem>
+      <listitem>
+        <para>Review <nolink>method</nolink>
+          <nolink>extension</nolink> to see if there is scope for simplification and/or for making the <nolink>extension processes</nolink> more generalised so a greater number of cases are covered. Also consider whether <nolink>extension processes</nolink> might be made advisory, rather than fixed requirements.</para>
+      </listitem>
+      <listitem>
+        <para>Instead of capitalising defined terms, considering italicising them, and/or making them hyperlinks. The latter would also allow the defined terms to be underlined and/or shown in a different color.</para>
+      </listitem>
+      <listitem>
+        <para>Revisit the color scheme of the website -- this is limited in v1 by the Bootstrap color options. Includes looking at how to make hyperlinks stand out more.</para>
+      </listitem>
+      <listitem>
+        <para>Ideally store the Framework's individual sections in a database so that future <nolink>changes</nolink> to sections can be tracked, versioned, and a history of <nolink>changes</nolink> can be automatically produced. Content type could also be stored in the database (e.g. whether the content is an example, a further explanation, etc) and then the presentation of the website could be driven off the type of the content.</para>
+      </listitem>
+      <listitem>
+        <para>Consider whether to add a 'jump size' notation to the Framework:</para>
+        <para>jump-0 = <nolink>identity changes</nolink>;</para>
+        <para>jump-1 = <nolink>adjacent changes</nolink>;</para>
+        <para>jump-2 = no bell jumps more than two <nolink>places</nolink>;</para>
+        <para>jump-3 = no bell jumps more than three <nolink>places</nolink>;</para>
+        <para>etc.</para>
+      </listitem>
+      <listitem>
+        <para>Revist 6.A.1 c). E.g. should PABS's 6 * 840 of an Alliance Minor <nolink>method</nolink> that produces six <nolink>extents</nolink> of Minor and six <nolink>extents</nolink> of Doubles be described in the <nolink>performance title</nolink> as 5040 Doubles and Minor? Or should the <nolink>performance title</nolink> be 5040 [Name] Alliance Minor and the <nolink>performance detail</nolink> covers the <nolink>accepted truth</nolink> feature?</para>
+        <para>Related to this, should 5040 of Martyrs Link Major rung with the 3rd unaffected throughout (using jumps <nolink>calls</nolink>) have a <nolink>performance title</nolink> of 5040 Triples, as is currently in 6.A.1 c), or should the title be 5040 Martyrs Link Major and the <nolink>performance detail</nolink> covers that the <nolink>effective stage</nolink> of the <nolink>performance</nolink> is Triples?</para>
+        <para>More broadly, should the <nolink>performance title</nolink> specify the <nolink>effective stage</nolink> of the <nolink>performance</nolink> (or the two effective <nolink>stages</nolink> in the case of <nolink>accepted truth</nolink>) such that a <nolink>performance</nolink> of Stedman Cinques and Bristol Max would be reported as (say) 5148 Maximus (where Maximus is the <nolink>effective stage</nolink>), and then the <nolink>performance detail</nolink> would say 2m: 2508 Stedman Cinques, 2640 Bristol Surprise Maximus.</para>
+        <para>Also, consider how side by side <nolink>performances</nolink> should be reported. E.g. should 'Simultaneous' be used in a similar way to Spliced and Variable Cover.</para>
+      </listitem>
+      <listitem>
+        <para>Hunters with <nolink>jump changes</nolink> don't classify any further than the Hunter level in version 1 of the Framework. Consider adding a Treble Jump <nolink>hunter</nolink> class, and consider letting <nolink>hunters</nolink> with <nolink>working bell</nolink> jumps be Surprise, Delight, etc if the treble has the right <nolink>path</nolink>, and the other requirements for Surprise, Delight, etc are met. Open question on whether a TD <nolink>method</nolink> with <nolink>jump changes</nolink> can have jumps in the <nolink>cross section</nolink>
+          <nolink>changes</nolink>.</para>
+      </listitem>
+      <listitem>
+        <para>Version 1 of the Framework is difficult to read on a mobile device. Look into how this could be improved in future versions.</para>
+      </listitem>
+      <listitem>
+        <para>Consider recognizing <nolink>variations</nolink> at <nolink>stages</nolink> other than Doubles. E.g. April Day Triples is quite commonly rung.</para>
+      </listitem>
+      <listitem>
+        <para>Consider adding information on standard <nolink>calls</nolink> to the Framework -- e.g. 2nd <nolink>place methods</nolink> usally use 14 bobs and 1234 singles, nth's <nolink>place methods</nolink> usually use 1(n-2) bobs and 1(n-2)(n-1)(n) singles, etc, though exceptions for Bristol, Kent, etc. Should be coordinated with the implementation of the <nolink>calls library</nolink>.</para>
+      </listitem>
+      <listitem>
+        <para>Stationary bells are currently classified as Treble Place. This means a <nolink>method</nolink> with an Alliance <nolink>path</nolink> and a <nolink>stationary bell</nolink> comes out as Treble Place, when Alliance might be more intuitive. Possible options are:</para>
+        <para>- Make stationary <nolink>paths</nolink> Hybrid (especially since we now know there are still <nolink>hybrid methods</nolink> (multi-<nolink>hunt</nolink>) that don't have asymmetric <nolink>paths</nolink>);</para>
+        <para>- Swap the order of precedence of Treble Place and Alliance;</para>
+        <para>- Create a separate <nolink>hunt</nolink> class for stationary <nolink>paths</nolink>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>

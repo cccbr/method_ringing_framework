@@ -620,11 +620,12 @@ def render_version(
             )
             html_output.write_text(html_text, encoding="utf-8", newline="\n")
 
-            # LaTeX output
-            tex_output = tex_dir / f"{xml_file.stem}.tex"
-            stage_latex_assets(version, article, version_xml_dir, tex_dir)
-            latex_text = build_document(article, asset_root="")
-            tex_output.write_text(latex_text, encoding="utf-8", newline="\n")
+            # LaTeX output (skip when html_only so PDF build owns this step)
+            if not html_only:
+                tex_output = tex_dir / f"{xml_file.stem}.tex"
+                stage_latex_assets(version, article, version_xml_dir, tex_dir)
+                latex_text = build_document(article, asset_root="")
+                tex_output.write_text(latex_text, encoding="utf-8", newline="\n")
 
         except Exception as e:
             print(f"    Error rendering {xml_file.name}: {e}")

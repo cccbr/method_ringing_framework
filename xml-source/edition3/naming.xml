@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="naming-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-version="3" mrf:edition-label="Edition 3">
+  <info>
+    <title>Method Naming</title>
+    <subtitle>Framework for Method Ringing, Section 5</subtitle>
+    <edition>3</edition>
+    <releaseinfo role="status">draft</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date"></releaseinfo>
+    <releaseinfo role="effective-date"></releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/naming.html</uri>
+    <othermeta role="source-path">version3/naming.html</othermeta>
+  </info>
+  <glossary mrf:source-title="Framework for Method Ringing">
+    <glossdiv xml:id="general">
+      <title>A. General</title>
+      <glossentry xml:id="general-entry-1-methods-library" mrf:number="A.1">
+        <glossterm>Methods Library</glossterm>
+        <glossterm role="synonym">Method Library</glossterm>
+        <glossdef>
+          <para>The full title is the Central Council Methods Library. This is the definitive record of Methods that have been named under the Framework or under earlier Central Council Decisions.</para>
+          <note role="further-explanation">
+            <para>The Methods Library can be accessed <link xlink:href="https://methods.cccbr.org.uk">here</link>.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="general-entry-2-method-name" mrf:number="A.2">
+        <glossterm>Method Name</glossterm>
+        <glossterm role="synonym">Method Names</glossterm>
+        <glossdef>
+          <para>The name given to a Method as recorded in the Methods Library.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="general-entry-3-method-title" mrf:number="A.3">
+        <glossterm>Method Title</glossterm>
+        <glossterm role="synonym">Method Titles</glossterm>
+        <glossdef>
+          <para>Methods recorded in the Methods Library have a unique tripartite Method Title consisting of: Method Name, Class Descriptor, Stage Name.</para>
+          <note role="further-explanation">
+            <para>The Class Descriptor is defined in Section 5.B below. For some Methods, the Class Descriptor comprises more than one term. For other Methods, notably Principles, the Class Descriptor may be blank.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="general-entry-4-band" mrf:number="A.4">
+        <glossterm>Band</glossterm>
+        <glossterm role="synonym">Bands</glossterm>
+        <glossdef>
+          <para>One or more human ringers ringing some or all of the bells (or simulated bells) in a Performance.</para>
+        </glossdef>
+      </glossentry>
+      <orderedlist numeration="arabic" startingnumber="5">
+        <listitem>
+          <para>Methods recorded in the Methods Library may not have Names that conflict with the constraints described in Section 5.C.</para>
+        </listitem>
+        <listitem>
+          <para>Methods recorded in the Methods Library that have in the past been known by a different Name and/or Title will have this recorded, where details are known.</para>
+          <note role="further-explanation">
+            <para>Requests to add alternative Names / Titles for Methods to the Methods Library should be emailed to <link xlink:href="mailto:methods@cccbr.org.uk">methods@cccbr.org.uk</link>. Documentation that supports or demonstrates a reasonably widespread use of the alternative Name / Title should be included with the request.</para>
+          </note>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+    <glossdiv xml:id="classdescriptors">
+      <title>B. Class Descriptors</title>
+      <glossentry xml:id="classdescriptors-entry-5-class-descriptor" mrf:number="B.1">
+        <glossterm>Class Descriptor</glossterm>
+        <glossterm role="synonym">Class Descriptors</glossterm>
+        <glossdef>
+          <para>A Method's Class Descriptor is formed by concatenating applicable terms as follows, and in the order shown:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>Add ‘Jump’ if the Method is a member of this Class;</para>
+            </listitem>
+            <listitem>
+              <para>Add ‘Differential’ if the Method is a member of this Class;</para>
+            </listitem>
+            <listitem>
+              <para>Add ‘Little’ if the Method is a member of this Class, and if the Method is also a member of one of the Classes in d) below;</para>
+            </listitem>
+            <listitem>
+              <para>Add one of the following if the Method is a member of this Class: ‘Place’, ‘Bob’, ‘Treble Bob’, ‘Surprise’, ‘Delight’, ‘Treble Place’, ‘Alliance’;</para>
+            </listitem>
+            <listitem>
+              <para>Otherwise leave blank.</para>
+            </listitem>
+          </orderedlist>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="namingconstraints">
+      <title>C. Naming Constraints</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>The following constraints apply to a new Method to be added to the Methods Library.</para>
+        </listitem>
+        <listitem>
+          <para>A Method Name should follow the Central Council's requirements on character usage, and should not exceed the maximum number of characters set by the Council.</para>
+          <note role="further-explanation">
+            <para>The Central Council's requirements for Method Name character usage and <nolink>length</nolink> are described in Appendix B.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>A new Method may not use the same Name as a Method already recorded in the Methods Library, or a Variation already recorded in the Variations Library (see Section 5.D below), if that would result in their Method Titles being the same.</para>
+          <note role="further-explanation">
+            <para>This can be more complex than first meets the eye. For example, is 'London No. 3 Surprise Royal' considered the same as 'London No 3 Surprise Royal'. The Central Council's Method Name uniqueness requirements are described in Appendix B (Method Name Syntax).</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>The Name given to a new Method that is recorded in the Methods Library may not include Class Descriptor term(s) such that the resulting Method Title is ambiguous as to the Class of the Method.</para>
+          <example>
+            <para>Naming a Bob Method 'Quavo Treble' would give a misleading Method Title, e.g. 'Quavo Treble Bob Major'. It can't be determined from the Method Title that this Method is a Bob Method and not a Treble Bob Method.</para>
+          </example>
+        </listitem>
+        <listitem>
+          <para>Rotations of an existing Static Method are not normally separately named in the Methods Library. However, this is not mandated as there are a few cases where it is beneficial to record a separate Name for a Rotation.</para>
+          <note role="further-explanation">
+            <para>Rotation is defined in Section 4.A.17. When using a Static Method's sequence of Changes to produce Rows, the Changes may be used starting and finishing at any point in the sequence. For this reason, a Rotation of an existing Static Method is not usually separately named, because the same Changes can be produced by starting and finishing the existing Static Method at a different point in its sequence of Changes.</para>
+            <para>An example where separate naming of Rotations is beneficial is for twin <nolink>hunt</nolink>
+              <nolink>methods</nolink> like Grandsire Triples. When Rotated so that the second Hunt Bell is the treble, and rung with Grandsire Calls affecting the first Hunt Bell rather than the second, it seems like a different <nolink>method</nolink>. This Rotation has been rung many times under the name New Grandsire (7.1.7.1.7.1.7.1.7.1.7.1.3.1) and has also been <nolink>spliced</nolink> with Grandsire. It is therefore beneficial to include New Grandsire in the Methods Library, and when splicing it with Grandsire, there is a clear way to announce <nolink>changes</nolink> of Method.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>A Static Method normally has a sequence of Changes that is not divisible into two or more equal parts. However this is not mandated as there may be cases where it is beneficial for a Method to have a repeated sequence to give it a different classification. Furthermore, a Method is not normally separately recorded in the Methods Library if its sequence of Changes is a multiple of another Method's sequence of Changes (or a fraction of another Method's sequence of Changes if that other Method has a repeated sequence).</para>
+          <note role="further-explanation">
+            <para>The <nolink>method</nolink> Magenta Little Place Maximus (56.1T.56.1T.56.1T.56.1T.56.1T) could have been recorded in the Methods Library as Magenta Differential Maximus (56.1T) but the <nolink>band</nolink> that rang it preferred it to be classified as a Hunter. Subsequently 56.1T and any other repeat of it would not normally be named separately in the Methods Library unless a <nolink>band</nolink> felt there was a compelling reason to do so.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>Method names should not contain words that mislead as to the construction of the Method.</para>
+          <note role="further-explanation">
+            <para>Certain terms including ‘Reverse’, ‘Single’ and ‘Double' have been used to prefix Method Names when certain Method features are present. Use of these terms is optional, but if used, they should follow the requirements in a) - c) below. Similarly, terms such as 'True', 'Symmetric' and 'Palindromic' should not be used in Method Names where these could mislead.</para>
+            <orderedlist numeration="loweralpha" role="compact">
+              <listitem>
+                <para>A Method Name should only begin with ‘Reverse’ if:</para>
+                <orderedlist numeration="lowerroman" role="compact">
+                  <listitem>
+                    <para>Another Method in the Methods Library has the same Method Title (after excluding ‘Reverse’ in the new Method); and</para>
+                  </listitem>
+                  <listitem>
+                    <para>That other Method's Changes, when Rotated if needed, are the Reverse of the new Method's -- that is, the Places within each Change are inverted. See Section 4.B.2 for an explanation of inverting the Places within a Change.</para>
+                  </listitem>
+                </orderedlist>
+              </listitem>
+              <listitem>
+                <para>For non-Little Plain Methods, 'Double' and 'Single' may be used as Method Name prefixes for two Plain Methods that otherwise have the same Method Title where:</para>
+                <orderedlist numeration="lowerroman" role="compact">
+                  <listitem>
+                    <para>Both Methods have the same place notation above the Hunt Bell (or two or more Coursing Hunt Bells -- see Appendix D.A.2);</para>
+                  </listitem>
+                  <listitem>
+                    <para>The Method with the 'Double' prefix is a Double Method (that is, when the Places of each Change are inverted, and then Rotated as needed, the same Method is obtained); and</para>
+                  </listitem>
+                  <listitem>
+                    <para>The Method with the 'Single' prefix has no Internal Places (see Section 4.A.14) made below the Hunt Bell(s).</para>
+                  </listitem>
+                </orderedlist>
+              </listitem>
+              <listitem>
+                <para>For Methods not covered by b) above, 'Double' should only be used as a prefix if the Method is a Double Method (as defined in b) above), and 'Single' should only be used as a prefix if the Method is not a Double Method.</para>
+              </listitem>
+            </orderedlist>
+          </note>
+          <example>
+            <para>St Simon's Bob Doubles has the place notation 5.1.5.3.5.3.5.1.5.125.</para>
+            <para>If these Changes are inverted, the result is the sequence 1.5.1.3.1.3.1.5.1.145.</para>
+            <para>This sequence may be Rotated to give 3.1.5.1.145.1.5.1.3.1.</para>
+            <para>This resulting Method has been appropriately named Reverse St Simon's Bob Doubles in the Methods Library.</para>
+            <para>Double Court Bob Minor has the place notation x14x36x16x36x14x16.</para>
+            <para>If these Changes are inverted, the result is x36x14x16x14x36x16.</para>
+            <para>This can be rotated to give the same Changes started with.</para>
+            <para>It is therefore a Double <nolink>method</nolink>.</para>
+            <para>Single Court Bob Minor has the place notation x14x16x16x16x14x16.</para>
+            <para>Since (1) the Places above the Hunt Bell in Double Court Bob Minor and Single Court Bob Minor are the same, (2) Double Court Bob Minor is a Double Method, and (3) Single Court Bob Minor has no Internal Places made below the Hunt Bell, the Double and Single prefixing of the otherwise common Method Title of Court Bob Minor is appropriate naming.</para>
+          </example>
+        </listitem>
+        <listitem>
+          <para>A Method should only be given the same Name as another Method in the Methods Library that has the same Class Descriptor but a different Stage if the requirements for Method Extension are met.</para>
+          <note role="further-explanation">
+            <para>Method Extension requirements are described in Section 8.</para>
+          </note>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+    <glossdiv xml:id="variations">
+      <title>D. Variations</title>
+      <glossentry xml:id="variations-entry-6-variation" mrf:number="D.1">
+        <glossterm>Variation</glossterm>
+        <glossterm role="synonym">Variations</glossterm>
+        <glossdef>
+          <para>A Variation is a named combination of a Method and a Call or Calls.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="variations-entry-7-variations-library" mrf:number="D.2">
+        <glossterm>Variations Library</glossterm>
+        <glossterm role="synonym">Variation Library</glossterm>
+        <glossdef>
+          <para>Variations are recorded in the Central Council Variations Library, which cross-references each Variation to the related entries in the Methods Library and Calls Library.</para>
+          <note role="further-explanation">
+            <para>The CC Variations Library is in development.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <orderedlist numeration="arabic" startingnumber="3">
+        <listitem>
+          <para>The Central Council's Variations Library currently only records Plain Doubles Variations.</para>
+        </listitem>
+        <listitem>
+          <para>Each Variation recorded in the Central Council's Variations Library:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>Has the same Classes as the underlying Method on which it is based, but does not use a Class Descriptor in a Performance Report (see Section 6);</para>
+            </listitem>
+            <listitem>
+              <para>Has a Name that is unique across both Methods and Variations with no Class Descriptor; and</para>
+            </listitem>
+            <listitem>
+              <para>Satisfies the same naming constraints as the underlying Method (see Section 5.C).</para>
+            </listitem>
+          </orderedlist>
+        </listitem>
+        <listitem>
+          <para>Variations are incorporated into Compositions, including Spliced and Variable Cover Compositions, in the same way as Methods.</para>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+    <glossdiv xml:id="righttoname">
+      <title>E. Right to Name</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>An unnamed Method or Variation may be named by the Band that first rang it in a Performance that is reported by the Ringing World, providing:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>In the case of a Method, the Performance was at least a Quarter Peal in Length or contained an Extent of the Method;</para>
+            </listitem>
+            <listitem>
+              <para>In the case of a Variation, the Performance contained an Extent of the Variation;</para>
+            </listitem>
+            <listitem>
+              <para>The Performance was a Round Block that started and ended in Rounds;</para>
+            </listitem>
+            <listitem>
+              <para>The Performance was a True Touch, or a Touch with Accepted Truth;</para>
+            </listitem>
+            <listitem>
+              <para>The Name does not conflict with any of the requirements of this Section 5 (Method Naming) or Section 8 (Method Extension);</para>
+            </listitem>
+            <listitem>
+              <para>The Composition used is included in the Performance Report; and</para>
+            </listitem>
+            <listitem>
+              <para>The Performance was rung by an all-human Band.</para>
+            </listitem>
+          </orderedlist>
+          <note role="further-explanation">
+            <para>'Reported by the Ringing World' includes in print and/or on BellBoard.</para>
+            <para>For item d), note that Accepted Truth encompasses True. See Section 3.J for definitions of these terms.</para>
+            <para>When naming a Variation, the Stage of the Extent is the same as the Stage of the Variation. The Rows of the Extent may appear anywhere in the Performance - the Extent of the Variation does not have to be rung as a contiguous Block.</para>
+            <para>For item f), the Composition should be added to the published Performance on BellBoard, but does not need to be published in The Ringing World journal.</para>
+            <para>Compositions may be described in any form that makes it clear what was rung. E.g. '2 <nolink>extents</nolink> each called WHW * 3' for a 1440 of Treble Dodging Minor, or by reference to Composition Library or other online or printed collection.</para>
+            <para>When naming a Method, it is expected that the Performance contained enough Changes to define the Method uniquely - at least one Plain Lead. However, there may be circumstances where a Band can justify naming a new Method when not all its Changes have been rung, therefore the Framework does not specify a minimum.</para>
+            <para>Note that any Ringing Style (see Section 6.A.4) can be used in a Performance to name a new Method.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>The Central Council reserves the right to enter a different name in the Methods Library from the one proposed by a <nolink>band</nolink> for a new Method / Variation, or to leave the Method / Variation unnamed, if it considers this necessary.</para>
+          <note role="further-explanation">
+            <para>This could include considering that the proposed Name is misleading or offensive, or that the naming of an Extension is inappropriate.</para>
+          </note>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+    <glossdiv xml:id="exceptions">
+      <title>F. Exceptions</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>By convention, the Class Descriptor is omitted from the Method Titles of the following Methods that are classified as either Bob, Little Bob or Place Methods:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>Grandsire, Double Grandsire, Reverse Grandsire and Little Grandsire, at all Stages;</para>
+            </listitem>
+            <listitem>
+              <para>Union, Double Union and Reverse Union, at Stages of Minor and higher.</para>
+            </listitem>
+          </orderedlist>
+        </listitem>
+        <listitem>
+          <para>The above Method Names may not be reused for new Bob Methods, new Little Bob Methods, new Place Methods, or new Methods with no Class Descriptor.</para>
+        </listitem>
+        <listitem>
+          <para>The Method known as Little Bob has no Method Name since Little Bob is its Class Descriptor. It will continue to be known as Little Bob.</para>
+        </listitem>
+        <listitem>
+          <para>The Method Name ‘Plain’, which is the most likely name for Little Bob if it had one, may not be used for any new Little Bob Method.</para>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+  </glossary>
+</article>

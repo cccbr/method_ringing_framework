@@ -7,21 +7,22 @@ The first version of the framework was approved by the Central Council Executive
 The principal branches are:
 
 * `master` - Documents for downloading
-* `gh-pages` - Public web pages of the framework accessible at https://cccbr.github.io/method_ringing_framework/
+* `gh-pages` - Public web pages of the framework accessible at [framework.cccbr.org.uk](https://framework.cccbr.org.uk/) or https://cccbr.github.io/method_ringing_framework/
 
 ## XML-led publishing workflow
 
-The repository is moving to XML as the maintained editorial source.
+The repository has moved to XML as the maintained editorial source.
 
-1. Bootstrap or refresh XML from the existing website HTML with `scripts\convert_html_tree_to_xml.py`.
-2. Maintain the Framework in XML.
-3. Regenerate website HTML from XML with `scripts\render_docbook_tree.py`.
-4. Generate PDF document versions from XML with `scripts\generate_pdf.py`.
-5. Regenerate the published outputs in CI when XML changes are pushed.
+1. Bootstrap or refresh XML from the existing website HTML with `scripts\build-xml.ps1`.
+2. Maintain the Framework in XML in the folder `xml-source\editionN`.
+3. Regenerate website HTML from XML with `scripts\build-web.ps1`.
+4. Generate PDF document versions from XML with `scripts\build-pdf.ps1`.
+5. Regenerate the published outputs in `gh-pages` using continuous integration when XML changes are pushed to `master`.
 
 The existing `version1\`, `version2\` and `version3\` website trees remain the source material used to bootstrap the XML.
+The `xml-source\edition1\`, `xml-source\edition2\` and `xml-source\edition3\` now contain the framework source material in XML.
 
-## Outputs
+## Local Outputs
 
 - `generated\xml\` - generated DocBook XML
 - `generated\html\edition*\` - regenerated website HTML
@@ -48,16 +49,29 @@ Install the Python dependencies with:
 
 ## Local commands
 
-- Full build:
-  - `powershell -ExecutionPolicy Bypass -File .\build.ps1`
-- Rebuild one edition:
-  - `powershell -ExecutionPolicy Bypass -File .\build.ps1 -Edition edition2`
-- Regenerate XML only:
-  - `py -3.14 scripts\build.py --edition edition2 --xml-only`
-- Render committed XML to website HTML and LaTeX:
-  - `py -3.14 scripts\render_docbook_tree.py --source-xml xml --metadata-xml xml`
-- Compile PDFs from the rendered TeX:
-  - `py -3.14 scripts\generate_pdf.py`
+Three PowerShell scripts build the outputs independently. Each accepts `-Edition edition2` for a single edition, or no parameter for all editions:
+
+- Build XML from HTML source:
+  - All editions: `powershell -ExecutionPolicy Bypass -File scripts\build-xml.ps1`
+  - One edition: `powershell -ExecutionPolicy Bypass -File scripts\build-xml.ps1 -Edition edition2`
+- Build website HTML:
+  - All editions: `powershell -ExecutionPolicy Bypass -File scripts\build-web.ps1`
+  - One edition: `powershell -ExecutionPolicy Bypass -File scripts\build-web.ps1 -Edition edition2`
+- Build PDFs (generates LaTeX then compiles):
+  - All editions: `powershell -ExecutionPolicy Bypass -File scripts\build-pdf.ps1`
+  - One edition: `powershell -ExecutionPolicy Bypass -File scripts\build-pdf.ps1 -Edition edition2`
+
+Full pipeline: run `build-xml.ps1`, then `build-web.ps1`, then `build-pdf.ps1` in sequence.
+
+## Source XML workflow
+
+The XML source directories live under `xml-source/edition1`, `xml-source/edition2`, and `xml-source/edition3`. These are the canonical sources for the web and PDF builds.
+
+The `build-xml.ps1` step converts the original versioned HTML (`version1/`, `version2/`, `version3/`) to XML in `generated/xml/`. This conversion is a one-off bootstrap — it brought the HTML content into XML. Once the XML is created and reviewed, that output should be copied to `xml-source/`:
+
+    Copy-Item generated\xml\editionN xml-source\editionN -Recurse
+
+After that, any fixes, additions, or changes to the framework text should be made directly in `xml-source/editionN/` — that directory is now the editorial source for future versions. If the XML bootstrap is ever re-run from HTML, the new output in `generated/xml/` must be copied over to `xml-source/` before running `build-web.ps1` and `build-pdf.ps1`.
 
 ## Framework XML tags
 

@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="syntax-v2-1-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-version="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Method Name Syntax</title>
+    <subtitle>Framework for Method Ringing, Appendix B</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/syntax-v2.1.html</uri>
+    <othermeta role="source-path">version2/syntax-v2.1.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>This appendix defines the set of characters that are recognised for use in Method Names. Having a defined character set serves two purposes:</para>
+        <itemizedlist>
+          <listitem>
+            <para>It rules out certain characters that are hard to distinguish from other characters, which could otherwise <nolink>lead</nolink> to the misidentification of Methods. For example, the Unicode character LATIN SMALL LETTER L WITH STROKE (U+0142) could be used in a new Method called Płain Bob Doubles. This could easily be mistaken for Plain Bob Doubles.</para>
+          </listitem>
+          <listitem>
+            <para>It enables the growing number of software developers who make use of the Methods Library to know which characters their applications should support.</para>
+          </listitem>
+        </itemizedlist>
+        <para>The recognised character set is provided in a text file -- see section 4 below. In addition, the 'Create New Method' feature in CompLib (https://complib.org/) will give a warning if one or more characters used in the name of a new Method are not part of the recognised set.</para>
+        <para>The Central Council will also consider adding characters to the recognised set on request. Requests can be emailed to <link xlink:href="mailto:methods@cccbr.org.uk">methods@cccbr.org.uk</link>.</para>
+        <para>This appendix also defines a Method Name comparison process to ensure Method Names remain clearly unique. For example, London No. 3 Surprise Royal is an existing Method. The comparison process would prevent London No.3 Surprise Royal, London No 3 Surprise Royal, and London No3 Surprise Royal from being named. This is considered beneficial to reduce the likelihood of misidentification of Methods.</para>
+      </listitem>
+      <listitem>
+        <para>In the following, 'the Unicode standard' refers to the latest version of the standard. See <link xlink:href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</link>.</para>
+        <para>Various attributes of individual characters are provided in the files comprising the Unicode Character Database (UCD). See <link xlink:href="https://www.unicode.org/Public/UCD/latest/ucd/">https://www.unicode.org/Public/UCD/latest/ucd/</link>.</para>
+        <para>The UCD file <link xlink:href="https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt">https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt</link> contains general category information (field 2, zero-based), normalization information (field 5), and lowercase folding information (field 13). These are used in the sections below.</para>
+        <para>General category codes used in field 2 above are defined in <link xlink:href="https://www.unicode.org/reports/tr44/tr44-28.html#General_Category_Values">https://www.unicode.org/reports/tr44/tr44-28.html#General_Category_Values</link>.</para>
+        <para>Unicode <nolink>blocks</nolink> are defined in <link xlink:href="https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt">https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt</link>.</para>
+        <para>Charts for the various Unicode <nolink>blocks</nolink> are available at <link xlink:href="https://www.unicode.org/charts/">https://www.unicode.org/charts/</link>.</para>
+        <para>Normalization is described in <link xlink:href="https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms">https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms</link>.</para>
+      </listitem>
+      <listitem>
+        <para>Method Names are a sequence of from 1 to 120 characters selected from:</para>
+        <itemizedlist>
+          <listitem>
+            <para>The 62 Unicode characters enumerated in the Unicode standard as being in the Basic Latin <nolink>block</nolink> and having a general category of Lu, Ll, or Nd (upper and lower case letters, and digits).</para>
+          </listitem>
+          <listitem>
+            <para>The 62 Unicode characters enumerated in the Unicode standard as being in the Latin-1 Supplement <nolink>block</nolink> and having a general category of Lu or Ll, after excluding the Unicode character named MICRO SIGN.</para>
+          </listitem>
+          <listitem>
+            <para>The 18 Unicode characters named:</para>
+            <para>SPACE</para>
+            <para>EXCLAMATION MARK</para>
+            <para>QUOTATION MARK</para>
+            <para>DOLLAR SIGN</para>
+            <para>PERCENT SIGN</para>
+            <para>AMPERSAND</para>
+            <para>APOSTROPHE</para>
+            <para>LEFT PARENTHESIS</para>
+            <para>RIGHT PARENTHESIS</para>
+            <para>COMMA</para>
+            <para>HYPHEN-MINUS</para>
+            <para>FULL STOP</para>
+            <para>SOLIDUS</para>
+            <para>EQUALS SIGN</para>
+            <para>QUESTION MARK</para>
+            <para>POUND SIGN</para>
+            <para>EURO SIGN</para>
+            <para>TRADE MARK SIGN</para>
+          </listitem>
+          <listitem>
+            <para>The 20 Unicode characters named:</para>
+            <para>SUPERSCRIPT ZERO</para>
+            <para>SUPERSCRIPT ONE</para>
+            <para>SUPERSCRIPT TWO</para>
+            <para>SUPERSCRIPT THREE</para>
+            <para>SUPERSCRIPT FOUR</para>
+            <para>SUPERSCRIPT FIVE</para>
+            <para>SUPERSCRIPT SIX</para>
+            <para>SUPERSCRIPT SEVEN</para>
+            <para>SUPERSCRIPT EIGHT</para>
+            <para>SUPERSCRIPT NINE</para>
+            <para>SUBSCRIPT ZERO</para>
+            <para>SUBSCRIPT ONE</para>
+            <para>SUBSCRIPT TWO</para>
+            <para>SUBSCRIPT THREE</para>
+            <para>SUBSCRIPT FOUR</para>
+            <para>SUBSCRIPT FIVE</para>
+            <para>SUBSCRIPT SIX</para>
+            <para>SUBSCRIPT SEVEN</para>
+            <para>SUBSCRIPT EIGHT</para>
+            <para>SUBSCRIPT NINE</para>
+          </listitem>
+          <listitem>
+            <para>The 10 Unicode characters named:</para>
+            <para>LATIN CAPITAL LETTER A WITH MACRON</para>
+            <para>LATIN SMALL LETTER A WITH MACRON</para>
+            <para>LATIN CAPITAL LETTER C WITH CARON</para>
+            <para>LATIN SMALL LETTER C WITH CARON</para>
+            <para>LATIN CAPITAL LIGATURE OE</para>
+            <para>LATIN SMALL LIGATURE OE</para>
+            <para>LATIN CAPITAL LETTER U WITH RING ABOVE</para>
+            <para>LATIN SMALL LETTER U WITH RING ABOVE</para>
+            <para>LATIN CAPITAL LETTER R WITH LINE BELOW</para>
+            <para>LATIN SMALL LETTER R WITH LINE BELOW</para>
+          </listitem>
+        </itemizedlist>
+        <para>subject to the further constraints that a Method Name:</para>
+        <orderedlist numeration="loweralpha">
+          <listitem>
+            <para>Must contain at least one character of Unicode general category Lu, Ll, or Nd; and</para>
+          </listitem>
+          <listitem>
+            <para>May neither begin nor end with a Space character, nor may it contain within it two consecutive Space characters.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>The above 172 recognised characters are listed in a text file <link xlink:href="syntax/FrameworkRecognisedChars.txt">here</link>. Information about the format of this file is provided further below.</para>
+      </listitem>
+      <listitem>
+        <para>Method Name comparison: Two Method Names are considered the same if they would be reduced to the same sequence of characters by the following process:</para>
+        <orderedlist numeration="loweralpha">
+          <listitem>
+            <para>The sequence of characters is converted to Unicode Normalization Form KD (NFKD, Normalization Form Compatibility Decomposition);</para>
+          </listitem>
+          <listitem>
+            <para>All characters now appearing in the sequence that are not allowed in a Method Name, as per 3 above, are removed;</para>
+          </listitem>
+          <listitem>
+            <para>All characters for which the UCD defines a lowercase mapping (per field 13 of UnicodeData.txt -- see 2. above) are converted to that lowercase character;</para>
+          </listitem>
+          <listitem>
+            <para>The following additional conversions are made:</para>
+            <para>‘ß’ (U+00DF) to the two character sequence ‘ss’</para>
+            <para>‘æ’ (U+00E6) to the two character sequence ‘ae’</para>
+            <para>‘ð’ (U+00F0) to ‘d’</para>
+            <para>‘ø’ (U+00F8) to ‘o’</para>
+            <para>‘þ’ (U+00FE) to the two character sequence ‘th’</para>
+            <para>‘œ’ (U+0153) to the two character sequence ‘oe’</para>
+          </listitem>
+          <listitem>
+            <para>If the name is now one of ‘white hall’, ‘christ church’, ‘potter hanworth’ or ‘up avon’ then no further <nolink>changes</nolink> are made. Otherwise, each character for which the Unicode general category is not either Ll or Nd is removed.</para>
+          </listitem>
+        </orderedlist>
+        <note role="further-explanation">
+          <para>For item e. above, <nolink>method</nolink> pairs Whitehall and White Hall, Christchurch and Christ Church, Potter Hanworth and Potterhanworth, and Upavon and Up Avon were all named prior to the implementation of this Appendix B. Spaces are therefore not removed in the <nolink>method name</nolink> comparison process for the four <nolink>method names</nolink> listed in bullet 5, whereas all other spaces are removed. The latter prevents (e.g.) London No. 3 and London No.3 being used as distinct <nolink>method names</nolink>.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para>Notes:</para>
+        <orderedlist numeration="loweralpha">
+          <listitem>
+            <para>The normalization to NFKD followed by deletion of unrecognised characters eliminates diacritics, brings the superscript and subscript numerals to the baseline, and replaces ‘™’ with the two character sequence ‘TM’;</para>
+          </listitem>
+          <listitem>
+            <para>Punctuation, symbols and spaces are ignored for Method Name comparisons. Thus ‘London No. 3’ is the same as ‘London No3’. Less obviously, ‘E=mc²’ is the same as ‘e &amp; MC₂’. Given how rare, and potentially troublesome, punctuation and symbols are in Method Names, this seems a small price to pay for reducing the likelihood of Method misidentification.</para>
+          </listitem>
+          <listitem>
+            <para>The text file listing the 172 recognised characters for Method Names (see 4. above) has the following fields:</para>
+            <para>Field 0: Unicode id of the character (hexadecimal)</para>
+            <para>Field 1: Unicode character</para>
+            <para>Field 2: Unicode general category of the character</para>
+            <para>Field 3: Unicode character name</para>
+            <para>Field 4: The character's Unicode <nolink>block</nolink>
+            </para>
+            <para>Field 5: Unicode id(s) that result from applying the Method Name comparison process above</para>
+            <para>Field 6: Unicode character(s) that result from applying the Method Name comparison process above</para>
+            <para>Field 7: Unicode general category(s) that result from applying the Method Name comparison process above</para>
+            <para>If more than one character results from applying the Method Name comparison process above (e.g. ™ becomes tm), then fields 5 to 7 will contain data for each of these characters, delimited by a space.</para>
+            <para>If the character is one that is eliminated by applying the Method Name comparison process above, then fields 5 to 7 will be empty.</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>Additional background on Method Names and Method Name syntax is available <link xlink:href="images/syntax/method-name-syntax.html">here</link> in an article written by Don Morrison.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>

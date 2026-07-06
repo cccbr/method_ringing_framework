@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="fundamentals-v1" xml:lang="en" mrf:status="historic" mrf:authority="CCCBR" mrf:framework-version="1" mrf:edition-label="Edition 1">
+  <info>
+    <title>Fundamentals of Method Ringing</title>
+    <subtitle>Framework for Method Ringing, Section 3</subtitle>
+    <edition>1</edition>
+    <releaseinfo role="status">historic</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">February 24, 2019</releaseinfo>
+    <releaseinfo role="effective-date">June 1, 2019</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/fundamentals.html</uri>
+    <othermeta role="source-path">version1/fundamentals.html</othermeta>
+  </info>
+  <glossary mrf:source-title="Framework for Method Ringing">
+    <glossdiv xml:id="stages">
+      <title>A. Stages</title>
+      <glossentry xml:id="stages-entry-1-stage" mrf:number="A.1">
+        <glossterm>Stage</glossterm>
+        <glossterm role="synonym">Stages</glossterm>
+        <glossdef>
+          <para>A property of several <nolink>method</nolink> ringing terms that indicates the number of bells participating.</para>
+          <note role="further-explanation">
+            <para>Stage applies to the following <nolink>method</nolink> ringing terms: Rows, Changes, Blocks, Methods and Compositions.</para>
+            <para>The application of Stage to each of these terms will be covered below in the 'Further explanation' sections of the definitions of these terms. In addition, click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="stages-entry-2-stage-name" mrf:number="A.2">
+        <glossterm>Stage Name</glossterm>
+        <glossterm role="synonym">Stage Names</glossterm>
+        <glossdef>
+          <para>Names that are given to the different Stages, as follows:</para>
+          <para>1 = One; 3 = Singles; 5 = Doubles; 7 = Triples; 9 = Caters; 11 = Cinques; 13 = Sextuples; 15 = Septuples; 17 = Octuples.</para>
+          <para>2 = Two; 4 = Minimus; 6 = Minor; 8 = Major; 10 = Royal; 12 = Maximus; 14 = Fourteen; 16 = Sixteen; 18 = Eighteen.</para>
+          <para>Odd and even Stages above 18 are named with the written form of the corresponding Stage number, such as Nineteen and Twenty-Two.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="rows">
+      <title>B. Rows</title>
+      <glossentry xml:id="rows-entry-3-row" mrf:number="B.1">
+        <glossterm>Row</glossterm>
+        <glossterm role="synonym">Rows</glossterm>
+        <glossdef>
+          <para>A sequence of numbered bells in which no bell appears more than once.</para>
+          <example>
+            <para>531246 is a Row with a Stage of Minor (or equivalently, a Minor Row).</para>
+          </example>
+          <note role="further-explanation">
+            <para>The Stage of a Row is the number of bells in that Row. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>Bells are uniquely numbered in descending order of pitch. Both cardinal numbers (e.g. 1, 2, 3 ...) and ordinal numbers (e.g. 1st, 2nd, 3rd ...) are used.</para>
+            <para>When using cardinals, number 1 is used for the bell with the highest pitch, number 2 for the next highest pitch and so on. When using ordinals, bell number 2 becomes 'the 2nd', bell number 3 becomes 'the 3rd', and so on. However bell number 1 is usually referred to as 'the treble' rather than 'the 1st', and the bell with the lowest pitch is usually referred to as 'the tenor' rather than the corresponding ordinal.</para>
+            <para>Bells are numbered relative to how many are in use. For example, if a tower has eight bells but only the six with the lowest pitches are in use, these bells are numbered 1 to 6 instead of 3 to 8.</para>
+            <para>Rows are normally shown in columns so that the <nolink>path</nolink> of individual bells can be visualised by looking down the columns. In order to keep the columns aligned, a fixed font can be used with single characters representing each bell. Conventionally '0' (zero) is used to represent the 10th, and upper (or sometimes lower) case letters (excluding 'I', 'O' and 'X') are used for bells 11 to 33 as follows:</para>
+            <para>'E' (Eleven); 'T' (Twelve); 'A' (Thirteen); 'B' (Fourteen); 'C' (Fifteen); 'D' (Sixteen); 'F' (Seventeen); 'G' (Eighteen); 'H' (Nineteen); 'J' (Twenty); 'K' (Twenty-one); 'L' (Twenty-two); 'M' (Twenty-three); 'N' (Twenty-four); 'P' (Twenty-five); 'Q' (Twenty-six); 'R' (Twenty-seven); 'S' (Twenty-eight); 'U' (Twenty-nine); 'V' (Thirty); 'W' (Thirty-one); 'Y' (Thirty-two); 'Z' (Thirty-three)</para>
+            <para>Note that what is defined as a Row in this section is sometimes described as a Change in common ringing parlance, and this usage of Change will be seen in <nolink>method</nolink> ringing books and articles. The framework separately uses Change as the transition between two Rows (see Section 3.C) and this distinction between Row and Change is important in defining a number of other <nolink>method</nolink> ringing terms used in the framework. Row is the preferred term wherever possible.</para>
+          </note>
+          <note role="technical-comment">
+            <para>While this definition of Row refers to a sequence of <emphasis role="italic">bells</emphasis>, a Row can comprise, at minimum, one bell.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="rows-entry-4-rounds" mrf:number="B.2">
+        <glossterm>Rounds</glossterm>
+        <glossdef>
+          <para>A Row in which the bells are ordered from the lowest number to the highest number.</para>
+          <example>
+            <para>12345678 is Rounds for a Major Row.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="rows-entry-5-place" mrf:number="B.3">
+        <glossterm>Place</glossterm>
+        <glossterm role="synonym">Places</glossterm>
+        <glossdef>
+          <para>The position of a bell within a Row.</para>
+          <example>
+            <para>In the Row 142536, the 2nd bell is in 3rd's Place.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Places are numbered starting with 1 for the first bell in the Row, and increasing sequentially for each next bell in the Row. E.g. the bell that is second in a Row is in Place 2.</para>
+            <para>Each bell in a Row appears in a different Place to all other bells in that Row, and therefore there are the same number of Places in a Row as there are bells in that Row.</para>
+            <para>Places are often referred to using ordinal numbers in the possessive form, so Place 2 is often '2nd's Place'. 2nd's Place is a reference to the Place the 2nd bell occupies in Rounds.</para>
+            <para>The bell in 1st's Place is often said to be leading, and the bell in the last Place of the Row is often said to be lying. E.g. in the Row 214365, the 2nd is leading and the 5th is lying.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="changes">
+      <title>C. Changes</title>
+      <glossentry xml:id="changes-entry-6-change" mrf:number="C.1">
+        <glossterm>Change</glossterm>
+        <glossterm role="synonym">Changes</glossterm>
+        <glossdef>
+          <para>A transposition of bells from an existing Row to a new Row, where both Rows have the same Stage.</para>
+          <example>
+            <para>A Change might transpose the bells from the Row 214365 to the Row 241356.</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/change.svg" width="300" height="90"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>The Stage of a Change is the number of bells on which that Change operates. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>Since a Change is a transposition of bells, the new Row will comprise the same set of bells as the existing Row.</para>
+            <para>Note that the same Change applied to different Rows will have the same relative effect. For example, a Change applied to the Row 1342 might produce the Row 1432. The same Change applied to the Row 4123 would produce the Row 4213.</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that in mathematics, transposition refers to the exchange of two elements. However in ringing, as well as in more general usage, transposition can involve the exchange of more than two elements. For example, ringers talk about transposing <nolink>coursing</nolink> orders, which often involves rotating 3 bells.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="changes-entry-7-identity-change" mrf:number="C.2">
+        <glossterm>Identity Change</glossterm>
+        <glossterm role="synonym">Identity Changes</glossterm>
+        <glossdef>
+          <para>A Change that transposes each bell to the same Place in a new Row.</para>
+          <example>
+            <para>The Change that transposes the bells from Row 54321 to Row 54321 is an Identity Change.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="changes-entry-8-adjacent-change" mrf:number="C.3">
+        <glossterm>Adjacent Change</glossterm>
+        <glossterm role="synonym">Adjacent Changes</glossterm>
+        <glossdef>
+          <para>A Change that transposes each bell to either the same Place or an adjacent Place in a new Row, but which is not an Identity Change.</para>
+          <example>
+            <para>The Change that transposes the bells from Row 21436587 to Row 12346857 is an Adjacent Change.</para>
+          </example>
+          <note role="technical-comment">
+            <para>An Adjacent Change has a minimum Stage of 2.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="changes-entry-9-jump-change" mrf:number="C.4">
+        <glossterm>Jump Change</glossterm>
+        <glossterm role="synonym">Jump Changes</glossterm>
+        <glossdef>
+          <para>A Change that transposes at least one bell to a different and non-adjacent Place in a new Row.</para>
+          <example>
+            <para>The Change that transposes the bells from Row 12345678 to Row 23415678 is a Jump Change because the treble moves from 1st's Place to 4th's Place, which are not adjacent Places.</para>
+          </example>
+          <note role="further-explanation">
+            <para>When ringing heavy bells, Jump Changes are more commonly used to jump from an earlier Place to a later Place, rather than vice versa, due to the physical difficulty of reducing the time between bell strikes.</para>
+          </note>
+          <note role="technical-comment">
+            <para>A Jump Change has a minimum Stage of 3.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="blocks">
+      <title>D. Blocks</title>
+      <glossentry xml:id="blocks-entry-10-block" mrf:number="D.1">
+        <glossterm>Block</glossterm>
+        <glossterm role="synonym">Blocks</glossterm>
+        <glossdef>
+          <para>A sequence of Changes, all with the same Stage, and the Rows produced by applying these Changes, starting from an initial Row.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/block.svg" width="250" height="150"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>The Stage of the Changes in the sequence is the same as the Stage of the initial Row.</para>
+            <para>A Block has the Stage of its constituent Rows. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>A sequence of Changes is used to produce a sequence of Rows as follows:</para>
+            <itemizedlist role="compact">
+              <listitem>
+                <para>Apply the first Change in the sequence to an initial Row to produce a second Row.</para>
+              </listitem>
+              <listitem>
+                <para>Then apply the second Change in the sequence to the second Row to produce a third Row.</para>
+              </listitem>
+              <listitem>
+                <para>Then apply the third Change in the sequence to the third Row to produce a fourth Row, and so on.</para>
+              </listitem>
+              <listitem>
+                <para>The Row that is produced by applying the final Change in the sequence is referred to as the final Row.</para>
+              </listitem>
+            </itemizedlist>
+            <para>Since a Block is generated using Changes, which are transpositions of bells, all Rows in a Block will comprise the same set of bells.</para>
+            <para>Note that a Block always has one more Row than it has Changes.</para>
+            <para>See Section 3.E.1 (Method) below for an explanation of the difference between a Method and a Block.</para>
+            <para>Dividing lines are often drawn in Blocks, such as those shown over the initial and final Rows in the example above. Dividing lines have no effect on the Rows produced -- they are merely to highlight features of a Block. In this example, the dividing lines highlight that the treble moves in a symmetrical pattern in the Block.</para>
+            <para>The following diagram shows the relationships between the various components of <nolink>method</nolink> ringing. Terms in the diagram that are not defined above are defined elsewhere in the framework.</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/hierarchy.svg" width="1024" height="576"/>
+              </imageobject>
+            </mediaobject>
+          </note>
+          <note role="technical-comment">
+            <para>The term Block is also used in <nolink>method</nolink> ringing to refer to a sequence of Changes without reference to the Rows they can produce. For example, a Composition (see Section G below) may specify a Block of Changes that is repeated at different points in the Composition. While the framework uses the term Block to refer to a sequence of Changes and the Rows produced by applying these Changes, this does not preclude the term Block from being used to refer just to a sequence of Changes in other contexts.</para>
+            <para>A Block has a minimum size of one Change and two Rows.</para>
+            <para>Note that since a Composition might specify just to ring a Plain Lead or a Plain Course of a single Method, a Plain Lead and a Plain Course can be Touches as well as Blocks.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="blocks-entry-11-round-block" mrf:number="D.2">
+        <glossterm>Round Block</glossterm>
+        <glossterm role="synonym">Round Blocks</glossterm>
+        <glossdef>
+          <para>A Block whose final Row is the same as its initial Row.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/roundblock.svg" width="225" height="150"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>In the example above, the final Row is the same as the initial Row, and therefore this is a Round Block.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="methods">
+      <title>E. Methods</title>
+      <glossentry xml:id="methods-entry-12-method" mrf:number="E.1">
+        <glossterm>Method</glossterm>
+        <glossterm role="synonym">Methods</glossterm>
+        <glossdef>
+          <para>A sequence of Changes all of the same Stage, or a process to generate such a sequence.</para>
+          <example>
+            <para>The sequence of Changes x16x14x16x12 is the Method that has been given the name Little Bob Minor.</para>
+          </example>
+          <note role="further-explanation">
+            <para>A Method has the Stage of its constituent Changes. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>Individual Changes and sequences of Changes may be represented using place notation, and place notation is used in the example above as well as elsewhere in the framework. Place notation is described in Appendix A.</para>
+            <para>A Method is usually referred to by a name it is given. A Method (including its name) may be recorded in the Central Council's Methods Library when certain requirements have been met. These requirements are described in Section 5.</para>
+            <para>A Method is distinct from a Block in that a Method only defines Changes, not Rows. A Block, on the other hand, defines both Changes and Rows. A single Method can produce many Blocks. For example, if a Method is rung starting from Rounds, this produces a Block. If the same Method is rung starting from a non-Rounds Row (such as 'Queens'), the resulting Block is different from the one produced by starting from Rounds.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="methods-entry-13-static-method" mrf:number="E.2">
+        <glossterm>Static Method</glossterm>
+        <glossterm role="synonym">Static Methods</glossterm>
+        <glossdef>
+          <para>A Method whose sequence of Changes is fixed and finite.</para>
+          <example>
+            <para>x16x14x16x12 (Little Bob Minor) is an example of a Static Method. This Method can be represented by a fixed <nolink>length</nolink> place notation.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="methods-entry-14-dynamic-method" mrf:number="E.3">
+        <glossterm>Dynamic Method</glossterm>
+        <glossterm role="synonym">Dynamic Methods</glossterm>
+        <glossdef>
+          <para>A Method whose sequence of Changes is not fixed or is not finite.</para>
+          <example>
+            <para>Dixon's Bob Minor.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Dixon's Bob Minor specifies that Rows are produced by successively applying the pair of Changes x16 except (a) if the Treble is leading after an x Change, replace the next 16 Change with a 12 Change, and (b) if the 2nd or 4th is leading after an x Change, replace the next 16 Change with a 14 Change.</para>
+            <para>In this Method, the sequence of Changes varies depending on the Rows produced, so using a different initial Row could produce a different sequence of Changes. This Method's sequence of Changes is therefore not fixed, and so Dixon's Bob Minor is an example of a Dynamic Method.</para>
+          </note>
+          <note role="technical-comment">
+            <para>A Dynamic Method should be capable of producing a readily-determinable sequence of Changes. A process such as 'Ring the Changes [3.1.3.1.3.{7|5}]^840 where at each choice of 7 or 5, 7 is chosen unless it is impossible to generate a Round Block of the Extent with any choice of following 7 or 5s' is not a valid Dynamic Method, even though this is a well-defined process.</para>
+            <para>Dynamic Methods are in their infancy, and more precise definitions in this area may be developed for future versions of the framework if there is sufficient interest by the ringing community.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="methods-entry-15-plain-lead" mrf:number="E.4">
+        <glossterm>Plain Lead</glossterm>
+        <glossterm role="synonym">Plain Leads</glossterm>
+        <glossdef>
+          <para>A Block that is produced by applying a Static Method's sequence of Changes once.</para>
+          <example>
+            <para>Bastow Little Bob Minimus has the sequence of Changes x12x14. A Plain Lead of this Method, starting from Rounds, is therefore:</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/plainlead.svg" width="225" height="80"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>Plain in this term means that no Calls are used. Calls are covered below in Section 3.F. When the term Lead is used rather than Plain Lead, this means that Calls may or may not be used. However, it is often clear from the surrounding context whether or not Calls are involved, and so in practice Plain Lead will often be shortened to Lead in <nolink>method</nolink> ringing texts, with it understood that no Calls are involved.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="methods-entry-16-plain-course" mrf:number="E.5">
+        <glossterm>Plain Course</glossterm>
+        <glossterm role="synonym">Plain Courses</glossterm>
+        <glossdef>
+          <para>A Block that is produced by applying a Static Method's sequence of Changes repeatedly, until a Round Block is obtained.</para>
+          <example>
+            <para>Bastow Little Bob Minimus has the sequence of Changes x12x14. A Plain Course of this Method, starting from Rounds, is therefore:</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/plaincourse.svg" width="225" height="215"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>'Plain' in this term means that no Calls are used. Calls are covered below in Section 3.F. When the term Course is used rather than Plain Course, this means that Calls may or may not be used.</para>
+            <para>In the above example, since it takes three applications of the Method's sequence of Changes to produce a Round Block, the Plain Course of Bastow Little Bob Minimus therefore comprises three Plain Leads.</para>
+            <para>A Plain Course of a Method is a commonly used Block in <nolink>method</nolink> ringing. Unless otherwise specified, a Plain Course is started from Rounds. A Plain Course starting from Rounds is often referred to as <emphasis role="italic">The</emphasis> Plain Course of a Method, whereas starting from any other Row might be referred to as <emphasis role="italic">A</emphasis> Plain Course.</para>
+          </note>
+          <note role="technical-comment">
+            <para>For a Method that is false in the Plain Course (Truth is covered in Section 3.J below) the initial Row might come up in the middle of a Plain Lead. However the Plain Course does not end until the initial Row comes up as the last Row after applying a Static Method's whole sequence of Changes.</para>
+            <para>While Plain Lead and Plain Course are defined above in terms of a Static Method, these terms may also be applicable to some Dynamic Methods. For example, in Dixon's Bob Minor with Rounds as the initial Row, Rounds comes up again after 64 Changes (with no Calls). This would be considered the Plain Course of Dixon's.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="calls">
+      <title>F. Calls</title>
+      <glossentry xml:id="calls-entry-17-call" mrf:number="F.1">
+        <glossterm>Call</glossterm>
+        <glossterm role="synonym">Calls</glossterm>
+        <glossdef>
+          <para>An instruction to replace Change(s) from a Method with different Change(s), <nolink>change</nolink> the current Method to a different one, or affect Cover Bell(s).</para>
+          <example>
+            <para>The last Change in Little Bob Minor's sequence of Changes is '12'. This is usually replaced with the Change '14' when a 'bob' is called. A 'bob' is a commonly-used Call in <nolink>method</nolink> ringing.</para>
+          </example>
+          <note role="further-explanation">
+            <para>A Call is not part of the definition of a Method.</para>
+            <para>Using Calls to <nolink>change</nolink> the current Method to a different one and to affect Cover Bell(s) are covered in Sections 3.G and 3.H respectively, below.</para>
+            <para>In the application of Calls to replacing Change(s) from a Method with different Change(s), a Call most commonly replaces an individual Change with another, as in the example above. But a Call may also add Changes, remove Changes, or replace a set of Changes with a different set of Changes.</para>
+            <para>When a Call adds or removes Changes to or from a Method, these Changes are respectively added to or subtracted from the count of Changes for that Method that is used for Performance Reporting purposes. Performance Reporting is covered in Section 6.</para>
+          </note>
+          <note role="technical-comment">
+            <para>When a Call affects the Changes of more than one Method (i.e. in <nolink>spliced</nolink>), the Composition (see Section 3.G below) should make clear how the Change count of each Method is affected (if at all) in order to enable accurate Performance Reporting (see Section 6).</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="calls-entry-18-calls-library" mrf:number="F.2">
+        <glossterm>Calls Library</glossterm>
+        <glossterm role="synonym">Call Library</glossterm>
+        <glossdef>
+          <para>Commonly used Calls are recorded in the Central Council Calls Library. This Library also includes Calls that are used to define Variations (see Section 5.D).</para>
+          <note role="further-explanation">
+            <para>See Appendix F.4 for further information on the Calls Library.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="compositions">
+      <title>G. Compositions</title>
+      <glossentry xml:id="compositions-entry-19-composition" mrf:number="G.1">
+        <glossterm>Composition</glossterm>
+        <glossterm role="synonym">Compositions</glossterm>
+        <glossdef>
+          <para>An arrangement of Method(s) and Call(s) that produces a sequence of Changes, all with the same Stage.</para>
+          <note role="further-explanation">
+            <para>A Composition has the Stage of the Changes it produces. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>Larger Compositions may be created by combining other Compositions. For example, seven different Compositions of 720 Minor Changes may be concatenated to produce a Composition of 5040 Minor Changes.</para>
+            <para>In addition to using a Method's whole sequence of Changes one or more times in a Composition, any subset of a Method's sequence of Changes may also be used.</para>
+            <para>When a Composition that uses more than one Method is rung, the instruction to <nolink>change</nolink> from one Method to another is referred to as a Call, and this is another application of the term Call.</para>
+          </note>
+          <note role="technical-comment">
+            <para>A Composition may use two or more Methods side by side to produce Changes with a higher Stage. For example, a Minor Method and a Doubles Method may be combined side by side to create a Composition that produces Cinques Changes (so the Composition has a Stage of Cinques). Similarly, a Composition may combine a Minor Composition and a Doubles Composition side by side to create a Composition that produces Cinques Changes.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="compositions-entry-20-spliced" mrf:number="G.2">
+        <glossterm>Spliced</glossterm>
+        <glossterm role="synonym">Splice</glossterm>
+        <glossdef>
+          <para>A Composition involving more than one Method is described as Spliced if any <nolink>changes</nolink> of Method in the Block produced by the Composition occur at a Row that is not the same as the initial Row of the Block.</para>
+          <note role="further-explanation">
+            <para>If, for example, a Block starts in Rounds, and <nolink>changes</nolink> of Method only occur at Rounds during the Block (such as in a Peal of 7 Minor Methods) then the Composition is not Spliced. But if any <nolink>change</nolink> of Method occurs during the Block at any Row other than Rounds, then the Composition is Spliced.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="coverbells">
+      <title>H. Cover Bells</title>
+      <glossentry xml:id="coverbells-entry-21-cover-bell" mrf:number="H.1">
+        <glossterm>Cover Bell</glossterm>
+        <glossterm role="synonym">Cover Bells</glossterm>
+        <glossdef>
+          <para>A bell that occupies a Place in a Row that is not one of the Places operated on by the Method(s) of a Composition.</para>
+          <example>
+            <para>A Composition for a Doubles Method is used with an initial Row that has a Stage of Minor, and this produces a Minor Block. The Composition operates on Places 1 to 5. 6th's Place therefore contains a Cover Bell (usually the tenor).</para>
+          </example>
+          <note role="further-explanation">
+            <para>A Cover Bell remains in the same Place from one Row to the next. In the example above, the Doubles Changes of the Composition are deemed to become Minor Changes with a place notation of '6' added to each Change.</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/coverbell.svg" width="100" height="90"/>
+              </imageobject>
+            </mediaobject>
+            <para>In a Row containing one or more Cover Bells, the numbering of the Places may be modified to exclude the Cover Bell(s). In the example above, the bell in 5th's Place (rather that 6th's) may be said to be lying.</para>
+            <para>A Composition of a given Stage can be used to produce either a Block with the same Stage as the Composition, or a Block with a higher Stage. When the Stage of the Block is higher than the Stage of the Composition, any Places not operated on by the Composition contain Cover Bells.</para>
+            <para>In the example above, the Doubles Composition is applied to Places 1 to 5 so that 6th's Place contains a Cover Bell. The tenor as Cover Bell is the usual implementation when the Stage of a Block is one higher than the Stage of a Composition. However, the Doubles Composition could be applied to Places 2 to 6 so that 1st's Place contains a Cover Bell.</para>
+            <para>Since Cover Bells can be generated by using a Composition of a given Stage to produce a Block of a higher Stage, Compositions often do not need to specify the transposition of Cover Bells as these are inferred. However, since the Changes produced by a Composition are all of the same Stage, there are scenarios where a Composition's Changes include the transposition of Cover Bells for some or all Changes.</para>
+            <para>As example #2, if a Composition uses a Doubles Method initially, applying to Places 1 to 5, and then switches to a Minor Method, applying to Places 1 to 6, then the Composition's Changes are all specified as Minor Changes, with a place notation of '6' added to all Doubles Changes. This Composition therefore has a Stage of Minor. However, even though the Composition has a Stage of Minor, it is still correct to describe the bell in 6th's Place as a Cover Bell when the Doubles Method is being rung, because for these Rows, 6th's Place is not being operated on by the Method of the Composition.</para>
+            <para>As example #3, a Composition might use a Doubles Method but is designed to produce a Minor Block, and Calls are used that occasionally exchange the Cover Bell in 6th's Place. In this case the Composition's Changes are all specified as Minor Changes (so the Composition's Stage is Minor), with a place notation of '6' added to all Changes where the Cover Bell is not affected. For example, if the Composition's Doubles Method has a '3' Change, this becomes a '36' Change in the Composition. Where the Cover Bell is affected by a Call, what otherwise might have been a '36' Change might instead become a '34' Change.</para>
+            <para>Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+          </note>
+          <note role="technical-comment">
+            <para>As discussed above under Compositions (Section 3.G), it is possible for a Composition to use two or more Methods side by side, or to use two or more Compositions side by side. As a further <nolink>variation</nolink>, a Composition might also result in an interior Cover Bell. For example, a Composition might be designed to be used with Maximus Rows, using a Doubles Method in Places 1 to 5 and a Minor Method in Places 7 to 12. 6th's Place does not have any Methods operating on it, and therefore 6th's Place contains a Cover Bell. In this case, the Composition would produce Maximus Changes (and therefore have a Stage of Maximus), and each of its Changes would include the place notation '6'.</para>
+            <para>Every Row in a Block (except for the initial Row) has at least one Method involved in generating it. A Row is not made up solely of Cover Bells.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="coverbells-entry-22-variable-cover" mrf:number="H.2">
+        <glossterm>Variable Cover</glossterm>
+        <glossdef>
+          <para>A Composition is described as Variable Cover if one or more Cover Bells are affected by any of the Composition's Calls.</para>
+          <note role="further-explanation">
+            <para>The Composition described in example #3 in Section 3.H.1 above is a Variable Cover Composition.</para>
+            <para>Note that a Composition is not considered Variable Cover if a Cover Bell is only affected by a <nolink>change</nolink> to a higher Stage Method such that the (former) Cover Bell is now one of the bells on which the Method's Changes operate.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="touches">
+      <title>I. Touches</title>
+      <glossentry xml:id="touches-entry-23-touch" mrf:number="I.1">
+        <glossterm>Touch</glossterm>
+        <glossterm role="synonym">Touches</glossterm>
+        <glossdef>
+          <para>A Block that is produced by applying a Composition's sequence of Changes.</para>
+          <note role="further-explanation">
+            <para>Note that since a Composition can be a Plain Course of a Method, a Plain Course is therefore also a Touch. The same applies to a Plain Lead.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-24-length" mrf:number="I.2">
+        <glossterm>Length</glossterm>
+        <glossterm role="synonym">Lengths</glossterm>
+        <glossdef>
+          <para>The number of Changes in a Touch.</para>
+          <note role="technical-comment">
+            <para>If a Touch uses side by side Changes to produce a single Row, only one Change per Row is counted when determining Length.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-25-short-touch" mrf:number="I.3">
+        <glossterm>Short Touch</glossterm>
+        <glossterm role="synonym">Short Touches</glossterm>
+        <glossdef>
+          <para>A Touch with a Length of 1 to 1249 Changes.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-26-quarter-peal" mrf:number="I.4">
+        <glossterm>Quarter Peal</glossterm>
+        <glossterm role="synonym">Quarter Peals</glossterm>
+        <glossterm role="synonym">Quarterpeal</glossterm>
+        <glossterm role="synonym">Quarterpeals</glossterm>
+        <glossdef>
+          <para>A Touch with a Length of 1250 to 2499 Changes.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-27-half-peal" mrf:number="I.5">
+        <glossterm>Half Peal</glossterm>
+        <glossterm role="synonym">Half Peals</glossterm>
+        <glossdef>
+          <para>A Touch with a Length of 2500 to 4999 Changes.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-28-peal" mrf:number="I.6">
+        <glossterm>Peal</glossterm>
+        <glossterm role="synonym">Peals</glossterm>
+        <glossdef>
+          <para>A Touch with a Length of 5000 or more Changes.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-29-long-length" mrf:number="I.7">
+        <glossterm>Long Length</glossterm>
+        <glossterm role="synonym">Long Lengths</glossterm>
+        <glossdef>
+          <para>A Touch with a Length of 10000 or more Changes.</para>
+          <note role="further-explanation">
+            <para>A Long Length is also a Peal -- it is a subset thereof.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="touches-entry-30-date-touch" mrf:number="I.8">
+        <glossterm>Date Touch</glossterm>
+        <glossterm role="synonym">Date Touches</glossterm>
+        <glossdef>
+          <para>A Touch with a Length that corresponds to a year being commemorated.</para>
+          <example>
+            <para>A Date Touch commemorating the year 2018 would have 2018 Changes and would also be a Quarter Peal.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="truth">
+      <title>J. Truth</title>
+      <glossentry xml:id="truth-entry-31-extent" mrf:number="J.1">
+        <glossterm>Extent</glossterm>
+        <glossterm role="synonym">Extents</glossterm>
+        <glossdef>
+          <para>The complete set of distinct Rows possible for a given set of bells.</para>
+          <note role="further-explanation">
+            <para>The number of Rows in an Extent for a given set of bells is the factorial of the number of bells in the set. E.g. for 4 bells, the Extent has 4! Rows = 1 * 2 * 3 * 4 = 24 Rows.</para>
+            <para>When Extent is used on its own, it refers to the unordered set of possible Rows at the Stage in question. However when used with a Method or Composition (e.g. an Extent of Plain Bob Minor), this generally refers to an ordered Extent generated using the Changes of Plain Bob Minor (and any necessary Calls).</para>
+            <para>Note that usage such as 'Two Extents of Grandsire Doubles' can be ambiguous. This could mean two discrete Extents rung back-to-back, or a Touch of 240 Grandsire Doubles that includes every possible Row exactly twice each. Care should be taken in how this is communicated if the distinction is important.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="truth-entry-32-fixed-place" mrf:number="J.2">
+        <glossterm>Fixed Place</glossterm>
+        <glossterm role="synonym">Fixed Places</glossterm>
+        <glossdef>
+          <para>A given Place that, in every Row of a Touch, is occupied by the same bell.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="truth-entry-33-effective-stage" mrf:number="J.3">
+        <glossterm>Effective Stage</glossterm>
+        <glossdef>
+          <para>The Stage of a Touch after any Fixed Places are excluded.</para>
+          <note role="technical-comment">
+            <para>Note that the Effective Stage of a Block all of whose Rows are the same is zero. An Effective Stage of one is not possible -- once the Effective Stage falls below two, it becomes zero. Ringing a Block that has an Effective Stage of zero (such as all Rounds or all Queens) is not considered <nolink>method</nolink> ringing.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="truth-entry-34-true" mrf:number="J.4">
+        <glossterm>True</glossterm>
+        <glossterm role="synonym">Truth</glossterm>
+        <glossdef>
+          <para>A Touch is True if:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>It contains zero or more Extents at the Touch's Effective Stage; and</para>
+            </listitem>
+            <listitem>
+              <para>Any Rows in addition to the above are distinct.</para>
+            </listitem>
+          </orderedlist>
+          <note role="further-explanation">
+            <para>If a Touch is a Round Block, the final Row is excluded when determining whether the Touch is True.</para>
+            <para>When ringing a Touch, it is traditional to ring the initial Row (usually Rounds) several times before starting the Changes, and similarly to ring the final Row several times before standing the bells. These Rows (shown in the diagram below) are excluded when determining Truth.</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/fundamentals/openingclosingrounds.svg" width="307" height="432"/>
+              </imageobject>
+            </mediaobject>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="truth-entry-35-complete-incomplete" mrf:number="J.5">
+        <glossterm>Complete (Incomplete)</glossterm>
+        <glossdef>
+          <para>A Touch is Complete if it contains all possible Rows at the Touch's Effective Stage exactly once, or exactly the same number of times. (Anything else is Incomplete.)</para>
+          <note role="further-explanation">
+            <para>A 540 of Minor may be True but is Incomplete;</para>
+            <para>A 720 of Minor may be True, and if it is, it will also be Complete;</para>
+            <para>A 1260 of Minor may be True but is Incomplete;</para>
+            <para>A 1440 of Minor may be True, and if it is, it will also be Complete;</para>
+            <para>etc.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="truth-entry-36-accepted-truth" mrf:number="J.6">
+        <glossterm>Accepted Truth</glossterm>
+        <glossdef>
+          <para>A Touch rung on n bells has Accepted Truth if it is True, or it is comprised of Round Blocks that can be divided into two groups where:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>One group forms a True Touch with an Effective Stage of n and contains at least one Extent at Stage n;</para>
+            </listitem>
+            <listitem>
+              <para>The other group forms a True Touch with an Effective Stage of n-1 and the same bell rings in nth’s Place in every Row; and</para>
+            </listitem>
+            <listitem>
+              <para>Only one group may be an Incomplete Touch at its respective Effective Stage.</para>
+            </listitem>
+          </orderedlist>
+          <note role="further-explanation">
+            <para>Accepted Truth applies most commonly to Touches of Doubles and Minor rung on 6 bells. When ringing Doubles, the tenor usually rings in 6th's Place as a Cover Bell.</para>
+            <para>A Row occuring at a <nolink>change</nolink> of Effective Stage (which will be the same as the initial Row since <nolink>changes</nolink> of Effective Stage can only occur at the end of a Round Block) is counted as a Row of the following Round Block when determining the Truth of the two groups. The initial Row is counted as part of the first Round Block when determining the Truth of the two groups, and the final Row is excluded.</para>
+            <para>Note that a Touch with Accepted Truth will contain one or more Extents at Stage n, zero or more Extents at Stage n-1, and any remaining Rows will be distinct.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="performances">
+      <title>K. Performances</title>
+      <glossentry xml:id="performances-entry-37-performance" mrf:number="K.1">
+        <glossterm>Performance</glossterm>
+        <glossterm role="synonym">Performances</glossterm>
+        <glossdef>
+          <para>The successful ringing of a Touch where the <nolink>band</nolink> strives to maintain a high standard of ringing, and errors in ringing or calling are corrected quickly.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="performances-entry-38-performance-report" mrf:number="K.2">
+        <glossterm>Performance Report</glossterm>
+        <glossterm role="synonym">Performance Reports</glossterm>
+        <glossterm role="synonym">Performance Reporting</glossterm>
+        <glossdef>
+          <para>A report of a Performance that includes the contents specified in Section 6.</para>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="performances-entry-39-record-length" mrf:number="K.3">
+        <glossterm>Record Length</glossterm>
+        <glossterm role="synonym">Record Lengths</glossterm>
+        <glossdef>
+          <para>A Performance of a Long Length (i.e. 10000 or more Changes) that is the longest Length yet rung in a single Method or the same set of Methods.</para>
+          <note role="further-explanation">
+            <para>A Record Length is also a Peal and a Long Length -- it is a subset of both.</para>
+            <para>Requirements for CCCBR recognition of Record Lengths are described in Section 7.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</article>

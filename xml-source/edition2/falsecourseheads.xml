@@ -1,0 +1,499 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="falsecourseheads-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-version="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>False Courseheads</title>
+    <subtitle>Framework for Method Ringing, Appendix E</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/falsecourseheads.html</uri>
+    <othermeta role="source-path">version2/falsecourseheads.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>This appendix shows groupings of false courseheads. It is possible for one course of a <nolink>method</nolink> to contain one or more <nolink>rows</nolink> that also appear in another course of the same <nolink>method</nolink>. For example, the course of Cambridge Surprise Major that starts with 13245678 (which is referred to as this course's coursehead) contains the <nolink>row</nolink> 12345678 after the 2nd <nolink>change</nolink> of the 5th lead. The course with coursehead 13245678 is therefore false against the <nolink>plain course</nolink>.</para>
+        <para>Furthermore, it can be shown that courses that are false against a reference course (which is usually taken to be the <nolink>plain course</nolink>) occur in groups that are consistent across <nolink>methods</nolink> of the same type, such as <nolink>methods</nolink> with Plain Bob leadheads and one <nolink>hunt bell</nolink>, where the <nolink>hunt bells</nolink> have the same <nolink>path</nolink>.</para>
+        <para>The table below shows the falseness groupings of the 120 courses that comprise all the possible orderings of bells 2 to 6. These groupings apply to palindromic <nolink>methods</nolink> with an even <nolink>stage</nolink> of 8 or higher, with Plain Bob leadheads, and with a single <nolink>hunt bell</nolink> that follows a Treble Dodging <nolink>path</nolink>.</para>
+        <para>As the table only considers the possible orderings of bells 2 - 6 (the <nolink>working bells</nolink>), the remaining bells (the fixed bells) are removed from the table for conciseness. The treble (i.e. the <nolink>hunt bell</nolink>) is also removed. For example, coursehead 34265 is referring to 13426578 when considering Major, 1342657890 when considering Royal, and so on.</para>
+        <para>The table below is divided into courseheads that are "in-course" and courseheads that are "out-of-course". In-course courses are those that can be reached with bobs only (place notation 14 or 1[n-2]) when starting from <nolink>rounds</nolink>. Out-of-course courses are those that can only be reached with bobs plus an odd number of singles (1234 or 1[n-2][n-1][n]) when starting from <nolink>rounds</nolink>.</para>
+        <para>False coursehead groups that are designated below by uppercase letters A to U contain in-course false courseheads, and may also contain out-of-course false courseheads. Groups designated by lowercase letters a to f contain only out-of-course false courseheads.</para>
+        <para>Groups A to U and a to f also include tenors-split members that are not shown in these tables. There are 3 additional groups, X, Y and Z, that only have tenors-split members and do not have any tenors-together members. As these tables only show tenors-together members, groups X, Y and Z show below as not having any members.</para>
+      </listitem>
+      <listitem>
+        <informaltable>
+          <tgroup cols="12">
+            <thead>
+              <row>
+                <entry>
+                  <para>Group code</para>
+                </entry>
+                <entry>
+                  <para>A</para>
+                </entry>
+                <entry>
+                  <para>B</para>
+                </entry>
+                <entry>
+                  <para>C</para>
+                </entry>
+                <entry>
+                  <para>D</para>
+                </entry>
+                <entry>
+                  <para>E</para>
+                </entry>
+                <entry>
+                  <para>F</para>
+                </entry>
+                <entry>
+                  <para>G</para>
+                </entry>
+                <entry>
+                  <para>H</para>
+                </entry>
+                <entry>
+                  <para>I</para>
+                </entry>
+                <entry>
+                  <para>K</para>
+                </entry>
+                <entry>
+                  <para>L</para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>In-course</para>
+                </entry>
+                <entry>
+                  <para>23456</para>
+                </entry>
+                <entry>
+                  <para>24365</para>
+                </entry>
+                <entry>
+                  <para>25634</para>
+                </entry>
+                <entry>
+                  <para>32546</para>
+                  <para>46253</para>
+                </entry>
+                <entry>
+                  <para>32465</para>
+                  <para>43265</para>
+                </entry>
+                <entry>
+                  <para>45236</para>
+                  <para>32654</para>
+                </entry>
+                <entry>
+                  <para>56423</para>
+                  <para>63542</para>
+                </entry>
+                <entry>
+                  <para>53462</para>
+                  <para>63425</para>
+                </entry>
+                <entry>
+                  <para>54632</para>
+                  <para>65324</para>
+                </entry>
+                <entry>
+                  <para>65432</para>
+                  <para>53624</para>
+                </entry>
+                <entry>
+                  <para>26543 ) L1</para>
+                  <para>42563 ) L2</para>
+                  <para>36245 )</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Out-of-course</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>25436</para>
+                  <para>32456</para>
+                  <para>23654</para>
+                  <para>43256</para>
+                </entry>
+                <entry>
+                  <para>42365</para>
+                  <para>34265</para>
+                </entry>
+                <entry>
+                  <para>53426</para>
+                  <para>63452</para>
+                  <para>24356</para>
+                </entry>
+                <entry>
+                  <para>25364</para>
+                  <para>24635</para>
+                </entry>
+                <entry>
+                  <para>26345</para>
+                  <para>24563</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>56243</para>
+                  <para>62543</para>
+                  <para>46523</para>
+                  <para>36542</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>46352 ) K1</para>
+                  <para>52346 )</para>
+                  <para>64253 )</para>
+                  <para>34526 )</para>
+                  <para>64325 ) K2</para>
+                  <para>54362 )</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+        <informaltable>
+          <tgroup cols="9">
+            <thead>
+              <row>
+                <entry>
+                  <para>Group code</para>
+                </entry>
+                <entry>
+                  <para>M</para>
+                </entry>
+                <entry>
+                  <para>N</para>
+                </entry>
+                <entry>
+                  <para>O</para>
+                </entry>
+                <entry>
+                  <para>P</para>
+                </entry>
+                <entry>
+                  <para>R</para>
+                </entry>
+                <entry>
+                  <para>S</para>
+                </entry>
+                <entry>
+                  <para>T</para>
+                </entry>
+                <entry>
+                  <para>U</para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>In-course</para>
+                </entry>
+                <entry>
+                  <para>23564</para>
+                  <para>23645</para>
+                  <para>25463</para>
+                  <para>26435</para>
+                </entry>
+                <entry>
+                  <para>34562</para>
+                  <para>62345</para>
+                  <para>46325</para>
+                  <para>54263</para>
+                </entry>
+                <entry>
+                  <para>52643</para>
+                  <para>36524</para>
+                  <para>65243</para>
+                  <para>46532</para>
+                </entry>
+                <entry>
+                  <para>54326 ) P1</para>
+                  <para>64352 )</para>
+                  <para>56342 ) P2</para>
+                  <para>64523 )</para>
+                </entry>
+                <entry>
+                  <para>45623</para>
+                  <para>56234</para>
+                  <para>35642</para>
+                  <para>62534</para>
+                </entry>
+                <entry>
+                  <para>52364</para>
+                  <para>34625</para>
+                  <para>64235</para>
+                  <para>45362</para>
+                </entry>
+                <entry>
+                  <para>24536</para>
+                  <para>25346</para>
+                  <para>36452</para>
+                  <para>43526</para>
+                  <para>62453</para>
+                  <para>26354</para>
+                  <para>53246</para>
+                  <para>24653</para>
+                </entry>
+                <entry>
+                  <para>34256 ) U1</para>
+                  <para>42356 )</para>
+                  <para>43652 )</para>
+                  <para>63254 )</para>
+                  <para>52436 )</para>
+                  <para>35426 )</para>
+                  <para>35264 ) U2</para>
+                  <para>42635 )</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Out-of-course</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>62435 ) N1</para>
+                  <para>53264 )</para>
+                  <para>43625 )</para>
+                  <para>35462 )</para>
+                  <para>65234 ) N2</para>
+                  <para>45632 )</para>
+                  <para>52634 )</para>
+                  <para>35624 )</para>
+                </entry>
+                <entry>
+                  <para>63524</para>
+                  <para>53642</para>
+                  <para>56432</para>
+                  <para>65423</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>32564</para>
+                  <para>32645</para>
+                  <para>46235</para>
+                  <para>45263</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+        <informaltable>
+          <tgroup cols="7">
+            <thead>
+              <row>
+                <entry>
+                  <para>Group code</para>
+                </entry>
+                <entry>
+                  <para>a</para>
+                </entry>
+                <entry>
+                  <para>b</para>
+                </entry>
+                <entry>
+                  <para>c</para>
+                </entry>
+                <entry>
+                  <para>d</para>
+                </entry>
+                <entry>
+                  <para>e</para>
+                </entry>
+                <entry>
+                  <para>f</para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>In-course</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Out-of-course</para>
+                </entry>
+                <entry>
+                  <para>23465 ) a1</para>
+                  <para>23546 ) a2</para>
+                  <para>26453 )</para>
+                </entry>
+                <entry>
+                  <para>26534</para>
+                  <para>25643</para>
+                </entry>
+                <entry>
+                  <para>35246</para>
+                  <para>42536</para>
+                  <para>42653</para>
+                  <para>36254</para>
+                </entry>
+                <entry>
+                  <para>34652</para>
+                  <para>45326</para>
+                  <para>62354</para>
+                  <para>54236</para>
+                </entry>
+                <entry>
+                  <para>36425</para>
+                  <para>52463</para>
+                  <para>43562</para>
+                  <para>63245</para>
+                </entry>
+                <entry>
+                  <para>54623</para>
+                  <para>56324</para>
+                  <para>65342</para>
+                  <para>64532</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+        <informaltable>
+          <tgroup cols="4">
+            <thead>
+              <row>
+                <entry>
+                  <para>Group code</para>
+                </entry>
+                <entry>
+                  <para>X</para>
+                </entry>
+                <entry>
+                  <para>Y</para>
+                </entry>
+                <entry>
+                  <para>Z</para>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  <para>In-course</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Out-of-course</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+                <entry>
+                  <para>[None]</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </listitem>
+      <listitem>
+        <para>In Major, groups that include both in-course and out-of-course false courseheads always occur as complete groups. However, in Royal and above, in-course and out-of-course components of a group may occur independently. Therefore in the Methods Library, in-course and out-of-course groups are shown separated by a "/" for Royal and higher. For example, E/Bc indicates that the in-course false courseheads of group E, and the out-of-course false courseheads of groups B and c apply to the <nolink>method</nolink> (Royal or higher) in question.</para>
+        <para>A further consideration in Royal and higher is that certain of the groups defined above, K, L, N, P, U and a, can subdivide. The subdivisions, indicated by K1, K2, L1, L2, N1, N2, P1, P2, U1, U2, and a1, a2 are also shown in the table above. A Royal or higher <nolink>method</nolink> might therefore include U1 rather than U before the "/", or N2 rather than N after the "/".</para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="bold">Example:</emphasis> Ibstock Surprise Royal has the following in the Methods Library:</para>
+        <informaltable>
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry/>
+                <entry>
+                  <para>FCHs</para>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <para>Ibstock</para>
+                </entry>
+                <entry>
+                  <para>L1/BDK1c</para>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+        <para>The false courseheads associated with Ibstock are accordingly:</para>
+        <para>In-course: 26543</para>
+        <para>Out-of-course: 25436, 32456, 23654, 43256, 53426, 63452, 24356, 46352, 52346, 64253, 34526, 35246, 42536, 42653, 36254</para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="bold">Example:</emphasis> A <nolink>composition</nolink> might be advertised as being '<nolink>true</nolink> to BDEKacdefYZ'. A <nolink>band</nolink> is considering using this <nolink>composition</nolink> to ring Othorpe Surprise Major. The CC Methods Library shows that the false coursehead groups for Othorpe are BDXY. Because Othorpe has group X falseness but the <nolink>composition</nolink> does not include X in the list of groups that it is <nolink>true</nolink> to, this <nolink>composition</nolink> will be false if used with Othorpe.</para>
+      </listitem>
+      <listitem>
+        <para>Methods without any in-course false courseheads are referred to as "cps", or clear proof scale. However, these <nolink>methods</nolink> will usually have out-of-course false courseheads. Bristol Surprise Major is an example of a cps <nolink>method</nolink>.</para>
+      </listitem>
+      <listitem>
+        <para>A <nolink>method</nolink> that is false in the <nolink>plain course</nolink> will have false coursehead group A, usually in addition to other groups.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>
