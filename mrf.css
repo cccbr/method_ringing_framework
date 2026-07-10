@@ -257,6 +257,23 @@ a {
     margin-left: 2.25rem;
 }
 
+.mrf-list-level-1 > li > span.float-right {
+    position: absolute;
+    left: -2.8rem;
+    top: 0;
+    float: none !important;
+    margin-right: 0;
+}
+
+.mrf-list-level-2 > li > span.float-right,
+.mrf-list-level-3 > li > span.float-right {
+    position: absolute;
+    left: -3.5rem;
+    top: 0;
+    float: none !important;
+    margin-right: 0;
+}
+
 .mrf-list-level-0 > li {
     margin-bottom: 0.35rem;
 }
