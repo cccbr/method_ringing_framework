@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="development-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-version="3" mrf:edition-label="Edition 3">
   <info>
-    <title>Version 2 Development</title>
+    <title>Edition 3 Development</title>
     <subtitle>Framework for Method Ringing, Appendix G</subtitle>
     <edition>3</edition>
     <releaseinfo role="status">draft</releaseinfo>
@@ -13,23 +13,20 @@
   </info>
   <section xml:id="team">
     <title>A. Team</title>
-    <para>Version 2 was developed by the CC Framework Team, which is part of the Technical and Taxonomy CC Workgroup.</para>
-    <para>The CC Framework team comprises Tim Barnes (team leader), Mark Davies, John Harrison, Graham John, Don Morrison and Philip Saddleton.</para>
+    <para>Edition 3 was developed by the CCCBR Framework Team, which is part of the CCCBR Technical and Taxonomy Workgroup.</para>
+    <para>The CCCBR Framework team comprises Tim Barnes (team leader), Mark Davies, John Harrison, Graham John, Don Morrison and Philip Saddleton.</para>
   </section>
   <section xml:id="objectives">
     <title>B. Objectives</title>
-    <para>Version 2 was developed to address:</para>
-    <para>(a) Suggestions received from members of the ringing community subsequent to the implementation of version 1; and</para>
+    <para>Edition 3 was developed to address:</para>
+    <para>(a) Suggestions received from members of the ringing community subsequent to the implementation of Edition 2.</para>
     <para>(b) Improvements identified by the Framework team.</para>
   </section>
   <section xml:id="articles">
     <title>C. Articles</title>
     <orderedlist numeration="arabic">
       <listitem>
-        <para>Click <link xlink:href="images/development/v2-first-rw-article.pdf"> here </link> for the first RW article on version 2 by the Framework team.</para>
-      </listitem>
-      <listitem>
-        <para>Click <link xlink:href="images/development/v2-second-rw-article.pdf"> here </link> for the second RW article on version 2 by the Framework team.</para>
+        <para>tba</para>
       </listitem>
     </orderedlist>
   </section>
@@ -37,7 +34,7 @@
     <title>D. Changes</title>
     <orderedlist numeration="arabic">
       <listitem>
-        <para>Click <link xlink:href="images/development/v1-v2-diff.pdf"> here </link> for a document describing the <nolink>changes</nolink> made in version 2.</para>
+        <para>tba</para>
       </listitem>
     </orderedlist>
   </section>

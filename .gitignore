@@ -4,3 +4,6 @@ __pycache__
 *.log
 *.pdf
 generated/
+diff-report.md
+LLM_SESSION_NOTES.md
+latest

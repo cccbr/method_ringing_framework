@@ -63,6 +63,16 @@ Three PowerShell scripts build the outputs independently. Each accepts `-Edition
 
 Full pipeline: run `build-xml.ps1`, then `build-web.ps1`, then `build-pdf.ps1` in sequence.
 
+## Comparing editions
+
+`scripts\diff-editions.py` produces a markdown report of structural differences between two editions:
+
+- `py -3.14 scripts\diff-editions.py edition2 edition3` — writes to `diff-report.md`
+- `py -3.14 scripts\diff-editions.py edition2 edition3 --full-diff` — includes full XML diffs
+- `py -3.14 scripts\diff-editions.py edition2 edition3 -o my-report.md` — custom output path
+
+The report shows pages added/removed, glossary term changes, synonym changes, and section heading changes, with a new heading per changed page.
+
 ## Source XML workflow
 
 The XML source directories live under `xml-source/edition1`, `xml-source/edition2`, and `xml-source/edition3`. These are the canonical sources for the web and PDF builds.
