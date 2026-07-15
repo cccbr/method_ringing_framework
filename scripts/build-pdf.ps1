@@ -28,9 +28,14 @@ if (-not $versions) {
 }
 
 Write-Host "Building PDFs for: $($versions -join ', ')"
-
-# Step 1: Render LaTeX from XML (no --html-only so LaTeX + master files are generated)
+Write-Host "`nValidating XML..."
+& py -3.14 scripts\validate-xml.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[WARNING] XML validation found issues - review before continuing"
+}
 Write-Host "`n--- Phase 1: LaTeX generation ---"
+
+# Step 1: Render LaTeX from XML
 $editionArgs = @()
 foreach ($v in $versions) {
     $editionArgs += "--edition", $v

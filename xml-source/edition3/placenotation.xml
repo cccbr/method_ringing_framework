@@ -11,16 +11,35 @@
     <uri type="canonical">https://cccbr.org.uk/placenotation.html</uri>
     <othermeta role="source-path">version3/placenotation.html</othermeta>
   </info>
-  <glossary mrf:source-title="Framework for Method Ringing">
+   <glossary mrf:source-title="Framework for Method Ringing">
+    <glossdiv xml:id="placenotation">
+      <title>Place Notation</title>
+          <glossentry xml:id="place-notation" mrf:number="A.1">
+            <glossterm>Place Notation</glossterm>
+            <glossdef>
+              <para>A compact symbolic notation for specifying a Change or a sequence of Changes.</para>
+            </glossdef>
+          </glossentry>
+      <orderedlist numeration="numeric" startingnumber="2">
+        <listitem>
+      <para>Place Notation can be used to describe:</para>
+      <orderedlist numeration="loweralpha" role="compact">
+        <listitem>
+        <para>Adjacent Changes or Identity Changes</para>
+        </listitem>
+        <listitem>
+        <para>Jump Changes</para>
+        </listitem>
+        <listitem>
+        <para>Conditional Changes</para>
+        </listitem>
+      </orderedlist>
+        </listitem>
+      </orderedlist>
+      </glossdiv>
     <glossdiv xml:id="adjacent-identitychanges">
       <title>A. Adjacent and Identity Changes</title>
-      <glossentry xml:id="adjacent-identitychanges-entry-1-place-notation" mrf:number="A.1">
-        <glossterm>Place Notation</glossterm>
-        <glossdef>
-          <para>A compact way to describe a Change or a sequence of Changes when the Change(s) comprise Adjacent or Identity Changes.</para>
-        </glossdef>
-      </glossentry>
-      <orderedlist numeration="arabic" startingnumber="2">
+      <orderedlist numeration="arabic">
         <listitem>
           <para>A Change is represented in place notation by listing the Places made, starting from the earliest Place to the latest Place. All remaining pairs of adjacent bells swap.</para>
           <example>
@@ -99,18 +118,15 @@
     </glossdiv>
     <glossdiv xml:id="jumpchanges">
       <title>B. Jump Changes</title>
-      <glossentry xml:id="jumpchanges-entry-1-place-notation" mrf:number="B.1">
-        <glossterm>Jump Place Notation</glossterm>
-        <glossdef>
-          <para>A compact way to describe a Jump Change or a sequence of Changes which include Jump Changes.</para>
-        </glossdef>
+      <glossentry xml:id="jump-notation" mrf:number="B.1">
+        <glossterm>Jump Notation</glossterm>
+          <glossdef>
+              <para>A compact symbolic notation for a Jump Change.</para>
+          </glossdef>
       </glossentry>
       <orderedlist numeration="arabic" startingnumber="2">
         <listitem>
-          <para>Jump Place Notation extends standard Place Notation to describe Methods containing Jump Changes.</para>
-        </listitem>
-        <listitem>
-          <para>Adjacent or Identity Changes are included as described in Appendix.A.A. The additional notation required to describe Jump Changes, is as follows.</para>
+          <para>The notation required to describe a Jump Change, is as follows.</para>
         </listitem>
         <listitem>
           <para>A pair of Places enclosed in round brackets indicates that the bell in the first of these Places jumps to the second of these Places in the next Row. The rest of the bells in the span of Places within the round brackets each move by one Place to accommodate the jump.</para>
@@ -200,22 +216,22 @@
         </listitem>
       </orderedlist>
     </glossdiv>
-    <glossdiv xml:id="conditional-place-notation">
+    <glossdiv xml:id="conditional-changes">
       <title>C. Conditional Changes</title>
-          <glossentry xml:id="conditionalchanges-entry-1-place-notation" mrf:number="C.1">
-           <glossterm>Conditional Place Notation</glossterm>
+       <glossentry xml:id="conditional-notation" mrf:number="C.1">
+            <glossterm>Conditional Notation</glossterm>
             <glossdef>
-          <para>A compact way to describe a sequence of conditional Changes.</para>
-        </glossdef>
-      </glossentry>
+              <para>A compact symbolic notation for a Change or a sequence of Changes that is applied only if a specified condition is met.</para>
+            </glossdef>
+          </glossentry>
       <orderedlist numeration="arabic" startingnumber="2">
         <listitem>
-          <para>Conditional Place Notation extends Place Notation or Jump Place Notation to describe Dynamic Methods, and can also be used to represent some Static Methods more concisely.</para>
+          <para>Conditional notation is used to describe Dynamic Methods, and can also be used to represent some Static Methods or rule-based Compositions more concisely.</para>
         </listitem>
         <listitem>
-          <para>Conditional Place Notation takes the form of a sequence of <emphasis role="italic">alternative</emphasis> clauses:</para>
+          <para>Conditional notation takes the form of a sequence of <emphasis role="italic">alternative</emphasis> clauses:</para>
           <para><literal>placenotation{condition}placenotation{condition}…</literal></para>
-          <para>Each clause consists of Place Notation or Jump Place Notation followed by a condition enclosed in braces {}. The alternative clauses are applied in sequence. When an alternative is reached, its place notation is applied, generating one or more new Rows, and the final Row is then tested against its condition:</para>
+          <para>Each clause consists of a Change or sequence of Changes as described in Section A and/or B above, followed by a condition enclosed in braces {}. The alternative clauses are applied in sequence. When an alternative is reached, its place notation is applied, generating one or more new Rows, and the final Row is then tested against its condition:</para>
           <orderedlist numeration="loweralpha" role="compact">
             <listitem>
               <para>If the condition is satisfied, the generated Rows are retained and the sequence restarts from the beginning of the first clause;</para>
@@ -269,18 +285,26 @@
           </example>
         </listitem>
         <listitem>
-          <para>Conditional Place Notation is designed primarily to define Dynamic Methods, where the choice of Change depends on the position of Bells in a preceding Row. However, the same mechanism can also express some Static Methods more concisely when Blocks of Changes are repeated.</para>
+          <para>Conditional Notation is designed primarily to define Dynamic Methods, where the choice of Change depends on the position of Bells in a preceding Row. However, the same mechanism can also express some Static Methods or rule-based Compositions more concisely when Blocks of Changes are repeated.</para>
           <example>
-            <para>Plain Bob Sixteen can be expressed as <literal>-{h}12{1}1D</literal>.</para>
-            <para>Cross at every handstroke; Place Notation 12 when the treble leads; at all other rows, use Place Notation 1D.</para>
+            <orderedlist role="compact">
+              <listitem>
+                <para>Plain Bob Sixteen can be expressed as <literal>-{h}12{1}1D</literal>.</para>
+                <para>Cross at every handstroke; Place Notation 12 when the treble leads; at all other rows, use Place Notation 1D.</para>
+              </listitem>
+              <listitem>
+                <para>The wrong-home-wrong calling for a 720 of Plain Bob Minor can be expressed as <literal>-{h}1234{12xx56}14{1xxx6,1x5xx6}12{1}16</literal>.</para>
+                <para>Cross at every handstroke; A single (1234) at a leadend when all the bells apart from 3-4 are home; A bob (14) at a leadend when the tenor is in 5ths, or 6ths place with the 5 running out; Seconds (12) at a leadend when the treble leads; at all other rows, plain hunt (16).</para>
+              </listitem>
+            </orderedlist>
           </example>
         </listitem>
         <listitem>
-          <para>The condition mechanism is intended to be implementation-neutral. A computer-based ringing simulator implementing Conditional Place Notation should discard generated Rows when a condition fails and proceed to test the next alternative. In human-readable terms, the notation describes the rule by which the conductor or ringer would determine which Change(s) to ring by anticipating the final Row generated.
-          In practice, Dynamic Methods need to be sufficiently simple and explained clearly to ringers — usually as a textual description — to make it easy to follow the logic represented by the Conditional Place Notation.</para>
+          <para>The condition mechanism is intended to be implementation-neutral. A computer-based ringing simulator implementing Conditional Notation should discard generated Rows when a condition fails and proceed to test the next alternative. In human-readable terms, the notation describes the rule by which the conductor or ringer would determine which Change(s) to ring by anticipating the final Row generated.
+          In practice, Dynamic Methods need to be sufficiently simple and explained clearly to ringers — usually as a textual description — to make it easy to follow the logic represented by the Conditional Notation.</para>
         </listitem>
         <listitem>
-        <para>It should be noted that the same Dynamic Method can be expressed in multiple ways using Conditional Place Notation, so it cannot be used as a test of uniqueness.</para>
+        <para>It should be noted that the same Dynamic Method can be expressed in multiple ways using Conditional Notation, so it cannot be used as a test of uniqueness.</para>
         </listitem>
         <listitem>
           <para>The following table lists the Condition Place Notation for some Dynamic Methods that have been rung:</para>
@@ -372,5 +396,5 @@
         </listitem>
       </orderedlist>
     </glossdiv>
-  </glossary>
+      </glossary>
 </article>

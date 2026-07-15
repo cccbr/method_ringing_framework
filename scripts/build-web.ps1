@@ -29,6 +29,11 @@ if (-not $versions) {
 }
 
 Write-Host "Building web output for: $($versions -join ', ')"
+Write-Host "`nValidating XML..."
+& py -3.14 scripts\validate-xml.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[WARNING] XML validation found issues - review before continuing"
+}
 $editionArgs = @()
 foreach ($v in $versions) {
     $editionArgs += "--edition", $v

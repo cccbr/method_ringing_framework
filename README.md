@@ -73,6 +73,24 @@ Full pipeline: run `build-xml.ps1`, then `build-web.ps1`, then `build-pdf.ps1` i
 
 The report shows pages added/removed, glossary term changes, synonym changes, and section heading changes, with a new heading per changed page.
 
+## XML validation
+
+`scripts\validate-xml.py` checks the XML source files for structural problems before building:
+
+- `py -3.14 scripts\validate-xml.py` — validates all editions in `xml-source/`
+- `py -3.14 scripts\validate-xml.py xml-source\edition3` — validate a single edition
+
+The validator catches:
+
+<br>• `<glossentry>` elements placed directly in `<glossary>` without a `<glossdiv>` wrapper — these are **silently dropped** by the renderers
+<br>• `<glossdiv>` elements missing a `<title>` — renders incorrectly
+<br>• Non-glossdiv content placed directly in `<glossary>` — silently dropped
+<br>• `<glossentry>` elements missing `<glossterm>` or `<glossdef>`
+<br>• `<section>` or `<glossdiv>` inside `<listitem>` — silently dropped
+<br>• XML syntax errors with file and line number
+
+The web and PDF build scripts run validation automatically before rendering. Warnings are also emitted at render time for unrecognised elements that would be silently dropped from the output.
+
 ## Source XML workflow
 
 The XML source directories live under `xml-source/edition1`, `xml-source/edition2`, and `xml-source/edition3`. These are the canonical sources for the web and PDF builds.

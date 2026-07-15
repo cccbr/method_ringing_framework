@@ -494,6 +494,7 @@ def render_detail(node: etree._Element, asset_root: str) -> str:
         if role == "technical-comment":
             return rf"\MRFTechnical{{{body}}}"
         return rf"\MRFFurther{{{body}}}"
+    print(f"Warning: Unrecognized detail element <{name}> in LaTeX renderer — silently dropped", file=sys.stderr)
     return ""
 
 
@@ -544,6 +545,7 @@ def render_block(node: etree._Element, asset_root: str) -> str:
         return render_question_answer_block(node, asset_root)
     if name == "section":
         return render_narrative_section(node, asset_root, "", node.get("{http://www.w3.org/XML/1998/namespace}id", ""))
+    print(f"Warning: Unrecognized block element <{name}> in LaTeX renderer — silently dropped", file=sys.stderr)
     return ""
 
 
@@ -680,6 +682,15 @@ def build_document(article: etree._Element, asset_root: str) -> str:
     ]
 
     glossdivs = article.findall("db:glossary/db:glossdiv", NS)
+    # Warn about bare glossentry elements that will be silently dropped
+    bare_entries = article.findall("db:glossary/db:glossentry", NS)
+    if bare_entries and not glossdivs:
+        print(
+            f"Warning: {len(bare_entries)} glossentry element(s) found directly in "
+            f"<glossary> without a <glossdiv> wrapper — they will be SILENTLY DROPPED. "
+            f"Wrap them in a <glossdiv>. (File: {source_stem}.xml)",
+            file=sys.stderr,
+        )
     if glossdivs:
         for index, glossdiv in enumerate(glossdivs, start=1):
             glossdiv_title = read_text(glossdiv.find("db:title", NS))

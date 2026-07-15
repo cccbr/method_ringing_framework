@@ -941,6 +941,7 @@ def render_glossdiv(glossdiv: etree._Element, asset_prefix: str, show_header: bo
         elif child_name in {"example", "note", "mediaobject"}:
             rendered = render_detail_group(child, asset_prefix)
         else:
+            print(f"Warning: Unrecognized child <{child_name}> inside <glossdiv> — silently dropped", file=sys.stderr)
             rendered = ""
         if rendered:
             body_parts.append(rendered)
@@ -986,6 +987,8 @@ def render_section(section: etree._Element, asset_prefix: str) -> str:
             main_blocks.append(render_section(child, asset_prefix))
         else:
             rendered = render_detail_group(child, asset_prefix)
+            if not rendered:
+                print(f"Warning: Unrecognized child <{child_name}> inside <section> — silently dropped", file=sys.stderr)
             if rendered:
                 main_blocks.append(rendered)
     content_html = "\n".join(main_blocks)
@@ -1549,6 +1552,16 @@ def build_html(
     subtitle = read_text(info.find("db:subtitle", NS) if info is not None else None)
     canonical = read_text(info.find('db:uri[@type="canonical"]', NS) if info is not None else None)
     glossdivs = article.findall("db:glossary/db:glossdiv", NS)
+    # Warn about bare glossentry elements that will be silently dropped
+    bare_entries = article.findall("db:glossary/db:glossentry", NS)
+    if bare_entries and not glossdivs:
+        page = canonical or (page_href or "unknown")
+        print(
+            f"Warning: {len(bare_entries)} glossentry element(s) found directly in "
+            f"<glossary> without a <glossdiv> wrapper — they will be SILENTLY DROPPED. "
+            f"Wrap them in a <glossdiv>. (Page: {page})",
+            file=sys.stderr,
+        )
     sections = article.findall("db:section", NS)
     heading = main_heading(title, subtitle)
     description = f"{title} ({article.get(f'{{{NS['mrf']}}}status', 'working')} edition {article.get(f'{{{NS['mrf']}}}framework-version', '')})".strip()
