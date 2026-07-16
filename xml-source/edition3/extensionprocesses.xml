@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="extensionprocesses-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-version="3" mrf:edition-label="Edition 3">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="extensionprocesses-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-edition="3" mrf:edition-label="Edition 3">
   <info>
     <title>Extension Processes</title>
     <subtitle>Framework for Method Ringing, Appendix D</subtitle>
     <edition>3</edition>
     <releaseinfo role="status">draft</releaseinfo>
     <releaseinfo role="authority">CCCBR</releaseinfo>
-    <releaseinfo role="implementation-date"></releaseinfo>
-    <releaseinfo role="effective-date"></releaseinfo>
+    <releaseinfo role="implementation-date"/>
+    <releaseinfo role="effective-date"/>
     <uri type="canonical">https://cccbr.org.uk/extensionprocesses.html</uri>
     <othermeta role="source-path">version3/extensionprocesses.html</othermeta>
   </info>
@@ -153,7 +153,7 @@
           <para>The steps to implement this Extension Process are shown using the following example where <link xlink:href="https://complib.org/method/11932">Little Bob Minor</link> is the Parent Method:</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses/example-1.svg" width="806" height="241"/>
+              <imagedata fileref="images/edition3/extensionprocesses/example-1.svg" width="806" height="241"/>
             </imageobject>
           </mediaobject>
           <orderedlist numeration="arabic">
@@ -246,7 +246,7 @@
           <para>The steps to implement this Extension Process are shown using the following example where <link xlink:href="https://complib.org/method/10560">St Simon's Bob Doubles</link> is the Parent Method:</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses/example-2.svg" width="494" height="321"/>
+              <imagedata fileref="images/edition3/extensionprocesses/example-2.svg" width="494" height="321"/>
             </imageobject>
           </mediaobject>
           <orderedlist numeration="arabic">
@@ -323,7 +323,7 @@
           <para>The steps to implement this Extension Process are shown using the following example where <link xlink:href="https://complib.org/method/14931">Milton Surprise Minor</link> is the Parent Method:</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses/example-3.svg" width="1420" height="601"/>
+              <imagedata fileref="images/edition3/extensionprocesses/example-3.svg" width="1420" height="601"/>
             </imageobject>
           </mediaobject>
           <orderedlist numeration="arabic">
@@ -552,7 +552,7 @@
           <para>The diagram below shows EP4 used in single <nolink>mode</nolink> with an overlap <nolink>length</nolink> of zero to extend <link xlink:href="https://complib.org/method/27834">Stedman Doubles</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-stedman.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-stedman.svg"/>
             </imageobject>
           </mediaobject>
           <para>The <nolink>places</nolink> in line 1 above either remain unchanged in line 2 if they are less than or equal to the <nolink>mode</nolink>, or they increase by the <nolink>stage</nolink> increment if they are greater than the <nolink>mode</nolink>. Since the <nolink>mode</nolink> in this example is 3, the <nolink>places</nolink> in line 2 are the same as line 1, except that 5th's <nolink>place</nolink> in line 1 becomes 7th's <nolink>place</nolink> in line 2.</para>
@@ -565,7 +565,7 @@
           <para>The diagram below shows EP4 used in single <nolink>mode</nolink> with an expanding lead <nolink>length</nolink> to extend <link xlink:href="https://complib.org/method/11369">St Clement's College Bob Minor</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-st-clements.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-st-clements.svg"/>
             </imageobject>
           </mediaobject>
           <para>This example shows how overlapping segments are used to generate <nolink>extensions</nolink>. The first step is to list the place notation for a half lead of the <nolink>method</nolink> (line 1). By convention, the <nolink>lead end change</nolink> is shown first, and is labelled as <nolink>change</nolink> 0. The subsequent <nolink>changes</nolink> for a half-lead are then shown and are labelled as <nolink>changes</nolink> 1 to n, where n is half the lead <nolink>length</nolink>.</para>
@@ -579,7 +579,7 @@
           <para>The diagram below shows EP4 used in double <nolink>mode</nolink> to extend <link xlink:href="https://complib.org/method/14568">Cambridge Surprise Minor</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-cambridge.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-cambridge.svg"/>
             </imageobject>
           </mediaobject>
           <para>In a double <nolink>mode</nolink>
@@ -607,7 +607,7 @@
           <para>The diagram below shows EP4 used in triple <nolink>mode</nolink> to extend <link xlink:href="https://complib.org/method/29353">Nightingale Treble Place Minor</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-nightingale.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-nightingale.svg"/>
             </imageobject>
           </mediaobject>
           <para>In a triple <nolink>mode</nolink>
@@ -623,7 +623,7 @@
           <para>The diagram below shows EP4 used in double <nolink>mode</nolink> to contract <link xlink:href="https://complib.org/method/26082">Kent Treble Bob Minor</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-kent.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-kent.svg"/>
             </imageobject>
           </mediaobject>
           <para>In most cases, <nolink>extension</nolink> works in both directions. E.g. Kent Treble Bob Minor can be extended to Kent Treble Bob Major, and Kent Treble Bob Major can be contracted with the inverse process to obtain Kent Treble Bob Minor. The <nolink>parent method</nolink> is usually designated as the version of a <nolink>method</nolink> family that has the lowest <nolink>stage</nolink>, and then only <nolink>extensions</nolink> above that <nolink>stage</nolink> need to be considered.</para>
@@ -638,7 +638,7 @@
           <para>The diagram below shows EP4 used with a single <nolink>stage</nolink> increment to extend <link xlink:href="https://complib.org/method/11901">Brampford Speke Bob Minor</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-brampford-speke.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-brampford-speke.svg"/>
             </imageobject>
           </mediaobject>
           <para>[Notes: this process requires a different overlap <nolink>length</nolink> for the <nolink>places</nolink> below the <nolink>hunt bell</nolink>, compared with the overlap <nolink>length</nolink> for the <nolink>places</nolink> of the <nolink>hunt bell</nolink> and the <nolink>places</nolink> above the <nolink>hunt bell</nolink>. It is also necessary to discard a <nolink>place</nolink> that overflows the half-lead. An alternative process that addresses these issues is shown below, but it requires other modifications to the general process. At the moment, the process above also includes <nolink>places</nolink> made adjacent to a <nolink>hunt bell</nolink>
@@ -651,7 +651,7 @@
           <para>The diagram below shows EP4 used with a single <nolink>stage</nolink> increment to extend <link xlink:href="https://complib.org/method/11901">Brampford Speke Bob Minor</link>.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses2/ep4-brampford-speke-alt.svg"/>
+              <imagedata fileref="images/edition3/extensionprocesses2/ep4-brampford-speke-alt.svg"/>
             </imageobject>
           </mediaobject>
           <para>Single <nolink>stage</nolink>

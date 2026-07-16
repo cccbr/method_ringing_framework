@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="classification-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-version="2" mrf:edition-label="Edition 2">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="classification-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
   <info>
     <title>Method Classification</title>
     <subtitle>Framework for Method Ringing, Section 4</subtitle>
@@ -33,7 +33,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/hunt-bell.svg" width="112" height="144"/>
+                <imagedata fileref="images/edition2/classification/hunt-bell.svg" width="112" height="144"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -87,7 +87,7 @@
             <para>Consider the following two Paths, which are both loops:</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/path-diagram.svg" width="452" height="121"/>
+                <imagedata fileref="images/edition2/classification/path-diagram.svg" width="452" height="121"/>
               </imageobject>
             </mediaobject>
             <para>The numbers in the diagram above represent the Places through which the Paths pass.</para>
@@ -197,7 +197,7 @@
             <para>The diagram below shows the Leadheads, Leadends, Halflead Changes and Leadend Changes for a Plain Course of Plain Bob Minimus.</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/leadhead.svg" width="293" height="400"/>
+                <imagedata fileref="images/edition2/classification/leadhead.svg" width="293" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -236,7 +236,7 @@
             <para>In a Path where the Hunt Bell moves between 1st's Place and 6th's Place, the Dodging Places are 1-2, 3-4 and 5-6. The diagram below shows the Dodging Places for Kent Treble Bob Minor.</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/dodging-places.svg" width="268" height="400"/>
+                <imagedata fileref="images/edition2/classification/dodging-places.svg" width="268" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -360,7 +360,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/plain-bob-minimus.svg" width="104" height="400"/>
+                <imagedata fileref="images/edition2/classification/plain-bob-minimus.svg" width="104" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -377,7 +377,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/stanton-minimus.svg" width="104" height="400"/>
+                <imagedata fileref="images/edition2/classification/stanton-minimus.svg" width="104" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -394,7 +394,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/christ-church-dublin-differential-doubles.svg" width="128" height="976"/>
+                <imagedata fileref="images/edition2/classification/christ-church-dublin-differential-doubles.svg" width="128" height="976"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -436,7 +436,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/plain-bob-minor.svg" width="144" height="208"/>
+                <imagedata fileref="images/edition2/classification/plain-bob-minor.svg" width="144" height="208"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -455,7 +455,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/foti-place-minor.svg" width="144" height="208"/>
+                <imagedata fileref="images/edition2/classification/foti-place-minor.svg" width="144" height="208"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -472,7 +472,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/double-oxford-bob-minor.svg" width="144" height="208"/>
+                <imagedata fileref="images/edition2/classification/double-oxford-bob-minor.svg" width="144" height="208"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -509,7 +509,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/kent-treble-bob-minor.svg" width="144" height="400"/>
+                <imagedata fileref="images/edition2/classification/kent-treble-bob-minor.svg" width="144" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -528,7 +528,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/oxford-treble-bob-minor.svg" width="144" height="400"/>
+                <imagedata fileref="images/edition2/classification/oxford-treble-bob-minor.svg" width="144" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -545,7 +545,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/cambridge-surprise-minor.svg" width="144" height="400"/>
+                <imagedata fileref="images/edition2/classification/cambridge-surprise-minor.svg" width="144" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -562,7 +562,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/college-bob-iv-delight-minor.svg" width="144" height="400"/>
+                <imagedata fileref="images/edition2/classification/college-bob-iv-delight-minor.svg" width="144" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -602,7 +602,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/stoke-albany-treble-place-minor.svg" width="144" height="400"/>
+                <imagedata fileref="images/edition2/classification/stoke-albany-treble-place-minor.svg" width="144" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -634,7 +634,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/alperton-alliance-minor.svg" width="144" height="272"/>
+                <imagedata fileref="images/edition2/classification/alperton-alliance-minor.svg" width="144" height="272"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -660,7 +660,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/seavington-st-mary-hybrid-minor.svg" width="143" height="400"/>
+                <imagedata fileref="images/edition2/classification/seavington-st-mary-hybrid-minor.svg" width="143" height="400"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -679,7 +679,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/classification/canterbury-little-bob-minor.svg" width="144" height="144"/>
+                <imagedata fileref="images/edition2/classification/canterbury-little-bob-minor.svg" width="144" height="144"/>
               </imageobject>
             </mediaobject>
           </example>

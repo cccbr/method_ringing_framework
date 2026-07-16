@@ -866,7 +866,7 @@ def make_article(
     root.set("{http://www.w3.org/XML/1998/namespace}lang", "en")
     root.set(qname("status", "mrf"), status)
     root.set(qname("authority", "mrf"), "CCCBR")
-    root.set(qname("framework-version", "mrf"), framework_version)
+    root.set(qname("framework-edition", "mrf"), framework_version)
     root.set(qname("edition-label", "mrf"), f"Edition {framework_version}")
 
     info = etree.SubElement(root, qname("info"))

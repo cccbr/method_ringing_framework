@@ -2,7 +2,7 @@
 
 This repository holds the documents that form the Central Council for Church Bell Ringer's Framework for Method Ringing.
 
-The first version of the framework was approved by the Central Council Executive on 24 February 2019. It was issued to members and affiliated societies on 28 February 2019 giving notice of 1 June 2019 as its effective implementation date.
+The first edition of the framework was approved by the Central Council Executive on 24 February 2019. It was issued to members and affiliated societies on 28 February 2019 giving notice of 1 June 2019 as its effective implementation date.
 
 The principal branches are:
 
@@ -11,16 +11,16 @@ The principal branches are:
 
 ## XML-led publishing workflow
 
-The repository has moved to XML as the maintained editorial source.
+The repository moved to XML as the maintained editorial source in July 2026.
 
 1. Bootstrap or refresh XML from the existing website HTML with `scripts\build-xml.ps1`.
-2. Maintain the Framework in XML in the folder `xml-source\editionN`.
+2. Maintain the Framework in XML in the folder `xml-source\editionN` and images in `images\editionN`.
 3. Regenerate website HTML from XML with `scripts\build-web.ps1`.
 4. Generate PDF document versions from XML with `scripts\build-pdf.ps1`.
 5. Regenerate the published outputs in `gh-pages` using continuous integration when XML changes are pushed to `master`.
 
-The existing `version1\`, `version2\` and `version3\` website trees remain the source material used to bootstrap the XML.
-The `xml-source\edition1\`, `xml-source\edition2\` and `xml-source\edition3\` now contain the framework source material in XML.
+The existing `version1\`, `version2\` and `version3\` website trees were the source material used to bootstrap the XML. They are no longer maintained or published — generated HTML is served instead.
+The `xml-source\edition1\`, `xml-source\edition2\` and `xml-source\edition3\` directories contain the framework source material in XML. Images are stored in `images\edition1\`, `images\edition2\`, and `images\edition3\`.
 
 ## Local Outputs
 
@@ -31,9 +31,9 @@ The `xml-source\edition1\`, `xml-source\edition2\` and `xml-source\edition3\` no
 
 The PDF outputs currently include:
 
-- `framework-versionN-main.pdf` - main Framework volume without notes
-- `framework-versionN-main-full.pdf` - main Framework volume with notes
-- `framework-versionN-appendices.pdf` - appendices volume with notes
+- `framework-editionN-main.pdf` - main Framework volume without notes
+- `framework-editionN-main-full.pdf` - main Framework volume with notes
+- `framework-editionN-appendices.pdf` - appendices volume with notes
 
 ## Prerequisites for local generation
 
@@ -144,7 +144,7 @@ The framework metadata attributes in the `mrf:` namespace are:
 | --- | --- |
 | `mrf:status` | Publication status such as historic, definitive, or draft |
 | `mrf:authority` | Publishing authority, currently CCCBR |
-| `mrf:framework-version` | Numeric framework edition version |
+| `mrf:framework-edition` | Numeric framework edition number |
 | `mrf:edition-label` | Display label such as Edition 1 |
 | `mrf:source-title` | Original source title used for generated glossary content |
 | `mrf:label` | Display label for structured list items such as FAQ subitems |

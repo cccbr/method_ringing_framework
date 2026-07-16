@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="issues-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-version="3" mrf:edition-label="Edition 3">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="issues-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-edition="3" mrf:edition-label="Edition 3">
   <info>
     <title>Issue Log</title>
     <subtitle>Framework for Method Ringing</subtitle>

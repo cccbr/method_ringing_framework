@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="principles-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-version="3" mrf:edition-label="Edition 3">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="principles-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-edition="3" mrf:edition-label="Edition 3">
   <info>
     <title>Framework Principles</title>
     <subtitle>Framework for Method Ringing, Appendix F</subtitle>
     <edition>3</edition>
     <releaseinfo role="status">draft</releaseinfo>
     <releaseinfo role="authority">CCCBR</releaseinfo>
-    <releaseinfo role="implementation-date"></releaseinfo>
-    <releaseinfo role="effective-date"></releaseinfo>
+    <releaseinfo role="implementation-date"/>
+    <releaseinfo role="effective-date"/>
     <uri type="canonical">https://cccbr.org.uk/principles.html</uri>
     <othermeta role="source-path">version3/principles.html</othermeta>
   </info>
@@ -53,7 +53,7 @@
           <para>In <nolink>method</nolink> ringing, the same set of bells rings in every Row, with each bell ringing exactly once in every Row.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/principles/not-method-ringing-1.svg" width="480" height="240"/>
+              <imagedata fileref="images/edition3/principles/not-method-ringing-1.svg" width="480" height="240"/>
             </imageobject>
           </mediaobject>
         </listitem>
@@ -64,7 +64,7 @@
           <para>In <nolink>method</nolink> ringing, each bell rings in a different Place in the Row to every other bell.</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/principles/not-method-ringing-2.svg" width="208" height="144"/>
+              <imagedata fileref="images/edition3/principles/not-method-ringing-2.svg" width="208" height="144"/>
             </imageobject>
           </mediaobject>
         </listitem>

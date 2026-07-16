@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="fundamentals-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-version="2" mrf:edition-label="Edition 2">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="fundamentals-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
   <info>
     <title>Fundamentals of Method Ringing</title>
     <subtitle>Framework for Method Ringing, Section 3</subtitle>
@@ -97,7 +97,7 @@
             <para>A Change might transpose the bells from the Row 214365 to the Row 241356.</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/change.svg" width="300" height="90"/>
+                <imagedata fileref="images/edition2/fundamentals/change.svg" width="300" height="90"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -161,7 +161,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/block.svg" width="250" height="150"/>
+                <imagedata fileref="images/edition2/fundamentals/block.svg" width="250" height="150"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -190,7 +190,7 @@
             <para>The following diagram shows the relationships between the various components of <nolink>method</nolink> ringing. Terms in the diagram that are not defined above are defined elsewhere in the Framework.</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/hierarchy.svg" width="1024" height="576"/>
+                <imagedata fileref="images/edition2/fundamentals/hierarchy.svg" width="1024" height="576"/>
               </imageobject>
             </mediaobject>
           </note>
@@ -209,7 +209,7 @@
           <example>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/roundblock.svg" width="225" height="150"/>
+                <imagedata fileref="images/edition2/fundamentals/roundblock.svg" width="225" height="150"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -274,7 +274,7 @@
             <para>Bastow Little Bob Minimus has the sequence of Changes x12x14. A Plain Lead of this Method, starting from Rounds, is therefore:</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/plainlead.svg" width="225" height="80"/>
+                <imagedata fileref="images/edition2/fundamentals/plainlead.svg" width="225" height="80"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -292,7 +292,7 @@
             <para>Bastow Little Bob Minimus has the sequence of Changes x12x14. A Plain Course of this Method, starting from Rounds, is therefore:</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/plaincourse.svg" width="225" height="215"/>
+                <imagedata fileref="images/edition2/fundamentals/plaincourse.svg" width="225" height="215"/>
               </imageobject>
             </mediaobject>
           </example>
@@ -383,7 +383,7 @@
             <para>A Cover Bell remains in the same Place from one Row to the next. In the example above, the Doubles Changes of the Composition are deemed to become Minor Changes with a place notation of '6' added to each Change.</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/coverbell.svg" width="100" height="90"/>
+                <imagedata fileref="images/edition2/fundamentals/coverbell.svg" width="100" height="90"/>
               </imageobject>
             </mediaobject>
             <para>In a Row containing one or more Cover Bells, the numbering of the Places may be modified to exclude the Cover Bell(s). In the example above, the bell in 5th's Place (rather that 6th's) may be said to be lying.</para>
@@ -532,7 +532,7 @@
             <para>When ringing a Touch, it is traditional to ring the initial Row (usually Rounds) several times before starting the Changes, and similarly to ring the final Row several times before standing the bells. These Rows (shown in the diagram below) are excluded when determining Truth.</para>
             <mediaobject>
               <imageobject>
-                <imagedata fileref="images/fundamentals/openingclosingrounds.svg" width="307" height="432"/>
+                <imagedata fileref="images/edition2/fundamentals/openingclosingrounds.svg" width="307" height="432"/>
               </imageobject>
             </mediaobject>
           </note>

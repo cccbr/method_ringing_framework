@@ -207,7 +207,7 @@ a {
     }
 
 .mrf-numbered-item {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .mrf-numbered-marker {
@@ -224,7 +224,7 @@ a {
 }
 
 .mrf-para {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .mrf-numbered-content > .mrf-para:last-child,
@@ -245,7 +245,7 @@ a {
 
 .mrf-list-compact {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .mrf-list-level-1 {
@@ -463,6 +463,7 @@ a {
 
     .mrf-glossary-row {
         flex-wrap: wrap;
+        margin-bottom: 1rem;
     }
 
     .mrf-glossary-row > .col-sm-1,

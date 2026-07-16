@@ -208,7 +208,7 @@ def read_version_metadata(version_id: str, version_xml_dir: Path) -> VersionMeta
         )
 
     article = etree.parse(str(index_xml), etree.XMLParser(remove_blank_text=False)).getroot()
-    version_name = article.get(f"{{{NS['mrf']}}}framework-version", version_xml_dir.name)
+    version_name = article.get(f"{{{NS['mrf']}}}framework-edition", "") or article.get(f"{{{NS['mrf']}}}framework-version", version_xml_dir.name)
     status = article.get(f"{{{NS['mrf']}}}status", "draft")
     edition_label = article.get(f"{{{NS['mrf']}}}edition-label", "")
     approval_date = article.get(f"{{{NS['mrf']}}}approval-date")
@@ -637,7 +637,7 @@ def render_version(
     if not html_only:
         try:
             volume_content = partition_content_documents(tex_dir, version_xml_dir)
-            legacy_master = tex_dir / f"framework-{version}.tex"
+            legacy_master = tex_dir / f"framework-{edition_output_dir(version)}.tex"
             if legacy_master.exists():
                 legacy_master.unlink()
 
@@ -651,7 +651,7 @@ def render_version(
                 if not content_documents:
                     continue
 
-                master_tex_path = tex_dir / f"framework-{version}-{volume_name}.tex"
+                master_tex_path = tex_dir / f"framework-{edition_output_dir(version)}-{volume_name}.tex"
                 generate_master_tex(
                     version_name=version,
                     volume_name=volume_name,
@@ -691,7 +691,7 @@ def main() -> int:
     parser.add_argument("--output-tex", default="generated/tex", help="Output TeX directory")
     parser.add_argument(
         "--html-asset-prefix-template",
-        default="../../../{asset_version}",
+        default="..",
         help="Format string for HTML asset paths; available fields: asset_version, version, edition",
     )
     args = parser.parse_args()

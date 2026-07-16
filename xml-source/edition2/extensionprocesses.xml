@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="extensionprocesses-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-version="2" mrf:edition-label="Edition 2">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="extensionprocesses-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
   <info>
     <title>Extension Processes</title>
     <subtitle>Framework for Method Ringing, Appendix D</subtitle>
@@ -153,7 +153,7 @@
           <para>The steps to implement this Extension Process are shown using the following example where <link xlink:href="https://complib.org/method/11932">Little Bob Minor</link> is the Parent Method:</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses/example-1.svg" width="806" height="241"/>
+              <imagedata fileref="images/edition2/extensionprocesses/example-1.svg" width="806" height="241"/>
             </imageobject>
           </mediaobject>
           <orderedlist numeration="arabic">
@@ -246,7 +246,7 @@
           <para>The steps to implement this Extension Process are shown using the following example where <link xlink:href="https://complib.org/method/10560">St Simon's Bob Doubles</link> is the Parent Method:</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses/example-2.svg" width="494" height="321"/>
+              <imagedata fileref="images/edition2/extensionprocesses/example-2.svg" width="494" height="321"/>
             </imageobject>
           </mediaobject>
           <orderedlist numeration="arabic">
@@ -323,7 +323,7 @@
           <para>The steps to implement this Extension Process are shown using the following example where <link xlink:href="https://complib.org/method/14931">Milton Surprise Minor</link> is the Parent Method:</para>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/extensionprocesses/example-3.svg" width="1420" height="601"/>
+              <imagedata fileref="images/edition2/extensionprocesses/example-3.svg" width="1420" height="601"/>
             </imageobject>
           </mediaobject>
           <orderedlist numeration="arabic">

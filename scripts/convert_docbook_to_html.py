@@ -1564,7 +1564,7 @@ def build_html(
         )
     sections = article.findall("db:section", NS)
     heading = main_heading(title, subtitle)
-    description = f"{title} ({article.get(f'{{{NS['mrf']}}}status', 'working')} edition {article.get(f'{{{NS['mrf']}}}framework-version', '')})".strip()
+    description = f"{title} ({article.get(f'{{{NS['mrf']}}}status', 'working')} edition {article.get(f'{{{NS['mrf']}}}framework-edition', '') or article.get(f'{{{NS['mrf']}}}framework-version', '')})".strip()
 
     if glossdivs:
         skip_redundant_header = len(glossdivs) == 1 and read_text(glossdivs[0].find("db:title", NS)) == heading

@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "xml/**"
+      - "xml-source/**"
   workflow_dispatch:
 
 permissions:
@@ -34,16 +34,19 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y inkscape texlive-xetex texlive-latex-extra texlive-fonts-recommended fonts-crosextra-carlito
 
-      - name: Validate Python scripts
-        run: python -m py_compile scripts/convert_html_to_docbook.py scripts/convert_docbook_to_html.py scripts/convert_docbook_to_latex.py scripts/render_docbook_tree.py scripts/generate_pdf.py scripts/build.py scripts/publishing_paths.py
+      - name: Validate Python scripts (syntax check only)
+        run: python -m py_compile scripts/render_docbook_tree.py scripts/convert_docbook_to_html.py scripts/convert_docbook_to_latex.py scripts/generate_pdf.py scripts/generate_master_latex.py scripts/publishing_paths.py
+
+      - name: Validate XML source
+        run: python scripts/validate-xml.py xml-source
 
       - name: Render HTML and TeX from committed XML
         run: |
-          if [ ! -d xml ]; then
-            echo "No committed xml/ directory found."
+          if [ ! -d xml-source ]; then
+            echo "No committed xml-source/ directory found."
             exit 1
           fi
-          python scripts/render_docbook_tree.py --source-xml xml --metadata-xml xml --output-html site --html-asset-prefix-template "../{asset_version}"
+          python scripts/render_docbook_tree.py --source-xml xml-source --output-html site --html-asset-prefix-template ".."
 
       - name: Compile PDFs
         run: python scripts/generate_pdf.py
@@ -52,11 +55,6 @@ jobs:
         run: |
           mkdir -p site/pdf
           cp -a CNAME index.html mrf.css mrf.js images site/
-          for dir in version*; do
-            if [ -d "$dir" ]; then
-              cp -a "$dir" site/
-            fi
-          done
           if [ -L latest ] || [ -e latest ]; then
             cp -a latest site/
           fi

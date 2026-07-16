@@ -45,4 +45,10 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
+# Copy assets so the HTML can find them with the ".." prefix
+$htmlOut = "generated\html"
+Copy-Item "mrf.css" "$htmlOut\" -Force
+Copy-Item "mrf.js" "$htmlOut\" -Force
+Copy-Item "images" "$htmlOut\" -Recurse -Force
+
 Write-Host "Web build complete"

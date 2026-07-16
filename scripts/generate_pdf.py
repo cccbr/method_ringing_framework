@@ -128,12 +128,13 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
         return False
 
     # Create build directory
+    edition_dir = edition_output_dir(version)
     aux_dir = version_tex_dir / ".build-aux"
     aux_dir.mkdir(parents=True, exist_ok=True)
 
-    master_files = sorted(version_tex_dir.glob(f"framework-{version}-*.tex"))
+    master_files = sorted(version_tex_dir.glob(f"framework-{edition_dir}-*.tex"))
     if not master_files:
-        legacy_master = version_tex_dir / f"framework-{version}.tex"
+        legacy_master = version_tex_dir / f"framework-{edition_dir}.tex"
         if legacy_master.exists():
             master_files = [legacy_master]
         else:
@@ -142,14 +143,13 @@ def build_version(version: str, tex_dir: Path, pdf_output_dir: Path, templates_d
 
     # Compile PDF
     version_pdf_dir = pdf_output_dir / edition_dir
-    edition_dir = edition_output_dir(version)
     if len(master_files) > 1:
-        legacy_pdf = version_pdf_dir / f"framework-{version}.pdf"
+        legacy_pdf = version_pdf_dir / f"framework-{edition_dir}.pdf"
         remove_pdf_if_possible(legacy_pdf)
-    for old_pdf in version_pdf_dir.glob(f"framework-{version}*.pdf"):
+    for old_pdf in version_pdf_dir.glob(f"framework-{edition_dir}*.pdf"):
         remove_pdf_if_possible(old_pdf)
     for master_file in master_files:
-        output_name = master_file.name.replace(f"framework-{version}", f"framework-{edition_dir}").removesuffix(".tex")
+        output_name = master_file.stem
         if not compile_pdf(master_file, version_tex_dir, aux_dir, version_pdf_dir, output_name, latex_cmd, engine_name):
             return False
 
@@ -165,7 +165,8 @@ def discover_tex_editions(tex_dir: Path) -> list[str]:
     editions: list[str] = []
     for version in discover_version_ids(tex_dir, required_file=None):
         version_tex_dir = tex_dir / edition_output_dir(version)
-        if any(version_tex_dir.glob(f"framework-{version}-*.tex")) or (version_tex_dir / f"framework-{version}.tex").exists():
+        ed_dir = edition_output_dir(version)
+        if any(version_tex_dir.glob(f"framework-{ed_dir}-*.tex")) or (version_tex_dir / f"framework-{ed_dir}.tex").exists():
             editions.append(version)
     return editions
 
