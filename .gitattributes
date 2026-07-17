@@ -1,0 +1,26 @@
+# Normalize line endings for the maintained XML source directory
+xml-source/**/*.xml text eol=crlf
+
+# Generated outputs — keep LF as produced by the Python generators
+generated/** text eol=lf
+
+# Shell scripts
+*.ps1 text eol=crlf
+*.py text eol=lf
+
+# Text files
+*.md text eol=crlf
+*.tex text eol=crlf
+*.html text eol=crlf
+*.css text eol=crlf
+*.js text eol=crlf
+*.json text eol=crlf
+*.yml text eol=crlf
+*.yaml text eol=crlf
+*.txt text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.svg binary
+*.pdf binary

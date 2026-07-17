@@ -1,0 +1,947 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="A proposed replacement for sections D, E, F, G, I and J of the Central Council's Decisions.">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.github.io/method_ringing_framework/">
+
+    <title>Framework for Method Ringing - Extension Processes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    <link href="mrf.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/ "><img src="images/cc-header.png" height="60" alt="CCCBR">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <img src="images/version.svg" width=200 height=36 />
+            <small><a id="switchv" href="../index.html">[Switch version]</a></small>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">1. Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="versioning.html">2. Versioning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;<u>Appendices</u><br />
+                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="extensionprocesses.html">D. Extension Processes</a>
+                        <ul class="nav nav-pills flex-column nav-subsection">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#definitions">A. Defintions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#general">B. General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess1">1. Extension Process 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess2">2. Extension Process 2</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#extensionprocess3">3. Extension Process 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="development.html">E. Framework Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transition.html">F. Transitional Arrangements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="relatedmaterial.html">G. Related Material</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consultation.html">H. Consultation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faqs.html">I. FAQs</a>
+                    </li>
+                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block  btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Appendix D. Method Extension Processes</h2>
+                        </div>
+                    </div>
+
+                    <!-- Definitions -->
+                    <div class="row" id="definitions">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Definitions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Cycle of Working Bells
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA1"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Cycle of Working Bells is a set of bells that successively occupy each other's Places at the Leadheads of a Method's Plain Course.
+                            </p>
+                            <div class="collapse" id="detailA1">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> The Method <a href='https://complib.org/method/28053'>Christ Church Dublin Differential Doubles</a> has the Leadheads:
+                                    31254, 23145, 12354, 31245, 23154 and 12345.
+                                    It can be seen that bells 1, 2 and 3 occupy each other's Places at the Leadheads, and bells 4 and 5 do the same.
+                                    This Method therefore has two Cycles of Working Bells -- one with 3 bells and one with 2.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Plain Bob Leadheads
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA2"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                A Method is said to have Plain Bob Leadheads if it can be Rotated (if needed) to start from a Change such that the treble leads at the Leadends and Leadheads,
+                                and the Leadends and Leadheads of the Method's Plain Course all occur in a Plain Course of the Method Plain Bob at the same Stage.
+                            </p>
+                            <div class="collapse" id="detailA2">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> The following table shows the Leadends and Leadheads for <a href='https://complib.org/method/14317'>Norwich Surprise Minor</a> and
+                                     <a href='https://complib.org/method/11349'>Plain Bob Minor</a>.  It can be seen that the two columns contain the same Rows, albeit in a different order.
+                                     Norwich Suprise Minor is therefore said to have Plain Bob Leadheads.
+                                </p>
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Norwich S Leadends and Leadheads</th>
+                                            <th>Plain Bob Leadends and Leadheads</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>124365<br />142635</td>
+                                            <td>132546<br />135264</td>
+                                        </tr>
+                                        <tr>
+                                            <td>146253<br />164523</td>
+                                            <td>153624<br />156342</td>
+                                        </tr>
+                                        <tr>
+                                            <td>165432<br />156342</td>
+                                            <td>165432<br />164523</td>
+                                        </tr>
+                                        <tr>
+                                            <td>153624<br />135264</td>
+                                            <td>146253<br />142635</td>
+                                        </tr>
+                                        <tr>
+                                            <td>132546<br />123456</td>
+                                            <td>124365<br />123456</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Coursing
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA3"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                Two Hunt Bells are said to Course if they follow the same Path, and one Hunt Bell rings in the same Places as the other Hunt Bell at an interval of two Rows apart.
+                            </p>
+                            <div class="collapse" id="detailA3">
+                                <hr />
+                                <p class="text-danger">
+                                    <b>Example:</b> In the Method <a href='https://complib.org/method/10587'>Grandsire Doubles</a>, the treble and the 2nd Course in the Plain Course
+                                    (when the initial Row is Rounds). The same is true for Grandsire at all other Stages.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Mode
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailA4"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <p>
+                                The Mode of an Extension Process specifies which Places remain static, and which Places expand.
+                            </p>
+                            <div class="collapse" id="detailA4">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> Mode m means that all Places up to and including Place m remain static,
+                                    and all Places above Place m expand.<br />
+                                    E.g. an Extension Process might operate by copying 4 Changes
+                                    and inserting them into a Method's sequence of Changes immediately following
+                                    these copied 4 Changes.<br />
+                                    Assume the 4 Changes to be copied are x12x36.<br />
+                                    If the Mode used is 1, the resulting sequence is x12x36x14x58.
+                                    I.e. the 1 in 12 remains static, but all Places higher than 1 expand (i.e. increase) by 2 Places
+                                    in the inserted section.<br />
+                                    If the Mode used is 2, the resulting sequence is x12x36x12x58.
+                                    I.e. the 12 remains static, but all Places higher than 2 expand by 2 Places
+                                    in the inserted section.<br />
+                                    If the Mode used is 3, the resulting sequence is x12x36x12x38.
+                                    I.e. the 12 and the 3 in 36 remain static, and all Places higher than 3 expand by 2 Places
+                                    in the inserted section.
+                                </p>
+
+                                <p class="text-primary">
+                                    Note that some Extension Processes operate separately on below-the-treble Places and
+                                    above-the-treble Places.
+                                    When Mode is used with above-the-treble Places, it may operate with respect to the highest Place
+                                    (i.e. the Method's Stage) rather than Place 1.
+                                    Examples of this are included in Extension Process 3 below.
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- General -->
+                    <div class="row" id="general">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">General</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Below are the Extension Processes that are currently recognised by the Central Council for extending Methods to higher Stages.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detailB2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11">
+                            <p>
+                                Only one Extension Process may be used to extend any one Method to a given Stage -- Extension Processes may not be combined.
+                            </p>
+                            <div class="collapse" id="detailB2">
+                                <hr />
+                                <p class="text-primary">
+                                    <b>Further explanation:</b> While Extension Processes may not be combined to extend any one Method to a given Stage,
+                                    different Extension Processes may be used to extend a single Method to different Stages.
+                                    E.g. St Simon's Bob Doubles is extended to Triples, Caters, Cinques, etc, using Extension Process 3 below.
+                                    St Simon's Bob Doubles is also extended to St Simon's Bob Minor using Extension Process 2 below
+                                    (and St Simon's Bob Major is obtained from St Simon's Bob Triples using Extension Process 2, etc).
+                                </p>
+
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+
+					<!-- Extension Process 1 -->
+                    <div class="row" id="extensionprocess1">
+                        <div class="col-sm-1">
+                            <h5>1.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Extension Process 1</h5>
+
+                            <p>
+                                Process 1 keeps the Length of the Plain Lead constant.
+                                The resulting Extension is two Stages higher than the Parent Method.
+                            </p>
+
+                            <p>
+                                <u>Prerequisites</u>
+                            </p>
+
+                            <p>
+                                The prerequisites for this Extension Process are as follows:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The Parent Method is a Method with no Hunt Bells, 
+                                    or a Hunter (including a Differential Hunter) with a Hunt Bell that has a Little Path.
+                                </li>
+                                <li>
+                                    The Parent Method does not use Jump Changes.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Steps</u>
+                            </p>
+
+                            <p>
+                                The steps to implement this Extension Process are shown using the following example where
+                                <a class="text-success" href="https://complib.org/method/11932">Little Bob Minor</a> is the Parent Method:
+                            </p>
+
+                            <p>
+                                <img src="images/extensionprocesses/example-1.svg" width=806 height=241 />  
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Select a Mode m to be used, where m is greater than or equal to 1, and less than the Stage of the Parent Method.
+                                    In the example above, the selected Mode is 4.
+                                </li>
+                                
+                                <li>
+                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made up to and including the Mode,
+                                    and Places Made above the Mode.  These Places are entered in the columns headed <=m and >m respectively.                                    
+                                </li>
+                                
+                                <li>
+                                    To obtain the first Extension (which is two Stages higher = Major), leave the Places in column <=m unchanged,
+                                    and increase the Places in column >m by 2.  See the box for Major above.
+                                </li>
+
+                                <li>
+                                    Then recombine the Places in column <=m and column >m to obtain the place notation for the Extension to Major.
+                                </li>
+
+                                <li>
+                                    The above can be repeated to obtain additional Extensions in steps of 2 Stages, as shown above for Royal and Maximus.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Requirements</u>
+                            </p>
+
+                            <p>
+                                An Extension produced using Extension Process 1 is only valid if:
+                            </p>                        
+
+                            <ol>
+                                <li>
+                                    The Extension has the same Symmetry (see Section 4.B) as the Parent Method.
+                                </li>
+
+                                <li>
+                                    The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
+                                    and has no Working Bells, in which case the Extension also only has Hunt Bells.
+                                </li>
+
+                                <li>
+                                    The Extension has the same number of Cycles of Working Bells as the Parent Method.<br />
+                                </li>
+
+                                <li>
+                                    If the Parent Method comprises two or more Cycles of Working Bells of equal size, the Extension has this same feature.
+                                </li>
+
+                                <li>
+                                    If the Parent Method has Plain Bob Leadheads, the Extension also has Plain Bob Leadheads.<br />
+                                    If the Parent Method does not have Plain Bob Leadheads, the Extension also does not have Plain Bob Leadheads.
+                                </li>
+
+                                <li>
+                                    The Extension Construction used, when applied to the Parent Method in question, creates an Extension Path containing a minimum of 3 Methods (including the Parent Method) with Stages that are less than or equal to Stage 24.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Extension Construction</u>
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The Extension Construction for referring to this Extension Process is 'EP1-m', where EP1 refers to Extension Process 1, and m is the Mode.
+                                    So Little Bob Minor is extended using Extension Construction EP1-4.
+                                </li>
+
+                                <li>
+                                    When two or more Modes produce the same Extension, the lowest Mode is designated as the Mode used.
+                                    For example, Extension Constructions EP1-4 and EP1-5 both give the same Extensions for Little Bob Minor.
+                                    EP1-4 is therefore designated as the Extension Construction used.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Extension Process 2 -->
+                    <div class="row" id="extensionprocess2">
+                        <div class="col-sm-1">
+                            <h5>2.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                        	<h5 class="border-bottom">Extension Process 2</h5>
+                        	
+                            <p>
+                               Extension Process 2 extends a Parent Method that has one Hunt Bell by adding a second Hunt Bell.
+                                Both Hunt Bells in the Extension hunt one Place further from the lead than the Hunt Bell does in the Parent Method,
+                                and the Hunt Bells Course in the Extension.
+                                The resulting Extension is one Stage higher than the Parent Method, and the Length of the Plain Lead is increased by 2 Changes.
+                            </p>
+
+                            <p>
+                                <u>Prerequisites</u>
+                            </p>
+                            
+                            <p>
+                                The prerequisites for this Extension Process are as follows:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The Parent Method is a Hunter with a single Hunt Bell.
+                                    The Hunt Bell follows a plain hunting Path (i.e. the Path consists of Hunting up to nth's Place, Making nth's, Hunting down to mth's Place, Making mth's).
+                                    The plain hunting Path may be a Little Path or a non-Little Path.
+                                </li>
+
+                                <li>
+                                    No Places are Made above the Hunt Bell Place that transitions the Hunt Bell from Hunting up to Hunting down.
+                                </li>
+                                
+                                <li>
+                                    No places are Made below the Hunt Bell Place that transitions the Hunt Bell from Hunting down to Hunting up.
+                                </li>
+                                
+                                <li>
+                                    The Parent Method does not use Jump Changes.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Steps</u>
+                            </p>
+
+                            <p>
+                                The steps to implement this Extension Process are shown using the following example where
+                                <a class="text-success" href="https://complib.org/method/10560">St Simon's Bob Doubles</a> is the Parent Method:
+                            </p>
+
+                            <p>
+                                <img src="images/extensionprocesses/example-2.svg" width=494 height=321 />  
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Rotate the Parent Method (if necessary) so that the lower Place of the Hunt Bell is the Lead End Change.
+                                </li>
+
+                                <li>
+                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made below the Hunt Bell,
+                                    Places Made by the Hunt Bell, and Places Made above the Hunt Bell.
+                                    These Places are entered in the columns headed B, H and A respectively.
+                                </li>
+                                
+                                <li>
+                                    Start by copying all the Places Made in the Parent Method (split into columns B, H and A) to the same Changes in the Extension.
+                                </li>
+
+                                <li>
+                                    Place Made below the Hunt Bell are left unchanged in the Extension.
+                                    See the four Places in column B in the example above (highlighted in green).
+                                </li>
+
+                                <li>
+                                    Insert a new Change at the start of the Plain Lead and another new Change at the end of the Plain Lead.
+                                </li>
+
+                                <li>
+                                    Move the upper Place for the Hunt Bell one Place higher, and also move it one Change earlier in the Plain Lead.
+                                    So 5 in the Parent Method in column H becomes 6 in the Extension one Change earlier (highlighted in ligher blue).
+                                </li>
+
+                                <li>
+                                    Add Places for the additional Hunt Bell two changes after the Places for the original Hunt Bell.
+                                    See the added 1 and 6 in column H in the example above (highlighted in darker blue),
+                                    noting that the additional 1 has wrapped around to be the first Change of the Plain Lead.
+                                </li>
+
+                                <li>
+                                    Move the Places above the Hunt Bells that are Made before the Hunt Bells reach their higher Places one Place higher,
+                                    and also move them one Change earlier in the Plain Lead.
+                                    So 5 and 5 in the Parent Method in column A become 6 and 6 in the Extension one Change earlier (highlighted in lighter pink).
+                                </li>
+
+                                <li>
+                                    Move the Places above the Hunt Bells that are Made after the Hunt Bells reach their higher Places one Place higher,
+                                    and also move them one Change later in the Plain Lead.
+                                    So 5, 5 and 25 in the Parent Method in column A become 6, 6 and 36 in the Extension one Change later (highlighted in darker pink).
+                                </li>
+
+                                <li>
+                                    Then recombine the Places in columns B, H and A to obtain the place notation for the Extension to Minor.
+                                </li>
+
+                                <li>
+                                    Rotate the new Method if required to give the desired Extension.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Extension Construction</u>
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The Extension Construction for referring to this Extension Process is 'EP2', where EP2 refers to Extension Process 2.
+                                    So St Simon's Bob Doubles is extended using Extension Construction EP2.
+                                    This Extension Process does not use any parameters.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Extension Process 3 -->
+                    <div class="row" id="extensionprocess3">
+                        <div class="col-sm-1">
+                            <h5>3.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Extension Process 3</h5>
+                            
+                            <p>
+                                Extension Process 3 extends a Parent Method by copying and possibly expanding some of its Changes.
+                                This Extension Process is designed to extend Parent Methods that are Hunters with a Hunt Bell that has a non-Little Path.
+                                The resulting Extension is an even number of Stages higher than the Parent Method.
+                            </p>
+
+                            <p>
+                                Extension Process 3 is undoubtedly complex, requiring many steps to implement.
+                                However it is the Extension Process that has been used to name the greatest number of Extensions in the Methods Library,
+                                and it gives results that often correspond to how a ringer might expect a Method to extend by visual inspection of the Method's blue line.
+                            </p>
+
+                            <p>
+                                <u>Prerequisites</u>
+                            </p>
+                            
+                            <p>
+                                The prerequisites for this Extension Process are as follows:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The Parent Method is a non-Little Plain or Treble Dodging Method, or a non-Little Alliance Method with a Hunt Bell Path
+                                    formed from these two.
+                                    This Extension Process may also be applied to some other forms of Hunter with a Hunt Bell that has a non-Little Path.
+                                </li>
+
+                                <li>
+                                    The Parent Method does not use Jump Changes.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Steps</u>
+                            </p>
+
+                            <p>
+                                The steps to implement this Extension Process are shown using the following example where
+                                <a class="text-success" href="https://complib.org/method/14931">Milton Surprise Minor</a> is the Parent Method:
+                            </p>
+
+                            <p>
+                                <img src="images/extensionprocesses/example-3.svg" width=1420 height=601 />  
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Rotate the Parent Method (if necessary) so that the bell in 1st's Place at the initial Row (referred to as the treble for the rest of this section) is a Hunt Bell that has a non-Little Path.
+                                </li>
+
+                                <li>
+                                    Group the place notation (shown in column pn) into sections depending on the Place of the treble, as follows:
+                                    <ul>
+                                        <li>
+                                            A -- treble leading
+                                        </li>
+
+                                        <li>
+                                            B -- treble in 1-2
+                                        </li>
+
+                                        <li>
+                                            C -- treble in 2-3
+                                        </li>
+
+                                        <li>
+                                            D -- treble in 3-4 or lying in Singles
+                                        </li>
+
+                                        <li>
+                                            E -- treble in 4-5 or lying in Minimus
+                                        </li>
+
+                                        <li>
+                                            F -- treble in 5-6 or lying in Doubles
+                                        </li>
+
+                                        <li>
+                                            G -- treble in 6-7 or lying in Minor
+                                        </li>
+
+                                        <li>
+                                            H -- treble in 7-8 or lying in Triples
+                                        </li>
+
+                                        <li>
+                                            I -- treble in 8-9 or lying in Major
+                                        </li>
+
+                                        <li>
+                                            etc.
+                                        </li>
+                                    </ul>
+                                    The section letters are shown in the example above under the 'Sect below' and 'Sect above' headings.
+                                    Note that in the Parent Method these two columns each contain the same section letters -- this changes in the Extensions.
+                                </li>
+                                
+                                <li>
+                                    Select a Mode m to be used above the treble and below the treble.
+                                    Mode is greater than or equal to 1, and less than the Stage of the Parent Method.
+                                    In the example above, Mode 2 has been selected for both above and below the treble.
+                                    However, the Modes can be different above and below.
+                                </li>
+
+                                <li>
+                                    Divide the place notation (shown in column pn) of the Parent Method into Places Made below the treble ('B'),
+                                    Places Made by the treble ('H' for Hunt Bel), and Places Made above the treble ('A').
+                                </li>
+
+                                <li>
+                                    The Places Made above the treble are then inverted -- i.e. they are counted from the back of the Row instead of from the front.
+                                    For example, 5th's Place in Minor becomes 2nd's Place when counted from the back.
+                                </li>
+
+                                <li>
+                                    Then sub-divide the Places above the treble and below the treble into those that are less than or equal to the Mode, and those greater than the Mode.
+                                    In the example above, since the Mode selected is 2, Places in 1st's or 2nd's are in one sub-division, and the other Places are in the other sub-division.
+                                </li>
+
+                                <li>
+                                    The resulting Places are then entered into their respective 5 columns as shown above: B (<=m), B (>m), H, Inv A (>m), and Inv A (<=m),
+                                    where m is the Mode.
+                                </li>
+
+                                <li>
+                                    Select a set of adjacent sections below the treble to copy.
+                                    There must be an even number of adjacent sections in the set.
+                                    In the example above, sections D and E have been chosen for copying (shaded in lighter green).
+                                </li>
+
+                                <li>
+                                    Determine the step size. The step size is equal to the number of sections in the set selected for copying.
+                                    In the example above, since two sections have been selected (D and E), the step size is 2.
+                                    The step size also determines the number of Stages higher the Extension will be.
+                                    In the example above with a step size of 2, Minor will be extended to Major.
+                                </li>
+
+                                <li>
+                                    The Places in the selected sections are copied and inserted into the sequence immediately following
+                                    the selected sections.<br />
+                                    For Places that are less than or equal to the Mode, no changes are made to these Places during the copying.<br />
+                                    For Places that are greater than the Mode, these are increased by the step size when copied.<br />
+                                    In the example above, the inserted sections are shown in darker green.  It can be seen that Places 12
+                                    remain as 12 in the inserted sections, whereas 3 becomes 5 in the inserted sections.
+                                </li>
+
+                                <li>
+                                    The inserted sections are given the same lettering as the sections they were copied from,
+                                    but modified to reflect the increase of the Places.
+                                    So in the Extension to Major, D and E are copied to new sections that are labelled D2 and E2 respectively, where 2 is the step size.
+                                </li>
+
+                                <li>
+                                    Places in the sections following the sections that have been inserted are also increased by the step size
+                                    if they are greater than the Mode m.<br />
+                                    In the example above, the sections following the inserted sections are shaded in orange.  It can be seen that Places 12
+                                    remain 12, whereas 5 becomes 7 in the Extension.
+                                </li>
+
+                                <li>
+                                    The lettering of the sections following the inserted sections is modified to reflect the increase of the Places.
+                                    In the example above, F and G in the Parent Method become F2 and G2 in the Extension to Major.
+                                </li>
+
+                                <li>
+                                    The process for extending the Places above the treble is the same as below the treble, except that the copying and expanding
+                                    occurs in the reverse direction (i.e. starting from the half lead and working back towards the start of the lead),
+                                    and the Mode is counted from the back of the Row instead of from the front.
+                                    In the example above, sections C and D are selected for copying above the treble.
+                                    These are inserted earlier in the lead as C2 and D2 respectively.
+                                    The sections before the inserted sections (A and B) become A2 and B2 respectively in the Extension to Major.
+                                </li>
+
+                                <li>
+                                    Increase the upper Place of the treble by the step size and move it to the new Halflead Change. So 6 in Minor becomes 8 in Major in the example above.
+                                </li>
+
+                                <li>
+                                    Then reinvert the Places in the two Inv A columns, and recombine the Places in all 5 columns to obtain the place
+                                    notation for the Extension.
+                                </li>
+
+                                <li>
+                                    Rotate the new Method if required to give the desired Extension.
+                                </li>
+
+                                <li>
+                                    To obtain further Extensions at higher Stages, each higher by the step size, the sections selected for copying can be inserted repeatedly,
+                                    increasing the Places that are greater than the Mode by the step size for each insertion.
+                                    In the example above, Royal is obtained by inserting the D, E sections below the treble twice, once as D2, E2, and again as D4, E4.
+                                    To obtain Maximus, the C, D sections above the treble have been inserted three times, once as C2, D2, once as C4, D4, and again as C6, D6.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Requirements</u>
+                            </p>
+
+                            <p>
+                                An Extension produced using Extension Process 3 is only valid if:
+                            </p>                        
+
+                            <ol>
+                                <li>
+                                    The Extension has the same Symmetry (see Section 4.B) as the Parent Method.
+                                </li>
+
+                                <li>
+                                    The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells
+                                    and has no Working Bells, in which case the Extension also only has Hunt Bells.
+                                </li>
+
+                                <li>
+                                    The Extension has the same number of Cycles of Working Bells as the Parent Method.<br />
+                                </li>
+
+                                <li>
+                                    If the Parent Method comprises two or more Cycles of Working Bells of equal size, the Extension has this same feature.
+                                </li>
+
+                                <li>
+                                    If the Parent Method has Plain Bob Leadheads, the Extension also has Plain Bob Leadheads.<br />
+                                    If the Parent Method does not have Plain Bob Leadheads, the Extension also does not have Plain Bob Leadheads.
+                                </li>
+
+                                <li>
+                                    The Extension Construction used, when applied to the Parent Method in question, creates an Extension Path containing a minimum of 3 Methods (including the Parent Method) with Stages that are less than or equal to Stage 24.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Extension Construction</u>
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The Extension Construction for referring to this Extension Process is 'EP3-[Mode above the treble][sections copied above the treble]/[Mode
+                                    below the treble][sections copied below the treble]'.
+                                </li>
+
+                                <li>
+                                    EP3 refers to Extension Process 3.
+                                    In the example above, the Mode was 2 both above and below the treble.
+                                    Sections C and D were copied above the treble, and sections D and E were copied below the treble.
+                                    The Extension Construction used in the example is therefore EP3-2CD/2DE.
+                                </li>
+                            </ol>
+
+                            <p>
+                                <u>Other considerations</u>
+                            </p>
+
+                            <ol>
+                                <li>
+                                    The example above uses a set of two adjacent sections to be copied and inserted, giving an Extension that is two Stages higher.
+                                    Larger sets of sections can be copied and inserted, provided the number of sections is even.  For example, sections D, E, F and G
+                                    could be selected for copying and inserting.
+                                    Since four sections are involved, the step size is 4, and so the first Extension would be four Stages higher than the Parent Method.
+                                    D4, E4, F4 and G4 sections would be inserted in the first Extension.
+                                    In the next Extension (which would be eight Stages higher than the Parent Method), D8, E8, F8 and G8 sections would also be inserted, and so on.
+                                    Superlative Surprise Major is an example of a Method that extends in steps of 4 Stages.
+                                    The Extension Construction for Superlative's Extension Process is EP3-3ABCD/3FGHI.
+                                </li>
+
+                                <li>
+                                    Different size sets of sections may be copied and inserted above and below the treble.
+                                    For example, sections D, E, F and G could be selected below the treble, and sections A and B could be selected above the treble.
+                                    In order to extend the Length of the Plain Lead by the same number of Changes above and below the treble,
+                                    the sections above the treble would need to be copied and inserted twice for every one time the sections below the treble are copied and inserted.
+                                    The resulting Extension in this example is four Stages higher than the Parent Method.
+                                    So D4, E4, F4 and G4 sections would be inserted below the treble in the first Extension,
+                                    and A4, B4, A2 and B2 sections would be inserted above the treble in the first Extension.
+                                    For example, there is an Extension Process for Cambridge Surprise Major that uses steps of 2 above the treble and steps of 4 below the treble.
+                                    The Extension Construction for this Extension Process is EP3-1AB/4CDEF.
+                                </li>
+
+                                <li>
+                                    When the same results are obtained by copying different sections, designate the sections closest to the start of the lead as the ones that were copied.
+                                    This ensures that whatever Stage Method is taken as the Parent Method in a set of Methods that are on the same Extension Path, the same Extension Construction will result.
+                                    E.g. in the Milton Surprise Minor example above, it can be seen that if sections A and B were copied above the treble instead of sections C and D (while keeping the Mode as 2)
+                                    the same results would be obtained.
+                                    Therefore the Extension Construction for Milton Surprise Minor above should be described as EP3-2AB/2DE, rather than EP3-2CD/2DE.
+                                    (The CD sections above the treble were used in the example above to show what happens to the AB sections above the treble in the Extension.)
+                                </li>
+
+                                <li>
+                                    When two or more different Modes give the same results, designate the Mode used as the lowest one.
+                                </li>
+
+                                <li>
+                                    Finally, the example and descriptions above assume the Parent Method has Palindomic Symmetry about the Leadend Change and the Halflead Change.
+                                    For non-Palindromic Methods, Extension Process 3 may be applied separately in both halves of the Plain Lead, subject to the following:
+                                </li>
+
+                                <li>
+                                    If the Places Made below the treble are Palindromic, or the Places Made above the treble are Palindromic,
+                                    then an Extension Construction is selected that retains that symmetry in the Extension.
+                                </li>
+
+                                <li>
+                                    If the Places Made above the treble in the first half of the Plain Lead have Rotational Symmetry with the Places Made below the treble in the second half of the Plain Lead,
+                                    or the Places Made below the treble in the first half of the Plain Lead have Rotational Symmetry with the Places Made above the treble in the second half of the Plain Lead,
+                                    then an Extension Construction is selected that retains that symmetry in the Extension.
+                                </li>
+
+                                <li>
+                                    An example of an Extension Construction for a non-Palindromic Method is EP3-1AB/2DE/3JK/2OP.
+                                    The four copied sections are respectively:
+                                    <ul>
+                                        <li>
+                                            Above the treble before the Halflead Change;
+                                        </li>
+
+                                        <li>
+                                            Below the treble before the Halflead Change;
+                                        </li>
+
+                                        <li>
+                                            Below the treble after the Halflead Change; and
+                                        </li>
+
+                                        <li>
+                                            Above the treble after the Halflead Change.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="mrf.js"></script>
+</body>
+</html>

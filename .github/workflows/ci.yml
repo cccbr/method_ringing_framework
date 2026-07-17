@@ -1,0 +1,70 @@
+name: Build published outputs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "xml-source/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y inkscape texlive-xetex texlive-latex-extra texlive-fonts-recommended fonts-crosextra-carlito
+
+      - name: Validate Python scripts (syntax check only)
+        run: python -m py_compile scripts/render_docbook_tree.py scripts/convert_docbook_to_html.py scripts/convert_docbook_to_latex.py scripts/generate_pdf.py scripts/generate_master_latex.py scripts/publishing_paths.py
+
+      - name: Validate XML source
+        run: python scripts/validate-xml.py xml-source
+
+      - name: Render HTML and TeX from committed XML
+        run: |
+          if [ ! -d xml-source ]; then
+            echo "No committed xml-source/ directory found."
+            exit 1
+          fi
+          python scripts/render_docbook_tree.py --source-xml xml-source --output-html site --html-asset-prefix-template ".."
+
+      - name: Compile PDFs
+        run: python scripts/generate_pdf.py
+
+      - name: Stage published site
+        run: |
+          mkdir -p site/pdf
+          cp -a CNAME index.html mrf.css mrf.js images site/
+          if [ -L latest ] || [ -e latest ]; then
+            cp -a latest site/
+          fi
+          if [ -d generated/pdf ]; then
+            cp -a generated/pdf/. site/pdf/
+          fi
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: site

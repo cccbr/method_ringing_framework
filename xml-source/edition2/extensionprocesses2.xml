@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="extensionprocesses2-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Extension Processes 2</title>
+    <subtitle>Framework for Method Ringing</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/extensionprocesses2.html</uri>
+    <othermeta role="source-path">version2/extensionprocesses2.html</othermeta>
+  </info>
+  <section xml:id="ep4intro">
+    <title>4 a) Extension Process 4 - Introduction</title>
+    <para>EP4 replaces the former EP1 and EP3 <nolink>extension processes</nolink>, and also enables a greater range of <nolink>extensions</nolink> beyond those provided by EP1 and EP3. It produces <nolink>extensions</nolink> that can both keep the lead <nolink>length</nolink> fixed (replacing EP1), and expand the lead <nolink>length</nolink> (replacing EP3). EP4 can also contract a <nolink>parent method</nolink> to lower <nolink>stages</nolink>. In addition, EP4 can produce <nolink>extensions</nolink> that are a single <nolink>stage</nolink> higher, as well as the more common scenario of producing <nolink>extensions</nolink> that are an even number of <nolink>stages</nolink> (usually two) higher.</para>
+    <para>There are three variants of EP4: single <nolink>mode</nolink>, double <nolink>mode</nolink>, and triple <nolink>mode</nolink>. These are described below, and examples are provided further below for each one.</para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>In a single <nolink>mode</nolink>
+          <nolink>extension</nolink>, a <nolink>method</nolink>'s <nolink>places</nolink> are extended together, without any further separation, in a single process.</para>
+      </listitem>
+      <listitem>
+        <para>In a double <nolink>mode</nolink>
+          <nolink>extension</nolink>, a <nolink>method</nolink>'s <nolink>places</nolink> are separated into below-the-<nolink>hunt</nolink>
+          <nolink>places</nolink> and above-the <nolink>hunt</nolink>
+          <nolink>places</nolink>, with each subset extended separately. Double <nolink>mode</nolink>
+          <nolink>extension</nolink> relies on the <nolink>hunt bell</nolink> having a <nolink>path</nolink> that can only extend in one way, such as with Plain and Treble Dodging methods.</para>
+      </listitem>
+      <listitem>
+        <para>In a triple <nolink>mode</nolink>
+          <nolink>extension</nolink>, a <nolink>method</nolink>'s <nolink>places</nolink> are separated into <nolink>hunt bell</nolink>
+          <nolink>places</nolink>, below-the-<nolink>hunt</nolink>
+          <nolink>places</nolink>, and above-the <nolink>hunt</nolink>
+          <nolink>places</nolink>, with each subset extended separately. Triple <nolink>mode</nolink>
+          <nolink>extension</nolink> is used when it is necessary to specify how <nolink>hunt bell</nolink>
+          <nolink>places</nolink> extend, such as with certain Alliance and Treble Place methods.</para>
+      </listitem>
+    </orderedlist>
+    <para>The ability to use different <nolink>modes</nolink> simplifies the <nolink>extension process</nolink> for some <nolink>methods</nolink>, and supports a wider range of <nolink>extensions</nolink> in other cases. The above variants of EP4 are all described below. It will be seen that EP4 in all variants uses the same core process to generate <nolink>extensions</nolink>.</para>
+    <para>In addition to <nolink>mode</nolink>, there are two other key parameters to specify when using EP4:</para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Stage increment: This specifies the increase in the <nolink>stage</nolink> of the <nolink>extension</nolink> versus the parent, and is a positive integer, except that in contraction it is a negative integer.</para>
+      </listitem>
+      <listitem>
+        <para>Overlap <nolink>length</nolink>: This specifies how the half lead <nolink>length</nolink>
+          <nolink>changes</nolink> in the <nolink>extension</nolink> versus the parent. It can be zero (giving an <nolink>extension</nolink> where the lead <nolink>length</nolink> doesn't ), or a positive integer. If the overlap <nolink>length</nolink> is a positive integer and the <nolink>stage</nolink> increment is positive, then the half lead <nolink>length</nolink> of the <nolink>extension</nolink> (versus the parent) increases by the overlap <nolink>length</nolink>. If the overlap <nolink>length</nolink> is a positive integer and the <nolink>stage</nolink> increment is negative, then contraction is being performed, and the half lead <nolink>length</nolink> decreases by the overlap <nolink>length</nolink>.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="ep4singlefixed">
+    <title>4 b) Extension Process 4 - Single Mode, Fixed Lead Length</title>
+    <para>The diagram below shows EP4 used in single <nolink>mode</nolink> with an overlap <nolink>length</nolink> of zero to extend <link xlink:href="https://complib.org/method/27834">Stedman Doubles</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-stedman.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>The <nolink>places</nolink> in line 1 above either remain unchanged in line 2 if they are less than or equal to the <nolink>mode</nolink>, or they increase by the <nolink>stage</nolink> increment if they are greater than the <nolink>mode</nolink>. Since the <nolink>mode</nolink> in this example is 3, the <nolink>places</nolink> in line 2 are the same as line 1, except that 5th's <nolink>place</nolink> in line 1 becomes 7th's <nolink>place</nolink> in line 2.</para>
+    <para>EP4 in single <nolink>mode</nolink> with a fixed lead <nolink>length</nolink> can be used to extend Principles and Little methods. It can't be used for Hunters with non-Little paths. But note that Principles and Little methods can also be extended on an expanding lead <nolink>length</nolink> basis.</para>
+  </section>
+  <section xml:id="ep4singleexpanding">
+    <title>4 c) Extension Process 4 - Single Mode, Expanding Lead Length</title>
+    <para>The diagram below shows EP4 used in single <nolink>mode</nolink> with an expanding lead <nolink>length</nolink> to extend <link xlink:href="https://complib.org/method/11369">St Clement's College Bob Minor</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-st-clements.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>This example shows how overlapping segments are used to generate <nolink>extensions</nolink>. The first step is to list the place notation for a half lead of the <nolink>method</nolink> (line 1). By convention, the <nolink>lead end change</nolink> is shown first, and is labelled as <nolink>change</nolink> 0. The subsequent <nolink>changes</nolink> for a half-lead are then shown and are labelled as <nolink>changes</nolink> 1 to n, where n is half the lead <nolink>length</nolink>.</para>
+    <para>The next step is to separate the place notation into two overlapping segments, as specified by the Overlap start and Overlap <nolink>length</nolink> parameters. This gives segments 1 and 2, as shown in lines 2 and 3 above. These two segments are then connected as shown in line 4. Different <nolink>extensions</nolink> can be produced by selecting different overlap start and <nolink>mode</nolink> parameters.</para>
+    <para>Finally, the relevant <nolink>places</nolink> are extended. Since the <nolink>mode</nolink> is 3, the <nolink>places</nolink> in line 5 are the same as line 4 if they are 3rd's <nolink>place</nolink> or lower, otherwise they are 2 <nolink>places</nolink> higher.</para>
+  </section>
+  <section xml:id="ep4double">
+    <title>4 d) Extension Process 4 - Double Mode</title>
+    <para>The diagram below shows EP4 used in double <nolink>mode</nolink> to extend <link xlink:href="https://complib.org/method/14568">Cambridge Surprise Minor</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-cambridge.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>In a double <nolink>mode</nolink>
+      <nolink>extension</nolink>, the place notation is separated into <nolink>places</nolink> below the <nolink>hunt bell</nolink> and <nolink>places</nolink> above the <nolink>hunt bell</nolink>. Each of these subsets is then processed in a similar manner to the previous example, but with two differences:</para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>In a single <nolink>mode</nolink>
+          <nolink>extension</nolink>, the place notation is extended after the two segments are connected. But in a double <nolink>mode</nolink>
+          <nolink>extension</nolink> (and also triple <nolink>mode</nolink>), only the <nolink>places</nolink> in segment 2 are extended. The <nolink>extension</nolink> of the <nolink>places</nolink> therefore occurs before the two segments are connected, as can be seen in lines 4, 5 and 6 above.</para>
+      </listitem>
+      <listitem>
+        <para>When extending the <nolink>places</nolink> above the <nolink>hunt bell</nolink>, the first step is to reverse and invert the <nolink>places</nolink> (see line 8 above). This restates the <nolink>places</nolink> on a basis that is equivalent to <nolink>places</nolink> below the <nolink>hunt bell</nolink>, such that the same process used to extend below-the-<nolink>hunt</nolink>
+          <nolink>places</nolink> can be used for above-the-<nolink>hunt</nolink>
+          <nolink>places</nolink>. A final step is then added to reverse and invert the resulting extended <nolink>places</nolink>, to convert them back to above-the-<nolink>hunt</nolink>
+          <nolink>places</nolink> (see line 13).</para>
+      </listitem>
+    </orderedlist>
+    <para>Double <nolink>mode</nolink> is used to extend Hunters where the <nolink>hunt bell</nolink>
+      <nolink>path</nolink> can only extend in one way, such as with Plain and Treble Dodging methods. This can include Little Plain and Little Treble Dodging methods (the <nolink>extension</nolink> will be 'less Little', but will still be Little).</para>
+  </section>
+  <section xml:id="ep4triple">
+    <title>4 e) Extension Process 4 - Triple Mode</title>
+    <para>The diagram below shows EP4 used in triple <nolink>mode</nolink> to extend <link xlink:href="https://complib.org/method/29353">Nightingale Treble Place Minor</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-nightingale.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>In a triple <nolink>mode</nolink>
+      <nolink>extension</nolink>, the place notation is separated into <nolink>places</nolink> of the <nolink>hunt bell</nolink>, <nolink>places</nolink> below the <nolink>hunt bell</nolink>, and <nolink>places</nolink> above the <nolink>hunt bell</nolink>. Each of these subsets is then processed in a similar manner to the previous example.</para>
+    <para>Triple <nolink>mode</nolink> is used to extend Hunters where it is necessary to specify how <nolink>hunt bell</nolink>
+      <nolink>places</nolink> extend, such as with certain Alliance and Treble Place methods. This can include Little methods where the <nolink>hunt bell</nolink>
+      <nolink>path</nolink> could be extended in more than one way.</para>
+  </section>
+  <section xml:id="ep4contraction">
+    <title>4 f) Extension Process 4 - Contraction</title>
+    <para>The diagram below shows EP4 used in double <nolink>mode</nolink> to contract <link xlink:href="https://complib.org/method/26082">Kent Treble Bob Minor</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-kent.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>In most cases, <nolink>extension</nolink> works in both directions. E.g. Kent Treble Bob Minor can be extended to Kent Treble Bob Major, and Kent Treble Bob Major can be contracted with the inverse process to obtain Kent Treble Bob Minor. The <nolink>parent method</nolink> is usually designated as the version of a <nolink>method</nolink> family that has the lowest <nolink>stage</nolink>, and then only <nolink>extensions</nolink> above that <nolink>stage</nolink> need to be considered.</para>
+    <para>However, is some cases a <nolink>method</nolink> can be contracted to give a recognizable version of the <nolink>method</nolink> at a lower <nolink>stage</nolink>, but it can't then be extended back to the original <nolink>stage</nolink>. The reason for this is that <nolink>places</nolink> can 'cross the <nolink>mode</nolink>'. Kent Treble Bob Minimus provides a good example of this. Kent is usually extended above the treble using a <nolink>mode</nolink> of 1, as this causes the 3-4 Kent <nolink>places</nolink> to remain in 3-4 as the <nolink>method</nolink> is extended.</para>
+    <para>However, when Kent is contracted from Minor to Minimus, <nolink>places</nolink> made in 6th's become <nolink>places</nolink> made in 4th's. But when attempting to re-extend Minimus back to Minor, it isn't possible under EP4 to specify that the 4th's <nolink>places</nolink> that are part of the Kent 3-4 <nolink>places</nolink> should remain in 4th's, but the other <nolink>places</nolink> in 4th's should extend to 6th's. Contraction therefore enables designation of Kent TB Minor as the parent <nolink>stage</nolink>, with higher <nolink>stages</nolink> obtained by <nolink>extension</nolink>, and one lower <nolink>stage</nolink> (Minimus) obtained by contraction.</para>
+    <para>It will be seen from the diagram above that the contraction process is the inverse of the <nolink>extension process</nolink>. Crucially, contraction only works if the <nolink>places</nolink> that become overlapped are the same in both segments.</para>
+  </section>
+  <section xml:id="ep4singlestage">
+    <title>4 g) Extension Process 4 - Single Stage</title>
+    <para>The diagram below shows EP4 used with a single <nolink>stage</nolink> increment to extend <link xlink:href="https://complib.org/method/11901">Brampford Speke Bob Minor</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-brampford-speke.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>[Notes: this process requires a different overlap <nolink>length</nolink> for the <nolink>places</nolink> below the <nolink>hunt bell</nolink>, compared with the overlap <nolink>length</nolink> for the <nolink>places</nolink> of the <nolink>hunt bell</nolink> and the <nolink>places</nolink> above the <nolink>hunt bell</nolink>. It is also necessary to discard a <nolink>place</nolink> that overflows the half-lead. An alternative process that addresses these issues is shown below, but it requires other modifications to the general process. At the moment, the process above also includes <nolink>places</nolink> made adjacent to a <nolink>hunt bell</nolink>
+      <nolink>place</nolink> as part of the process to extend the <nolink>hunt bell</nolink>. All to be discussed.]</para>
+  </section>
+  <section xml:id="ep4singlestagealt">
+    <title>4 h) Extension Process 4 - Single Stage - Alternative Process</title>
+    <para>The diagram below shows EP4 used with a single <nolink>stage</nolink> increment to extend <link xlink:href="https://complib.org/method/11901">Brampford Speke Bob Minor</link>.</para>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/edition2/extensionprocesses2/ep4-brampford-speke-alt.svg"/>
+      </imageobject>
+    </mediaobject>
+    <para>Single <nolink>stage</nolink>
+      <nolink>extension</nolink> requires two modifications to the processes seen previously:</para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Single <nolink>stage</nolink>
+          <nolink>extension</nolink> is used primarily with Plain methods. In such <nolink>methods</nolink>, the presence or absence of external <nolink>places</nolink> (in <nolink>changes</nolink> where there isn't an internal <nolink>place</nolink>) is the result of needing to keep the <nolink>hunt bell</nolink> plain <nolink>hunting</nolink>. For example, 7th's <nolink>place</nolink> at <nolink>change</nolink> 1 in Plain Bob Triples is not derived from 6th's <nolink>place</nolink> at <nolink>change</nolink> 1 in Minor—<nolink>change</nolink> 1 in Minor has the cross <nolink>change</nolink>. Single <nolink>stage</nolink>
+          <nolink>extension</nolink> therefore can't be derived solely from operations on the place notation—it is also necessary to extend the movements of the <nolink>hunt bell</nolink>. The movement notation a→b is used to mean 'In this <nolink>change</nolink>, the <nolink>hunt bell</nolink> moves from <nolink>place</nolink> a to <nolink>place</nolink> b', where a and b are adjacent <nolink>places</nolink>. E.g. 1→2 and 5→4. Following on from this, only internal <nolink>places</nolink> need to be part of the <nolink>extension process</nolink>, as any additional external <nolink>places</nolink> needed result from the <nolink>hunt bell</nolink> movements.</para>
+      </listitem>
+      <listitem>
+        <para>In single <nolink>stage</nolink>
+          <nolink>extension</nolink>, segment 2 may not continue all the way to the <nolink>half lead change</nolink>, and segment 1 may continue past the end of segment 2. Start and end <nolink>changes</nolink> for segments 1 and 2 are therefore specified individually, instead of specifying an overlap start. The values chosen for the segment starts and ends must be consistent with the Overlap <nolink>length</nolink> parameter.</para>
+      </listitem>
+    </orderedlist>
+    <para>Using these two modifications, the diagram above shows how <nolink>hunt bell</nolink>
+      <nolink>places</nolink> and movements, internal <nolink>places</nolink> below the <nolink>hunt bell</nolink>, and internal <nolink>places</nolink> above the <nolink>hunt bell</nolink> are each extended.</para>
+  </section>
+  <section xml:id="ep4additional">
+    <title>4 i) Extension Process 4 - Additional Considerations</title>
+    <para>
+      <emphasis role="underline">Multiple <nolink>hunt bells</nolink>:</emphasis> The examples above are limited to <nolink>methods</nolink> with no more than one <nolink>hunt bell</nolink>. Methods with multiple <nolink>coursing</nolink>
+      <nolink>hunt bells</nolink> can be extended in the same way. [Add examples of Grandsire extended in steps of two <nolink>stages</nolink> using double <nolink>mode</nolink>, and also in steps of one <nolink>stage</nolink> using triple <nolink>mode</nolink>.]</para>
+    <para>
+      <emphasis role="underline">Non palindromic <nolink>methods</nolink>:</emphasis> The examples above use palindromic <nolink>methods</nolink>. Non-palindromic <nolink>methods</nolink> can be extended by applying the processes above separately to each half of the <nolink>method</nolink>. The <nolink>changes</nolink> of the second half of the <nolink>method</nolink> are reversed prior to applying the <nolink>extension</nolink> operations, and the resulting extended <nolink>changes</nolink> are then re-reversed as the final step. [Add an example of a non-palindromic <nolink>extension</nolink>.]</para>
+    <para>
+      <emphasis role="underline">Jump changes and <nolink>dynamic methods</nolink>:</emphasis> EP4 is not designed to be used with <nolink>methods</nolink> containing <nolink>jump changes</nolink>, or <nolink>dynamic methods</nolink>.</para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+          <emphasis role="underline">Requirements for <nolink>extensions</nolink> to be valid</emphasis>
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem>
+            <para>The Extension has the same Symmetry (see Section 4.B) as the Parent Method.</para>
+          </listitem>
+          <listitem>
+            <para>The Extension has the same number of Hunt Bells as the Parent Method, unless the Parent Method only has Hunt Bells and has no Working Bells, in which case the Extension also only has Hunt Bells.</para>
+          </listitem>
+          <listitem>
+            <para>The Extension has the same number of Cycles of Working Bells as the Parent Method.</para>
+          </listitem>
+          <listitem>
+            <para>If the Parent Method comprises two or more Cycles of Working Bells of equal size, the Extension has this same feature.</para>
+          </listitem>
+          <listitem>
+            <para>If the Parent Method has Plain Bob Leadheads, the Extension also has Plain Bob Leadheads. If the Parent Method does not have Plain Bob Leadheads, the Extension also does not have Plain Bob Leadheads.</para>
+          </listitem>
+          <listitem>
+            <para>The Extension Construction used, when applied to the Parent Method in question, creates an Extension Path containing a minimum of 3 Methods (including the Parent Method) with Stages that are less than or equal to Stage 24.</para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="underline">Standard parameters:</emphasis> When the same results are obtained by using different overlap starts, use the overlap start that is closest to the start of the lead. When the same results are obtained by using different <nolink>modes</nolink>, use the lowest <nolink>mode</nolink>.</para>
+        <para>
+          <emphasis role="underline">EP4 <nolink>extension construction</nolink> notation:</emphasis> [To be discussesd.]</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>

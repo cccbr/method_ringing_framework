@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="relatedmaterial-v1" xml:lang="en" mrf:status="historic" mrf:authority="CCCBR" mrf:framework-edition="1" mrf:edition-label="Edition 1">
+  <info>
+    <title>Related Material</title>
+    <subtitle>Framework for Method Ringing, Appendix G</subtitle>
+    <edition>1</edition>
+    <releaseinfo role="status">historic</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">February 24, 2019</releaseinfo>
+    <releaseinfo role="effective-date">June 1, 2019</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/relatedmaterial.html</uri>
+    <othermeta role="source-path">version1/relatedmaterial.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <informaltable role="related-material">
+      <tgroup cols="3">
+        <tbody>
+          <row>
+            <entry>
+              <para>1.</para>
+            </entry>
+            <entry>
+              <para>Articles by John Harrison</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/jah-decisions-rw.pdf">here</link> for a series of articles by John Harrison that provide an overview of the purpose and function of the Central Council Decisions, which the framework is intended to update.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>2.</para>
+            </entry>
+            <entry>
+              <para>First Workgroup RW article</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/first-rw-article.pdf">here</link> for the first RW article by the framework group, written by John Harrison.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>3.</para>
+            </entry>
+            <entry>
+              <para>Second Workgroup RW article</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/second-rw-article.pdf">here</link> for the second RW article by the framework group, written by Tim Barnes.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>4.</para>
+            </entry>
+            <entry>
+              <para>Third Workgroup RW article</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/third-rw-article.pdf">here</link> for the third RW article by the framework group, written by Tim Barnes, which covers the launch of the first ringing-community-wide consultation.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>5.</para>
+            </entry>
+            <entry>
+              <para>Framework presentation to the 2018 Central Council meeting</para>
+            </entry>
+            <entry>
+              <para>The slides <link xlink:href="images/relatedmaterial/cc-slides.pdf">here</link> and remarks <link xlink:href="images/relatedmaterial/cc-remarks.pdf">here</link> were presented to the Central Council on May 28th 2018 by Tim Barnes.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>6.</para>
+            </entry>
+            <entry>
+              <para>Articles by Peter Scott</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/peter-scott-articles.pdf">here</link> for a series of articles by Peter Scott that give his views on various aspects of the framework.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>7.</para>
+            </entry>
+            <entry>
+              <para>Fourth Workgroup RW article</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/fourth-rw-article.pdf">here</link> for the fourth RW article by the framework group, written by Tim Barnes, which covers the launch of the second ringing-community-wide consultation.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>8.</para>
+            </entry>
+            <entry>
+              <para>FAQ articles</para>
+            </entry>
+            <entry>
+              <para>The RW serialised a selection of FAQs from the framework between Dec 7th 2018 and Feb 22nd 2019. Click <link xlink:href="images/relatedmaterial/faq-articles.pdf">here</link> for these articles.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>9.</para>
+            </entry>
+            <entry>
+              <para>Notice of framework implementation</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/exec-framework-implementation-notice.pdf">here</link> for the notice of framework implementation by the CC Executive, published in the RW on Mar 8th 2019.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>10.</para>
+            </entry>
+            <entry>
+              <para>Fifth Workgroup RW article</para>
+            </entry>
+            <entry>
+              <para>Click <link xlink:href="images/relatedmaterial/fifth-rw-article.pdf">here</link> for the fifth RW article by the framework group, written by Tim Barnes and Steve Coleman, which summarises the main differences between the Decisions and the framework.</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+</article>

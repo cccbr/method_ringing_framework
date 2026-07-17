@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="xref-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Cross References</title>
+    <subtitle>Framework for Method Ringing</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/xref.html</uri>
+    <othermeta role="source-path">version2/xref.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <section xml:id="section-2-row-2">
+      <title>Section</title>
+    </section>
+    <section xml:id="section-2-row-3">
+      <title>1.C</title>
+      <para>3 to 9</para>
+    </section>
+    <section xml:id="section-2-row-4">
+      <title>1.D</title>
+      <para>Appendix F</para>
+    </section>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Appendix G</para>
+      </listitem>
+      <listitem>
+        <para>Appendix H</para>
+      </listitem>
+    </orderedlist>
+    <section xml:id="section-2-row-7">
+      <title>3.B.1</title>
+      <para>3.C</para>
+    </section>
+    <section xml:id="section-2-row-8">
+      <title>3.D.1</title>
+      <para>3.E.1</para>
+    </section>
+    <section xml:id="section-2-row-9">
+      <title>3.D.1</title>
+      <para>3.G</para>
+    </section>
+    <section xml:id="section-2-row-10">
+      <title>3.E.1</title>
+      <para>Appendix A</para>
+    </section>
+    <section xml:id="section-2-row-11">
+      <title>3.E.1</title>
+      <para>5</para>
+    </section>
+    <section xml:id="section-2-row-12">
+      <title>3.E.4</title>
+      <para>3.F</para>
+    </section>
+    <section xml:id="section-2-row-13">
+      <title>3.E.5</title>
+      <para>3.F</para>
+    </section>
+    <section xml:id="section-2-row-14">
+      <title>3.E.5</title>
+      <para>3.J</para>
+    </section>
+    <section xml:id="section-2-row-15">
+      <title>3.F.1</title>
+      <para>3.G</para>
+    </section>
+    <section xml:id="section-2-row-16">
+      <title>3.F.1</title>
+      <para>3.H</para>
+    </section>
+    <section xml:id="section-2-row-17">
+      <title>3.F.1</title>
+      <para>6</para>
+    </section>
+    <section xml:id="section-2-row-18">
+      <title>3.F.2</title>
+      <para>5.D</para>
+    </section>
+    <section xml:id="section-2-row-19">
+      <title>3.K.1</title>
+      <para>5.A.4</para>
+    </section>
+    <section xml:id="section-2-row-20">
+      <title>3.K.2</title>
+      <para>6</para>
+    </section>
+    <section xml:id="section-2-row-21">
+      <title>3.K.3</title>
+      <para>7</para>
+    </section>
+    <section xml:id="section-2-row-22">
+      <title>4.A.1</title>
+      <para>3.E</para>
+    </section>
+    <section xml:id="section-2-row-23">
+      <title>4.A.1</title>
+      <para>4.C to 4.E</para>
+    </section>
+    <section xml:id="section-2-row-24">
+      <title>4.A.1</title>
+      <para>5.A.3</para>
+    </section>
+    <section xml:id="section-2-row-25">
+      <title>4.A.3</title>
+      <para>4.A.2</para>
+    </section>
+    <section xml:id="section-2-row-26">
+      <title>4.A.5</title>
+      <para>4.A.2</para>
+    </section>
+    <section xml:id="section-2-row-27">
+      <title>4.A.6</title>
+      <para>4.D.6</para>
+    </section>
+    <section xml:id="section-2-row-28">
+      <title>4.A.7</title>
+      <para>4.A.2</para>
+    </section>
+    <section xml:id="section-2-row-29">
+      <title>4.A.9</title>
+      <para>4.A.12</para>
+    </section>
+    <section xml:id="section-2-row-30">
+      <title>4.A.10</title>
+      <para>4.A.12</para>
+    </section>
+    <section xml:id="section-2-row-31">
+      <title>4.A.11</title>
+      <para>4.A.12</para>
+    </section>
+    <section xml:id="section-2-row-32">
+      <title>4.A.13</title>
+      <para>4.A.2</para>
+    </section>
+    <section xml:id="section-2-row-33">
+      <title>4.A.13</title>
+      <para>4.D.1.1</para>
+    </section>
+    <section xml:id="section-2-row-34">
+      <title>4.A.14</title>
+      <para>4.D.2.2</para>
+    </section>
+    <section xml:id="section-2-row-35">
+      <title>4.A.14</title>
+      <para>4.D.2.3</para>
+    </section>
+    <section xml:id="section-2-row-36">
+      <title>4.A.16</title>
+      <para>4.D.2.1</para>
+    </section>
+    <section xml:id="section-2-row-37">
+      <title>4.A.16</title>
+      <para>4.D.2.2</para>
+    </section>
+    <section xml:id="section-2-row-38">
+      <title>4.A.16</title>
+      <para>4.D.2.3</para>
+    </section>
+    <section xml:id="section-2-row-39">
+      <title>4.B.1</title>
+      <para>4.B.3</para>
+    </section>
+    <section xml:id="section-2-row-40">
+      <title>4.B.2</title>
+      <para>4.B.3</para>
+    </section>
+    <section xml:id="section-2-row-41">
+      <title>4.B.3</title>
+      <para>4.B.2</para>
+    </section>
+    <section xml:id="section-2-row-42">
+      <title>4.D.2.1</title>
+      <para>4.B.1</para>
+    </section>
+    <section xml:id="section-2-row-43">
+      <title>4.D.2.2</title>
+      <para>4.D.2.1</para>
+    </section>
+    <section xml:id="section-2-row-44">
+      <title>4.D.2.3</title>
+      <para>4.D.2.1</para>
+    </section>
+    <section xml:id="section-2-row-45">
+      <title>4.E.2</title>
+      <para>4.E.1</para>
+    </section>
+    <section xml:id="section-2-row-46">
+      <title>4.E.2</title>
+      <para>4.D.6</para>
+    </section>
+    <section xml:id="section-2-row-47">
+      <title>4.E.3</title>
+      <para>4.E.1</para>
+    </section>
+    <section xml:id="section-2-row-48">
+      <title>4.E.3</title>
+      <para>4.D.1.1</para>
+    </section>
+    <section xml:id="section-2-row-49">
+      <title>4.E.3</title>
+      <para>4.D.1.2</para>
+    </section>
+    <section xml:id="section-2-row-50">
+      <title>4.E.4</title>
+      <para>4.E.1</para>
+    </section>
+    <section xml:id="section-2-row-51">
+      <title>4.E.4</title>
+      <para>4.D.2.1</para>
+    </section>
+    <section xml:id="section-2-row-52">
+      <title>4.E.4</title>
+      <para>4.D.2.2</para>
+    </section>
+    <section xml:id="section-2-row-53">
+      <title>4.E.4</title>
+      <para>4.D.2.3</para>
+    </section>
+    <section xml:id="section-2-row-54">
+      <title>5.A.3</title>
+      <para>5.B</para>
+    </section>
+    <section xml:id="section-2-row-55">
+      <title>5.A.5</title>
+      <para>5.C</para>
+    </section>
+    <section xml:id="section-2-row-56">
+      <title>5.C.2</title>
+      <para>Appendix B</para>
+    </section>
+    <section xml:id="section-2-row-57">
+      <title>5.C.3</title>
+      <para>5.D</para>
+    </section>
+    <section xml:id="section-2-row-58">
+      <title>5.C.5</title>
+      <para>4.A.17</para>
+    </section>
+    <section xml:id="section-2-row-59">
+      <title>5.C.7</title>
+      <para>4.B.2</para>
+    </section>
+    <section xml:id="section-2-row-60">
+      <title>5.C.7</title>
+      <para>Appendix D.A.2</para>
+    </section>
+    <section xml:id="section-2-row-61">
+      <title>5.C.7</title>
+      <para>4.A.14</para>
+    </section>
+    <section xml:id="section-2-row-62">
+      <title>5.C.8</title>
+      <para>8</para>
+    </section>
+    <section xml:id="section-2-row-63">
+      <title>5.D.4</title>
+      <para>5.C</para>
+    </section>
+    <section xml:id="section-2-row-64">
+      <title>5.E.1</title>
+      <para>5</para>
+    </section>
+    <section xml:id="section-2-row-65">
+      <title>5.E.1</title>
+      <para>8</para>
+    </section>
+    <section xml:id="section-2-row-66">
+      <title>6.A.1</title>
+      <para>3.G.2</para>
+    </section>
+    <section xml:id="section-2-row-67">
+      <title>6.A.1</title>
+      <para>3.H.2</para>
+    </section>
+    <section xml:id="section-2-row-68">
+      <title>6.A.1</title>
+      <para>5.B.1</para>
+    </section>
+    <section xml:id="section-2-row-69">
+      <title>6.A.1</title>
+      <para>6.A.2</para>
+    </section>
+    <section xml:id="section-2-row-70">
+      <title>6.A.2</title>
+      <para>5.F.1</para>
+    </section>
+    <section xml:id="section-2-row-71">
+      <title>6.A.4</title>
+      <para>6.A.7</para>
+    </section>
+    <section xml:id="section-2-row-72">
+      <title>6.C.2</title>
+      <para>3.J</para>
+    </section>
+    <section xml:id="section-2-row-73">
+      <title>6.C.2</title>
+      <para>6.A.4</para>
+    </section>
+    <section xml:id="section-2-row-74">
+      <title>6.C.2</title>
+      <para>6.B.1</para>
+    </section>
+    <section xml:id="section-2-row-75">
+      <title>7.A.1</title>
+      <para>7.B</para>
+    </section>
+    <section xml:id="section-2-row-76">
+      <title>7.A.1</title>
+      <para>7.C</para>
+    </section>
+    <section xml:id="section-2-row-77">
+      <title>7.A.2</title>
+      <para>6.C</para>
+    </section>
+    <section xml:id="section-2-row-78">
+      <title>7.C.2</title>
+      <para>6</para>
+    </section>
+    <section xml:id="section-2-row-79">
+      <title>8.A.1</title>
+      <para>Appendix D</para>
+    </section>
+    <section xml:id="section-2-row-80">
+      <title>8.A.2</title>
+      <para>Appendix D</para>
+    </section>
+    <section xml:id="section-2-row-81">
+      <title>8.B.1</title>
+      <para>8</para>
+    </section>
+    <section xml:id="section-2-row-82">
+      <title>8.B.1</title>
+      <para>5</para>
+    </section>
+    <section xml:id="section-2-row-83">
+      <title>8.B.3</title>
+      <para>8.B.1</para>
+    </section>
+    <section xml:id="section-2-row-84">
+      <title>8.B.3</title>
+      <para>8.B.2</para>
+    </section>
+    <section xml:id="section-2-row-85">
+      <title>8.D.2</title>
+      <para>8.B</para>
+    </section>
+    <section xml:id="section-2-row-86">
+      <title>9.A.1</title>
+      <para>5.A.1</para>
+    </section>
+    <section xml:id="section-2-row-87">
+      <title>9.A.1</title>
+      <para>3.F.2</para>
+    </section>
+    <section xml:id="section-2-row-88">
+      <title>9.A.1</title>
+      <para>5.D.2</para>
+    </section>
+    <section xml:id="section-2-row-89">
+      <title>9.A.2</title>
+      <para>8.A.1</para>
+    </section>
+    <section xml:id="section-2-row-90">
+      <title>9.D.2</title>
+      <para>3.I</para>
+    </section>
+    <section xml:id="section-2-row-91">
+      <title>9.E.2</title>
+      <para>3.I</para>
+    </section>
+    <section xml:id="section-2-row-92">
+      <title>9.E.2</title>
+      <para>6.C</para>
+    </section>
+    <section xml:id="section-2-row-93">
+      <title>Appendix A.3</title>
+      <para>3.B.1</para>
+    </section>
+    <section xml:id="section-2-row-94">
+      <title>Appendix D.1</title>
+      <para>4.B</para>
+    </section>
+    <section xml:id="section-2-row-95">
+      <title>Appendix D.3</title>
+      <para>4.B</para>
+    </section>
+    <section xml:id="section-2-row-97">
+      <title>1. Introduction</title>
+      <para>C. http://jaharrison.me.uk/Ringing/Glossary (John Harrison's glossary of ringing terms)</para>
+    </section>
+    <section xml:id="section-2-row-98">
+      <title>3. Fundamentals of Method Ringing</title>
+      <para>A.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+      <para>B.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+      <para>C.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+      <para>D.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+      <para>E.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+      <para>G.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+      <para>H.1. images/fundamentals/understanding-<nolink>stage</nolink>.pdf (Document explaining the uses of the term <nolink>stage</nolink>)</para>
+    </section>
+    <section xml:id="section-2-row-99">
+      <title>4. Classification</title>
+      <para>A.1. images/classification/classification-chart.pdf (Classification chart)</para>
+      <para>A.4. https://complib.org/<nolink>method</nolink>/31112 (Martyrs Link Little Bob Major)</para>
+      <para>A.6. https://complib.org/<nolink>method</nolink>/19048 (Bristol Suprise Major)</para>
+      <para>A.6. https://complib.org/<nolink>method</nolink>/29113 (Magenta Little Place Maximus)</para>
+      <para>B.3. images/classification/symmetries.pdf (Symmetry chart)</para>
+      <para>C.3. https://complib.org/<nolink>method</nolink>/28182 (Deferential Differential Bob Minor)</para>
+      <para>D.3. https://complib.org/<nolink>method</nolink>/27309 (Primrose Treble Place Minor)</para>
+      <para>D.3. https://complib.org/<nolink>method</nolink>/27502 (Alderney Treble Place Minor)</para>
+      <para>D.4. https://complib.org/<nolink>method</nolink>/26928 (Semiquincentenary Alliance Major)</para>
+      <para>E.1. https://complib.org/<nolink>method</nolink>/25556 (Didymous Delight Major)</para>
+      <para>E.2. https://complib.org/<nolink>method</nolink>/28544 (Seven Stars Differential Little Hybrid Major)</para>
+      <para>E.2. https://complib.org/<nolink>method</nolink>/27681 (Bushey Treble Place Triples)</para>
+      <para>E.3. https://complib.org/<nolink>method</nolink>/11943 (Reverse Canterbury Pleasure Place Minor)</para>
+      <para>E.3. https://complib.org/<nolink>method</nolink>/32106 (Glastonbury Bob Triples)</para>
+      <para>E.4. https://complib.org/<nolink>method</nolink>/22632 (Vincula Surprise Royal)</para>
+    </section>
+    <section xml:id="section-2-row-100">
+      <title>5. Method Naming</title>
+      <para>A.1. https://<nolink>methods</nolink>.cccbr.org.uk (Methods Library)</para>
+      <para>A.6. mailto:<nolink>methods</nolink>@cccbr.org.uk (CC email address for enquiries on <nolink>methods</nolink>)</para>
+    </section>
+    <section xml:id="section-2-row-101">
+      <title>7. Record Lengths</title>
+      <para>B.3. mailto:records@cccbr.org.uk (CC email address for enquiries on records)</para>
+      <para>C.1. mailto:records@cccbr.org.uk (CC email address for enquiries on records)</para>
+      <para>C.4. mailto:records@cccbr.org.uk (CC email address for enquiries on records)</para>
+    </section>
+    <section xml:id="section-2-row-102">
+      <title>9. Related Roles</title>
+      <para>C.1. mailto:<nolink>methods</nolink>@cccbr.org.uk (CC email address for enquiries on <nolink>methods</nolink>)</para>
+    </section>
+    <section xml:id="section-2-row-103">
+      <title>Appendix B. Method Name Syntax</title>
+      <para>1. mailto:<nolink>methods</nolink>@cccbr.org.uk (CC email address for enquiries on <nolink>methods</nolink>)</para>
+      <para>2. http://www.unicode.org/versions/Unicode10.0.0/ (Unicode standard)</para>
+      <para>2. http://unicode.org/ucd/"&gt;http://unicode.org/ucd/ (Unicode character database)</para>
+      <para>2. https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (General category and folding case information)</para>
+      <para>2. https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt (Unicode <nolink>blocks</nolink>)</para>
+      <para>2. https://www.unicode.org/reports/tr15/tr15-45.html#Norm_Forms (Normalization forms)</para>
+      <para>6. images/syntax/<nolink>method</nolink>-name-syntax.html (Article by Don Morrison on <nolink>method name</nolink> syntax)</para>
+    </section>
+    <section xml:id="section-2-row-104">
+      <title>Appendix D. Extension Processes</title>
+      <para>A.1. https://complib.org/<nolink>method</nolink>/14317 (Norwich Surprise Minor)</para>
+      <para>A.1. https://complib.org/<nolink>method</nolink>/11349 (Plain Bob Minor)</para>
+      <para>A.2. https://complib.org/<nolink>method</nolink>/10587 (Grandsire Doubles)</para>
+      <para>1. https://complib.org/<nolink>method</nolink>/11932 (Little Bob Minor)</para>
+      <para>2. https://complib.org/<nolink>method</nolink>/10560 (St Simon's Bob Doubles)</para>
+      <para>3. https://complib.org/<nolink>method</nolink>/14931 (Milton Surprise Minor)</para>
+    </section>
+    <section xml:id="section-2-row-105">
+      <title>Appendix G. Version 2 Development</title>
+      <para>C. images/development/v2-first-rw-article.pdf (First RW article on Framework v2)</para>
+      <para>D. images/development/v1-v2-diff.pdf (Changes made in v2)</para>
+    </section>
+    <section xml:id="section-2-row-107">
+      <title>3. Fundamentals</title>
+      <para>C.1. images/fundamentals/<nolink>change</nolink>.svg</para>
+      <para>D.1. images/fundamentals/<nolink>block</nolink>.svg</para>
+      <para>D.1. images/fundamentals/hierarchy.svg</para>
+      <para>D.2. images/fundamentals/roundblock.svg</para>
+      <para>E.4. images/fundamentals/plainlead.svg</para>
+      <para>E.5. images/fundamentals/plaincourse.svg</para>
+      <para>H.1. images/fundamentals/coverbell.svg</para>
+      <para>J.4. images/fundamentals/openingclosingrounds.svg</para>
+    </section>
+    <section xml:id="section-2-row-108">
+      <title>4. Classification</title>
+      <para>A.2. images/classification/<nolink>hunt</nolink>-bell.svg</para>
+      <para>A.12. images/classification/<nolink>leadhead</nolink>.svg</para>
+      <para>A.15. images/classification/<nolink>dodging</nolink>-<nolink>places</nolink>.svg</para>
+      <para>C.1. images/classification/plain-bob-minimus.svg</para>
+      <para>C.2. images/classification/stanton-minimus.svg</para>
+      <para>C.3. images/classification/christ-church-dublin-<nolink>differential</nolink>-doubles.svg</para>
+      <para>D.1. images/classification/plain-bob-minor.svg</para>
+      <para>D.1.1. images/classification/foti-<nolink>place</nolink>-minor.svg</para>
+      <para>D.1.2. images/classification/double-oxford-bob-minor.svg</para>
+      <para>D.2. images/classification/kent-treble-bob-minor.svg</para>
+      <para>D.2.1. images/classification/oxford-treble-bob-minor.svg</para>
+      <para>D.2.2. images/classification/cambridge-surprise-minor.svg</para>
+      <para>D.2.3. images/classification/college-bob-iv-delight-minor.svg</para>
+      <para>D.3. images/classification/stoke-albany-treble-<nolink>place</nolink>-minor.svg</para>
+      <para>D.4. images/classification/alperton-alliance-minor.svg</para>
+      <para>D.5. images/classification/seavington-st-mary-hybrid-minor.svg</para>
+      <para>D.6. images/classification/canterbury-little-bob-minor.svg</para>
+    </section>
+    <section xml:id="section-2-row-109">
+      <title>Appendix D. Extension Processes</title>
+      <para>1. images/extensionprocesses/example-1.svg</para>
+      <para>2. images/extensionprocesses/example-2.svg</para>
+      <para>3. images/extensionprocesses/example-3.svg</para>
+    </section>
+    <section xml:id="section-2-row-110">
+      <title>Appendix F. Framework Principles</title>
+      <para>D.2. images/<nolink>principles</nolink>/not-<nolink>method</nolink>-ringing-1.svg</para>
+      <para>D.3. images/<nolink>principles</nolink>/not-<nolink>method</nolink>-ringing-2.svg</para>
+    </section>
+  </section>
+</article>

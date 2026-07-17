@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="principles-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Framework Principles</title>
+    <subtitle>Framework for Method Ringing, Appendix F</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/principles.html</uri>
+    <othermeta role="source-path">version2/principles.html</othermeta>
+  </info>
+  <glossary mrf:source-title="Framework for Method Ringing">
+    <glossdiv xml:id="goals">
+      <title>Appendix F. Framework Principles</title>
+      <para>The Framework has been designed and developed in accordance with the following <nolink>principles</nolink>:</para>
+      <orderedlist numeration="arabic" role="glossary-style">
+        <listitem>
+          <para>
+            <emphasis role="bold">Scope</emphasis>
+          </para>
+          <para>The scope of the Framework is <nolink>method</nolink> ringing (also called scientific ringing). It does not cover <nolink>call</nolink> (or called) <nolink>changes</nolink>, nor tune ringing. Cylindrical ringing, where a bell can ring twice in some Rows, and not at all in others, is similarly out of scope.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Description not Prescription</emphasis>
+          </para>
+          <para>Avoid arbitrary rules and value judgements. Seek to find the logical boundaries that define the limits of <nolink>method</nolink> ringing, and ensure the Framework supports everything within these boundaries.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Simple, Generic, Consistent</emphasis>
+          </para>
+          <para>The more straightforward the Framework is, the more widely it will be understood across the ringing community and the more accessible it will be to new ringers joining the Exercise. Standardise terms and requirements where this increases simplicity while retaining historical meaning. However, it is also recognised that <nolink>method</nolink> ringing has inherent complexity resulting from both its mathematical foundation and its rich history, such that not all complexity can be eliminated.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Define and Explain</emphasis>
+          </para>
+          <para>Terms used in the Framework should be clearly defined. Include examples and explanations to assist in the understanding of the Framework. For ease of reference, capitalise terms that are defined in the Framework whenever they are used elsewhere in the Framework.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Continuity</emphasis>
+          </para>
+          <para>Most standard Methods and Performances should continue to be described as they have been historically, or with limited alterations where there are clear standardisation or simplification benefits.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Rows</emphasis>
+          </para>
+          <para>In <nolink>method</nolink> ringing, the same set of bells rings in every Row, with each bell ringing exactly once in every Row.</para>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/edition2/principles/not-method-ringing-1.svg" width="480" height="240"/>
+            </imageobject>
+          </mediaobject>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Places</emphasis>
+          </para>
+          <para>In <nolink>method</nolink> ringing, each bell rings in a different Place in the Row to every other bell.</para>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/edition2/principles/not-method-ringing-2.svg" width="208" height="144"/>
+            </imageobject>
+          </mediaobject>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Changes</emphasis>
+          </para>
+          <para>A Change may be any transformation of one Row to the next. This results in the definition of Jump Changes and Identity Changes in the Framework. The term 'Adjacent Change' has also been introduced to make clear when a Change is not a Jump Change or an Identity Change.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Methods</emphasis>
+          </para>
+          <para>In general, Methods are sequences of Changes that have been given names and which are recorded in the Central Council's Methods Library. Any sequence of Changes should be able to be named as a Method.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Truth</emphasis>
+          </para>
+          <para>A Block of Rows is True if it comprises 0 to n Extents, plus 1 optional partial Extent. In other words, a Block of Rows is True if either (a) all of its Rows are distinct (only occur once) or (b) when the Block is longer than an Extent, any Rows that remain after removing all Extents are distinct. The location of individual Rows within a Block of Rows does not have any bearing on <nolink>truth</nolink>.</para>
+          <para>Note that the above is subject to (a) treatment of any Cover Bells in the Row (see 11. below), and (b) the related concept of 'Accepted Truth' as defined in the Framework.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Cover Bells</emphasis>
+          </para>
+          <para>A Row may include one or more Cover Bells. A Place that is occupied by the same Cover Bell in every Row of a Block (such a Place is referred to in the Framework as a Fixed Place) is excluded when determining <nolink>truth</nolink>. Similarly, if Method(s), and/or Method(s) and Call(s), cause a bell to remain in the same Place in every Row of a Block, then this Place is also a Fixed Place and is excluded when determining <nolink>truth</nolink>.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Length and Stage</emphasis>
+          </para>
+          <para>Ringing of all Lengths on all Stages should be treated alike for simplicity, consistency and permissiveness. Framework definitions should be relevant and applicable to all ringing, not just Peals. For example, the definition of True applies equally to Short Touches, Quarter Peals and Peals, and if 5000 <nolink>changes</nolink> is a Peal of Major, then it is also sufficient for a Peal of Minor.</para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Performance reporting</emphasis>
+          </para>
+          <para>Under this permissive Framework, <nolink>bands</nolink> decide what they wish to ring, and the onus is on them to determine if a Performance merits publication. The Performance Reporting requirements include disclosures for when the ringing is not covered by the Framework, or when it is covered by the Framework but includes characteristics that differ from established norms (for example, not starting and ending in Rounds). These disclosures can then be used in subsequent analyses of ringing Performances.</para>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+  </glossary>
+</article>

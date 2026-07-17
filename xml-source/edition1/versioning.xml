@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="versioning-v1" xml:lang="en" mrf:status="historic" mrf:authority="CCCBR" mrf:framework-edition="1" mrf:edition-label="Edition 1">
+  <info>
+    <title>Versioning</title>
+    <subtitle>Framework for Method Ringing, Section 2</subtitle>
+    <edition>1</edition>
+    <releaseinfo role="status">historic</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">February 24, 2019</releaseinfo>
+    <releaseinfo role="effective-date">June 1, 2019</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/versioning.html</uri>
+    <othermeta role="source-path">version1/versioning.html</othermeta>
+  </info>
+  <section xml:id="changes">
+    <title>A. Changes to Previous Version</title>
+    <para>This section describes the <nolink>changes</nolink> made since the previous version of the framework.</para>
+    <para>Since this is the first version of the framework, there are no <nolink>changes</nolink> to list.</para>
+  </section>
+</article>

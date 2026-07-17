@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="versioning-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Versioning</title>
+    <subtitle>Framework for Method Ringing, Section 2</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/versioning.html</uri>
+    <othermeta role="source-path">version2/versioning.html</othermeta>
+  </info>
+  <section xml:id="section-2">
+    <section xml:id="section-2-row-2">
+      <title>Version 1</title>
+      <para>Implemented February 24, 2019 with an effective date of June 1, 2019.</para>
+    </section>
+    <section xml:id="section-2-row-3">
+      <title>Version 2</title>
+      <para>Implemented Janury 26, 2022 with an effective date of May 1, 2022.</para>
+      <para>Version 2 is the current live version of the Framework.</para>
+      <para>See Appendix G for information on the development of version 2 and the <nolink>changes</nolink> that were made.</para>
+      <para>See Appendix H for information on the ringing community consultation that took <nolink>place</nolink> prior to the implementation of version 2.</para>
+    </section>
+  </section>
+</article>

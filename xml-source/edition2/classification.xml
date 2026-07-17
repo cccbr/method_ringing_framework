@@ -1,0 +1,753 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="classification-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Method Classification</title>
+    <subtitle>Framework for Method Ringing, Section 4</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/classification.html</uri>
+    <othermeta role="source-path">version2/classification.html</othermeta>
+  </info>
+  <glossary mrf:source-title="Framework for Method Ringing">
+    <glossdiv xml:id="definitions">
+      <title>A. Definitions</title>
+      <glossentry xml:id="definitions-entry-1-method-class" mrf:number="A.1">
+        <glossterm>Method Class</glossterm>
+        <glossterm role="synonym">Method Classes</glossterm>
+        <glossdef>
+          <para>A group of Methods that contain the same, defined features. Click <link xlink:href="images/classification/classification-chart.pdf">here</link> for a diagram that shows the Method Classes and the relationships between them. These classes are defined in Sections 4.C to 4.E below, except that Static Method and Dynamic Method are defined in Section 3.E.</para>
+          <note role="further-explanation">
+            <para>Note that Dynamic Methods are not currently sub-classified to lower levels.</para>
+            <para>The classification system for <nolink>method</nolink> ringing evolved over many decades and as a result is more complex than if we were starting from scratch. Making any large-scale <nolink>changes</nolink> to the classification system is problematic because class terms form part of a Method's Title (see Section 5.A.3), so <nolink>changes</nolink> to classifications also alter Method Titles, making it harder to interpret historical records of <nolink>method</nolink> ringing Performances.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-2-hunt-bell" mrf:number="A.2">
+        <glossterm>Hunt Bell</glossterm>
+        <glossterm role="synonym">Hunt Bells</glossterm>
+        <glossdef>
+          <para>A bell that ends a Plain Lead in the same Place as it started.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/hunt-bell.svg" width="112" height="144"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>The place notation for the Method Plain Bob Minimus is x14x14x14x12. This place notation produces one Plain Lead when applied once to an initial Row. Using an initial Row of 1234 (Rounds), the Plain Lead shown in the diagram is produced. To identify which are the Hunt Bell(s), look at the final Row produced (in this example it is 1342). The Hunt Bell(s) are the bell(s) that are in the same Place(s) in the final Row as they were in the initial Row. In Plain Bob Minimus, the bell in 1st’s Place in the initial Row (in this example, the treble) is therefore the only Hunt Bell.</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that a Plain Lead is defined in terms of a Static Method. The concept of a Hunt Bell may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-3-working-bell" mrf:number="A.3">
+        <glossterm>Working Bell</glossterm>
+        <glossterm role="synonym">Working Bells</glossterm>
+        <glossdef>
+          <para>A bell that ends a Plain Lead in a different Place from where it started.</para>
+          <note role="further-explanation">
+            <para>Using the example in Section 4.A.2 above, the bells in 2nd's, 3rd's and 4th's Places in the initial Row (in this example, the 2nd, 3rd and 4th respectively) are Working Bells because at the final Row of a Plain Lead they have not returned to the same Places they were in at the initial Row.</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that a Plain Lead is defined in terms of a Static Method. The concept of a Working Bell may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-4-stationary-bell" mrf:number="A.4">
+        <glossterm>Stationary Bell</glossterm>
+        <glossterm role="synonym">Stationary Bells</glossterm>
+        <glossdef>
+          <para>A Hunt Bell that occupies the same Place in every Row of a Plain Lead.</para>
+          <example>
+            <para>3rd's Place bell in <link xlink:href="https://complib.org/method/31112">Martyrs Link Little Bob Major</link> is a Stationary Bell.</para>
+          </example>
+          <note role="technical-comment">
+            <para>Note that a Plain Lead is defined in terms of a Static Method. The concept of a Stationary Bell may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-5-path" mrf:number="A.5">
+        <glossterm>Path</glossterm>
+        <glossterm role="synonym">Paths</glossterm>
+        <glossdef>
+          <para>The movements of a bell between its successive Places in the Rows of a Block.</para>
+          <para>Where a Path ends in the same Place as it started, it is considered to be a loop, and these two Places coincide and are only counted once.</para>
+          <para>Two such Paths are considered equal if the first Path can be started from a Place that gives the second Path.</para>
+          <example>
+            <para>A Path is commonly depicted by drawing a line through the bell in question.</para>
+            <para>The treble’s Path is depicted with a red line in the example in Section 4.A.2 above.</para>
+            <para>Since this Path starts and ends in the same Place (1st's), it is considered to be a loop, and the Path therefore comprises 8 Places.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Consider the following two Paths, which are both loops:</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/path-diagram.svg" width="452" height="121"/>
+              </imageobject>
+            </mediaobject>
+            <para>The numbers in the diagram above represent the Places through which the Paths pass.</para>
+            <para>These two Paths are considered to be the same because starting Path 1 from its second Place gives Path 2.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-6-little-path" mrf:number="A.6">
+        <glossterm>Little Path</glossterm>
+        <glossterm role="synonym">Little Paths</glossterm>
+        <glossdef>
+          <para>A Path which does not involve occupying all the Places of the Stage of a Block.</para>
+          <example>
+            <para>See the example of a Little Path in Section 4.D.6 below.</para>
+          </example>
+          <note role="further-explanation">
+            <para>A Little Path is most commonly used in reference to a Hunt Bell. For example, the Hunt Bell Path in Little Bob Minor is a Little Path. However, a Little Path can also be used with Working Bells. For example, 2nd's Place Bell in <link xlink:href="https://complib.org/method/19048">Bristol Surprise Major</link> can be said to be a Little Path, and all the Working Bells in <link xlink:href="https://complib.org/method/29113">Magenta Little Place Maximus</link> have Little Paths over the full Plain Course (and its Hunt Bells also all have Little Paths).</para>
+            <para>Note that a Stationary Bell has a Little Path.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-7-hunting" mrf:number="A.7">
+        <glossterm>Hunting</glossterm>
+        <glossterm role="synonym">Hunt</glossterm>
+        <glossdef>
+          <para>A Path that is formed by progressing from an earlier Place to a later Place, or vice versa (but not a combination of both), at the rate of one Place per Row. (Alternative form: a bell Hunts.)</para>
+          <note role="further-explanation">
+            <para>In the diagram in Section 4.A.2 above, the treble Hunts up in the first half of the lead, and then Hunts down in the second half of the lead.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-8-dodging" mrf:number="A.8">
+        <glossterm>Dodging</glossterm>
+        <glossterm role="synonym">Dodges</glossterm>
+        <glossterm role="synonym">Dodge</glossterm>
+        <glossdef>
+          <para>Moving one Place in the opposite direction in an otherwise Hunting Path. (Alternative form: a bell Dodges.)</para>
+          <note role="further-explanation">
+            <para>If the Hunting Path 2, 3, 4, 5 is modified to become 2, 3, 4, 3, 4, 5, then the step back in 3-4 is referred to as Dodging. A step back when otherwise <nolink>hunting</nolink> up is referred to as Dodging up, and a step back when otherwise <nolink>hunting</nolink> down is referred to as Dodging down.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-9-leadend-change" mrf:number="A.9">
+        <glossterm>Leadend Change</glossterm>
+        <glossterm role="synonym">Leadend Changes</glossterm>
+        <glossterm role="synonym">Lead End Change</glossterm>
+        <glossterm role="synonym">Lead End Changes</glossterm>
+        <glossdef>
+          <para>The last Change in a Method's sequence of Changes.</para>
+          <example>
+            <para>Little Bob Minor has the sequence of Changes x16x14x16x12. The Leadend Change is the last of these Changes -- i.e. 12.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Also see the diagram in Section 4.A.12 that shows the location of Leadend Changes.</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that the concept of a Leadend Change may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-10-halflead-change" mrf:number="A.10">
+        <glossterm>Halflead Change</glossterm>
+        <glossterm role="synonym">Halflead Changes</glossterm>
+        <glossterm role="synonym">Half Lead Change</glossterm>
+        <glossterm role="synonym">Half Lead Changes</glossterm>
+        <glossdef>
+          <para>The Change that occurs at the halfway point in a Method's sequence of Changes.</para>
+          <example>
+            <para>Little Bob Minor has the sequence of Changes x16x14x16x12. This sequence is 8 Changes in Length. The Halflead Change is therefore the 4th Change in the sequence -- i.e. 14.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Note that Halflead Change is a concept that applies to Methods whose sequence of Changes is even in Length. The Halflead Change occurs at the position that is the sequence Length divided by 2.</para>
+            <para>Also see the diagram in Section 4.A.12 that shows the location of Halflead Changes.</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that the concept of a Halflead Change may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-11-leadend" mrf:number="A.11">
+        <glossterm>Leadend</glossterm>
+        <glossterm role="synonym">Leadends</glossterm>
+        <glossterm role="synonym">Lead End</glossterm>
+        <glossterm role="synonym">Lead Ends</glossterm>
+        <glossdef>
+          <para>When applying a Method's sequence of Changes to produce a Plain Lead, the Leadend is the Row to which the Leadend Change is applied.</para>
+          <note role="further-explanation">
+            <para>See the diagram in Section 4.A.12 that shows the location of Leadends.</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that a Plain Lead is defined in terms of a Static Method. The concept of a Leadend may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-12-leadhead" mrf:number="A.12">
+        <glossterm>Leadhead</glossterm>
+        <glossterm role="synonym">Leadheads</glossterm>
+        <glossterm role="synonym">Lead Head</glossterm>
+        <glossterm role="synonym">Lead Heads</glossterm>
+        <glossdef>
+          <para>When applying a Method's sequence of Changes to produce a Plain Lead, the Leadhead is the Row to which the first Change of the sequence is applied.</para>
+          <note role="further-explanation">
+            <para>The formal definitions for Leadhead and Leadend are provided above, and this terminology is helpful when, for example, a Composition is being tested for Truth using tables of false course heads.</para>
+            <para>But note that in practice, ringers and conductors often refer to the Leadhead Row as the <nolink>lead end</nolink>.</para>
+          </note>
+          <example>
+            <para>The diagram below shows the Leadheads, Leadends, Halflead Changes and Leadend Changes for a Plain Course of Plain Bob Minimus.</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/leadhead.svg" width="293" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="technical-comment">
+            <para>Note that a Plain Lead is defined in terms of a Static Method. The concept of a Leadhead may not apply to Dynamic Methods.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-13-making-one-or-more-places" mrf:number="A.13">
+        <glossterm>Making one or more Places</glossterm>
+        <glossdef>
+          <para>Making a Place is occupying the same Place for two consecutive Rows. (Alternative form: a bell Makes a Place.)</para>
+          <para>Making one or more Places is occupying the same Place for two or more consecutive Rows.</para>
+          <note role="further-explanation">
+            <para>In the example in Section 4.A.2 above, the treble Makes 4th's at the Halflead Change, and Makes 1st's at the Leadend Change.</para>
+            <para>Other forms also exist. For example, occupying the same Place for 3 consecutive Rows might be referred to as 'Making a Place twice' or (e.g.) 'Making 3 blows in 2nd's'.</para>
+            <para>See the example of Making one or more Places in Section 4.D.1.1 below.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-14-making-an-internal-place" mrf:number="A.14">
+        <glossterm>Making an Internal Place</glossterm>
+        <glossterm role="synonym">Making Internal Places</glossterm>
+        <glossdef>
+          <para>Making a Place that is neither the first Place nor the last Place of the Block in question. (Alternative form: a bell Makes an Internal Place.)</para>
+          <note role="further-explanation">
+            <para>See the examples of Making an Internal Place in Sections 4.D.2.2 and 4.D.2.3 below.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-15-dodging-places" mrf:number="A.15">
+        <glossterm>Dodging Places</glossterm>
+        <glossdef>
+          <para>Successive pairs of adjacent Places of the Path of the Hunt Bell in question.</para>
+          <example>
+            <para>In a Path where the Hunt Bell moves between 1st's Place and 6th's Place, the Dodging Places are 1-2, 3-4 and 5-6. The diagram below shows the Dodging Places for Kent Treble Bob Minor.</para>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/dodging-places.svg" width="268" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>This term is only used with Paths that span an even number of Places, so the span can always be divided into pairs of Places.</para>
+            <para>As the term implies, Dodging Places are a pair of Places in which a Dodge can occur. However, note that in some Methods, Dodges can also occur across two Dodging Places, e.g. in 4-5.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-16-cross-section" mrf:number="A.16">
+        <glossterm>Cross Section</glossterm>
+        <glossterm role="synonym">Cross Sections</glossterm>
+        <glossdef>
+          <para>A Change at which the Hunt Bell in question crosses from one pair of Dodging Places to the next.</para>
+          <note role="further-explanation">
+            <para>Cross Sections are used in the classification of Treble Dodging Methods -- see Sections 4.D.2.1, 4.D.2.2 and 4.D.2.3 below.</para>
+            <para>In a Method with more than one Hunt Bell, the Cross Sections may be defined by only a subset of the Hunt Bells -- see Section 4.E.4 below.</para>
+          </note>
+          <example>
+            <para>In a Method with one Hunt Bell that moves between 1st's Place and 6th's Place, since the Dodging Places are 1-2, 3-4 and 5-6, the Cross Sections are the Changes that cause the Hunt Bell to:</para>
+            <orderedlist numeration="arabic" role="compact">
+              <listitem>
+                <para>move from 2nd's Place to 3rd’s Place;</para>
+              </listitem>
+              <listitem>
+                <para>move from 4th’s Place to 5th’s Place;</para>
+              </listitem>
+              <listitem>
+                <para>move from 5th’s Place to 4th’s Place; and</para>
+              </listitem>
+              <listitem>
+                <para>move from 3rd’s Place to 2nd’s Place.</para>
+              </listitem>
+            </orderedlist>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-17-rotation" mrf:number="A.17">
+        <glossterm>Rotation</glossterm>
+        <glossterm role="synonym">Rotations</glossterm>
+        <glossdef>
+          <para>A sequence of Changes can be rotated by considering it as a loop, and starting it at a different point. This process is called Rotation. By using this process on the Changes of a Static Method, other Static Methods can be produced that are Rotations of the original Static Method.</para>
+          <example>
+            <para>The Method Plain Bob Minimus has the Changes x14x14x14x12. The Static Method with the Changes x14x12x14x14 is a Rotation of Plain Bob Minimus.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="definitions-entry-18-cycle" mrf:number="A.18">
+        <glossterm>Cycle</glossterm>
+        <glossterm role="synonym">Cycles</glossterm>
+        <glossdef>
+          <para>A Cycle is a set of one or more bells that follow the same Path and return to their starting Places after the same number of Plain Leads. This number of Plain Leads is the same as the number of bells in the Cycle.</para>
+          <para>Where a Cycle is made up of two or more bells, the bells successively occupy each other's Places at the Leadheads of a Method's Plain Course, and these bells are Working Bells.</para>
+          <para>Where a Cycle is made up of one bell, this bell is a Hunt Bell.</para>
+          <note role="further-explanation">
+            <para>The Method <link xlink:href="https://complib.org/method/28182"> Deferential Differential Bob Minor </link> has the Leadheads:</para>
+            <para>132645, 123564, 132456, 123645, 132564 and 123456.</para>
+            <para>It can be seen that bells 2 and 3 occupy each other's Places at the Leadheads, and bells 4, 5 and 6 do the same. The treble is a Hunt Bell. This Method therefore has three Cycles: one with one bell, one with two bells, and one with three bells.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="methodsymmetry">
+      <title>B. Method Symmetry</title>
+      <glossentry xml:id="methodsymmetry-entry-19-palindromic-symmetry" mrf:number="B.1">
+        <glossterm>Palindromic Symmetry</glossterm>
+        <glossdef>
+          <para>A Method has Palindromic Symmetry if the same Changes result (after Rotation if needed) when read backwards, that is, when the order of the Changes is inverted.</para>
+          <note role="further-explanation">
+            <para>Plain Bob Minor has the sequence of Changes x16x16x16x16x16x12. If this sequence is read backwards, the result is 12x16x16x16x16x16x. This can be Rotated to give x16x16x16x16x16x12, which is the same sequence as above. This Method therefore has Palindromic Symmetry.</para>
+            <para>About 95% of the Methods in the Methods Library (as of 2018) have Palindromic Symmetry.</para>
+          </note>
+          <example>
+            <para>Section 4.B.3 below includes an illustration of Palindromic Symmetry.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="methodsymmetry-entry-20-double-symmetry" mrf:number="B.2">
+        <glossterm>Double Symmetry</glossterm>
+        <glossdef>
+          <para>A Method has Double Symmetry if the same Changes result (after Rotation if needed) when reversed, that is, when the Places within each Change are inverted.</para>
+          <note role="further-explanation">
+            <para>Inverting the Places within a Change means to count the Places from the end of the Row rather than the beginning. For example, a Minor Change might have Places made in 1st's and 2nd's, so place notation = 12. 1st's and 2nd's Places counted from the end of a Minor Row are 5th's and 6th's Places. So when the Minor Change 12 is inverted, the result is 56. Similarly, 14 becomes 36, and 34 becomes (in this case, remains) 34.</para>
+            <para>Double Union Minor has the sequence of Changes x16x36x56x16x14x12. If each of these Changes is inverted, the result is x16x14x12x16x36x56. This can be Rotated to give x16x36x56x16x14x12, which is the same sequence as above. This Method therefore has Double Symmetry.</para>
+            <para>About 2% of the Methods in the Methods Library (as of 2018) have Double Symmetry.</para>
+          </note>
+          <example>
+            <para>Section 4.B.3 below includes an illustration of Double Symmetry.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="methodsymmetry-entry-21-rotational-symmetry" mrf:number="B.3">
+        <glossterm>Rotational Symmetry</glossterm>
+        <glossdef>
+          <para>A Method has Rotational Symmetry if the same Changes result (after Rotation if needed) when reversed and read backwards.</para>
+          <note role="further-explanation">
+            <para>Evening Exercise Bob Minor has the sequence of Changes x14x36x16x16x16x16. Inverting these <nolink>changes</nolink> (see Section 4.B.2 above) gives: x36x14x16x16x16x16. Reading these Changes backwards gives 16x16x16x16x14x36x. This can be Rotated to give x14x36x16x16x16x16, which is the same sequence as above. This Method therefore has Rotational Symmetry.</para>
+            <para>About 2% of the Methods in the Methods Library (as of 2018) have Rotational Symmetry.</para>
+            <para>Note that although the above Method has Rotational Symmetry, it does not also have Palindromic or Double symmetry, even though the process for testing for Rotational Symmetry involves reversing the Changes and reading them backwards.</para>
+            <para>However, about 93% of the Methods in the Methods Library (as of 2018) that have Rotational Symmetry do also have Palindromic and Double Symmetry. An example of a Method with all three symmetries is Double Court Bob Minor (x14x36x16x36x14x16).</para>
+            <para>The general rule is that if a Method has any two of the three symmetries (Palindromic, Double and Rotational), it must also have the third. However, a Method can have any one of these three symmetries without having either of the other two. A Method can also have none of the three symmetries.</para>
+          </note>
+          <example>
+            <para>Click <link xlink:href="images/classification/symmetries.pdf">here</link> for illustrations of the three symmetries.</para>
+          </example>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="upperlevels">
+      <title>C. Method Classes: Upper Levels</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>The first three Classes below are based on the Cycles present in a Method. Click <link xlink:href="images/classification/minor-cycles.pdf"> here </link> for a table that shows all the possible combinations of Cycles at the Minor Stage, and gives examples of corresponding Methods where available.</para>
+        </listitem>
+      </orderedlist>
+      <glossentry xml:id="upperlevels-entry-22-hunter" mrf:number="C.2">
+        <glossterm>Hunter</glossterm>
+        <glossterm role="synonym">Hunters</glossterm>
+        <glossdef>
+          <para>A Static Method that has one or more Hunt Bells.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/plain-bob-minimus.svg" width="104" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>A Plain Lead of the Minimus Method x14x14x14x12, starting from Rounds, ends with the Row 1342, as shown in the diagram. At the end of one Plain Lead, the treble is the only bell that has returned to the Place it was in at the initial Row (1234), so the treble is this Method's only Hunt Bell. The other 3 bells are therefore Working Bells. Continuing to apply the place notation successively produces the 2 additional leads shown, such that after 3 Plain Leads, Rounds is obtained. This is the Method’s Plain Course. Since this Method has at least one Hunt Bell, it is a Hunter. (This Method is Plain Bob Minimus.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="upperlevels-entry-23-principle" mrf:number="C.3">
+        <glossterm>Principle</glossterm>
+        <glossterm role="synonym">Principles</glossterm>
+        <glossdef>
+          <para>A Static Method that has no Hunt Bells.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/stanton-minimus.svg" width="104" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>A Plain Lead of the Minimus Method 34x34.14.12.14, starting from Rounds, ends with the Row 2341, as shown in the diagram. At the end of one Plain Lead, no bell has returned to the Place it was in at the initial Row (1234), so this <nolink>method</nolink> has no Hunt Bells. Continuing to apply the place notation successively produces the 3 additional leads shown, such that after 4 Plain Leads, Rounds is obtained. This is the Method’s Plain Course. Since this Method has no Hunt Bells, it is a Principle. (This Method is Stanton Minimus.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="upperlevels-entry-24-differential" mrf:number="C.4">
+        <glossterm>Differential</glossterm>
+        <glossterm role="synonym">Differentials</glossterm>
+        <glossdef>
+          <para>A Static Method in which the Working Bells do not all first return to their starting Places after the same number of Plain Leads.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/christ-church-dublin-differential-doubles.svg" width="128" height="976"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>A Plain Lead of the Doubles Method 5.1.5.1.5.1.5.1.5.345, starting from <nolink>rounds</nolink>, ends with the Row 31254, as shown in the diagram. At the end of one Plain Lead, no bell has returned to the Place it was in at the initial Row (12345), so this Method has no Hunt Bells. All bells are therefore Working Bells. Continuing to apply the place notation successively produces the 5 additional leads shown, such that after 6 Plain Leads, Rounds is obtained. This is the Method’s Plain Course. It will be seen that bells 4 and 5 return to their starting Places at the end of the 2nd, 4th and 6th leads, whereas bells 1, 2 and 3 return to their starting Places at the end of the 3rd and 6th leads. Since the Working Bells do not all first return to their starting Places after the same number of Plain Leads, this is a Differential Method. (This Method is Christ Church Dublin Differential Doubles.)</para>
+            <para>While the example above shows a Differential with no Hunt Bells, Hunters can also be Differentials. For example, see <link xlink:href="https://complib.org/method/28182">Deferential Differential Bob Minor</link>.</para>
+          </note>
+          <note role="technical-comment">
+            <para>It takes a minimum of 5 Working Bells to create a Method that is a Differential.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="upperlevels-entry-25-jump-method" mrf:number="C.5">
+        <glossterm>Jump Method</glossterm>
+        <glossterm role="synonym">Jump Methods</glossterm>
+        <glossdef>
+          <para>A Method that uses one or more Jump Changes.</para>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="onehuntbell">
+      <title>D. Method Classes: Hunters with One Hunt Bell</title>
+      <glossentry xml:id="onehuntbell-entry-26-plain-method" mrf:number="D.1">
+        <glossterm>Plain Method</glossterm>
+        <glossterm role="synonym">Plain Methods</glossterm>
+        <glossdef>
+          <para>A Hunter in which:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>The Hunt Bell rings exactly twice in each Place of the Path during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Hunt Bell is not a Stationary Bell; and</para>
+            </listitem>
+            <listitem>
+              <para>The Method does not use Jump Changes.</para>
+            </listitem>
+          </orderedlist>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/plain-bob-minor.svg" width="144" height="208"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>In this Method, the treble (which is the only <nolink>hunt bell</nolink>) rings two times in each Place in a Plain Lead, is not a Stationary Bell, and there are no Jump Changes. This Method is therefore a Plain Method. (This Method is Plain Bob Minor.)</para>
+            <para>The Path of the treble in the example above is often referred to as a Plain Hunt Path (or Plain Hunting Path) -- i.e. Hunt up, Make a Place, Hunt Down, and make another Place. This Path is the only one (for Methods with a single Hunt Bell, and when excluding Jump Changes and Stationary Bells) that meets the criterion of ringing exactly twice in each Place of the Path during a Plain Lead.</para>
+            <para>Note that a Plain Path is symmetrical about the two Places Made, and a Plain Path can span either an even or odd number of Places.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-27-place-method" mrf:number="D.1.1">
+        <glossterm>Place Method</glossterm>
+        <glossterm role="synonym">Place Methods</glossterm>
+        <glossdef>
+          <para>A Plain Method in which the Paths of all the bells consist only of Hunting and Making Places, and in which a <nolink>change</nolink> in the direction of Hunting is separated by Making one or more Places.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/foti-place-minor.svg" width="144" height="208"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>In this Plain Method, <nolink>changes</nolink> in the direction of Hunting by all bells are always separated by Making one or more Places. This Method is therefore a Place Method. (This Method is Foti Place Minor.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-28-bob-method" mrf:number="D.1.2">
+        <glossterm>Bob Method</glossterm>
+        <glossterm role="synonym">Bob Methods</glossterm>
+        <glossdef>
+          <para>A Plain Method that is not a Place Method.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/double-oxford-bob-minor.svg" width="144" height="208"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>The 'points' in the blue line of this Plain Method, such as those circled in green, show that a Place is not Made between <nolink>changes</nolink> in the direction of Hunting. This Method is therefore a Bob Method. (This Method is Double Oxford Bob Minor.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-29-treble-dodging-method" mrf:number="D.2">
+        <glossterm>Treble Dodging Method</glossterm>
+        <glossterm role="synonym">Treble Dodging Methods</glossterm>
+        <glossdef>
+          <para>A Hunter in which:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>The Hunt Bell rings more than twice in each Place of the Path during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Hunt Bell rings the same number of times in each Place of the Path during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Hunt Bell Makes a Place exactly twice during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Path of the Hunt Bell is the same if it is rung backwards;</para>
+            </listitem>
+            <listitem>
+              <para>The Hunt Bell is not a Stationary Bell; and</para>
+            </listitem>
+            <listitem>
+              <para>The Method does not use Jump Changes.</para>
+            </listitem>
+          </orderedlist>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/kent-treble-bob-minor.svg" width="144" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>In this Method, the treble (which is the only <nolink>hunt bell</nolink>) rings four times in each Place in a Plain Lead. The treble Makes a Place twice during a Plain Lead, once in 6th's and once in 1st's, it is not a Stationary Bell, and there are no Jump Changes. This Method is therefore a Treble Dodging Method. (This Method is Kent Treble Bob Minor.)</para>
+            <para>While the above Path is by far the most common Treble Dodging Path, if the single Dodges are all replaced with the same, greater number of Dodges (e.g. double or triple Dodging, etc), the resulting Path is still a Treble Dodging Path.</para>
+            <para>Note that a Treble Dodging Path is symmetrical about the two Place Made. A Treble Dodging Path can only span an even number of Places.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-30-treble-bob-method" mrf:number="D.2.1">
+        <glossterm>Treble Bob Method</glossterm>
+        <glossterm role="synonym">Treble Bob Methods</glossterm>
+        <glossdef>
+          <para>A Treble Dodging Method in which no bell Makes an Internal Place at any Cross Section, or which does not have any Cross Sections.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/oxford-treble-bob-minor.svg" width="144" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>At this Treble Dodging Method's Cross Sections, which are circled in green, there are no Internal Places Made. The Places Made at both Cross Sections are 1st's and 6th's, which are external Places. Since this Method has Palindromic Symmetry (see Section 4.B.1 above) there is no need to check the Cross Sections in the second half of the lead as these will have the same Places Made as in the first half of the lead. However for non-Palindromic Methods, all Cross Sections must be considered when further classifying a Treble Dodging method. This Method is therefore a Treble Bob Method. (This Method is Oxford Treble Bob Minor.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-31-surprise-method" mrf:number="D.2.2">
+        <glossterm>Surprise Method</glossterm>
+        <glossterm role="synonym">Surprise Methods</glossterm>
+        <glossdef>
+          <para>A Treble Dodging Method in which one or more bells Make an Internal Place at every Cross Section.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/cambridge-surprise-minor.svg" width="144" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>An Internal Place is Made at both of this Treble Dodging Method's Cross Sections, which are circled in green. 4th's is Made at the 2-3 Cross Section, and 3rd's is Made at the 4-5 Cross Section. (See the note about Palindromic Symmetry in Section 4.D.2.1 above, which also applies here.) This Method is therefore a Surprise Method. (This Method is Cambridge Surprise Minor.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-32-delight-method" mrf:number="D.2.3">
+        <glossterm>Delight Method</glossterm>
+        <glossterm role="synonym">Delight Methods</glossterm>
+        <glossdef>
+          <para>A Treble Dodging Method that is neither a Treble Bob Method nor a Surprise Method.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/college-bob-iv-delight-minor.svg" width="144" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>An Internal Place is Made at the 2-3 Cross Section of this Treble Dodging Method, but an Internal Place is not made at the 4-5 Cross Section (the Cross Sections are circled in green). (See the note about Palindromic Symmetry in Section 4.D.2.1 above, which also applies here.) Since Internal Places are Made at some but not all Cross Section Changes, this Method is therefore a Delight Method. (This Method is College Bob IV Delight Minor.)</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-33-treble-place-method" mrf:number="D.3">
+        <glossterm>Treble Place Method</glossterm>
+        <glossterm role="synonym">Treble Place Methods</glossterm>
+        <glossdef>
+          <para>A Hunter in which:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>The Hunt Bell rings the same number of times in each Place of the Path during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Hunt Bell Makes a Place more than twice during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Path of the Hunt Bell is the same if it is rung backwards; and</para>
+            </listitem>
+            <listitem>
+              <para>The Method does not use Jump Changes;</para>
+            </listitem>
+          </orderedlist>
+          <para>Or:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>The Hunt Bell is a Stationary Bell; and</para>
+            </listitem>
+            <listitem>
+              <para>The Method does not use Jump Changes.</para>
+            </listitem>
+          </orderedlist>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/stoke-albany-treble-place-minor.svg" width="144" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>This Method is Stoke Albany Treble Place Minor. Other examples are: <link xlink:href="https://complib.org/method/27309">Primrose Treble Place Minor</link> and <link xlink:href="https://complib.org/method/27502">Alderney Treble Place Minor</link>.</para>
+            <para>Note that a Treble Place Path can span either an even or odd number of Places.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-34-alliance-method" mrf:number="D.4">
+        <glossterm>Alliance Method</glossterm>
+        <glossterm role="synonym">Alliance Methods</glossterm>
+        <glossdef>
+          <para>A Hunter in which:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>The Hunt Bell does not ring the same number of times in each Place of the Path during a Plain Lead;</para>
+            </listitem>
+            <listitem>
+              <para>The Path of the Hunt Bell is the same if it is rung backwards;</para>
+            </listitem>
+            <listitem>
+              <para>The Hunt Bell is not a Stationary Bell; and</para>
+            </listitem>
+            <listitem>
+              <para>The Method does not use Jump Changes.</para>
+            </listitem>
+          </orderedlist>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/alperton-alliance-minor.svg" width="144" height="272"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>This Method is Alperton Alliance Minor. Another example is: <link xlink:href="https://complib.org/method/26928">Semiquincentenary Alliance Major</link>.</para>
+            <para>Note that an Alliance Path can span either an even or odd number of Places.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-35-hybrid-method" mrf:number="D.5">
+        <glossterm>Hybrid Method</glossterm>
+        <glossterm role="synonym">Hybrid Methods</glossterm>
+        <glossdef>
+          <para>A Hunter in which:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>The Path of the Hunt Bell is not Plain, Treble Dodging, Treble Place or Alliance; and</para>
+            </listitem>
+            <listitem>
+              <para>The Method does not use Jump Changes.</para>
+            </listitem>
+          </orderedlist>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/seavington-st-mary-hybrid-minor.svg" width="143" height="400"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>This Method is Seavington St Mary Hybrid Minor.</para>
+            <para>Note that the Path of the Hunt Bell in a Hybrid Method with a single Hunt Bell is asymmetric.</para>
+            <para>A Hybrid Path can span either an even or odd number of Places.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+      <glossentry xml:id="onehuntbell-entry-36-little-method" mrf:number="D.6">
+        <glossterm>Little Method</glossterm>
+        <glossterm role="synonym">Little Methods</glossterm>
+        <glossdef>
+          <para>A Hunter in which the Hunt Bell has a Little Path.</para>
+          <example>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/edition2/classification/canterbury-little-bob-minor.svg" width="144" height="144"/>
+              </imageobject>
+            </mediaobject>
+          </example>
+          <note role="further-explanation">
+            <para>This Method is Canterbury Little Bob Minor. Since the treble, which is the only Hunt Bell, only rings in the first four Places, whereas the Stage of the Method is six, this is a Little Method.</para>
+          </note>
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+    <glossdiv xml:id="morethanonehuntbell">
+      <title>E. Method Classes: Hunters with More than One Hunt Bell</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>If a Hunter has more than one Hunt Bell, it has a further classification of the first Method Class found, when inspecting each of the Hunt Bells, using the order: Plain Method, Treble Dodging Method, Treble Place Method, Alliance Method, Hybrid Method.</para>
+          <para>If none of the Method Classes above are found, the Hunter has no further classification.</para>
+          <example>
+            <para>
+              <link xlink:href="https://complib.org/method/25556">Didymous Delight Major</link>.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Didymous Delight Major has three Hunt Bells in 1st's, 2nd's and 3rd's Places. The treble has a Treble Dodging Path, and the 2nd and 3rd have Treble Place Paths. Since Treble Dodging comes before Treble Place in the order above, this Method has a Treble Dodging classification (and is further classified as Delight as described in Section 4.E.4 below).</para>
+          </note>
+          <note role="technical-comment">
+            <para>Note that in a Method with two or more Hunt Bells, it's possible for a Hybrid Path to be symmetric (unlike for single Hunt Bell Methods where a Hybrid Path is always asymmetric). An example of this is a Method in which a pair of Hunt Bells <nolink>dodge</nolink> together for the entire Plain Lead. Provided the Lead Length is not 4 Changes, these Hunt Bells classify as Hybrid. If the Lead Length is 4 Changes, these Hunt Bells classify as Plain.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>If the Path(s) of the Hunt Bell(s) of the first Method Class found in Section 4.E.1 above, if any, all meet the definition of a Little Method per Section 4.D.6 above, then the Hunter is classified as a Little Method.</para>
+          <para>If no Method Class was found in Section 4.E.1 above, then if the Paths of all the Hunt Bells meet the definition of a Little Method per Section 4.D.6 above, then the Hunter is classified as a Little Method.</para>
+          <example>
+            <para>
+              <link xlink:href="https://complib.org/method/28544">Seven Stars Differential Little Hybrid Major</link> and <link xlink:href="https://complib.org/method/27681">Bushey Treble Place Triples</link>.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Seven Stars Differential Little Hybrid Major has two Hunt bells in 5th's and 6th's Places. Both these Hunt Bells have Hybrid Paths, so the Method has a Hybrid classification. These Hunt Bells also both have Little Paths. Since all the Hybrid Paths are Little, this Method is also classified as Little.</para>
+            <para>Bushey Treble Place Triples has two Hunt bells in 1st's and 2nd's Places. Both these Hunt Bells have Treble Place Paths, so the Method has a Treble Place classification. The 2nd has a Little Path, but the treble does not have a Little Path. Since the Treble Place Paths are not all Little, this Method is <emphasis role="underline">not</emphasis> classified as Little.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>If the first Method Class found in Section 4.E.1 above is a Plain Method, the Method is further classified in accordance with Sections 4.D.1.1 and 4.D.1.2 above.</para>
+          <example>
+            <para>
+              <link xlink:href="https://complib.org/method/11943">Reverse Canterbury Pleasure Place Minor</link> and <link xlink:href="https://complib.org/method/32106">Glastonbury Bob Triples</link>.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Reverse Canterbury Pleasure Place Minor has two Hunt bells in 1st's and 2nd's Places. Both these Hunt Bells have Plain Paths, so the Method has a Plain classification. Since the Paths of all the bells in this Method consist only of Hunting and Making Places, with <nolink>changes</nolink> in the direction of Hunting separated by the Making of one or more Places, this Method is further classified as a Place Method.</para>
+            <para>Glastonbury Bob Triples has two Hunt bells in 1st's and 2nd's Places. The treble has a Plain Path and the 2nd has a Little Hybrid Path, so the Method has a Plain classification (because Plain comes before Hybrid in the order in Section 4.E.1). Since this Method has Paths that are not limited to Hunting and Making Places (i.e. there are <nolink>dodges</nolink>), this Method is further classified as a Bob Method.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>If the first Method Class found in Section 4.E.1 above is a Treble Dodging Method, the Method is further classified in accordance with Sections 4.D.2.1, 4.D.2.2 and 4.D.2.3 above, using the following:</para>
+          <orderedlist numeration="loweralpha" role="compact">
+            <listitem>
+              <para>If the Method has more than one Treble Dodging Hunt Bell, none of which are Little, or all of which are Little, the Cross Section Changes are all the Changes that are a Cross Section Change for any Treble Dodging Hunt Bell.</para>
+            </listitem>
+            <listitem>
+              <para>If the Method has both Little Treble Dodging Hunt Bell(s) and non-Little Treble Dodging Hunt Bell(s), the Cross Section Changes are all the Changes that are a Cross Section Change for any non-Little Treble Dodging Hunt Bell.</para>
+            </listitem>
+          </orderedlist>
+          <example>
+            <para>
+              <link xlink:href="https://complib.org/method/22632">Vincula Surprise Royal</link>.</para>
+          </example>
+          <note role="further-explanation">
+            <para>Vincula Surprise Royal has three Hunt bells in 1st's, 2nd's and 3rd's Places. All these Hunt Bells have Treble Dodging Paths, so the Method has a Treble Dodging classification. None of the Hunt Bells has a Little Path, so the Cross Section Changes are all the Changes that are Cross Section Changes for any of the three Hunt Bells. It can therefore be seen that every 4th <nolink>change</nolink> in this Method is a Cross Section Change. Since all of these Changes (16, 18, 30, 50, 70, and 14 at the <nolink>lead end</nolink>) include an Internal Place being made, this Method is further classified as a Surprise Method.</para>
+          </note>
+        </listitem>
+      </orderedlist>
+    </glossdiv>
+  </glossary>
+</article>

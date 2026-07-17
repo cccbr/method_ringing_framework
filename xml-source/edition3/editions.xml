@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="versioning-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-edition="3" mrf:edition-label="Edition 3">
+  <info>
+    <title>Editions</title>
+    <subtitle>Framework for Method Ringing, Section 2</subtitle>
+    <edition>3</edition>
+    <releaseinfo role="status">draft</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date"></releaseinfo>
+    <releaseinfo role="effective-date"></releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/versioning.html</uri>
+    <othermeta role="source-path">version3/versioning.html</othermeta>
+  </info>
+<section xml:id="section-2">
+<section xml:id="section-2-row-2">
+<title>Edition 1</title>
+<para>Implemented February 24, 2019 with an effective date of June 1, 2019.</para>
+</section>
+<section xml:id="section-2-row-3">
+<title>Edition 2</title>
+<para>Implemented January 26, 2022 with an effective date of May 1, 2022.</para>
+<para>Edition 2 is the current live version of the Framework.</para>
+</section>
+<section xml:id="section-2-row-4">
+<title>Edition 3</title>
+<para>This is the working draft for Edition 3.</para>
+<para>The term "Edition" replaces "Version" in Edition 3 to better reflect that each Framework edition is an authorised replacement for earlier editions. The text of Editions 1 and 2 remains unchanged from their original publication as Version 1 and Version 2 respectively.</para>
+<para>See Appendix G for information on the development of Edition 3 and the <nolink>changes</nolink> that were made.</para>
+<para>See Appendix H for information on the ringing community consultation that took<nolink>place</nolink> prior to the implementation of Edition 3.</para>
+</section>
+<section xml:id="section-2-row-5">
+<title>PDF documents</title>
+<para>All editions of the Framework are available as PDF documents. Each edition has three volumes:</para>
+<itemizedlist>
+<listitem>
+<para>A <emphasis role="bold">Framework</emphasis> volume containing the main body of the Framework without notes and examples, suitable for quick reference.</para>
+</listitem>
+<listitem>
+<para>A <emphasis role="bold">Framework with notes</emphasis> volume containing the main body with all notes and examples shown.</para>
+</listitem>
+<listitem>
+<para>A <emphasis role="bold">Framework appendices with notes</emphasis> volume containing the appendices with all notes and examples shown.</para>
+</listitem>
+</itemizedlist>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+<emphasis role="bold">Edition 1</emphasis> (historic, implemented February 24, 2019):
+</para>
+<itemizedlist>
+<listitem><para><link xlink:href="../pdf/framework-edition1-main.pdf">Framework</link></para></listitem>
+<listitem><para><link xlink:href="../pdf/framework-edition1-main-full.pdf">Framework with notes</link></para></listitem>
+<listitem><para><link xlink:href="../pdf/framework-edition1-appendices.pdf">Framework appendices with notes</link></para></listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>
+<emphasis role="bold">Edition 2</emphasis> (definitive, implemented January 26, 2022):
+</para>
+<itemizedlist>
+<listitem><para><link xlink:href="../pdf/framework-edition2-main.pdf">Framework</link></para></listitem>
+<listitem><para><link xlink:href="../pdf/framework-edition2-main-full.pdf">Framework with notes</link></para></listitem>
+<listitem><para><link xlink:href="../pdf/framework-edition2-appendices.pdf">Framework appendices with notes</link></para></listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>
+<emphasis role="bold">Edition 3</emphasis> (draft, in development):
+</para>
+<itemizedlist>
+<listitem><para><link xlink:href="../pdf/framework-edition3-main.pdf">Framework</link></para></listitem>
+<listitem><para><link xlink:href="../pdf/framework-edition3-main-full.pdf">Framework with notes</link></para></listitem>
+<listitem><para><link xlink:href="../pdf/framework-edition3-appendices.pdf">Framework appendices with notes</link></para></listitem>
+</itemizedlist>
+</listitem>
+</orderedlist>
+</section>
+</section>
+</article>

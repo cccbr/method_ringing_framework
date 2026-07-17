@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="development-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Version 2 Development</title>
+    <subtitle>Framework for Method Ringing, Appendix G</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/development.html</uri>
+    <othermeta role="source-path">version2/development.html</othermeta>
+  </info>
+  <section xml:id="team">
+    <title>A. Team</title>
+    <para>Version 2 was developed by the CC Framework Team, which is part of the Technical and Taxonomy CC Workgroup.</para>
+    <para>The CC Framework team comprises Tim Barnes (team leader), Mark Davies, John Harrison, Graham John, Don Morrison and Philip Saddleton.</para>
+  </section>
+  <section xml:id="objectives">
+    <title>B. Objectives</title>
+    <para>Version 2 was developed to address:</para>
+    <para>(a) Suggestions received from members of the ringing community subsequent to the implementation of version 1; and</para>
+    <para>(b) Improvements identified by the Framework team.</para>
+  </section>
+  <section xml:id="articles">
+    <title>C. Articles</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Click <link xlink:href="images/development/v2-first-rw-article.pdf"> here </link> for the first RW article on version 2 by the Framework team.</para>
+      </listitem>
+      <listitem>
+        <para>Click <link xlink:href="images/development/v2-second-rw-article.pdf"> here </link> for the second RW article on version 2 by the Framework team.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="changes">
+    <title>D. Changes</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Click <link xlink:href="images/development/v1-v2-diff.pdf"> here </link> for a document describing the <nolink>changes</nolink> made in version 2.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="consultation-v3" xml:lang="en" mrf:status="draft" mrf:authority="CCCBR" mrf:framework-edition="3" mrf:edition-label="Edition 3">
+  <info>
+    <title>Edition 3 Consultation</title>
+    <subtitle>Framework for Method Ringing, Appendix H</subtitle>
+    <edition>3</edition>
+    <releaseinfo role="status">draft</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date"></releaseinfo>
+    <releaseinfo role="effective-date"></releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/consultation.html</uri>
+  </info>
+  <section xml:id="description">
+    <title>A. Description</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>The ringing community consultation on Edition 3 opened on tba and ran until tba.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="submissions">
+    <title>B. Submissions and Responses</title>
+    <section xml:id="submissions-2">
+      <title>1. Submitter #1</title>
+      <mrf:question>
+        <para>
+          <emphasis role="italic"> tba</emphasis>
+        </para>
+      </mrf:question>
+      <mrf:answer mrf:separator="hr">
+        <para>tba</para>
+      </mrf:answer>
+    </section>
+  </section>
+</article>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mrf="https://cccbr.org.uk/ns/method-ringing-framework" version="5.0" xml:id="recordlengths-v2" xml:lang="en" mrf:status="definitive" mrf:authority="CCCBR" mrf:framework-edition="2" mrf:edition-label="Edition 2">
+  <info>
+    <title>Record Lengths</title>
+    <subtitle>Framework for Method Ringing, Section 7</subtitle>
+    <edition>2</edition>
+    <releaseinfo role="status">definitive</releaseinfo>
+    <releaseinfo role="authority">CCCBR</releaseinfo>
+    <releaseinfo role="implementation-date">January 26, 2022</releaseinfo>
+    <releaseinfo role="effective-date">May 1, 2022</releaseinfo>
+    <uri type="canonical">https://cccbr.org.uk/recordlengths.html</uri>
+    <othermeta role="source-path">version2/recordlengths.html</othermeta>
+  </info>
+  <section xml:id="requirements">
+    <title>A. Requirements</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>To be included in the Central Council's register of Record Lengths, the Performance must comply with all the requirements of Sections 7.A, 7.B and 7.C.</para>
+      </listitem>
+      <listitem>
+        <para>All the norms listed in Section 6.C.2 applied to the Performance.</para>
+      </listitem>
+      <listitem>
+        <para>For a Performance using Handbell Style (see Section 6.A.4), every ringer rang at least two bells.</para>
+      </listitem>
+      <listitem>
+        <para>The Performance was rung by an all-human Band.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="notificationandverification">
+    <title>B. Notification and Verification</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>Notice of the attempt must be provided to The Ringing World to enable the notice to be published at least 14 days prior to the attempt.</para>
+        <note role="further-explanation">
+          <para>The Ringing World is published on Fridays, and the deadline for publication of notices is the previous Monday. For example, notice of a <nolink>record length</nolink> attempt occurring on Saturday 20th should be published in the RW no later than Friday 5th. This requires notice to be received by the RW on or before Monday 1st.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para>The notice must state the location, start date and start time of the attempt, the Length and the Method(s) to be rung.</para>
+      </listitem>
+      <listitem>
+        <para>A copy of the notice must also be provided to the Central Council at least 14 days prior to the attempt.</para>
+        <note role="further-explanation">
+          <para>The notice can be emailed to the Central Council at <link xlink:href="mailto:records@cccbr.org.uk">records@cccbr.org.uk</link>.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para>Arrangement must be made for interested people to be able to listen to the Performance.</para>
+      </listitem>
+      <listitem>
+        <para>The ringing must be heard, and the figures of the Composition checked throughout, by competent umpire(s).</para>
+        <note role="further-explanation">
+          <para>The umpire(s) should do sufficient checking during the Performance to be confident that the <nolink>composition</nolink> was correctly called, and that there were no substantive errors or shifts. The umpire(s) should also ensure that, in their opinion, the quality of the ringing remains sufficiently high throughout the Performance for a Record Length. If the umpire(s) believe the quality has dropped below an acceptable level, and the ringing is continuing, they should let the conductor know this so the attempt can be stopped.</para>
+        </note>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="reporting">
+    <title>C. Reporting</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>A Performance Report must be sent to both The Ringing World (preferably via BellBoard) for publication, and to the Central Council.</para>
+        <note role="further-explanation">
+          <para>The Performance Report can be emailed to the Central Council at <link xlink:href="mailto:records@cccbr.org.uk">records@cccbr.org.uk</link>.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para>The Performance Report must comply with the requirements of Section 6.</para>
+      </listitem>
+      <listitem>
+        <para>The Performance Report must include the Composition that was rung.</para>
+      </listitem>
+      <listitem>
+        <para>An umpire(s)' report must be sent with the Performance Report to both The Ringing World and the Central Council.</para>
+        <note role="further-explanation">
+          <para>The umpire(s)' report can be emailed to the Central Council at <link xlink:href="mailto:records@cccbr.org.uk">records@cccbr.org.uk</link>.</para>
+        </note>
+      </listitem>
+    </orderedlist>
+  </section>
+</article>
