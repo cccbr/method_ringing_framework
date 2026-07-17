@@ -20,7 +20,7 @@
         <glossdef>
           <para>A group of Methods that contain the same, defined features.</para>
           <note role="further-explanation">
-            <para>Click <link xlink:href="images/classification/classification-chart.pdf">here</link> for a diagram that shows how Methods are classified. The terms used in the diagram are all defined below.</para>
+            <para>Click <link xlink:href="images/edition1/classification/classification-chart.pdf">here</link> for a diagram that shows how Methods are classified. The terms used in the diagram are all defined below.</para>
             <para>Note that there is currently no further classification of Dynamic Methods.</para>
             <para>The classification system for <nolink>method</nolink> ringing evolved over many decades and as a result is more complex than if we were starting from scratch. Making any large-scale <nolink>changes</nolink> to the classification system is problematic because class terms form part of a Method's Title (see Section 5.A.3), so <nolink>changes</nolink> to classifications also alter Method Titles, making it harder to interpret historical records of <nolink>method</nolink> ringing Performances.</para>
             <para>A list of Methods whose titles <nolink>change</nolink> under this classification system, as compared with the Decisions in force as of 29 May 2018, can be found on the Transitional Arrangements page -- see Appendix F.1.</para>
@@ -303,7 +303,7 @@
             <para>The general rule is that if a Method has any two of the three symmetries (Palindromic, Double and Rotational), it must also have the third. However, a Method can have any one of these three symmetries without having either of the other two. A Method can also have none of the three symmetries.</para>
           </note>
           <example>
-            <para>Click <link xlink:href="images/classification/symmetries.pdf">here</link> for illustrations of the three symmetries.</para>
+            <para>Click <link xlink:href="images/edition1/classification/symmetries.pdf">here</link> for illustrations of the three symmetries.</para>
           </example>
         </glossdef>
       </glossentry>

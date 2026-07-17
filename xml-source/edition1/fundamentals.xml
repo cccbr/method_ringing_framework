@@ -21,7 +21,7 @@
           <para>A property of several <nolink>method</nolink> ringing terms that indicates the number of bells participating.</para>
           <note role="further-explanation">
             <para>Stage applies to the following <nolink>method</nolink> ringing terms: Rows, Changes, Blocks, Methods and Compositions.</para>
-            <para>The application of Stage to each of these terms will be covered below in the 'Further explanation' sections of the definitions of these terms. In addition, click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>The application of Stage to each of these terms will be covered below in the 'Further explanation' sections of the definitions of these terms. In addition, click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
           </note>
         </glossdef>
       </glossentry>
@@ -47,7 +47,7 @@
             <para>531246 is a Row with a Stage of Minor (or equivalently, a Minor Row).</para>
           </example>
           <note role="further-explanation">
-            <para>The Stage of a Row is the number of bells in that Row. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>The Stage of a Row is the number of bells in that Row. Click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
             <para>Bells are uniquely numbered in descending order of pitch. Both cardinal numbers (e.g. 1, 2, 3 ...) and ordinal numbers (e.g. 1st, 2nd, 3rd ...) are used.</para>
             <para>When using cardinals, number 1 is used for the bell with the highest pitch, number 2 for the next highest pitch and so on. When using ordinals, bell number 2 becomes 'the 2nd', bell number 3 becomes 'the 3rd', and so on. However bell number 1 is usually referred to as 'the treble' rather than 'the 1st', and the bell with the lowest pitch is usually referred to as 'the tenor' rather than the corresponding ordinal.</para>
             <para>Bells are numbered relative to how many are in use. For example, if a tower has eight bells but only the six with the lowest pitches are in use, these bells are numbered 1 to 6 instead of 3 to 8.</para>
@@ -102,7 +102,7 @@
             </mediaobject>
           </example>
           <note role="further-explanation">
-            <para>The Stage of a Change is the number of bells on which that Change operates. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>The Stage of a Change is the number of bells on which that Change operates. Click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
             <para>Since a Change is a transposition of bells, the new Row will comprise the same set of bells as the existing Row.</para>
             <para>Note that the same Change applied to different Rows will have the same relative effect. For example, a Change applied to the Row 1342 might produce the Row 1432. The same Change applied to the Row 4123 would produce the Row 4213.</para>
           </note>
@@ -167,7 +167,7 @@
           </example>
           <note role="further-explanation">
             <para>The Stage of the Changes in the sequence is the same as the Stage of the initial Row.</para>
-            <para>A Block has the Stage of its constituent Rows. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>A Block has the Stage of its constituent Rows. Click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
             <para>A sequence of Changes is used to produce a sequence of Rows as follows:</para>
             <itemizedlist role="compact">
               <listitem>
@@ -230,7 +230,7 @@
             <para>The sequence of Changes x16x14x16x12 is the Method that has been given the name Little Bob Minor.</para>
           </example>
           <note role="further-explanation">
-            <para>A Method has the Stage of its constituent Changes. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>A Method has the Stage of its constituent Changes. Click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
             <para>Individual Changes and sequences of Changes may be represented using place notation, and place notation is used in the example above as well as elsewhere in the framework. Place notation is described in Appendix A.</para>
             <para>A Method is usually referred to by a name it is given. A Method (including its name) may be recorded in the Central Council's Methods Library when certain requirements have been met. These requirements are described in Section 5.</para>
             <para>A Method is distinct from a Block in that a Method only defines Changes, not Rows. A Block, on the other hand, defines both Changes and Rows. A single Method can produce many Blocks. For example, if a Method is rung starting from Rounds, this produces a Block. If the same Method is rung starting from a non-Rounds Row (such as 'Queens'), the resulting Block is different from the one produced by starting from Rounds.</para>
@@ -348,7 +348,7 @@
         <glossdef>
           <para>An arrangement of Method(s) and Call(s) that produces a sequence of Changes, all with the same Stage.</para>
           <note role="further-explanation">
-            <para>A Composition has the Stage of the Changes it produces. Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>A Composition has the Stage of the Changes it produces. Click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
             <para>Larger Compositions may be created by combining other Compositions. For example, seven different Compositions of 720 Minor Changes may be concatenated to produce a Composition of 5040 Minor Changes.</para>
             <para>In addition to using a Method's whole sequence of Changes one or more times in a Composition, any subset of a Method's sequence of Changes may also be used.</para>
             <para>When a Composition that uses more than one Method is rung, the instruction to <nolink>change</nolink> from one Method to another is referred to as a Call, and this is another application of the term Call.</para>
@@ -392,7 +392,7 @@
             <para>Since Cover Bells can be generated by using a Composition of a given Stage to produce a Block of a higher Stage, Compositions often do not need to specify the transposition of Cover Bells as these are inferred. However, since the Changes produced by a Composition are all of the same Stage, there are scenarios where a Composition's Changes include the transposition of Cover Bells for some or all Changes.</para>
             <para>As example #2, if a Composition uses a Doubles Method initially, applying to Places 1 to 5, and then switches to a Minor Method, applying to Places 1 to 6, then the Composition's Changes are all specified as Minor Changes, with a place notation of '6' added to all Doubles Changes. This Composition therefore has a Stage of Minor. However, even though the Composition has a Stage of Minor, it is still correct to describe the bell in 6th's Place as a Cover Bell when the Doubles Method is being rung, because for these Rows, 6th's Place is not being operated on by the Method of the Composition.</para>
             <para>As example #3, a Composition might use a Doubles Method but is designed to produce a Minor Block, and Calls are used that occasionally exchange the Cover Bell in 6th's Place. In this case the Composition's Changes are all specified as Minor Changes (so the Composition's Stage is Minor), with a place notation of '6' added to all Changes where the Cover Bell is not affected. For example, if the Composition's Doubles Method has a '3' Change, this becomes a '36' Change in the Composition. Where the Cover Bell is affected by a Call, what otherwise might have been a '36' Change might instead become a '34' Change.</para>
-            <para>Click <link xlink:href="images/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
+            <para>Click <link xlink:href="images/edition1/fundamentals/understanding-stage.pdf">here</link> for an overview of all aspects of Stage.</para>
           </note>
           <note role="technical-comment">
             <para>As discussed above under Compositions (Section 3.G), it is possible for a Composition to use two or more Methods side by side, or to use two or more Compositions side by side. As a further <nolink>variation</nolink>, a Composition might also result in an interior Cover Bell. For example, a Composition might be designed to be used with Maximus Rows, using a Doubles Method in Places 1 to 5 and a Minor Method in Places 7 to 12. 6th's Place does not have any Methods operating on it, and therefore 6th's Place contains a Cover Bell. In this case, the Composition would produce Maximus Changes (and therefore have a Stage of Maximus), and each of its Changes would include the place notation '6'.</para>

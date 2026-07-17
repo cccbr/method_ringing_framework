@@ -26,10 +26,10 @@
     <title>C. Articles</title>
     <orderedlist numeration="arabic">
       <listitem>
-        <para>Click <link xlink:href="images/development/v2-first-rw-article.pdf"> here </link> for the first RW article on version 2 by the Framework team.</para>
+        <para>Click <link xlink:href="images/edition2/development/v2-first-rw-article.pdf"> here </link> for the first RW article on version 2 by the Framework team.</para>
       </listitem>
       <listitem>
-        <para>Click <link xlink:href="images/development/v2-second-rw-article.pdf"> here </link> for the second RW article on version 2 by the Framework team.</para>
+        <para>Click <link xlink:href="images/edition2/development/v2-second-rw-article.pdf"> here </link> for the second RW article on version 2 by the Framework team.</para>
       </listitem>
     </orderedlist>
   </section>
@@ -37,7 +37,7 @@
     <title>D. Changes</title>
     <orderedlist numeration="arabic">
       <listitem>
-        <para>Click <link xlink:href="images/development/v1-v2-diff.pdf"> here </link> for a document describing the <nolink>changes</nolink> made in version 2.</para>
+        <para>Click <link xlink:href="images/edition2/development/v1-v2-diff.pdf"> here </link> for a document describing the <nolink>changes</nolink> made in version 2.</para>
       </listitem>
     </orderedlist>
   </section>

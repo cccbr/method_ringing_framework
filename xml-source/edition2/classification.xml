@@ -18,7 +18,7 @@
         <glossterm>Method Class</glossterm>
         <glossterm role="synonym">Method Classes</glossterm>
         <glossdef>
-          <para>A group of Methods that contain the same, defined features. Click <link xlink:href="images/classification/classification-chart.pdf">here</link> for a diagram that shows the Method Classes and the relationships between them. These classes are defined in Sections 4.C to 4.E below, except that Static Method and Dynamic Method are defined in Section 3.E.</para>
+          <para>A group of Methods that contain the same, defined features. Click <link xlink:href="images/edition2/classification/classification-chart.pdf">here</link> for a diagram that shows the Method Classes and the relationships between them. These classes are defined in Sections 4.C to 4.E below, except that Static Method and Dynamic Method are defined in Section 3.E.</para>
           <note role="further-explanation">
             <para>Note that Dynamic Methods are not currently sub-classified to lower levels.</para>
             <para>The classification system for <nolink>method</nolink> ringing evolved over many decades and as a result is more complex than if we were starting from scratch. Making any large-scale <nolink>changes</nolink> to the classification system is problematic because class terms form part of a Method's Title (see Section 5.A.3), so <nolink>changes</nolink> to classifications also alter Method Titles, making it harder to interpret historical records of <nolink>method</nolink> ringing Performances.</para>
@@ -340,7 +340,7 @@
             <para>The general rule is that if a Method has any two of the three symmetries (Palindromic, Double and Rotational), it must also have the third. However, a Method can have any one of these three symmetries without having either of the other two. A Method can also have none of the three symmetries.</para>
           </note>
           <example>
-            <para>Click <link xlink:href="images/classification/symmetries.pdf">here</link> for illustrations of the three symmetries.</para>
+            <para>Click <link xlink:href="images/edition2/classification/symmetries.pdf">here</link> for illustrations of the three symmetries.</para>
           </example>
         </glossdef>
       </glossentry>
@@ -349,7 +349,7 @@
       <title>C. Method Classes: Upper Levels</title>
       <orderedlist numeration="arabic">
         <listitem>
-          <para>The first three Classes below are based on the Cycles present in a Method. Click <link xlink:href="images/classification/minor-cycles.pdf"> here </link> for a table that shows all the possible combinations of Cycles at the Minor Stage, and gives examples of corresponding Methods where available.</para>
+          <para>The first three Classes below are based on the Cycles present in a Method. Click <link xlink:href="images/edition2/classification/minor-cycles.pdf"> here </link> for a table that shows all the possible combinations of Cycles at the Minor Stage, and gives examples of corresponding Methods where available.</para>
         </listitem>
       </orderedlist>
       <glossentry xml:id="upperlevels-entry-22-hunter" mrf:number="C.2">

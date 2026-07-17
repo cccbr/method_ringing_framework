@@ -6,8 +6,8 @@
     <edition>3</edition>
     <releaseinfo role="status">draft</releaseinfo>
     <releaseinfo role="authority">CCCBR</releaseinfo>
-    <releaseinfo role="implementation-date"></releaseinfo>
-    <releaseinfo role="effective-date"></releaseinfo>
+    <releaseinfo role="implementation-date"/>
+    <releaseinfo role="effective-date"/>
     <uri type="canonical">https://cccbr.org.uk/syntax.html</uri>
     <othermeta role="source-path">version3/syntax.html</othermeta>
   </info>
@@ -171,7 +171,7 @@
         </orderedlist>
       </listitem>
       <listitem>
-        <para>Additional background on Method Names and Method Name syntax is available <link xlink:href="images/syntax/method-name-syntax.html">here</link> in an article written by Don Morrison.</para>
+        <para>Additional background on Method Names and Method Name syntax is available <link xlink:href="images/edition3/syntax/method-name-syntax.html">here</link> in an article written by Don Morrison.</para>
       </listitem>
     </orderedlist>
   </section>
