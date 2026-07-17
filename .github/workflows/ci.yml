@@ -54,10 +54,11 @@ jobs:
       - name: Stage published site
         run: |
           mkdir -p site/pdf
-          cp -a CNAME index.html mrf.css mrf.js images site/
-          if [ -L latest ] || [ -e latest ]; then
+          cp -a CNAME index.html mrf.css mrf.js images site/ 2>/dev/null || true
+          if [ -L latest ] && [ -e latest ]; then
             cp -a latest site/
           fi
+          rm -f site/latest
           if [ -d generated/pdf ]; then
             cp -a generated/pdf/. site/pdf/
           fi
