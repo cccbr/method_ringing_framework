@@ -3,6 +3,7 @@ node_modules
 __pycache__
 *.log
 *.pdf
+!images/**/*.pdf
 generated/
 diff-report.md
 LLM_SESSION_NOTES.md
