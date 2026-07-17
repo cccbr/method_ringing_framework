@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Performance Reporting (draft edition 3)">
+    <meta name="author" content="CCCBR">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="Performance Reporting (draft edition 3)">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.org.uk/reporting.html">
+    <title>Framework for Method Ringing - Performance Reporting</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../mrf.css" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@id": "https://cccbr.org.uk/#publisher",
+                    "@type": "Organization",
+                    "name": "CCCBR",
+                    "url": "https://cccbr.org.uk/"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html",
+                    "@type": "CreativeWork",
+                    "name": "Performance Reporting",
+                    "url": "https://cccbr.org.uk/reporting.html",
+                    "description": "Performance Reporting (draft edition 3)",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "version": "Edition 3",
+                    "isBasedOn": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    }
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-1-performance-title",
+                    "@type": "DefinedTerm",
+                    "name": "Performance Title",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-1-performance-title",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Performance Titles"
+                    ],
+                    "termCode": "A.1",
+                    "description": "A Performance Title takes the following form:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-2-performance-detail",
+                    "@type": "DefinedTerm",
+                    "name": "Performance Detail",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-2-performance-detail",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Performance Details"
+                    ],
+                    "termCode": "A.2",
+                    "description": "The Performance Detail takes the following form:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-3-performance-norm",
+                    "@type": "DefinedTerm",
+                    "name": "Performance Norm",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-3-performance-norm",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Performance Norms"
+                    ],
+                    "termCode": "A.3",
+                    "description": "An aspect of a Performance that would reasonably be assumed unless stated otherwise."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-4-ringing-style",
+                    "@type": "DefinedTerm",
+                    "name": "Ringing Style",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-4-ringing-style",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Ringing Styles"
+                    ],
+                    "termCode": "A.4",
+                    "description": "One of the following styles in which method ringing is performed:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-5-distributed-ringing",
+                    "@type": "DefinedTerm",
+                    "name": "Distributed Ringing",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-5-distributed-ringing",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.5",
+                    "description": "Ringing in which the ringers were not all present in the same location."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-6-simulator-ringing",
+                    "@type": "DefinedTerm",
+                    "name": "Simulator Ringing",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-6-simulator-ringing",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.6",
+                    "description": "Ringing that involves the use of, or takes place via, a computer-based ringing simulator."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-7-online-ringing",
+                    "@type": "DefinedTerm",
+                    "name": "Online Ringing",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-7-online-ringing",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.7",
+                    "description": "A subset of Simulator Ringing that takes place over a computer network."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-8-automated-ringing",
+                    "@type": "DefinedTerm",
+                    "name": "Automated Ringing",
+                    "url": "https://cccbr.org.uk/reporting.html#definitions-entry-8-automated-ringing",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.8",
+                    "description": "Ringing in which the sounds of one or more bells were controlled, by whatever means, without human action."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3",
+                    "@type": "DefinedTermSet",
+                    "name": "Framework for Method Ringing Edition 3",
+                    "url": "https://cccbr.org.uk/edition3/index.html",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "isPartOf": {
+                        "@id": "https://cccbr.org.uk/reporting.html"
+                    },
+                    "version": "Edition 3",
+                    "hasDefinedTerm": [
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-1-performance-title"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-2-performance-detail"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-3-performance-norm"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-4-ringing-style"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-5-distributed-ringing"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-6-simulator-ringing"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-7-online-ringing"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/reporting.html#definitions-entry-8-automated-ringing"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing     </a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/"><img src="../images/cc-header.png" height="60" alt="CCCBR">     </a>
+                        <div class="dropdown ml-2">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="versionSwitcher" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Draft - Edition 3 (unapproved)
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionSwitcher">
+                                <a class="dropdown-item" href="../edition2/index.html">Latest Approved - Edition 2 (approved 26 Jan 2022)</a>
+                                <a class="dropdown-item" href="../edition1/index.html">Superseded - Edition 1 (24 Feb 2019 - 25 Jan 2022)</a>
+                                <a class="dropdown-item active" href="index.html">Draft - Edition 3 (unapproved) <span class="sr-only">(current)</span></a>
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">1. Introduction</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="editions.html">2. Editions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="reporting.html">6. Performance Reporting</a>
+                                        <ul class="nav nav-pills flex-column nav-subsection">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#definitions">A. Definitions</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#content">B. Content</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#performancenorms">C. Performance Norms</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <br>    <u>Appendices</u><br>
+                                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="principles.html">F. Framework Principles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="development.html">G. Edition 3 Development</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="consultation.html">H. Edition 3 Consultation</a>
+                                    </li>
+                                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>6. Performance Reporting</h2>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="definitions">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Definitions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-1-performance-title" data-glossterm="Performance Title">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance Title
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-1-performance-title" aria-label="Show or hide details for Performance Title" title="Show or hide details for Performance Title"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A Performance Title takes the following form:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">If the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was in a single <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a>:</div><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">The number of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">'<a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Variable Cover</a>' if the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> included a Variable Cover <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> (see <a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Section 3.H.2</a>);</div></li><li><div class="mrf-para">The Name of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> rung;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> (if any) of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> rung;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#stages-entry-2-stage-name">Stage Name</a> of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> rung.</div></li></ol></li><li><div class="mrf-para">If the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was in more than one <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a>:</div><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">The number of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">'<a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Variable Cover</a>' if the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was of a Variable Cover <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> (see <a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Section 3.H.2</a>);</div></li><li><div class="mrf-para">'<a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a>' if the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was of a Spliced <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> (see <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Section 3.G.2</a>);</div></li><li><div class="mrf-para">Optionally, 'Mixed' if the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> included more than one <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a>, but was not of a <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a>;</div></li><li><div class="mrf-para">The components of the <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptors</a> of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> rung that are common to all Methods in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, if any, stated in the same order as given in <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">5.B.1</a>;</div></li><li><div class="mrf-para">Optionally, 'Plain' can be included if the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> rung in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> do not all have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, but are all members of the Plain Class of Methods. 'Plain' is included in the same position as Bob and <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> in <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">5.B.1</a>;</div></li><li><div class="mrf-para">Optionally, 'Treble <a class="text-success undrln" href="classification.html#definitions-entry-8-dodging">Dodging</a>' can be included if the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> rung in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> do not all have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, but are all members of the Treble Dodging Class of Methods. 'Treble Dodging' is included in the same position as Treble Bob, Surprise and Delight in <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">5.B.1</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#stages-entry-2-stage-name">Stage Name</a>(s) of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> rung in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, listed in order of lowest <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> to highest Stage, with a comma inserted between Stage Names, except for the last pair of Stage Names which instead have 'and' inserted between them;</div></li><li><div class="mrf-para">Optionally, and in round brackets, the number of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> rung in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> (if not included here, this information goes at the beginning of the <a class="text-success undrln" href="#definitions-entry-2-performance-detail">Performance Detail</a> -- see <a class="text-success undrln" href="#definitions-entry-2-performance-detail">Section 6.A.2</a>).</div></li></ol></li><li><div class="mrf-para">In order for <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Titles</a> not to mislead, if the highest <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> rung in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> exceeds the <a class="text-success undrln" href="fundamentals.html#truth-entry-33-effective-stage">Effective Stage</a> of the Performance, then:</div><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">Layout b) above is always used, even for a single <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#truth-entry-33-effective-stage">Effective Stage</a> Name is used for b) 8 above, instead of the <a class="text-success undrln" href="fundamentals.html#stages-entry-2-stage-name">Stage Name</a>(s) of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>(s) / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a>(s) rung.</div></li></ol></li></ol>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-1-performance-title">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> See <a class="text-success undrln" href="#definitions-entry-2-performance-detail">Section 6.A.2</a> below for examples of <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Titles</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-2-performance-detail" data-glossterm="Performance Detail">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance Detail
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-2-performance-detail" aria-label="Show or hide details for Performance Detail" title="Show or hide details for Performance Detail"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The Performance Detail takes the following form:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">If the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was in a single <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> and the <a class="text-success undrln" href="fundamentals.html#truth-entry-33-effective-stage">Effective Stage</a> of the Performance was the same as the <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of the Method / Variation, then the Performance Detail is left blank.</div></li><li><div class="mrf-para">If the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was in more than one <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a>, or was in a single Method / Variation where the <a class="text-success undrln" href="fundamentals.html#truth-entry-33-effective-stage">Effective Stage</a> of the Performance was less than the <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of the Method / Variation:</div><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">The number of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> rung in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> if this was not included at the end of the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>;</div></li><li><div class="mrf-para">The number of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> rung of each <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a>, together with the Name and, if not apparent from the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>, the <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> and <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of each Method / Variation;</div></li><li><div class="mrf-para">The number of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> ('com', 'cov', or 'com/v') in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">Optionally, key features of the <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> such as 'atw' for 'all the work', and 'eld' for 'each lead different'.</div></li></ol></li><li><div class="mrf-para">Where a multi-<a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> comprised multiple <a class="text-success undrln" href="fundamentals.html#blocks-entry-11-round-block">Round Blocks</a> where each Round Block was a whole multiple of an <a class="text-success undrln" href="fundamentals.html#truth-entry-31-extent">Extent</a> in <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Length</a> (e.g. a <a class="text-success undrln" href="fundamentals.html#touches-entry-28-peal">Peal</a> of 7 single Extent Round Blocks of Minor), the Performance Detail may optionally, and instead of b) 1 to 3 above, list the number(s) of the Extents in the order they were rung, and the Methods / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> that were rung in each Round Block.</div></li><li><div class="mrf-para">As an optional alternative to using the full <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> in the Performance Detail, the following abbreviations may be used instead:</div><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">Diff = <a class="text-success undrln" href="classification.html#upperlevels-entry-24-differential">Differential</a></div></li><li><div class="mrf-para">L = Little</div></li><li><div class="mrf-para">B = Bob</div></li><li><div class="mrf-para">P = <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a></div></li><li><div class="mrf-para">S = Surprise</div></li><li><div class="mrf-para">D = Delight</div></li><li><div class="mrf-para">TB = Treble Bob</div></li><li><div class="mrf-para">TP = Treble <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a></div></li><li><div class="mrf-para">A = Alliance</div></li><li><div class="mrf-para">J = Jump</div></li></ul></li></ol>
+                            <div class="mrf-para">The above are combined as needed -- e.g. a Little <a class="text-success undrln" href="classification.html#onehuntbell-entry-34-alliance-method">Alliance Method</a> is LA, a <a class="text-success undrln" href="classification.html#upperlevels-entry-24-differential">Differential</a> <a class="text-success undrln" href="classification.html#onehuntbell-entry-33-treble-place-method">Treble Place Method</a> is Diff TP, etc.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-2-performance-detail">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Following are some examples of <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Titles</a> and <a class="text-success undrln" href="#definitions-entry-2-performance-detail">Performance Details</a>:</div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 1260 Plain Bob Minor</div></li><li><div class="mrf-para">Performance Detail: [None required]</div></li><li><div class="mrf-para">This is the most straightforward scenario, where a single <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> was rung in a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 1251 <a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Variable Cover</a> Stedman Triples</div></li><li><div class="mrf-para">Performance Detail: [None required]</div></li><li><div class="mrf-para">Here a single <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> was rung in a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, and the Performance included a <a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Variable Cover</a> <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a>.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 5024 <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> Surprise Major</div></li><li><div class="mrf-para">Performance Detail: 8m: 640 each Bristol, Pudsey, Rutland, Superlative, Yorkshire; 608 each Cambridge, Lincolnshire, London; 120 com; atw</div></li><li><div class="mrf-para">Since all the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> rung in this <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> have a Surprise <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, Surprise is included in the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a> and the Performance Detail only needs to include the <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Names</a>.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 5040 <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> Surprise Minor</div></li><li><div class="mrf-para">Performance Detail: 9m: (1) Carlisle; (2-3) Beverley, Surfleet; (4) London, Wells; (5) York, Durham; (6) Norwich; (7) Cambridge</div></li><li><div class="mrf-para">This is an example of a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> comprising multiple <a class="text-success undrln" href="fundamentals.html#blocks-entry-11-round-block">Round Blocks</a> where each Round Block was a whole multiple of an <a class="text-success undrln" href="fundamentals.html#truth-entry-31-extent">Extent</a> in <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Length</a>. Since the Performance was of Minor, the first Round Block was 720 <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a>, the second Round Block was 1440 Changes, and the remaining Round Blocks were all 720 Changes.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 1280 <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> Treble <a class="text-success undrln" href="classification.html#definitions-entry-8-dodging">Dodging</a> Major</div></li><li><div class="mrf-para">Performance Detail: 3m: 416 each Cambridge Surprise, Megan Delight; 448 Imperial Treble Bob; 2 com; atw</div></li><li><div class="mrf-para">In this example the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> rung do not have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, but they are all <a class="text-success undrln" href="classification.html#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Methods</a>. Treble <a class="text-success undrln" href="classification.html#definitions-entry-8-dodging">Dodging</a> may therefore optionally be included in the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a> (or otherwise the Performance Title is 1280 <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> Major), and the <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Names</a> and Class Descriptors are included in the Performance Detail.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 5000 <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> Royal (8m)</div></li><li><div class="mrf-para">Performance Detail: 800 each Dr No Diff S, Kananga S, Zorin S; 640 Largo A; 600 Jaws LA; 560 each Drax LA, Elektra A; 240 Nick Nack Diff; 139 com; atw</div></li><li><div class="mrf-para">In this example the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> rung do not have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, and they are not all either Plain or <a class="text-success undrln" href="classification.html#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Methods</a>. Therefore no Class Descriptor is used in the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>, and the <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Names</a> and Class Descriptors are included in the Performance Detail. In this example, abbreviations for Class Descriptors have been used (Diff S for <a class="text-success undrln" href="classification.html#upperlevels-entry-24-differential">Differential</a> Surprise, LA for Little Alliance, etc), and the number of <span class="mrf-nolink">methods</span> rung has been included in round brackets at the end of the Performance Title, rather than at the beginning of the Performance Detail.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 1320 Mixed Plain Doubles</div></li><li><div class="mrf-para">Performance Detail: 6m/v: (1-2) Grandsire; (3-4) St Simon's Bob; (5-6) St Martin's Bob; (7) April Day; (8) Kennington; (9-11) Plain Bob</div></li><li><div class="mrf-para">This example comprises 4 <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> and 2 <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a>. The two Variations, April Day and Kennington, are based on Plain Bob, and so are members of the Plain Class. Variations do not use <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptors</a>, so this <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> doesn't have a common Class Descriptor that can be used in the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>. However, Plain may optionally be included in the Performance Title since all Methods and Variations rung are members of this Class. Mixed has also optionally been used in the Performance Title since this is a multi-Method Performance, but doesn't include a <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a>. (Given the optional terms, this Performance Title could be any of: 1320 Mixed Plain Doubles, 1320 Mixed Doubles, 1320 Plain Doubles, or 1320 Doubles.)</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 5040 Plain Doubles and Minor</div></li><li><div class="mrf-para">Performance Detail: 2m: 2880 St Clement's Bob Minor; 2160 Grandsire Doubles; 6 com</div></li><li><div class="mrf-para">Since this example is a multi-<a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, the <a class="text-success undrln" href="fundamentals.html#stages-entry-2-stage-name">Stage Names</a> are included in the Performance Detail. Also, although Plain Bob and Grandsire are both members of the Bob Class of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a>, Grandsire is an exception (see <a class="text-success undrln" href="naming.html#mrf-exceptions-orderedlist-2-1">Section 5.F.1</a>) in which the Bob <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> is not used. Bob therefore cannot be used in the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>, but since St Clement's and Grandsire are both part of the Plain Class of Methods, Plain may optionally be included in the Performance Title (otherwise the Performance Title is 5040 Doubles and Minor).</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 1392 <a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Variable Cover</a> <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a> Cinques and Maximus</div></li><li><div class="mrf-para">Performance Detail: 2m: 528 Stedman Cinques; 864 Bristol Surprise Maximus; 3 com</div></li><li><div class="mrf-para">This example shows the format for a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> that was <a class="text-success undrln" href="fundamentals.html#coverbells-entry-22-variable-cover">Variable Cover</a>, <a class="text-success undrln" href="fundamentals.html#compositions-entry-20-spliced">Spliced</a>, and multi-<a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a>.</div></li></ul></div><div class="text-danger"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>: 240 Triples</div></li><li><div class="mrf-para">Performance Detail: 1m: 240 Martyrs Link Major</div></li><li><div class="mrf-para">Martyrs Link has one <a class="text-success undrln" href="classification.html#definitions-entry-4-stationary-bell">Stationary Bell</a>, and in this example, the Stationary Bell was not affected by any <a class="text-success undrln" href="fundamentals.html#calls-entry-17-call">Calls</a>. The <a class="text-success undrln" href="fundamentals.html#truth-entry-33-effective-stage">Effective Stage</a> of the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was therefore Triples. Since the Effective Stage is lower than the highest <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> rung, the <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a> and Performance Detail are constructed as above.</div></li></ul></div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-3-performance-norm" data-glossterm="Performance Norm">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance Norm
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">An aspect of a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> that would reasonably be assumed unless stated otherwise.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-4-ringing-style" data-glossterm="Ringing Style">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Ringing Style
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">One of the following styles in which <span class="mrf-nolink">method</span> ringing is performed:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">Towerbell Style: Full-circle ringing with rope and wheel, using handstroke and backstroke actions;</div></li><li><div class="mrf-para">Handbell Style: Alternating upstrokes and downstrokes -- usually upstrokes for handstrokes and downstrokes for backstrokes;</div></li><li><div class="mrf-para">Keyboard Style: Bells sound via presses on a keyboard, such as with <a class="text-success undrln" href="#definitions-entry-7-online-ringing">Online Ringing</a> (see <a class="text-success undrln" href="#definitions-entry-7-online-ringing">Section 6.A.7</a>) or a carillon;</div></li><li><div class="mrf-para">Other Style: To be specified in <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Reports</a>, such as ringing on the frame or tapping bells;</div></li><li><div class="mrf-para">Mixed Style: More than one of the above styles were used in a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>.</div></li></ol>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-5-distributed-ringing" data-glossterm="Distributed Ringing">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Distributed Ringing
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Ringing in which the ringers were not all present in the same location.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-6-simulator-ringing" data-glossterm="Simulator Ringing">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Simulator Ringing
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-6-simulator-ringing" aria-label="Show or hide details for Simulator Ringing" title="Show or hide details for Simulator Ringing"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Ringing that involves the use of, or takes <span class="mrf-nolink">place</span> via, a computer-based ringing simulator.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-6-simulator-ringing">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The minimum involvement of a simulator is usually to play recorded or synthesised bell sounds when ringing real bells whose clappers are tied (e.g. for sound control purposes). This extends up to the simulator providing a simulation of a full ringing environment (e.g. visual and aural aspects), and possibly also simulating one or more of the ringers.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-7-online-ringing" data-glossterm="Online Ringing">
+                        <div class="col-sm-1">
+                            7.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Online Ringing
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-7-online-ringing" aria-label="Show or hide details for Online Ringing" title="Show or hide details for Online Ringing"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A subset of <a class="text-success undrln" href="#definitions-entry-6-simulator-ringing">Simulator Ringing</a> that takes <span class="mrf-nolink">place</span> over a computer network.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-7-online-ringing">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Online Ringing often occurs with the ringers in different locations, in which case it is also <a class="text-success undrln" href="#definitions-entry-5-distributed-ringing">Distributed Ringing</a>. However, Online Ringing can also occur with all ringers in the same location, such as when a group of ringers, each with a laptop and headset, ring on a simulator such as 'Ringing Room' while all in the same room.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-8-automated-ringing" data-glossterm="Automated Ringing">
+                        <div class="col-sm-1">
+                            8.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Automated Ringing
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-8-automated-ringing" aria-label="Show or hide details for Automated Ringing" title="Show or hide details for Automated Ringing"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Ringing in which the sounds of one or more bells were controlled, by whatever means, without human action.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-8-automated-ringing">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Automated Ringing occurs when a bell strikes at a time determined by a computer program.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Note that fully <span class="mrf-nolink">automated ringing</span> (i.e. with no human ringers) is not considered a reportable <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> under the Framework.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="content">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Content</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-content-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-content-orderedlist-2-1" aria-label="Show or hide details for item 1" title="Show or hide details for item 1"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a> should include the following:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-4-ringing-style">Ringing Style</a> used;</div></li><li><div class="mrf-para">Whether any <a class="text-success undrln" href="#definitions-entry-8-automated-ringing">Automated Ringing</a> was used;</div></li><li><div class="mrf-para">The Location where the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was rung (not applicable for <a class="text-success undrln" href="#definitions-entry-5-distributed-ringing">Distributed Ringing</a>);</div></li><li><div class="mrf-para">In the case of <a class="text-success undrln" href="#definitions-entry-6-simulator-ringing">Simulator Ringing</a> / <a class="text-success undrln" href="#definitions-entry-7-online-ringing">Online Ringing</a>, or ringing facilitated by other electronic means, the name of the ringing simulator (or other means) that was used to facilitate the ringing;</div></li><li><div class="mrf-para">The date on which the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was rung;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-1-performance-title">Performance Title</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-performance-detail">Performance Detail</a>;</div></li><li><div class="mrf-para">The names of the ringers in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> and the number(s) of the bell(s) each rang (and in the case of <a class="text-success undrln" href="#definitions-entry-8-automated-ringing">Automated Ringing</a>, make clear which bells were not rung by human ringers);</div></li><li><div class="mrf-para">In the case of <a class="text-success undrln" href="#definitions-entry-5-distributed-ringing">Distributed Ringing</a>, the approximate location of each ringer;</div></li><li><div class="mrf-para">The names of any umpire(s) present.</div></li></ol>
+                            <div class="collapse" id="detail-content-orderedlist-2-1">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In the case of Mixed Style for a), the <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a> should include the <a class="text-success undrln" href="#definitions-entry-4-ringing-style">Ringing Style</a> used for each bell.</div><div class="mrf-para text-primary">The Location in c) above should be sufficient to identify unambiguously where the <span class="mrf-nolink">performance</span> was rung, eg: St Stephen, Ambridge, Borsetshire; Casterbridge Town Hall, Wessex; 23 Railway Cuttings, East Cheam.</div><div class="mrf-para text-primary">In the case of a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> on a boat or other moving object, the general location should be provided for c), with more detail provided in the footnote. E.g. Location: River Thames aboard the Ursula Katherine; Footnote: From Blackfriars Bridge to Woolwich.</div><div class="mrf-para text-primary">For d), an example of other electronic means might be a distributed handbell <span class="mrf-nolink">band</span> that is connected via telephone conference <span class="mrf-nolink">call</span>.</div><div class="mrf-para text-primary">If a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> spans midnight, the date in e) above should be the date on which the Performance ended. In this case, <span class="mrf-nolink">bands</span> may wish to include the start date (and perhaps the start or end time) in the footnote of the <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a>.</div><div class="mrf-para text-primary">For <a class="text-success undrln" href="#definitions-entry-5-distributed-ringing">Distributed Ringing</a>, the approximate location of each ringer in i) might be given as town / city, and county / state / country, as applicable.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-content-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-content-orderedlist-2-2" aria-label="Show or hide details for item 2" title="Show or hide details for item 2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a> may also include additional information such as:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The society for which the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was rung;</div></li><li><div class="mrf-para">Details of the <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> used in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, or a reference to it;</div></li><li><div class="mrf-para">The name(s) of the composer(s);</div></li><li><div class="mrf-para">The time the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> took to ring;</div></li><li><div class="mrf-para">The weight and note of the tenor (towerbells) or the size and note of the tenor (handbells); and/or</div></li><li><div class="mrf-para">Dedications and other footnotes.</div></li></ol>
+                            <div class="collapse" id="detail-content-orderedlist-2-2">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Inclusion of the <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> per b) above is encouraged in all <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Reports</a>. Ideally the reader of a Performance Report should have enough information to be able to reproduce the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a> that were rung.</div><div class="mrf-para text-primary">Time per d) above is encouraged for all <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Lengths</a>, and should be included for <a class="text-success undrln" href="fundamentals.html#touches-entry-28-peal">Peal</a> Lengths.</div><div class="mrf-para text-primary">Where applicable, tenor weight / size and note per e) above is encouraged for all <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Lengths</a>, and should be included for <a class="text-success undrln" href="fundamentals.html#touches-entry-28-peal">Peal</a> Lengths. Tenor weight / size is normally not applicable for <a class="text-success undrln" href="#definitions-entry-7-online-ringing">Online Ringing</a> and/or ringing with dummy bells.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-content-orderedlist-2-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a> of a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> including one or more <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> / <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> that are not in the Methods / Variations Libraries should include the specification(s) and proposed Name(s) of those Method(s) / Variation(s).</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="performancenorms">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Performance Norms</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-performancenorms-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a> should state any aspect of the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> that differed from a <a class="text-success undrln" href="#definitions-entry-3-performance-norm">Performance Norm</a>. Established Performance Norms are listed below, but the report should include any other aspect of the Performance that would not reasonably be assumed, and could be expected to alter some ringers' view of it.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-performancenorms-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-performancenorms-orderedlist-2-2" aria-label="Show or hide details for item 2" title="Show or hide details for item 2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The following are considered Norms for all reported <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performances</a>:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was a <a class="text-success undrln" href="fundamentals.html#blocks-entry-11-round-block">Round Block</a> that started and ended in <a class="text-success undrln" href="fundamentals.html#rows-entry-4-rounds">Rounds</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was a <a class="text-success undrln" href="fundamentals.html#truth-entry-34-true">True</a> <a class="text-success undrln" href="fundamentals.html#touches-entry-23-touch">Touch</a>, or a Touch with <a class="text-success undrln" href="fundamentals.html#truth-entry-36-accepted-truth">Accepted Truth</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was rung without interval;</div></li><li><div class="mrf-para">For <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performances</a> using Handbell Style (see <a class="text-success undrln" href="#definitions-entry-4-ringing-style">Section 6.A.4</a>), the bells were retained in hand throughout the Performance;</div></li><li><div class="mrf-para">The same person or persons rang each bell or bells continuously throughout the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">Neither ringers nor conductor(s) used any physical aids to memory during the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">No person not ringing provided any assistance in the execution of the ringing during the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, e.g. making <span class="mrf-nolink">calls</span>, detecting or correcting errors;</div></li><li><div class="mrf-para">If the name of a ringing simulator (or other means) is included in the <a class="text-success undrln" href="fundamentals.html#performances-entry-38-performance-report">Performance Report</a> per <a class="text-success undrln" href="#mrf-content-orderedlist-2-1">6.B.1</a> d), the norm is that simulated sound was used; otherwise the norm is that simulated sound was not used;</div></li><li><div class="mrf-para">In any given <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> of the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>, all bells rang at the same stroke (i.e. all handstroke or all backstroke);</div></li><li><div class="mrf-para">If <a class="text-success undrln" href="fundamentals.html#coverbells-entry-21-cover-bell">Cover Bell</a>(s) were used, these were in the highest <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>(s) of the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a>;</div></li><li><div class="mrf-para"><a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a> were not used;</div></li><li><div class="mrf-para">Only one <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>, <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variation</a> or <a class="text-success undrln" href="fundamentals.html#calls-entry-17-call">Call</a> was used to define any one <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> in the <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>;</div></li><li><div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> with only one ringer was witnessed by an umpire;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> was not part of a failed longer attempt; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> can be described using this Framework.</div></li></ol>
+                            <div class="collapse" id="detail-performancenorms-orderedlist-2-2">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> For norm b), note that <a class="text-success undrln" href="fundamentals.html#truth-entry-36-accepted-truth">Accepted Truth</a> encompasses <a class="text-success undrln" href="fundamentals.html#truth-entry-34-true">True</a>. See <a class="text-success undrln" href="fundamentals.html#truth">Section 3.J</a> for definitions of these terms.</div><div class="mrf-para text-primary">For norm c), the ethos of ringing is one of continuous <span class="mrf-nolink">performance</span>. In the tower there is a clear distinction - the ringing either keeps going or it stops. But with handbell and keypress <span class="mrf-nolink">performances</span>, and especially <a class="text-success undrln" href="#definitions-entry-5-distributed-ringing">Distributed Ringing</a> with keypresses, extended pauses are physically possible despite the ringers not intentionally stopping and re-starting. Rather than attempt to define a cutoff time, the Framework relies on the good judgement of the <span class="mrf-nolink">band</span> in applying this norm.</div><div class="mrf-para text-primary">For norm g), assistance such as passing someone a bottle of water, opening a window, or turning on a light is not considered assistance in the execution of the ringing.</div><div class="mrf-para text-primary">For norm k), if <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> with <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a> were used, this will be evident from <a class="text-success undrln" href="#mrf-content-orderedlist-2-1">6.B.1</a> f) or g) above, since these Methods include 'Jump' in their Titles. Therefore disclosure relating to Jump Changes is only required if Jump <a class="text-success undrln" href="fundamentals.html#calls-entry-17-call">Calls</a> (i.e. Calls involving Jump Changes) or <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> with Jump Changes were used, but <a class="text-success undrln" href="classification.html#upperlevels-entry-25-jump-method">Jump Methods</a> (i.e. Methods involving Jump Changes) were not. (Note that Variations don't use <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptors</a>, so a Variation with Jump Changes won't have 'Jump' in its Title.)</div><div class="mrf-para text-primary">Re: norm l), a 12-bell <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> could involve two Minor <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> rung on the front 6 and back 6 bells respectively. This is an example of a departure from norm l), and explanation should be provided in the footnotes.</div><div class="mrf-para text-primary">For norm m), one person could (e.g.) ring a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> of Minimus four in hand. The umpire provides corroboration that the Performance took <span class="mrf-nolink">place</span> as reported. Note that if this norm is not followed (i.e. no umpire was present for a single person <span class="mrf-nolink">performance</span>), this will be evident from <a class="text-success undrln" href="#mrf-content-orderedlist-2-1">6.B.1</a> h) and j) above, so in practice no further disclosure is required.</div><div class="mrf-para text-primary">For norm n), if, for example, an attempt to ring 7 <a class="text-success undrln" href="fundamentals.html#truth-entry-31-extent">Extents</a> of Minor was lost in the 5th <span class="mrf-nolink">extent</span>, the first 4 Extents are not normally considered to constitute a successful <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a>. Similarly, if 7 Extents of Minor are rung but the 1st Extent is found to be false, the last 6 Extents are not normally considered to constitute a successful Performance. However, norm n) does not apply to Performances that were called round earlier than was intended at the outset of the attempt. It also does not apply to false starts, or to anything rung before or after the intended Performance.</div><div class="mrf-para text-primary">Re: norm o), a <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performance</a> might start in the middle of a <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>, or different Rows in a Performance might involve different numbers of bells ringing. These are examples of departures from norm o), and explanation should be provided in the footnotes.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="../mrf.js"></script>
+</body>
+</html>

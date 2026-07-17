@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Method Classification (draft edition 3)">
+    <meta name="author" content="CCCBR">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="Method Classification (draft edition 3)">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.org.uk/classification.html">
+    <title>Framework for Method Ringing - Method Classification</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../mrf.css" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@id": "https://cccbr.org.uk/#publisher",
+                    "@type": "Organization",
+                    "name": "CCCBR",
+                    "url": "https://cccbr.org.uk/"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html",
+                    "@type": "CreativeWork",
+                    "name": "Method Classification",
+                    "url": "https://cccbr.org.uk/classification.html",
+                    "description": "Method Classification (draft edition 3)",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "version": "Edition 3",
+                    "isBasedOn": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    }
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-1-method-class",
+                    "@type": "DefinedTerm",
+                    "name": "Method Class",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-1-method-class",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Method Classes"
+                    ],
+                    "termCode": "A.1",
+                    "description": "A group of Methods that contain the same, defined features. Click here for a diagram that shows the Method Classes and the relationships between them. These classes are defined in Sections 4.C to 4.E below, except that Static Method and Dynamic Method are defined in Section 3.E."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-2-hunt-bell",
+                    "@type": "DefinedTerm",
+                    "name": "Hunt Bell",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-2-hunt-bell",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Hunt Bells"
+                    ],
+                    "termCode": "A.2",
+                    "description": "A bell that ends a Plain Lead in the same Place as it started."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-3-working-bell",
+                    "@type": "DefinedTerm",
+                    "name": "Working Bell",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-3-working-bell",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Working Bells"
+                    ],
+                    "termCode": "A.3",
+                    "description": "A bell that ends a Plain Lead in a different Place from where it started."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-4-stationary-bell",
+                    "@type": "DefinedTerm",
+                    "name": "Stationary Bell",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-4-stationary-bell",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Stationary Bells"
+                    ],
+                    "termCode": "A.4",
+                    "description": "A Hunt Bell that occupies the same Place in every Row of a Plain Lead."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-5-path",
+                    "@type": "DefinedTerm",
+                    "name": "Path",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-5-path",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Paths"
+                    ],
+                    "termCode": "A.5",
+                    "description": "The movements of a bell between its successive Places in the Rows of a Block."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-6-little-path",
+                    "@type": "DefinedTerm",
+                    "name": "Little Path",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-6-little-path",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Little Paths"
+                    ],
+                    "termCode": "A.6",
+                    "description": "A Path which does not involve occupying all the Places of the Stage of a Block."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-7-hunting",
+                    "@type": "DefinedTerm",
+                    "name": "Hunting",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-7-hunting",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Hunt"
+                    ],
+                    "termCode": "A.7",
+                    "description": "A Path that is formed by progressing from an earlier Place to a later Place, or vice versa (but not a combination of both), at the rate of one Place per Row. (Alternative form: a bell Hunts.)"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-8-dodging",
+                    "@type": "DefinedTerm",
+                    "name": "Dodging",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-8-dodging",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Dodges",
+                        "Dodge"
+                    ],
+                    "termCode": "A.8",
+                    "description": "Moving one Place in the opposite direction in an otherwise Hunting Path. (Alternative form: a bell Dodges.)"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-9-leadend-change",
+                    "@type": "DefinedTerm",
+                    "name": "Leadend Change",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-9-leadend-change",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Leadend Changes",
+                        "Lead End Change",
+                        "Lead End Changes"
+                    ],
+                    "termCode": "A.9",
+                    "description": "The last Change in a Method's sequence of Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-10-halflead-change",
+                    "@type": "DefinedTerm",
+                    "name": "Halflead Change",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-10-halflead-change",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Halflead Changes",
+                        "Half Lead Change",
+                        "Half Lead Changes"
+                    ],
+                    "termCode": "A.10",
+                    "description": "The Change that occurs at the halfway point in a Method's sequence of Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-11-leadend",
+                    "@type": "DefinedTerm",
+                    "name": "Leadend",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-11-leadend",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Leadends",
+                        "Lead End",
+                        "Lead Ends"
+                    ],
+                    "termCode": "A.11",
+                    "description": "When applying a Method's sequence of Changes to produce a Plain Lead, the Leadend is the Row to which the Leadend Change is applied."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-12-leadhead",
+                    "@type": "DefinedTerm",
+                    "name": "Leadhead",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-12-leadhead",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Leadheads",
+                        "Lead Head",
+                        "Lead Heads"
+                    ],
+                    "termCode": "A.12",
+                    "description": "When applying a Method's sequence of Changes to produce a Plain Lead, the Leadhead is the Row to which the first Change of the sequence is applied."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-13-making-one-or-more-places",
+                    "@type": "DefinedTerm",
+                    "name": "Making one or more Places",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-13-making-one-or-more-places",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.13",
+                    "description": "Making a Place is occupying the same Place for two consecutive Rows. (Alternative form: a bell Makes a Place.)"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-14-making-an-internal-place",
+                    "@type": "DefinedTerm",
+                    "name": "Making an Internal Place",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-14-making-an-internal-place",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Making Internal Places"
+                    ],
+                    "termCode": "A.14",
+                    "description": "Making a Place that is neither the first Place nor the last Place of the Block in question. (Alternative form: a bell Makes an Internal Place.)"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-15-dodging-places",
+                    "@type": "DefinedTerm",
+                    "name": "Dodging Places",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-15-dodging-places",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.15",
+                    "description": "Successive pairs of adjacent Places of the Path of the Hunt Bell in question."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-16-cross-section",
+                    "@type": "DefinedTerm",
+                    "name": "Cross Section",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-16-cross-section",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Cross Sections"
+                    ],
+                    "termCode": "A.16",
+                    "description": "A Change at which the Hunt Bell in question crosses from one pair of Dodging Places to the next."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-17-rotation",
+                    "@type": "DefinedTerm",
+                    "name": "Rotation",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-17-rotation",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Rotations"
+                    ],
+                    "termCode": "A.17",
+                    "description": "A sequence of Changes can be rotated by considering it as a loop, and starting it at a different point. This process is called Rotation. By using this process on the Changes of a Static Method, other Static Methods can be produced that are Rotations of the original Static Method."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#definitions-entry-18-cycle",
+                    "@type": "DefinedTerm",
+                    "name": "Cycle",
+                    "url": "https://cccbr.org.uk/classification.html#definitions-entry-18-cycle",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Cycles"
+                    ],
+                    "termCode": "A.18",
+                    "description": "A Cycle is a set of one or more bells that follow the same Path and return to their starting Places after the same number of Plain Leads. This number of Plain Leads is the same as the number of bells in the Cycle."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-19-palindromic-symmetry",
+                    "@type": "DefinedTerm",
+                    "name": "Palindromic Symmetry",
+                    "url": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-19-palindromic-symmetry",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "B.1",
+                    "description": "A Method has Palindromic Symmetry if the same Changes result (after Rotation if needed) when read backwards, that is, when the order of the Changes is inverted."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-20-double-symmetry",
+                    "@type": "DefinedTerm",
+                    "name": "Double Symmetry",
+                    "url": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-20-double-symmetry",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "B.2",
+                    "description": "A Method has Double Symmetry if the same Changes result (after Rotation if needed) when reversed, that is, when the Places within each Change are inverted."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-21-rotational-symmetry",
+                    "@type": "DefinedTerm",
+                    "name": "Rotational Symmetry",
+                    "url": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-21-rotational-symmetry",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "B.3",
+                    "description": "A Method has Rotational Symmetry if the same Changes result (after Rotation if needed) when reversed and read backwards."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-22-hunter",
+                    "@type": "DefinedTerm",
+                    "name": "Hunter",
+                    "url": "https://cccbr.org.uk/classification.html#upperlevels-entry-22-hunter",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Hunters"
+                    ],
+                    "termCode": "C.2",
+                    "description": "A Static Method that has one or more Hunt Bells."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-23-principle",
+                    "@type": "DefinedTerm",
+                    "name": "Principle",
+                    "url": "https://cccbr.org.uk/classification.html#upperlevels-entry-23-principle",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Principles"
+                    ],
+                    "termCode": "C.3",
+                    "description": "A Static Method that has no Hunt Bells."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-24-differential",
+                    "@type": "DefinedTerm",
+                    "name": "Differential",
+                    "url": "https://cccbr.org.uk/classification.html#upperlevels-entry-24-differential",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Differentials"
+                    ],
+                    "termCode": "C.4",
+                    "description": "A Static Method in which the Working Bells do not all first return to their starting Places after the same number of Plain Leads."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-25-jump-method",
+                    "@type": "DefinedTerm",
+                    "name": "Jump Method",
+                    "url": "https://cccbr.org.uk/classification.html#upperlevels-entry-25-jump-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Jump Methods"
+                    ],
+                    "termCode": "C.5",
+                    "description": "A Method that uses one or more Jump Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-26-plain-method",
+                    "@type": "DefinedTerm",
+                    "name": "Plain Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-26-plain-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Plain Methods"
+                    ],
+                    "termCode": "D.1",
+                    "description": "A Hunter in which:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-27-place-method",
+                    "@type": "DefinedTerm",
+                    "name": "Place Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-27-place-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Place Methods"
+                    ],
+                    "termCode": "D.1.1",
+                    "description": "A Plain Method in which the Paths of all the bells consist only of Hunting and Making Places, and in which a change in the direction of Hunting is separated by Making one or more Places."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-28-bob-method",
+                    "@type": "DefinedTerm",
+                    "name": "Bob Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-28-bob-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Bob Methods"
+                    ],
+                    "termCode": "D.1.2",
+                    "description": "A Plain Method that is not a Place Method."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-29-treble-dodging-method",
+                    "@type": "DefinedTerm",
+                    "name": "Treble Dodging Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-29-treble-dodging-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Treble Dodging Methods"
+                    ],
+                    "termCode": "D.2",
+                    "description": "A Hunter in which:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-30-treble-bob-method",
+                    "@type": "DefinedTerm",
+                    "name": "Treble Bob Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-30-treble-bob-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Treble Bob Methods"
+                    ],
+                    "termCode": "D.2.1",
+                    "description": "A Treble Dodging Method in which no bell Makes an Internal Place at any Cross Section, or which does not have any Cross Sections."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-31-surprise-method",
+                    "@type": "DefinedTerm",
+                    "name": "Surprise Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-31-surprise-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Surprise Methods"
+                    ],
+                    "termCode": "D.2.2",
+                    "description": "A Treble Dodging Method in which one or more bells Make an Internal Place at every Cross Section."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-32-delight-method",
+                    "@type": "DefinedTerm",
+                    "name": "Delight Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-32-delight-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Delight Methods"
+                    ],
+                    "termCode": "D.2.3",
+                    "description": "A Treble Dodging Method that is neither a Treble Bob Method nor a Surprise Method."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-33-treble-place-method",
+                    "@type": "DefinedTerm",
+                    "name": "Treble Place Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-33-treble-place-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Treble Place Methods"
+                    ],
+                    "termCode": "D.3",
+                    "description": "A Hunter in which:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-34-alliance-method",
+                    "@type": "DefinedTerm",
+                    "name": "Alliance Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-34-alliance-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Alliance Methods"
+                    ],
+                    "termCode": "D.4",
+                    "description": "A Hunter in which:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-35-hybrid-method",
+                    "@type": "DefinedTerm",
+                    "name": "Hybrid Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-35-hybrid-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Hybrid Methods"
+                    ],
+                    "termCode": "D.5",
+                    "description": "A Hunter in which:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-36-little-method",
+                    "@type": "DefinedTerm",
+                    "name": "Little Method",
+                    "url": "https://cccbr.org.uk/classification.html#onehuntbell-entry-36-little-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Little Methods"
+                    ],
+                    "termCode": "D.6",
+                    "description": "A Hunter in which the Hunt Bell has a Little Path."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3",
+                    "@type": "DefinedTermSet",
+                    "name": "Framework for Method Ringing Edition 3",
+                    "url": "https://cccbr.org.uk/edition3/index.html",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "isPartOf": {
+                        "@id": "https://cccbr.org.uk/classification.html"
+                    },
+                    "version": "Edition 3",
+                    "hasDefinedTerm": [
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-1-method-class"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-2-hunt-bell"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-3-working-bell"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-4-stationary-bell"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-5-path"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-6-little-path"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-7-hunting"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-8-dodging"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-9-leadend-change"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-10-halflead-change"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-11-leadend"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-12-leadhead"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-13-making-one-or-more-places"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-14-making-an-internal-place"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-15-dodging-places"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-16-cross-section"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-17-rotation"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#definitions-entry-18-cycle"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-19-palindromic-symmetry"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-20-double-symmetry"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#methodsymmetry-entry-21-rotational-symmetry"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-22-hunter"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-23-principle"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-24-differential"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#upperlevels-entry-25-jump-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-26-plain-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-27-place-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-28-bob-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-29-treble-dodging-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-30-treble-bob-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-31-surprise-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-32-delight-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-33-treble-place-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-34-alliance-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-35-hybrid-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/classification.html#onehuntbell-entry-36-little-method"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing     </a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/"><img src="../images/cc-header.png" height="60" alt="CCCBR">     </a>
+                        <div class="dropdown ml-2">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="versionSwitcher" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Draft - Edition 3 (unapproved)
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionSwitcher">
+                                <a class="dropdown-item" href="../edition2/index.html">Latest Approved - Edition 2 (approved 26 Jan 2022)</a>
+                                <a class="dropdown-item" href="../edition1/index.html">Superseded - Edition 1 (24 Feb 2019 - 25 Jan 2022)</a>
+                                <a class="dropdown-item active" href="index.html">Draft - Edition 3 (unapproved) <span class="sr-only">(current)</span></a>
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">1. Introduction</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="editions.html">2. Editions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="classification.html">4. Method Classification</a>
+                                        <ul class="nav nav-pills flex-column nav-subsection">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#definitions">A. Definitions</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#methodsymmetry">B. Method Symmetry</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#upperlevels">C. Method Classes: Upper Levels</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#onehuntbell">D. Method Classes: Hunters with One Hunt Bell</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#morethanonehuntbell">E. Method Classes: Hunters with More than One Hunt Bell</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <br>    <u>Appendices</u><br>
+                                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="principles.html">F. Framework Principles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="development.html">G. Edition 3 Development</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="consultation.html">H. Edition 3 Consultation</a>
+                                    </li>
+                                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>4. Method Classification</h2>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="definitions">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Definitions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-1-method-class" data-glossterm="Method Class">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Method Class
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-1-method-class" aria-label="Show or hide details for Method Class" title="Show or hide details for Method Class"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A group of <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> that contain the same, defined features. Click <a class="text-success undrln" href="../images/edition3/classification/classification-chart.pdf">here</a> for a diagram that shows the <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Classes</a> and the relationships between them. These classes are defined in Sections <a class="text-success undrln" href="#upperlevels">4.C</a> to <a class="text-success undrln" href="#morethanonehuntbell">4.E</a> below, except that <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a> and <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Method</a> are defined in <a class="text-success undrln" href="fundamentals.html#methods">Section 3.E</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-1-method-class">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Note that <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a> are not currently sub-classified to lower levels.</div><div class="mrf-para text-primary">The classification system for <span class="mrf-nolink">method</span> ringing evolved over many decades and as a result is more complex than if we were starting from scratch. Making any large-scale <span class="mrf-nolink">changes</span> to the classification system is problematic because class terms form part of a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s Title (see <a class="text-success undrln" href="naming.html#general-entry-3-method-title">Section 5.A.3</a>), so <span class="mrf-nolink">changes</span> to classifications also alter <a class="text-success undrln" href="naming.html#general-entry-3-method-title">Method Titles</a>, making it harder to interpret historical records of <span class="mrf-nolink">method</span> ringing <a class="text-success undrln" href="fundamentals.html#performances-entry-37-performance">Performances</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-2-hunt-bell" data-glossterm="Hunt Bell">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Hunt Bell
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-2-hunt-bell" aria-label="Show or hide details for Hunt Bell" title="Show or hide details for Hunt Bell"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A bell that ends a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> in the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> as it started.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-2-hunt-bell">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/hunt-bell.svg" alt="hunt-bell" width="112" height="144"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> for the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> Plain Bob Minimus is x14x14x14x12. This place notation produces one <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> when applied once to an initial <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. Using an initial Row of 1234 (<a class="text-success undrln" href="fundamentals.html#rows-entry-4-rounds">Rounds</a>), the Plain Lead shown in the diagram is produced. To identify which are the Hunt Bell(s), look at the final Row produced (in this example it is 1342). The Hunt Bell(s) are the bell(s) that are in the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>(s) in the final Row as they were in the initial Row. In Plain Bob Minimus, the bell in 1st’s Place in the initial Row (in this example, the treble) is therefore the only Hunt Bell.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> is defined in terms of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>. The concept of a Hunt Bell may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-3-working-bell" data-glossterm="Working Bell">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Working Bell
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-3-working-bell" aria-label="Show or hide details for Working Bell" title="Show or hide details for Working Bell"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A bell that ends a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> in a different <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> from where it started.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-3-working-bell">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Using the example in <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Section 4.A.2</a> above, the bells in 2nd's, 3rd's and 4th's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in the initial <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> (in this example, the 2nd, 3rd and 4th respectively) are <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a> because at the final Row of a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> they have not returned to the same Places they were in at the initial Row.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> is defined in terms of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>. The concept of a Working Bell may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-4-stationary-bell" data-glossterm="Stationary Bell">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Stationary Bell
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-4-stationary-bell" aria-label="Show or hide details for Stationary Bell" title="Show or hide details for Stationary Bell"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> that occupies the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> in every <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> of a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-4-stationary-bell">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> 3rd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> bell in <a class="text-success undrln" href="https://complib.org/method/31112">Martyrs Link Little Bob Major</a> is a Stationary Bell.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> is defined in terms of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>. The concept of a Stationary Bell may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-5-path" data-glossterm="Path">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Path
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-5-path" aria-label="Show or hide details for Path" title="Show or hide details for Path"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The movements of a bell between its successive <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a> of a <a class="text-success undrln" href="fundamentals.html#blocks-entry-10-block">Block</a>.</div>
+                            <div class="mrf-para">Where a Path ends in the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> as it started, it is considered to be a loop, and these two Places coincide and are only counted once.</div>
+                            <div class="mrf-para">Two such <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a> are considered equal if the first Path can be started from a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> that gives the second Path.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-5-path">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> A Path is commonly depicted by drawing a line through the bell in question.</div><div class="mrf-para text-danger">The treble’s Path is depicted with a red line in the example in <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Section 4.A.2</a> above.</div><div class="mrf-para text-danger">Since this Path starts and ends in the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> (1st's), it is considered to be a loop, and the Path therefore comprises 8 Places.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Consider the following two <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a>, which are both loops:</div><div class="mrf-mediaobject"><img src="../images/edition3/classification/path-diagram.svg" alt="path-diagram" width="452" height="121"></div><div class="mrf-para text-primary">The numbers in the diagram above represent the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> through which the <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a> pass.</div><div class="mrf-para text-primary">These two <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a> are considered to be the same because starting Path 1 from its second <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> gives Path 2.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-6-little-path" data-glossterm="Little Path">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Little Path
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-6-little-path" aria-label="Show or hide details for Little Path" title="Show or hide details for Little Path"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> which does not involve occupying all the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> of the <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of a <a class="text-success undrln" href="fundamentals.html#blocks-entry-10-block">Block</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-6-little-path">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> See the example of a Little Path in <a class="text-success undrln" href="#onehuntbell-entry-36-little-method">Section 4.D.6</a> below.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Little Path is most commonly used in reference to a <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>. For example, the Hunt Bell <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> in Little Bob Minor is a Little Path. However, a Little Path can also be used with <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a>. For example, 2nd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Bell in <a class="text-success undrln" href="https://complib.org/method/19048">Bristol Surprise Major</a> can be said to be a Little Path, and all the Working Bells in <a class="text-success undrln" href="https://complib.org/method/29113">Magenta Little Place Maximus</a> have <a class="text-success undrln" href="#definitions-entry-6-little-path">Little Paths</a> over the full <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">Plain Course</a> (and its Hunt Bells also all have Little Paths).</div><div class="mrf-para text-primary">Note that a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a> has a Little Path.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-7-hunting" data-glossterm="Hunting">
+                        <div class="col-sm-1">
+                            7.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Hunting
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-7-hunting" aria-label="Show or hide details for Hunting" title="Show or hide details for Hunting"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> that is formed by progressing from an earlier <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> to a later Place, or vice versa (but not a combination of both), at the rate of one Place per <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. (Alternative form: a bell Hunts.)</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-7-hunting">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In the diagram in <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Section 4.A.2</a> above, the treble Hunts up in the first half of the lead, and then Hunts down in the second half of the lead.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-8-dodging" data-glossterm="Dodging">
+                        <div class="col-sm-1">
+                            8.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Dodging
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-8-dodging" aria-label="Show or hide details for Dodging" title="Show or hide details for Dodging"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Moving one <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> in the opposite direction in an otherwise <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a> <a class="text-success undrln" href="#definitions-entry-5-path">Path</a>. (Alternative form: a bell <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodges</a>.)</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-8-dodging">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> If the <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a> <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> 2, 3, 4, 5 is modified to become 2, 3, 4, 3, 4, 5, then the step back in 3-4 is referred to as Dodging. A step back when otherwise <span class="mrf-nolink">hunting</span> up is referred to as Dodging up, and a step back when otherwise <span class="mrf-nolink">hunting</span> down is referred to as Dodging down.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-9-leadend-change" data-glossterm="Leadend Change">
+                        <div class="col-sm-1">
+                            9.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Leadend Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-9-leadend-change" aria-label="Show or hide details for Leadend Change" title="Show or hide details for Leadend Change"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The last <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> in a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s sequence of Changes.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-9-leadend-change">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Little Bob Minor has the sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> x16x14x16x12. The Leadend Change is the last of these Changes -- i.e. 12.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Also see the diagram in <a class="text-success undrln" href="#definitions-entry-12-leadhead">Section 4.A.12</a> that shows the location of <a class="text-success undrln" href="#definitions-entry-9-leadend-change">Leadend Changes</a>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that the concept of a Leadend Change may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-10-halflead-change" data-glossterm="Halflead Change">
+                        <div class="col-sm-1">
+                            10.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Halflead Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-10-halflead-change" aria-label="Show or hide details for Halflead Change" title="Show or hide details for Halflead Change"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> that occurs at the halfway point in a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s sequence of Changes.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-10-halflead-change">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Little Bob Minor has the sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> x16x14x16x12. This sequence is 8 Changes in <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Length</a>. The Halflead Change is therefore the 4th Change in the sequence -- i.e. 14.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Note that Halflead Change is a concept that applies to <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> whose sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> is even in <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Length</a>. The Halflead Change occurs at the position that is the sequence Length divided by 2.</div><div class="mrf-para text-primary">Also see the diagram in <a class="text-success undrln" href="#definitions-entry-12-leadhead">Section 4.A.12</a> that shows the location of <a class="text-success undrln" href="#definitions-entry-10-halflead-change">Halflead Changes</a>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that the concept of a Halflead Change may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-11-leadend" data-glossterm="Leadend">
+                        <div class="col-sm-1">
+                            11.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Leadend
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-11-leadend" aria-label="Show or hide details for Leadend" title="Show or hide details for Leadend"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">When applying a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> to produce a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>, the Leadend is the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> to which the <a class="text-success undrln" href="#definitions-entry-9-leadend-change">Leadend Change</a> is applied.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-11-leadend">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> See the diagram in <a class="text-success undrln" href="#definitions-entry-12-leadhead">Section 4.A.12</a> that shows the location of <a class="text-success undrln" href="#definitions-entry-11-leadend">Leadends</a>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> is defined in terms of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>. The concept of a Leadend may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-12-leadhead" data-glossterm="Leadhead">
+                        <div class="col-sm-1">
+                            12.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Leadhead
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-12-leadhead" aria-label="Show or hide details for Leadhead" title="Show or hide details for Leadhead"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">When applying a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> to produce a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>, the Leadhead is the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> to which the first Change of the sequence is applied.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-12-leadhead">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The formal definitions for Leadhead and <a class="text-success undrln" href="#definitions-entry-11-leadend">Leadend</a> are provided above, and this terminology is helpful when, for example, a <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Composition</a> is being tested for <a class="text-success undrln" href="fundamentals.html#truth-entry-34-true">Truth</a> using tables of false course heads.</div><div class="mrf-para text-primary">But note that in practice, ringers and conductors often refer to the Leadhead <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> as the <span class="mrf-nolink">lead end</span>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The diagram below shows the <a class="text-success undrln" href="#definitions-entry-12-leadhead">Leadheads</a>, <a class="text-success undrln" href="#definitions-entry-11-leadend">Leadends</a>, <a class="text-success undrln" href="#definitions-entry-10-halflead-change">Halflead Changes</a> and <a class="text-success undrln" href="#definitions-entry-9-leadend-change">Leadend Changes</a> for a <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">Plain Course</a> of Plain Bob Minimus.</div><div class="mrf-mediaobject"><img src="../images/edition3/classification/leadhead.svg" alt="leadhead" width="293" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> is defined in terms of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>. The concept of a Leadhead may not apply to <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-13-making-one-or-more-places" data-glossterm="Making one or more Places">
+                        <div class="col-sm-1">
+                            13.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Making one or more Places
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-13-making-one-or-more-places" aria-label="Show or hide details for Making one or more Places" title="Show or hide details for Making one or more Places"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Making a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> is occupying the same Place for two consecutive <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a>. (Alternative form: a bell Makes a Place.)</div>
+                            <div class="mrf-para">Making one or more Places is occupying the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> for two or more consecutive <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-13-making-one-or-more-places">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In the example in <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Section 4.A.2</a> above, the treble Makes 4th's at the <a class="text-success undrln" href="#definitions-entry-10-halflead-change">Halflead Change</a>, and Makes 1st's at the <a class="text-success undrln" href="#definitions-entry-9-leadend-change">Leadend Change</a>.</div><div class="mrf-para text-primary">Other forms also exist. For example, occupying the same <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> for 3 consecutive <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a> might be referred to as 'Making a Place twice' or (e.g.) 'Making 3 blows in 2nd's'.</div><div class="mrf-para text-primary">See the example of Making one or more Places in <a class="text-success undrln" href="#onehuntbell-entry-27-place-method">Section 4.D.1.1</a> below.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-14-making-an-internal-place" data-glossterm="Making an Internal Place">
+                        <div class="col-sm-1">
+                            14.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Making an Internal Place
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-14-making-an-internal-place" aria-label="Show or hide details for Making an Internal Place" title="Show or hide details for Making an Internal Place"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Making a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> that is neither the first Place nor the last Place of the <a class="text-success undrln" href="fundamentals.html#blocks-entry-10-block">Block</a> in question. (Alternative form: a bell Makes an Internal Place.)</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-14-making-an-internal-place">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> See the examples of Making an Internal Place in Sections <a class="text-success undrln" href="#onehuntbell-entry-31-surprise-method">4.D.2.2</a> and <a class="text-success undrln" href="#onehuntbell-entry-32-delight-method">4.D.2.3</a> below.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-15-dodging-places" data-glossterm="Dodging Places">
+                        <div class="col-sm-1">
+                            15.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Dodging Places
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-15-dodging-places" aria-label="Show or hide details for Dodging Places" title="Show or hide details for Dodging Places"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Successive pairs of adjacent <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> of the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> in question.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-15-dodging-places">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> In a <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> where the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> moves between 1st's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> and 6th's Place, the Dodging Places are 1-2, 3-4 and 5-6. The diagram below shows the Dodging Places for Kent Treble Bob Minor.</div><div class="mrf-mediaobject"><img src="../images/edition3/classification/dodging-places.svg" alt="dodging-places" width="268" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> This term is only used with <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a> that span an even number of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>, so the span can always be divided into pairs of Places.</div><div class="mrf-para text-primary">As the term implies, Dodging Places are a pair of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in which a <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodge</a> can occur. However, note that in some <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a>, Dodges can also occur across two Dodging Places, e.g. in 4-5.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-16-cross-section" data-glossterm="Cross Section">
+                        <div class="col-sm-1">
+                            16.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Cross Section
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-16-cross-section" aria-label="Show or hide details for Cross Section" title="Show or hide details for Cross Section"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> at which the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> in question crosses from one pair of <a class="text-success undrln" href="#definitions-entry-15-dodging-places">Dodging Places</a> to the next.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-16-cross-section">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Sections</a> are used in the classification of <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Methods</a> -- see Sections <a class="text-success undrln" href="#onehuntbell-entry-30-treble-bob-method">4.D.2.1</a>, <a class="text-success undrln" href="#onehuntbell-entry-31-surprise-method">4.D.2.2</a> and <a class="text-success undrln" href="#onehuntbell-entry-32-delight-method">4.D.2.3</a> below.</div><div class="mrf-para text-primary">In a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> with more than one <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>, the <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Sections</a> may be defined by only a subset of the Hunt Bells -- see <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-4">Section 4.E.4</a> below.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> In a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> with one <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> that moves between 1st's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> and 6th's Place, since the <a class="text-success undrln" href="#definitions-entry-15-dodging-places">Dodging Places</a> are 1-2, 3-4 and 5-6, the <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Sections</a> are the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> that cause the Hunt Bell to:</div><div class="text-danger"><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">move from 2nd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> to 3rd’s Place;</div></li><li><div class="mrf-para">move from 4th’s <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> to 5th’s Place;</div></li><li><div class="mrf-para">move from 5th’s <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> to 4th’s Place; and</div></li><li><div class="mrf-para">move from 3rd’s <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> to 2nd’s Place.</div></li></ol></div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-17-rotation" data-glossterm="Rotation">
+                        <div class="col-sm-1">
+                            17.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Rotation
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-17-rotation" aria-label="Show or hide details for Rotation" title="Show or hide details for Rotation"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> can be rotated by considering it as a loop, and starting it at a different point. This process is called Rotation. By using this process on the Changes of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>, other Static Methods can be produced that are <a class="text-success undrln" href="#definitions-entry-17-rotation">Rotations</a> of the original Static Method.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-17-rotation">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> Plain Bob Minimus has the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> x14x14x14x12. The <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a> with the Changes x14x12x14x14 is a Rotation of Plain Bob Minimus.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-18-cycle" data-glossterm="Cycle">
+                        <div class="col-sm-1">
+                            18.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Cycle
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-18-cycle" aria-label="Show or hide details for Cycle" title="Show or hide details for Cycle"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A Cycle is a set of one or more bells that follow the same <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> and return to their starting <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> after the same number of <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Leads</a>. This number of Plain Leads is the same as the number of bells in the Cycle.</div>
+                            <div class="mrf-para">Where a Cycle is made up of two or more bells, the bells successively occupy each other's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> at the <a class="text-success undrln" href="#definitions-entry-12-leadhead">Leadheads</a> of a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">Plain Course</a>, and these bells are <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a>.</div>
+                            <div class="mrf-para">Where a Cycle is made up of one bell, this bell is a <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-18-cycle">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> <a class="text-success undrln" href="https://complib.org/method/28182">Deferential Differential Bob Minor</a> has the <a class="text-success undrln" href="#definitions-entry-12-leadhead">Leadheads</a>:</div><div class="mrf-para text-primary">132645, 123564, 132456, 123645, 132564 and 123456.</div><div class="mrf-para text-primary">It can be seen that bells 2 and 3 occupy each other's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> at the <a class="text-success undrln" href="#definitions-entry-12-leadhead">Leadheads</a>, and bells 4, 5 and 6 do the same. The treble is a <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>. This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> therefore has three <a class="text-success undrln" href="#definitions-entry-18-cycle">Cycles</a>: one with one bell, one with two bells, and one with three bells.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="methodsymmetry">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Method Symmetry</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methodsymmetry-entry-19-palindromic-symmetry" data-glossterm="Palindromic Symmetry">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Palindromic Symmetry
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methodsymmetry-entry-19-palindromic-symmetry" aria-label="Show or hide details for Palindromic Symmetry" title="Show or hide details for Palindromic Symmetry"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has Palindromic Symmetry if the same <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> result (after <a class="text-success undrln" href="#definitions-entry-17-rotation">Rotation</a> if needed) when read backwards, that is, when the order of the Changes is inverted.</div>
+                            
+                                                        <div class="collapse" id="detail-methodsymmetry-entry-19-palindromic-symmetry">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Plain Bob Minor has the sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> x16x16x16x16x16x12. If this sequence is read backwards, the result is 12x16x16x16x16x16x. This can be Rotated to give x16x16x16x16x16x12, which is the same sequence as above. This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> therefore has Palindromic Symmetry.</div><div class="mrf-para text-primary">About 95% of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> in the <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> (as of 2018) have Palindromic Symmetry.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <a class="text-success undrln" href="#methodsymmetry-entry-21-rotational-symmetry">Section 4.B.3</a> below includes an illustration of Palindromic Symmetry.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methodsymmetry-entry-20-double-symmetry" data-glossterm="Double Symmetry">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Double Symmetry
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methodsymmetry-entry-20-double-symmetry" aria-label="Show or hide details for Double Symmetry" title="Show or hide details for Double Symmetry"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has Double Symmetry if the same <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> result (after <a class="text-success undrln" href="#definitions-entry-17-rotation">Rotation</a> if needed) when reversed, that is, when the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> within each Change are inverted.</div>
+                            
+                                                        <div class="collapse" id="detail-methodsymmetry-entry-20-double-symmetry">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Inverting the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> within a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> means to count the Places from the end of the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> rather than the beginning. For example, a Minor Change might have Places made in 1st's and 2nd's, so <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> = 12. 1st's and 2nd's Places counted from the end of a Minor Row are 5th's and 6th's Places. So when the Minor Change 12 is inverted, the result is 56. Similarly, 14 becomes 36, and 34 becomes (in this case, remains) 34.</div><div class="mrf-para text-primary">Double Union Minor has the sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> x16x36x56x16x14x12. If each of these Changes is inverted, the result is x16x14x12x16x36x56. This can be Rotated to give x16x36x56x16x14x12, which is the same sequence as above. This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> therefore has Double Symmetry.</div><div class="mrf-para text-primary">About 2% of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> in the <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> (as of 2018) have Double Symmetry.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <a class="text-success undrln" href="#methodsymmetry-entry-21-rotational-symmetry">Section 4.B.3</a> below includes an illustration of Double Symmetry.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methodsymmetry-entry-21-rotational-symmetry" data-glossterm="Rotational Symmetry">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Rotational Symmetry
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methodsymmetry-entry-21-rotational-symmetry" aria-label="Show or hide details for Rotational Symmetry" title="Show or hide details for Rotational Symmetry"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has Rotational Symmetry if the same <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> result (after <a class="text-success undrln" href="#definitions-entry-17-rotation">Rotation</a> if needed) when reversed and read backwards.</div>
+                            
+                                                        <div class="collapse" id="detail-methodsymmetry-entry-21-rotational-symmetry">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Evening Exercise Bob Minor has the sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> x14x36x16x16x16x16. Inverting these <span class="mrf-nolink">changes</span> (see <a class="text-success undrln" href="#methodsymmetry-entry-20-double-symmetry">Section 4.B.2</a> above) gives: x36x14x16x16x16x16. Reading these Changes backwards gives 16x16x16x16x14x36x. This can be Rotated to give x14x36x16x16x16x16, which is the same sequence as above. This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> therefore has Rotational Symmetry.</div><div class="mrf-para text-primary">About 2% of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> in the <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> (as of 2018) have Rotational Symmetry.</div><div class="mrf-para text-primary">Note that although the above <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has Rotational Symmetry, it does not also have Palindromic or <a class="text-success undrln" href="#methodsymmetry-entry-20-double-symmetry">Double symmetry</a>, even though the process for testing for Rotational Symmetry involves reversing the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> and reading them backwards.</div><div class="mrf-para text-primary">However, about 93% of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> in the <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> (as of 2018) that have Rotational Symmetry do also have Palindromic and <a class="text-success undrln" href="#methodsymmetry-entry-20-double-symmetry">Double Symmetry</a>. An example of a Method with all three symmetries is Double Court Bob Minor (x14x36x16x36x14x16).</div><div class="mrf-para text-primary">The general rule is that if a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has any two of the three symmetries (Palindromic, Double and Rotational), it must also have the third. However, a Method can have any one of these three symmetries without having either of the other two. A Method can also have none of the three symmetries.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Click <a class="text-success undrln" href="../images/edition3/classification/symmetries.pdf">here</a> for illustrations of the three symmetries.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="upperlevels">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Method Classes: Upper Levels</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-upperlevels-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The first three Classes below are based on the <a class="text-success undrln" href="#definitions-entry-18-cycle">Cycles</a> present in a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>. Click <a class="text-success undrln" href="../images/edition3/classification/minor-cycles.pdf">here</a> for a table that shows all the possible combinations of Cycles at the Minor <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a>, and gives examples of corresponding Methods where available.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="upperlevels-entry-22-hunter" data-glossterm="Hunter">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Hunter
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-upperlevels-entry-22-hunter" aria-label="Show or hide details for Hunter" title="Show or hide details for Hunter"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a> that has one or more <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-upperlevels-entry-22-hunter">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/plain-bob-minimus.svg" alt="plain-bob-minimus" width="104" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> of the Minimus <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> x14x14x14x12, starting from <a class="text-success undrln" href="fundamentals.html#rows-entry-4-rounds">Rounds</a>, ends with the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 1342, as shown in the diagram. At the end of one Plain Lead, the treble is the only bell that has returned to the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> it was in at the initial Row (1234), so the treble is this Method's only <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>. The other 3 bells are therefore <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a>. Continuing to apply the <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> successively produces the 2 additional leads shown, such that after 3 Plain Leads, Rounds is obtained. This is the Method’s <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">Plain Course</a>. Since this Method has at least one Hunt Bell, it is a Hunter. (This Method is Plain Bob Minimus.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="upperlevels-entry-23-principle" data-glossterm="Principle">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Principle
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-upperlevels-entry-23-principle" aria-label="Show or hide details for Principle" title="Show or hide details for Principle"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a> that has no <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-upperlevels-entry-23-principle">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/stanton-minimus.svg" alt="stanton-minimus" width="104" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> of the Minimus <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> 34x34.14.12.14, starting from <a class="text-success undrln" href="fundamentals.html#rows-entry-4-rounds">Rounds</a>, ends with the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 2341, as shown in the diagram. At the end of one Plain Lead, no bell has returned to the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> it was in at the initial Row (1234), so this <span class="mrf-nolink">method</span> has no <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a>. Continuing to apply the <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> successively produces the 3 additional leads shown, such that after 4 Plain Leads, Rounds is obtained. This is the Method’s <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">Plain Course</a>. Since this Method has no Hunt Bells, it is a Principle. (This Method is Stanton Minimus.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="upperlevels-entry-24-differential" data-glossterm="Differential">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Differential
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-upperlevels-entry-24-differential" aria-label="Show or hide details for Differential" title="Show or hide details for Differential"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a> in which the <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a> do not all first return to their starting <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> after the same number of <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Leads</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-upperlevels-entry-24-differential">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/christ-church-dublin-differential-doubles.svg" alt="christ-church-dublin-differential-doubles" width="128" height="976"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a> of the Doubles <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> 5.1.5.1.5.1.5.1.5.345, starting from <span class="mrf-nolink">rounds</span>, ends with the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 31254, as shown in the diagram. At the end of one Plain Lead, no bell has returned to the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> it was in at the initial Row (12345), so this Method has no <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a>. All bells are therefore <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a>. Continuing to apply the <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> successively produces the 5 additional leads shown, such that after 6 Plain Leads, <a class="text-success undrln" href="fundamentals.html#rows-entry-4-rounds">Rounds</a> is obtained. This is the Method’s <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">Plain Course</a>. It will be seen that bells 4 and 5 return to their starting Places at the end of the 2nd, 4th and 6th leads, whereas bells 1, 2 and 3 return to their starting Places at the end of the 3rd and 6th leads. Since the Working Bells do not all first return to their starting Places after the same number of Plain Leads, this is a Differential Method. (This Method is Christ Church Dublin Differential Doubles.)</div><div class="mrf-para text-primary">While the example above shows a Differential with no <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a>, <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunters</a> can also be <a class="text-success undrln" href="#upperlevels-entry-24-differential">Differentials</a>. For example, see <a class="text-success undrln" href="https://complib.org/method/28182">Deferential Differential Bob Minor</a>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> It takes a minimum of 5 <a class="text-success undrln" href="#definitions-entry-3-working-bell">Working Bells</a> to create a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> that is a Differential.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="upperlevels-entry-25-jump-method" data-glossterm="Jump Method">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Jump Method
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> that uses one or more <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="onehuntbell">
+                        <div class="col-sm-1">
+                            <h5>D.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Method Classes: Hunters with One Hunt Bell</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-26-plain-method" data-glossterm="Plain Method">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Plain Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-26-plain-method" aria-label="Show or hide details for Plain Method" title="Show or hide details for Plain Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> in which:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> rings exactly twice in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> of the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is not a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a>; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> does not use <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-26-plain-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/plain-bob-minor.svg" alt="plain-bob-minor" width="144" height="208"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In this <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>, the treble (which is the only <span class="mrf-nolink">hunt bell</span>) rings two times in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> in a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>, is not a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a>, and there are no <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>. This Method is therefore a Plain Method. (This Method is Plain Bob Minor.)</div><div class="mrf-para text-primary">The <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the treble in the example above is often referred to as a Plain <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunt</a> Path (or Plain Hunting Path) -- i.e. Hunt up, Make a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>, Hunt Down, and make another Place. This Path is the only one (for <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> with a single <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>, and when excluding <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a> and <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bells</a>) that meets the criterion of ringing exactly twice in each Place of the Path during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>.</div><div class="mrf-para text-primary">Note that a Plain <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> is symmetrical about the two <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> Made, and a Plain Path can span either an even or odd number of Places.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-27-place-method" data-glossterm="Place Method">
+                        <div class="col-sm-1">
+                            1.1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Place Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-27-place-method" aria-label="Show or hide details for Place Method" title="Show or hide details for Place Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#onehuntbell-entry-26-plain-method">Plain Method</a> in which the <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a> of all the bells consist only of <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a> and Making <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>, and in which a <span class="mrf-nolink">change</span> in the direction of Hunting is separated by <a class="text-success undrln" href="#definitions-entry-13-making-one-or-more-places">Making one or more Places</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-27-place-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/foti-place-minor.svg" alt="foti-place-minor" width="144" height="208"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In this <a class="text-success undrln" href="#onehuntbell-entry-26-plain-method">Plain Method</a>, <span class="mrf-nolink">changes</span> in the direction of <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a> by all bells are always separated by <a class="text-success undrln" href="#definitions-entry-13-making-one-or-more-places">Making one or more Places</a>. This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is therefore a Place Method. (This Method is Foti <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Minor.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-28-bob-method" data-glossterm="Bob Method">
+                        <div class="col-sm-1">
+                            1.2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Bob Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-28-bob-method" aria-label="Show or hide details for Bob Method" title="Show or hide details for Bob Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#onehuntbell-entry-26-plain-method">Plain Method</a> that is not a <a class="text-success undrln" href="#onehuntbell-entry-27-place-method">Place Method</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-28-bob-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/double-oxford-bob-minor.svg" alt="double-oxford-bob-minor" width="144" height="208"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The 'points' in the blue line of this <a class="text-success undrln" href="#onehuntbell-entry-26-plain-method">Plain Method</a>, such as those circled in green, show that a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> is not Made between <span class="mrf-nolink">changes</span> in the direction of <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a>. This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is therefore a Bob Method. (This Method is Double Oxford Bob Minor.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-29-treble-dodging-method" data-glossterm="Treble Dodging Method">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Treble Dodging Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-29-treble-dodging-method" aria-label="Show or hide details for Treble Dodging Method" title="Show or hide details for Treble Dodging Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> in which:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> rings more than twice in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> of the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> rings the same number of times in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> of the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> Makes a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> exactly twice during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is the same if it is rung backwards;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is not a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a>; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> does not use <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-29-treble-dodging-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/kent-treble-bob-minor.svg" alt="kent-treble-bob-minor" width="144" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In this <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>, the treble (which is the only <span class="mrf-nolink">hunt bell</span>) rings four times in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> in a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>. The treble Makes a Place twice during a Plain Lead, once in 6th's and once in 1st's, it is not a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a>, and there are no <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>. This Method is therefore a Treble Dodging Method. (This Method is Kent Treble Bob Minor.)</div><div class="mrf-para text-primary">While the above <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> is by far the most common Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a> Path, if the single Dodges are all replaced with the same, greater number of Dodges (e.g. double or triple Dodging, etc), the resulting Path is still a Treble Dodging Path.</div><div class="mrf-para text-primary">Note that a Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a> <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> is symmetrical about the two <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Made. A Treble Dodging Path can only span an even number of Places.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-30-treble-bob-method" data-glossterm="Treble Bob Method">
+                        <div class="col-sm-1">
+                            2.1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Treble Bob Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-30-treble-bob-method" aria-label="Show or hide details for Treble Bob Method" title="Show or hide details for Treble Bob Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a> in which no bell Makes an Internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> at any <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Section</a>, or which does not have any Cross Sections.</div>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-30-treble-bob-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/oxford-treble-bob-minor.svg" alt="oxford-treble-bob-minor" width="144" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> At this <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a>'s <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Sections</a>, which are circled in green, there are no Internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> Made. The Places Made at both Cross Sections are 1st's and 6th's, which are external Places. Since this <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has <a class="text-success undrln" href="#methodsymmetry-entry-19-palindromic-symmetry">Palindromic Symmetry</a> (see <a class="text-success undrln" href="#methodsymmetry-entry-19-palindromic-symmetry">Section 4.B.1</a> above) there is no need to check the Cross Sections in the second half of the lead as these will have the same Places Made as in the first half of the lead. However for non-Palindromic Methods, all Cross Sections must be considered when further classifying a Treble Dodging method. This Method is therefore a Treble Bob Method. (This Method is Oxford Treble Bob Minor.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-31-surprise-method" data-glossterm="Surprise Method">
+                        <div class="col-sm-1">
+                            2.2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Surprise Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-31-surprise-method" aria-label="Show or hide details for Surprise Method" title="Show or hide details for Surprise Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a> in which one or more bells Make an Internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> at every <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Section</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-31-surprise-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/cambridge-surprise-minor.svg" alt="cambridge-surprise-minor" width="144" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> An Internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> is Made at both of this <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a>'s <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Sections</a>, which are circled in green. 4th's is Made at the 2-3 Cross Section, and 3rd's is Made at the 4-5 Cross Section. (See the note about <a class="text-success undrln" href="#methodsymmetry-entry-19-palindromic-symmetry">Palindromic Symmetry</a> in <a class="text-success undrln" href="#onehuntbell-entry-30-treble-bob-method">Section 4.D.2.1</a> above, which also applies here.) This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is therefore a Surprise Method. (This Method is Cambridge Surprise Minor.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-32-delight-method" data-glossterm="Delight Method">
+                        <div class="col-sm-1">
+                            2.3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Delight Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-32-delight-method" aria-label="Show or hide details for Delight Method" title="Show or hide details for Delight Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a> that is neither a <a class="text-success undrln" href="#onehuntbell-entry-30-treble-bob-method">Treble Bob Method</a> nor a <a class="text-success undrln" href="#onehuntbell-entry-31-surprise-method">Surprise Method</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-32-delight-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/college-bob-iv-delight-minor.svg" alt="college-bob-iv-delight-minor" width="144" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> An Internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> is Made at the 2-3 <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Section</a> of this <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a>, but an Internal Place is not made at the 4-5 Cross Section (the Cross Sections are circled in green). (See the note about <a class="text-success undrln" href="#methodsymmetry-entry-19-palindromic-symmetry">Palindromic Symmetry</a> in <a class="text-success undrln" href="#onehuntbell-entry-30-treble-bob-method">Section 4.D.2.1</a> above, which also applies here.) Since Internal Places are Made at some but not all Cross Section <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a>, this <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is therefore a Delight Method. (This Method is College Bob IV Delight Minor.)</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-33-treble-place-method" data-glossterm="Treble Place Method">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Treble Place Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-33-treble-place-method" aria-label="Show or hide details for Treble Place Method" title="Show or hide details for Treble Place Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> in which:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> rings the same number of times in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> of the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> Makes a <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> more than twice during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is the same if it is rung backwards; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> does not use <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>;</div></li></ol>
+                            <div class="mrf-para">Or:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a>; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> does not use <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-33-treble-place-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/stoke-albany-treble-place-minor.svg" alt="stoke-albany-treble-place-minor" width="144" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is Stoke Albany Treble <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Minor. Other examples are: <a class="text-success undrln" href="https://complib.org/method/27309">Primrose Treble Place Minor</a> and <a class="text-success undrln" href="https://complib.org/method/27502">Alderney Treble Place Minor</a>.</div><div class="mrf-para text-primary">Note that a Treble <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> can span either an even or odd number of Places.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-34-alliance-method" data-glossterm="Alliance Method">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Alliance Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-34-alliance-method" aria-label="Show or hide details for Alliance Method" title="Show or hide details for Alliance Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> in which:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> does not ring the same number of times in each <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> of the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> during a <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is the same if it is rung backwards;</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is not a <a class="text-success undrln" href="#definitions-entry-4-stationary-bell">Stationary Bell</a>; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> does not use <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-34-alliance-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/alperton-alliance-minor.svg" alt="alperton-alliance-minor" width="144" height="272"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is Alperton Alliance Minor. Another example is: <a class="text-success undrln" href="https://complib.org/method/26928">Semiquincentenary Alliance Major</a>.</div><div class="mrf-para text-primary">Note that an Alliance <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> can span either an even or odd number of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-35-hybrid-method" data-glossterm="Hybrid Method">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Hybrid Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-35-hybrid-method" aria-label="Show or hide details for Hybrid Method" title="Show or hide details for Hybrid Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> in which:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">The <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> is not Plain, Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a>, Treble <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> or Alliance; and</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> does not use <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-35-hybrid-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/seavington-st-mary-hybrid-minor.svg" alt="seavington-st-mary-hybrid-minor" width="143" height="400"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is Seavington St Mary Hybrid Minor.</div><div class="mrf-para text-primary">Note that the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> in a Hybrid Method with a single Hunt Bell is asymmetric.</div><div class="mrf-para text-primary">A Hybrid <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> can span either an even or odd number of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="onehuntbell-entry-36-little-method" data-glossterm="Little Method">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Little Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-onehuntbell-entry-36-little-method" aria-label="Show or hide details for Little Method" title="Show or hide details for Little Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> in which the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a> has a <a class="text-success undrln" href="#definitions-entry-6-little-path">Little Path</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-onehuntbell-entry-36-little-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/classification/canterbury-little-bob-minor.svg" alt="canterbury-little-bob-minor" width="144" height="144"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> This <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is Canterbury Little Bob Minor. Since the treble, which is the only <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>, only rings in the first four <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>, whereas the <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> of the Method is six, this is a Little Method.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="morethanonehuntbell">
+                        <div class="col-sm-1">
+                            <h5>E.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Method Classes: Hunters with More than One Hunt Bell</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-morethanonehuntbell-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-morethanonehuntbell-orderedlist-2-1" aria-label="Show or hide details for item 1" title="Show or hide details for item 1"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">If a <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> has more than one <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>, it has a further classification of the first <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Class</a> found, when inspecting each of the Hunt Bells, using the order: <a class="text-success undrln" href="#onehuntbell-entry-26-plain-method">Plain Method</a>, <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a>, <a class="text-success undrln" href="#onehuntbell-entry-33-treble-place-method">Treble Place Method</a>, <a class="text-success undrln" href="#onehuntbell-entry-34-alliance-method">Alliance Method</a>, <a class="text-success undrln" href="#onehuntbell-entry-35-hybrid-method">Hybrid Method</a>.</div>
+                            <div class="mrf-para">If none of the <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Classes</a> above are found, the <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> has no further classification.</div>
+                            <div class="collapse" id="detail-morethanonehuntbell-orderedlist-2-1">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <a class="text-success undrln" href="https://complib.org/method/25556">Didymous Delight Major</a>.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Didymous Delight Major has three <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a> in 1st's, 2nd's and 3rd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>. The treble has a Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a> <a class="text-success undrln" href="#definitions-entry-5-path">Path</a>, and the 2nd and 3rd have Treble Place Paths. Since Treble Dodging comes before Treble Place in the order above, this <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has a Treble Dodging classification (and is further classified as Delight as described in <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-4">Section 4.E.4</a> below).</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that in a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> with two or more <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a>, it's possible for a Hybrid <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> to be symmetric (unlike for single Hunt Bell Methods where a Hybrid Path is always asymmetric). An example of this is a Method in which a pair of Hunt Bells <span class="mrf-nolink">dodge</span> together for the entire <a class="text-success undrln" href="fundamentals.html#methods-entry-15-plain-lead">Plain Lead</a>. Provided the Lead <a class="text-success undrln" href="fundamentals.html#touches-entry-24-length">Length</a> is not 4 <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a>, these Hunt Bells classify as Hybrid. If the Lead Length is 4 Changes, these Hunt Bells classify as Plain.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-morethanonehuntbell-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-morethanonehuntbell-orderedlist-2-2" aria-label="Show or hide details for item 2" title="Show or hide details for item 2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">If the <a class="text-success undrln" href="#definitions-entry-5-path">Path</a>(s) of the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>(s) of the first <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Class</a> found in <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-1">Section 4.E.1</a> above, if any, all meet the definition of a <a class="text-success undrln" href="#onehuntbell-entry-36-little-method">Little Method</a> per <a class="text-success undrln" href="#onehuntbell-entry-36-little-method">Section 4.D.6</a> above, then the <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> is classified as a Little Method.</div>
+                            <div class="mrf-para">If no <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Class</a> was found in <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-1">Section 4.E.1</a> above, then if the <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a> of all the <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bells</a> meet the definition of a <a class="text-success undrln" href="#onehuntbell-entry-36-little-method">Little Method</a> per <a class="text-success undrln" href="#onehuntbell-entry-36-little-method">Section 4.D.6</a> above, then the <a class="text-success undrln" href="#upperlevels-entry-22-hunter">Hunter</a> is classified as a Little Method.</div>
+                            <div class="collapse" id="detail-morethanonehuntbell-orderedlist-2-2">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <a class="text-success undrln" href="https://complib.org/method/28544">Seven Stars Differential Little Hybrid Major</a> and <a class="text-success undrln" href="https://complib.org/method/27681">Bushey Treble Place Triples</a>.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Seven Stars <a class="text-success undrln" href="#upperlevels-entry-24-differential">Differential</a> Little Hybrid Major has two <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt bells</a> in 5th's and 6th's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>. Both these Hunt Bells have Hybrid <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a>, so the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has a Hybrid classification. These Hunt Bells also both have <a class="text-success undrln" href="#definitions-entry-6-little-path">Little Paths</a>. Since all the Hybrid Paths are Little, this Method is also classified as Little.</div><div class="mrf-para text-primary">Bushey Treble <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Triples has two <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt bells</a> in 1st's and 2nd's Places. Both these Hunt Bells have Treble Place <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a>, so the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has a Treble Place classification. The 2nd has a <a class="text-success undrln" href="#definitions-entry-6-little-path">Little Path</a>, but the treble does not have a Little Path. Since the Treble Place Paths are not all Little, this Method is <u>not</u> classified as Little.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-morethanonehuntbell-orderedlist-2-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-morethanonehuntbell-orderedlist-2-3" aria-label="Show or hide details for item 3" title="Show or hide details for item 3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">If the first <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Class</a> found in <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-1">Section 4.E.1</a> above is a <a class="text-success undrln" href="#onehuntbell-entry-26-plain-method">Plain Method</a>, the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is further classified in accordance with Sections <a class="text-success undrln" href="#onehuntbell-entry-27-place-method">4.D.1.1</a> and <a class="text-success undrln" href="#onehuntbell-entry-28-bob-method">4.D.1.2</a> above.</div>
+                            <div class="collapse" id="detail-morethanonehuntbell-orderedlist-2-3">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <a class="text-success undrln" href="https://complib.org/method/11943">Reverse Canterbury Pleasure Place Minor</a> and <a class="text-success undrln" href="https://complib.org/method/32106">Glastonbury Bob Triples</a>.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Reverse Canterbury Pleasure <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Minor has two <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt bells</a> in 1st's and 2nd's Places. Both these Hunt Bells have Plain <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a>, so the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has a Plain classification. Since the Paths of all the bells in this Method consist only of <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a> and Making Places, with <span class="mrf-nolink">changes</span> in the direction of Hunting separated by the Making of one or more Places, this Method is further classified as a <a class="text-success undrln" href="#onehuntbell-entry-27-place-method">Place Method</a>.</div><div class="mrf-para text-primary">Glastonbury Bob Triples has two <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt bells</a> in 1st's and 2nd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>. The treble has a Plain <a class="text-success undrln" href="#definitions-entry-5-path">Path</a> and the 2nd has a Little Hybrid Path, so the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has a Plain classification (because Plain comes before Hybrid in the order in <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-1">Section 4.E.1</a>). Since this Method has Paths that are not limited to <a class="text-success undrln" href="#definitions-entry-7-hunting">Hunting</a> and Making Places (i.e. there are <span class="mrf-nolink">dodges</span>), this Method is further classified as a <a class="text-success undrln" href="#onehuntbell-entry-28-bob-method">Bob Method</a>.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-morethanonehuntbell-orderedlist-2-4">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            4.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-morethanonehuntbell-orderedlist-2-4" aria-label="Show or hide details for item 4" title="Show or hide details for item 4"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">If the first <a class="text-success undrln" href="#definitions-entry-1-method-class">Method Class</a> found in <a class="text-success undrln" href="#mrf-morethanonehuntbell-orderedlist-2-1">Section 4.E.1</a> above is a <a class="text-success undrln" href="#onehuntbell-entry-29-treble-dodging-method">Treble Dodging Method</a>, the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is further classified in accordance with Sections <a class="text-success undrln" href="#onehuntbell-entry-30-treble-bob-method">4.D.2.1</a>, <a class="text-success undrln" href="#onehuntbell-entry-31-surprise-method">4.D.2.2</a> and <a class="text-success undrln" href="#onehuntbell-entry-32-delight-method">4.D.2.3</a> above, using the following:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">If the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has more than one Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a> <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>, none of which are Little, or all of which are Little, the <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Section</a> <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> are all the Changes that are a Cross Section Change for any Treble Dodging Hunt Bell.</div></li><li><div class="mrf-para">If the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has both Little Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a> <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt Bell</a>(s) and non-Little Treble Dodging Hunt Bell(s), the <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Section</a> <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> are all the Changes that are a Cross Section Change for any non-Little Treble Dodging Hunt Bell.</div></li></ol>
+                            <div class="collapse" id="detail-morethanonehuntbell-orderedlist-2-4">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <a class="text-success undrln" href="https://complib.org/method/22632">Vincula Surprise Royal</a>.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Vincula Surprise Royal has three <a class="text-success undrln" href="#definitions-entry-2-hunt-bell">Hunt bells</a> in 1st's, 2nd's and 3rd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>. All these Hunt Bells have Treble <a class="text-success undrln" href="#definitions-entry-8-dodging">Dodging</a> <a class="text-success undrln" href="#definitions-entry-5-path">Paths</a>, so the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> has a Treble Dodging classification. None of the Hunt Bells has a <a class="text-success undrln" href="#definitions-entry-6-little-path">Little Path</a>, so the <a class="text-success undrln" href="#definitions-entry-16-cross-section">Cross Section</a> <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> are all the Changes that are Cross Section Changes for any of the three Hunt Bells. It can therefore be seen that every 4th <span class="mrf-nolink">change</span> in this Method is a Cross Section Change. Since all of these Changes (16, 18, 30, 50, 70, and 14 at the <span class="mrf-nolink">lead end</span>) include an Internal Place being made, this Method is further classified as a <a class="text-success undrln" href="#onehuntbell-entry-31-surprise-method">Surprise Method</a>.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="../mrf.js"></script>
+</body>
+</html>

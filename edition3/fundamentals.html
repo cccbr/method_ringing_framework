@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Fundamentals of Method Ringing (draft edition 3)">
+    <meta name="author" content="CCCBR">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="Fundamentals of Method Ringing (draft edition 3)">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.org.uk/fundamentals.html">
+    <title>Framework for Method Ringing - Fundamentals of Method Ringing</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../mrf.css" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@id": "https://cccbr.org.uk/#publisher",
+                    "@type": "Organization",
+                    "name": "CCCBR",
+                    "url": "https://cccbr.org.uk/"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html",
+                    "@type": "CreativeWork",
+                    "name": "Fundamentals of Method Ringing",
+                    "url": "https://cccbr.org.uk/fundamentals.html",
+                    "description": "Fundamentals of Method Ringing (draft edition 3)",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "version": "Edition 3",
+                    "isBasedOn": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    }
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#stages-entry-1-stage",
+                    "@type": "DefinedTerm",
+                    "name": "Stage",
+                    "url": "https://cccbr.org.uk/fundamentals.html#stages-entry-1-stage",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Stages"
+                    ],
+                    "termCode": "A.1",
+                    "description": "A property of several method ringing concepts that indicates the number of bells participating."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#stages-entry-2-stage-name",
+                    "@type": "DefinedTerm",
+                    "name": "Stage Name",
+                    "url": "https://cccbr.org.uk/fundamentals.html#stages-entry-2-stage-name",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Stage Names"
+                    ],
+                    "termCode": "A.2",
+                    "description": "Names that are given to the different Stages, as follows:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#rows-entry-3-row",
+                    "@type": "DefinedTerm",
+                    "name": "Row",
+                    "url": "https://cccbr.org.uk/fundamentals.html#rows-entry-3-row",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Rows"
+                    ],
+                    "termCode": "B.1",
+                    "description": "A sequence of numbered bells in which no bell appears more than once."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#rows-entry-4-rounds",
+                    "@type": "DefinedTerm",
+                    "name": "Rounds",
+                    "url": "https://cccbr.org.uk/fundamentals.html#rows-entry-4-rounds",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "B.2",
+                    "description": "A Row in which the bells are ordered from the lowest number to the highest number."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#rows-entry-5-place",
+                    "@type": "DefinedTerm",
+                    "name": "Place",
+                    "url": "https://cccbr.org.uk/fundamentals.html#rows-entry-5-place",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Places"
+                    ],
+                    "termCode": "B.3",
+                    "description": "The position of a bell within a Row."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-6-change",
+                    "@type": "DefinedTerm",
+                    "name": "Change",
+                    "url": "https://cccbr.org.uk/fundamentals.html#changes-entry-6-change",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Changes"
+                    ],
+                    "termCode": "C.1",
+                    "description": "A transposition of bells from an existing Row to a new Row, where both Rows have the same Stage."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-7-identity-change",
+                    "@type": "DefinedTerm",
+                    "name": "Identity Change",
+                    "url": "https://cccbr.org.uk/fundamentals.html#changes-entry-7-identity-change",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Identity Changes"
+                    ],
+                    "termCode": "C.2",
+                    "description": "A Change that transposes each bell to the same Place in a new Row."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-8-adjacent-change",
+                    "@type": "DefinedTerm",
+                    "name": "Adjacent Change",
+                    "url": "https://cccbr.org.uk/fundamentals.html#changes-entry-8-adjacent-change",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Adjacent Changes"
+                    ],
+                    "termCode": "C.3",
+                    "description": "A Change that transposes each bell to either the same Place or an adjacent Place in a new Row, but which is not an Identity Change."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-9-jump-change",
+                    "@type": "DefinedTerm",
+                    "name": "Jump Change",
+                    "url": "https://cccbr.org.uk/fundamentals.html#changes-entry-9-jump-change",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Jump Changes"
+                    ],
+                    "termCode": "C.4",
+                    "description": "A Change that transposes at least one bell to a different and non-adjacent Place in a new Row."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#blocks-entry-10-block",
+                    "@type": "DefinedTerm",
+                    "name": "Block",
+                    "url": "https://cccbr.org.uk/fundamentals.html#blocks-entry-10-block",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Blocks"
+                    ],
+                    "termCode": "D.1",
+                    "description": "A sequence of Changes, all with the same Stage, and the Rows produced by applying these Changes, starting from an initial Row."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#blocks-entry-11-round-block",
+                    "@type": "DefinedTerm",
+                    "name": "Round Block",
+                    "url": "https://cccbr.org.uk/fundamentals.html#blocks-entry-11-round-block",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Round Blocks"
+                    ],
+                    "termCode": "D.2",
+                    "description": "A Block whose final Row is the same as its initial Row."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-12-method",
+                    "@type": "DefinedTerm",
+                    "name": "Method",
+                    "url": "https://cccbr.org.uk/fundamentals.html#methods-entry-12-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Methods"
+                    ],
+                    "termCode": "E.1",
+                    "description": "A sequence of Changes all of the same Stage, or a process to generate such a sequence."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-13-static-method",
+                    "@type": "DefinedTerm",
+                    "name": "Static Method",
+                    "url": "https://cccbr.org.uk/fundamentals.html#methods-entry-13-static-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Static Methods"
+                    ],
+                    "termCode": "E.2",
+                    "description": "A Method whose sequence of Changes is fixed and finite."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-14-dynamic-method",
+                    "@type": "DefinedTerm",
+                    "name": "Dynamic Method",
+                    "url": "https://cccbr.org.uk/fundamentals.html#methods-entry-14-dynamic-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Dynamic Methods"
+                    ],
+                    "termCode": "E.3",
+                    "description": "A Method whose sequence of Changes is not fixed or is not finite."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-15-plain-lead",
+                    "@type": "DefinedTerm",
+                    "name": "Plain Lead",
+                    "url": "https://cccbr.org.uk/fundamentals.html#methods-entry-15-plain-lead",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Plain Leads"
+                    ],
+                    "termCode": "E.4",
+                    "description": "A Block that is produced by applying a Static Method's sequence of Changes once."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-16-plain-course",
+                    "@type": "DefinedTerm",
+                    "name": "Plain Course",
+                    "url": "https://cccbr.org.uk/fundamentals.html#methods-entry-16-plain-course",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Plain Courses"
+                    ],
+                    "termCode": "E.5",
+                    "description": "A Block that is produced by applying a Static Method's sequence of Changes repeatedly, until a Round Block is obtained."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#calls-entry-17-call",
+                    "@type": "DefinedTerm",
+                    "name": "Call",
+                    "url": "https://cccbr.org.uk/fundamentals.html#calls-entry-17-call",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Calls"
+                    ],
+                    "termCode": "F.1",
+                    "description": "An instruction to replace Change(s) from a Method with different Change(s), change the current Method to a different one, or affect Cover Bell(s)."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#calls-entry-18-calls-library",
+                    "@type": "DefinedTerm",
+                    "name": "Calls Library",
+                    "url": "https://cccbr.org.uk/fundamentals.html#calls-entry-18-calls-library",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Call Library"
+                    ],
+                    "termCode": "F.2",
+                    "description": "Commonly used Calls are recorded in the Central Council Calls Library. This Library also includes Calls that are used to define Variations (see Section 5.D)."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#compositions-entry-19-composition",
+                    "@type": "DefinedTerm",
+                    "name": "Composition",
+                    "url": "https://cccbr.org.uk/fundamentals.html#compositions-entry-19-composition",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Compositions"
+                    ],
+                    "termCode": "G.1",
+                    "description": "An arrangement of Method(s) and Call(s) that produces a sequence of Changes, all with the same Stage."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#compositions-entry-20-spliced",
+                    "@type": "DefinedTerm",
+                    "name": "Spliced",
+                    "url": "https://cccbr.org.uk/fundamentals.html#compositions-entry-20-spliced",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Splice"
+                    ],
+                    "termCode": "G.2",
+                    "description": "A Composition involving more than one Method is described as Spliced if any changes of Method in the Block produced by the Composition occur at a Row that is not the same as the initial Row of the Block."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#coverbells-entry-21-cover-bell",
+                    "@type": "DefinedTerm",
+                    "name": "Cover Bell",
+                    "url": "https://cccbr.org.uk/fundamentals.html#coverbells-entry-21-cover-bell",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Cover Bells"
+                    ],
+                    "termCode": "H.1",
+                    "description": "A bell that occupies a Place in a Row that is not one of the Places operated on by the Method(s) of a Composition."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#coverbells-entry-22-variable-cover",
+                    "@type": "DefinedTerm",
+                    "name": "Variable Cover",
+                    "url": "https://cccbr.org.uk/fundamentals.html#coverbells-entry-22-variable-cover",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "H.2",
+                    "description": "A Composition is described as Variable Cover if one or more Cover Bells are affected by any of the Composition's Calls."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-23-touch",
+                    "@type": "DefinedTerm",
+                    "name": "Touch",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-23-touch",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Touches"
+                    ],
+                    "termCode": "I.1",
+                    "description": "A Block that is produced by applying a Composition's sequence of Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-24-length",
+                    "@type": "DefinedTerm",
+                    "name": "Length",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-24-length",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Lengths"
+                    ],
+                    "termCode": "I.2",
+                    "description": "The number of Changes in a Touch."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-25-short-touch",
+                    "@type": "DefinedTerm",
+                    "name": "Short Touch",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-25-short-touch",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Short Touches"
+                    ],
+                    "termCode": "I.3",
+                    "description": "A Touch with a Length of 1 to 1249 Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-26-quarter-peal",
+                    "@type": "DefinedTerm",
+                    "name": "Quarter Peal",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-26-quarter-peal",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Quarter Peals",
+                        "Quarterpeal",
+                        "Quarterpeals"
+                    ],
+                    "termCode": "I.4",
+                    "description": "A Touch with a Length of 1250 to 2499 Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-27-half-peal",
+                    "@type": "DefinedTerm",
+                    "name": "Half Peal",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-27-half-peal",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Half Peals"
+                    ],
+                    "termCode": "I.5",
+                    "description": "A Touch with a Length of 2500 to 4999 Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-28-peal",
+                    "@type": "DefinedTerm",
+                    "name": "Peal",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-28-peal",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Peals"
+                    ],
+                    "termCode": "I.6",
+                    "description": "A Touch with a Length of 5000 or more Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-29-long-length",
+                    "@type": "DefinedTerm",
+                    "name": "Long Length",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-29-long-length",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Long Lengths"
+                    ],
+                    "termCode": "I.7",
+                    "description": "A Touch with a Length of 10000 or more Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-30-date-touch",
+                    "@type": "DefinedTerm",
+                    "name": "Date Touch",
+                    "url": "https://cccbr.org.uk/fundamentals.html#touches-entry-30-date-touch",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Date Touches"
+                    ],
+                    "termCode": "I.8",
+                    "description": "A Touch with a Length that corresponds to a year being commemorated."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-31-extent",
+                    "@type": "DefinedTerm",
+                    "name": "Extent",
+                    "url": "https://cccbr.org.uk/fundamentals.html#truth-entry-31-extent",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Extents"
+                    ],
+                    "termCode": "J.1",
+                    "description": "The complete set of distinct Rows possible for a given set of bells."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-32-fixed-place",
+                    "@type": "DefinedTerm",
+                    "name": "Fixed Place",
+                    "url": "https://cccbr.org.uk/fundamentals.html#truth-entry-32-fixed-place",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Fixed Places"
+                    ],
+                    "termCode": "J.2",
+                    "description": "A given Place that, in every Row of a Touch, is occupied by the same bell."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-33-effective-stage",
+                    "@type": "DefinedTerm",
+                    "name": "Effective Stage",
+                    "url": "https://cccbr.org.uk/fundamentals.html#truth-entry-33-effective-stage",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "J.3",
+                    "description": "The Stage of a Touch after any Fixed Places are excluded."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-34-true",
+                    "@type": "DefinedTerm",
+                    "name": "True",
+                    "url": "https://cccbr.org.uk/fundamentals.html#truth-entry-34-true",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Truth"
+                    ],
+                    "termCode": "J.4",
+                    "description": "A Touch is True if:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-35-complete-incomplete",
+                    "@type": "DefinedTerm",
+                    "name": "Complete (Incomplete)",
+                    "url": "https://cccbr.org.uk/fundamentals.html#truth-entry-35-complete-incomplete",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "J.5",
+                    "description": "A Touch is Complete if it contains all possible Rows at the Touch's Effective Stage exactly once, or exactly the same number of times. (Anything else is Incomplete.)"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-36-accepted-truth",
+                    "@type": "DefinedTerm",
+                    "name": "Accepted Truth",
+                    "url": "https://cccbr.org.uk/fundamentals.html#truth-entry-36-accepted-truth",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "J.6",
+                    "description": "A Touch rung on n bells has Accepted Truth if it is True, or it is comprised of Round Blocks that can be divided into two groups where:"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#performances-entry-37-performance",
+                    "@type": "DefinedTerm",
+                    "name": "Performance",
+                    "url": "https://cccbr.org.uk/fundamentals.html#performances-entry-37-performance",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Performances"
+                    ],
+                    "termCode": "K.1",
+                    "description": "The successful ringing of a Touch where the Band strives to maintain a high standard of ringing, and errors in ringing or calling are corrected quickly."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#performances-entry-38-performance-report",
+                    "@type": "DefinedTerm",
+                    "name": "Performance Report",
+                    "url": "https://cccbr.org.uk/fundamentals.html#performances-entry-38-performance-report",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Performance Reports",
+                        "Performance Reporting"
+                    ],
+                    "termCode": "K.2",
+                    "description": "A report of a Performance that includes the contents specified in Section 6."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/fundamentals.html#performances-entry-39-record-length",
+                    "@type": "DefinedTerm",
+                    "name": "Record Length",
+                    "url": "https://cccbr.org.uk/fundamentals.html#performances-entry-39-record-length",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Record Lengths"
+                    ],
+                    "termCode": "K.3",
+                    "description": "A Performance of a Long Length (i.e. 10000 or more Changes) that is the longest Length yet rung in a single Method or the same set of Methods."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3",
+                    "@type": "DefinedTermSet",
+                    "name": "Framework for Method Ringing Edition 3",
+                    "url": "https://cccbr.org.uk/edition3/index.html",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "isPartOf": {
+                        "@id": "https://cccbr.org.uk/fundamentals.html"
+                    },
+                    "version": "Edition 3",
+                    "hasDefinedTerm": [
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#stages-entry-1-stage"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#stages-entry-2-stage-name"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#rows-entry-3-row"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#rows-entry-4-rounds"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#rows-entry-5-place"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-6-change"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-7-identity-change"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-8-adjacent-change"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#changes-entry-9-jump-change"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#blocks-entry-10-block"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#blocks-entry-11-round-block"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-12-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-13-static-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-14-dynamic-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-15-plain-lead"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#methods-entry-16-plain-course"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#calls-entry-17-call"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#calls-entry-18-calls-library"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#compositions-entry-19-composition"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#compositions-entry-20-spliced"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#coverbells-entry-21-cover-bell"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#coverbells-entry-22-variable-cover"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-23-touch"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-24-length"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-25-short-touch"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-26-quarter-peal"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-27-half-peal"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-28-peal"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-29-long-length"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#touches-entry-30-date-touch"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-31-extent"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-32-fixed-place"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-33-effective-stage"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-34-true"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-35-complete-incomplete"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#truth-entry-36-accepted-truth"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#performances-entry-37-performance"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#performances-entry-38-performance-report"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/fundamentals.html#performances-entry-39-record-length"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing     </a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/"><img src="../images/cc-header.png" height="60" alt="CCCBR">     </a>
+                        <div class="dropdown ml-2">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="versionSwitcher" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Draft - Edition 3 (unapproved)
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionSwitcher">
+                                <a class="dropdown-item" href="../edition2/index.html">Latest Approved - Edition 2 (approved 26 Jan 2022)</a>
+                                <a class="dropdown-item" href="../edition1/index.html">Superseded - Edition 1 (24 Feb 2019 - 25 Jan 2022)</a>
+                                <a class="dropdown-item active" href="index.html">Draft - Edition 3 (unapproved) <span class="sr-only">(current)</span></a>
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">1. Introduction</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="editions.html">2. Editions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                                        <ul class="nav nav-pills flex-column nav-subsection">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#stages">A. Stages</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#rows">B. Rows</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#changes">C. Changes</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#blocks">D. Blocks</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#methods">E. Methods</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#calls">F. Calls</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#compositions">G. Compositions</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#coverbells">H. Cover Bells</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#touches">I. Touches</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#truth">J. Truth</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#performances">K. Performances</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <br>    <u>Appendices</u><br>
+                                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="principles.html">F. Framework Principles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="development.html">G. Edition 3 Development</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="consultation.html">H. Edition 3 Consultation</a>
+                                    </li>
+                                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>3. Fundamentals of Method Ringing</h2>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="stages">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Stages</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="stages-entry-1-stage" data-glossterm="Stage">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Stage
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-stages-entry-1-stage" aria-label="Show or hide details for Stage" title="Show or hide details for Stage"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A property of several <span class="mrf-nolink">method</span> ringing concepts that indicates the number of bells participating.</div>
+                            
+                                                        <div class="collapse" id="detail-stages-entry-1-stage">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Stage applies to the following <span class="mrf-nolink">method</span> ringing concepts: <a class="text-success undrln" href="#rows-entry-3-row">Rows</a>, <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>, <a class="text-success undrln" href="#blocks-entry-10-block">Blocks</a>, <a class="text-success undrln" href="#methods-entry-12-method">Methods</a> and <a class="text-success undrln" href="#compositions-entry-19-composition">Compositions</a>.</div><div class="mrf-para text-primary">The application of Stage to each of these concepts will be covered below in the 'Further explanation' sections of the definitions of these concepts. In addition, click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of Stage.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="stages-entry-2-stage-name" data-glossterm="Stage Name">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Stage Name
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Names that are given to the different <a class="text-success undrln" href="#stages-entry-1-stage">Stages</a>, as follows:</div>
+                            <div class="mrf-para">1 = One; 3 = Singles; 5 = Doubles; 7 = Triples; 9 = Caters; 11 = Cinques; 13 = Sextuples; 15 = Septuples; 17 = Octuples.</div>
+                            <div class="mrf-para">2 = Two; 4 = Minimus; 6 = Minor; 8 = Major; 10 = Royal; 12 = Maximus; 14 = Fourteen; 16 = Sixteen; 18 = Eighteen.</div>
+                            <div class="mrf-para">Odd and even <a class="text-success undrln" href="#stages-entry-1-stage">Stages</a> above 18 are named with the written form of the corresponding Stage number, such as Nineteen and Twenty-Two.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="rows">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Rows</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="rows-entry-3-row" data-glossterm="Row">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Row
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-rows-entry-3-row" aria-label="Show or hide details for Row" title="Show or hide details for Row"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A sequence of numbered bells in which no bell appears more than once.</div>
+                            <div class="mrf-para">The bells are numbered consecutively, starting from number one.</div>
+                            
+                                                        <div class="collapse" id="detail-rows-entry-3-row">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> 531246 is a Row with a <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of Minor (or equivalently, a Minor Row).</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of a Row is the number of bells in that Row. Click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of Stage.</div><div class="mrf-para text-primary">Bells are usually numbered in descending order of pitch. Both cardinal numbers (e.g. 1, 2, 3 ...) and ordinal numbers (e.g. 1st, 2nd, 3rd ...) are used. When using cardinals, number 1 is used for the bell with the highest pitch, number 2 for the next highest pitch and so on. When using ordinals, bell number 2 becomes 'the 2nd', bell number 3 becomes 'the 3rd', and so on. However, bell number 1 is usually referred to as 'the treble' rather than 'the 1st', and the bell with the lowest pitch is usually referred to as 'the tenor' rather than the corresponding ordinal.</div><div class="mrf-para text-primary">Bells are numbered relative to how many are in use. For example, if a tower has eight bells but only the six with the lowest pitches are in use, these bells are numbered 1 to 6 instead of 3 to 8.</div><div class="mrf-para text-primary"><a class="text-success undrln" href="#rows-entry-3-row">Rows</a> are normally shown in columns so that the <span class="mrf-nolink">path</span> of individual bells can be visualised by looking down the columns. In order to keep the columns aligned, a fixed font can be used with single characters representing each bell. Conventionally '0' (zero) is used to represent the 10th, and upper (or sometimes lower) case letters (excluding 'I', 'O' and 'X') are used for bells 11 to 33 as follows:</div><div class="mrf-para text-primary">'E' (Eleven); 'T' (Twelve); 'A' (Thirteen); 'B' (Fourteen); 'C' (Fifteen); 'D' (Sixteen); 'F' (Seventeen); 'G' (Eighteen); 'H' (Nineteen); 'J' (Twenty); 'K' (Twenty-one); 'L' (Twenty-two); 'M' (Twenty-three); 'N' (Twenty-four); 'P' (Twenty-five); 'Q' (Twenty-six); 'R' (Twenty-seven); 'S' (Twenty-eight); 'U' (Twenty-nine); 'V' (Thirty); 'W' (Thirty-one); 'Y' (Thirty-two); 'Z' (Thirty-three)</div><div class="mrf-para text-primary">Note that what is defined as a Row in this section is sometimes described as a <a class="text-success undrln" href="#changes-entry-6-change">Change</a> in common ringing parlance, and this usage of Change will be seen in <span class="mrf-nolink">method</span> ringing books and articles. The Framework separately uses Change as the transition between two <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> (see <a class="text-success undrln" href="#changes">Section 3.C</a>) and this distinction between Row and Change is important in defining a number of other <span class="mrf-nolink">method</span> ringing terms used in the Framework. Row is the preferred term wherever possible.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> While this definition of Row refers to a sequence of <i>bells</i>, a Row can comprise, at minimum, one bell.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="rows-entry-4-rounds" data-glossterm="Rounds">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Rounds
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-rows-entry-4-rounds" aria-label="Show or hide details for Rounds" title="Show or hide details for Rounds"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#rows-entry-3-row">Row</a> in which the bells are ordered from the lowest number to the highest number.</div>
+                            
+                                                        <div class="collapse" id="detail-rows-entry-4-rounds">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> 12345678 is Rounds for a Major <a class="text-success undrln" href="#rows-entry-3-row">Row</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="rows-entry-5-place" data-glossterm="Place">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Place
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-rows-entry-5-place" aria-label="Show or hide details for Place" title="Show or hide details for Place"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The position of a bell within a <a class="text-success undrln" href="#rows-entry-3-row">Row</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-rows-entry-5-place">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> In the <a class="text-success undrln" href="#rows-entry-3-row">Row</a> 142536, the 2nd bell is in 3rd's Place.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> <a class="text-success undrln" href="#rows-entry-5-place">Places</a> are numbered starting with 1 for the first bell in the <a class="text-success undrln" href="#rows-entry-3-row">Row</a>, and increasing sequentially for each next bell in the Row. E.g. the bell that is second in a Row is in Place 2.</div><div class="mrf-para text-primary">Each bell in a <a class="text-success undrln" href="#rows-entry-3-row">Row</a> appears in a different Place to all other bells in that Row, and therefore there are the same number of <a class="text-success undrln" href="#rows-entry-5-place">Places</a> in a Row as there are bells in that Row.</div><div class="mrf-para text-primary"><a class="text-success undrln" href="#rows-entry-5-place">Places</a> are often referred to using ordinal numbers in the possessive form, so Place 2 is often '2nd's Place'. 2nd's Place is a reference to the Place the 2nd bell occupies in <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>.</div><div class="mrf-para text-primary">The bell in 1st's Place is often said to be leading, and the bell in the last Place of the <a class="text-success undrln" href="#rows-entry-3-row">Row</a> is often said to be lying. E.g. in the Row 214365, the 2nd is leading and the 5th is lying.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="changes">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="changes-entry-6-change" data-glossterm="Change">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-changes-entry-6-change" aria-label="Show or hide details for Change" title="Show or hide details for Change"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A transposition of bells from an existing <a class="text-success undrln" href="#rows-entry-3-row">Row</a> to a new Row, where both Rows have the same <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-changes-entry-6-change">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> A Change might transpose the bells from the <a class="text-success undrln" href="#rows-entry-3-row">Row</a> 214365 to the Row 241356.</div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/change.svg" alt="change" width="300" height="90"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of a Change is the number of bells on which that Change operates. Click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of Stage.</div><div class="mrf-para text-primary">Since a Change is a transposition of bells, the new <a class="text-success undrln" href="#rows-entry-3-row">Row</a> will comprise the same set of bells as the existing Row.</div><div class="mrf-para text-primary">Note that the same Change applied to different <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> will have the same relative effect. For example, a Change applied to the Row 1342 might produce the Row 1432. The same Change applied to the Row 4123 would produce the Row 4213.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that in mathematics, transposition refers to the exchange of two elements. However in ringing, as well as in more general usage, transposition can involve the exchange of more than two elements. For example, ringers talk about transposing <span class="mrf-nolink">coursing</span> orders, which often involves rotating 3 bells.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="changes-entry-7-identity-change" data-glossterm="Identity Change">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Identity Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-changes-entry-7-identity-change" aria-label="Show or hide details for Identity Change" title="Show or hide details for Identity Change"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#changes-entry-6-change">Change</a> that transposes each bell to the same <a class="text-success undrln" href="#rows-entry-5-place">Place</a> in a new <a class="text-success undrln" href="#rows-entry-3-row">Row</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-changes-entry-7-identity-change">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The <a class="text-success undrln" href="#changes-entry-6-change">Change</a> that transposes the bells from <a class="text-success undrln" href="#rows-entry-3-row">Row</a> 54321 to Row 54321 is an Identity Change.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="changes-entry-8-adjacent-change" data-glossterm="Adjacent Change">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Adjacent Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-changes-entry-8-adjacent-change" aria-label="Show or hide details for Adjacent Change" title="Show or hide details for Adjacent Change"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#changes-entry-6-change">Change</a> that transposes each bell to either the same <a class="text-success undrln" href="#rows-entry-5-place">Place</a> or an adjacent Place in a new <a class="text-success undrln" href="#rows-entry-3-row">Row</a>, but which is not an <a class="text-success undrln" href="#changes-entry-7-identity-change">Identity Change</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-changes-entry-8-adjacent-change">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The <a class="text-success undrln" href="#changes-entry-6-change">Change</a> that transposes the bells from <a class="text-success undrln" href="#rows-entry-3-row">Row</a> 21436587 to Row 12346857 is an Adjacent Change.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> An Adjacent Change has a minimum <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of 2.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="changes-entry-9-jump-change" data-glossterm="Jump Change">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Jump Change
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-changes-entry-9-jump-change" aria-label="Show or hide details for Jump Change" title="Show or hide details for Jump Change"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#changes-entry-6-change">Change</a> that transposes at least one bell to a different and non-adjacent <a class="text-success undrln" href="#rows-entry-5-place">Place</a> in a new <a class="text-success undrln" href="#rows-entry-3-row">Row</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-changes-entry-9-jump-change">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The <a class="text-success undrln" href="#changes-entry-6-change">Change</a> that transposes the bells from <a class="text-success undrln" href="#rows-entry-3-row">Row</a> 12345678 to Row 23415678 is a Jump Change because the treble moves from 1st's <a class="text-success undrln" href="#rows-entry-5-place">Place</a> to 4th's Place, which are not adjacent Places.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> When ringing heavy bells, <a class="text-success undrln" href="#changes-entry-9-jump-change">Jump Changes</a> are more commonly used to jump from an earlier <a class="text-success undrln" href="#rows-entry-5-place">Place</a> to a later Place, rather than vice versa, due to the physical difficulty of reducing the time between bell strikes.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> A Jump Change has a minimum <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of 3.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="blocks">
+                        <div class="col-sm-1">
+                            <h5>D.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Blocks</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="blocks-entry-10-block" data-glossterm="Block">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Block
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-blocks-entry-10-block" aria-label="Show or hide details for Block" title="Show or hide details for Block"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>, all with the same <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a>, and the <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> produced by applying these Changes, starting from an initial Row.</div>
+                            
+                                                        <div class="collapse" id="detail-blocks-entry-10-block">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/block.svg" alt="block" width="250" height="150"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of the <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> in the sequence is the same as the Stage of the initial <a class="text-success undrln" href="#rows-entry-3-row">Row</a>.</div><div class="mrf-para text-primary">A Block has the <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of its constituent <a class="text-success undrln" href="#rows-entry-3-row">Rows</a>. Click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of Stage.</div><div class="mrf-para text-primary">A sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> is used to produce a sequence of <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> as follows:</div><div class="text-primary"><ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">Apply the first <a class="text-success undrln" href="#changes-entry-6-change">Change</a> in the sequence to an initial <a class="text-success undrln" href="#rows-entry-3-row">Row</a> to produce a second Row.</div></li><li><div class="mrf-para">Then apply the second <a class="text-success undrln" href="#changes-entry-6-change">Change</a> in the sequence to the second <a class="text-success undrln" href="#rows-entry-3-row">Row</a> to produce a third Row.</div></li><li><div class="mrf-para">Then apply the third <a class="text-success undrln" href="#changes-entry-6-change">Change</a> in the sequence to the third <a class="text-success undrln" href="#rows-entry-3-row">Row</a> to produce a fourth Row, and so on.</div></li><li><div class="mrf-para">The <a class="text-success undrln" href="#rows-entry-3-row">Row</a> that is produced by applying the final <a class="text-success undrln" href="#changes-entry-6-change">Change</a> in the sequence is referred to as the final Row.</div></li></ul></div><div class="mrf-para text-primary">Since a Block is generated using <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>, which are transpositions of bells, all <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> in a Block will comprise the same set of bells.</div><div class="mrf-para text-primary">Note that a Block always has one more <a class="text-success undrln" href="#rows-entry-3-row">Row</a> than it has <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div><div class="mrf-para text-primary">See <a class="text-success undrln" href="#methods-entry-12-method">Section 3.E.1</a> (<a class="text-success undrln" href="#methods-entry-12-method">Method</a>) below for an explanation of the difference between a Method and a Block.</div><div class="mrf-para text-primary">Dividing lines are often drawn in <a class="text-success undrln" href="#blocks-entry-10-block">Blocks</a>, such as those shown over the initial and final <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> in the example above. Dividing lines have no effect on the Rows produced -- they are merely to highlight features of a Block. In this example, the dividing lines highlight that the treble moves in a symmetrical pattern in the Block.</div><div class="mrf-para text-primary">The following diagram shows the relationships between the various components of <span class="mrf-nolink">method</span> ringing. Terms in the diagram that are not defined above are defined elsewhere in the Framework.</div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/hierarchy.svg" alt="hierarchy" width="1024" height="576"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> The term Block is also used in <span class="mrf-nolink">method</span> ringing to refer to a sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> without reference to the <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> they can produce. For example, a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> (see Section G below) may specify a Block of Changes that is repeated at different points in the Composition. While the Framework uses the term Block to refer to a sequence of Changes and the Rows produced by applying these Changes, this does not preclude the term Block from being used to refer just to a sequence of Changes in other contexts.</div><div class="mrf-para text-muted">A Block has a minimum size of one <a class="text-success undrln" href="#changes-entry-6-change">Change</a> and two <a class="text-success undrln" href="#rows-entry-3-row">Rows</a>.</div><div class="mrf-para text-muted">Note that since a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> might specify just to ring a <a class="text-success undrln" href="#methods-entry-15-plain-lead">Plain Lead</a> or a <a class="text-success undrln" href="#methods-entry-16-plain-course">Plain Course</a> of a single <a class="text-success undrln" href="#methods-entry-12-method">Method</a>, a Plain Lead and a Plain Course can be <a class="text-success undrln" href="#touches-entry-23-touch">Touches</a> as well as <a class="text-success undrln" href="#blocks-entry-10-block">Blocks</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="blocks-entry-11-round-block" data-glossterm="Round Block">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Round Block
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-blocks-entry-11-round-block" aria-label="Show or hide details for Round Block" title="Show or hide details for Round Block"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> whose final <a class="text-success undrln" href="#rows-entry-3-row">Row</a> is the same as its initial Row.</div>
+                            
+                                                        <div class="collapse" id="detail-blocks-entry-11-round-block">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/roundblock.svg" alt="roundblock" width="225" height="150"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In the example above, the final <a class="text-success undrln" href="#rows-entry-3-row">Row</a> is the same as the initial Row, and therefore this is a Round Block.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="methods">
+                        <div class="col-sm-1">
+                            <h5>E.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Methods</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methods-entry-12-method" data-glossterm="Method">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methods-entry-12-method" aria-label="Show or hide details for Method" title="Show or hide details for Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> all of the same <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a>, or a process to generate such a sequence.</div>
+                            
+                                                        <div class="collapse" id="detail-methods-entry-12-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> x16x14x16x12 is the Method that has been given the name Little Bob Minor.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Method has the <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of its constituent <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>. Click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of Stage.</div><div class="mrf-para text-primary">Individual <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> and sequences of Changes may be represented using <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a>, and place notation is used in the example above as well as elsewhere in the Framework. Place notation is described in <a class="text-success undrln" href="placenotation.html">Appendix A</a>.</div><div class="mrf-para text-primary">A Method is usually referred to by a name it is given. A Method (including its name) may be recorded in the Central Council's <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> when certain requirements have been met. These requirements are described in <a class="text-success undrln" href="naming.html">Section 5</a>.</div><div class="mrf-para text-primary">A Method is distinct from a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> in that a Method only defines <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>, not <a class="text-success undrln" href="#rows-entry-3-row">Rows</a>. A Block, on the other hand, defines both Changes and Rows. A single Method can produce many Blocks. For example, if a Method is rung starting from <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>, this produces a Block. If the same Method is rung starting from a non-Rounds Row (such as 'Queens'), the resulting Block is different from the one produced by starting from Rounds.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methods-entry-13-static-method" data-glossterm="Static Method">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Static Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methods-entry-13-static-method" aria-label="Show or hide details for Static Method" title="Show or hide details for Static Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#methods-entry-12-method">Method</a> whose sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> is fixed and finite.</div>
+                            
+                                                        <div class="collapse" id="detail-methods-entry-13-static-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> x16x14x16x12 (Little Bob Minor) is an example of a Static Method. This <a class="text-success undrln" href="#methods-entry-12-method">Method</a> can be represented by a fixed <span class="mrf-nolink">length</span> <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methods-entry-14-dynamic-method" data-glossterm="Dynamic Method">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Dynamic Method
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methods-entry-14-dynamic-method" aria-label="Show or hide details for Dynamic Method" title="Show or hide details for Dynamic Method"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#methods-entry-12-method">Method</a> whose sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> is not fixed or is not finite.</div>
+                            
+                                                        <div class="collapse" id="detail-methods-entry-14-dynamic-method">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Dixon's Bob Minor.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Dixon's Bob Minor specifies that <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> are produced by successively applying the pair of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> x16 except (a) if the Treble is leading after an x Change, replace the next 16 Change with a 12 Change, and (b) if the 2nd or 4th is leading after an x Change, replace the next 16 Change with a 14 Change.</div><div class="mrf-para text-primary">In this <a class="text-success undrln" href="#methods-entry-12-method">Method</a>, the sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> varies depending on the <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> produced, so using a different initial Row could produce a different sequence of Changes. This Method's sequence of Changes is therefore not fixed, and so Dixon's Bob Minor is an example of a Dynamic Method.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> A Dynamic Method should be capable of producing a readily-determinable sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>. A process such as 'Ring the Changes [3.1.3.1.3.{7|5}]^840 where at each choice of 7 or 5, 7 is chosen unless it is impossible to generate a <a class="text-success undrln" href="#blocks-entry-11-round-block">Round Block</a> of the <a class="text-success undrln" href="#truth-entry-31-extent">Extent</a> with any choice of following 7 or 5s' is not a valid Dynamic Method, even though this is a well-defined process.</div><div class="mrf-para text-muted"><a class="text-success undrln" href="#methods-entry-14-dynamic-method">Dynamic Methods</a> are in their infancy, and more precise definitions in this area may be developed for future versions of the Framework if there is sufficient interest by the ringing community.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methods-entry-15-plain-lead" data-glossterm="Plain Lead">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Plain Lead
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methods-entry-15-plain-lead" aria-label="Show or hide details for Plain Lead" title="Show or hide details for Plain Lead"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> that is produced by applying a <a class="text-success undrln" href="#methods-entry-13-static-method">Static Method</a>'s sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> once.</div>
+                            
+                                                        <div class="collapse" id="detail-methods-entry-15-plain-lead">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Bastow Little Bob Minimus has the sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> x12x14. A Plain Lead of this <a class="text-success undrln" href="#methods-entry-12-method">Method</a>, starting from <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>, is therefore:</div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/plainlead.svg" alt="plainlead" width="225" height="80"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Plain in this term means that no <a class="text-success undrln" href="#calls-entry-17-call">Calls</a> are used. Calls are covered below in <a class="text-success undrln" href="#calls">Section 3.F</a>. When the term Lead is used rather than Plain Lead, this means that Calls may or may not be used. However, it is often clear from the surrounding context whether or not Calls are involved, and so in practice Plain Lead will often be shortened to Lead in <span class="mrf-nolink">method</span> ringing texts, with it understood that no Calls are involved.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="methods-entry-16-plain-course" data-glossterm="Plain Course">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Plain Course
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-methods-entry-16-plain-course" aria-label="Show or hide details for Plain Course" title="Show or hide details for Plain Course"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> that is produced by applying a <a class="text-success undrln" href="#methods-entry-13-static-method">Static Method</a>'s sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> repeatedly, until a <a class="text-success undrln" href="#blocks-entry-11-round-block">Round Block</a> is obtained.</div>
+                            
+                                                        <div class="collapse" id="detail-methods-entry-16-plain-course">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Bastow Little Bob Minimus has the sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> x12x14. A Plain Course of this <a class="text-success undrln" href="#methods-entry-12-method">Method</a>, starting from <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>, is therefore:</div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/plaincourse.svg" alt="plaincourse" width="225" height="215"></div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> 'Plain' in this term means that no <a class="text-success undrln" href="#calls-entry-17-call">Calls</a> are used. Calls are covered below in <a class="text-success undrln" href="#calls">Section 3.F</a>. When the term Course is used rather than Plain Course, this means that Calls may or may not be used.</div><div class="mrf-para text-primary">In the above example, since it takes three applications of the <a class="text-success undrln" href="#methods-entry-12-method">Method</a>'s sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> to produce a <a class="text-success undrln" href="#blocks-entry-11-round-block">Round Block</a>, the Plain Course of Bastow Little Bob Minimus therefore comprises three <a class="text-success undrln" href="#methods-entry-15-plain-lead">Plain Leads</a>.</div><div class="mrf-para text-primary">A Plain Course of a <a class="text-success undrln" href="#methods-entry-12-method">Method</a> is a commonly used <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> in <span class="mrf-nolink">method</span> ringing. Unless otherwise specified, a Plain Course is started from <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>. A Plain Course starting from Rounds is often referred to as <i>The</i> Plain Course of a Method, whereas starting from any other <a class="text-success undrln" href="#rows-entry-3-row">Row</a> might be referred to as <i>A</i> Plain Course.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> For a <a class="text-success undrln" href="#methods-entry-12-method">Method</a> that is false in the Plain Course (<a class="text-success undrln" href="#truth-entry-34-true">Truth</a> is covered in <a class="text-success undrln" href="#truth">Section 3.J</a> below) the initial <a class="text-success undrln" href="#rows-entry-3-row">Row</a> might come up in the middle of a <a class="text-success undrln" href="#methods-entry-15-plain-lead">Plain Lead</a>. However the Plain Course does not end until the initial Row comes up as the last Row after applying a <a class="text-success undrln" href="#methods-entry-13-static-method">Static Method</a>'s whole sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div><div class="mrf-para text-muted">While <a class="text-success undrln" href="#methods-entry-15-plain-lead">Plain Lead</a> and Plain Course are defined above in terms of a <a class="text-success undrln" href="#methods-entry-13-static-method">Static Method</a>, these terms may also be applicable to some <a class="text-success undrln" href="#methods-entry-14-dynamic-method">Dynamic Methods</a>. For example, in Dixon's Bob Minor with <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a> as the initial <a class="text-success undrln" href="#rows-entry-3-row">Row</a>, Rounds comes up again after 64 <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> (with no <a class="text-success undrln" href="#calls-entry-17-call">Calls</a>). This would be considered the Plain Course of Dixon's.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="calls">
+                        <div class="col-sm-1">
+                            <h5>F.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Calls</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="calls-entry-17-call" data-glossterm="Call">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Call
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-calls-entry-17-call" aria-label="Show or hide details for Call" title="Show or hide details for Call"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">An instruction to replace <a class="text-success undrln" href="#changes-entry-6-change">Change</a>(s) from a <a class="text-success undrln" href="#methods-entry-12-method">Method</a> with different Change(s), <span class="mrf-nolink">change</span> the current Method to a different one, or affect <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bell</a>(s).</div>
+                            
+                                                        <div class="collapse" id="detail-calls-entry-17-call">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The last <a class="text-success undrln" href="#changes-entry-6-change">Change</a> in Little Bob Minor's sequence of Changes is '12'. This is usually replaced with the Change '14' when a 'bob' is called. A 'bob' is a commonly-used Call in <span class="mrf-nolink">method</span> ringing.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Call is not part of the definition of a <a class="text-success undrln" href="#methods-entry-12-method">Method</a>.</div><div class="mrf-para text-primary">Using <a class="text-success undrln" href="#calls-entry-17-call">Calls</a> to <span class="mrf-nolink">change</span> the current <a class="text-success undrln" href="#methods-entry-12-method">Method</a> to a different one and to affect <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bell</a>(s) are covered in Sections <a class="text-success undrln" href="#compositions">3.G</a> and <a class="text-success undrln" href="#coverbells">3.H</a> respectively, below.</div><div class="mrf-para text-primary">In the application of <a class="text-success undrln" href="#calls-entry-17-call">Calls</a> to replacing <a class="text-success undrln" href="#changes-entry-6-change">Change</a>(s) from a <a class="text-success undrln" href="#methods-entry-12-method">Method</a> with different Change(s), a Call most commonly replaces an individual Change with another, as in the example above. But a Call may also add Changes, remove Changes, or replace a set of Changes with a different set of Changes.</div><div class="mrf-para text-primary">When a Call adds or removes <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> to or from a <a class="text-success undrln" href="#methods-entry-12-method">Method</a>, these Changes are respectively added to or subtracted from the count of Changes for that Method that is used for <a class="text-success undrln" href="#performances-entry-38-performance-report">Performance Reporting</a> purposes. Performance Reporting is covered in <a class="text-success undrln" href="reporting.html">Section 6</a>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> When a Call affects the <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> of more than one <a class="text-success undrln" href="#methods-entry-12-method">Method</a> (i.e. in <span class="mrf-nolink">spliced</span>), the <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> (see <a class="text-success undrln" href="#compositions">Section 3.G</a> below) should make clear how the Change count of each Method is affected (if at all) in order to enable accurate <a class="text-success undrln" href="#performances-entry-38-performance-report">Performance Reporting</a> (see <a class="text-success undrln" href="reporting.html">Section 6</a>).</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="calls-entry-18-calls-library" data-glossterm="Calls Library">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Calls Library
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-calls-entry-18-calls-library" aria-label="Show or hide details for Calls Library" title="Show or hide details for Calls Library"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Commonly used <a class="text-success undrln" href="#calls-entry-17-call">Calls</a> are recorded in the Central Council Calls Library. This Library also includes Calls that are used to define <a class="text-success undrln" href="naming.html#variations-entry-6-variation">Variations</a> (see <a class="text-success undrln" href="naming.html#variations">Section 5.D</a>).</div>
+                            
+                                                        <div class="collapse" id="detail-calls-entry-18-calls-library">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The CC Calls Library is in development.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="compositions">
+                        <div class="col-sm-1">
+                            <h5>G.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Compositions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="compositions-entry-19-composition" data-glossterm="Composition">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Composition
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-compositions-entry-19-composition" aria-label="Show or hide details for Composition" title="Show or hide details for Composition"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">An arrangement of <a class="text-success undrln" href="#methods-entry-12-method">Method</a>(s) and <a class="text-success undrln" href="#calls-entry-17-call">Call</a>(s) that produces a sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>, all with the same <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-compositions-entry-19-composition">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Composition has the <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of the <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> it produces. Click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of Stage.</div><div class="mrf-para text-primary">Larger <a class="text-success undrln" href="#compositions-entry-19-composition">Compositions</a> may be created by combining other Compositions. For example, seven different Compositions of 720 Minor <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> may be concatenated to produce a Composition of 5040 Minor Changes.</div><div class="mrf-para text-primary">In addition to using a <a class="text-success undrln" href="#methods-entry-12-method">Method</a>'s whole sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> one or more times in a Composition, any subset of a Method's sequence of Changes may also be used.</div><div class="mrf-para text-primary">When a Composition that uses more than one <a class="text-success undrln" href="#methods-entry-12-method">Method</a> is rung, the instruction to <span class="mrf-nolink">change</span> from one Method to another is referred to as a <a class="text-success undrln" href="#calls-entry-17-call">Call</a>, and this is another application of the term Call.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> A Composition may use two or more <a class="text-success undrln" href="#methods-entry-12-method">Methods</a> side by side to produce <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> with a higher <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a>. For example, a Minor Method and a Doubles Method may be combined side by side to create a Composition that produces Cinques Changes (so the Composition has a Stage of Cinques). Similarly, a Composition may combine a Minor Composition and a Doubles Composition side by side to create a Composition that produces Cinques Changes.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="compositions-entry-20-spliced" data-glossterm="Spliced">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Spliced
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-compositions-entry-20-spliced" aria-label="Show or hide details for Spliced" title="Show or hide details for Spliced"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> involving more than one <a class="text-success undrln" href="#methods-entry-12-method">Method</a> is described as Spliced if any <span class="mrf-nolink">changes</span> of Method in the <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> produced by the Composition occur at a <a class="text-success undrln" href="#rows-entry-3-row">Row</a> that is not the same as the initial Row of the Block.</div>
+                            
+                                                        <div class="collapse" id="detail-compositions-entry-20-spliced">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> If, for example, a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> starts in <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>, and <span class="mrf-nolink">changes</span> of <a class="text-success undrln" href="#methods-entry-12-method">Method</a> only occur at Rounds during the Block (such as in a <a class="text-success undrln" href="#touches-entry-28-peal">Peal</a> of 7 Minor Methods) then the <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> is not Spliced. But if any <span class="mrf-nolink">change</span> of Method occurs during the Block at any <a class="text-success undrln" href="#rows-entry-3-row">Row</a> other than Rounds, then the Composition is Spliced.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="coverbells">
+                        <div class="col-sm-1">
+                            <h5>H.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Cover Bells</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="coverbells-entry-21-cover-bell" data-glossterm="Cover Bell">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Cover Bell
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-coverbells-entry-21-cover-bell" aria-label="Show or hide details for Cover Bell" title="Show or hide details for Cover Bell"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A bell that occupies a <a class="text-success undrln" href="#rows-entry-5-place">Place</a> in a <a class="text-success undrln" href="#rows-entry-3-row">Row</a> that is not one of the Places operated on by the <a class="text-success undrln" href="#methods-entry-12-method">Method</a>(s) of a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-coverbells-entry-21-cover-bell">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> A <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> for a Doubles <a class="text-success undrln" href="#methods-entry-12-method">Method</a> is used with an initial <a class="text-success undrln" href="#rows-entry-3-row">Row</a> that has a <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of Minor, and this produces a Minor <a class="text-success undrln" href="#blocks-entry-10-block">Block</a>. The Composition operates on <a class="text-success undrln" href="#rows-entry-5-place">Places</a> 1 to 5. 6th's Place therefore contains a Cover Bell (usually the tenor).</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Cover Bell remains in the same <a class="text-success undrln" href="#rows-entry-5-place">Place</a> from one <a class="text-success undrln" href="#rows-entry-3-row">Row</a> to the next. In the example above, the Doubles <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> of the <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> are deemed to become Minor Changes with a <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> of '6' added to each Change.</div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/coverbell.svg" alt="coverbell" width="100" height="90"></div><div class="mrf-para text-primary">In a <a class="text-success undrln" href="#rows-entry-3-row">Row</a> containing one or more <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bells</a>, the numbering of the <a class="text-success undrln" href="#rows-entry-5-place">Places</a> may be modified to exclude the Cover Bell(s). In the example above, the bell in 5th's Place (rather that 6th's) may be said to be lying.</div><div class="mrf-para text-primary">A <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> of a given <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> can be used to produce either a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> with the same Stage as the Composition, or a Block with a higher Stage. When the Stage of the Block is higher than the Stage of the Composition, any <a class="text-success undrln" href="#rows-entry-5-place">Places</a> not operated on by the Composition contain <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bells</a>.</div><div class="mrf-para text-primary">In the example above, the Doubles <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> is applied to <a class="text-success undrln" href="#rows-entry-5-place">Places</a> 1 to 5 so that 6th's Place contains a Cover Bell. The tenor as Cover Bell is the usual implementation when the <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> is one higher than the Stage of a Composition. However, the Doubles Composition could be applied to Places 2 to 6 so that 1st's Place contains a Cover Bell.</div><div class="mrf-para text-primary">Since <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bells</a> can be generated by using a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> of a given <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> to produce a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> of a higher Stage, Compositions often do not need to specify the transposition of Cover Bells as these are inferred. However, since the <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> produced by a Composition are all of the same Stage, there are scenarios where a Composition's Changes include the transposition of Cover Bells for some or all Changes.</div><div class="mrf-para text-primary">As example #2, if a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> uses a Doubles <a class="text-success undrln" href="#methods-entry-12-method">Method</a> initially, applying to <a class="text-success undrln" href="#rows-entry-5-place">Places</a> 1 to 5, and then switches to a Minor Method, applying to Places 1 to 6, then the Composition's <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> are all specified as Minor Changes, with a <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> of '6' added to all Doubles Changes. This Composition therefore has a <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of Minor. However, even though the Composition has a Stage of Minor, it is still correct to describe the bell in 6th's Place as a Cover Bell when the Doubles Method is being rung, because for these <a class="text-success undrln" href="#rows-entry-3-row">Rows</a>, 6th's Place is not being operated on by the Method of the Composition.</div><div class="mrf-para text-primary">As example #3, a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> might use a Doubles <a class="text-success undrln" href="#methods-entry-12-method">Method</a> but is designed to produce a Minor <a class="text-success undrln" href="#blocks-entry-10-block">Block</a>, and <a class="text-success undrln" href="#calls-entry-17-call">Calls</a> are used that occasionally exchange the Cover Bell in 6th's <a class="text-success undrln" href="#rows-entry-5-place">Place</a>. In this case the Composition's <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> are all specified as Minor Changes (so the Composition's <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> is Minor), with a <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> of '6' added to all Changes where the Cover Bell is not affected. For example, if the Composition's Doubles Method has a '3' Change, this becomes a '36' Change in the Composition. Where the Cover Bell is affected by a Call, what otherwise might have been a '36' Change might instead become a '34' Change.</div><div class="mrf-para text-primary">Click <a class="text-success undrln" href="../images/edition3/fundamentals/understanding-stage.pdf">here</a> for an overview of all aspects of <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a>.</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> As discussed above under <a class="text-success undrln" href="#compositions-entry-19-composition">Compositions</a> (<a class="text-success undrln" href="#compositions">Section 3.G</a>), it is possible for a Composition to use two or more <a class="text-success undrln" href="#methods-entry-12-method">Methods</a> side by side, or to use two or more Compositions side by side. As a further <span class="mrf-nolink">variation</span>, a Composition might also result in an interior Cover Bell. For example, a Composition might be designed to be used with Maximus <a class="text-success undrln" href="#rows-entry-3-row">Rows</a>, using a Doubles Method in <a class="text-success undrln" href="#rows-entry-5-place">Places</a> 1 to 5 and a Minor Method in Places 7 to 12. 6th's Place does not have any Methods operating on it, and therefore 6th's Place contains a Cover Bell. In this case, the Composition would produce Maximus <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> (and therefore have a <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of Maximus), and each of its Changes would include the <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a> '6'.</div><div class="mrf-para text-muted">Every <a class="text-success undrln" href="#rows-entry-3-row">Row</a> in a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> (except for the initial Row) has at least one <a class="text-success undrln" href="#methods-entry-12-method">Method</a> involved in generating it. A Row is not made up solely of <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bells</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="coverbells-entry-22-variable-cover" data-glossterm="Variable Cover">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Variable Cover
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-coverbells-entry-22-variable-cover" aria-label="Show or hide details for Variable Cover" title="Show or hide details for Variable Cover"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> is described as Variable Cover if one or more <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bells</a> are affected by any of the Composition's <a class="text-success undrln" href="#calls-entry-17-call">Calls</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-coverbells-entry-22-variable-cover">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> described in example #3 in <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Section 3.H.1</a> above is a Variable Cover Composition.</div><div class="mrf-para text-primary">Note that a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> is not considered Variable Cover if a <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bell</a> is only affected by a <span class="mrf-nolink">change</span> to a higher <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> <a class="text-success undrln" href="#methods-entry-12-method">Method</a> such that the (former) Cover Bell is now one of the bells on which the Method's <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> operate.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="touches">
+                        <div class="col-sm-1">
+                            <h5>I.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Touches</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-23-touch" data-glossterm="Touch">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Touch
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-touches-entry-23-touch" aria-label="Show or hide details for Touch" title="Show or hide details for Touch"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> that is produced by applying a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a>'s sequence of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-touches-entry-23-touch">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Note that since a <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> can be a <a class="text-success undrln" href="#methods-entry-16-plain-course">Plain Course</a> of a <a class="text-success undrln" href="#methods-entry-12-method">Method</a>, a Plain Course is therefore also a Touch. The same applies to a <a class="text-success undrln" href="#methods-entry-15-plain-lead">Plain Lead</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-24-length" data-glossterm="Length">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Length
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-touches-entry-24-length" aria-label="Show or hide details for Length" title="Show or hide details for Length"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The number of <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> in a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-touches-entry-24-length">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> If a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> uses side by side <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> to produce a single <a class="text-success undrln" href="#rows-entry-3-row">Row</a>, only one Change per Row is counted when determining Length.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-25-short-touch" data-glossterm="Short Touch">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Short Touch
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with a <a class="text-success undrln" href="#touches-entry-24-length">Length</a> of 1 to 1249 <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-26-quarter-peal" data-glossterm="Quarter Peal">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Quarter Peal
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with a <a class="text-success undrln" href="#touches-entry-24-length">Length</a> of 1250 to 2499 <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-27-half-peal" data-glossterm="Half Peal">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Half Peal
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with a <a class="text-success undrln" href="#touches-entry-24-length">Length</a> of 2500 to 4999 <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-28-peal" data-glossterm="Peal">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Peal
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with a <a class="text-success undrln" href="#touches-entry-24-length">Length</a> of 5000 or more <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-29-long-length" data-glossterm="Long Length">
+                        <div class="col-sm-1">
+                            7.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Long Length
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-touches-entry-29-long-length" aria-label="Show or hide details for Long Length" title="Show or hide details for Long Length"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with a <a class="text-success undrln" href="#touches-entry-24-length">Length</a> of 10000 or more <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>.</div>
+                            
+                                                        <div class="collapse" id="detail-touches-entry-29-long-length">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Long Length is also a <a class="text-success undrln" href="#touches-entry-28-peal">Peal</a> -- it is a subset thereof.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="touches-entry-30-date-touch" data-glossterm="Date Touch">
+                        <div class="col-sm-1">
+                            8.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Date Touch
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-touches-entry-30-date-touch" aria-label="Show or hide details for Date Touch" title="Show or hide details for Date Touch"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with a <a class="text-success undrln" href="#touches-entry-24-length">Length</a> that corresponds to a year being commemorated.</div>
+                            
+                                                        <div class="collapse" id="detail-touches-entry-30-date-touch">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> A Date Touch commemorating the year 2018 would have 2018 <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> and would also be a <a class="text-success undrln" href="#touches-entry-26-quarter-peal">Quarter Peal</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="truth">
+                        <div class="col-sm-1">
+                            <h5>J.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Truth</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="truth-entry-31-extent" data-glossterm="Extent">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extent
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-truth-entry-31-extent" aria-label="Show or hide details for Extent" title="Show or hide details for Extent"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The complete set of distinct <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> possible for a given set of bells.</div>
+                            
+                                                        <div class="collapse" id="detail-truth-entry-31-extent">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The number of <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> in an Extent for a given set of bells is the factorial of the number of bells in the set. E.g. for 4 bells, the Extent has 4! Rows = 1 * 2 * 3 * 4 = 24 Rows.</div><div class="mrf-para text-primary">When Extent is used on its own, it refers to the unordered set of possible <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> at the <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> in question. However when used with a <a class="text-success undrln" href="#methods-entry-12-method">Method</a> or <a class="text-success undrln" href="#compositions-entry-19-composition">Composition</a> (e.g. an Extent of Plain Bob Minor), this generally refers to an ordered Extent generated using the <a class="text-success undrln" href="#changes-entry-6-change">Changes</a> of Plain Bob Minor (and any necessary <a class="text-success undrln" href="#calls-entry-17-call">Calls</a>).</div><div class="mrf-para text-primary">Note that usage such as 'Two <a class="text-success undrln" href="#truth-entry-31-extent">Extents</a> of Grandsire Doubles' can be ambiguous. This could mean two discrete Extents rung back-to-back, or a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> of 240 Grandsire Doubles that includes every possible <a class="text-success undrln" href="#rows-entry-3-row">Row</a> exactly twice each. Care should be taken in how this is communicated if the distinction is important.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="truth-entry-32-fixed-place" data-glossterm="Fixed Place">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Fixed Place
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A given <a class="text-success undrln" href="#rows-entry-5-place">Place</a> that, in every <a class="text-success undrln" href="#rows-entry-3-row">Row</a> of a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a>, is occupied by the same bell.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="truth-entry-33-effective-stage" data-glossterm="Effective Stage">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Effective Stage
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-truth-entry-33-effective-stage" aria-label="Show or hide details for Effective Stage" title="Show or hide details for Effective Stage"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> of a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> after any <a class="text-success undrln" href="#truth-entry-32-fixed-place">Fixed Places</a> are excluded.</div>
+                            
+                                                        <div class="collapse" id="detail-truth-entry-33-effective-stage">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-technical-comment"><div class="mrf-para text-muted"><b>Technical comment:</b> Note that the Effective Stage of a <a class="text-success undrln" href="#blocks-entry-10-block">Block</a> all of whose <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> are the same is zero. An Effective Stage of one is not possible -- once the Effective Stage falls below two, it becomes zero. Ringing a Block that has an Effective Stage of zero (such as all <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a> or all Queens) is not considered <span class="mrf-nolink">method</span> ringing.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="truth-entry-34-true" data-glossterm="True">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            True
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-truth-entry-34-true" aria-label="Show or hide details for True" title="Show or hide details for True"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> is True if:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">It contains zero or more <a class="text-success undrln" href="#truth-entry-31-extent">Extents</a> at the <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a>'s <a class="text-success undrln" href="#truth-entry-33-effective-stage">Effective Stage</a>; and</div></li><li><div class="mrf-para">Any <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> in addition to the above are distinct.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-truth-entry-34-true">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> If a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> is a <a class="text-success undrln" href="#blocks-entry-11-round-block">Round Block</a>, the final <a class="text-success undrln" href="#rows-entry-3-row">Row</a> is excluded when determining whether the Touch is True.</div><div class="mrf-para text-primary">When ringing a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a>, it is traditional to ring the initial <a class="text-success undrln" href="#rows-entry-3-row">Row</a> (usually <a class="text-success undrln" href="#rows-entry-4-rounds">Rounds</a>) several times before starting the <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>, and similarly to ring the final Row several times before standing the bells. These Rows (shown in the diagram below) are excluded when determining <a class="text-success undrln" href="#truth-entry-34-true">Truth</a>.</div><div class="mrf-mediaobject"><img src="../images/edition3/fundamentals/openingclosingrounds.svg" alt="openingclosingrounds" width="307" height="432"></div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="truth-entry-35-complete-incomplete" data-glossterm="Complete (Incomplete)">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Complete (Incomplete)
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-truth-entry-35-complete-incomplete" aria-label="Show or hide details for Complete (Incomplete)" title="Show or hide details for Complete (Incomplete)"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> is Complete if it contains all possible <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> at the Touch's <a class="text-success undrln" href="#truth-entry-33-effective-stage">Effective Stage</a> exactly once, or exactly the same number of times. (Anything else is Incomplete.)</div>
+                            
+                                                        <div class="collapse" id="detail-truth-entry-35-complete-incomplete">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A 540 of Minor may be <a class="text-success undrln" href="#truth-entry-34-true">True</a> but is Incomplete;</div><div class="mrf-para text-primary">A 720 of Minor may be <a class="text-success undrln" href="#truth-entry-34-true">True</a>, and if it is, it will also be Complete;</div><div class="mrf-para text-primary">A 1260 of Minor may be <a class="text-success undrln" href="#truth-entry-34-true">True</a> but is Incomplete;</div><div class="mrf-para text-primary">A 1440 of Minor may be <a class="text-success undrln" href="#truth-entry-34-true">True</a>, and if it is, it will also be Complete;</div><div class="mrf-para text-primary">etc.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="truth-entry-36-accepted-truth" data-glossterm="Accepted Truth">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Accepted Truth
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-truth-entry-36-accepted-truth" aria-label="Show or hide details for Accepted Truth" title="Show or hide details for Accepted Truth"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> rung on n bells has Accepted Truth if it is <a class="text-success undrln" href="#truth-entry-34-true">True</a>, or it is comprised of <a class="text-success undrln" href="#blocks-entry-11-round-block">Round Blocks</a> that can be divided into two groups where:</div>
+                            <ol class="mrf-list mrf-list-level-0 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">One group forms a <a class="text-success undrln" href="#truth-entry-34-true">True</a> <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with an <a class="text-success undrln" href="#truth-entry-33-effective-stage">Effective Stage</a> of n and contains at least one <a class="text-success undrln" href="#truth-entry-31-extent">Extent</a> at <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> n;</div></li><li><div class="mrf-para">The other group forms a <a class="text-success undrln" href="#truth-entry-34-true">True</a> <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with an <a class="text-success undrln" href="#truth-entry-33-effective-stage">Effective Stage</a> of n-1 and the same bell rings in nth’s <a class="text-success undrln" href="#rows-entry-5-place">Place</a> in every <a class="text-success undrln" href="#rows-entry-3-row">Row</a>; and</div></li><li><div class="mrf-para">Only one group may be an Incomplete <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> at its respective <a class="text-success undrln" href="#truth-entry-33-effective-stage">Effective Stage</a>.</div></li></ol>
+                            
+                                                        <div class="collapse" id="detail-truth-entry-36-accepted-truth">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Accepted Truth applies most commonly to <a class="text-success undrln" href="#touches-entry-23-touch">Touches</a> of Doubles and Minor rung on 6 bells. When ringing Doubles, the tenor usually rings in 6th's <a class="text-success undrln" href="#rows-entry-5-place">Place</a> as a <a class="text-success undrln" href="#coverbells-entry-21-cover-bell">Cover Bell</a>.</div><div class="mrf-para text-primary">A <a class="text-success undrln" href="#rows-entry-3-row">Row</a> occuring at a <span class="mrf-nolink">change</span> of <a class="text-success undrln" href="#truth-entry-33-effective-stage">Effective Stage</a> (which will be the same as the initial Row since <span class="mrf-nolink">changes</span> of Effective Stage can only occur at the end of a <a class="text-success undrln" href="#blocks-entry-11-round-block">Round Block</a>) is counted as a Row of the following Round Block when determining the <a class="text-success undrln" href="#truth-entry-34-true">Truth</a> of the two groups. The initial Row is counted as part of the first Round Block when determining the Truth of the two groups, and the final Row is excluded.</div><div class="mrf-para text-primary">Note that a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> with Accepted Truth will contain one or more <a class="text-success undrln" href="#truth-entry-31-extent">Extents</a> at <a class="text-success undrln" href="#stages-entry-1-stage">Stage</a> n, zero or more Extents at Stage n-1, and any remaining <a class="text-success undrln" href="#rows-entry-3-row">Rows</a> will be distinct.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="performances">
+                        <div class="col-sm-1">
+                            <h5>K.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Performances</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="performances-entry-37-performance" data-glossterm="Performance">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-performances-entry-37-performance" aria-label="Show or hide details for Performance" title="Show or hide details for Performance"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">The successful ringing of a <a class="text-success undrln" href="#touches-entry-23-touch">Touch</a> where the <a class="text-success undrln" href="naming.html#general-entry-4-band">Band</a> strives to maintain a high standard of ringing, and errors in ringing or calling are corrected quickly.</div>
+                            
+                                                        <div class="collapse" id="detail-performances-entry-37-performance">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> <a class="text-success undrln" href="naming.html#general-entry-4-band">Band</a> is defined in <a class="text-success undrln" href="naming.html#general-entry-4-band">Section 5.A.4</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="performances-entry-38-performance-report" data-glossterm="Performance Report">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Performance Report
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A report of a <a class="text-success undrln" href="#performances-entry-37-performance">Performance</a> that includes the contents specified in <a class="text-success undrln" href="reporting.html">Section 6</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="performances-entry-39-record-length" data-glossterm="Record Length">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Record Length
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-performances-entry-39-record-length" aria-label="Show or hide details for Record Length" title="Show or hide details for Record Length"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="#performances-entry-37-performance">Performance</a> of a <a class="text-success undrln" href="#touches-entry-29-long-length">Long Length</a> (i.e. 10000 or more <a class="text-success undrln" href="#changes-entry-6-change">Changes</a>) that is the longest <a class="text-success undrln" href="#touches-entry-24-length">Length</a> yet rung in a single <a class="text-success undrln" href="#methods-entry-12-method">Method</a> or the same set of Methods.</div>
+                            
+                                                        <div class="collapse" id="detail-performances-entry-39-record-length">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A Record Length is also a <a class="text-success undrln" href="#touches-entry-28-peal">Peal</a> and a <a class="text-success undrln" href="#touches-entry-29-long-length">Long Length</a> -- it is a subset of both.</div><div class="mrf-para text-primary">Requirements for CCCBR recognition of <a class="text-success undrln" href="#performances-entry-39-record-length">Record Lengths</a> are described in <a class="text-success undrln" href="recordlengths.html">Section 7</a>.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="../mrf.js"></script>
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Place Notation (draft edition 3)">
+    <meta name="author" content="CCCBR">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="Place Notation (draft edition 3)">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.org.uk/placenotation.html">
+    <title>Framework for Method Ringing - Place Notation</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../mrf.css" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@id": "https://cccbr.org.uk/#publisher",
+                    "@type": "Organization",
+                    "name": "CCCBR",
+                    "url": "https://cccbr.org.uk/"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/placenotation.html",
+                    "@type": "CreativeWork",
+                    "name": "Place Notation",
+                    "url": "https://cccbr.org.uk/placenotation.html",
+                    "description": "Place Notation (draft edition 3)",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "version": "Edition 3",
+                    "isBasedOn": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    }
+                },
+                {
+                    "@id": "https://cccbr.org.uk/placenotation.html#place-notation",
+                    "@type": "DefinedTerm",
+                    "name": "Place Notation",
+                    "url": "https://cccbr.org.uk/placenotation.html#place-notation",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "A.1",
+                    "description": "A compact symbolic notation for specifying a Change or a sequence of Changes."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/placenotation.html#jump-notation",
+                    "@type": "DefinedTerm",
+                    "name": "Jump Notation",
+                    "url": "https://cccbr.org.uk/placenotation.html#jump-notation",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "B.1",
+                    "description": "A compact symbolic notation for a Jump Change."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/placenotation.html#conditional-notation",
+                    "@type": "DefinedTerm",
+                    "name": "Conditional Notation",
+                    "url": "https://cccbr.org.uk/placenotation.html#conditional-notation",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "termCode": "C.1",
+                    "description": "A compact symbolic notation for a Change or a sequence of Changes that is applied only if a specified condition is met."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3",
+                    "@type": "DefinedTermSet",
+                    "name": "Framework for Method Ringing Edition 3",
+                    "url": "https://cccbr.org.uk/edition3/index.html",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "isPartOf": {
+                        "@id": "https://cccbr.org.uk/placenotation.html"
+                    },
+                    "version": "Edition 3",
+                    "hasDefinedTerm": [
+                        {
+                            "@id": "https://cccbr.org.uk/placenotation.html#place-notation"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/placenotation.html#jump-notation"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/placenotation.html#conditional-notation"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing     </a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/"><img src="../images/cc-header.png" height="60" alt="CCCBR">     </a>
+                        <div class="dropdown ml-2">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="versionSwitcher" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Draft - Edition 3 (unapproved)
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionSwitcher">
+                                <a class="dropdown-item" href="../edition2/index.html">Latest Approved - Edition 2 (approved 26 Jan 2022)</a>
+                                <a class="dropdown-item" href="../edition1/index.html">Superseded - Edition 1 (24 Feb 2019 - 25 Jan 2022)</a>
+                                <a class="dropdown-item active" href="index.html">Draft - Edition 3 (unapproved) <span class="sr-only">(current)</span></a>
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">1. Introduction</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="editions.html">2. Editions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extension.html">8. Method Extension</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <br>    <u>Appendices</u><br>
+                                        <a class="nav-link active" href="placenotation.html">A. Place Notation</a>
+                                        <ul class="nav nav-pills flex-column nav-subsection">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#adjacent-identitychanges">A. Adjacent and Identity Changes</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#jumpchanges">B. Jump Changes</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#conditional-changes">C. Conditional Changes</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="principles.html">F. Framework Principles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="development.html">G. Edition 3 Development</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="consultation.html">H. Edition 3 Consultation</a>
+                                    </li>
+                                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Appendix A. Place Notation</h2>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="placenotation">
+                        <div class="col-sm-1">
+                            <h5></h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Place Notation</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="place-notation" data-glossterm="Place Notation">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Place Notation
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A compact symbolic notation for specifying a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> or a sequence of Changes.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-placenotation-orderedlist-3-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para"><a class="text-success undrln" href="#place-notation">Place Notation</a> can be used to describe:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para"><a class="text-success undrln" href="fundamentals.html#changes-entry-8-adjacent-change">Adjacent Changes</a> or <a class="text-success undrln" href="fundamentals.html#changes-entry-7-identity-change">Identity Changes</a></div></li><li><div class="mrf-para"><a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a></div></li><li><div class="mrf-para">Conditional <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a></div></li></ol>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="adjacent-identitychanges">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Adjacent and Identity Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-adjacent-identitychanges-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-adjacent-identitychanges-orderedlist-2-1" aria-label="Show or hide details for item 1" title="Show or hide details for item 1"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> is represented in <a class="text-success undrln" href="#place-notation">place notation</a> by listing the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> made, starting from the earliest Place to the latest Place. All remaining pairs of adjacent bells swap.</div>
+                            <div class="collapse" id="detail-adjacent-identitychanges-orderedlist-2-1">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> With 6 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> between the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 214365 and the Row 241356 is written ‘14’.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The bells in 1st's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> and 4th's Place in the example above remain in the same Places in both <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a>. The pairs of bells in Places 2 &amp; 3 and Places 5 &amp; 6 swap.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-adjacent-identitychanges-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-adjacent-identitychanges-orderedlist-2-2" aria-label="Show or hide details for item 2" title="Show or hide details for item 2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para"><a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> are represented by the same single characters as are used for bells, as described in <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">3.B.1</a>.</div>
+                            <div class="collapse" id="detail-adjacent-identitychanges-orderedlist-2-2">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> With 12 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> between the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 2143658709TE and the Row 123456780T9E is written ‘9T’.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-adjacent-identitychanges-orderedlist-2-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-adjacent-identitychanges-orderedlist-2-3" aria-label="Show or hide details for item 3" title="Show or hide details for item 3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">In an even-<a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> only, all adjacent pairs of bells may swap, such that no <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> are made. This is called the cross Change, and it is denoted in <a class="text-success undrln" href="#place-notation">place notation</a> with either ‘x’, ‘X’ or ‘-’.</div>
+                            <div class="collapse" id="detail-adjacent-identitychanges-orderedlist-2-3">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> With 8 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> between the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 12463857 and the Row 21648375 is the cross Change.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-adjacent-identitychanges-orderedlist-2-4">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            4.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-adjacent-identitychanges-orderedlist-2-4" aria-label="Show or hide details for item 4" title="Show or hide details for item 4"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">When a <a class="text-success undrln" href="#place-notation">place notation</a> includes external <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>(s) (i.e. 1st's Place and/or the highest-numbered Place of the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>) and internal Place(s), this may be abbreviated to just the internal Place(s) because the external Place(s) can be inferred.</div>
+                            <div class="mrf-para">When an even-<a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> <a class="text-success undrln" href="#place-notation">place notation</a> comprises the two external <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> only, this may be abbreviated to either just 1st’s Place or just the highest-numbered Place of the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> because the other external Place can be inferred.</div>
+                            <div class="collapse" id="detail-adjacent-identitychanges-orderedlist-2-4">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> With 6 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> 14 can be abbreviated to 4.</div><div class="mrf-para text-danger">With 7 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> 147 can be abbreviated to 4.</div><div class="mrf-para text-danger">With 8 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> 1458 can be abbreviated to 45.</div><div class="mrf-para text-danger">With 12 bells, the <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> 1T can be abbreviated to 1 or T.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Note that, by convention, internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> are never abbreviated, even when it would still be clear what the full <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> is.</div><div class="mrf-para text-primary">For example, the 7-bell <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> 12347 could be abbreviated to 24, and 3rd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>, as well as 1st's Place and 7th's Place, could all be inferred. However, by convention, this Change is only abbreviated to 234 -- internal Places are always specified.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-adjacent-identitychanges-orderedlist-2-5">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-adjacent-identitychanges-orderedlist-2-5" aria-label="Show or hide details for item 5" title="Show or hide details for item 5"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">When using <a class="text-success undrln" href="#place-notation">place notation</a> to describe a sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a>, a dot is inserted between the place notation for each <span class="mrf-nolink">change</span>. However the dot is omitted on either side of a cross Change.</div>
+                            <div class="collapse" id="detail-adjacent-identitychanges-orderedlist-2-5">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> On 5 bells, an example sequence of 6 <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> is 3.1.5.3.1.3.</div><div class="mrf-para text-danger">On 6 bells, an example sequence of 12 <span class="mrf-nolink">changes</span>, including use of the cross <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>, is 36x36.14x12x36.14x14.36.</div><div class="mrf-para text-danger">In abbreviated form, this latter sequence might be written 3-3.4-2-3.4-4.3.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-adjacent-identitychanges-orderedlist-2-6">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            6.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-adjacent-identitychanges-orderedlist-2-6" aria-label="Show or hide details for item 6" title="Show or hide details for item 6"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Many <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> have a sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> that takes the form A, B, ~A, C, where A is a sequence of Changes, ~A is the same sequence of Changes as A but in reverse order, and B and C are individual Changes. These <span class="mrf-nolink">methods</span> have <a class="text-success undrln" href="classification.html#methodsymmetry-entry-19-palindromic-symmetry">Palindromic Symmetry</a> (see <a class="text-success undrln" href="classification.html#methodsymmetry-entry-19-palindromic-symmetry">Section 4.B.1</a>).</div>
+                            <div class="mrf-para">As an alternative to notating the sequence in full, comma notation can be used to save space, as follows:</div>
+                            <ul class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">Where two sequences of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> (represented by <a class="text-success undrln" href="#place-notation">place notation</a>) are separated by a comma, this indicates that each of these sequences is to be interpreted as a palindrome and expanded as follows: When the last Change in the sequence is reached, the Changes are then repeated in the reverse order starting with the penultimate Change, if any.</div></li><li><div class="mrf-para">Where there is only a single <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> on either side of the comma, there is no penultimate <span class="mrf-nolink">change</span> as described above, and therefore nothing to expand. The single Change is therefore incorporated without adjustment.</div></li><li><div class="mrf-para">A <span class="mrf-nolink">method</span> with a sequence of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> of the form A, B, ~A, C can therefore be notated: AB,C</div></li></ul>
+                            <div class="collapse" id="detail-adjacent-identitychanges-orderedlist-2-6">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Canterbury Little Bob Minor has a full <a class="text-success undrln" href="#place-notation">place notation</a> of 34.16x14x16.34.12.</div><div class="mrf-para text-danger">This sequence takes the form A, B, ~A, C where:</div><div class="mrf-para text-danger">A = 34.16x so ~A = x16.34</div><div class="mrf-para text-danger">B = 14</div><div class="mrf-para text-danger">C = 12</div><div class="mrf-para text-danger">Canterbury Little Bob Minor can therefore be notated: 34.16x14,12</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> In some <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a>, the single <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> is to the left of the comma, and the longer sequence is to the right.</div><div class="mrf-para text-primary">For example, Grandsire Doubles can be notated: 3,1.5.1.5.1</div><div class="mrf-para text-primary">This expands to: 3.1.5.1.5.1.5.1.5.1</div><div class="mrf-para text-primary">If the sequences of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> on both sides of the comma are greater than one Change in <span class="mrf-nolink">length</span>, then both sides should be expanded.</div><div class="mrf-para text-primary">For example, Carter Singles can be notated: 3.3.1,1.3.3.3</div><div class="mrf-para text-primary">This expands to: 3.3.1.3.3.1.3.3.3.3.3.1</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="jumpchanges">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Jump Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="jump-notation" data-glossterm="Jump Notation">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Jump Notation
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A compact symbolic notation for a <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Change</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The notation required to describe a <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Change</a>, is as follows.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-3" aria-label="Show or hide details for item 3" title="Show or hide details for item 3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A pair of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> enclosed in round brackets indicates that the bell in the first of these Places jumps to the second of these Places in the next <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. The rest of the bells in the span of Places within the round brackets each move by one Place to accommodate the jump.</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-3">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> (14) indicates that the bell in 1st's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> jumps to 4th's Place in the next <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. The bells currently in 2nd's, 3rd's and 4th's Places each move down a Place in the next Row.</div><div class="mrf-para text-danger">So, (14) would take <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 1234 to Row 2341.</div><div class="mrf-para text-danger">Similarly, (41) would take <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 2143 to Row 3214.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The two <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> enclosed in round brackets are at least two Places apart.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-4">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            4.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-4" aria-label="Show or hide details for item 4" title="Show or hide details for item 4"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A contiguous set of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> enclosed in square brackets indicates how the bells in these Places are transposed from one <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> to the next.</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-4">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> [3412] indicates that the bells in the current <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> are "read" in the order 3rd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>, 4th's Place, 1st's Place, 2nd's Place in order to generate the next Row.</div><div class="mrf-para text-danger">So, [3412] would take <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 2143 to Row 4321.</div><div class="mrf-para text-danger">Similarly, [4321] would take <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 1324 to Row 4231.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The set of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> enclosed in square brackets comprises at least three Places, and these Places are contiguous -- i.e. they comprise a set of Places that form an adjacent set.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-5">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-5" aria-label="Show or hide details for item 5" title="Show or hide details for item 5"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Where the bracketed notations (round or square) don't account for all <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>, standard <a class="text-success undrln" href="#place-notation">place notation</a> conventions apply. I.e. remaining pairs of bells cross, and there may be inferred external Place(s).</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-5">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The Minor <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> (24) specifies what happens to the bells in <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> 2, 3 and 4. The remaining Places are therefore 1st's, 5th's and 6th's. Following standard <a class="text-success undrln" href="#place-notation">place notation</a> conventions, 1st's <span class="mrf-nolink">place</span> is Made, and the bells in 5th's and 6th's Places cross.</div><div class="mrf-para text-danger">So, Minor <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> (24) would take <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 123456 to Row 134265.</div><div class="mrf-para text-danger">Similarly, Caters <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> [6543] would take <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 214365978 to Row 125634798.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> If desired, the full <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> may be specified in square brackets, even when external <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> and/or crosses could be inferred. So, the Caters Change [6543] above could also be specified as [216543879]. However, this is considered less clear to the reader, and is discouraged in Section <a class="text-success undrln" href="syntax.html#mrf-section-2-orderedlist-1-7">B.7</a> below.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-6">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            6.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-6" aria-label="Show or hide details for item 6" title="Show or hide details for item 6"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">When needed, bracketed notation may be combined with each other and/or with standard <a class="text-success undrln" href="#place-notation">place notation</a> to define a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>.</div>
+                            <div class="mrf-para">Where more than one instance of bracketed and/or standard <a class="text-success undrln" href="#place-notation">place notation</a> are used to define a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>, there should be no overlap of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> ranges or individual Places. Furthermore, and following standard place notation convention, the various Place ranges and individual Places are ordered from lowest Place to highest Place.</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-6">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> (13)4(75) defines the Triples <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> that takes <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 1234567 to Row 2314756. Note that there is no overlap of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in the three sections of the notation.</div><div class="mrf-para text-danger">(14)(53) should not be used since the range of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in the second section (3-5) overlaps with the range of Places in the first section (1-4). This <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> is more clearly described as [23514].</div><div class="mrf-para text-danger">(24)[765]8 defines the Royal <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> that takes <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> 1234567890 to Row 1342765809. Again, there is no overlap of <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> ranges or individual Places in the notation.</div><div class="mrf-para text-danger">(24)8[765] and [765](24)8 are not correct notations because <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> ranges and individual Places are not ordered from lowest Place to highest Place. This <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> should be notated (24)[765]8.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-7">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            7.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-7" aria-label="Show or hide details for item 7" title="Show or hide details for item 7"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Dot notation is used to delineate separate <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a> in the same way as for standard <a class="text-success undrln" href="#place-notation">place notation</a>. Dots are only omitted before and after the cross <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>.</div>
+                            <div class="mrf-para">Also, as with standard <a class="text-success undrln" href="#place-notation">place notation</a>, internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> Made are always specified, even when these could be inferred.</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-7">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> (13)(64) defines a single <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>, whereas (13).(64) defines two Changes.</div><div class="mrf-para text-danger">(31)4[765] correctly defines a Triples <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>. Convention is to include the 4 since it's an internal <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> Made, even though it could be inferred.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-8">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            8.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-8" aria-label="Show or hide details for item 8" title="Show or hide details for item 8"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Where the same <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> can be represented in more than one way, it is preferable for the simplest form to be used, as follows, in order to make the Change's operation most apparent to the reader:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-lowerroman mrf-list-compact"><li><div class="mrf-para">Use standard <a class="text-success undrln" href="#place-notation">place notation</a> for all crosses and <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> Made where other bell(s) are not jumping over these bells;</div></li><li><div class="mrf-para">Use round-bracketed notation in preference to square bracketed notation where possible; and</div></li><li><div class="mrf-para">Separate square bracketed notation into the smallest sets of contiguous <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a>.</div></li></ol>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-8">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Use [432]7 rather than [432657];</div><div class="mrf-para text-danger">Use (25) rather than [3452];</div><div class="mrf-para text-danger">Use [432][765] rather than [432765];</div><div class="mrf-para text-danger">Use (24)5[876] rather than [3425876].</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-9">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            9.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-9" aria-label="Show or hide details for item 9" title="Show or hide details for item 9"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Adjacent and <a class="text-success undrln" href="fundamentals.html#changes-entry-7-identity-change">Identity Changes</a> are self-inverse, meaning that the same <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> applied twice in succession produces the starting <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. However this may not apply to <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a>. Therefore, when the comma notation described in Section A.7 above is used and Jump Changes are involved, not only are the Changes in ~A in reverse order, but any Jump Changes in A are inverted in ~A.</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-9">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Cambridge Treble Jump Minor has notation x3x(24)x2x(35)x4x5,2</div><div class="mrf-para text-danger">Expanding the comma notation gives x3x(24)x2x(35)x4x5x4x(53)x2x(42)x3x2</div><div class="mrf-para text-danger">Note that the <a class="text-success undrln" href="fundamentals.html#changes-entry-9-jump-change">Jump Changes</a> are inverted in the second half of the Lead.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-jumpchanges-orderedlist-3-10">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            10.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-jumpchanges-orderedlist-3-10" aria-label="Show or hide details for item 10" title="Show or hide details for item 10"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The comma notation described in Section A.7 above should not be used if the last <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> in the sequences on both sides of the comma are not self-inverse Changes. Such a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> would not have <a class="text-success undrln" href="classification.html#methodsymmetry-entry-19-palindromic-symmetry">Palindromic Symmetry</a>, and use of the comma notation would therefore be misleading. In this case, the sequence of Changes should be written in full, without the use of the comma notation.</div>
+                            <div class="collapse" id="detail-jumpchanges-orderedlist-3-10">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> The Minimus <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> with notation x14x(13)x14x12 appears to have the structure A, B, ~A, C, where A = x14x, B = (13) and C = 12.</div><div class="mrf-para text-danger">However, (13) is not a self-inverse <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>, and this <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is therefore not palindromic. The Method therefore should not be described using comma notation, and the full notation should be used.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="conditional-changes">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Conditional Changes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="conditional-notation" data-glossterm="Conditional Notation">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Conditional Notation
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A compact symbolic notation for a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> or a sequence of Changes that is applied only if a specified condition is met.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para"><a class="text-success undrln" href="#conditional-notation">Conditional notation</a> is used to describe <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>, and can also be used to represent some <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Methods</a> or rule-based <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Compositions</a> more concisely.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-3" aria-label="Show or hide details for item 3" title="Show or hide details for item 3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para"><a class="text-success undrln" href="#conditional-notation">Conditional notation</a> takes the form of a sequence of <i>alternative</i> clauses:</div>
+                            <div class="mrf-para"><code>placenotation{condition}placenotation{condition}…</code></div>
+                            <div class="mrf-para">Each clause consists of a <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> or sequence of Changes as described in Section A and/or B above, followed by a condition enclosed in braces {}. The alternative clauses are applied in sequence. When an alternative is reached, its <a class="text-success undrln" href="#place-notation">place notation</a> is applied, generating one or more new <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a>, and the final Row is then tested against its condition:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">If the condition is satisfied, the generated <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a> are retained and the sequence restarts from the beginning of the first clause;</div></li><li><div class="mrf-para">If the condition is not satisfied, the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a> are discarded and the next alternative in the sequence is applied in the same way.</div></li></ol>
+                            <div class="collapse" id="detail-conditional-changes-orderedlist-3-3">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Dixon's Minor: <code>-{h}12{1}14{2,4}16</code></div><div class="mrf-para text-danger">This means: cross (<code>-</code>) at every handstroke (<code>h</code>); whenever the treble leads (<code>{1}</code>), make 12; whenever either the 2 or the 4 is leading (<code>{2,4}</code>), make 14; otherwise make 16. The sequence restarts from the first alternative after each <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> that satisfies its condition.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-4">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            4.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A condition consists of one or more masks that are tested against the final <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> after the <a class="text-success undrln" href="#place-notation">place notation</a> is applied. A mask is a string of characters representing bells and wildcards, written in the order of the <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> they occupy.</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li>
+                                                        <span class="float-right">
+                                                            <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-4-2-1" aria-label="Show or hide details for item 1" title="Show or hide details for item 1"></a>
+                                                        </span><div class="mrf-para">Each bell character in the mask requires that exact bell to be in that <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> in the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. The wildcard <code>x</code> (lower-case) matches any bell in that Place.</div>
+                                                        <div class="collapse" id="detail-conditional-changes-orderedlist-3-4-2-1">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <code>{1}</code> is satisfied if the treble is leading; <code>{xxxxx1}</code> is satisfied if the treble is in 6th's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> (trailing).</div></div>
+                                                            <hr>
+                                                        </div></li><li>
+                                                        <span class="float-right">
+                                                            <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-4-2-2" aria-label="Show or hide details for item 2" title="Show or hide details for item 2"></a>
+                                                        </span><div class="mrf-para">More than one mask separated by commas can be included to represent an OR condition: the condition is satisfied if <i>any one</i> of the masks matches the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>.</div>
+                                                        <div class="collapse" id="detail-conditional-changes-orderedlist-3-4-2-2">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <code>{2,3}</code> is satisfied if the 2 or the 3 is in the first <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> of the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>; <code>{2,4}</code> is satisfied if the 2 or the 4 is leading.</div></div>
+                                                            <hr>
+                                                        </div></li><li><div class="mrf-para">Trailing wildcards at the end of a mask may be omitted for brevity. For example, <code>{1}</code> is equivalent to <code>{1xxxxx}</code> in a six-bell context and means "the treble is in first <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a>." The omitted trailing positions are assumed to match anything.</div></li><li>
+                                                        <span class="float-right">
+                                                            <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-4-2-4" aria-label="Show or hide details for item 4" title="Show or hide details for item 4"></a>
+                                                        </span><div class="mrf-para">A mask may be followed by <code>h</code> or <code>b</code> to require that the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> is at a handstroke or backstroke respectively. If no mask characters are given before the stroke indicator, the condition is satisfied at every matching stroke.</div>
+                                                        <div class="collapse" id="detail-conditional-changes-orderedlist-3-4-2-4">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> <code>{h}</code> is satisfied at every handstroke; <code>{b}</code> is satisfied at every backstroke; <code>{x1h}</code> is satisfied when the treble is in 2nd's <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Place</a> at a handstroke.</div></div>
+                                                            <hr>
+                                                        </div></li><li>
+                                                        <span class="float-right">
+                                                            <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-4-2-5" aria-label="Show or hide details for item 5" title="Show or hide details for item 5"></a>
+                                                        </span><div class="mrf-para">A mask may be followed by <code>+</code> or <code>-</code> to require that the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> parity is even (positive) or odd (negative) respectively i.e. whether an even or odd number of pairs of bells would need to be exchanged to obtain <a class="text-success undrln" href="fundamentals.html#rows-entry-4-rounds">Rounds</a>.</div>
+                                                        <div class="collapse" id="detail-conditional-changes-orderedlist-3-4-2-5">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> In Minor, <code>{xxxxx3-}</code> is satisfied when the 3 is behind and the <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a> parity is odd.</div></div>
+                                                            <hr>
+                                                        </div></li></ol>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-5">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            5.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-5" aria-label="Show or hide details for item 5" title="Show or hide details for item 5"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The alternative clauses are processed in the order written. When a later alternative would never be reached because an earlier one always satisfies its condition first, the later alternative is redundant. Conventionally, the most specific conditions should appear earliest in the sequence, with the least specific (or default) alternative last.</div>
+                            <div class="mrf-para">Each alternative's <a class="text-success undrln" href="#place-notation">place notation</a> may specify either a single <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> or a dot-separated sequence of Changes, using the conventions described in Sections A or B.</div>
+                            <div class="collapse" id="detail-conditional-changes-orderedlist-3-5">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> In Dixon's Minor <code>-{h}12{1}14{2,4}16</code>, the alternatives are ordered most-specific to least-specific: the handstroke cross first; then 12 when the treble leads; then 14 when 2 or 4 lead; and finally 16 as the default. A different ordering would produce an incorrect <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> because a more general alternative might match before a more specific one.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-6">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            6.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-conditional-changes-orderedlist-3-6" aria-label="Show or hide details for item 6" title="Show or hide details for item 6"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para"><a class="text-success undrln" href="#conditional-notation">Conditional Notation</a> is designed primarily to define <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a>, where the choice of <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a> depends on the position of Bells in a preceding <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>. However, the same mechanism can also express some <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Methods</a> or rule-based <a class="text-success undrln" href="fundamentals.html#compositions-entry-19-composition">Compositions</a> more concisely when <a class="text-success undrln" href="fundamentals.html#blocks-entry-10-block">Blocks</a> of Changes are repeated.</div>
+                            <div class="collapse" id="detail-conditional-changes-orderedlist-3-6">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="text-danger mrf-para"><b>Example:</b></div><div class="text-danger"><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">Plain Bob Sixteen can be expressed as <code>-{h}12{1}1D</code>.</div><div class="mrf-para">Cross at every handstroke; <a class="text-success undrln" href="#place-notation">Place Notation</a> 12 when the treble leads; at all other <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">rows</a>, use Place Notation 1D.</div></li><li><div class="mrf-para">The wrong-home-wrong calling for a 720 of Plain Bob Minor can be expressed as <code>-{h}1234{12xx56}14{1xxx6,1x5xx6}12{1}16</code>.</div><div class="mrf-para">Cross at every handstroke; A single (1234) at a <a class="text-success undrln" href="classification.html#definitions-entry-11-leadend">leadend</a> when all the bells apart from 3-4 are home; A bob (14) at a leadend when the tenor is in 5ths, or 6ths <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">place</a> with the 5 running out; Seconds (12) at a leadend when the treble leads; at all other <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">rows</a>, plain <a class="text-success undrln" href="classification.html#definitions-entry-7-hunting">hunt</a> (16).</div></li></ol></div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-7">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            7.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The condition mechanism is intended to be implementation-neutral. A computer-based ringing simulator implementing <a class="text-success undrln" href="#conditional-notation">Conditional Notation</a> should discard generated <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Rows</a> when a condition fails and proceed to test the next alternative. In human-readable terms, the notation describes the rule by which the conductor or ringer would determine which <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Change</a>(s) to ring by anticipating the final Row generated. In practice, <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a> need to be sufficiently simple and explained clearly to ringers — usually as a textual description — to make it easy to follow the logic represented by the Conditional Notation.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-8">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            8.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">It should be noted that the same <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Method</a> can be expressed in multiple ways using <a class="text-success undrln" href="#conditional-notation">Conditional Notation</a>, so it cannot be used as a test of uniqueness.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-9">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            9.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The following table lists the Condition <a class="text-success undrln" href="#place-notation">Place Notation</a> for some <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a> that have been rung:</div>
+                            <div class="table-responsive"><table class="table table-sm table-bordered mrf-table">
+                            <thead>
+                            <tr><th><b><a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Method</a></b></th><th><b><a class="text-success undrln" href="#conditional-notation">Conditional Notation</a></b></th><th><b>Description</b></th></tr>
+                            </thead>
+                            <tbody>
+                            <tr><td>Dixon's Minor</td><td><code>-{h}12{1}14{2,4}16</code></td><td>Plain Bob Minor with 14 being rung instead of 16 whenever 2 or 4 are leading.</td></tr>
+                            <tr><td>Reverse Dixon's Minor</td><td><code>-{h}56{xxxxx1}36{xxxxx5,xxxxx6}16</code></td><td>Reverse Bob Minor with 36 rung instead of 16 whenever 5 or 6 lie behind.</td></tr>
+                            <tr><td>Oxford Badger Minor</td><td><code>-{h}12{1}1456{2xxxxx1,3xxxxx1}14{2,3}16</code></td><td>Plain Bob Minor with 14 replacing 16 whenever 2 or 3 are leading, unless the treble is in 56 in which case 1456 replaces 16.</td></tr>
+                            <tr><td>Monster Major</td><td><code>-{h}12{1}16{2,3,4}18</code></td><td>Plain Bob Major with 16 rung instead of 18 whenever 2, 3 or 4 are leading.</td></tr>
+                            <tr><td>Dixon's Doubles</td><td><code>5{h}125{1}145{2,4}1</code></td><td>Plain Bob Doubles with 145 rung instead of 1 whenever 2 or 4 are leading.</td></tr>
+                            </tbody></table></div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-conditional-changes-orderedlist-3-10">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            10.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The following <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Methods</a> have been described in theory but have not yet been rung or formally named:</div>
+                            <div class="table-responsive"><table class="table table-sm table-bordered mrf-table">
+                            <thead>
+                            <tr><th><b><a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Method</a></b></th><th><b><a class="text-success undrln" href="#conditional-notation">Conditional Notation</a></b></th><th><b>Description</b></th></tr>
+                            </thead>
+                            <tbody>
+                            <tr><td>Dixon's Grandsire Minor</td><td><code>36{x1h}-{h}14{2,4}16</code></td><td>Grandsire with 14 rung instead of 16 whenever 2 or 4 are leading.</td></tr>
+                            <tr><td>Dixon's Grandsire Doubles</td><td><code>3{x1h}5{h}145{2,4}1</code></td><td>Grandsire with 145 rung instead of 1 whenever 2 or 4 are leading.</td></tr>
+                            <tr><td>Ander's Monster Major</td><td><code>-{h}12{1}14{2,4,6}16{7}18</code></td><td>12 made when 1 leads; 14 made when 2, 4 or 6 lead; 16 made when 7 leads. The <a class="text-success undrln" href="fundamentals.html#methods-entry-16-plain-course">plain course</a> is 5580 <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">changes</a>.</td></tr>
+                            <tr><td>Pseudo-double Dixon's Minor</td><td><code>-{h}36{xxxxx3-,xxxxx5-}56{xxxxx1-}14{2+,4+}12{1+}16</code></td><td>Reverse Dixon's when negative; Dixon's when positive. Condition selects between the two patterns on the same <a class="text-success undrln" href="fundamentals.html#rows-entry-3-row">Row</a>-parity basis that distinguishes Reverse Dixon's from Dixon's.</td></tr>
+                            <tr><td>Treble Bob Dixonoid Minor</td><td><code>-12-{xx1h,xxx1h}-34-{h}36{1xxxx6,x1xxx6,xx1xx6}14{5xx1,5xxx1,5xxxx1,6xx1,6xxx1,6xxxx1}16</code></td><td>Treble treble-bob hunts. <a class="text-success undrln" href="fundamentals.html#rows-entry-5-place">Places</a> in 34 unless the treble is in 34 (then places in 12). If the treble is in 456, places in 14 when 5 or 6 is leading. If the treble is in 123, places in 36 when 6 is behind. Otherwise places in 16.</td></tr>
+                            </tbody></table></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="../mrf.js"></script>
+</body>
+</html>

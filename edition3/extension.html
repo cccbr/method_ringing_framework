@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns/#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Method Extension (draft edition 3)">
+    <meta name="author" content="CCCBR">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
+    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CCCBR">
+    <meta property="og:title" content="CCCBR - Framework for Method Ringing">
+    <meta property="og:description" content="Method Extension (draft edition 3)">
+    <meta property="og:image" content="https://cccbr.org.uk/wp-content/uploads/2017/02/CCCBR_Logo_col_rev.jpg">
+    <meta property="og:url" content="https://cccbr.org.uk/extension.html">
+    <title>Framework for Method Ringing - Method Extension</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../mrf.css" rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@id": "https://cccbr.org.uk/#publisher",
+                    "@type": "Organization",
+                    "name": "CCCBR",
+                    "url": "https://cccbr.org.uk/"
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html",
+                    "@type": "CreativeWork",
+                    "name": "Method Extension",
+                    "url": "https://cccbr.org.uk/extension.html",
+                    "description": "Method Extension (draft edition 3)",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "version": "Edition 3",
+                    "isBasedOn": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    }
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html#definitions-entry-1-extension-process",
+                    "@type": "DefinedTerm",
+                    "name": "Extension Process",
+                    "url": "https://cccbr.org.uk/extension.html#definitions-entry-1-extension-process",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Extension Processes"
+                    ],
+                    "termCode": "A.1",
+                    "description": "An algorithm that can be applied to the structure of a Method at one Stage to produce the structure of Methods at higher Stages. The Central Council maintains a collection of recognised Extension Processes. References in the Framework to 'Extension Process' are to those processes that are part of the Central Council's collection."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html#definitions-entry-2-extension-construction",
+                    "@type": "DefinedTerm",
+                    "name": "Extension Construction",
+                    "url": "https://cccbr.org.uk/extension.html#definitions-entry-2-extension-construction",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Extension Constructions"
+                    ],
+                    "termCode": "A.2",
+                    "description": "Some Extension Processes involve setting parameters, such as a mode or the subset of a Method's Changes to be copied. An Extension Construction specifies a fully qualified Extension Process -- that is, it specifies an Extension Process and the parameter values to be used."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html#definitions-entry-3-related-methods",
+                    "@type": "DefinedTerm",
+                    "name": "Related Methods",
+                    "url": "https://cccbr.org.uk/extension.html#definitions-entry-3-related-methods",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Related Method"
+                    ],
+                    "termCode": "A.3",
+                    "description": "Two Methods at two different Stages are Related Methods if the higher Stage Method can be obtained by applying an Extension Process to the lower Stage Method."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html#definitions-entry-4-parent-method",
+                    "@type": "DefinedTerm",
+                    "name": "Parent Method",
+                    "url": "https://cccbr.org.uk/extension.html#definitions-entry-4-parent-method",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Parent Methods"
+                    ],
+                    "termCode": "A.4",
+                    "description": "A Method at a given Stage from which it may be possible to derive Related Methods at higher Stages using an Extension Process."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html#definitions-entry-5-extension",
+                    "@type": "DefinedTerm",
+                    "name": "Extension",
+                    "url": "https://cccbr.org.uk/extension.html#definitions-entry-5-extension",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Extensions"
+                    ],
+                    "termCode": "A.5",
+                    "description": "A Method at a higher Stage than a Parent Method that is related to the Parent Method by an Extension Process."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/extension.html#definitions-entry-6-extension-path",
+                    "@type": "DefinedTerm",
+                    "name": "Extension Path",
+                    "url": "https://cccbr.org.uk/extension.html#definitions-entry-6-extension-path",
+                    "inDefinedTermSet": {
+                        "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3"
+                    },
+                    "alternateName": [
+                        "Extension Paths"
+                    ],
+                    "termCode": "A.6",
+                    "description": "When two Related Methods that have the same Class Descriptor have been given the same Method Name, this establishes an Extension Path for these Methods. Additional Methods at new Stages with the same Class Descriptor that are related to these existing Methods by the same Extension Construction are on this Extension Path."
+                },
+                {
+                    "@id": "https://cccbr.org.uk/edition3/index.html#defined-term-set-edition-3",
+                    "@type": "DefinedTermSet",
+                    "name": "Framework for Method Ringing Edition 3",
+                    "url": "https://cccbr.org.uk/edition3/index.html",
+                    "publisher": {
+                        "@id": "https://cccbr.org.uk/#publisher"
+                    },
+                    "isPartOf": {
+                        "@id": "https://cccbr.org.uk/extension.html"
+                    },
+                    "version": "Edition 3",
+                    "hasDefinedTerm": [
+                        {
+                            "@id": "https://cccbr.org.uk/extension.html#definitions-entry-1-extension-process"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/extension.html#definitions-entry-2-extension-construction"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/extension.html#definitions-entry-3-related-methods"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/extension.html#definitions-entry-4-parent-method"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/extension.html#definitions-entry-5-extension"
+                        },
+                        {
+                            "@id": "https://cccbr.org.uk/extension.html#definitions-entry-6-extension-path"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cccbr">
+            <a class="navbar-brand" href="index.html">Framework for Method Ringing     </a>
+            <a class="navbar-brand" href="https://cccbr.org.uk/"><img src="../images/cc-header.png" height="60" alt="CCCBR">     </a>
+                        <div class="dropdown ml-2">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="versionSwitcher" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Draft - Edition 3 (unapproved)
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="versionSwitcher">
+                                <a class="dropdown-item" href="../edition2/index.html">Latest Approved - Edition 2 (approved 26 Jan 2022)</a>
+                                <a class="dropdown-item" href="../edition1/index.html">Superseded - Edition 1 (24 Feb 2019 - 25 Jan 2022)</a>
+                                <a class="dropdown-item active" href="index.html">Draft - Edition 3 (unapproved) <span class="sr-only">(current)</span></a>
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid collapse-group">
+        <div class="row">
+            <nav class="col-sm-3 col-xl-2 d-none d-sm-block bg-light sidebar">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">1. Introduction</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="editions.html">2. Editions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="fundamentals.html">3. Fundamentals of Method Ringing</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="classification.html">4. Method Classification</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="naming.html">5. Method Naming</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="reporting.html">6. Performance Reporting</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="recordlengths.html">7. Record Lengths</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="extension.html">8. Method Extension</a>
+                                        <ul class="nav nav-pills flex-column nav-subsection">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#definitions">A. Definitions</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#requirements">B. Requirements</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#newextensionprocesses">C. New Extension Processes</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#exceptions">D. Exceptions</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="relatedroles.html">9. Related Roles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <br>    <u>Appendices</u><br>
+                                        <a class="nav-link" href="placenotation.html">A. Place Notation</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="syntax.html">B. Method Name Syntax</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="leadheadcodes.html">C. Leadhead Codes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="extensionprocesses.html">D. Extension Processes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="falsecourseheads.html">E. False Courseheads</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="principles.html">F. Framework Principles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="development.html">G. Edition 3 Development</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="consultation.html">H. Edition 3 Consultation</a>
+                                    </li>
+                                </ul>
+                <div class="btn-navbar">
+                    <button class="btn btn-sm btn-block btn-success open-button" type="button">Show all notes</button>
+                    <div class="text-success"><small>Click + to show a note.</small></div>
+                    <button class="btn btn-sm btn-block btn-success close-button" type="button">Hide all notes</button>
+                </div>
+            </nav>
+
+            <main role="main" class="col-sm-9 ml-sm-auto col-xl-10 pt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>8. Method Extension</h2>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="definitions">
+                        <div class="col-sm-1">
+                            <h5>A.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Definitions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-1-extension-process" data-glossterm="Extension Process">
+                        <div class="col-sm-1">
+                            1.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extension Process
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-1-extension-process" aria-label="Show or hide details for Extension Process" title="Show or hide details for Extension Process"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">An algorithm that can be applied to the structure of a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> at one <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> to produce the structure of Methods at higher Stages. The Central Council maintains a collection of recognised <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Processes</a>. References in the Framework to 'Extension Process' are to those processes that are part of the Central Council's collection.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-1-extension-process">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> The Central Council's collection of recognised <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Processes</a> can be found in <a class="text-success undrln" href="extensionprocesses.html">Appendix D</a>.</div><div class="mrf-para text-primary">In the case of a <a class="text-success undrln" href="fundamentals.html#methods-entry-13-static-method">Static Method</a>, the structure of the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> is its <a class="text-success undrln" href="placenotation.html#place-notation">place notation</a>. In the case of a <a class="text-success undrln" href="fundamentals.html#methods-entry-14-dynamic-method">Dynamic Method</a>, the structure of the Method is the set of rules used to generate its place notation.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-2-extension-construction" data-glossterm="Extension Construction">
+                        <div class="col-sm-1">
+                            2.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extension Construction
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-2-extension-construction" aria-label="Show or hide details for Extension Construction" title="Show or hide details for Extension Construction"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Some <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Processes</a> involve setting parameters, such as a <span class="mrf-nolink">mode</span> or the subset of a <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>'s <a class="text-success undrln" href="fundamentals.html#changes-entry-6-change">Changes</a> to be copied. An Extension Construction specifies a fully qualified Extension Process -- that is, it specifies an Extension Process and the parameter values to be used.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-2-extension-construction">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> EP3-2CD/2DE</div></div>
+                                                            <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> An Extension Construction starts with 'EP' followed by the number of the <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a> in the Central Council's collection of recognised Extension Processes. EP3 usually requires 4 parameters, so an EP3 Extension Construction includes these. The first number is the <span class="mrf-nolink">mode</span> above the treble, and the letters following the number are the sections to be copied above the treble. Following the slash is the <span class="mrf-nolink">mode</span> below the treble, followed by the sections to be copied below the treble.</div><div class="mrf-para text-primary">The format of an Extension Construction is defined as part of the specification of the corresponding <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a> (see <a class="text-success undrln" href="extensionprocesses.html">Appendix D</a>).</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-3-related-methods" data-glossterm="Related Methods">
+                        <div class="col-sm-1">
+                            3.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Related Methods
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">Two <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> at two different <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stages</a> are Related Methods if the higher Stage Method can be obtained by applying an <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a> to the lower Stage Method.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-4-parent-method" data-glossterm="Parent Method">
+                        <div class="col-sm-1">
+                            4.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Parent Method
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> at a given <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> from which it may be possible to derive <a class="text-success undrln" href="#definitions-entry-3-related-methods">Related Methods</a> at higher Stages using an <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-5-extension" data-glossterm="Extension">
+                        <div class="col-sm-1">
+                            5.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extension
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> at a higher <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> than a <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Method</a> that is related to the Parent Method by an <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a>.</div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mrf-glossary-row" id="definitions-entry-6-extension-path" data-glossterm="Extension Path">
+                        <div class="col-sm-1">
+                            6.
+                        </div>
+                        <div class="col-xl-2 col-sm-3">
+                            Extension Path
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-definitions-entry-6-extension-path" aria-label="Show or hide details for Extension Path" title="Show or hide details for Extension Path"></a>
+                            </span>
+                        </div>
+                        <div class="col-xl-9 col-sm-8">
+                            <div class="mrf-para">When two <a class="text-success undrln" href="#definitions-entry-3-related-methods">Related Methods</a> that have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> have been given the same <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a>, this establishes an Extension Path for these <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a>. Additional Methods at new <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stages</a> with the same Class Descriptor that are related to these existing Methods by the same <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a> are on this Extension Path.</div>
+                            
+                                                        <div class="collapse" id="detail-definitions-entry-6-extension-path">
+                                                            <hr>
+                                                            <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Cambridge Surprise Minor and Cambridge Surprise Major are related by <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a> EP3-1AB/1DE, have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> ('Surprise'), and have been given the same <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a>. An Extension Path for these <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> has therefore been established.</div></div>
+                                                            <hr>
+                                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="requirements">
+                        <div class="col-sm-1">
+                            <h5>B.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Requirements</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-requirements-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-requirements-orderedlist-2-1" aria-label="Show or hide details for item 1" title="Show or hide details for item 1"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para"><a class="text-success undrln" href="#definitions-entry-3-related-methods">Related Methods</a> with the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> may be given the same <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a> if the requirements of this <a class="text-success undrln" href="extension.html">Section 8</a>, as well as <a class="text-success undrln" href="naming.html">Section 5</a> (<a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> Naming), have been met.</div>
+                            <div class="mrf-para"><a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> with the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> that are not Related may not be given the same <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a>.</div>
+                            <div class="collapse" id="detail-requirements-orderedlist-2-1">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Yorkshire Surprise Royal is related to Yorkshire Surprise Major by <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a> EP3-1AB/1FG, and they both have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> ('Surprise'). These <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> may therefore be given the same <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a> (as has been done).</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> A given <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Method</a> can often be extended to a number of different <a class="text-success undrln" href="#definitions-entry-5-extension">Extensions</a> using different <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Constructions</a>. It is left to <span class="mrf-nolink">bands</span> ringing new Extensions to decide which Extension (if any) they wish to name the same as the Parent Method.</div><div class="mrf-para text-primary">Similarly, two or more different <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Methods</a> may extend, using different <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Constructions</a>, to the same <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a>. Likewise, it is left to the <span class="mrf-nolink">band</span> ringing the new Extension to decide which Parent Method name (if any) they wish to give to the Extension.</div><div class="mrf-para text-primary">Note that <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Processes</a> often only apply to <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Methods</a> with a certain structure. If there is not an Extension Process that can be applied to a given Parent Method, a higher <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> with the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> may not be given the same name as the Parent Method.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-requirements-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-requirements-orderedlist-2-2" aria-label="Show or hide details for item 2" title="Show or hide details for item 2"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Once an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> has been established for two <a class="text-success undrln" href="#definitions-entry-3-related-methods">Related Methods</a> with the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> then:</div>
+                            <ol class="mrf-list mrf-list-level-1 mrf-loweralpha mrf-list-compact"><li><div class="mrf-para">New <a class="text-success undrln" href="#definitions-entry-5-extension">Extensions</a> of these <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> created using the same <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a>, and which have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, shall be given the same <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a>; and</div></li><li><div class="mrf-para">A new <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> at a different <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> with the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> that is not on the <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> shall not be given the same Name.</div></li></ol>
+                            <div class="collapse" id="detail-requirements-orderedlist-2-2">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> Yorkshire Surprise Royal is an <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> of <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Method</a> Yorkshire Surprise Major, they both have the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> ('Surprise'), and they have been given the same Name, establishing an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a>.</div><div class="mrf-para text-danger">When the same <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a> is applied to Yorkshire Surprise Major to obtain a Maximus <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a>, if the resulting Maximus Method has the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, it must be given the name Yorkshire because the new Method is on the <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a>. (The resulting Maximus Method in this example is a <a class="text-success undrln" href="classification.html#onehuntbell-entry-31-surprise-method">Surprise Method</a>, and so it has been named Yorkshire, giving Yorkshire Surprise Maximus.)</div><div class="mrf-para text-danger">Southwark Surprise Maximus is also an <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> of Yorkshire Surprise Major by a different <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a>. Since an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> has already been established by the naming of Yorkshire Surprise Royal, Southwark Surprise Maximus could not have been named Yorkshire, even if the <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> now known as Yorkshire Surprise Maximus had not already been named. Southwark, although related and having the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a>, is off the Extension Path.</div></div>
+                                <div class="mrf-detail-group mrf-detail-group-further-explanation"><div class="mrf-para text-primary"><b>Further explanation:</b> Note that an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> also applies to lower <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a>. For example, if Cambridge Surprise Major and Cambridge Surprise Royal established an Extension Path, since there's a Surprise Minor Method that extends using the same <a class="text-success undrln" href="#definitions-entry-2-extension-construction">Extension Construction</a> to give Cambridge Surprise Major, this Surprise Minor Method is on the Extension Path and so is also named Cambridge.</div><div class="mrf-para text-primary">It is possible that a new <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> may be on two or more existing <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Paths</a>. In this case, the <a class="text-success undrln" href="naming.html#general-entry-2-method-name">Method Name</a> from any of the Extension Paths may be used for the new Method.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-requirements-orderedlist-2-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-requirements-orderedlist-2-3" aria-label="Show or hide details for item 3" title="Show or hide details for item 3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">There are no <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> naming restrictions per se between two <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> that have different <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptors</a>. However, when a new Extension is produced that has a different Class Descriptor from its <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Method</a>, the new Extension may only be given the same name as its Parent Method if this doesn't conflict with Sections <a class="text-success undrln" href="#mrf-requirements-orderedlist-2-1">8.B.1</a> and <a class="text-success undrln" href="#mrf-requirements-orderedlist-2-2">8.B.2</a> above as they relate to the Class Descriptor of the new Extension.</div>
+                            <div class="collapse" id="detail-requirements-orderedlist-2-3">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> A <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> designer extends Beverley Surprise Minor with an <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a> and the resulting <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> is a Delight Royal Method. Since the Extension has a different <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> from the <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Method</a>, a <span class="mrf-nolink">band</span> ringing the new Delight Royal Method may choose to name it Beverley, or give it a different name. However, the <span class="mrf-nolink">band</span> may not name the new Method Beverley if</div><div class="text-danger"><ol class="mrf-list mrf-list-level-1 mrf-list-compact"><li><div class="mrf-para">there is already a Beverley <a class="text-success undrln" href="classification.html#onehuntbell-entry-32-delight-method">Delight Method</a> at a different <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> to which the new <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> is not related, or</div></li><li><div class="mrf-para">there is already an established <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> for Beverley Delight, and the new <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> is not on this Extension Path.</div></li></ol></div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="newextensionprocesses">
+                        <div class="col-sm-1">
+                            <h5>C.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">New Extension Processes</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-newextensionprocesses-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">A <span class="mrf-nolink">band</span> that wishes to use a different <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a> from those included in the Central Council's collection to create a new <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> is invited to submit the proposed process to the Central Council for review.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-newextensionprocesses-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">The Central Council will add the new <a class="text-success undrln" href="#definitions-entry-1-extension-process">Extension Process</a> to its collection of recognised Extension Processes if it believes it is a valid process.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-heading-row" id="exceptions">
+                        <div class="col-sm-1">
+                            <h5>D.</h5>
+                        </div>
+                        <div class="col-sm-11">
+                            <h5 class="border-bottom">Exceptions</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-exceptions-orderedlist-2-1">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            1.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">Many higher <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stage</a> <span class="mrf-nolink">methods</span> were named and recorded in the <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> before the Central Council implemented requirements for <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a>. All such Methods retain their existing names, and the <span class="mrf-nolink">extension</span> requirements of the Framework only apply to new Methods.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-exceptions-orderedlist-2-2">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            2.
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">If a new <a class="text-success undrln" href="#definitions-entry-5-extension">Extension</a> that is on an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> ought, under <a class="text-success undrln" href="#requirements">Section 8.B</a>, to be given the same name as its <a class="text-success undrln" href="#definitions-entry-4-parent-method">Parent Method</a>, but that name has already been used for a different <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Method</a> recorded in the <a class="text-success undrln" href="naming.html#general-entry-1-methods-library">Methods Library</a> before the Central Council implemented requirements for Method Extension, then another name can be given to the new Extension.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mrf-numbered-item mrf-numbered-level-0" id="mrf-exceptions-orderedlist-2-3">
+                        <div class="col-sm-1 mrf-numbered-marker">
+                            3.
+                            <span class="float-right">
+                                <a class="text-success more collapsed" data-toggle="collapse" href="#detail-exceptions-orderedlist-2-3" aria-label="Show or hide details for item 3" title="Show or hide details for item 3"></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-11 mrf-numbered-content">
+                            <div class="mrf-para">If two (or more) <a class="text-success undrln" href="fundamentals.html#methods-entry-12-method">Methods</a> with the same <a class="text-success undrln" href="naming.html#classdescriptors-entry-5-class-descriptor">Class Descriptor</a> that are not related under the Framework have previously been given the same name, and none forms part of an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> with other Method(s), then any of the Methods may be used to establish an Extension Path to other <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stages</a>.</div>
+                            <div class="collapse" id="detail-exceptions-orderedlist-2-3">
+                                <hr>
+                                <div class="mrf-detail-group mrf-detail-group-example"><div class="mrf-para text-danger"><b>Example:</b> If X Bob Major and X Bob Royal are named but not related, a Maximus <a class="text-success undrln" href="classification.html#onehuntbell-entry-28-bob-method">Bob Method</a> that is related to either X Bob Major or X Bob Royal could be named X, thereby establishing an <a class="text-success undrln" href="#definitions-entry-6-extension-path">Extension Path</a> for X Bob at all other <a class="text-success undrln" href="fundamentals.html#stages-entry-1-stage">Stages</a>.</div></div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="../mrf.js"></script>
+</body>
+</html>
