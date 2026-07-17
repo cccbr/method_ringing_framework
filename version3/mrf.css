@@ -227,7 +227,14 @@ a {
     margin-bottom: 0.75rem;
 }
 
-.mrf-numbered-content > .mrf-para:last-child,
+.mrf-numbered-content > .mrf-para {
+    margin-bottom: 0;
+}
+
+.mrf-numbered-content > .mrf-para + .mrf-para {
+    margin-top: 0.75rem;
+}
+
 .mrf-list-item > .mrf-para:last-child,
 .mrf-detail-group > .mrf-para:last-child {
     margin-bottom: 0;

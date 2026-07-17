@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import re
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 
 from lxml import etree
@@ -368,8 +369,13 @@ def generate_master_tex(
     metadata = extract_metadata_from_xml(Path(xml_dir)) if xml_dir else {}
     edition = metadata.get("edition", "1")
     authority = metadata.get("authority", "CCCBR")
+    status = metadata.get("status", "")
     implementation_date = metadata.get("implementation_date", "")
+    if not implementation_date and status == "draft":
+        implementation_date = f"Draft on {date.today().strftime('%B %d, %Y')}"
     edition_text = f"Edition {edition}"
+    if status == "draft":
+        edition_text = f"Draft Edition {edition}"
     cover_title, cover_suffix = build_cover_lines(volume_name)
     contents = build_contents_page(content_documents)
     includes = build_includes(content_documents)
