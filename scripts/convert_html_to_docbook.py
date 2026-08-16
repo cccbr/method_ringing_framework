@@ -1528,7 +1528,7 @@ def add_child_blocks(
         ]
         if not block_children:
             synthetic = BeautifulSoup("", "lxml").new_tag("div")
-            for child in container.children:
+            for child in list(container.children):
                 synthetic.append(child)
             add_paragraph(
                 synthetic,

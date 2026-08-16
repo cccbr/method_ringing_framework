@@ -20,31 +20,31 @@
         <para>Methods with Plain Bob leadheads are split into different <nolink>leadhead</nolink> groups according to the place notation (where n is the Stage) immediately before the <nolink>leadhead</nolink> as follows:</para>
         <itemizedlist>
           <listitem>
-            <para>Those with Stages and a <nolink>lead end</nolink> place notation of have codes a-f</para>
+            <para>Those with <emphasis role="italic">even</emphasis> Stages and a <nolink>lead end</nolink> place notation of <emphasis role="italic">12</emphasis> have codes a-f</para>
           </listitem>
           <listitem>
-            <para>Those with Stages and a <nolink>lead end</nolink> place notation of have codes g-m</para>
+            <para>Those with <emphasis role="italic">even</emphasis> Stages and a <nolink>lead end</nolink> place notation of <emphasis role="italic">1n</emphasis> have codes g-m</para>
           </listitem>
           <listitem>
-            <para>Those with Stages and a <nolink>lead end</nolink> place notation of have codes p-q</para>
+            <para>Those with <emphasis role="italic">odd</emphasis> Stages and a <nolink>lead end</nolink> place notation of <emphasis role="italic">12n</emphasis> have codes p-q</para>
           </listitem>
           <listitem>
-            <para>Those with Stages and a <nolink>lead end</nolink> place notation of have codes r-s</para>
+            <para>Those with <emphasis role="italic">odd</emphasis> Stages and a <nolink>lead end</nolink> place notation of <emphasis role="italic">1</emphasis> have codes r-s</para>
           </listitem>
         </itemizedlist>
         <para>Methods with Grandsire <nolink>leadheads</nolink> are split into different <nolink>leadhead</nolink> groups according to the place notation (where n is the Stage) immediately after the <nolink>leadhead</nolink> as follows:</para>
         <itemizedlist>
           <listitem>
-            <para>Those with Stages and a place notation of following the <nolink>leadhead</nolink> have codes a-f</para>
+            <para>Those with <emphasis role="italic">odd</emphasis> Stages and a place notation of <emphasis role="italic">3</emphasis> following the <nolink>leadhead</nolink> have codes a-f</para>
           </listitem>
           <listitem>
-            <para>Those with Stages and a place notation of following the <nolink>leadhead</nolink> have codes g-m</para>
+            <para>Those with <emphasis role="italic">odd</emphasis> Stages and a place notation of <emphasis role="italic">n</emphasis> following the <nolink>leadhead</nolink> have codes g-m</para>
           </listitem>
           <listitem>
-            <para>Those with Stages and a place notation of following the <nolink>leadhead</nolink> have codes p-q</para>
+            <para>Those with <emphasis role="italic">even</emphasis> Stages and a place notation of <emphasis role="italic">3n</emphasis> following the <nolink>leadhead</nolink> have codes p-q</para>
           </listitem>
           <listitem>
-            <para>Those with Stages and a place notation of following the <nolink>leadhead</nolink> have codes r-s</para>
+            <para>Those with <emphasis role="italic">even</emphasis> Stages and a place notation of <emphasis role="italic">-</emphasis> following the <nolink>leadhead</nolink> have codes r-s</para>
           </listitem>
         </itemizedlist>
         <para>Any <nolink>methods</nolink> not falling in the above groupings are not given a <nolink>leadhead</nolink> code even if they have Plain Bob or Grandsire <nolink>leadheads</nolink>.</para>
