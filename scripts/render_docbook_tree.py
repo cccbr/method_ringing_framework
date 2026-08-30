@@ -196,6 +196,22 @@ def stage_latex_assets(version: str, article: etree._Element, version_xml_dir: P
         copy_if_stale(source, destination)
 
 
+def stage_html_content_assets(version: str, article: etree._Element, version_xml_dir: Path, html_dir: Path) -> None:
+    """Copy non-HTML content files referenced by <link>/<ulink> into the rendered page directory."""
+    for node in article.findall(".//db:link", NS) + article.findall(".//db:ulink", NS):
+        href = (node.get(f"{{{NS['xlink']}}}href") or node.get("url") or "").strip()
+        if not href or href.startswith(("http://", "https://", "mailto:", "#", "../", "./", "/", "images/")):
+            continue
+        if href.lower().endswith(".html"):
+            continue
+
+        source = resolve_asset_path(href, version, version_xml_dir)
+        if source is None:
+            print(f"  Warning: linked content file not found for '{href}'", file=sys.stderr)
+            continue
+        copy_if_stale(source, html_dir / Path(href))
+
+
 def read_version_metadata(version_id: str, version_xml_dir: Path) -> VersionMetadata:
     index_xml = version_xml_dir / "index.xml"
     if not index_xml.exists():
@@ -409,11 +425,11 @@ def build_schema_version_context(
     return SchemaVersionContext(
         edition_label=current_meta.edition_label,
         status=current_meta.status,
-        version_url=f"https://cccbr.org.uk/{edition_output_dir(current_version)}/index.html",
+        version_url=f"https://framework.cccbr.org.uk/{edition_output_dir(current_version)}/index.html",
         approval_date=current_meta.approval_date,
         superseded_by_label=successor.edition_label if successor is not None else None,
         superseded_by_url=(
-            f"https://cccbr.org.uk/{edition_output_dir(successor.version_id)}/index.html"
+            f"https://framework.cccbr.org.uk/{edition_output_dir(successor.version_id)}/index.html"
             if successor is not None
             else None
         ),
@@ -619,6 +635,7 @@ def render_version(
                 cross_reference_links=cross_reference_links,
             )
             html_output.write_text(html_text, encoding="utf-8", newline="\n")
+            stage_html_content_assets(version, article, version_xml_dir, html_dir)
 
             # LaTeX output (skip when html_only so PDF build owns this step)
             if not html_only:

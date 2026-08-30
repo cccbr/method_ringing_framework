@@ -144,7 +144,11 @@ def render_inline(node: etree._Element, asset_prefix: str) -> str:
             or node.get("href")
             or "#"
         )
-        href = qualify_href(href, asset_prefix)
+        # Bare hrefs starting with "images/" refer to site-root assets (PDFs,
+        # images) that need the asset prefix. All other bare hrefs (sibling pages,
+        # files staged next to the page) stay relative to the page directory.
+        if href.startswith("images/"):
+            href = qualify_href(href, asset_prefix)
         return f'<a class="text-success undrln" href="{html.escape(href, quote=True)}">{body or html.escape(href)}</a>'
 
     if name == "nolink":
@@ -1608,9 +1612,7 @@ def build_html(
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{html.escape(description, quote=True)}">
     <meta name="author" content="CCCBR">
-    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-45x45.jpg" sizes="32x32">
-    <link rel="icon" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-250x250.jpg" sizes="192x192">
-    <link rel="apple-touch-icon-precomposed" href="https://cccbr.org.uk/wp-content/uploads/2016/05/cropped-icon-180x180.jpg">
+    <link rel="icon" href="https://cccbr.org.uk/favicon.ico">
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="CCCBR">
     <meta property="og:title" content="CCCBR - Framework for Method Ringing">
@@ -1671,7 +1673,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Convert DocBook XML back into HTML.")
     parser.add_argument("input", help="Path to the input DocBook XML file")
     parser.add_argument("output", help="Path to the output HTML file")
-    parser.add_argument("--asset-prefix", default="", help="Prefix to prepend to local site assets and relative links")
+    parser.add_argument("--asset-prefix", default="", help="Prefix to prepend to local site assets (images, css, js)")
     parser.add_argument("--page-href", default=None, help="Sidebar link for the active page")
     parser.add_argument("--switch-version-href", default="../index.html", help="Link used by the [Switch version] control")
     return parser.parse_args()
