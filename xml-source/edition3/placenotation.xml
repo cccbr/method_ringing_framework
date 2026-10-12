@@ -284,6 +284,16 @@
             <para>In Dixon's Minor <literal>-{h}12{1}14{2,4}16</literal>, the alternatives are ordered most-specific to least-specific: the handstroke cross first; then 12 when the treble leads; then 14 when 2 or 4 lead; and finally 16 as the default. A different ordering would produce an incorrect Method because a more general alternative might match before a more specific one.</para>
           </example>
         </listitem>
+                    <listitem>
+                      <para>A clause may be followed by a vertical bar <literal>|</literal> to show that it marks the end of a Lead. When an alternative marked in this way satisfies its condition (or is reached, if it has no condition), its final Row is a Leadhead of the Dynamic Method and the preceding Row is a Leadend. More than one clause may be marked, and marked clauses may generate different numbers of Changes.</para>
+                      <example>
+                        <para>Dixon's Minor with Leads marked: <literal>-{h}12{1}|14{2,4}16</literal>. A Lead ends each time 12 is made with the treble leading. Starting from Rounds, the Leads are 8, 16, 16, 8 and 16 Changes long, and Rounds comes up at the end of the fifth Lead after 64 Changes.</para>
+                      </example>
+                      <para>Because the sequence of Changes in a Dynamic Method is not fixed, its Leads need not all be the same length. The lead-end marker gives Dynamic Methods Leadheads, Leadends and Courseheads, and so lets Calls be defined in the usual way, replacing the Change(s) of the marked clause.</para>
+                    </listitem>
+                    <listitem>
+                      <para>If no clause is marked, the whole Plain Course is treated as a single Lead: the Lead ends when the Row from which it started next occurs.</para>
+                    </listitem>
         <listitem>
           <para>Conditional Notation is designed primarily to define Dynamic Methods, where the choice of Change depends on the position of Bells in a preceding Row. However, the same mechanism can also express some Static Methods or rule-based Compositions more concisely when Blocks of Changes are repeated.</para>
           <example>
@@ -323,27 +333,27 @@
               <tbody>
                 <row>
                   <entry><para>Dixon's Minor</para></entry>
-                  <entry><para><literal>-{h}12{1}14{2,4}16</literal></para></entry>
+                  <entry><para><literal>-{h}12{1}|14{2,4}16</literal></para></entry>
                   <entry><para>Plain Bob Minor with 14 being rung instead of 16 whenever 2 or 4 are leading.</para></entry>
                 </row>
                 <row>
                   <entry><para>Reverse Dixon's Minor</para></entry>
-                  <entry><para><literal>-{h}56{xxxxx1}36{xxxxx5,xxxxx6}16</literal></para></entry>
+                  <entry><para><literal>-{h}56{xxxxx1}|36{xxxxx5,xxxxx6}16</literal></para></entry>
                   <entry><para>Reverse Bob Minor with 36 rung instead of 16 whenever 5 or 6 lie behind.</para></entry>
                 </row>
                 <row>
                   <entry><para>Oxford Badger Minor</para></entry>
-                  <entry><para><literal>-{h}12{1}1456{2xxxxx1,3xxxxx1}14{2,3}16</literal></para></entry>
+                  <entry><para><literal>-{h}12{1}|1456{2xxxx1,3xxxx1,2xxx1,3xxx1}14{2,3}16</literal></para></entry>
                   <entry><para>Plain Bob Minor with 14 replacing 16 whenever 2 or 3 are leading, unless the treble is in 56 in which case 1456 replaces 16.</para></entry>
                 </row>
                 <row>
                   <entry><para>Monster Major</para></entry>
-                  <entry><para><literal>-{h}12{1}16{2,3,4}18</literal></para></entry>
+                  <entry><para><literal>-{h}12{1}|16{2,3,4}18</literal></para></entry>
                   <entry><para>Plain Bob Major with 16 rung instead of 18 whenever 2, 3 or 4 are leading.</para></entry>
                 </row>
                 <row>
                   <entry><para>Dixon's Doubles</para></entry>
-                  <entry><para><literal>5{h}125{1}145{2,4}1</literal></para></entry>
+                  <entry><para><literal>5{h}125{1}|145{2,4}1</literal></para></entry>
                   <entry><para>Plain Bob Doubles with 145 rung instead of 1 whenever 2 or 4 are leading.</para></entry>
                 </row>
               </tbody>
@@ -367,27 +377,27 @@
               <tbody>
                 <row>
                   <entry><para>Dixon's Grandsire Minor</para></entry>
-                  <entry><para><literal>36{x1h}-{h}14{2,4}16</literal></para></entry>
+                  <entry><para><literal>36{x1h}-16{1b}|-{h}14{2,4}16</literal></para></entry>
                   <entry><para>Grandsire with 14 rung instead of 16 whenever 2 or 4 are leading.</para></entry>
                 </row>
                 <row>
                   <entry><para>Dixon's Grandsire Doubles</para></entry>
-                  <entry><para><literal>3{x1h}5{h}145{2,4}1</literal></para></entry>
+                  <entry><para><literal>3{x1h}5.1{1b}|5{h}145{2,4}1</literal></para></entry>
                   <entry><para>Grandsire with 145 rung instead of 1 whenever 2 or 4 are leading.</para></entry>
                 </row>
                 <row>
                   <entry><para>Ander's Monster Major</para></entry>
-                  <entry><para><literal>-{h}12{1}14{2,4,6}16{7}18</literal></para></entry>
+                  <entry><para><literal>-{h}12{1}|14{2,4,6}16{7}18</literal></para></entry>
                   <entry><para>12 made when 1 leads; 14 made when 2, 4 or 6 lead; 16 made when 7 leads. The plain course is 5580 changes.</para></entry>
                 </row>
                 <row>
-                  <entry><para>Pseudo-double Dixon's Minor</para></entry>
-                  <entry><para><literal>-{h}36{xxxxx3-,xxxxx5-}56{xxxxx1-}14{2+,4+}12{1+}16</literal></para></entry>
+                  <entry><para>Pseudo-Double Dixon's Minor</para></entry>
+                  <entry><para><literal>-{h}36{xxxxx3-,xxxxx5-}56{xxxxx1-}|14{2+,4+}12{1+}|16</literal></para></entry>
                   <entry><para>Reverse Dixon's when negative; Dixon's when positive. Condition selects between the two patterns on the same Row-parity basis that distinguishes Reverse Dixon's from Dixon's.</para></entry>
                 </row>
                 <row>
                   <entry><para>Treble Bob Dixonoid Minor</para></entry>
-                  <entry><para><literal>-12-{xx1h,xxx1h}-34-{h}36{1xxxx6,x1xxx6,xx1xx6}14{5xx1,5xxx1,5xxxx1,6xx1,6xxx1,6xxxx1}16</literal></para></entry>
+                  <entry><para><literal>-12-{xx1h,xxx1h}-34-{h}36{1xxxx6,x1xxx6,xx1xx6}14{5xx1,5xxx1,5xxxx1,6xx1,6xxx1,6xxxx1}16{1}|16</literal></para></entry>
                   <entry><para>Treble treble-bob hunts. Places in 34 unless the treble is in 34 (then places in 12). If the treble is in 456, places in 14 when 5 or 6 is leading. If the treble is in 123, places in 36 when 6 is behind. Otherwise places in 16.</para></entry>
                 </row>
               </tbody>
